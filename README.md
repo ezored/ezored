@@ -105,13 +105,13 @@ Everything works without extra installs. Conan will download NDK and other thing
 
 1. macOS operational system.
 2. Xcode.
-3. Command line tools.
+3. Command line tools (xcode-select --install).
 
 **macOS Requirements:**
 
 1. macOS operational system.
 2. Xcode.
-3. Command line tools.
+3. Command line tools (xcode-select --install).
 
 **Linux Requirements:**
 
