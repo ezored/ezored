@@ -104,7 +104,7 @@ class HomeViewController: BaseTableViewController {
             params.append(EZRHttpRequestParam(name: "username", value: "demo"))
             params.append(EZRHttpRequestParam(name: "password", value: "demo"))
             
-            let request = EZRHttpRequest(url: "http://httpbin.org/post", method: .post, params: [], headers: headers, body: "")
+            let request = EZRHttpRequest(url: "http://httpbin.org/post", method: .methodPost, params: [], headers: headers, body: "")
             let response = EZRHttpClient.shared()?.do(request)
             
             DispatchQueue.main.async {
@@ -125,7 +125,7 @@ class HomeViewController: BaseTableViewController {
             params.append(EZRHttpRequestParam(name: "username", value: "demo"))
             params.append(EZRHttpRequestParam(name: "password", value: "demo"))
             
-            let request = EZRHttpRequest(url: "https://httpbin.org/post", method: .post, params: [], headers: headers, body: "")
+            let request = EZRHttpRequest(url: "https://httpbin.org/post", method: .methodPost, params: [], headers: headers, body: "")
             let response = EZRHttpClient.shared()?.do(request)
             
             DispatchQueue.main.async {
