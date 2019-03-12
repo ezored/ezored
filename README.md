@@ -141,11 +141,14 @@ Everything works without extra installs. Conan will download NDK and other thing
 4. Install conan profiles:
 > python make.py conan install_profiles
 
-5. Now all commands are available, depending of your operacional system. Example: If you are on Linux, you can build the linux app target **(linux_app)**.  
+5. Now all commands are available. To list all targets that you can build run:
+> python make.py target
 
-> python make.py linux_app conan  
-> python make.py linux_app build  
-> python make.py linux_app package  
+Example: If you are on Linux, you can build the **linux_app** target, if on macOS you can run **macos_app** target and if on windows you can run **windows_app**.  
+
+> python make.py target linux_app conan  
+> python make.py target linux_app build  
+> python make.py target linux_app package  
 
 **Obs:**  
 
@@ -153,6 +156,7 @@ Everything works without extra installs. Conan will download NDK and other thing
 2. The execution order is important. Before build your targets, install conan dependencies, build it and finally package. Package verbs will copy files to a non versioned folder called **"dist"** in root path.
 3. You don't need run conan verb everytime, only run if you never run it before or if you change configuration, added dependencies, changed dependency version or other things that need call conan to rebuilt your dependencies.
 4. Conan profiles are required to specify basic environment profile things to build targets, but some settings are changed while build, like **arch** and **build_type**.  
+5. Check requirements for each target. Example: iOS target require that you have a macOS system.
 
 ## Dist folder prebuilt
 
