@@ -37,7 +37,7 @@ CustomerSystemServiceLoginData CustomerSystemService::login(const std::string & 
         httpURL = "https://public.ezored.com/http-test/login-error.json";
     }
 
-    auto httpRequest = HttpRequest{httpURL, HttpMethod::GET, httpParams, httpHeaders, ""};
+    auto httpRequest = HttpRequest{httpURL, HttpMethod::METHOD_GET, httpParams, httpHeaders, ""};
     auto httpResponse = HttpClient::shared()->doRequest(httpRequest);
 
     auto response = ResponseHelper::fromHttpResponse(httpResponse);
