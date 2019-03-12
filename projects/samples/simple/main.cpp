@@ -29,6 +29,9 @@
 #include "ezored/systemservices/CustomerSystemService.hpp"
 #include "ezored/systemservices/CustomerSystemServiceLoginData.hpp"
 
+#include "Poco/Path.h"
+#include "Poco/File.h"
+
 #include <iostream>
 #include <memory>
 
@@ -51,7 +54,10 @@ int main(int argc, char** argv)
     SharedData::shared()->setPlatformService(std::make_shared<SimpleSharedDataPlatformService>());
 
     // application core
-    auto initializationData = InitializationData{"com.ezored.sample", "ezored", "/Users/paulo/Downloads/ezored", 0, true};
+    auto homeDir = Poco::Path::home() + "ezored";
+    Poco::File(homeDir).createDirectory();
+
+    auto initializationData = InitializationData{"com.ezored.sample", "ezored", homeDir, 0, true};
     auto deviceData = DeviceData{"", "", "", "", "", "", "", "", "", 0, 0, 0, "", "", "", ""};
 
     ApplicationCore::shared()->initialize(initializationData, deviceData);
