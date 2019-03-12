@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <cstdarg>
 
+#include "asprintf.h"
+
 namespace ezored { namespace helpers {
 
 std::string SimpleStringHelper::format(const std::string fmtStr, ...) 

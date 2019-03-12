@@ -4,14 +4,14 @@
 package com.ezored.net.http;
 
 public enum HttpMethod {
-    GET,
-    POST,
-    HEAD,
-    PUT,
-    DELETE,
-    PATCH,
-    CONNECT,
-    OPTIONS,
-    TRACE,
+    METHOD_GET,
+    METHOD_POST,
+    METHOD_HEAD,
+    METHOD_PUT,
+    METHOD_DELETE,
+    METHOD_PATCH,
+    METHOD_CONNECT,
+    METHOD_OPTIONS,
+    METHOD_TRACE,
     ;
 }

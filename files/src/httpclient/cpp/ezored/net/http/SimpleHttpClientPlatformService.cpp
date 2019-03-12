@@ -127,31 +127,31 @@ std::string SimpleHttpClientPlatformService::getMethodFromRequest(const HttpRequ
 {
     switch (request.method)
     {
-    case HttpMethod::GET:
+    case HttpMethod::METHOD_GET:
         return "GET";
     break;
-    case HttpMethod::POST:
+    case HttpMethod::METHOD_POST:
         return "POST";
     break;
-    case HttpMethod::HEAD:
+    case HttpMethod::METHOD_HEAD:
         return "HEAD";
     break;
-    case HttpMethod::PUT:
+    case HttpMethod::METHOD_PUT:
         return "PUT";
     break;
-    case HttpMethod::DELETE:
+    case HttpMethod::METHOD_DELETE:
         return "DELETE";
     break;
-    case HttpMethod::PATCH:
+    case HttpMethod::METHOD_PATCH:
         return "PATCH";
     break;
-    case HttpMethod::CONNECT:
+    case HttpMethod::METHOD_CONNECT:
         return "CONNECT";
     break;
-    case HttpMethod::OPTIONS:
+    case HttpMethod::METHOD_OPTIONS:
         return "OPTIONS";
     break;
-    case HttpMethod::TRACE:
+    case HttpMethod::METHOD_TRACE:
         return "TRACE";
     break;
     }

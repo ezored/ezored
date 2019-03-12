@@ -1,13 +1,13 @@
 http_method = enum {
-    get;
-	post;
-	head;
-	put;
-	delete;
-	patch;
-	connect;
-	options;	
-	trace;
+    method_get;
+	method_post;
+	method_head;
+	method_put;
+	method_delete;
+	method_patch;
+	method_connect;
+	method_options;
+	method_trace;
 }
 
 http_header = record {

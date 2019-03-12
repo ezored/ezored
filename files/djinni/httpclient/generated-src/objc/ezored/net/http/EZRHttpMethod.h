@@ -5,13 +5,13 @@
 
 typedef NS_ENUM(NSInteger, EZRHttpMethod)
 {
-    EZRHttpMethodGet,
-    EZRHttpMethodPost,
-    EZRHttpMethodHead,
-    EZRHttpMethodPut,
-    EZRHttpMethodDelete,
-    EZRHttpMethodPatch,
-    EZRHttpMethodConnect,
-    EZRHttpMethodOptions,
-    EZRHttpMethodTrace,
+    EZRHttpMethodMethodGet,
+    EZRHttpMethodMethodPost,
+    EZRHttpMethodMethodHead,
+    EZRHttpMethodMethodPut,
+    EZRHttpMethodMethodDelete,
+    EZRHttpMethodMethodPatch,
+    EZRHttpMethodMethodConnect,
+    EZRHttpMethodMethodOptions,
+    EZRHttpMethodMethodTrace,
 };

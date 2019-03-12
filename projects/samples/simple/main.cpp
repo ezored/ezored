@@ -15,6 +15,7 @@
 #include "ezored/helpers/TodoHelper.hpp"
 #include "ezored/helpers/StringHelper.hpp"
 #include "ezored/helpers/CustomerHelper.hpp"
+#include "ezored/helpers/EnvironmentHelper.hpp"
 
 #include "ezored/data/SharedData.hpp"
 #include "ezored/data/SimpleSharedDataPlatformService.hpp"
@@ -27,6 +28,9 @@
 
 #include "ezored/systemservices/CustomerSystemService.hpp"
 #include "ezored/systemservices/CustomerSystemServiceLoginData.hpp"
+
+#include "Poco/Path.h"
+#include "Poco/File.h"
 
 #include <iostream>
 #include <memory>
@@ -50,7 +54,10 @@ int main(int argc, char** argv)
     SharedData::shared()->setPlatformService(std::make_shared<SimpleSharedDataPlatformService>());
 
     // application core
-    auto initializationData = InitializationData{"com.ezored.sample", "ezored", "/Users/paulo/Downloads/ezored", 0, true};
+    auto homeDir = Poco::Path::home() + "ezored";
+    Poco::File(homeDir).createDirectory();
+
+    auto initializationData = InitializationData{"com.ezored.sample", "ezored", homeDir, 0, true};
     auto deviceData = DeviceData{"", "", "", "", "", "", "", "", "", 0, 0, 0, "", "", "", ""};
 
     ApplicationCore::shared()->initialize(initializationData, deviceData);
@@ -125,20 +132,12 @@ int main(int argc, char** argv)
         std::cout << "Current customer token: " << CustomerHelper::getToken() << std::endl;
     }
 
-    /*
-
-    auto httpRequest = HttpRequest("http://httpbin.org/post", HttpMethod::POST, {}, {}, "");
+    auto httpRequest = HttpRequest("http://httpbin.org/post", HttpMethod::METHOD_POST, {}, {}, "");
     auto httpResponse = HttpClient::shared()->doRequest(httpRequest);
     std::cout << "Response: " << httpResponse.body << std::endl;
 
-    auto md5 = ezored::core::ApplicationCore::shared()->generateMd5("test");
-    auto http = ezored::core::ApplicationCore::shared()->doRequest("http://httpbin.org/post");
-    auto https = ezored::core::ApplicationCore::shared()->doRequest("https://httpbin.org/post");
-    auto secret = ezored::core::ApplicationCore::shared()->getSecretKey();
+    auto secret = ezored::helpers::EnvironmentHelper::getSecretKey();
 
-    std::cout << "MD5: " << md5 << std::endl;
-    std::cout << "HTTP: " << http << std::endl;
-    std::cout << "HTTPS: " << https << std::endl;
     std::cout << "SECRET: " << secret << std::endl;
     std::cout << "CURRENT DATETIME UTC: " << DateTime::getCurrentDateTimeAsString() << std::endl;
     std::cout << "STRING TO UPPER: " << StringHelper::toUpper(StringHelper::trim(" ezored ")) << std::endl;
@@ -147,7 +146,7 @@ int main(int argc, char** argv)
     FileHelper::createDir(FileHelper::join("path1", "path2"));
 
     // shared data
-    SharedData::shared()->start("app", "");
+    SharedData::shared()->start("app");
 
     if (SharedData::shared()->getBoolWithDefaultValue("first-open", true) == true)
     {
@@ -158,10 +157,8 @@ int main(int argc, char** argv)
     else
     {
         std::cout << "FIRST OPEN: NO" << std::endl;
+        SharedData::shared()->finish();
     }
-
-    SharedData::shared()->finish();
-    */
 
     return EXIT_SUCCESS;
 }

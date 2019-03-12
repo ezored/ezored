@@ -17,4 +17,5 @@ __pycache__
 
 # ezored
 build
-dist
+dist/
+dist.*
