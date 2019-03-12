@@ -105,14 +105,18 @@ Everything works without extra installs. Conan will download NDK and other thing
 
 1. macOS operational system.
 2. Xcode.
-3. Command line tools (xcode-select --install).
+3. Command line tools.  
+    Run: ```xcode-select --install```
 
 **macOS Requirements:**
 
 1. macOS operational system.
 2. Xcode.
-3. Command line tools (xcode-select --install).
-4. macOS headers (open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg). The path can change for each macOS version.
+3. Command line tools.  
+    Run: ```xcode-select --install```
+4. macOS headers.  
+    Run: ```open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg```  
+    The path can change for each macOS version (10.14 is mojave).
 
 **Linux Requirements:**
 
