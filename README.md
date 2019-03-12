@@ -114,9 +114,9 @@ Everything works without extra installs. Conan will download NDK and other thing
 2. Xcode.
 3. Command line tools.  
     Run: ```xcode-select --install```
-4. macOS headers.  
+4. macOS system headers.  
     Run: ```open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg```  
-    The path can change for each macOS version (10.14 is mojave).
+    The path can change for each macOS version (10.14 is mojave) and this is required because old softwares search on old places for this headers, like old openssl versions.
 
 **Linux Requirements:**
 
