@@ -1,0 +1,20 @@
+# os
+Thumbs.db
+.DS_Store
+
+# ide
+.idea
+.vscode
+
+# auto generated
+**/*.pyc
+*.autosave
+*.user
+*.user.*
+CMakeSettings.json
+.vs
+__pycache__
+
+# ezored
+build
+dist

@@ -1,0 +1,70 @@
+file_helper_platform_service = interface +j +o {
+
+    create_file(path: string): bool;
+    create_file_with_string_content(path: string, content: string): bool;
+    create_file_with_binary_content(path: string, content: binary): bool;
+    create_dir(path: string): bool;
+
+    list_files(path: string): list<string>;
+
+    get_extension(path: string): string;
+    get_filename(path: string): string;
+    get_basename(path: string): string;
+    get_filename_from_url(url: string): string;
+    get_basename_from_url(url: string): string;
+
+    remove_file(path: string): bool;
+    remove_dir(path: string): bool;
+
+    is_dir(path: string): bool;
+    is_file(path: string): bool;
+
+    get_file_size(path: string): i64;
+
+    copy_file(from: string, to: string): bool;
+    move_file(from: string, to: string): bool;
+
+    join(first: string, second: string): string;
+
+    get_file_content_as_string(path: string): string;
+    get_file_content_as_binary(path: string): binary;
+
+}
+
+file_helper = interface +c {
+
+    static shared(): file_helper;
+    set_platform_service(ps: file_helper_platform_service);
+    get_platform_service(): file_helper_platform_service;
+    has_platform_service(): bool;
+
+    static create_file(path: string): bool;
+    static create_file_with_string_content(path: string, content: string): bool;
+    static create_file_with_binary_content(path: string, content: binary): bool;
+    static create_dir(path: string): bool;
+
+    static list_files(path: string): list<string>;
+
+    static get_extension(path: string): string;
+    static get_filename(path: string): string;
+    static get_basename(path: string): string;
+    static get_filename_from_url(url: string): string;
+    static get_basename_from_url(url: string): string;
+
+    static remove_file(path: string): bool;
+    static remove_dir(path: string): bool;
+
+    static is_dir(path: string): bool;
+    static is_file(path: string): bool;
+
+    static get_file_size(path: string): i64;
+
+    static copy_file(from: string, to: string): bool;
+    static move_file(from: string, to: string): bool;
+
+    static join(first: string, second: string): string;
+
+    static get_file_content_as_string(path: string): string;
+    static get_file_content_as_binary(path: string): binary;
+
+}

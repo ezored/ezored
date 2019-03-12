@@ -1,0 +1,15 @@
+date_time = interface +c {
+
+    static get_date_time_from_string(value: string): date;
+    static get_string_from_date_time(value: date): string;
+    
+    static get_current_date_time_as_string(): string;
+    static get_current_date_time(): date;
+
+    static get_date_time_from_seconds(value: i64): date;
+    static get_date_time_from_milliseconds(value: i64): date;
+    
+    static get_timestamp_in_milliseconds_from_date_time(value: date): i64;
+    static get_timestamp_in_seconds_from_date_time(value: date): i64;
+
+}

@@ -1,0 +1,25 @@
+"DialogButtonCancel" = "Cancelar";
+"DialogButtonNo" = "Não";
+"DialogButtonOK" = "OK";
+"DialogButtonYes" = "Sim";
+"DialogLoadingMessage" = "Carregando...";
+"DialogLoadingTitle" = "Mensagem";
+"DialogProgressMessage" = "Progresso: %d%%";
+"DialogTitle" = "Mensagem";
+"DialogTitleNotification" = "Notificação";
+
+"TitleHome" = "Home";
+"TitleSettings" = "Configurações";
+"TitleListTodo" = "Lista de ToDo";
+
+"OptionSharedData" = "Shared Data: O valor é";
+"OptionHttpRequest" = "Requisição HTTP";
+"OptionHttpsRequest" = "Requisição HTTPS";
+"OptionSecretKey" = "Obter uma chave secreta";
+"OptionFileHelper" = "File helper (tamanho do arquivo)";
+"OptionAppVersion" = "Versão do aplicativo";
+"OptionTodo" = "Lista de ToDo";
+
+"SimpleSearchBarHintText" = "Pesquisar...";
+"SimpleSearchBarBtReset" = "Limpar";
+"SimpleSearchBarBtCancel" = "Cancelar";

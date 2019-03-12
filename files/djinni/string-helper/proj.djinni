@@ -1,0 +1,10 @@
+string_helper = interface +c {
+
+    static trim(value: string): string;
+    static left_trim(value: string): string;
+    static right_trim(value: string): string;
+    
+    static to_lower(value: string): string;
+    static to_upper(value: string): string;
+
+}

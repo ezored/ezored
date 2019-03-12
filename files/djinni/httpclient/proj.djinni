@@ -1,0 +1,58 @@
+http_method = enum {
+    get;
+	post;
+	head;
+	put;
+	delete;
+	patch;
+	connect;
+	options;	
+	trace;
+}
+
+http_header = record {
+    name: string;
+	value: string;
+}
+
+http_response = record {
+    code: i32;
+    body: string;
+	headers: list<http_header>;
+}
+
+http_request_param = record {
+    name: string;
+	value: string;
+}
+
+http_request = record {
+	url: string;
+    method: http_method;
+    params: list<http_request_param>;
+	headers: list<http_header>;
+	body: string;
+}
+
+http_client_platform_service = interface +j +o {
+	do_request(request: http_request): http_response;
+}
+
+http_client_logger = interface +c {
+	on_request(request: http_request);
+	on_response(request: http_request, response: http_response);
+}
+
+http_client = interface +c {
+	static shared(): http_client;
+	
+	set_platform_service(ps: http_client_platform_service);
+	get_platform_service(): http_client_platform_service;
+	has_platform_service(): bool;
+
+	do_request(request: http_request): http_response;
+
+	set_logger(logger: http_client_logger);
+	get_logger(): http_client_logger;
+	has_logger(): bool;
+}

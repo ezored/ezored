@@ -1,0 +1,14 @@
+@extern "../001-app-domain/yaml/initialization_data.yaml"
+@extern "../001-app-domain/yaml/device_data.yaml"
+@extern "../001-app-domain/yaml/customer.yaml"
+
+application_core = interface +c {
+    static shared(): application_core;
+    initialize(initialization_data: initialization_data, device_data: device_data);
+
+    get_initialization_data(): initialization_data;
+    get_device_data(): device_data;
+
+    get_customer(): customer;
+    set_customer(customer: customer);
+}

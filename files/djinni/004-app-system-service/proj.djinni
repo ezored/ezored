@@ -1,0 +1,11 @@
+@extern "../001-app-domain/yaml/customer.yaml"
+@extern "../001-app-domain/yaml/response.yaml"
+
+customer_system_service_login_data = record {
+    response: response;
+    customer: customer;
+}
+
+customer_system_service = interface +c {
+    static login(username: string, password: string): customer_system_service_login_data;
+}

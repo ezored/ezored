@@ -1,0 +1,44 @@
+logger_level = flags {
+    verbose;
+    debug;
+    info;
+    warning;
+    error;
+    fatal;    
+    no_level = none;
+    all_levels = all;
+}
+
+logger_platform_service = interface +j +o {
+
+    v(message: string);
+    d(message: string);
+    i(message: string);
+    w(message: string);
+    e(message: string);
+    f(message: string);
+
+    set_group(group: string);
+    
+}
+
+logger = interface +c {
+
+    static shared(): logger;
+
+    set_platform_service(ps: logger_platform_service);
+    get_platform_service(): logger_platform_service;
+    has_platform_service(): bool;
+    allowed_level(level: logger_level): bool;
+    set_level(level: logger_level);
+    
+    static v(message: string);
+    static d(message: string);
+    static i(message: string);
+    static w(message: string);
+    static e(message: string);
+    static f(message: string);
+
+    static set_group(group: string);
+    
+}
