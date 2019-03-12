@@ -28,7 +28,7 @@ Feel free to collaborate with ezored, creating or improving the project and modu
 4. linux
 5. windows
 
-** Generally any platform with C/C++ supported will work too, like smart tvs.
+Obs: Generally any platform with C/C++ supported will work too, like smart tvs.
 
 ## Modules:
 
@@ -174,3 +174,20 @@ If you will use djinni to generate files follow these steps:
 
 1. Download djinni (https://github.com/dropbox/djinni).
 2. Set environment var **DJINNI_HOME** as the root folder of djinni (where you clone or download it).
+
+## Projects:
+
+We have some samples inside "projects" folder. 
+
+Android sample can be download here:
+https://play.google.com/store/apps/details?id=com.ezored.sample
+
+## Supported By Jetbrains IntelliJ IDEA
+
+![Supported By Jetbrains IntelliJ IDEA](extras/images/jetbrains-logo.png "Supported By Jetbrains IntelliJ IDEA")
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT)
+
+Copyright (c) 2017-present, Paulo Coutinho
