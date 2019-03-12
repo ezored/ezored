@@ -114,39 +114,39 @@
 
 - (nonnull NSString *)getMethodFromHttpMethod:(EZRHttpMethod)method {
     switch (method) {
-        case EZRHttpMethodGet:
+        case EZRHttpMethodMethodGet:
             return @"GET";
             break;
             
-        case EZRHttpMethodPost:
+        case EZRHttpMethodMethodPost:
             return @"POST";
             break;
             
-        case EZRHttpMethodPut:
+        case EZRHttpMethodMethodPut:
             return @"PUT";
             break;
             
-        case EZRHttpMethodHead:
+        case EZRHttpMethodMethodHead:
             return @"HEAD";
             break;
             
-        case EZRHttpMethodPatch:
+        case EZRHttpMethodMethodPatch:
             return @"PATCH";
             break;
             
-        case EZRHttpMethodTrace:
+        case EZRHttpMethodMethodTrace:
             return @"TRACE";
             break;
             
-        case EZRHttpMethodDelete:
+        case EZRHttpMethodMethodDelete:
             return @"DELETE";
             break;
             
-        case EZRHttpMethodConnect:
+        case EZRHttpMethodMethodConnect:
             return @"CONNECT";
             break;
             
-        case EZRHttpMethodOptions:
+        case EZRHttpMethodMethodOptions:
             return @"OPTIONS";
             break;
             
