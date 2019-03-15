@@ -407,10 +407,25 @@ def copy_dir(src, dst, symlinks=False, ignore=None):
 
 # -----------------------------------------------------------------------------
 def run_simple(args, cwd):
-    subprocess.call(
-        args,
-        cwd=cwd
-    )
+    try:
+        subprocess.check_output(
+            args,
+            cwd=cwd,
+        )
+    except subprocess.CalledProcessError:
+        log.normal(
+            '{2}COMMAND:{3} {0}\n' \
+            '{4}WORKING DIR:{5} {1}'.format(
+                ' '.join(args),
+                cwd,
+                log.YELLOW,
+                log.ENDC,
+                log.YELLOW,
+                log.ENDC,
+            )
+        )
+
+        log.error('Command execution has failed')
 
 
 # -----------------------------------------------------------------------------
