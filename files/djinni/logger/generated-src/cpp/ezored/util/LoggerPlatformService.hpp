@@ -21,8 +21,6 @@ public:
 
     virtual void e(const std::string & message) = 0;
 
-    virtual void f(const std::string & message) = 0;
-
     virtual void setGroup(const std::string & group) = 0;
 };
 

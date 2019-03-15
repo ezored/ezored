@@ -3,14 +3,11 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_OPTIONS(NSUInteger, EZRLoggerLevel)
+typedef NS_ENUM(NSInteger, EZRLoggerLevel)
 {
-    EZRLoggerLevelNoLevel = 0,
-    EZRLoggerLevelVerbose = 1 << 0,
-    EZRLoggerLevelDebug = 1 << 1,
-    EZRLoggerLevelInfo = 1 << 2,
-    EZRLoggerLevelWarning = 1 << 3,
-    EZRLoggerLevelError = 1 << 4,
-    EZRLoggerLevelFatal = 1 << 5,
-    EZRLoggerLevelAllLevels = 0 | EZRLoggerLevelVerbose | EZRLoggerLevelDebug | EZRLoggerLevelInfo | EZRLoggerLevelWarning | EZRLoggerLevelError | EZRLoggerLevelFatal,
+    EZRLoggerLevelVerbose,
+    EZRLoggerLevelDebug,
+    EZRLoggerLevelInfo,
+    EZRLoggerLevelWarning,
+    EZRLoggerLevelError,
 };

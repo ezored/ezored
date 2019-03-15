@@ -9,7 +9,7 @@
 namespace ezored { namespace util {
 
 class LoggerPlatformService;
-enum class LoggerLevel : unsigned;
+enum class LoggerLevel;
 
 class Logger {
 public:
@@ -36,8 +36,6 @@ public:
     static void w(const std::string & message);
 
     static void e(const std::string & message);
-
-    static void f(const std::string & message);
 
     static void setGroup(const std::string & group);
 };

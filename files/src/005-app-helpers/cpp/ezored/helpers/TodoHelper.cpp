@@ -8,7 +8,8 @@ using namespace ezored::time;
 
 Todo TodoHelper::create()
 {
-    return Todo{0, "", "", {}, false, DateTime::getCurrentDateTime(), DateTime::getCurrentDateTime()};
+    auto data = std::unordered_map<std::string, std::string>();
+    return Todo{0, "", "", data, false, DateTime::getCurrentDateTime(), DateTime::getCurrentDateTime()};
 }
 
 } }

@@ -9,6 +9,5 @@ public enum LoggerLevel {
     INFO,
     WARNING,
     ERROR,
-    FATAL,
     ;
 }

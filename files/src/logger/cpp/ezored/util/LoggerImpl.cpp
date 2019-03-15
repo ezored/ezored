@@ -8,7 +8,7 @@ std::shared_ptr<LoggerImpl> LoggerImpl::instance = nullptr;
 LoggerImpl::LoggerImpl() 
 {
     ps = nullptr;
-    level = LoggerLevel::ALL_LEVELS;
+    level = LoggerLevel::DEBUG;
 }
 
 std::shared_ptr<Logger> Logger::shared() 
@@ -48,7 +48,66 @@ void LoggerImpl::setLevel(LoggerLevel level)
 
 bool LoggerImpl::allowedLevel(LoggerLevel level)
 {
-    return (this->level & level) == level;
+    switch (this->level)
+    {
+        case LoggerLevel::ERROR:
+            switch (level)
+            {
+                case LoggerLevel::ERROR:
+                    return true;
+                    break;
+                default:
+                    break;
+            }
+            break;
+
+        case LoggerLevel::WARNING:
+            switch (level)
+            {
+                case LoggerLevel::ERROR:
+                case LoggerLevel::WARNING:
+                    return true;
+                    break;
+                default:
+                    break;
+            }
+            break;
+
+        case LoggerLevel::INFO:
+            switch (level)
+            {
+                case LoggerLevel::ERROR:
+                case LoggerLevel::WARNING:
+                case LoggerLevel::INFO:
+                    return true;
+                    break;
+                default:
+                    break;
+            }
+            break;
+
+        case LoggerLevel::DEBUG:
+            switch (level)
+            {
+                case LoggerLevel::ERROR:
+                case LoggerLevel::WARNING:
+                case LoggerLevel::INFO:
+                case LoggerLevel::DEBUG:
+                    return true;
+                    break;
+                default:
+                    break;
+            }
+            break;
+
+        case LoggerLevel::VERBOSE:
+            return true;
+            break;
+        default:
+            break;
+    }
+
+    return false;
 }
 
 void Logger::v(const std::string & message) 
@@ -124,21 +183,6 @@ void Logger::e(const std::string & message)
     }
     
     Logger::shared()->getPlatformService()->e(message);
-}
-
-void Logger::f(const std::string & message) 
-{
-    if (Logger::shared()->getPlatformService() == nullptr) 
-    {
-        return;
-    }
-
-    if (!Logger::shared()->allowedLevel(LoggerLevel::FATAL))
-    {
-        return;
-    }
-    
-    Logger::shared()->getPlatformService()->f(message);
 }
 
 void Logger::setGroup(const std::string & group) 

@@ -1,20 +1,48 @@
 # ezored
 
+![](extras/images/doc-logo.png)
+
+![](https://img.shields.io/github/repo-size/ezored/ezored.svg?logo=ezored&style=flat-square)
+
 ## About
 
-This project is a collection of tools, ready to use, to fastest compile C/C++ code for current supported platforms.
+**Code reuse. Write once. Run everywhere.**
 
-You can get the project code as a start project and evolve it to your needs.
+C++ boostrap toolkit for multiplatform code reuse, including mobile and desktop.
 
-The goal of ezored is keep the focus on C/C++ code. You can keep your business code fastest and secure as possible in native code and reuse it on all supported platforms.
+Ezored was designed to have a convenient and organized struture of scripts and folders, so you can download this repository and start build sample files to test and see it working now. 
 
-But ezored don't replace platform code (dialogs, user interface, activity, view controllers, button etc), it let you only reuse your single C/C++ code between supported platforms and on each platform you need only implement visual things that will call native functions.
+Basically you build shared libraries for mobile (android is aar and ios is framework) and executables for desktop (linux, mac, windows).
 
-To show it working, inside folder "projects" we have a simple Desktop app, and a mobile app for Android and iOS. All 3 applications use the same C/C++ code, but the interface was built using their platorm code.
+Don't think about how you will start your C++ project for mobile or desktop, use ezored as a bootstrap project.
 
-It come with a lot of modules that share C/C++ code between mobile and desktop platforms.
+![](extras/images/what-is.png)
 
-The main advantage is have a single code with business logic and other teams only focusing on their platform code.
+**What ezored is:**
+
+- Bootstrap toolkit ready-to-use to build C++ code to multiple platform.
+- Scripts, files and folders well-organized to you only need add your things to continue.
+- Mobile and desktop samples that use some C++ code that access database, make requests, parser json data, store preference data, show logger, work with string and datetime.
+- Easy and ready way that you can start create everything in C++ (you can create native SDK for mobile, command line tools, http server applications for API and everything more).
+- Progressive, that is, allows you to use in a project in progress. Maybe you want only a performance agressive thing in your SDK or executable.
+- Toolkit with market used tools (python, cmake and conan).
+
+**What ezored not is:**
+
+- Interface or UI for mobile or desktop.
+- New way to write applications with a custom and new tool on market.
+- Dependency manager.
+
+**Why you need use it?**
+
+- Code reuse. Write once. Run everyone.
+- Do not worry about the project organization or the structure of it, ezored is this, it is a complete and functional project for you to start any other.
+- Generally you made a mobile application for each market platform (android, ios, smart tv etc). You need a team for each platform and each team will implement the same code of business logic on each platform. With ezored you can start create your business logic in C++ and compile one single code for all supported platforms, and the teams only need create UI and on button click call your C++ function.
+- Every developer like command line tools and generally need write one. With ezored you have a sample of working CLI tool that use the same C++ code that mobile uses.
+- HTTP server applications need have good performance and low memory usage, at the same time respond to a lot of requests. Use any C++ HTTP server framework with ezored to make your server applications.
+- Drivers for database SQL or NO/SQL generally are made with C/C++, and with ezored you can easy use it and start create your greate application.
+
+**Free for ever**
 
 You can use it for free, for any purpose, including commercial purposes.
 
@@ -23,16 +51,16 @@ Feel free to collaborate with ezored, creating or improving the project and modu
 ## Supported platforms:
 
 1. android
-2. iOS
-3. macOS
+2. ios
+3. macos
 4. linux
 5. windows
 
-Obs: Generally any platform with C/C++ supported will work too, like smart tvs.
+Obs: Generally any platform with C++ support will work too, like smart tvs and embeded hardwares.
 
 ## Modules:
 
-A module in ezored is C++ implementation of one specific feature. Ezored come with some modules already implemented:
+A module in ezored is C++ implementation of one specific feature. And ezored come with some modules already implemented:
 
 1. **datetime**  
     Some functions to work with date and time.
@@ -53,7 +81,7 @@ A module in ezored is C++ implementation of one specific feature. Ezored come wi
 9. **rapidjson**  
     RapidJSON is used to parsing json from remote requests in ezored samples. It works on all tested platforms nice and fast.
 
-Modules are stored in "files/djinni" and "files/src".
+Modules source are stored in "files/djinni" and "files/src".
 
 ## Targets:
 
@@ -61,7 +89,7 @@ A target in ezored contains all files, config and scripts to build C++ code to t
 
 Currently all targets use cmake structure to compile all. So each target has their own **CMakeLists.txt** file inside target folder "cmake".
 
-Generally all targets shared the same C/C++ code and because of this ezored has a commom **CMakeLists.txt** file inside folder "files/cmake/common". Some targets add more source files, "android_aar" add their JNI files and "ios_framework" add their OBJC files.
+Generally all targets shared the same C++ code and because of this ezored has a commom **CMakeLists.txt** file inside folder "files/cmake/common". Some targets add more source files, "android_aar" add their JNI files and "ios_framework" add their OBJC files.
 
 A target has their "verbs", that can be any file name "build", "package" etc. All verbs are store inside "verbs" folder of a target and the file name will be use to find it when you call on terminal. Example:
 
@@ -121,7 +149,7 @@ Everything works without extra installs. Conan will download NDK and other thing
 **Linux Requirements:**
 
 1. Linux operational system.
-2. C/C++ compiler installed.  
+2. C++ compiler installed.  
     Obs: On Ubuntu run on terminal "sudo apt install build-essential".
 
 **Windows Requirements:**
@@ -146,10 +174,10 @@ Everything works without extra installs. Conan will download NDK and other thing
 4. Install conan profiles:
 > python make.py conan install_profiles
 
-5. Now all commands are available. To list all targets that you can build run:
+5. Now all commands are available. run the following command to list all targets that you can build:
 > python make.py target
 
-Example: If you are on Linux, you can build the **linux_app** target, if on macOS you can run **macos_app** target and if on windows you can run **windows_app**.  
+Example: If you are on **Linux**, you can build the **linux_app** target, if on **macOS** you can run **macos_app** target and if on **Windows** you can run **windows_app**.  
 
 > python make.py target linux_app conan  
 > python make.py target linux_app build  
@@ -165,7 +193,7 @@ Example: If you are on Linux, you can build the **linux_app** target, if on macO
 
 ## Dist folder prebuilt
 
-The folder containing all prebuilt things (android, ios, windows, macOS and linux) are not versioned, but you can download a full version here:
+The folder containing all prebuilt things (android, ios, windows, macos and linux) are not versioned, but you can download a full version here:
 
 > http://public.ezored.com/ezored/precompiled/dist.zip
 

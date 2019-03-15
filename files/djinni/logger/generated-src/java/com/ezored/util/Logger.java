@@ -3,7 +3,6 @@
 
 package com.ezored.util;
 
-import java.util.EnumSet;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class Logger {
@@ -13,9 +12,9 @@ public abstract class Logger {
 
     public abstract boolean hasPlatformService();
 
-    public abstract boolean allowedLevel(EnumSet<LoggerLevel> level);
+    public abstract boolean allowedLevel(LoggerLevel level);
 
-    public abstract void setLevel(EnumSet<LoggerLevel> level);
+    public abstract void setLevel(LoggerLevel level);
 
     public static Logger shared()
     {
@@ -45,11 +44,6 @@ public abstract class Logger {
     public static void e(String message)
     {
         CppProxy.e(message);
-    }
-
-    public static void f(String message)
-    {
-        CppProxy.f(message);
     }
 
     public static void setGroup(String group)
@@ -105,20 +99,20 @@ public abstract class Logger {
         private native boolean native_hasPlatformService(long _nativeRef);
 
         @Override
-        public boolean allowedLevel(EnumSet<LoggerLevel> level)
+        public boolean allowedLevel(LoggerLevel level)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
             return native_allowedLevel(this.nativeRef, level);
         }
-        private native boolean native_allowedLevel(long _nativeRef, EnumSet<LoggerLevel> level);
+        private native boolean native_allowedLevel(long _nativeRef, LoggerLevel level);
 
         @Override
-        public void setLevel(EnumSet<LoggerLevel> level)
+        public void setLevel(LoggerLevel level)
         {
             assert !this.destroyed.get() : "trying to use a destroyed object";
             native_setLevel(this.nativeRef, level);
         }
-        private native void native_setLevel(long _nativeRef, EnumSet<LoggerLevel> level);
+        private native void native_setLevel(long _nativeRef, LoggerLevel level);
 
         public static native Logger shared();
 
@@ -131,8 +125,6 @@ public abstract class Logger {
         public static native void w(String message);
 
         public static native void e(String message);
-
-        public static native void f(String message);
 
         public static native void setGroup(String group);
     }

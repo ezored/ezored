@@ -14,7 +14,5 @@ public abstract class LoggerPlatformService {
 
     public abstract void e(String message);
 
-    public abstract void f(String message);
-
     public abstract void setGroup(String group);
 }

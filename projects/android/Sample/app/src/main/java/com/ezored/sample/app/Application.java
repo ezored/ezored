@@ -125,10 +125,9 @@ public class Application extends MultiDexApplication {
         Logger.shared().setPlatformService(new LoggerPlatformServiceImpl(LOG_GROUP));
 
         if (BuildConfig.DEBUG) {
-            Logger.shared().setLevel(EnumSet.allOf(LoggerLevel.class));
+            Logger.shared().setLevel(LoggerLevel.VERBOSE);
         } else {
-            Logger.shared().setLevel(EnumSet.of(LoggerLevel.ERROR, LoggerLevel.FATAL));
-            Logger.shared().setLevel(EnumSet.noneOf(LoggerLevel.class));
+            Logger.shared().setLevel(LoggerLevel.ERROR);
         }
     }
 

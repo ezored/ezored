@@ -118,14 +118,6 @@ CJNIEXPORT void JNICALL Java_com_ezored_util_Logger_00024CppProxy_e(JNIEnv* jniE
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
 }
 
-CJNIEXPORT void JNICALL Java_com_ezored_util_Logger_00024CppProxy_f(JNIEnv* jniEnv, jobject /*this*/, jstring j_message)
-{
-    try {
-        DJINNI_FUNCTION_PROLOGUE0(jniEnv);
-        ::ezored::util::Logger::f(::djinni::String::toCpp(jniEnv, j_message));
-    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
-}
-
 CJNIEXPORT void JNICALL Java_com_ezored_util_Logger_00024CppProxy_setGroup(JNIEnv* jniEnv, jobject /*this*/, jstring j_group)
 {
     try {

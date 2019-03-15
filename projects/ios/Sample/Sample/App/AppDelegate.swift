@@ -56,9 +56,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         EZRLogger.shared()?.setPlatformService(EZRLoggerPlatformServiceImpl())
         
         #if DEBUG
-        EZRLogger.shared()?.setLevel(EZRLoggerLevel.allLevels)
+        EZRLogger.shared()?.setLevel(EZRLoggerLevel.verbose)
         #else
-        EZRLogger.shared()?.setLevel(EZRLoggerLevel(rawValue: EZRLoggerLevel.error.rawValue | EZRLoggerLevel.fatal.rawValue))
+        EZRLogger.shared()?.setLevel(EZRLoggerLevel.error)
         #endif
         
         // http client

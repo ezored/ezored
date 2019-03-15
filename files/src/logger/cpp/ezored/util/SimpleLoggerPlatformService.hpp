@@ -15,7 +15,6 @@ public:
     void i(const std::string & message) override;
     void w(const std::string & message) override;
     void e(const std::string & message) override;
-    void f(const std::string & message) override;
 
     void setGroup(const std::string & group) override;
 };

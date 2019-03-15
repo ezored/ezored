@@ -7,37 +7,13 @@
 
 namespace ezored { namespace util {
 
-enum class LoggerLevel : unsigned {
-    NO_LEVEL = 0,
-    VERBOSE = 1 << 0,
-    DEBUG = 1 << 1,
-    INFO = 1 << 2,
-    WARNING = 1 << 3,
-    ERROR = 1 << 4,
-    FATAL = 1 << 5,
-    ALL_LEVELS = 0 | VERBOSE | DEBUG | INFO | WARNING | ERROR | FATAL,
+enum class LoggerLevel : int {
+    VERBOSE,
+    DEBUG,
+    INFO,
+    WARNING,
+    ERROR,
 };
-constexpr LoggerLevel operator|(LoggerLevel lhs, LoggerLevel rhs) noexcept {
-    return static_cast<LoggerLevel>(static_cast<unsigned>(lhs) | static_cast<unsigned>(rhs));
-}
-constexpr LoggerLevel& operator|=(LoggerLevel& lhs, LoggerLevel rhs) noexcept {
-    return lhs = lhs | rhs;
-}
-constexpr LoggerLevel operator&(LoggerLevel lhs, LoggerLevel rhs) noexcept {
-    return static_cast<LoggerLevel>(static_cast<unsigned>(lhs) & static_cast<unsigned>(rhs));
-}
-constexpr LoggerLevel& operator&=(LoggerLevel& lhs, LoggerLevel rhs) noexcept {
-    return lhs = lhs & rhs;
-}
-constexpr LoggerLevel operator^(LoggerLevel lhs, LoggerLevel rhs) noexcept {
-    return static_cast<LoggerLevel>(static_cast<unsigned>(lhs) ^ static_cast<unsigned>(rhs));
-}
-constexpr LoggerLevel& operator^=(LoggerLevel& lhs, LoggerLevel rhs) noexcept {
-    return lhs = lhs ^ rhs;
-}
-constexpr LoggerLevel operator~(LoggerLevel x) noexcept {
-    return static_cast<LoggerLevel>(~static_cast<unsigned>(x));
-}
 
 } }  // namespace ezored::util
 
@@ -46,7 +22,7 @@ namespace std {
 template <>
 struct hash<::ezored::util::LoggerLevel> {
     size_t operator()(::ezored::util::LoggerLevel type) const {
-        return std::hash<unsigned>()(static_cast<unsigned>(type));
+        return std::hash<int>()(static_cast<int>(type));
     }
 };
 

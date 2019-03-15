@@ -48,12 +48,6 @@ public:
             [djinni_private_get_proxied_objc_object() e:(::djinni::String::fromCpp(c_message))];
         }
     }
-    void f(const std::string & c_message) override
-    {
-        @autoreleasepool {
-            [djinni_private_get_proxied_objc_object() f:(::djinni::String::fromCpp(c_message))];
-        }
-    }
     void setGroup(const std::string & c_group) override
     {
         @autoreleasepool {

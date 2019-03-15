@@ -1,29 +1,21 @@
-logger_level = flags {
+logger_level = enum {
     verbose;
     debug;
     info;
     warning;
     error;
-    fatal;    
-    no_level = none;
-    all_levels = all;
 }
 
 logger_platform_service = interface +j +o {
-
     v(message: string);
     d(message: string);
     i(message: string);
     w(message: string);
     e(message: string);
-    f(message: string);
-
     set_group(group: string);
-    
 }
 
 logger = interface +c {
-
     static shared(): logger;
 
     set_platform_service(ps: logger_platform_service);
@@ -37,8 +29,5 @@ logger = interface +c {
     static i(message: string);
     static w(message: string);
     static e(message: string);
-    static f(message: string);
-
-    static set_group(group: string);
-    
+    static set_group(group: string);    
 }

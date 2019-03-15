@@ -42,7 +42,7 @@ public:
     DeviceData getDeviceData() override;
 
     Customer getCustomer() override;
-    void setCustomer(const domain::Customer & customer) override;
+    void setCustomer(const Customer & customer) override;
 
 private:
     static std::shared_ptr<ApplicationCoreImpl> instance;

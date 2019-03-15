@@ -65,11 +65,6 @@
     NSLog(@"❤️ %@", message);
 }
 
-- (void)f:(nonnull NSString *)message 
-{
-    NSLog(@"🖤 %@", message);
-}
-
 - (void)setGroup:(nonnull NSString *)group 
 {
     _group = group;

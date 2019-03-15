@@ -31,8 +31,6 @@
 
 + (void)e:(nonnull NSString *)message;
 
-+ (void)f:(nonnull NSString *)message;
-
 + (void)setGroup:(nonnull NSString *)group;
 
 @end

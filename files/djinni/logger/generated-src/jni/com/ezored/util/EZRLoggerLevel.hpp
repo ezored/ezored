@@ -8,18 +8,18 @@
 
 namespace djinni_generated {
 
-class EZRLoggerLevel final : ::djinni::JniFlags {
+class EZRLoggerLevel final : ::djinni::JniEnum {
 public:
     using CppType = ::ezored::util::LoggerLevel;
     using JniType = jobject;
 
     using Boxed = EZRLoggerLevel;
 
-    static CppType toCpp(JNIEnv* jniEnv, JniType j) { return static_cast<CppType>(::djinni::JniClass<EZRLoggerLevel>::get().flags(jniEnv, j)); }
-    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv* jniEnv, CppType c) { return ::djinni::JniClass<EZRLoggerLevel>::get().create(jniEnv, static_cast<unsigned>(c), 6); }
+    static CppType toCpp(JNIEnv* jniEnv, JniType j) { return static_cast<CppType>(::djinni::JniClass<EZRLoggerLevel>::get().ordinal(jniEnv, j)); }
+    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv* jniEnv, CppType c) { return ::djinni::JniClass<EZRLoggerLevel>::get().create(jniEnv, static_cast<jint>(c)); }
 
 private:
-    EZRLoggerLevel() : JniFlags("com/ezored/util/LoggerLevel") {}
+    EZRLoggerLevel() : JniEnum("com/ezored/util/LoggerLevel") {}
     friend ::djinni::JniClass<EZRLoggerLevel>;
 };
 

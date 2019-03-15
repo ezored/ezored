@@ -54,14 +54,6 @@ void EZRLoggerPlatformService::JavaProxy::e(const std::string & c_message) {
                            ::djinni::get(::djinni::String::fromCpp(jniEnv, c_message)));
     ::djinni::jniExceptionCheck(jniEnv);
 }
-void EZRLoggerPlatformService::JavaProxy::f(const std::string & c_message) {
-    auto jniEnv = ::djinni::jniGetThreadEnv();
-    ::djinni::JniLocalScope jscope(jniEnv, 10);
-    const auto& data = ::djinni::JniClass<::djinni_generated::EZRLoggerPlatformService>::get();
-    jniEnv->CallVoidMethod(Handle::get().get(), data.method_f,
-                           ::djinni::get(::djinni::String::fromCpp(jniEnv, c_message)));
-    ::djinni::jniExceptionCheck(jniEnv);
-}
 void EZRLoggerPlatformService::JavaProxy::setGroup(const std::string & c_group) {
     auto jniEnv = ::djinni::jniGetThreadEnv();
     ::djinni::JniLocalScope jscope(jniEnv, 10);

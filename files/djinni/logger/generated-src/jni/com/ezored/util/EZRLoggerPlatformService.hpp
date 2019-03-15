@@ -38,7 +38,6 @@ private:
         void i(const std::string & message) override;
         void w(const std::string & message) override;
         void e(const std::string & message) override;
-        void f(const std::string & message) override;
         void setGroup(const std::string & group) override;
 
     private:
@@ -51,7 +50,6 @@ private:
     const jmethodID method_i { ::djinni::jniGetMethodID(clazz.get(), "i", "(Ljava/lang/String;)V") };
     const jmethodID method_w { ::djinni::jniGetMethodID(clazz.get(), "w", "(Ljava/lang/String;)V") };
     const jmethodID method_e { ::djinni::jniGetMethodID(clazz.get(), "e", "(Ljava/lang/String;)V") };
-    const jmethodID method_f { ::djinni::jniGetMethodID(clazz.get(), "f", "(Ljava/lang/String;)V") };
     const jmethodID method_setGroup { ::djinni::jniGetMethodID(clazz.get(), "setGroup", "(Ljava/lang/String;)V") };
 };
 

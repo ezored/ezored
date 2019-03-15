@@ -102,12 +102,6 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (void)f:(nonnull NSString *)message {
-    try {
-        ::ezored::util::Logger::f(::djinni::String::toCpp(message));
-    } DJINNI_TRANSLATE_EXCEPTIONS()
-}
-
 + (void)setGroup:(nonnull NSString *)group {
     try {
         ::ezored::util::Logger::setGroup(::djinni::String::toCpp(group));

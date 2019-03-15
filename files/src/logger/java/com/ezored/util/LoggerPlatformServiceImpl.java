@@ -36,11 +36,6 @@ public class LoggerPlatformServiceImpl extends LoggerPlatformService {
     }
 
     @Override
-    public void f(String message) {
-        Log.e(group, message);
-    }
-
-    @Override
     public void setGroup(String group) {
         this.group = group;
     }
