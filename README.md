@@ -3,6 +3,7 @@
 ![](extras/images/doc-logo.png)
 
 ![](https://img.shields.io/github/repo-size/ezored/ezored.svg?logo=ezored&style=flat-square)
+[![Build Status](https://travis-ci.com/ezored/ezored.svg?branch=master)](https://travis-ci.com/ezored/ezored)
 
 ## About
 
@@ -10,7 +11,7 @@
 
 C++ boostrap toolkit for multi-platform code reuse, including mobile and desktop.
 
-Ezored was designed to have a convenient and organized struture of scripts and folders, so you can download this repository and start build sample files to test and see it working now. 
+Ezored was designed to have a convenient and organized struture of scripts and folders, so you can download this repository and start build sample files to test and see it working now.
 
 Basically you build shared libraries for mobile (android is **aar** and ios is **framework**) and **executables** for desktop (linux, mac, windows).
 
@@ -62,23 +63,23 @@ Obs: Generally any platform with C++ support will work too, like smart tvs and e
 
 A module in ezored is C++ implementation of one specific feature. And ezored come with some modules already implemented:
 
-1. **datetime**  
+1. **datetime**
     Some functions to work with date and time.
-2. **file helper**  
+2. **file helper**
     Helper functions to work with files (write, read, create folder, delete files etc).
-3. **http client**  
+3. **http client**
     A http client to make http and https requests.
-4. **logger**  
+4. **logger**
     Logger functions to show messages with different levels.
-5. **shared data**  
+5. **shared data**
     Shared data storage (android = shared preferences, ios = NSUserDefaults)
-6. **string helper**  
+6. **string helper**
     Some string helper functions.
-7. **support lib**  
+7. **support lib**
     Mobile modules use djinni, and for mobile (Android and iOS) this module is used to make the bridge between codes works.
-8. **sqlite3**  
+8. **sqlite3**
     SQLite3 come with ezored and let you use the same database on all platforms. Internally you can check our migration implementation. A library called "sqlitecpp" is used too, and make the job more easy.
-9. **rapidjson**  
+9. **rapidjson**
     RapidJSON is used to parsing json from remote requests in ezored samples. It works on all tested platforms nice and fast.
 
 Modules source are stored in "files/djinni" and "files/src".
@@ -121,43 +122,43 @@ If you don't remember what commands are available you can type only this to list
 2. cmake (https://cmake.org/)
 3. conan (https://conan.io/)
 
-They are the basic things to make ezored work. Check on terminal if you have every tool in your path typing their names (python, cmake, conan).  
+They are the basic things to make ezored work. Check on terminal if you have every tool in your path typing their names (python, cmake, conan).
 
 Each platform requirements list now. Maybe you already have it, because are basic tools.
 
 **Android Requirements:**
 
-Everything works without extra installs. Conan will download NDK and other things to build.  
+Everything works without extra installs. Conan will download NDK and other things to build.
 
 **iOS Requirements:**
 
 1. macOS operational system.
 2. Xcode.
-3. Command line tools.  
+3. Command line tools.
     Run: ```xcode-select --install```
 
 **macOS Requirements:**
 
 1. macOS operational system.
 2. Xcode.
-3. Command line tools.  
+3. Command line tools.
     Run: ```xcode-select --install```
-4. macOS system headers.  
-    Run: ```open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg```  
+4. macOS system headers.
+    Run: ```open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg```
     The path can change for each macOS version (10.14 is mojave) and this is required because old softwares search on old places for this headers, like old openssl versions.
 
 **Linux Requirements:**
 
 1. Linux operational system.
-2. C++ compiler installed.  
+2. C++ compiler installed.
     Obs: On Ubuntu run on terminal "sudo apt install build-essential".
 
 **Windows Requirements:**
 
 1. Windows operational system.
-2. Visual Studio installed.  
-    Obs 1: Current example in ezored is using version 2017 Win64, change for your needs.  
-    Obs 2: Everything was compiled using community version (https://visualstudio.microsoft.com/vs/community/).  
+2. Visual Studio installed.
+    Obs 1: Current example in ezored is using version 2017 Win64, change for your needs.
+    Obs 2: Everything was compiled using community version (https://visualstudio.microsoft.com/vs/community/).
     Obs 3: On installation process select "Desktop development with C++".
 
 ## How to use:
@@ -177,18 +178,18 @@ Everything works without extra installs. Conan will download NDK and other thing
 5. Now all commands are available. run the following command to list all targets that you can build:
 > python make.py target
 
-Example: If you are on **Linux**, you can build the **linux_app** target, if on **macOS** you can run **macos_app** target and if on **Windows** you can run **windows_app**.  
+Example: If you are on **Linux**, you can build the **linux_app** target, if on **macOS** you can run **macos_app** target and if on **Windows** you can run **windows_app**.
 
-> python make.py target linux_app conan  
-> python make.py target linux_app build  
-> python make.py target linux_app package  
+> python make.py target linux_app conan
+> python make.py target linux_app build
+> python make.py target linux_app package
 
-**Obs:**  
+**Obs:**
 
-1. After run this commands above, a folder called **"dist"** will be created with compiled binaries of applications. The rule is the same for other targets.  
+1. After run this commands above, a folder called **"dist"** will be created with compiled binaries of applications. The rule is the same for other targets.
 2. The execution order is important. Before build your targets, install conan dependencies, build it and finally package. Package verbs will copy files to a non versioned folder called **"dist"** in root path.
 3. You don't need run conan verb everytime, only run if you never run it before or if you change configuration, added dependencies, changed dependency version or other things that need call conan to rebuilt your dependencies.
-4. Conan profiles are required to specify basic environment profile things to build targets, but some settings are changed while build, like **arch** and **build_type**.  
+4. Conan profiles are required to specify basic environment profile things to build targets, but some settings are changed while build, like **arch** and **build_type**.
 5. Check requirements for each target. Example: iOS target require that you have a macOS system.
 
 ## Dist folder prebuilt
@@ -210,14 +211,14 @@ If you want create more modules, ezored come with a easy way to do it. Only dupl
 
 The file "proj.djinni" contain all interface things to be generated and file "generate.py" contain the script that will call djinni passing all required params, only change the params (package name, namespace etc).
 
-If you will use djinni to generate files follow these steps:  
+If you will use djinni to generate files follow these steps:
 
 1. Download djinni (https://github.com/dropbox/djinni).
 2. Set environment var **DJINNI_HOME** as the root folder of djinni (where you clone or download it).
 
 ## Projects:
 
-We have some samples inside "projects" folder. 
+We have some samples inside "projects" folder.
 
 Android sample can be download here:
 https://play.google.com/store/apps/details?id=com.ezored.sample
