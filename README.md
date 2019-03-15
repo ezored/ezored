@@ -8,11 +8,11 @@
 
 **Code reuse. Write once. Run everywhere.**
 
-C++ boostrap toolkit for multiplatform code reuse, including mobile and desktop.
+C++ boostrap toolkit for multi-platform code reuse, including mobile and desktop.
 
 Ezored was designed to have a convenient and organized struture of scripts and folders, so you can download this repository and start build sample files to test and see it working now. 
 
-Basically you build shared libraries for mobile (android is aar and ios is framework) and executables for desktop (linux, mac, windows).
+Basically you build shared libraries for mobile (android is **aar** and ios is **framework**) and **executables** for desktop (linux, mac, windows).
 
 Don't think about how you will start your C++ project for mobile or desktop, use ezored as a bootstrap project.
 
@@ -42,7 +42,7 @@ Don't think about how you will start your C++ project for mobile or desktop, use
 - HTTP server applications need have good performance and low memory usage, at the same time respond to a lot of requests. Use any C++ HTTP server framework with ezored to make your server applications.
 - Drivers for database SQL or NO/SQL generally are made with C/C++, and with ezored you can easy use it and start create your greate application.
 
-**Free for ever**
+**Free for ever:**
 
 You can use it for free, for any purpose, including commercial purposes.
 
