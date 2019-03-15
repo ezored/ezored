@@ -2,8 +2,8 @@
 
 ![](extras/images/doc-logo.png)
 
-![](https://img.shields.io/github/repo-size/ezored/ezored.svg?logo=ezored&style=flat-square)
-[![Build Status](https://travis-ci.com/ezored/ezored.svg?branch=master)](https://travis-ci.com/ezored/ezored)
+![](https://img.shields.io/github/repo-size/ezored/ezored.svg?logo=ezored)
+[![Build Status](https://travis-ci.org/ezored/ezored.svg?branch=master)](https://travis-ci.org/ezored/ezored)
 
 ## About
 
