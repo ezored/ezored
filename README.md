@@ -21,7 +21,7 @@ Don't think about how you will start your C++ project for mobile or desktop, use
 
 **What ezored is:**
 
-- Bootstrap toolkit ready-to-use to build C++ code to multiple platform.
+- Ready-to-use bootstrap toolkit to build C++ code for multi-platform.
 - Scripts, files and folders well-organized to you only need add your things to continue.
 - Mobile and desktop samples that use some C++ code that access database, make requests, parser json data, store preference data, show logger, work with string and datetime.
 - Easy and ready way that you can start create everything in C++ (you can create native SDK for mobile, command line tools, http server applications for API and everything more).
