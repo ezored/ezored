@@ -407,12 +407,12 @@ def copy_dir(src, dst, symlinks=False, ignore=None):
 
 # -----------------------------------------------------------------------------
 def run_simple(args, cwd):
-    try:
-        subprocess.check_output(
-            args,
-            cwd=cwd,
-        )
-    except subprocess.CalledProcessError:
+    ret = subprocess.call(
+        args,
+        cwd=cwd,
+    )
+    
+    if ret > 0:
         log.normal(
             '{2}COMMAND:{3} {0}\n' \
             '{4}WORKING DIR:{5} {1}'.format(
