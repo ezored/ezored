@@ -41,23 +41,23 @@ def run(params={}):
         'install_headers': [
             {
                 'type': 'dir',
-                'path': 'files/djinni/001-app-domain/generated-src/objc',
+                'path': 'files/djinni/app-domain/generated-src/objc',
             },
             {
                 'type': 'dir',
-                'path': 'files/djinni/002-app-core/generated-src/objc',
+                'path': 'files/djinni/app-core/generated-src/objc',
             },
             {
                 'type': 'dir',
-                'path': 'files/djinni/003-app-data-services/generated-src/objc',
+                'path': 'files/djinni/app-data-services/generated-src/objc',
             },
             {
                 'type': 'dir',
-                'path': 'files/djinni/004-app-system-service/generated-src/objc',
+                'path': 'files/djinni/app-system-services/generated-src/objc',
             },
             {
                 'type': 'dir',
-                'path': 'files/djinni/005-app-helpers/generated-src/objc',
+                'path': 'files/djinni/app-helpers/generated-src/objc',
             },
             {
                 'type': 'dir',
@@ -69,7 +69,7 @@ def run(params={}):
             },
             {
                 'type': 'dir',
-                'path': 'files/djinni/httpclient/generated-src/objc',
+                'path': 'files/djinni/http-client/generated-src/objc',
             },
             {
                 'type': 'dir',
@@ -89,7 +89,7 @@ def run(params={}):
             },
             {
                 'type': 'dir',
-                'path': 'files/src/httpclient/objc',
+                'path': 'files/src/http-client/objc',
             },
             {
                 'type': 'dir',

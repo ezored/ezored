@@ -24,14 +24,14 @@ set(PROJECT_HEADER_SEARCH_PATHS
     "${PROJECT_ROOT_PATH}/files/djinni/support-lib"
     "${PROJECT_ROOT_PATH}/files/djinni/support-lib/jni"
 
-    "${PROJECT_ROOT_PATH}/files/djinni/001-app-domain/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/002-app-core/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/003-app-data-services/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/004-app-system-service/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/005-app-helpers/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/jni"
 
     "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/httpclient/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/jni"
     "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/jni"
     "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/jni"
     "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/jni"
@@ -43,14 +43,14 @@ set(PROJECT_HEADER_SEARCH_PATHS
 file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib/*.hpp")
 file(GLOB H_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/support-lib/jni/*.hpp")
 
-file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/001-app-domain/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_APP_CORE_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/002-app-core/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_APP_DATA_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/003-app-data-services/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_APP_SYSTEM_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/004-app-system-service/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_APP_HELPERS_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/005-app-helpers/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_APP_CORE_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_APP_DATA_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_APP_SYSTEM_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_APP_HELPERS_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/jni/*.h")
 
 file(GLOB_RECURSE H_FILES_LOGGER_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_HTTPCLIENT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/httpclient/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_HTTP_CLIENT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/jni/*.h")
 file(GLOB_RECURSE H_FILES_FILE_HELPER_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/jni/*.h")
 file(GLOB_RECURSE H_FILES_SHARED_DATA_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/jni/*.h")
 file(GLOB_RECURSE H_FILES_DATETIME_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/jni/*.h")
@@ -60,14 +60,14 @@ file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib
 file(GLOB S_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/support-lib/jni/*.cpp")
 file(GLOB S_FILES_SUPPORT_MAIN_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib/jni/main-ext/*.cpp")
 
-file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/001-app-domain/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_APP_CORE_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/002-app-core/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_APP_DATA_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/003-app-data-services/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_APP_SYSTEM_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/004-app-system-service/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_APP_HELPERS_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/005-app-helpers/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_APP_CORE_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_APP_DATA_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_APP_SYSTEM_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_APP_HELPERS_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/jni/*.cpp")
 
 file(GLOB_RECURSE S_FILES_LOGGER_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_HTTPCLIENT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/httpclient/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_HTTP_CLIENT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/jni/*.cpp")
 file(GLOB_RECURSE S_FILES_FILE_HELPER_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/jni/*.cpp")
 file(GLOB_RECURSE S_FILES_SHARED_DATA_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/jni/*.cpp")
 file(GLOB_RECURSE S_FILES_DATETIME_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/jni/*.cpp")
@@ -83,7 +83,7 @@ set(
     ${H_FILES_APP_SYSTEM_SERVICES_LIB_JNI}
     ${H_FILES_APP_HELPERS_LIB_JNI}
     ${H_FILES_LOGGER_LIB_JNI}
-    ${H_FILES_HTTPCLIENT_LIB_JNI}
+    ${H_FILES_HTTP_CLIENT_LIB_JNI}
     ${H_FILES_FILE_HELPER_LIB_JNI}
     ${H_FILES_SHARED_DATA_LIB_JNI}
     ${H_FILES_DATETIME_LIB_JNI}
@@ -100,7 +100,7 @@ set(
     ${S_FILES_APP_SYSTEM_SERVICES_LIB_JNI}
     ${S_FILES_APP_HELPERS_LIB_JNI}
     ${S_FILES_LOGGER_LIB_JNI}
-    ${S_FILES_HTTPCLIENT_LIB_JNI}
+    ${S_FILES_HTTP_CLIENT_LIB_JNI}
     ${S_FILES_FILE_HELPER_LIB_JNI}
     ${S_FILES_SHARED_DATA_LIB_JNI}
     ${S_FILES_DATETIME_LIB_JNI}

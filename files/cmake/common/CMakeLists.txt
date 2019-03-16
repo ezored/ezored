@@ -1,25 +1,25 @@
 # Header search paths
 set(PROJECT_HEADER_SEARCH_PATHS
-    "${PROJECT_ROOT_PATH}/files/djinni/001-app-domain/generated-src/cpp"
-    "${PROJECT_ROOT_PATH}/files/djinni/002-app-core/generated-src/cpp"
-    "${PROJECT_ROOT_PATH}/files/djinni/003-app-data-services/generated-src/cpp"
-    "${PROJECT_ROOT_PATH}/files/djinni/004-app-system-service/generated-src/cpp"
-    "${PROJECT_ROOT_PATH}/files/djinni/005-app-helpers/generated-src/cpp"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/cpp"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/cpp"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/cpp"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/cpp"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/cpp"
 
-    "${PROJECT_ROOT_PATH}/files/djinni/httpclient/generated-src/cpp"
+    "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/cpp"
     "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/cpp"
     "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/cpp"
     "${PROJECT_ROOT_PATH}/files/djinni/string-helper/generated-src/cpp"
     "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/cpp"
     "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/cpp"
 
-    "${PROJECT_ROOT_PATH}/files/src/001-app-domain/cpp"
-    "${PROJECT_ROOT_PATH}/files/src/002-app-core/cpp"
-    "${PROJECT_ROOT_PATH}/files/src/003-app-data-services/cpp"
-    "${PROJECT_ROOT_PATH}/files/src/004-app-system-service/cpp"
-    "${PROJECT_ROOT_PATH}/files/src/005-app-helpers/cpp"
+    "${PROJECT_ROOT_PATH}/files/src/app-domain/cpp"
+    "${PROJECT_ROOT_PATH}/files/src/app-core/cpp"
+    "${PROJECT_ROOT_PATH}/files/src/app-data-services/cpp"
+    "${PROJECT_ROOT_PATH}/files/src/app-system-services/cpp"
+    "${PROJECT_ROOT_PATH}/files/src/app-helpers/cpp"
 
-    "${PROJECT_ROOT_PATH}/files/src/httpclient/cpp"
+    "${PROJECT_ROOT_PATH}/files/src/http-client/cpp"
     "${PROJECT_ROOT_PATH}/files/src/logger/cpp"
     "${PROJECT_ROOT_PATH}/files/src/datetime/cpp"
     "${PROJECT_ROOT_PATH}/files/src/datetime/cpp/ezored/time/date/include"
@@ -34,23 +34,23 @@ set(PROJECT_HEADER_SEARCH_PATHS
 set(PROJECT_LIBRARY_SEARCH_PATHS "" CACHE INTERNAL "")
 
 # Header files
-file(GLOB H_FILES_APP_DOMAIN_LIB "${PROJECT_ROOT_PATH}/files/djinni/001-app-domain/generated-src/cpp/ezored/domain/*.hpp")
-file(GLOB H_FILES_APP_DOMAIN_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/001-app-domain/cpp/ezored/domain/*.hpp")
+file(GLOB H_FILES_APP_DOMAIN_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/cpp/ezored/domain/*.hpp")
+file(GLOB H_FILES_APP_DOMAIN_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-domain/cpp/ezored/domain/*.hpp")
 
-file(GLOB H_FILES_APP_CORE_LIB "${PROJECT_ROOT_PATH}/files/djinni/002-app-core/generated-src/cpp/ezored/core/*.hpp")
-file(GLOB H_FILES_APP_CORE_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/002-app-core/cpp/ezored/core/*.hpp")
+file(GLOB H_FILES_APP_CORE_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/cpp/ezored/core/*.hpp")
+file(GLOB H_FILES_APP_CORE_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-core/cpp/ezored/core/*.hpp")
 
-file(GLOB H_FILES_APP_DATA_SERVICES_LIB "${PROJECT_ROOT_PATH}/files/djinni/003-app-data-services/generated-src/cpp/ezored/dataservices/*.hpp")
-file(GLOB H_FILES_APP_DATA_SERVICES_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/003-app-data-services/cpp/ezored/dataservices/*.hpp")
+file(GLOB H_FILES_APP_DATA_SERVICES_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/cpp/ezored/dataservices/*.hpp")
+file(GLOB H_FILES_APP_DATA_SERVICES_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-data-services/cpp/ezored/dataservices/*.hpp")
 
-file(GLOB H_FILES_APP_SYSTEM_SERVICES_LIB "${PROJECT_ROOT_PATH}/files/djinni/004-app-system-service/generated-src/cpp/ezored/systemservices/*.hpp")
-file(GLOB H_FILES_APP_SYSTEM_SERVICES_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/004-app-system-service/cpp/ezored/systemservices/*.hpp")
+file(GLOB H_FILES_APP_SYSTEM_SERVICES_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/cpp/ezored/systemservices/*.hpp")
+file(GLOB H_FILES_APP_SYSTEM_SERVICES_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-system-services/cpp/ezored/systemservices/*.hpp")
 
-file(GLOB H_FILES_APP_HELPERS_LIB "${PROJECT_ROOT_PATH}/files/djinni/005-app-helpers/generated-src/cpp/ezored/helpers/*.hpp")
-file(GLOB H_FILES_APP_HELPERS_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/005-app-helpers/cpp/ezored/helpers/*.hpp")
+file(GLOB H_FILES_APP_HELPERS_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/cpp/ezored/helpers/*.hpp")
+file(GLOB H_FILES_APP_HELPERS_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-helpers/cpp/ezored/helpers/*.hpp")
 
-file(GLOB H_FILES_HTTPCLIENT_LIB "${PROJECT_ROOT_PATH}/files/djinni/httpclient/generated-src/cpp/ezored/net/http/HttpClient*.hpp")
-file(GLOB H_FILES_HTTPCLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/httpclient/cpp/ezored/net/http/HttpClient*.hpp")
+file(GLOB H_FILES_HTTP_CLIENT_LIB "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/cpp/ezored/net/http/HttpClient*.hpp")
+file(GLOB H_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/HttpClient*.hpp")
 
 file(GLOB H_FILES_LOGGER_LIB "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/cpp/ezored/util/Logger*.hpp")
 file(GLOB H_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/cpp/ezored/util/Logger*.hpp")
@@ -68,23 +68,23 @@ file(GLOB H_FILES_SHARED_DATA_LIB "${PROJECT_ROOT_PATH}/files/djinni/shared-data
 file(GLOB H_FILES_SHARED_DATA_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/shared-data/cpp/ezored/data/SharedData*.hpp")
 
 # Source files
-file(GLOB S_FILES_APP_DOMAIN_LIB "${PROJECT_ROOT_PATH}/files/djinni/001-app-domain/generated-src/cpp/ezored/domain/*.cpp")
-file(GLOB S_FILES_APP_DOMAIN_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/001-app-domain/cpp/ezored/domain/*.cpp")
+file(GLOB S_FILES_APP_DOMAIN_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/cpp/ezored/domain/*.cpp")
+file(GLOB S_FILES_APP_DOMAIN_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-domain/cpp/ezored/domain/*.cpp")
 
-file(GLOB S_FILES_APP_CORE_LIB "${PROJECT_ROOT_PATH}/files/djinni/002-app-core/generated-src/cpp/ezored/core/*.cpp")
-file(GLOB S_FILES_APP_CORE_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/002-app-core/cpp/ezored/core/*.cpp")
+file(GLOB S_FILES_APP_CORE_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/cpp/ezored/core/*.cpp")
+file(GLOB S_FILES_APP_CORE_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-core/cpp/ezored/core/*.cpp")
 
-file(GLOB S_FILES_APP_DATA_SERVICES_LIB "${PROJECT_ROOT_PATH}/files/djinni/003-app-data-services/generated-src/cpp/ezored/dataservices/*.cpp")
-file(GLOB S_FILES_APP_DATA_SERVICES_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/003-app-data-services/cpp/ezored/dataservices/*.cpp")
+file(GLOB S_FILES_APP_DATA_SERVICES_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/cpp/ezored/dataservices/*.cpp")
+file(GLOB S_FILES_APP_DATA_SERVICES_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-data-services/cpp/ezored/dataservices/*.cpp")
 
-file(GLOB S_FILES_APP_SYSTEM_SERVICES_LIB "${PROJECT_ROOT_PATH}/files/djinni/004-app-system-service/generated-src/cpp/ezored/systemservices/*.cpp")
-file(GLOB S_FILES_APP_SYSTEM_SERVICES_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/004-app-system-service/cpp/ezored/systemservices/*.cpp")
+file(GLOB S_FILES_APP_SYSTEM_SERVICES_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/cpp/ezored/systemservices/*.cpp")
+file(GLOB S_FILES_APP_SYSTEM_SERVICES_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-system-services/cpp/ezored/systemservices/*.cpp")
 
-file(GLOB S_FILES_APP_HELPERS_LIB "${PROJECT_ROOT_PATH}/files/djinni/005-app-helpers/generated-src/cpp/ezored/helpers/*.cpp")
-file(GLOB S_FILES_APP_HELPERS_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/005-app-helpers/cpp/ezored/helpers/*.cpp")
+file(GLOB S_FILES_APP_HELPERS_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/cpp/ezored/helpers/*.cpp")
+file(GLOB S_FILES_APP_HELPERS_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-helpers/cpp/ezored/helpers/*.cpp")
 
-file(GLOB S_FILES_HTTPCLIENT_LIB "${PROJECT_ROOT_PATH}/files/djinni/httpclient/generated-src/cpp/ezored/net/http/HttpClient*.cpp")
-file(GLOB S_FILES_HTTPCLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/httpclient/cpp/ezored/net/http/HttpClient*.cpp")
+file(GLOB S_FILES_HTTP_CLIENT_LIB "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/cpp/ezored/net/http/HttpClient*.cpp")
+file(GLOB S_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/HttpClient*.cpp")
 
 file(GLOB S_FILES_LOGGER_LIB "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/cpp/ezored/util/Logger*.cpp")
 file(GLOB S_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/cpp/ezored/util/Logger*.cpp")
@@ -114,8 +114,8 @@ set(
     ${H_FILES_APP_SYSTEM_SERVICES_LIB_IMPL}
     ${H_FILES_APP_HELPERS_LIB}
     ${H_FILES_APP_HELPERS_LIB_IMPL}
-    ${H_FILES_HTTPCLIENT_LIB}
-    ${H_FILES_HTTPCLIENT_LIB_IMPL}
+    ${H_FILES_HTTP_CLIENT_LIB}
+    ${H_FILES_HTTP_CLIENT_LIB_IMPL}
     ${H_FILES_LOGGER_LIB}
     ${H_FILES_LOGGER_LIB_IMPL}
     ${H_FILES_DATETIME_LIB}
@@ -141,8 +141,8 @@ set(
     ${S_FILES_APP_SYSTEM_SERVICES_LIB_IMPL}
     ${S_FILES_APP_HELPERS_LIB}
     ${S_FILES_APP_HELPERS_LIB_IMPL}
-    ${S_FILES_HTTPCLIENT_LIB}
-    ${S_FILES_HTTPCLIENT_LIB_IMPL}
+    ${S_FILES_HTTP_CLIENT_LIB}
+    ${S_FILES_HTTP_CLIENT_LIB_IMPL}
     ${S_FILES_LOGGER_LIB}
     ${S_FILES_LOGGER_LIB_IMPL}
     ${S_FILES_DATETIME_LIB}

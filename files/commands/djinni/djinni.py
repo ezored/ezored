@@ -27,22 +27,35 @@ def run(params={}):
 
 # -----------------------------------------------------------------------------
 def generate(params={}):
-    dirs = fn.find_dirs_simple(os.path.join(
+    djinni_modules_dir = os.path.join(
         fn.root_dir(),
         const.DIR_NAME_FILES,
-        const.DIR_NAME_DJINNI),
-        '*'
+        const.DIR_NAME_DJINNI,
     )
 
-    if dirs:
-        log.info('Generating files for all modules...')
-        dirs.sort()
+    modules = fn.exec_external(
+        path=djinni_modules_dir,
+        module_name='modules',
+        command_name='get_modules',
+        command_params=params,
+        show_log=False,
+        show_error_log=True,
+        throw_error=True,
+    )
 
-        for item in dirs:
-            if fn.file_exists(os.path.join(item, 'generate.py')):
-                dir_name = os.path.basename(item)
-                log.info('Generating djinni files for "{0}"...'.format(dir_name))
-                fn.run_simple(['python', 'generate.py'], item)
+    if modules:
+        log.info('Generating files for all modules...')
+
+        for module in modules:
+            djinni_module_dir = os.path.join(djinni_modules_dir, module)
+            djinni_module_file = os.path.join(djinni_module_dir, 'generate.py')
+
+            if fn.file_exists(djinni_module_file):
+                log.info('Generating djinni files for "{0}"...'.format(
+                    module
+                ))
+
+                fn.run_simple(['python', 'generate.py'], djinni_module_dir)
 
         log.ok()
     else:

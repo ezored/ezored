@@ -38,21 +38,21 @@ set(PROJECT_HEADER_SEARCH_PATHS
     "${PROJECT_ROOT_PATH}/files/djinni/support-lib"
     "${PROJECT_ROOT_PATH}/files/djinni/support-lib/objc"
 
-    "${PROJECT_ROOT_PATH}/files/djinni/001-app-domain/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/002-app-core/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/003-app-data-services/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/004-app-system-service/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/005-app-helpers/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/objc"
 
     "${PROJECT_ROOT_PATH}/files/djinni/core/generated-src/objc"
     "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/httpclient/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/objc"
     "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/objc"
     "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/objc"
     "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/objc"
 
     "${PROJECT_ROOT_PATH}/files/src/logger/objc"
-    "${PROJECT_ROOT_PATH}/files/src/httpclient/objc"
+    "${PROJECT_ROOT_PATH}/files/src/http-client/objc"
     "${PROJECT_ROOT_PATH}/files/src/file-helper/objc"
     "${PROJECT_ROOT_PATH}/files/src/shared-data/objc"
     "${PROJECT_ROOT_PATH}/files/src/datetime/objc"
@@ -64,17 +64,17 @@ set(PROJECT_HEADER_SEARCH_PATHS
 file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib/*.hpp")
 file(GLOB H_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/support-lib/objc/*.h")
 
-file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/001-app-domain/generated-src/objc/*.h")
-file(GLOB_RECURSE H_FILES_APP_CORE_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/002-app-core/generated-src/objc/*.h")
-file(GLOB_RECURSE H_FILES_APP_DATA_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/003-app-data-services/generated-src/objc/*.h")
-file(GLOB_RECURSE H_FILES_APP_SYSTEM_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/004-app-system-service/generated-src/objc/*.h")
-file(GLOB_RECURSE H_FILES_APP_HELPERS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/005-app-helpers/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_APP_CORE_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_APP_DATA_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_APP_SYSTEM_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_APP_HELPERS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/objc/*.h")
 
 file(GLOB_RECURSE H_FILES_LOGGER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/objc/*.h")
 file(GLOB H_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/objc/ezored/util/*.h")
 
-file(GLOB_RECURSE H_FILES_HTTPCLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/httpclient/generated-src/objc/*.h")
-file(GLOB H_FILES_HTTPCLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/httpclient/objc/ezored/net/http/*.h")
+file(GLOB_RECURSE H_FILES_HTTP_CLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/objc/*.h")
+file(GLOB H_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/objc/ezored/net/http/*.h")
 
 file(GLOB_RECURSE H_FILES_FILE_HELPER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/objc/*.h")
 file(GLOB H_FILES_FILE_HELPER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/file-helper/objc/ezored/io/*.h")
@@ -88,17 +88,17 @@ file(GLOB_RECURSE H_FILES_DATETIME_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/d
 file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib/*.cpp")
 file(GLOB S_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/support-lib/objc/*.mm")
 
-file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/001-app-domain/generated-src/objc/*.mm")
-file(GLOB_RECURSE S_FILES_APP_CORE_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/002-app-core/generated-src/objc/*.mm")
-file(GLOB_RECURSE S_FILES_APP_DATA_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/003-app-data-services/generated-src/objc/*.mm")
-file(GLOB_RECURSE S_FILES_APP_SYSTEM_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/004-app-system-service/generated-src/objc/*.mm")
-file(GLOB_RECURSE S_FILES_APP_HELPERS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/005-app-helpers/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_APP_CORE_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_APP_DATA_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_APP_SYSTEM_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_APP_HELPERS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/objc/*.mm")
 
 file(GLOB_RECURSE S_FILES_LOGGER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/objc/*.mm")
 file(GLOB S_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/objc/ezored/util/*.m")
 
-file(GLOB_RECURSE S_FILES_HTTPCLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/httpclient/generated-src/objc/*.mm")
-file(GLOB S_FILES_HTTPCLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/httpclient/objc/ezored/net/http/*.m")
+file(GLOB_RECURSE S_FILES_HTTP_CLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/objc/*.mm")
+file(GLOB S_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/objc/ezored/net/http/*.m")
 
 file(GLOB_RECURSE S_FILES_FILE_HELPER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/objc/*.mm")
 file(GLOB S_FILES_FILE_HELPER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/file-helper/objc/ezored/io/*.m")
@@ -120,8 +120,8 @@ set(
     ${H_FILES_APP_HELPERS_LIB_OBJC}
     ${H_FILES_LOGGER_LIB_OBJC}
     ${H_FILES_LOGGER_LIB_IMPL}
-    ${H_FILES_HTTPCLIENT_LIB_OBJC}
-    ${H_FILES_HTTPCLIENT_LIB_IMPL}
+    ${H_FILES_HTTP_CLIENT_LIB_OBJC}
+    ${H_FILES_HTTP_CLIENT_LIB_IMPL}
     ${H_FILES_FILE_HELPER_LIB_OBJC}
     ${H_FILES_FILE_HELPER_LIB_IMPL}
     ${H_FILES_SHARED_DATA_LIB_OBJC}
@@ -140,8 +140,8 @@ set(
     ${S_FILES_APP_HELPERS_LIB_OBJC}
     ${S_FILES_LOGGER_LIB_OBJC}
     ${S_FILES_LOGGER_LIB_IMPL}
-    ${S_FILES_HTTPCLIENT_LIB_OBJC}
-    ${S_FILES_HTTPCLIENT_LIB_IMPL}
+    ${S_FILES_HTTP_CLIENT_LIB_OBJC}
+    ${S_FILES_HTTP_CLIENT_LIB_IMPL}
     ${S_FILES_FILE_HELPER_LIB_OBJC}
     ${S_FILES_FILE_HELPER_LIB_IMPL}
     ${S_FILES_SHARED_DATA_LIB_OBJC}

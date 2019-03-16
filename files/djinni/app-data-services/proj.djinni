@@ -1,4 +1,4 @@
-@extern "../001-app-domain/yaml/todo.yaml"
+@extern "../app-domain/yaml/todo.yaml"
 
 todo_data_service = interface +c {
     static truncate();
