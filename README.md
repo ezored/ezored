@@ -180,9 +180,9 @@ Everything works without extra installs. Conan will download NDK and other thing
 
 Example: If you are on **Linux**, you can build the **linux_app** target, if on **macOS** you can run **macos_app** target and if on **Windows** you can run **windows_app**.
 
-> python make.py target linux_app conan
-> python make.py target linux_app build
-> python make.py target linux_app package
+> python make.py target linux_app conan  
+> python make.py target linux_app build  
+> python make.py target linux_app package  
 
 **Obs:**
 
