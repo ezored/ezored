@@ -151,7 +151,7 @@ Everything works without extra installs. Conan will download NDK and other thing
 
 1. Linux operational system.
 2. C++ compiler installed.  
-    Obs: On Ubuntu run on terminal "sudo apt install build-essential".
+    Obs: On Ubuntu run on terminal ```sudo apt install build-essential```.
 
 **Windows Requirements:**
 
