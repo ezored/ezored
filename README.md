@@ -209,12 +209,16 @@ If you want create more modules, ezored come with a easy way to do it. Only dupl
 - proj.djinni
 - generate.py
 
-The file "proj.djinni" contain all interface things to be generated and file "generate.py" contain the script that will call djinni passing all required params, only change the params (package name, namespace etc).
+The file **"proj.djinni"** contain all interface things to be generated and file **"generate.py"** contain the script that will call djinni passing all required params, only change the params (package name, namespace etc).
+
+After create your new djinni module folder, add it to the list, in your prefered order, inside file **"files/djinni/modules.py"**. We need it because when you import other djinni yaml file for reference, you need generate imported file before, so the current order generate isolated modules before modules that will require it.
 
 If you will use djinni to generate files follow these steps:
 
 1. Download djinni (https://github.com/dropbox/djinni).
-2. Set environment var **DJINNI_HOME** as the root folder of djinni (where you clone or download it).
+2. Set environment var **DJINNI_HOME** as the root folder of djinni (where you cloned or downloaded it).
+
+If you don't will use djinni in your project, ignore **djinni** section, because some people prefer create the bridge files manually.
 
 ## Projects:
 
