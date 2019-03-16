@@ -75,28 +75,28 @@ A module in ezored is C++ implementation of one specific feature. And ezored com
     Shared data storage (android = shared preferences, ios = NSUserDefaults)
 6. **string helper**
     Some string helper functions.
-7. **support lib**
-    Mobile modules use djinni, and for mobile (Android and iOS) this module is used to make the bridge between codes works.
-8. **sqlite3**
+7. **sqlite3**
     SQLite3 come with ezored and let you use the same database on all platforms. Internally you can check our migration implementation. A library called "sqlitecpp" is used too, and make the job more easy.
-9. **rapidjson**
+8. **rapidjson**
     RapidJSON is used to parsing json from remote requests in ezored samples. It works on all tested platforms nice and fast.
+9. **support lib**
+    Mobile modules use djinni, and for mobile (Android and iOS) this module is used to make the bridge between codes works. Maybe your project don't need it, but current code use it instead of generate bridge files manually.
 
-Modules source are stored in "files/djinni" and "files/src".
+Modules source code are stored in **"files/djinni"** and **"files/src"**.
 
 ## Targets:
 
-A target in ezored contains all files, config and scripts to build C++ code to the platform. You can see on folder "files/targets".
+A target in ezored contains all files, config and scripts to build C++ code to the platform. You can see on folder **"files/targets"**.
 
-Currently all targets use cmake structure to compile all. So each target has their own **CMakeLists.txt** file inside target folder "cmake".
+Currently all targets use cmake structure to compile all. So each target has their own **CMakeLists.txt** file inside target folder **"cmake"**.
 
-Generally all targets shared the same C++ code and because of this ezored has a commom **CMakeLists.txt** file inside folder "files/cmake/common". Some targets add more source files, "android_aar" add their JNI files and "ios_framework" add their OBJC files.
+Generally all targets shared the same C++ code and because of this ezored has a commom **CMakeLists.txt** file inside folder **"files/cmake/common"**. Some targets add more source files, **"android_aar"** add their JNI files and "ios_framework" add their OBJC files.
 
-A target has their "verbs", that can be any file name "build", "package" etc. All verbs are store inside "verbs" folder of a target and the file name will be use to find it when you call on terminal. Example:
+A target has their **"verbs"**, that can be any file name **"build"**, **"package"** etc. All verbs are store inside **"verbs"** folder of a target and the file name will be use to find it when you call on terminal. Example:
 
 ```python make.py target android_aar build```
 
-It will execute bootstrap file of ezored, that will do some validations and will search for a file with the path "files/targets/android_aar/verbs/build.py" and will send all parameter to a function called "run" inside it.
+It will execute bootstrap file of ezored, that will do some validations and will search for a file with the path **"files/targets/android_aar/verbs/build.py"** and will send all parameter to a function called "run" inside it.
 
 If you don't remember what verbs are available for a target you can type only this to list all verbs:
 
@@ -108,7 +108,7 @@ A command in ezored is a python file too and a function inside it that will rece
 
 ```python make.py clean```
 
-With this command ezored will search for a file with path "files/commands/clean/clean.py" and will send all parameter to a function called "run" inside it.
+With this command ezored will search for a file with path **"files/commands/clean/clean.py"** and will send all parameter to a function called **"run"** inside it.
 
 If you don't remember what commands are available you can type only this to list all commands:
 
@@ -204,7 +204,7 @@ Unzip it and put on your root folder. After it you can execute all desktop apps 
 
 Almost all modules use djinni to generate bridge files between C++ and mobile platform code (Android and iOS - Java, JNI, ObjC and ObjC++ files).
 
-If you want create more modules, ezored come with a easy way to do it. Only duplicate any folder inside "files/djinni" and change files:
+If you want create more modules, ezored come with a easy way to do it. Only duplicate any folder inside **"files/djinni"** and change files:
 
 - proj.djinni
 - generate.py
@@ -235,4 +235,4 @@ https://play.google.com/store/apps/details?id=com.ezored.sample
 
 [MIT](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2017-present, Paulo Coutinho
+Copyright (c) 2019-present, Paulo Coutinho
