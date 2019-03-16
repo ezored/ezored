@@ -16,8 +16,6 @@ import com.ezored.domain.DeviceData;
 import com.ezored.domain.InitializationData;
 import com.ezored.io.FileHelper;
 import com.ezored.io.FileHelperPlatformServiceImpl;
-import com.ezored.net.http.HttpClient;
-import com.ezored.net.http.HttpClientPlatformServiceImpl;
 import com.ezored.sample.BuildConfig;
 import com.ezored.sample.data.AppData;
 import com.ezored.sample.observers.AppLifecycleObserver;
@@ -27,8 +25,6 @@ import com.ezored.sample.utils.Utils;
 import com.ezored.util.Logger;
 import com.ezored.util.LoggerLevel;
 import com.ezored.util.LoggerPlatformServiceImpl;
-
-import java.util.EnumSet;
 
 public class Application extends MultiDexApplication {
 
@@ -99,12 +95,11 @@ public class Application extends MultiDexApplication {
 
     private void loadNativeLibrary() {
         try {
-            System.loadLibrary("Core"); 
+            System.loadLibrary("Core");
 
             JNILoader.load();
 
             initializeLogger();
-            initializeHTTPClient();
             initializeSharedData();
             initializeFileHelper();
             initializeCore();
@@ -129,10 +124,6 @@ public class Application extends MultiDexApplication {
         } else {
             Logger.shared().setLevel(LoggerLevel.ERROR);
         }
-    }
-
-    private void initializeHTTPClient() {
-        HttpClient.shared().setPlatformService(new HttpClientPlatformServiceImpl());
     }
 
     private void initializeSharedData() {

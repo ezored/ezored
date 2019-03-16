@@ -34,7 +34,7 @@ http_request = record {
 	body: string;
 }
 
-http_client_platform_service = interface +j +o {
+http_client_platform_service = interface +c {
 	do_request(request: http_request): http_response;
 }
 

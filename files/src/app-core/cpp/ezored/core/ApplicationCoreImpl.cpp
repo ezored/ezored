@@ -4,6 +4,7 @@
 
 #include "ezored/net/http/HttpClient.hpp"
 #include "ezored/net/http/HttpClientLoggerImpl.hpp"
+#include "ezored/net/http/SimpleHttpClientPlatformService.hpp"
 
 #include "ezored/helpers/CustomerHelper.hpp"
 #include "ezored/helpers/DatabaseHelper.hpp"
@@ -56,6 +57,7 @@ void ApplicationCoreImpl::initialize(const InitializationData &initializationDat
     this->initializationData = std::make_shared<InitializationData>(initializationData);
     this->deviceData = std::make_shared<DeviceData>(deviceData);
 
+    initializeHttpClient();
     initializeHttpLogger();
     initializeDB();
 
@@ -74,6 +76,11 @@ void ApplicationCoreImpl::initializeCustomer()
     auto currentCustomer = SharedDataHelper::getCustomer();
     customer = std::make_shared<Customer>(currentCustomer);
     Logger::shared()->i("Customer initialized");
+}
+
+void ApplicationCoreImpl::initializeHttpClient()
+{
+    HttpClient::shared()->setPlatformService(std::make_shared<SimpleHttpClientPlatformService>());
 }
 
 void ApplicationCoreImpl::initializeHttpLogger()

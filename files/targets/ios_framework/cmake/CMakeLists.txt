@@ -52,7 +52,6 @@ set(PROJECT_HEADER_SEARCH_PATHS
     "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/objc"
 
     "${PROJECT_ROOT_PATH}/files/src/logger/objc"
-    "${PROJECT_ROOT_PATH}/files/src/http-client/objc"
     "${PROJECT_ROOT_PATH}/files/src/file-helper/objc"
     "${PROJECT_ROOT_PATH}/files/src/shared-data/objc"
     "${PROJECT_ROOT_PATH}/files/src/datetime/objc"
@@ -74,7 +73,7 @@ file(GLOB_RECURSE H_FILES_LOGGER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/log
 file(GLOB H_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/objc/ezored/util/*.h")
 
 file(GLOB_RECURSE H_FILES_HTTP_CLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/objc/*.h")
-file(GLOB H_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/objc/ezored/net/http/*.h")
+file(GLOB H_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.hpp")
 
 file(GLOB_RECURSE H_FILES_FILE_HELPER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/objc/*.h")
 file(GLOB H_FILES_FILE_HELPER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/file-helper/objc/ezored/io/*.h")
@@ -98,7 +97,7 @@ file(GLOB_RECURSE S_FILES_LOGGER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/log
 file(GLOB S_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/objc/ezored/util/*.m")
 
 file(GLOB_RECURSE S_FILES_HTTP_CLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/objc/*.mm")
-file(GLOB S_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/objc/ezored/net/http/*.m")
+file(GLOB S_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.cpp")
 
 file(GLOB_RECURSE S_FILES_FILE_HELPER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/objc/*.mm")
 file(GLOB S_FILES_FILE_HELPER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/file-helper/objc/ezored/io/*.m")

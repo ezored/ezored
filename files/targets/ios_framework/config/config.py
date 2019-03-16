@@ -89,10 +89,6 @@ def run(params={}):
             },
             {
                 'type': 'dir',
-                'path': 'files/src/http-client/objc',
-            },
-            {
-                'type': 'dir',
                 'path': 'files/src/logger/objc',
             },
             {

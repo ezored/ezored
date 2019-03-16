@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 
 
-@protocol EZRHttpClientPlatformService
+@interface EZRHttpClientPlatformService : NSObject
 
 - (nonnull EZRHttpResponse *)doRequest:(nonnull EZRHttpRequest *)request;
 

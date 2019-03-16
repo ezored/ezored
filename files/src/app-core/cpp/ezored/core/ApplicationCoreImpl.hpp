@@ -34,6 +34,7 @@ public:
     virtual void initialize(const InitializationData &initializationData, const DeviceData &deviceData) override;
 
     void initializeDB();
+    void initializeHttpClient();
     void initializeHttpLogger();
     void initializeCustomer();
 

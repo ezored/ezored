@@ -110,7 +110,7 @@ public class HomeFragment extends BaseListFragment<SimpleOption> implements Simp
                 params.add(new HttpRequestParam("username", "demo"));
                 params.add(new HttpRequestParam("password", "demo"));
 
-                HttpRequest request = new HttpRequest("http://httpbin.org/post", HttpMethod.METHOD_POST, params, headers, "");
+                HttpRequest request = new HttpRequest("https://httpbin.org/post", HttpMethod.METHOD_POST, params, headers, "");
                 final HttpResponse response = HttpClient.shared().doRequest(request);
 
                 UIUtil.runOnMainThread(new Closure() {

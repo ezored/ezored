@@ -55,6 +55,8 @@ file(GLOB_RECURSE H_FILES_FILE_HELPER_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni
 file(GLOB_RECURSE H_FILES_SHARED_DATA_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/jni/*.h")
 file(GLOB_RECURSE H_FILES_DATETIME_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/jni/*.h")
 
+file(GLOB H_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.hpp")
+
 # Source files
 file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib/*.cpp")
 file(GLOB S_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/support-lib/jni/*.cpp")
@@ -72,6 +74,8 @@ file(GLOB_RECURSE S_FILES_FILE_HELPER_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni
 file(GLOB_RECURSE S_FILES_SHARED_DATA_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/jni/*.cpp")
 file(GLOB_RECURSE S_FILES_DATETIME_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/jni/*.cpp")
 
+file(GLOB S_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.cpp")
+
 # Merge lists
 set(
     TARGET_HEADER_FILES 
@@ -87,6 +91,7 @@ set(
     ${H_FILES_FILE_HELPER_LIB_JNI}
     ${H_FILES_SHARED_DATA_LIB_JNI}
     ${H_FILES_DATETIME_LIB_JNI}
+    ${H_FILES_HTTP_CLIENT_LIB_IMPL}
 )
 
 set(
@@ -104,6 +109,7 @@ set(
     ${S_FILES_FILE_HELPER_LIB_JNI}
     ${S_FILES_SHARED_DATA_LIB_JNI}
     ${S_FILES_DATETIME_LIB_JNI}
+    ${S_FILES_HTTP_CLIENT_LIB_IMPL}
 )
 
 set(

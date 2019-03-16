@@ -61,9 +61,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         EZRLogger.shared()?.setLevel(EZRLoggerLevel.error)
         #endif
         
-        // http client
-        EZRHttpClient.shared()?.setPlatformService(EZRHttpClientPlatformServiceImpl())
-        
         // shared data
         EZRSharedData.shared()?.setPlatformService(EZRSharedDataPlatformServiceImpl())
         

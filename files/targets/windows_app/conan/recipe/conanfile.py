@@ -37,7 +37,7 @@ class TargetConan(ConanFile):
     def build(self):
         cmake = CMake(self)
         cmake.definitions['CMAKE_BUILD_TYPE'] = self.settings.build_type
-        cmake.definitions['PROJECT_CONFIG_ARCH'] = self.settings.arch        
+        cmake.definitions['PROJECT_CONFIG_ARCH'] = self.settings.arch
         cmake.configure()
         cmake.build()
 
@@ -46,3 +46,4 @@ class TargetConan(ConanFile):
         self.requires('sqlitecpp/2.3.0@bincrafters/stable')
         self.requires('rapidjson/1.1.0@bincrafters/stable')
         self.requires('Poco/1.9.0@pocoproject/stable')
+        self.requires('OpenSSL/1.0.2r@conan/stable')
