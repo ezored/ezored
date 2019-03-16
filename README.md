@@ -128,7 +128,8 @@ Each platform requirements list now. Maybe you already have it, because are basi
 
 **Android Requirements:**
 
-Everything works without extra installs. Conan will download NDK and other things to build.
+1. NDK supported operational system: macOS, Linux or Windows.  
+    Conan will download NDK and other things to build based on your system.
 
 **iOS Requirements:**
 
