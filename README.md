@@ -169,7 +169,7 @@ Everything works without extra installs. Conan will download NDK and other thing
 2. Enter on cloned folder:
 > cd ezored
 
-3. Test it with the following command to show bootstrap menu:
+3. Test it with the following command that show bootstrap menu:
 > python make.py
 
 4. Install conan profiles:
