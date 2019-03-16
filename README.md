@@ -157,7 +157,7 @@ Everything works without extra installs. Conan will download NDK and other thing
 
 1. Windows operational system.
 2. Visual Studio installed.
-    Obs 1: Current example in ezored is using version 2017 Win64, change for your needs.
+    Obs 1: Current example in ezored is using version 2017 (15), change for your needs in conan profile.
     Obs 2: Everything was compiled using community version (https://visualstudio.microsoft.com/vs/community/).
     Obs 3: On installation process select "Desktop development with C++".
 

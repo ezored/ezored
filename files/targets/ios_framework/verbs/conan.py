@@ -49,7 +49,7 @@ def run(params={}):
                         const.FILE_NAME_FILES_TARGET_CONAN_RECIPE_CONANFILE_PY,
                     ), 
                     '--profile',
-                    '{0}'.format(target_config['conan_profile']),
+                    arch['conan_profile'],
                     '-s',
                     'arch={0}'.format(arch['conan_arch']),
                     '-s',

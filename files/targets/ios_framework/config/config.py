@@ -5,15 +5,39 @@ def run(params={}):
         'min_version': '9.0',
         'enable_arc': True,
         'enable_visibility': True,
-        'conan_profile': 'ezored_ios_framework_profile',
-        'archs': [
-            {'arch': 'armv7', 'conan_arch': 'armv7', 'platform': 'OS'},
-            {'arch': 'armv7s', 'conan_arch': 'armv7s', 'platform': 'OS'},
-            {'arch': 'arm64', 'conan_arch': 'armv8', 'platform': 'OS64'},
-            {'arch': 'arm64e', 'conan_arch': 'armv8.3', 'platform': 'OS64'},
-            {'arch': 'x86_64', 'conan_arch': 'x86_64', 'platform': 'SIMULATOR64'},
-        ],
         'build_types': ['Debug', 'Release'],
+        'archs': [
+            {
+                'arch': 'armv7',
+                'conan_arch': 'armv7',
+                'platform': 'OS',
+                'conan_profile': 'ezored_ios_framework_profile',
+            },
+            {
+                'arch': 'armv7s',
+                'conan_arch': 'armv7s',
+                'platform': 'OS',
+                'conan_profile': 'ezored_ios_framework_profile',
+            },
+            {
+                'arch': 'arm64',
+                'conan_arch': 'armv8',
+                'platform': 'OS64',
+                'conan_profile': 'ezored_ios_framework_profile',
+            },
+            {
+                'arch': 'arm64e',
+                'conan_arch': 'armv8.3',
+                'platform': 'OS64',
+                'conan_profile': 'ezored_ios_framework_profile',
+            },
+            {
+                'arch': 'x86_64',
+                'conan_arch': 'x86_64',
+                'platform': 'SIMULATOR64',
+                'conan_profile': 'ezored_ios_framework_profile',
+            },
+        ],
         'install_headers': [
             {
                 'type': 'dir',

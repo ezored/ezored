@@ -9,7 +9,6 @@ from ezored import constants as const
 
 # -----------------------------------------------------------------------------
 def run(params={}):
-    command_name = params['command_name']
     args = params['args']
 
     if len(args) > 0:
@@ -40,7 +39,7 @@ def install_profiles(params={}):
                 const.DIR_NAME_FILES_TARGETS,
                 target,
                 const.DIR_NAME_FILES_TARGET_CONAN,
-                const.DIR_NAME_FILES_TARGET_CONAN_PROFILES
+                const.DIR_NAME_FILES_TARGET_CONAN_PROFILE,
             ), '*profile')
 
             if files:

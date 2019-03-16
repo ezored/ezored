@@ -241,10 +241,11 @@ def exec_external(
         if show_error_log:
             log.error('Error while call "{0}" on module "{1}": {2}'.format(
                 command_name, module_name, e
-            ))
+            ), fatal=(not throw_error))
 
         if throw_error:
             raise
+            
     finally:
         if module_name in sys.modules:
             del sys.modules[module_name]
