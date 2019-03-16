@@ -2,15 +2,18 @@
 
 #include "SQLiteCpp/SQLiteCpp.h"
 
-#include "ezored/util/Logger.hpp"
 #include "ezored/core/ApplicationCore.hpp"
+#include "ezored/util/Logger.hpp"
 
-namespace ezored { namespace helpers {
+namespace ezored
+{
+namespace helpers
+{
 
 using namespace ezored::util;
 using namespace ezored::core;
 
-std::shared_ptr<SQLite::Database> DatabaseHelper::initializeDatabase(const std::string path) 
+std::shared_ptr<SQLite::Database> DatabaseHelper::initializeDatabase(const std::string path)
 {
     // some logs
     Logger::shared()->d("Initializing database...");
@@ -21,14 +24,14 @@ std::shared_ptr<SQLite::Database> DatabaseHelper::initializeDatabase(const std::
     std::string dbPath = path + "/database.db3";
     Logger::shared()->i("DB PATH: " + dbPath);
 
-    auto db = std::make_shared<SQLite::Database>(dbPath, SQLite::OPEN_READWRITE|SQLite::OPEN_CREATE);
+    auto db = std::make_shared<SQLite::Database>(dbPath, SQLite::OPEN_READWRITE | SQLite::OPEN_CREATE);
 
     Logger::shared()->d("Database initialized");
 
     return db;
 }
 
-void DatabaseHelper::migrateDatabase(std::shared_ptr<SQLite::Database> db) 
+void DatabaseHelper::migrateDatabase(std::shared_ptr<SQLite::Database> db)
 {
     // database migrations
     const int dbVersion = db->execAndGet("PRAGMA user_version");
@@ -38,30 +41,34 @@ void DatabaseHelper::migrateDatabase(std::shared_ptr<SQLite::Database> db)
     Logger::shared()->d("Migrating database...");
 
     // query list
-    auto sqlCreateTodoTable = \
-            "CREATE TABLE todo (" \
-            "id INTEGER PRIMARY KEY AUTOINCREMENT," \
-            "title VARCHAR(255)," \
-            "body VARCHAR(255)," \
-            "data TEXT," \
-            "done BOOLEAN," \
-            "created_at DATETIME," \
-            "updated_at DATETIME" \
-            ")";
+    auto sqlCreateTodoTable =
+        "CREATE TABLE todo ("
+        "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+        "title VARCHAR(255),"
+        "body VARCHAR(255),"
+        "data TEXT,"
+        "done BOOLEAN,"
+        "created_at DATETIME,"
+        "updated_at DATETIME"
+        ")";
 
     auto sqlCreateIndexTodoTitle = "CREATE INDEX todo_title ON todo (title)";
-    
+
     // version 1
     newDbVersion = 1;
 
-    if (dbVersion < newDbVersion) {
-        if (canMigrateToVersion(newDbVersion)) {
+    if (dbVersion < newDbVersion)
+    {
+        if (canMigrateToVersion(newDbVersion))
+        {
             // todo
             db->exec(sqlCreateTodoTable);
             db->exec(sqlCreateIndexTodoTitle);
 
             db->exec("PRAGMA user_version = " + std::to_string(newDbVersion));
-        } else {
+        }
+        else
+        {
             Logger::shared()->d("Database migration ignore version: " + std::to_string(newDbVersion));
         }
     }
@@ -90,7 +97,7 @@ void DatabaseHelper::migrateDatabase(std::shared_ptr<SQLite::Database> db)
     Logger::shared()->d("Database migrated");
 }
 
-bool DatabaseHelper::canMigrateToVersion(int version) 
+bool DatabaseHelper::canMigrateToVersion(int version)
 {
     if (ApplicationCore::shared()->getInitializationData().databaseMigrationMaxVersion <= 0)
     {
@@ -104,4 +111,5 @@ bool DatabaseHelper::canMigrateToVersion(int version)
     return false;
 }
 
-} }
+} // namespace helpers
+} // namespace ezored

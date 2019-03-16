@@ -5,22 +5,27 @@
 
 #include <string>
 
-namespace ezored { namespace helpers {
+namespace ezored
+{
+namespace helpers
+{
 
-Response ResponseHelper::fromHttpResponse(const HttpResponse httpResponse) {
+Response ResponseHelper::fromHttpResponse(const HttpResponse httpResponse)
+{
     auto response = domain::Response{false, "", createResponseError(), false};
 
     rapidjson::Document json;
     json.Parse(httpResponse.body.c_str());
 
-    if (json.IsObject()) {
+    if (json.IsObject())
+    {
         {
             // success
-            if (json.HasMember("success")) 
+            if (json.HasMember("success"))
             {
-                const rapidjson::Value& value = json["success"];
+                const rapidjson::Value &value = json["success"];
 
-                if (value.IsBool()) 
+                if (value.IsBool())
                 {
                     response.success = value.GetBool();
                 }
@@ -28,11 +33,11 @@ Response ResponseHelper::fromHttpResponse(const HttpResponse httpResponse) {
         }
         {
             // message
-            if (json.HasMember("message")) 
+            if (json.HasMember("message"))
             {
-                const rapidjson::Value& value = json["message"];
+                const rapidjson::Value &value = json["message"];
 
-                if (value.IsString()) 
+                if (value.IsString())
                 {
                     response.message = value.GetString();
                 }
@@ -40,27 +45,27 @@ Response ResponseHelper::fromHttpResponse(const HttpResponse httpResponse) {
         }
         {
             // response error
-            if (json.HasMember("data")) 
+            if (json.HasMember("data"))
             {
-                const rapidjson::Value& valueData = json["data"];
+                const rapidjson::Value &valueData = json["data"];
 
-                if (!valueData.IsNull() && valueData.IsObject() && valueData.HasMember("errors")) 
+                if (!valueData.IsNull() && valueData.IsObject() && valueData.HasMember("errors"))
                 {
-                    const rapidjson::Value& errorsData = valueData["errors"];
+                    const rapidjson::Value &errorsData = valueData["errors"];
 
-                    if (!errorsData.IsNull() && errorsData.IsArray()) 
+                    if (!errorsData.IsNull() && errorsData.IsArray())
                     {
-                        for (auto& errorData : errorsData.GetArray()) 
+                        for (auto &errorData : errorsData.GetArray())
                         {
-                            if (!errorData.IsNull() && errorData.IsArray()) 
+                            if (!errorData.IsNull() && errorData.IsArray())
                             {
                                 std::string errorField = "";
                                 std::string errorMessage = "";
                                 auto x = 0;
 
-                                for (auto& errorFieldMessageData : errorData.GetArray()) 
+                                for (auto &errorFieldMessageData : errorData.GetArray())
                                 {
-                                    if (!errorFieldMessageData.IsNull() && errorFieldMessageData.IsArray()) 
+                                    if (!errorFieldMessageData.IsNull() && errorFieldMessageData.IsArray())
                                     {
                                         /**
                                          * In this case errors is:
@@ -73,15 +78,15 @@ Response ResponseHelper::fromHttpResponse(const HttpResponse httpResponse) {
                                          *     ]
                                          * }
                                          */
-                                        for (auto& errorFieldMessageDataItem : errorFieldMessageData.GetArray()) 
+                                        for (auto &errorFieldMessageDataItem : errorFieldMessageData.GetArray())
                                         {
-                                            if (!errorFieldMessageDataItem.IsNull() && errorFieldMessageDataItem.IsString()) 
+                                            if (!errorFieldMessageDataItem.IsNull() && errorFieldMessageDataItem.IsString())
                                             {
-                                                if (x == 1) 
+                                                if (x == 1)
                                                 {
                                                     errorMessage = errorFieldMessageDataItem.GetString();
                                                 }
-                                                else 
+                                                else
                                                 {
                                                     break;
                                                 }
@@ -102,7 +107,7 @@ Response ResponseHelper::fromHttpResponse(const HttpResponse httpResponse) {
         }
     }
 
-    if (response.error.message.size() > 0) 
+    if (response.error.message.size() > 0)
     {
         response.hasError = true;
     }
@@ -110,7 +115,7 @@ Response ResponseHelper::fromHttpResponse(const HttpResponse httpResponse) {
     return response;
 }
 
-ResponseError ResponseHelper::createResponseError() 
+ResponseError ResponseHelper::createResponseError()
 {
     return ResponseError{"", ""};
 }
@@ -120,4 +125,5 @@ Response ResponseHelper::create()
     return Response{false, "", createResponseError(), false};
 }
 
-} }
+} // namespace helpers
+} // namespace ezored

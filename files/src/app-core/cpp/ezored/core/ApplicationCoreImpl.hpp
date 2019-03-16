@@ -2,20 +2,23 @@
 
 #include "ezored/core/ApplicationCore.hpp"
 
-#include "ezored/domain/InitializationData.hpp"
 #include "ezored/domain/DeviceData.hpp"
+#include "ezored/domain/InitializationData.hpp"
 
-#include "ezored/net/http/HttpRequestParam.hpp"
 #include "ezored/net/http/HttpHeader.hpp"
+#include "ezored/net/http/HttpRequestParam.hpp"
 
 #include "SQLiteCpp/Database.h"
 
-#include <string>
 #include <map>
 #include <memory>
+#include <string>
 #include <vector>
 
-namespace ezored { namespace core {
+namespace ezored
+{
+namespace core
+{
 
 using namespace ezored::domain;
 using namespace ezored::net::http;
@@ -28,8 +31,8 @@ public:
 
     static std::shared_ptr<ApplicationCoreImpl> internalSharedInstance();
 
-    virtual void initialize(const InitializationData & initializationData, const DeviceData & deviceData) override;
-    
+    virtual void initialize(const InitializationData &initializationData, const DeviceData &deviceData) override;
+
     void initializeDB();
     void initializeHttpLogger();
     void initializeCustomer();
@@ -42,7 +45,7 @@ public:
     DeviceData getDeviceData() override;
 
     Customer getCustomer() override;
-    void setCustomer(const Customer & customer) override;
+    void setCustomer(const Customer &customer) override;
 
 private:
     static std::shared_ptr<ApplicationCoreImpl> instance;
@@ -53,4 +56,5 @@ private:
     std::shared_ptr<Customer> customer;
 };
 
-} } // namespace ezored::core
+} // namespace core
+} // namespace ezored

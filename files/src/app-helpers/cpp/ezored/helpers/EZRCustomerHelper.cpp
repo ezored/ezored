@@ -4,10 +4,13 @@
 #include "ezored/helpers/SharedDataHelper.hpp"
 
 #include "rapidjson/document.h"
-#include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
+#include "rapidjson/writer.h"
 
-namespace ezored { namespace helpers {
+namespace ezored
+{
+namespace helpers
+{
 
 using namespace ezored::core;
 
@@ -16,7 +19,7 @@ bool CustomerHelper::isLogged()
     auto application = ApplicationCore::shared();
     auto customer = application->getCustomer();
 
-    if (customer.token.length() > 0) 
+    if (customer.token.length() > 0)
     {
         return true;
     }
@@ -31,39 +34,50 @@ std::string CustomerHelper::getToken()
     return ApplicationCore::shared()->getCustomer().token;
 }
 
-Customer EZRCustomerHelper::fromJson(const rapidjson::Value& json) {
+Customer EZRCustomerHelper::fromJson(const rapidjson::Value &json)
+{
     auto customer = CustomerHelper::create();
 
-    if (!json.IsNull()) {
-        if (json.IsObject()) {
+    if (!json.IsNull())
+    {
+        if (json.IsObject())
+        {
             {
                 // id
-                if (json.HasMember("id")) {
-                    const rapidjson::Value& value = json["id"];
+                if (json.HasMember("id"))
+                {
+                    const rapidjson::Value &value = json["id"];
 
-                    if (value.IsString()) {
+                    if (value.IsString())
+                    {
                         customer.id = std::stoll(value.GetString());
-                    } else if (value.IsInt64()) {
+                    }
+                    else if (value.IsInt64())
+                    {
                         customer.id = value.GetInt64();
                     }
                 }
             }
             {
                 // name
-                if (json.HasMember("name")) {
-                    const rapidjson::Value& value =  json["name"];
+                if (json.HasMember("name"))
+                {
+                    const rapidjson::Value &value = json["name"];
 
-                    if (value.IsString()) {
+                    if (value.IsString())
+                    {
                         customer.name = value.GetString();
                     }
                 }
             }
             {
                 // token
-                if (json.HasMember("token")) {
-                    const rapidjson::Value& value = json["token"];
+                if (json.HasMember("token"))
+                {
+                    const rapidjson::Value &value = json["token"];
 
-                    if (value.IsString()) {
+                    if (value.IsString())
+                    {
                         customer.token = value.GetString();
                     }
                 }
@@ -74,7 +88,8 @@ Customer EZRCustomerHelper::fromJson(const rapidjson::Value& json) {
     return customer;
 }
 
-std::string EZRCustomerHelper::toJson(const Customer& customer) {
+std::string EZRCustomerHelper::toJson(const Customer &customer)
+{
     rapidjson::StringBuffer buffer;
     rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
 
@@ -104,11 +119,11 @@ Customer EZRCustomerHelper::fromHttpResponse(const HttpResponse httpResponse)
 
     if (json.IsObject() && json.HasMember("data"))
     {
-        const rapidjson::Value& dataArgs = json["data"];
+        const rapidjson::Value &dataArgs = json["data"];
 
         if (!dataArgs.IsNull())
         {
-            const rapidjson::Value& customerArgs = dataArgs["customer"];
+            const rapidjson::Value &customerArgs = dataArgs["customer"];
             return fromJson(customerArgs);
         }
     }
@@ -121,10 +136,11 @@ Customer CustomerHelper::create()
     return Customer{0, "", ""};
 }
 
-void CustomerHelper::onCustomerLogin(const Customer & customer)
+void CustomerHelper::onCustomerLogin(const Customer &customer)
 {
     ApplicationCore::shared()->setCustomer(customer);
     SharedDataHelper::storeCustomer();
 }
 
-} }
+} // namespace helpers
+} // namespace ezored

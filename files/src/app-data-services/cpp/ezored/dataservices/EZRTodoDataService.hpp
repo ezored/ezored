@@ -5,14 +5,19 @@
 
 #include "SQLiteCpp/SQLiteCpp.h"
 
-namespace ezored { namespace dataservices {
+namespace ezored
+{
+namespace dataservices
+{
 
 using namespace domain;
 
-class EZRTodoDataService: TodoDataService {
+class EZRTodoDataService : TodoDataService
+{
 public:
     virtual ~EZRTodoDataService() {}
-    static Todo bindFromRow(SQLite::Statement & row);
+    static Todo bindFromRow(SQLite::Statement &row);
 };
 
-} }
+} // namespace dataservices
+} // namespace ezored

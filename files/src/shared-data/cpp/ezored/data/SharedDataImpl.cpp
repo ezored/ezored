@@ -1,100 +1,103 @@
 #include "SharedDataImpl.hpp"
 
-namespace ezored { namespace data {
+namespace ezored
+{
+namespace data
+{
 
 std::shared_ptr<SharedDataImpl> SharedDataImpl::instance = nullptr;
 
-SharedDataImpl::SharedDataImpl() 
+SharedDataImpl::SharedDataImpl()
 {
     ps = nullptr;
 }
 
-std::shared_ptr<SharedData> SharedData::shared() 
+std::shared_ptr<SharedData> SharedData::shared()
 {
     return SharedDataImpl::internalSharedInstance();
 }
 
-std::shared_ptr<SharedDataImpl> SharedDataImpl::internalSharedInstance() 
+std::shared_ptr<SharedDataImpl> SharedDataImpl::internalSharedInstance()
 {
-    if (instance == nullptr) 
+    if (instance == nullptr)
     {
         instance = std::make_shared<SharedDataImpl>();
     }
-    
+
     return instance;
 }
 
-void SharedDataImpl::setPlatformService(const std::shared_ptr<SharedDataPlatformService> & ps) 
+void SharedDataImpl::setPlatformService(const std::shared_ptr<SharedDataPlatformService> &ps)
 {
     this->ps = ps;
 }
 
-std::shared_ptr<SharedDataPlatformService> SharedDataImpl::getPlatformService() 
+std::shared_ptr<SharedDataPlatformService> SharedDataImpl::getPlatformService()
 {
     return ps;
 }
 
-void SharedDataImpl::setString(const std::string & key, const std::string & value) 
+void SharedDataImpl::setString(const std::string &key, const std::string &value)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->setString(key, value);
     }
 }
 
-void SharedDataImpl::setInteger(const std::string & key, int32_t value) 
+void SharedDataImpl::setInteger(const std::string &key, int32_t value)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->setInteger(key, value);
     }
 }
 
-void SharedDataImpl::setLong(const std::string & key, int64_t value) 
+void SharedDataImpl::setLong(const std::string &key, int64_t value)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->setLong(key, value);
     }
 }
 
-void SharedDataImpl::setBool(const std::string & key, bool value) 
+void SharedDataImpl::setBool(const std::string &key, bool value)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->setBool(key, value);
     }
 }
 
-void SharedDataImpl::setFloat(const std::string & key, float value) 
+void SharedDataImpl::setFloat(const std::string &key, float value)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->setFloat(key, value);
     }
 }
-    
-void SharedDataImpl::setDouble(const std::string & key, double value) 
+
+void SharedDataImpl::setDouble(const std::string &key, double value)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->setDouble(key, value);
     }
 }
 
-std::string SharedDataImpl::getString(const std::string & key) 
+std::string SharedDataImpl::getString(const std::string &key)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->getString(key);
     }
 
     return "";
 }
-    
-int32_t SharedDataImpl::getInteger(const std::string & key) 
+
+int32_t SharedDataImpl::getInteger(const std::string &key)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->getInteger(key);
     }
@@ -102,19 +105,19 @@ int32_t SharedDataImpl::getInteger(const std::string & key)
     return 0;
 }
 
-int64_t SharedDataImpl::getLong(const std::string & key) 
+int64_t SharedDataImpl::getLong(const std::string &key)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->getLong(key);
     }
 
     return 0;
 }
-    
-bool SharedDataImpl::getBool(const std::string & key) 
+
+bool SharedDataImpl::getBool(const std::string &key)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->getBool(key);
     }
@@ -122,9 +125,9 @@ bool SharedDataImpl::getBool(const std::string & key)
     return false;
 }
 
-float SharedDataImpl::getFloat(const std::string & key) 
+float SharedDataImpl::getFloat(const std::string &key)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->getFloat(key);
     }
@@ -132,9 +135,9 @@ float SharedDataImpl::getFloat(const std::string & key)
     return 0.0;
 }
 
-double SharedDataImpl::getDouble(const std::string & key) 
+double SharedDataImpl::getDouble(const std::string &key)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->getDouble(key);
     }
@@ -142,9 +145,9 @@ double SharedDataImpl::getDouble(const std::string & key)
     return 0.0;
 }
 
-std::string SharedDataImpl::getStringWithDefaultValue(const std::string &key, const std::string &defaultValue) 
+std::string SharedDataImpl::getStringWithDefaultValue(const std::string &key, const std::string &defaultValue)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->getStringWithDefaultValue(key, defaultValue);
     }
@@ -152,9 +155,9 @@ std::string SharedDataImpl::getStringWithDefaultValue(const std::string &key, co
     return defaultValue;
 }
 
-int32_t SharedDataImpl::getIntegerWithDefaultValue(const std::string &key, int32_t defaultValue) 
+int32_t SharedDataImpl::getIntegerWithDefaultValue(const std::string &key, int32_t defaultValue)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->getIntegerWithDefaultValue(key, defaultValue);
     }
@@ -162,9 +165,9 @@ int32_t SharedDataImpl::getIntegerWithDefaultValue(const std::string &key, int32
     return defaultValue;
 }
 
-int64_t SharedDataImpl::getLongWithDefaultValue(const std::string &key, int64_t defaultValue) 
+int64_t SharedDataImpl::getLongWithDefaultValue(const std::string &key, int64_t defaultValue)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->getLongWithDefaultValue(key, defaultValue);
     }
@@ -172,9 +175,9 @@ int64_t SharedDataImpl::getLongWithDefaultValue(const std::string &key, int64_t 
     return defaultValue;
 }
 
-bool SharedDataImpl::getBoolWithDefaultValue(const std::string &key, bool defaultValue) 
+bool SharedDataImpl::getBoolWithDefaultValue(const std::string &key, bool defaultValue)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->getBoolWithDefaultValue(key, defaultValue);
     }
@@ -182,9 +185,9 @@ bool SharedDataImpl::getBoolWithDefaultValue(const std::string &key, bool defaul
     return defaultValue;
 }
 
-float SharedDataImpl::getFloatWithDefaultValue(const std::string &key, float defaultValue) 
+float SharedDataImpl::getFloatWithDefaultValue(const std::string &key, float defaultValue)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->getFloatWithDefaultValue(key, defaultValue);
     }
@@ -192,9 +195,9 @@ float SharedDataImpl::getFloatWithDefaultValue(const std::string &key, float def
     return defaultValue;
 }
 
-double SharedDataImpl::getDoubleWithDefaultValue(const std::string &key, double defaultValue) 
+double SharedDataImpl::getDoubleWithDefaultValue(const std::string &key, double defaultValue)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->getDoubleWithDefaultValue(key, defaultValue);
     }
@@ -202,9 +205,9 @@ double SharedDataImpl::getDoubleWithDefaultValue(const std::string &key, double 
     return defaultValue;
 }
 
-bool SharedDataImpl::has(const std::string &key) 
+bool SharedDataImpl::has(const std::string &key)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         return ps->has(key);
     }
@@ -212,65 +215,66 @@ bool SharedDataImpl::has(const std::string &key)
     return false;
 }
 
-void SharedDataImpl::remove(const std::string &key) 
+void SharedDataImpl::remove(const std::string &key)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->remove(key);
     }
 }
 
-void SharedDataImpl::clear() 
+void SharedDataImpl::clear()
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->clear();
     }
 }
 
-bool SharedDataImpl::hasPlatformService() 
+bool SharedDataImpl::hasPlatformService()
 {
     return (ps != nullptr);
 }
 
-void SharedDataImpl::save(bool async, bool autoFinish) 
+void SharedDataImpl::save(bool async, bool autoFinish)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->save(async, autoFinish);
     }
 }
 
-void SharedDataImpl::start(const std::string & groupName) 
+void SharedDataImpl::start(const std::string &groupName)
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->start(groupName);
     }
 }
 
-void SharedDataImpl::finish() 
+void SharedDataImpl::finish()
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->finish();
     }
 }
 
-void SharedDataImpl::saveAsync() 
+void SharedDataImpl::saveAsync()
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->saveAsync();
     }
 }
 
-void SharedDataImpl::saveSync() 
+void SharedDataImpl::saveSync()
 {
-    if (ps != nullptr) 
+    if (ps != nullptr)
     {
         ps->saveSync();
     }
 }
 
-}}
+} // namespace data
+} // namespace ezored

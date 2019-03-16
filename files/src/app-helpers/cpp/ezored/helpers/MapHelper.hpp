@@ -3,15 +3,20 @@
 #include <string>
 #include <unordered_map>
 
-namespace ezored { namespace helpers {
+namespace ezored
+{
+namespace helpers
+{
 
-class MapHelper {
+class MapHelper
+{
 public:
     virtual ~MapHelper() {}
 
-    static std::string toJsonString(const std::unordered_map<std::string, std::string> & data);
-    static std::unordered_map<std::string, std::string> fromJsonString(const std::string & data);
-    static std::string getValue(const std::string & key, const std::unordered_map<std::string, std::string> & data, const std::string & defaultValue);
+    static std::string toJsonString(const std::unordered_map<std::string, std::string> &data);
+    static std::unordered_map<std::string, std::string> fromJsonString(const std::string &data);
+    static std::string getValue(const std::string &key, const std::unordered_map<std::string, std::string> &data, const std::string &defaultValue);
 };
 
-} }
+} // namespace helpers
+} // namespace ezored

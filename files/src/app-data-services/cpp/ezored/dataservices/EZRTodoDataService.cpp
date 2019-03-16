@@ -1,21 +1,24 @@
 #include "ezored/dataservices/EZRTodoDataService.hpp"
-#include "ezored/helpers/TodoHelper.hpp"
-#include "ezored/helpers/MapHelper.hpp"
-#include "ezored/helpers/SimpleStringHelper.hpp"
-#include "ezored/time/DateTime.hpp"
 #include "ezored/core/ApplicationCore.hpp"
 #include "ezored/core/ApplicationCoreImpl.hpp"
+#include "ezored/helpers/MapHelper.hpp"
+#include "ezored/helpers/SimpleStringHelper.hpp"
+#include "ezored/helpers/TodoHelper.hpp"
+#include "ezored/time/DateTime.hpp"
 
 #include <string>
 
-namespace ezored { namespace dataservices {
+namespace ezored
+{
+namespace dataservices
+{
 
 using namespace ezored::helpers;
 using namespace ezored::domain;
 using namespace ezored::time;
 using namespace ezored::core;
 
-Todo EZRTodoDataService::bindFromRow(SQLite::Statement & row)
+Todo EZRTodoDataService::bindFromRow(SQLite::Statement &row)
 {
     auto todo = TodoHelper::create();
 
@@ -26,7 +29,7 @@ Todo EZRTodoDataService::bindFromRow(SQLite::Statement & row)
     todo.createdAt = DateTime::getDateTimeFromString(row.getColumn("created_at").getString());
     todo.updatedAt = DateTime::getDateTimeFromString(row.getColumn("updated_at").getString());
 
-    if (row.getColumn("done").getInt() == 1) 
+    if (row.getColumn("done").getInt() == 1)
     {
         todo.done = true;
     }
@@ -50,11 +53,11 @@ void TodoDataService::truncate()
     query.exec();
 }
 
-int64_t TodoDataService::insert(const Todo & todo)
+int64_t TodoDataService::insert(const Todo &todo)
 {
-    auto sql = \
-            "INSERT INTO todo (title, body, data, done, created_at, updated_at) " \
-            "VALUES (:title, :body, :data, :done, :created_at, :updated_at)";
+    auto sql =
+        "INSERT INTO todo (title, body, data, done, created_at, updated_at) "
+        "VALUES (:title, :body, :data, :done, :created_at, :updated_at)";
 
     auto application = std::static_pointer_cast<ApplicationCoreImpl>(ApplicationCore::shared());
     auto db = application->getDB();
@@ -72,16 +75,16 @@ int64_t TodoDataService::insert(const Todo & todo)
     return db->getLastInsertRowid();
 }
 
-void TodoDataService::update(int64_t id, const Todo & todo)
+void TodoDataService::update(int64_t id, const Todo &todo)
 {
-    auto sql = \
-            "UPDATE todo SET " \
-            "title = :title, " \
-            "body = :body, " \
-            "data = :data, " \
-            "done = :done, " \
-            "updated_at = :updated_at " \
-            "WHERE id = :id";
+    auto sql =
+        "UPDATE todo SET "
+        "title = :title, "
+        "body = :body, "
+        "data = :data, "
+        "done = :done, "
+        "updated_at = :updated_at "
+        "WHERE id = :id";
 
     auto application = std::static_pointer_cast<ApplicationCoreImpl>(ApplicationCore::shared());
     auto db = application->getDB();
@@ -97,7 +100,7 @@ void TodoDataService::update(int64_t id, const Todo & todo)
     query.exec();
 }
 
-int64_t TodoDataService::add(const Todo & todo)
+int64_t TodoDataService::add(const Todo &todo)
 {
     auto found = findById(todo.id);
 
@@ -145,13 +148,13 @@ std::vector<Todo> TodoDataService::findAllOrderByCreatedAtDesc()
     return list;
 }
 
-std::vector<Todo> TodoDataService::findByTitle(const std::string & title)
+std::vector<Todo> TodoDataService::findByTitle(const std::string &title)
 {
     auto hasTitle = false;
 
     auto sql = std::string("SELECT * FROM todo WHERE 1=1");
 
-    if (title.length() > 0) 
+    if (title.length() > 0)
     {
         sql = sql + " AND title LIKE :todo_title ";
         hasTitle = true;
@@ -164,7 +167,7 @@ std::vector<Todo> TodoDataService::findByTitle(const std::string & title)
 
     SQLite::Statement query(*db, sql);
 
-    if (hasTitle) 
+    if (hasTitle)
     {
         query.bind(":todo_title", SimpleStringHelper::format("%%%s%%", title.c_str()));
     }
@@ -205,7 +208,7 @@ Todo TodoDataService::findById(int64_t id)
 
     query.bind(":id", id);
 
-    while (query.executeStep()) 
+    while (query.executeStep())
     {
         auto todo = EZRTodoDataService::bindFromRow(query);
         return todo;
@@ -214,4 +217,5 @@ Todo TodoDataService::findById(int64_t id)
     return TodoHelper::create();
 }
 
-}}
+} // namespace dataservices
+} // namespace ezored

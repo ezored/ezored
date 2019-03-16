@@ -1,16 +1,19 @@
 #include "ezored/helpers/SharedDataHelper.hpp"
-#include "ezored/helpers/CustomerHelper.hpp"
-#include "ezored/helpers/EZRCustomerHelper.hpp"
+#include "ezored/core/ApplicationCore.hpp"
 #include "ezored/data/SharedData.hpp"
 #include "ezored/domain/Customer.hpp"
-#include "ezored/core/ApplicationCore.hpp"
+#include "ezored/helpers/CustomerHelper.hpp"
+#include "ezored/helpers/EZRCustomerHelper.hpp"
 
 #include "rapidjson/document.h"
 #include "rapidjson/pointer.h"
 
 #include <string>
 
-namespace ezored { namespace helpers {
+namespace ezored
+{
+namespace helpers
+{
 
 using namespace ezored::data;
 using namespace ezored::domain;
@@ -19,7 +22,7 @@ using namespace ezored::core;
 void SharedDataHelper::setCustomer(const Customer &value)
 {
     auto customerJson = EZRCustomerHelper::toJson(value);
-    
+
     SharedData::shared()->start("customer");
     SharedData::shared()->setString("data", customerJson);
     SharedData::shared()->saveAsync();
@@ -34,7 +37,8 @@ Customer SharedDataHelper::getCustomer()
     rapidjson::Document json;
     json.Parse(customerJson.c_str());
 
-    if (json.IsObject()) {
+    if (json.IsObject())
+    {
         return EZRCustomerHelper::fromJson(json);
     }
 
@@ -61,4 +65,5 @@ bool SharedDataHelper::getDemoFlag()
     return value;
 }
 
-} }
+} // namespace helpers
+} // namespace ezored

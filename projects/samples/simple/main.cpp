@@ -4,24 +4,24 @@
 #include "ezored/util/SimpleLoggerPlatformService.hpp"
 
 #include "ezored/net/http/HttpClient.hpp"
+#include "ezored/net/http/HttpClientLoggerImpl.hpp"
 #include "ezored/net/http/HttpRequest.hpp"
 #include "ezored/net/http/HttpResponse.hpp"
 #include "ezored/net/http/SimpleHttpClientPlatformService.hpp"
-#include "ezored/net/http/HttpClientLoggerImpl.hpp"
 
-#include "ezored/time/DateTime.hpp"
 #include "ezored/io/FileHelper.hpp"
+#include "ezored/time/DateTime.hpp"
 
-#include "ezored/helpers/TodoHelper.hpp"
-#include "ezored/helpers/StringHelper.hpp"
 #include "ezored/helpers/CustomerHelper.hpp"
 #include "ezored/helpers/EnvironmentHelper.hpp"
+#include "ezored/helpers/StringHelper.hpp"
+#include "ezored/helpers/TodoHelper.hpp"
 
 #include "ezored/data/SharedData.hpp"
 #include "ezored/data/SimpleSharedDataPlatformService.hpp"
 
-#include "ezored/domain/InitializationData.hpp"
 #include "ezored/domain/DeviceData.hpp"
+#include "ezored/domain/InitializationData.hpp"
 #include "ezored/domain/Todo.hpp"
 
 #include "ezored/dataservices/TodoDataService.hpp"
@@ -29,8 +29,8 @@
 #include "ezored/systemservices/CustomerSystemService.hpp"
 #include "ezored/systemservices/CustomerSystemServiceLoginData.hpp"
 
-#include "Poco/Path.h"
 #include "Poco/File.h"
+#include "Poco/Path.h"
 
 #include <iostream>
 #include <memory>
@@ -46,7 +46,7 @@ using namespace ezored::core;
 using namespace ezored::dataservices;
 using namespace ezored::systemservices;
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
     // platform services
     Logger::shared()->setPlatformService(std::make_shared<SimpleLoggerPlatformService>());
@@ -103,7 +103,7 @@ int main(int argc, char** argv)
     {
         auto list = TodoDataService::findAllOrderByCreatedAtDesc();
 
-        for (auto& item : list)
+        for (auto &item : list)
         {
             std::cout << "Todo: " << item.title << std::endl;
         }

@@ -1,25 +1,28 @@
 #include "ezored/systemservices/CustomerSystemService.hpp"
-#include "ezored/systemservices/CustomerSystemServiceLoginData.hpp"
-#include "ezored/helpers/ResponseHelper.hpp"
-#include "ezored/helpers/CustomerHelper.hpp"
-#include "ezored/helpers/EZRCustomerHelper.hpp"
 #include "ezored/core/ApplicationCore.hpp"
 #include "ezored/core/ApplicationCoreImpl.hpp"
+#include "ezored/helpers/CustomerHelper.hpp"
+#include "ezored/helpers/EZRCustomerHelper.hpp"
+#include "ezored/helpers/ResponseHelper.hpp"
+#include "ezored/systemservices/CustomerSystemServiceLoginData.hpp"
 
 #include "ezored/net/http/HttpClient.hpp"
-#include "ezored/net/http/HttpRequest.hpp"
-#include "ezored/net/http/HttpMethod.hpp"
 #include "ezored/net/http/HttpHeader.hpp"
-#include "ezored/net/http/HttpResponse.hpp"
+#include "ezored/net/http/HttpMethod.hpp"
+#include "ezored/net/http/HttpRequest.hpp"
 #include "ezored/net/http/HttpRequestParam.hpp"
+#include "ezored/net/http/HttpResponse.hpp"
 
-namespace ezored { namespace systemservices {
+namespace ezored
+{
+namespace systemservices
+{
 
 using namespace ezored::helpers;
 using namespace ezored::core;
 using namespace ezored::net::http;
 
-CustomerSystemServiceLoginData CustomerSystemService::login(const std::string & username, const std::string & password)
+CustomerSystemServiceLoginData CustomerSystemService::login(const std::string &username, const std::string &password)
 {
     auto application = std::static_pointer_cast<ApplicationCoreImpl>(ApplicationCore::shared());
 
@@ -52,4 +55,5 @@ CustomerSystemServiceLoginData CustomerSystemService::login(const std::string & 
     return data;
 }
 
-} }
+} // namespace systemservices
+} // namespace ezored

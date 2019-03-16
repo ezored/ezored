@@ -1,11 +1,15 @@
 #pragma once
 
-#include <memory>
 #include "SQLiteCpp/Database.h"
+#include <memory>
 
-namespace ezored { namespace helpers {
+namespace ezored
+{
+namespace helpers
+{
 
-class DatabaseHelper {
+class DatabaseHelper
+{
 public:
     virtual ~DatabaseHelper() {}
     static std::shared_ptr<SQLite::Database> initializeDatabase(const std::string path);
@@ -13,4 +17,5 @@ public:
     static bool canMigrateToVersion(int version);
 };
 
-} }
+} // namespace helpers
+} // namespace ezored

@@ -1,14 +1,17 @@
 #include "SimpleStringHelper.hpp"
 
-#include <memory>
 #include <algorithm>
 #include <cstdarg>
+#include <memory>
 
 #include "asprintf.h"
 
-namespace ezored { namespace helpers {
+namespace ezored
+{
+namespace helpers
+{
 
-std::string SimpleStringHelper::format(const std::string fmtStr, ...) 
+std::string SimpleStringHelper::format(const std::string fmtStr, ...)
 {
     va_list ap;
     char *fp = nullptr;
@@ -20,4 +23,5 @@ std::string SimpleStringHelper::format(const std::string fmtStr, ...)
     return std::string(formatted.get());
 }
 
-} }
+} // namespace helpers
+} // namespace ezored

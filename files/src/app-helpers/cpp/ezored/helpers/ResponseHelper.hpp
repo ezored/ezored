@@ -5,12 +5,16 @@
 
 #include "ezored/net/http/HttpResponse.hpp"
 
-namespace ezored { namespace helpers {
+namespace ezored
+{
+namespace helpers
+{
 
 using namespace domain;
 using namespace ezored::net::http;
 
-class ResponseHelper {
+class ResponseHelper
+{
 public:
     virtual ~ResponseHelper() {}
     static Response fromHttpResponse(const HttpResponse httpResponse);
@@ -18,4 +22,5 @@ public:
     static Response create();
 };
 
-} }
+} // namespace helpers
+} // namespace ezored

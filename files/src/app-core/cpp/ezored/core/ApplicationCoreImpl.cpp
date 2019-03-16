@@ -5,16 +5,19 @@
 #include "ezored/net/http/HttpClient.hpp"
 #include "ezored/net/http/HttpClientLoggerImpl.hpp"
 
+#include "ezored/helpers/CustomerHelper.hpp"
 #include "ezored/helpers/DatabaseHelper.hpp"
 #include "ezored/helpers/SharedDataHelper.hpp"
-#include "ezored/helpers/CustomerHelper.hpp"
 
-#include <string>
-#include <sstream>
 #include <iostream>
 #include <map>
+#include <sstream>
+#include <string>
 
-namespace ezored { namespace core {
+namespace ezored
+{
+namespace core
+{
 
 using namespace ezored::domain;
 using namespace ezored::util;
@@ -25,7 +28,6 @@ std::shared_ptr<ApplicationCoreImpl> ApplicationCoreImpl::instance = nullptr;
 
 ApplicationCoreImpl::ApplicationCoreImpl()
 {
-    
 }
 
 std::shared_ptr<ApplicationCore> ApplicationCore::shared()
@@ -35,7 +37,7 @@ std::shared_ptr<ApplicationCore> ApplicationCore::shared()
 
 std::shared_ptr<ApplicationCoreImpl> ApplicationCoreImpl::internalSharedInstance()
 {
-    if (instance == nullptr) 
+    if (instance == nullptr)
     {
         instance = std::make_shared<ApplicationCoreImpl>();
     }
@@ -43,14 +45,14 @@ std::shared_ptr<ApplicationCoreImpl> ApplicationCoreImpl::internalSharedInstance
     return instance;
 }
 
-void ApplicationCoreImpl::initialize(const InitializationData & initializationData, const DeviceData & deviceData)
+void ApplicationCoreImpl::initialize(const InitializationData &initializationData, const DeviceData &deviceData)
 {
     Logger::shared()->i("Application initializing...");
 
     Logger::shared()->i("App ID: " + initializationData.appId);
     Logger::shared()->i("Name: " + initializationData.name);
     Logger::shared()->i("Base path: " + initializationData.basePath);
-    
+
     this->initializationData = std::make_shared<InitializationData>(initializationData);
     this->deviceData = std::make_shared<DeviceData>(deviceData);
 
@@ -60,21 +62,21 @@ void ApplicationCoreImpl::initialize(const InitializationData & initializationDa
     Logger::shared()->i("Application initialized");
 }
 
-void ApplicationCoreImpl::initializeDB() 
+void ApplicationCoreImpl::initializeDB()
 {
     db = DatabaseHelper::initializeDatabase(initializationData->basePath);
     DatabaseHelper::migrateDatabase(db);
     Logger::shared()->i("Database initialized and migrated");
 }
 
-void ApplicationCoreImpl::initializeCustomer() 
+void ApplicationCoreImpl::initializeCustomer()
 {
     auto currentCustomer = SharedDataHelper::getCustomer();
     customer = std::make_shared<Customer>(currentCustomer);
     Logger::shared()->i("Customer initialized");
 }
 
-void ApplicationCoreImpl::initializeHttpLogger() 
+void ApplicationCoreImpl::initializeHttpLogger()
 {
     auto loggerPS = std::make_shared<HttpClientLoggerImpl>();
     HttpClient::shared()->setLogger(loggerPS);
@@ -85,12 +87,12 @@ InitializationData ApplicationCoreImpl::getInitializationData()
     return *initializationData;
 }
 
-DeviceData ApplicationCoreImpl::getDeviceData() 
+DeviceData ApplicationCoreImpl::getDeviceData()
 {
     return *deviceData;
 }
 
-Customer ApplicationCoreImpl::getCustomer() 
+Customer ApplicationCoreImpl::getCustomer()
 {
     if (customer)
     {
@@ -100,27 +102,28 @@ Customer ApplicationCoreImpl::getCustomer()
     return CustomerHelper::create();
 }
 
-void ApplicationCoreImpl::setCustomer(const Customer & customer) 
+void ApplicationCoreImpl::setCustomer(const Customer &customer)
 {
     this->customer = std::make_shared<Customer>(customer);
 }
 
-std::vector<HttpRequestParam> ApplicationCoreImpl::getDefaultHttpRequestParams() 
+std::vector<HttpRequestParam> ApplicationCoreImpl::getDefaultHttpRequestParams()
 {
     std::vector<HttpRequestParam> params = std::vector<HttpRequestParam>{};
     return params;
 }
 
-std::vector<HttpHeader> ApplicationCoreImpl::getDefaultHttpRequestHeaders() 
+std::vector<HttpHeader> ApplicationCoreImpl::getDefaultHttpRequestHeaders()
 {
     std::vector<HttpHeader> headers = std::vector<HttpHeader>{};
     headers.push_back(HttpHeader{"User-Agent", "Ezored Http Client"});
     return headers;
 }
 
-std::shared_ptr<SQLite::Database> ApplicationCoreImpl::getDB() 
+std::shared_ptr<SQLite::Database> ApplicationCoreImpl::getDB()
 {
     return db;
 }
 
-} }
+} // namespace core
+} // namespace ezored

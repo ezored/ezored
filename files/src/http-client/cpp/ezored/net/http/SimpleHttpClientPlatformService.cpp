@@ -1,40 +1,45 @@
 #include "SimpleHttpClientPlatformService.hpp"
 
-#include "ezored/net/http/HttpResponse.hpp"
+#include "ezored/net/http/HttpHeader.hpp"
 #include "ezored/net/http/HttpMethod.hpp"
 #include "ezored/net/http/HttpRequest.hpp"
-#include "ezored/net/http/HttpHeader.hpp"
 #include "ezored/net/http/HttpRequestParam.hpp"
+#include "ezored/net/http/HttpResponse.hpp"
 
 #include "ezored/helpers/StringHelper.hpp"
 
-#include "Poco/MD5Engine.h"
 #include "Poco/DigestStream.h"
+#include "Poco/MD5Engine.h"
 
+#include "Poco/Exception.h"
 #include "Poco/Net/HTTPClientSession.h"
-#include "Poco/Net/HTTPSClientSession.h"
 #include "Poco/Net/HTTPRequest.h"
 #include "Poco/Net/HTTPResponse.h"
+#include "Poco/Net/HTTPSClientSession.h"
 #include "Poco/Net/NameValueCollection.h"
-#include "Poco/StreamCopier.h"
 #include "Poco/Path.h"
+#include "Poco/StreamCopier.h"
 #include "Poco/URI.h"
-#include "Poco/Exception.h"
 
-#include "Poco/UUIDGenerator.h"
 #include "Poco/UUID.h"
+#include "Poco/UUIDGenerator.h"
 
-#include <string>
-#include <sstream>
 #include <iostream>
 #include <map>
+#include <sstream>
+#include <string>
 
-namespace ezored { namespace net { namespace http {
+namespace ezored
+{
+namespace net
+{
+namespace http
+{
 
 using namespace ezored::net::http;
 using namespace ezored::helpers;
 
-HttpResponse SimpleHttpClientPlatformService::doRequest(const HttpRequest & request)
+HttpResponse SimpleHttpClientPlatformService::doRequest(const HttpRequest &request)
 {
     auto response = HttpResponse{0, "", {}};
 
@@ -42,18 +47,18 @@ HttpResponse SimpleHttpClientPlatformService::doRequest(const HttpRequest & requ
     {
         // prepare session
         Poco::URI uri(request.url);
-		Poco::Net::HTTPClientSession *session; 
-		
-		if (uri.getScheme() == "https")
-		{  
-			const Poco::Net::Context::Ptr context(new Poco::Net::Context(Poco::Net::Context::CLIENT_USE, "", Poco::Net::Context::VERIFY_NONE, 9, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"));
-			session = new Poco::Net::HTTPSClientSession(uri.getHost(), uri.getPort(), context);  
-		}
-		else
-		{  
-			session = new Poco::Net::HTTPClientSession(uri.getHost(), uri.getPort());  
-		} 
-		
+        Poco::Net::HTTPClientSession *session;
+
+        if (uri.getScheme() == "https")
+        {
+            const Poco::Net::Context::Ptr context(new Poco::Net::Context(Poco::Net::Context::CLIENT_USE, "", Poco::Net::Context::VERIFY_NONE, 9, "ALL:!ADH:!LOW:!EXP:!MD5:@STRENGTH"));
+            session = new Poco::Net::HTTPSClientSession(uri.getHost(), uri.getPort(), context);
+        }
+        else
+        {
+            session = new Poco::Net::HTTPClientSession(uri.getHost(), uri.getPort());
+        }
+
         // prepare path
         std::string path(uri.getPathAndQuery());
 
@@ -61,26 +66,29 @@ HttpResponse SimpleHttpClientPlatformService::doRequest(const HttpRequest & requ
         {
             path = "/";
         }
-        
+
         // send request
         Poco::Net::HTTPRequest req(getMethodFromRequest(request), path, Poco::Net::HTTPMessage::HTTP_1_1);
-        
+
         // set headers here
-        for (auto & header : request.headers)
+        for (auto &header : request.headers)
         {
             req.set(header.name, header.value);
         }
-        
+
         // set the request body
         std::string body;
 
         if (request.params.size() > 0)
         {
-            for (auto & param : request.params)
+            for (auto &param : request.params)
             {
-                if (body.length() > 0) {
+                if (body.length() > 0)
+                {
                     body = body + "&" + param.name + "=" + param.value;
-                } else {
+                }
+                else
+                {
                     body = param.name + "=" + param.value;
                 }
             }
@@ -93,13 +101,13 @@ HttpResponse SimpleHttpClientPlatformService::doRequest(const HttpRequest & requ
         req.setContentLength(static_cast<std::streamsize>(body.length()));
 
         // sends request, returns open stream
-        std::ostream& os = session->sendRequest(req);
+        std::ostream &os = session->sendRequest(req);
 
         // sends the body
         os << body;
-        
+
         // get response
-        Poco::Net::HTTPResponse res;        
+        Poco::Net::HTTPResponse res;
         std::istream &is = session->receiveResponse(res);
         std::stringstream ss;
         Poco::StreamCopier::copyStream(is, ss);
@@ -109,7 +117,7 @@ HttpResponse SimpleHttpClientPlatformService::doRequest(const HttpRequest & requ
 
         Poco::Net::NameValueCollection::ConstIterator i = res.begin();
 
-        while (i!=res.end())
+        while (i != res.end())
         {
             response.headers.push_back(HttpHeader(i->first, i->second));
             ++i;
@@ -129,34 +137,36 @@ std::string SimpleHttpClientPlatformService::getMethodFromRequest(const HttpRequ
     {
     case HttpMethod::METHOD_GET:
         return "GET";
-    break;
+        break;
     case HttpMethod::METHOD_POST:
         return "POST";
-    break;
+        break;
     case HttpMethod::METHOD_HEAD:
         return "HEAD";
-    break;
+        break;
     case HttpMethod::METHOD_PUT:
         return "PUT";
-    break;
+        break;
     case HttpMethod::METHOD_DELETE:
         return "DELETE";
-    break;
+        break;
     case HttpMethod::METHOD_PATCH:
         return "PATCH";
-    break;
+        break;
     case HttpMethod::METHOD_CONNECT:
         return "CONNECT";
-    break;
+        break;
     case HttpMethod::METHOD_OPTIONS:
         return "OPTIONS";
-    break;
+        break;
     case HttpMethod::METHOD_TRACE:
         return "TRACE";
-    break;
+        break;
     }
 
     return "";
 }
 
-} } }
+} // namespace http
+} // namespace net
+} // namespace ezored
