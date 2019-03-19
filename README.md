@@ -3,7 +3,8 @@
 ![](extras/images/doc-logo.png)
 
 ![](https://img.shields.io/github/repo-size/ezored/ezored.svg?logo=ezored)
-[![Build Status](https://travis-ci.org/ezored/ezored.svg?branch=master)](https://travis-ci.org/ezored/ezored)
+[![Build Status Travis](https://travis-ci.org/ezored/ezored.svg?branch=master)](https://travis-ci.org/ezored/ezored)
+[![Build Status AppVeyor](https://ci.appveyor.com/api/projects/status/github/ezored/ezored?svg=true)](https://ci.appveyor.com/project/PauloCoutinho/ezored)
 
 ## About
 
@@ -128,39 +129,39 @@ Each platform requirements list now. Maybe you already have it, because are basi
 
 **Android Requirements:**
 
-1. NDK supported operational system: macOS, Linux or Windows.  
+1. NDK supported operational system: macOS, Linux or Windows.
     Conan will download NDK and other things to build based on your system.
 
 **iOS Requirements:**
 
 1. macOS operational system.
 2. Xcode.
-3. Command line tools.  
+3. Command line tools.
     Run: ```xcode-select --install```
 
 **macOS Requirements:**
 
 1. macOS operational system.
 2. Xcode.
-3. Command line tools.  
+3. Command line tools.
     Run: ```xcode-select --install```
-4. macOS system headers.  
-    Run: ```open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg```  
+4. macOS system headers.
+    Run: ```open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg```
     The path can change for each macOS version (10.14 is mojave) and this is required because old softwares search on old places for this headers, like old openssl versions.
 
 **Linux Requirements:**
 
 1. Linux operational system.
-2. C++ compiler installed.  
+2. C++ compiler installed.
     Obs: On Ubuntu run on terminal ```sudo apt install build-essential```.
 
 **Windows Requirements:**
 
 1. Windows operational system.
-2. Visual Studio installed.  
-    Obs 1: Current example in ezored is using version 2017 (15), change for your needs in conan profile.  
-    Obs 2: Everything was compiled using community version (https://visualstudio.microsoft.com/vs/community/).  
-    Obs 3: On installation process select "Desktop development with C++".  
+2. Visual Studio installed.
+    Obs 1: Current example in ezored is using version 2017 (15), change for your needs in conan profile.
+    Obs 2: Everything was compiled using community version (https://visualstudio.microsoft.com/vs/community/).
+    Obs 3: On installation process select "Desktop development with C++".
 
 ## How to use:
 
@@ -181,9 +182,9 @@ Each platform requirements list now. Maybe you already have it, because are basi
 
 Example: If you are on **Linux**, you can build the **linux_app** target, if on **macOS** you can run **macos_app** target and if on **Windows** you can run **windows_app**.
 
-> python make.py target linux_app conan  
-> python make.py target linux_app build  
-> python make.py target linux_app package  
+> python make.py target linux_app conan
+> python make.py target linux_app build
+> python make.py target linux_app package
 
 **Obs:**
 
@@ -225,8 +226,8 @@ If you don't will use djinni in your project, ignore **djinni** section, because
 
 Ezored has support for **clang-format** tool and **"clang"** command is available.
 
-To format all supported files, run the following command:  
-> python make.py clang format  
+To format all supported files, run the following command:
+> python make.py clang format
 
 You will see the list of formatted files.
 
