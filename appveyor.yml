@@ -1,0 +1,23 @@
+build: false
+
+environment:
+    PYTHON: "C:\\Python37"
+
+    matrix:
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+          CONAN_ENV_COMPILER: "Visual Studio"
+          CONAN_ENV_COMPILER_VERSION: "14"
+        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+          CONAN_ENV_COMPILER: "Visual Studio"
+          CONAN_ENV_COMPILER_VERSION: "15"
+
+install:
+  - set PATH=%PYTHON%;%PYTHON%/Scripts/;%PATH%
+  - pip.exe install conan --upgrade
+  - conan user
+  - python make.py conan install_profiles
+
+test_script:
+  - python make.py target windows_app conan
+  - python make.py target windows_app build
+  - python make.py target windows_app package
