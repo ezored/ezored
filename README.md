@@ -64,23 +64,23 @@ Obs: Generally any platform with C++ support will work too, like smart tvs and e
 
 A module in ezored is C++ implementation of one specific feature. And ezored come with some modules already implemented:
 
-1. **datetime**
+1. **datetime**  
     Some functions to work with date and time.
-2. **file helper**
+2. **file helper**  
     Helper functions to work with files (write, read, create folder, delete files etc).
-3. **http client**
+3. **http client**  
     A http client to make http and https requests.
-4. **logger**
+4. **logger**  
     Logger functions to show messages with different levels.
-5. **shared data**
+5. **shared data**  
     Shared data storage (android = shared preferences, ios = NSUserDefaults)
-6. **string helper**
+6. **string helper**  
     Some string helper functions.
-7. **sqlite3**
+7. **sqlite3**  
     SQLite3 come with ezored and let you use the same database on all platforms. Internally you can check our migration implementation. A library called "sqlitecpp" is used too, and make the job more easy.
-8. **rapidjson**
+8. **rapidjson**  
     RapidJSON is used to parsing json from remote requests in ezored samples. It works on all tested platforms nice and fast.
-9. **support lib**
+9. **support lib**  
     Mobile modules use djinni, and for mobile (Android and iOS) this module is used to make the bridge between codes works. Maybe your project don't need it, but current code use it instead of generate bridge files manually.
 
 Modules source code are stored in **"files/djinni"** and **"files/src"**.
