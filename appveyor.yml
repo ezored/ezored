@@ -4,12 +4,7 @@ environment:
     PYTHON: "C:\\Python37"
 
     matrix:
-        - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
-          CONAN_ENV_COMPILER: "Visual Studio"
-          CONAN_ENV_COMPILER_VERSION: "14"
         - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-          CONAN_ENV_COMPILER: "Visual Studio"
-          CONAN_ENV_COMPILER_VERSION: "15"
 
 install:
   - set PATH=%PYTHON%;%PYTHON%/Scripts/;%PATH%
