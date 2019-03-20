@@ -1,9 +1,9 @@
 apply plugin: 'com.android.application'
 
 repositories {
-    if (gradle.ext.usePreCompiledLibrary) {
+    if (gradle.ext.usePrebuiltLibrary) {
         flatDir {
-            dirs 'libs', gradle.ext.preCompiledDir
+            dirs 'libs', gradle.ext.prebuiltDir
         }
     }
 }
@@ -66,7 +66,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    if (gradle.ext.usePreCompiledLibrary) {
+    if (gradle.ext.usePrebuiltLibrary) {
         if (gradle.ext.isDebuggable) {
             implementation(name: 'library-debug', ext: 'aar')
         } else {

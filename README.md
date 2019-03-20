@@ -196,11 +196,19 @@ Example: If you are on **Linux**, you can build the **linux_app** target, if on 
 
 ## Dist folder prebuilt
 
-The folder containing all prebuilt things (android, ios, windows, macos and linux) are not versioned, but you can download a full version here:
+The folder containing all prebuilt things (android, ios, windows, macos, linux and others) are not versioned, but you can download a full version with the following command:
 
-> http://public.ezored.com/ezored/precompiled/dist.zip
+> python make.py dist download
 
-Unzip it and put on your root folder. After it you can execute all desktop apps and all mobile apps.
+This command will download the following file:
+
+> http://public.ezored.com/ezored/prebuilt/dist.zip
+
+And will unpack for you creating a folder called **"dist"** with all prebuilt files in the project root folder.
+
+You can also pack **"dist"** folder again using:
+
+> python make.py dist pack
 
 ## Djinni
 
