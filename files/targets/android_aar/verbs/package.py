@@ -3,14 +3,16 @@
 import os
 
 import ezored.constants as const
-import ezored.functions as fn
-import ezored.logging as log
+from ezored.mod import file
+from ezored.mod import log
+from ezored.mod import runner
+from ezored.mod import target
 
 
 # -----------------------------------------------------------------------------
 def run(params={}):
     target_name = params['target_name']
-    target_config = fn.get_target_config(target_name)
+    target_config = target.get_target_config(target_name)
 
     archs = target_config['archs']
     build_types = target_config['build_types']
@@ -24,7 +26,7 @@ def run(params={}):
                 log.info('Creating AAR library for: {0}...'.format(build_type))
 
                 build_dir = os.path.join(
-                    fn.root_dir(),
+                    file.root_dir(),
                     const.DIR_NAME_BUILD,
                     target_name,
                     build_type,
@@ -35,11 +37,11 @@ def run(params={}):
                     'aar',
                 )
 
-                fn.remove_dir(android_library_build_dir)
-                fn.create_dir(android_library_build_dir)
+                file.remove_dir(android_library_build_dir)
+                file.create_dir(android_library_build_dir)
 
                 android_project_dir = os.path.join(
-                    fn.root_dir(),
+                    file.root_dir(),
                     const.DIR_NAME_FILES,
                     const.DIR_NAME_FILES_TARGETS,
                     target_name,
@@ -47,17 +49,17 @@ def run(params={}):
                     'android-aar-project',
                 )
 
-                fn.copy_dir(android_project_dir, android_library_build_dir)
+                file.copy_dir(android_project_dir, android_library_build_dir)
 
                 # copy djinni support lib files
                 djinni_support_lib_dir = os.path.join(
-                    fn.root_dir(),
+                    file.root_dir(),
                     const.DIR_NAME_FILES,
                     'djinni',
                     'support-lib',
                 )
 
-                fn.copy_all_inside(
+                file.copy_all_inside(
                     os.path.join(djinni_support_lib_dir, 'java'),
                     os.path.join(
                         android_library_build_dir,
@@ -70,12 +72,12 @@ def run(params={}):
 
                 # copy all modules djinni files
                 modules_dir = os.path.join(
-                    fn.root_dir(),
+                    file.root_dir(),
                     const.DIR_NAME_FILES,
                     'djinni',
                 )
 
-                modules = fn.find_dirs_simple(modules_dir, '*')
+                modules = file.find_dirs_simple(modules_dir, '*')
 
                 for module in modules:
                     module_dir_name = os.path.basename(module)
@@ -87,8 +89,8 @@ def run(params={}):
                         modules_dir, module_dir_name, 'generated-src', 'java'
                     )
 
-                    if fn.dir_exists(module_dir):
-                        fn.copy_all_inside(
+                    if file.dir_exists(module_dir):
+                        file.copy_all_inside(
                             module_dir,
                             os.path.join(
                                 android_library_build_dir,
@@ -101,12 +103,12 @@ def run(params={}):
 
                 # copy all modules implementation files
                 modules_dir = os.path.join(
-                    fn.root_dir(),
+                    file.root_dir(),
                     const.DIR_NAME_FILES,
                     const.DIR_NAME_FILES_SRC,
                 )
 
-                modules = fn.find_dirs_simple(modules_dir, '*')
+                modules = file.find_dirs_simple(modules_dir, '*')
 
                 for module in modules:
                     module_dir_name = os.path.basename(module)
@@ -115,8 +117,8 @@ def run(params={}):
                         modules_dir, module_dir_name, 'java'
                     )
 
-                    if fn.dir_exists(module_dir):
-                        fn.copy_all_inside(
+                    if file.dir_exists(module_dir):
+                        file.copy_all_inside(
                             module_dir,
                             os.path.join(
                                 android_library_build_dir,
@@ -145,7 +147,7 @@ def run(params={}):
                         arch['arch'],
                     )
 
-                    fn.copy_all_inside(
+                    file.copy_all_inside(
                         compiled_arch_dir,
                         target_arch_dir,
                     )
@@ -161,7 +163,7 @@ def run(params={}):
                     'bundle{0}Aar'.format(build_type),
                 ]
 
-                fn.run_simple(
+                runner.run(
                     run_args,
                     android_module_dir
                 )
@@ -176,15 +178,15 @@ def run(params={}):
                 )
 
                 dist_dir = os.path.join(
-                    fn.root_dir(),
+                    file.root_dir(),
                     const.DIR_NAME_DIST,
                     target_name,
                     build_type,
                 )
 
-                fn.remove_dir(dist_dir)
+                file.remove_dir(dist_dir)
 
-                fn.copy_all_inside(
+                file.copy_all_inside(
                     arr_dir,
                     dist_dir
                 )

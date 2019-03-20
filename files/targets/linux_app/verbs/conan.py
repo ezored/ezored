@@ -3,14 +3,16 @@
 import os
 
 import ezored.constants as const
-import ezored.functions as fn
-import ezored.logging as log
+from ezored.mod import file
+from ezored.mod import log
+from ezored.mod import runner
+from ezored.mod import target
 
 
 # -----------------------------------------------------------------------------
 def run(params={}):
     target_name = params['target_name']
-    target_config = fn.get_target_config(target_name)
+    target_config = target.get_target_config(target_name)
 
     archs = target_config['archs']
     build_types = target_config['build_types']
@@ -22,10 +24,10 @@ def run(params={}):
                     arch['conan_arch'],
                     build_type
                 ))
-                
+
                 # conan install
                 build_dir = os.path.join(
-                    fn.root_dir(),
+                    file.root_dir(),
                     const.DIR_NAME_BUILD,
                     target_name,
                     build_type,
@@ -33,21 +35,21 @@ def run(params={}):
                     const.DIR_NAME_BUILD_CONAN,
                 )
 
-                fn.remove_dir(build_dir)
-                fn.create_dir(build_dir)
+                file.remove_dir(build_dir)
+                file.create_dir(build_dir)
 
                 run_args = [
                     'conan',
                     'install',
                     os.path.join(
-                        fn.root_dir(),
+                        file.root_dir(),
                         const.DIR_NAME_FILES,
                         const.DIR_NAME_FILES_TARGETS,
                         target_name,
                         const.DIR_NAME_FILES_TARGET_CONAN,
                         const.DIR_NAME_FILES_TARGET_CONAN_RECIPE,
                         const.FILE_NAME_FILES_TARGET_CONAN_RECIPE_CONANFILE_PY,
-                    ), 
+                    ),
                     '--profile',
                     arch['conan_profile'],
                     '-s',
@@ -58,7 +60,7 @@ def run(params={}):
                     '--update',
                 ]
 
-                fn.run_simple(
+                runner.run(
                     run_args,
                     build_dir
                 )

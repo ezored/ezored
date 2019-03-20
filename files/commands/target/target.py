@@ -3,25 +3,28 @@
 import os
 
 import ezored.constants as const
-import ezored.functions as fn
-import ezored.logging as log
+from ezored.mod import file
+from ezored.mod import util
+from ezored.mod import log
+from ezored.mod import runner
+from ezored.mod import target
 
 
 # -----------------------------------------------------------------------------
 def run(params={}):
     args = params['args']
 
-    targets = fn.get_all_targets()
+    targets = target.get_all_targets()
 
     show_target_list = False
 
     if len(args) > 0:
-        target_name = args[0]
+        target_item = args[0]
         args.pop(0)
 
-        if target_name in targets:
-            target_verbs = fn.get_all_target_verbs(target_name)
-            target_verbs = list(fn.filter_list(target_verbs, const.TARGET_VERBS_INTERNAL))
+        if target_item in targets:
+            target_verbs = target.get_all_target_verbs(target_item)
+            target_verbs = list(util.filter_list(target_verbs, const.TARGET_VERBS_INTERNAL))
 
             show_target_verb_list = False
 
@@ -29,22 +32,22 @@ def run(params={}):
                 verb_name = args[0]
 
                 if verb_name in target_verbs:
-                    log.info('Running "{0}" on target "{1}"...'.format(verb_name, target_name))
+                    log.info('Running "{0}" on target "{1}"...'.format(verb_name, target_item))
 
                     target_verb_folder = os.path.join(
-                        fn.root_dir(),
+                        file.root_dir(),
                         const.DIR_NAME_FILES,
                         const.DIR_NAME_FILES_TARGETS,
-                        target_name,
+                        target_item,
                         const.DIR_NAME_FILES_TARGET_VERBS,
                     )
 
                     params = {
-                        'target_name': target_name,
+                        'target_name': target_item,
                         'args': args,
                     }
 
-                    fn.exec_external(
+                    runner.run_external(
                         path=target_verb_folder,
                         module_name=verb_name,
                         command_name='run',
@@ -79,13 +82,13 @@ def run(params={}):
 
 # -----------------------------------------------------------------------------
 def help(params={}):
-    targets = fn.get_all_targets()
+    targets = target.get_all_targets()
 
     if targets and len(targets) > 0:
         log.colored('List of available targets:\n', log.PURPLE)
 
-        for target in targets:
-            log.normal('  - {0}'.format(target))
+        for target_item in targets:
+            log.normal('  - {0}'.format(target_item))
     else:
         log.error('No targets available')
 

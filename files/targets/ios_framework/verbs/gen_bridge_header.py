@@ -3,14 +3,15 @@
 import os
 
 import ezored.constants as const
-import ezored.functions as fn
-import ezored.logging as log
+from ezored.mod import file
+from ezored.mod import log
+from ezored.mod import target
 
 
 # -----------------------------------------------------------------------------
 def run(params={}):
     target_name = params['target_name']
-    target_config = fn.get_target_config(target_name)
+    target_config = target.get_target_config(target_name)
 
     archs = target_config['archs']
     build_types = target_config['build_types']
@@ -23,7 +24,7 @@ def run(params={}):
                 log.info('Generating for: {0}...'.format(build_type))
 
                 dist_headers_dir = os.path.join(
-                    fn.root_dir(),
+                    file.root_dir(),
                     const.DIR_NAME_DIST,
                     target_name,
                     build_type,
@@ -31,10 +32,10 @@ def run(params={}):
                     'Headers',
                 )
 
-                header_files = fn.find_files(dist_headers_dir, '*.h')
+                header_files = file.find_files(dist_headers_dir, '*.h')
 
                 bridge_file = os.path.join(
-                    fn.root_dir(),
+                    file.root_dir(),
                     const.DIR_NAME_DIST,
                     target_name,
                     build_type,
@@ -45,7 +46,7 @@ def run(params={}):
 
                 for header_file in header_files:
                     header_file_name = os.path.basename(header_file)
-                    
+
                     if not validate_header_file_name(header_file_name):
                         continue
 
@@ -56,10 +57,10 @@ def run(params={}):
                     )
 
                 if len(content) > 0:
-                    fn.remove_file(bridge_file)
+                    file.remove_file(bridge_file)
 
-                    fn.write_to_file(os.path.join(
-                        fn.root_dir(),
+                    file.write_to_file(os.path.join(
+                        file.root_dir(),
                         const.DIR_NAME_DIST,
                         target_name,
                         build_type,
