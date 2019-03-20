@@ -2,9 +2,10 @@
 
 import os
 
-import ezored.functions as fn
-import ezored.logging as log
 from ezored import constants as const
+from ezored.mod import file
+from ezored.mod import log
+from ezored.mod import target
 
 
 # -----------------------------------------------------------------------------
@@ -29,22 +30,22 @@ def run(params={}):
 def install_profiles(params={}):
     log.info('Copying files...')
 
-    targets = fn.get_all_targets()
+    targets = target.get_all_targets()
 
     if targets:
-        for target in targets:
-            files = fn.find_files(os.path.join(
-                fn.root_dir(),
+        for target_item in targets:
+            files = file.find_files(os.path.join(
+                file.root_dir(),
                 const.DIR_NAME_FILES,
                 const.DIR_NAME_FILES_TARGETS,
-                target,
+                target_item,
                 const.DIR_NAME_FILES_TARGET_CONAN,
                 const.DIR_NAME_FILES_TARGET_CONAN_PROFILE,
             ), '*profile')
 
             if files:
                 conan_profile_dir = os.path.join(
-                    fn.home_dir(),
+                    file.home_dir(),
                     const.DIR_NAME_HOME_CONAN,
                     const.DIR_NAME_HOME_CONAN_PROFILES
                 )
@@ -53,7 +54,7 @@ def install_profiles(params={}):
                     filename = os.path.basename(item)
                     log.info('Copying profile "{0}"...'.format(filename))
 
-                    fn.copy_file(item, os.path.join(
+                    file.copy_file(item, os.path.join(
                         conan_profile_dir,
                         filename
                     ))

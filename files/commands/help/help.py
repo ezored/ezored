@@ -2,8 +2,8 @@
 
 import sys
 
-import ezored.functions as fn
-import ezored.logging as log
+from ezored.mod import command
+from ezored.mod import log
 
 
 # -----------------------------------------------------------------------------
@@ -11,21 +11,25 @@ def run(params={}):
     args = params['args']
 
     log.colored('Please use "{0} <command>" where <command> is one of:\n'.format(
-        sys.argv[0]), log.PURPLE)
+        sys.argv[0]), log.PURPLE
+    )
 
-    commands = fn.get_all_commands()
+    commands = command.get_all_commands()
     width = max(len(name) for name in commands)
 
-    for command in commands:
+    for command_item in commands:
         params = {
             'args': args,
-            'command_name': command,
+            'command_name': command_item,
         }
 
-        description = fn.run_command(command, 'get_description', params)
+        description = command.run_method(command_item, 'get_description', params)
 
         print('  {name:{width}}  {descr}'.format(
-            name=command, width=width, descr=description))
+            name=command_item,
+            width=width,
+            descr=description
+        ))
 
 
 # -----------------------------------------------------------------------------

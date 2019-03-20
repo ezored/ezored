@@ -2,9 +2,10 @@
 
 import os
 
-import ezored.functions as fn
-import ezored.logging as log
 from ezored import constants as const
+from ezored.mod import file
+from ezored.mod import log
+from ezored.mod import runner
 
 
 # -----------------------------------------------------------------------------
@@ -28,12 +29,12 @@ def run(params={}):
 # -----------------------------------------------------------------------------
 def generate(params={}):
     djinni_modules_dir = os.path.join(
-        fn.root_dir(),
+        file.root_dir(),
         const.DIR_NAME_FILES,
         const.DIR_NAME_DJINNI,
     )
 
-    modules = fn.exec_external(
+    modules = runner.run_external(
         path=djinni_modules_dir,
         module_name='modules',
         command_name='get_modules',
@@ -50,12 +51,12 @@ def generate(params={}):
             djinni_module_dir = os.path.join(djinni_modules_dir, module)
             djinni_module_file = os.path.join(djinni_module_dir, 'generate.py')
 
-            if fn.file_exists(djinni_module_file):
+            if file.file_exists(djinni_module_file):
                 log.info('Generating djinni files for "{0}"...'.format(
                     module
                 ))
 
-                fn.run_simple(['python', 'generate.py'], djinni_module_dir)
+                runner.run(['python', 'generate.py'], djinni_module_dir)
 
         log.ok()
     else:

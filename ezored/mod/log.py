@@ -1,4 +1,4 @@
-"""Logging functions"""
+"""Module: Log"""
 
 import sys
 
@@ -21,7 +21,7 @@ def error(msg, fatal=True):
     :param fatal:   exit program with error code 10 if True (default is true)
     """
     print('{0}[ERROR]{1} {2}'.format(RED, ENDC, msg))
-    
+
     if fatal:
         sys.exit(10)
 
@@ -46,7 +46,6 @@ def ok(msg=''):
     print('{0}[OK]{1} {2}'.format(GREEN, ENDC, msg))
 
 
-
 # -----------------------------------------------------------------------------
 def fail(msg='', fatal=True):
     """
@@ -55,7 +54,7 @@ def fail(msg='', fatal=True):
     :param msg:     string message
     """
     print('{0}[FAIL]{1} {2}'.format(RED, ENDC, msg))
-    
+
     if fatal:
         sys.exit(10)
 

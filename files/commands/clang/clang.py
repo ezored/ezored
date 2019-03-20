@@ -2,11 +2,11 @@
 
 import os
 import subprocess
-import sys
 
-import ezored.functions as fn
-import ezored.logging as log
 from ezored import constants as const
+from ezored.mod import file
+from ezored.mod import log
+from ezored.mod import runner
 
 
 # -----------------------------------------------------------------------------
@@ -34,7 +34,7 @@ def clang_format(params={}):
     dir_list = [
         {
             'path': os.path.join(
-                fn.root_dir(),
+                file.root_dir(),
                 const.DIR_NAME_FILES,
                 const.DIR_NAME_FILES_SRC,
             ),
@@ -42,7 +42,7 @@ def clang_format(params={}):
         },
         {
             'path': os.path.join(
-                fn.root_dir(),
+                file.root_dir(),
                 const.DIR_NAME_PROJECTS,
             ),
             'patterns': ['*.cpp', '*.hpp']
@@ -56,7 +56,7 @@ def clang_format(params={}):
             patterns = dir_item['patterns']
 
             for pattern_item in patterns:
-                files = fn.find_files(dir_item['path'], pattern_item)
+                files = file.find_files(dir_item['path'], pattern_item)
 
                 for file_item in files:
                     log.info('Formatting file "{0}"...'.format(
@@ -71,9 +71,9 @@ def clang_format(params={}):
                         file_item,
                     ]
 
-                    fn.run_simple(
+                    runner.run(
                         run_args,
-                        fn.root_dir()
+                        file.root_dir()
                     )
 
         log.ok()
