@@ -55,7 +55,7 @@ def download_hook(count, block_size, total_size):
     """a download progress hook for urllib"""
     percent = int(count * block_size * 100 / total_size)
 
-    msg = '\r{0}% - {1}'.format(
+    msg = '\rDownloading: {0}% - {1}'.format(
         percent,
         util.readable_file_size(count * block_size)
     ).ljust(80)
