@@ -26,6 +26,9 @@ DIR_NAME_PROJECTS = 'projects'
 FILE_NAME_FILES_TARGET_CONFIG = 'config.py'
 FILE_NAME_FILES_TARGET_CONAN_RECIPE_CONANFILE_TXT = 'conanfile.txt'
 FILE_NAME_FILES_TARGET_CONAN_RECIPE_CONANFILE_PY = 'conanfile.py'
+FILE_NAME_DIST_PACKED = 'dist.zip'
+
+URL_DIST_FILE_PACKED = 'http://public.ezored.com/ezored/prebuilt/dist.zip'
 
 COMMAND_NAME_CONFIG = 'config'
 

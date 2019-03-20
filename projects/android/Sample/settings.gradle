@@ -1,15 +1,15 @@
-gradle.ext.usePreCompiledLibrary = true
+gradle.ext.usePrebuiltLibrary = true
 gradle.ext.isDebuggable = false
 
 if (gradle.ext.isDebuggable) {
-    gradle.ext.preCompiledDir = "../../../../dist/android_aar/Debug"
+    gradle.ext.prebuiltDir = "../../../../dist/android_aar/Debug"
 } else {
-    gradle.ext.preCompiledDir = "../../../../dist/android_aar/Release"
+    gradle.ext.prebuiltDir = "../../../../dist/android_aar/Release"
 }
 
 include ':app'
 
-if (!gradle.ext.usePreCompiledLibrary) {
+if (!gradle.ext.usePrebuiltLibrary) {
     include ':ezored-library'
 
     if (gradle.ext.isDebuggable) {
