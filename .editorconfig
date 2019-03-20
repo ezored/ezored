@@ -6,18 +6,16 @@ charset = utf-8
 insert_final_newline = true
 indent_style = space
 indent_size = 4
-
-[*.{cpp,hpp,c,h,mm}]
 trim_trailing_whitespace = true
 
-[{*.{py}]
+[*.py]
 indent_style = space
 indent_size = 4
 
 [Makefile]
 indent_style = tab
 
-[*.{bat,cmd,cmd.*}]
+[*.{bat, cmd, cmd.*}]
 end_of_line = crlf
 indent_style = space
 indent_size = 4
