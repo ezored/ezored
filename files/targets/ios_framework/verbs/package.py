@@ -2,7 +2,7 @@
 
 import os
 
-import ezored.constants as const
+import ezored.app.const as const
 from ezored.mod import file
 from ezored.mod import log
 from ezored.mod import runner
@@ -10,9 +10,10 @@ from ezored.mod import target
 
 
 # -----------------------------------------------------------------------------
-def run(params={}):
+def run(params):
+    proj_path = params['proj_path']
     target_name = params['target_name']
-    target_config = target.get_target_config(target_name)
+    target_config = target.get_target_config(proj_path, target_name)
 
     archs = target_config['archs']
     build_types = target_config['build_types']
@@ -26,7 +27,7 @@ def run(params={}):
 
                 # copy first folder for base
                 framework_dir = os.path.join(
-                    file.root_dir(),
+                    proj_path,
                     const.DIR_NAME_BUILD,
                     target_name,
                     build_type,
@@ -37,7 +38,7 @@ def run(params={}):
                 )
 
                 dist_dir = os.path.join(
-                    file.root_dir(),
+                    proj_path,
                     const.DIR_NAME_DIST,
                     target_name,
                     build_type,
@@ -52,7 +53,7 @@ def run(params={}):
 
                 for arch in archs:
                     lipo_archs_args.append(os.path.join(
-                        file.root_dir(),
+                        proj_path,
                         const.DIR_NAME_BUILD,
                         target_name,
                         build_type,
@@ -75,7 +76,7 @@ def run(params={}):
 
                 lipo_args.extend(lipo_archs_args)
 
-                runner.run(lipo_args, file.root_dir())
+                runner.run(lipo_args, proj_path)
 
                 # check file
                 log.info('Checking file for: {0}...'.format(build_type))
@@ -86,7 +87,7 @@ def run(params={}):
                         dist_dir,
                         target_config['project_name']
                     )
-                ], file.root_dir())
+                ], proj_path)
         else:
             log.info('Build type list for "{0}" is invalid or empty'.format(
                 target_name

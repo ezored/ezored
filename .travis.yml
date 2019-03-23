@@ -5,8 +5,8 @@ python: "3.7"
 addons:
   apt:
     packages:
-    - gcc-multilib
-    - g++-multilib
+      - gcc-multilib
+      - g++-multilib
 install:
   - pip install conan
 before_script:

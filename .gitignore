@@ -16,6 +16,7 @@ CMakeSettings.json
 __pycache__
 
 # ezored
+/ezored/
 build
 /dist/
 /dist.*

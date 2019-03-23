@@ -2,7 +2,7 @@
 
 import os
 
-import ezored.constants as const
+import ezored.app.const as const
 from ezored.mod import file
 from ezored.mod import log
 from ezored.mod import runner
@@ -10,9 +10,10 @@ from ezored.mod import target
 
 
 # -----------------------------------------------------------------------------
-def run(params={}):
+def run(params):
+    proj_path = params['proj_path']
     target_name = params['target_name']
-    target_config = target.get_target_config(target_name)
+    target_config = target.get_target_config(proj_path, target_name)
 
     archs = target_config['archs']
     build_types = target_config['build_types']
@@ -27,7 +28,7 @@ def run(params={}):
 
                 # conan build
                 build_dir = os.path.join(
-                    file.root_dir(),
+                    proj_path,
                     const.DIR_NAME_BUILD,
                     target_name,
                     build_type,
@@ -42,7 +43,7 @@ def run(params={}):
                     'conan',
                     'build',
                     os.path.join(
-                        file.root_dir(),
+                        proj_path,
                         const.DIR_NAME_FILES,
                         const.DIR_NAME_FILES_TARGETS,
                         target_name,
@@ -52,7 +53,7 @@ def run(params={}):
                     ),
                     '--source-folder',
                     os.path.join(
-                        file.root_dir(),
+                        proj_path,
                         const.DIR_NAME_FILES,
                         const.DIR_NAME_FILES_TARGETS,
                         target_name,
@@ -60,7 +61,7 @@ def run(params={}):
                     ),
                     '--build-folder',
                     os.path.join(
-                        file.root_dir(),
+                        proj_path,
                         const.DIR_NAME_BUILD,
                         target_name,
                         build_type,
@@ -69,7 +70,7 @@ def run(params={}):
                     ),
                     '--install-folder',
                     os.path.join(
-                        file.root_dir(),
+                        proj_path,
                         const.DIR_NAME_BUILD,
                         target_name,
                         build_type,

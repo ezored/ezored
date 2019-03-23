@@ -2,16 +2,17 @@
 
 import os
 
-import ezored.constants as const
+import ezored.app.const as const
 from ezored.mod import file
 from ezored.mod import log
 from ezored.mod import target
 
 
 # -----------------------------------------------------------------------------
-def run(params={}):
+def run(params):
+    proj_path = params['proj_path']
     target_name = params['target_name']
-    target_config = target.get_target_config(target_name)
+    target_config = target.get_target_config(proj_path, target_name)
 
     archs = target_config['archs']
     build_types = target_config['build_types']
@@ -24,7 +25,7 @@ def run(params={}):
                 log.info('Generating for: {0}...'.format(build_type))
 
                 dist_headers_dir = os.path.join(
-                    file.root_dir(),
+                    proj_path,
                     const.DIR_NAME_DIST,
                     target_name,
                     build_type,
@@ -35,7 +36,7 @@ def run(params={}):
                 header_files = file.find_files(dist_headers_dir, '*.h')
 
                 bridge_file = os.path.join(
-                    file.root_dir(),
+                    proj_path,
                     const.DIR_NAME_DIST,
                     target_name,
                     build_type,
@@ -60,7 +61,7 @@ def run(params={}):
                     file.remove_file(bridge_file)
 
                     file.write_to_file(os.path.join(
-                        file.root_dir(),
+                        proj_path,
                         const.DIR_NAME_DIST,
                         target_name,
                         build_type,

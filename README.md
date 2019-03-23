@@ -109,7 +109,7 @@ A command in ezored is a python file too and a function inside it that will rece
 
 ```python make.py clean```
 
-With this command ezored will search for a file with path **"files/commands/clean/clean.py"** and will send all parameter to a function called **"run"** inside it.
+With this command ezored will search for a file with path **"ezored/cmd/clean.py"** and will send all parameter to a function called **"run"** inside it.
 
 If you don't remember what commands are available you can type only this to list all commands:
 
@@ -166,7 +166,7 @@ Each platform requirements list now. Maybe you already have it, because are basi
 ## How to use:
 
 1. Clone reposity:
-> git clone git@github.com:ezored/ezored.git
+> git clone git@github.com:ezored/ezored.git --recursive
 
 2. Enter on cloned folder:
 > cd ezored
