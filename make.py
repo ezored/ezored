@@ -13,10 +13,7 @@ if not os.path.isdir(ezored_path):
 
     subprocess.call([
         'git',
-        'submodule',
-        'add',
-        '--branch',
-        'master',
+        'clone',
         'https://github.com/ezored/ezored-core.git',
         ezored_path
     ])
