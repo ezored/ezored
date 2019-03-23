@@ -2,7 +2,7 @@
 
 
 # -----------------------------------------------------------------------------
-def get_modules(params={}):
+def get_modules(params):
     return [
         'app-domain',
         'app-core',

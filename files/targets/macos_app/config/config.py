@@ -1,4 +1,4 @@
-def run(params={}):
+def run(params):
     return {
         'project_name': 'Sample',
         'min_version': '10.9',

@@ -1,4 +1,4 @@
-def run(params={}):
+def run(params):
     return {
         'project_name': 'core',
         'build_types': ['Debug', 'Release'],
