@@ -9,7 +9,7 @@ proj_path = ezored_path
 ezored_path = os.path.join(ezored_path, 'ezored')
 
 if not os.path.isdir(ezored_path):
-    print("Cloning ezored-core to '{0}': ".format(ezored_path))
+    print("Cloning ezored-core to '{0}'".format(ezored_path))
 
     subprocess.call([
         'git',
