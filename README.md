@@ -166,12 +166,12 @@ Each platform requirements list now. Maybe you already have it, because are basi
 ## How to use:
 
 1. Clone reposity:
-> git clone git@github.com:ezored/ezored.git --recursive
+> git clone git@github.com:ezored/ezored.git
 
 2. Enter on cloned folder:
 > cd ezored
 
-3. Test it with the following command that show bootstrap menu:
+3. Execute to download **ezored-core** and to show bootstrap menu:
 > python make.py
 
 4. Install conan profiles:
@@ -193,6 +193,7 @@ Example: If you are on **Linux**, you can build the **linux_app** target, if on 
 3. You don't need run conan verb everytime, only run if you never run it before or if you change configuration, added dependencies, changed dependency version or other things that need call conan to rebuilt your dependencies.
 4. Conan profiles are required to specify basic environment profile things to build targets, but some settings are changed while build, like **arch** and **build_type**.
 5. Check requirements for each target. Example: iOS target require that you have a macOS system.
+6. Ezored **core** is downloaded only one time, always that **ezored** folder not exists.
 
 ## Dist folder prebuilt
 
