@@ -100,7 +100,8 @@ def run(params):
                     'bin'
                 )
 
-                file.copy_all_inside(deps_bin_dir, build_bin_dir)
+                if os.path.isdir(deps_bin_dir):
+                    file.copy_all_inside(deps_bin_dir, build_bin_dir)
     else:
         log.error('Arch list for "{0}" is invalid or empty'.format(
             target_name
