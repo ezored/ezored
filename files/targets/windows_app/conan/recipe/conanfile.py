@@ -41,6 +41,9 @@ class TargetConan(ConanFile):
         cmake.configure()
         cmake.build()
 
+    def imports(self):
+        self.copy("*.dll", dst="bin", keep_path=False)
+
     def requirements(self):
         self.requires('sqlite3/3.27.2@bincrafters/stable')
         self.requires('sqlitecpp/2.3.0@bincrafters/stable')

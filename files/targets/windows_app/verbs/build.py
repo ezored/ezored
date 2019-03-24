@@ -83,6 +83,24 @@ def run(params):
                     run_args,
                     build_dir
                 )
+
+                # copy dependencies
+                deps_bin_dir = os.path.join(
+                    proj_path,
+                    const.DIR_NAME_BUILD,
+                    target_name,
+                    build_type,
+                    arch['conan_arch'],
+                    const.DIR_NAME_BUILD_CONAN,
+                    'bin'
+                )
+
+                build_bin_dir = os.path.join(
+                    build_dir,
+                    'bin'
+                )
+
+                file.copy_all_inside(deps_bin_dir, build_bin_dir)
     else:
         log.error('Arch list for "{0}" is invalid or empty'.format(
             target_name
