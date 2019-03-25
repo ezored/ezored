@@ -242,6 +242,13 @@ You will see the list of formatted files.
 
 If you don't have **clang-format** installed and in your **path**, you will be notified with an error.
 
+## Other ezored samples:
+
+- **ezored-basic**  
+    Basic sample with minimal requirements.
+- **ezored-sdl2**  
+    SDL2 sample GUI application.
+
 ## Projects:
 
 We have some samples inside "projects" folder.
