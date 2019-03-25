@@ -245,9 +245,9 @@ If you don't have **clang-format** installed and in your **path**, you will be n
 ## Other ezored samples:
 
 - [**ezored-basic**](https://github.com/ezored/ezored-basic)  
-    Basic sample with minimal requirements.
+    Basic ezored sample with minimal requirements.
 - [**ezored-sdl2**](https://github.com/ezored/ezored-sdl2)  
-    SDL2 sample GUI application.
+    SDL2 ezored sample GUI application.
 
 ## Projects:
 
