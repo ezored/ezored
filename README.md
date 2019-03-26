@@ -115,6 +115,8 @@ If you don't remember what commands are available you can type only this to list
 
 ```python make.py```
 
+If you want create your own commands you only need put it inside folder **"files/commands"**. Today **ezored** has some custom commands. An implemented custom command inside **ezored** is **dist** that is located in **files/commands/dist.py**.
+
 ## Requirements:
 
 **The general requirements is:**
