@@ -2,8 +2,8 @@
 
 #include "ezored/domain/Customer.hpp"
 #include "ezored/helpers/CustomerHelper.hpp"
-#include "rapidjson/document.h"
 #include "ezored/net/http/HttpResponse.hpp"
+#include "rapidjson/document.h"
 
 #include <string>
 

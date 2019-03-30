@@ -9,9 +9,9 @@
 #include "ezored/net/http/HttpResponse.hpp"
 #include "ezored/net/http/SimpleHttpClientPlatformService.hpp"
 
+#include "ezored/helpers/StringHelper.hpp"
 #include "ezored/io/FileHelper.hpp"
 #include "ezored/time/DateTime.hpp"
-#include "ezored/helpers/StringHelper.hpp"
 
 #include "ezored/helpers/CustomerHelper.hpp"
 #include "ezored/helpers/EnvironmentHelper.hpp"
