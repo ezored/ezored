@@ -11,10 +11,10 @@
 
 #include "ezored/io/FileHelper.hpp"
 #include "ezored/time/DateTime.hpp"
+#include "ezored/helpers/StringHelper.hpp"
 
 #include "ezored/helpers/CustomerHelper.hpp"
 #include "ezored/helpers/EnvironmentHelper.hpp"
-#include "ezored/helpers/StringHelper.hpp"
 #include "ezored/helpers/TodoHelper.hpp"
 
 #include "ezored/data/SharedData.hpp"
@@ -41,10 +41,12 @@ using namespace ezored::time;
 using namespace ezored::helpers;
 using namespace ezored::io;
 using namespace ezored::data;
+
 using namespace ezored::domain;
 using namespace ezored::core;
 using namespace ezored::dataservices;
 using namespace ezored::systemservices;
+using namespace ezored::helpers;
 
 int main(int argc, char **argv)
 {
@@ -136,7 +138,7 @@ int main(int argc, char **argv)
     auto httpResponse = HttpClient::shared()->doRequest(httpRequest);
     std::cout << "Response: " << httpResponse.body << std::endl;
 
-    auto secret = ezored::helpers::EnvironmentHelper::getSecretKey();
+    auto secret = EnvironmentHelper::getSecretKey();
 
     std::cout << "SECRET: " << secret << std::endl;
     std::cout << "CURRENT DATETIME UTC: " << DateTime::getCurrentDateTimeAsString() << std::endl;
