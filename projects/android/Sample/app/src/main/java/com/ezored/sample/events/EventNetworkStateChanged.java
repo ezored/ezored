@@ -1,4 +1,4 @@
-package com.ezored.sample.event;
+package com.ezored.sample.events;
 
 public class EventNetworkStateChanged extends BaseEvent {
 

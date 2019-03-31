@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import com.ezored.sample.event.EventNetworkStateChanged;
+import com.ezored.sample.events.EventNetworkStateChanged;
 import com.ezored.util.Logger;
 import org.greenrobot.eventbus.EventBus;
 
