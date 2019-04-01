@@ -3,6 +3,7 @@ package com.ezored.sample.observers;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
+
 import com.ezored.sample.app.Application;
 
 public class AppLifecycleObserver implements LifecycleObserver {

@@ -6,8 +6,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+
 import com.ezored.sample.R;
 import com.ezored.sample.ui.fragment.base.BaseFragment;
+
 import org.greenrobot.eventbus.EventBus;
 
 public class BaseActivity extends AppCompatActivity {

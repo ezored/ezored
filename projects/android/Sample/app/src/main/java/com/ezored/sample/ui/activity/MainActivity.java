@@ -1,6 +1,7 @@
 package com.ezored.sample.ui.activity;
 
 import android.content.Intent;
+
 import com.ezored.sample.ui.activity.base.BaseActivity;
 import com.ezored.sample.ui.fragment.MainFragment;
 import com.ezored.sample.ui.fragment.base.BaseFragment;

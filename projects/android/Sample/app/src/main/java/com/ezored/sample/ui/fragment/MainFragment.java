@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+
 import com.ezored.sample.R;
 import com.ezored.sample.adapter.MainViewPagerAdapter;
 import com.ezored.sample.ui.fragment.base.BaseFragment;

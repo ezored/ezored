@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.accessibility.AccessibilityManager;
+
 import com.ezored.sample.app.Application;
 
 import java.security.MessageDigest;

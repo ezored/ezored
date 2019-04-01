@@ -4,6 +4,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
 import com.ezored.sample.R;
 import com.ezored.sample.adapter.SimpleOptionAdapter;
 import com.ezored.sample.enums.LoadStateEnum;

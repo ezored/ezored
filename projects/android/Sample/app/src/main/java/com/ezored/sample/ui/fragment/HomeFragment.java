@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.ezored.core.ApplicationCore;
+import com.ezored.dataservices.TodoDataService;
+import com.ezored.domain.Todo;
 import com.ezored.helpers.EnvironmentHelper;
 import com.ezored.helpers.SharedDataHelper;
 import com.ezored.io.FileHelper;
@@ -25,6 +27,8 @@ import com.ezored.sample.ui.fragment.base.BaseListFragment;
 import com.ezored.sample.utils.UIUtil;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 
 public class HomeFragment extends BaseListFragment<SimpleOption> implements SimpleOptionAdapter.SimpleOptionAdapterListener {
@@ -167,8 +171,40 @@ public class HomeFragment extends BaseListFragment<SimpleOption> implements Simp
     }
 
     private void doActionTodo() {
-        Intent intent = TodoListActivity.newIntent(getContext());
-        startActivity(intent);
+        showLoadingView();
+
+        UIUtil.runOnNewThread(new Closure() {
+            @Override
+            public void exec() {
+                // add some rows
+                TodoDataService.truncate();
+
+                for (int i = 1; i <= 100; i++) {
+                    Todo todo = new Todo(
+                            0,
+                            String.format(Locale.getDefault(), "Title %d", i),
+                            String.format(Locale.getDefault(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. %d", i),
+                            new HashMap<String, String>(),
+                            false,
+                            new Date(),
+                            new Date()
+                    );
+
+                    TodoDataService.add(todo);
+                }
+
+                // show list activity
+                UIUtil.runOnMainThread(new Closure() {
+                    @Override
+                    public void exec() {
+                        showMainView();
+
+                        Intent intent = TodoListActivity.newIntent(getContext());
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
     }
 
     @Override
