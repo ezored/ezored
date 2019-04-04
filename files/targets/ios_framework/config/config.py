@@ -45,6 +45,10 @@ def run(params):
             },
             {
                 'type': 'dir',
+                'path': 'files/djinni/app-enums/generated-src/objc',
+            },
+            {
+                'type': 'dir',
                 'path': 'files/djinni/app-core/generated-src/objc',
             },
             {

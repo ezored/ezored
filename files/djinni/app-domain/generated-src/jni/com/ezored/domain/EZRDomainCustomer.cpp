@@ -3,6 +3,7 @@
 
 #include "com/ezored/domain/EZRDomainCustomer.hpp"  // my header
 #include "Marshal.hpp"
+#include "com/ezored/enums/EZREnumsCustomerStatusEnum.hpp"
 
 namespace djinni_generated {
 
@@ -15,18 +16,20 @@ auto EZRDomainCustomer::fromCpp(JNIEnv* jniEnv, const CppType& c) -> ::djinni::L
     auto r = ::djinni::LocalRef<JniType>{jniEnv->NewObject(data.clazz.get(), data.jconstructor,
                                                            ::djinni::get(::djinni::I64::fromCpp(jniEnv, c.id)),
                                                            ::djinni::get(::djinni::String::fromCpp(jniEnv, c.name)),
-                                                           ::djinni::get(::djinni::String::fromCpp(jniEnv, c.token)))};
+                                                           ::djinni::get(::djinni::String::fromCpp(jniEnv, c.token)),
+                                                           ::djinni::get(::djinni_generated::EZREnumsCustomerStatusEnum::fromCpp(jniEnv, c.status)))};
     ::djinni::jniExceptionCheck(jniEnv);
     return r;
 }
 
 auto EZRDomainCustomer::toCpp(JNIEnv* jniEnv, JniType j) -> CppType {
-    ::djinni::JniLocalScope jscope(jniEnv, 4);
+    ::djinni::JniLocalScope jscope(jniEnv, 5);
     assert(j != nullptr);
     const auto& data = ::djinni::JniClass<EZRDomainCustomer>::get();
     return {::djinni::I64::toCpp(jniEnv, jniEnv->GetLongField(j, data.field_mId)),
             ::djinni::String::toCpp(jniEnv, (jstring)jniEnv->GetObjectField(j, data.field_mName)),
-            ::djinni::String::toCpp(jniEnv, (jstring)jniEnv->GetObjectField(j, data.field_mToken))};
+            ::djinni::String::toCpp(jniEnv, (jstring)jniEnv->GetObjectField(j, data.field_mToken)),
+            ::djinni_generated::EZREnumsCustomerStatusEnum::toCpp(jniEnv, jniEnv->GetObjectField(j, data.field_mStatus))};
 }
 
 }  // namespace djinni_generated

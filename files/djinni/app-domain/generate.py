@@ -62,7 +62,7 @@ subprocess.call([
     "--objc-out", objc_out,
     "--objc-type-prefix", objc_prefix,
     "--objc-include-prefix", objc_include_prefix,
-    "--objcpp-include-cpp-prefix", objc_include_cpp_prefix,    
+    "--objcpp-include-cpp-prefix", objc_include_cpp_prefix,
     "--objcpp-include-prefix", objc_include_prefix,
     "--objcpp-out", objc_out,
     "--yaml-out", 'yaml',

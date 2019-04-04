@@ -2,10 +2,10 @@
 
 import os
 
-from app import const
-from mod import file
-from mod import log
-from mod import runner
+from ezored.app import const
+from ezored.modules import file
+from ezored.modules import log
+from ezored.modules import runner
 
 
 # -----------------------------------------------------------------------------
@@ -43,7 +43,7 @@ def generate(params):
 
     modules = runner.run_external(
         path=djinni_modules_path,
-        module_name='modules',
+        module_name='djinni_modules',
         command_name='get_modules',
         command_params=params,
         show_log=False,

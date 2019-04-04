@@ -47,7 +47,7 @@ public class SimpleOptionAdapter extends RecyclerView.Adapter<SimpleOptionAdapte
         }
 
         holder.ivIcon.setImageResource(option.getImage(getContext()));
-        holder.ivIcon.setColorFilter(ContextCompat.getColor(context, R.color.blue_500));
+        holder.ivIcon.setColorFilter(ContextCompat.getColor(context, R.color.list_item_icon_color));
     }
 
     @Override

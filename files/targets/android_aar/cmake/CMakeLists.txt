@@ -25,6 +25,7 @@ set(PROJECT_HEADER_SEARCH_PATHS
     "${PROJECT_ROOT_PATH}/files/djinni/support-lib/jni"
 
     "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/jni"
     "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/jni"
     "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/jni"
     "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/jni"
@@ -44,6 +45,7 @@ file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib
 file(GLOB H_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/support-lib/jni/*.hpp")
 
 file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_APP_ENUMS_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/jni/*.h")
 file(GLOB_RECURSE H_FILES_APP_CORE_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/jni/*.h")
 file(GLOB_RECURSE H_FILES_APP_DATA_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/jni/*.h")
 file(GLOB_RECURSE H_FILES_APP_SYSTEM_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/jni/*.h")
@@ -63,6 +65,7 @@ file(GLOB S_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/support-lib
 file(GLOB S_FILES_SUPPORT_MAIN_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib/jni/main-ext/*.cpp")
 
 file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_APP_ENUMS_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/jni/*.cpp")
 file(GLOB_RECURSE S_FILES_APP_CORE_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/jni/*.cpp")
 file(GLOB_RECURSE S_FILES_APP_DATA_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/jni/*.cpp")
 file(GLOB_RECURSE S_FILES_APP_SYSTEM_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/jni/*.cpp")
@@ -82,6 +85,7 @@ set(
     ${H_FILES_SUPPORT_LIB_CPP}
     ${H_FILES_SUPPORT_LIB_JNI}
     ${H_FILES_APP_DOMAIN_LIB_JNI}
+    ${H_FILES_APP_ENUMS_LIB_JNI}
     ${H_FILES_APP_CORE_LIB_JNI}
     ${H_FILES_APP_DATA_SERVICES_LIB_JNI}
     ${H_FILES_APP_SYSTEM_SERVICES_LIB_JNI}
@@ -100,6 +104,7 @@ set(
     ${S_FILES_SUPPORT_MAIN_LIB_CPP}
     ${S_FILES_SUPPORT_LIB_JNI}
     ${S_FILES_APP_DOMAIN_LIB_JNI}
+    ${S_FILES_APP_ENUMS_LIB_JNI}
     ${S_FILES_APP_CORE_LIB_JNI}
     ${S_FILES_APP_DATA_SERVICES_LIB_JNI}
     ${S_FILES_APP_SYSTEM_SERVICES_LIB_JNI}

@@ -27,6 +27,8 @@ class BaseViewController: UIViewController, NetworkErrorViewProtocol {
     func createAll() {
         // controller
         navigationItem.title = getVCTitle()
+        setupNavigationBar()
+        setupTabBar()
         
         // view
         createMainContainerView()
@@ -73,33 +75,33 @@ class BaseViewController: UIViewController, NetworkErrorViewProtocol {
     func addMainContraints() {
         // error view
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[errorView]-0-|", options: [], metrics: nil, views: [
-            "errorView": errorView
+            "errorView": errorView!
             ]))
         
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[topLayoutGuide]-0-[errorView]-0-[bottomLayoutGuide]", options: [], metrics: nil, views: [
-            "errorView": errorView,
+            "errorView": errorView!,
             "topLayoutGuide": topLayoutGuide,
             "bottomLayoutGuide": bottomLayoutGuide
             ]))
         
         // loading view
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[loadingView]-0-|", options: [], metrics: nil, views: [
-            "loadingView": loadingView
+            "loadingView": loadingView!
             ]))
         
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[topLayoutGuide]-0-[loadingView]-0-[bottomLayoutGuide]", options: [], metrics: nil, views: [
-            "loadingView": loadingView,
+            "loadingView": loadingView!,
             "topLayoutGuide": topLayoutGuide,
             "bottomLayoutGuide": bottomLayoutGuide
             ]))
         
         // network error view
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[networkErrorView]-0-|", options: [], metrics: nil, views: [
-            "networkErrorView": networkErrorView
+            "networkErrorView": networkErrorView!
             ]))
         
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[topLayoutGuide]-0-[networkErrorView]-0-[bottomLayoutGuide]", options: [], metrics: nil, views: [
-            "networkErrorView": networkErrorView,
+            "networkErrorView": networkErrorView!,
             "topLayoutGuide": topLayoutGuide,
             "bottomLayoutGuide": bottomLayoutGuide
             ]))
@@ -136,7 +138,7 @@ class BaseViewController: UIViewController, NetworkErrorViewProtocol {
     }
     
     func getViewControllerPreferredStatusBarStyle() -> UIStatusBarStyle {
-        return .default
+        return .lightContent
     }
     
     // MARK: EVENTS
@@ -147,6 +149,18 @@ class BaseViewController: UIViewController, NetworkErrorViewProtocol {
     
     func getVCTitle() -> String {
         return "Base"
+    }
+    
+    func setupNavigationBar() {
+        navigationController?.navigationBar.isTranslucent = false
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.barTintColor = UIColor(hexString: "#ff3860")!
+    }
+    
+    func setupTabBar() {
+        tabBarController?.tabBar.tintColor = UIColor(hexString: "#ff3860")!
     }
     
     func validateLoadData() {

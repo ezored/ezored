@@ -25,10 +25,11 @@ private:
     friend ::djinni::JniClass<EZRDomainCustomer>;
 
     const ::djinni::GlobalRef<jclass> clazz { ::djinni::jniFindClass("com/ezored/domain/Customer") };
-    const jmethodID jconstructor { ::djinni::jniGetMethodID(clazz.get(), "<init>", "(JLjava/lang/String;Ljava/lang/String;)V") };
+    const jmethodID jconstructor { ::djinni::jniGetMethodID(clazz.get(), "<init>", "(JLjava/lang/String;Ljava/lang/String;Lcom/ezored/enums/CustomerStatusEnum;)V") };
     const jfieldID field_mId { ::djinni::jniGetFieldID(clazz.get(), "mId", "J") };
     const jfieldID field_mName { ::djinni::jniGetFieldID(clazz.get(), "mName", "Ljava/lang/String;") };
     const jfieldID field_mToken { ::djinni::jniGetFieldID(clazz.get(), "mToken", "Ljava/lang/String;") };
+    const jfieldID field_mStatus { ::djinni::jniGetFieldID(clazz.get(), "mStatus", "Lcom/ezored/enums/CustomerStatusEnum;") };
 };
 
 }  // namespace djinni_generated

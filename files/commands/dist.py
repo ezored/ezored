@@ -2,11 +2,11 @@
 
 import os
 
-from app import const
-from mod import file
-from mod import log
-from mod import net
-from mod import pack
+from ezored.app import const
+from ezored.modules import file
+from ezored.modules import log
+from ezored.modules import net
+from ezored.modules import pack
 
 
 # -----------------------------------------------------------------------------

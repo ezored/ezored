@@ -4,6 +4,7 @@
 # -----------------------------------------------------------------------------
 def get_modules(params):
     return [
+        'app-enums',
         'app-domain',
         'app-core',
         'app-data-services',

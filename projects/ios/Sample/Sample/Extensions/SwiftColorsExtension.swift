@@ -21,94 +21,94 @@
 // THE SOFTWARE.
 
 #if os(iOS)
-  import UIKit
-  typealias SWColor = UIColor
+import UIKit
+typealias SWColor = UIColor
 #else
-  import Cocoa
-  typealias SWColor = NSColor
+import Cocoa
+typealias SWColor = NSColor
 #endif
 
 public extension SWColor {
-  /**
-    Create non-autoreleased color with in the given hex string
-    Alpha will be set as 1 by default
-    
-    - parameter   hexString:
-    - returns: color with the given hex string
-  */
-  public convenience init?(hexString: String) {
-    self.init(hexString: hexString, alpha: 1.0)
-  }
-
-  /**
-    Create non-autoreleased color with in the given hex string and alpha
-    
-    - parameter   hexString:
-    - parameter   alpha:
-    - returns: color with the given hex string and alpha
-  */
-  public convenience init?(hexString: String, alpha: Float) {
-    var hex = hexString
-
-    // Check for hash and remove the hash
-    if hex.hasPrefix("#") {
-        hex = String(hex[hex.index(hex.startIndex, offsetBy: 1)...])
+    /**
+     Create non-autoreleased color with in the given hex string
+     Alpha will be set as 1 by default
+     
+     - parameter   hexString:
+     - returns: color with the given hex string
+     */
+    convenience init?(hexString: String) {
+        self.init(hexString: hexString, alpha: 1.0)
     }
     
-    if let _ = hex.range(of: "(^[0-9A-Fa-f]{6}$)|(^[0-9A-Fa-f]{3}$)", options: .regularExpression) {
-    
-        // Deal with 3 character Hex strings
-        if hex.count == 3 {
-            let redHex   = String(hex[..<hex.index(hex.startIndex, offsetBy: 1)])
-            let greenHex = String(hex[hex.index(hex.startIndex, offsetBy: 1)..<hex.index(hex.startIndex, offsetBy: 2)])
-            let blueHex  = String(hex[hex.index(hex.startIndex, offsetBy: 2)...])
-            hex = redHex + redHex + greenHex + greenHex + blueHex + blueHex
+    /**
+     Create non-autoreleased color with in the given hex string and alpha
+     
+     - parameter   hexString:
+     - parameter   alpha:
+     - returns: color with the given hex string and alpha
+     */
+    convenience init?(hexString: String, alpha: Float) {
+        var hex = hexString
+        
+        // Check for hash and remove the hash
+        if hex.hasPrefix("#") {
+            hex = String(hex[hex.index(hex.startIndex, offsetBy: 1)...])
         }
         
-        let redHex   = String(hex[..<hex.index(hex.startIndex, offsetBy: 2)])
-        let greenHex = String(hex[hex.index(hex.startIndex, offsetBy: 2)..<hex.index(hex.startIndex, offsetBy: 4)])
-        let blueHex  = String(hex[hex.index(hex.startIndex, offsetBy: 4)..<hex.index(hex.startIndex, offsetBy: 6)])
-
-        var redInt:   CUnsignedInt = 0
-        var greenInt: CUnsignedInt = 0
-        var blueInt:  CUnsignedInt = 0
-
-        Scanner(string: redHex).scanHexInt32(&redInt)
-        Scanner(string: greenHex).scanHexInt32(&greenInt)
-        Scanner(string: blueHex).scanHexInt32(&blueInt)
-
-        self.init(red: CGFloat(redInt) / 255.0, green: CGFloat(greenInt) / 255.0, blue: CGFloat(blueInt) / 255.0, alpha: CGFloat(alpha))
+        if let _ = hex.range(of: "(^[0-9A-Fa-f]{6}$)|(^[0-9A-Fa-f]{3}$)", options: .regularExpression) {
+            
+            // Deal with 3 character Hex strings
+            if hex.count == 3 {
+                let redHex   = String(hex[..<hex.index(hex.startIndex, offsetBy: 1)])
+                let greenHex = String(hex[hex.index(hex.startIndex, offsetBy: 1)..<hex.index(hex.startIndex, offsetBy: 2)])
+                let blueHex  = String(hex[hex.index(hex.startIndex, offsetBy: 2)...])
+                hex = redHex + redHex + greenHex + greenHex + blueHex + blueHex
+            }
+            
+            let redHex   = String(hex[..<hex.index(hex.startIndex, offsetBy: 2)])
+            let greenHex = String(hex[hex.index(hex.startIndex, offsetBy: 2)..<hex.index(hex.startIndex, offsetBy: 4)])
+            let blueHex  = String(hex[hex.index(hex.startIndex, offsetBy: 4)..<hex.index(hex.startIndex, offsetBy: 6)])
+            
+            var redInt:   CUnsignedInt = 0
+            var greenInt: CUnsignedInt = 0
+            var blueInt:  CUnsignedInt = 0
+            
+            Scanner(string: redHex).scanHexInt32(&redInt)
+            Scanner(string: greenHex).scanHexInt32(&greenInt)
+            Scanner(string: blueHex).scanHexInt32(&blueInt)
+            
+            self.init(red: CGFloat(redInt) / 255.0, green: CGFloat(greenInt) / 255.0, blue: CGFloat(blueInt) / 255.0, alpha: CGFloat(alpha))
+        }
+        else {
+            // Note:
+            // The swift 1.1 compiler is currently unable to destroy partially initialized classes in all cases,
+            // so it disallows formation of a situation where it would have to.  We consider this a bug to be fixed
+            // in future releases, not a feature. -- Apple Forum
+            self.init()
+            return nil
+        }
     }
-    else {
-        // Note:
-        // The swift 1.1 compiler is currently unable to destroy partially initialized classes in all cases,
-        // so it disallows formation of a situation where it would have to.  We consider this a bug to be fixed
-        // in future releases, not a feature. -- Apple Forum
-        self.init()
-        return nil
+    
+    /**
+     Create non-autoreleased color with in the given hex value
+     Alpha will be set as 1 by default
+     
+     - parameter   hex:
+     - returns: color with the given hex value
+     */
+    convenience init?(hex: Int) {
+        self.init(hex: hex, alpha: 1.0)
     }
-  }
-
-  /**
-    Create non-autoreleased color with in the given hex value
-    Alpha will be set as 1 by default
     
-    - parameter   hex:
-    - returns: color with the given hex value
-  */
-  public convenience init?(hex: Int) {
-    self.init(hex: hex, alpha: 1.0)
-  }
-  
-  /**
-    Create non-autoreleased color with in the given hex value and alpha
-    
-    - parameter   hex:
-    - parameter   alpha:
-    - returns: color with the given hex value and alpha
-  */
-  public convenience init?(hex: Int, alpha: Float) {
-    let hexString = NSString(format: "%2X", hex)
-    self.init(hexString: hexString as String , alpha: alpha)
-  }
+    /**
+     Create non-autoreleased color with in the given hex value and alpha
+     
+     - parameter   hex:
+     - parameter   alpha:
+     - returns: color with the given hex value and alpha
+     */
+    convenience init?(hex: Int, alpha: Float) {
+        let hexString = NSString(format: "%2X", hex)
+        self.init(hexString: hexString as String , alpha: alpha)
+    }
 }

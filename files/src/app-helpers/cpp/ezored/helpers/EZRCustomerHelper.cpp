@@ -2,6 +2,7 @@
 
 #include "ezored/core/ApplicationCore.hpp"
 #include "ezored/helpers/SharedDataHelper.hpp"
+#include "ezored/enums/CustomerStatusEnum.hpp"
 
 #include "rapidjson/document.h"
 #include "rapidjson/stringbuffer.h"
@@ -13,6 +14,7 @@ namespace helpers
 {
 
 using namespace ezored::core;
+using namespace ezored::enums;
 
 bool CustomerHelper::isLogged()
 {
@@ -82,6 +84,27 @@ Customer EZRCustomerHelper::fromJson(const rapidjson::Value &json)
                     }
                 }
             }
+            {
+                // status
+                if (json.HasMember("status"))
+                {
+                    const rapidjson::Value &value = json["status"];
+
+                    if (value.IsInt())
+                    {
+                        auto status = value.GetInt();
+
+                        if (status == static_cast<int>(CustomerStatusEnum::ACTIVE))
+                        {
+                            customer.status = CustomerStatusEnum::ACTIVE;
+                        }
+                        else if (status == static_cast<int>(CustomerStatusEnum::INACTIVE))
+                        {
+                            customer.status = CustomerStatusEnum::INACTIVE;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -105,6 +128,9 @@ std::string EZRCustomerHelper::toJson(const Customer &customer)
     writer.Key("token");
     writer.String(customer.token.c_str());
 
+    writer.Key("status");
+    writer.Int(static_cast<int>(customer.status));
+
     // end: customer data
     writer.EndObject();
 
@@ -121,7 +147,7 @@ Customer EZRCustomerHelper::fromHttpResponse(const HttpResponse httpResponse)
     {
         const rapidjson::Value &dataArgs = json["data"];
 
-        if (!dataArgs.IsNull())
+        if (!dataArgs.IsNull() && dataArgs.HasMember("customer"))
         {
             const rapidjson::Value &customerArgs = dataArgs["customer"];
             return fromJson(customerArgs);
@@ -133,7 +159,7 @@ Customer EZRCustomerHelper::fromHttpResponse(const HttpResponse httpResponse)
 
 Customer CustomerHelper::create()
 {
-    return Customer{0, "", ""};
+    return Customer{0, "", "", CustomerStatusEnum::INACTIVE};
 }
 
 void CustomerHelper::onCustomerLogin(const Customer &customer)

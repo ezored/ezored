@@ -4,24 +4,14 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var mainViewController: UITabBarController?
+    var mainViewController: MainViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         initialize()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        mainViewController = UITabBarController()
-        
-        let homeViewController = HomeViewController()
-        homeViewController.tabBarItem = UITabBarItem(title: homeViewController.getVCTitle(), image: UIImage(named: "IcoHome"), tag: 0)
-        let homeNC = UINavigationController(rootViewController: homeViewController)
-        
-        let settingsViewController = SettingsViewController()
-        settingsViewController.tabBarItem = UITabBarItem(title: settingsViewController.getVCTitle(), image: UIImage(named: "IcoSettings"), tag: 1)
-        let settingsNC = UINavigationController(rootViewController: settingsViewController)
-        
-        mainViewController?.viewControllers = [homeNC, settingsNC]
+        mainViewController = MainViewController()
         
         window?.rootViewController = mainViewController
         window?.makeKeyAndVisible()

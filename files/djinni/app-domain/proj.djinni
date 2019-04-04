@@ -1,3 +1,5 @@
+@extern "../app-enums/yaml/customer_status_enum.yaml"
+
 todo = record {
     id: i64;
     title: string;
@@ -24,6 +26,7 @@ customer = record {
     id: i64;
     name: string;
     token: string;
+    status: customer_status_enum;
 } deriving(parcelable)
 
 initialization_data = record {

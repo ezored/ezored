@@ -67,6 +67,7 @@ int main(int argc, char **argv)
 
     ApplicationCore::shared()->initialize(initializationData, deviceData);
 
+    // get initialized customer is stored before
     {
         auto customer = ApplicationCore::shared()->getCustomer();
         std::cout << "Current customer: " << customer.id << " - " << customer.name << " - " << customer.token << std::endl;
@@ -74,6 +75,7 @@ int main(int argc, char **argv)
         std::cout << "Current customer token: " << CustomerHelper::getToken() << std::endl;
     }
 
+    // clear and add TODO items to database
     {
         TodoDataService::truncate();
 
@@ -105,6 +107,7 @@ int main(int argc, char **argv)
         TodoDataService::setDoneById(todo2.id, true);
     }
 
+    // get TODO items from database
     {
         auto list = TodoDataService::findAllOrderByCreatedAtDesc();
 
@@ -114,14 +117,15 @@ int main(int argc, char **argv)
         }
     }
 
+    // login error
     {
-        auto data = CustomerSystemService::login("demo", "demo");
+        auto data = CustomerSystemService::login("demo-error", "demo-error");
         std::cout << "Customer system service login: " << data.response.message << std::endl;
 
         if (data.response.success)
         {
             std::cout << "Customer system service login: OK" << std::endl;
-            std::cout << "Customer system service login customer: " << data.customer.id << " - " << data.customer.name << " - " << data.customer.token << std::endl;
+            std::cout << "Customer system service login customer / ID:" << data.customer.id << " / Name: " << data.customer.name << " / Token: " << data.customer.token << " / Status: " << static_cast<int>(data.customer.status) << std::endl;
         }
         else
         {
@@ -130,6 +134,24 @@ int main(int argc, char **argv)
         }
     }
 
+    // login success
+    {
+        auto data = CustomerSystemService::login("demo", "demo");
+        std::cout << "Customer system service login: " << data.response.message << std::endl;
+
+        if (data.response.success)
+        {
+            std::cout << "Customer system service login: OK" << std::endl;
+            std::cout << "Customer system service login customer / ID:" << data.customer.id << " / Name: " << data.customer.name << " / Token: " << data.customer.token << " / Status: " << static_cast<int>(data.customer.status) << std::endl;
+        }
+        else
+        {
+            std::cout << "Customer system service login: FAIL" << std::endl;
+            std::cout << "Customer system service login error: " << data.response.error.message << std::endl;
+        }
+    }
+
+    // show logged user
     {
         auto customer = ApplicationCore::shared()->getCustomer();
         std::cout << "Current customer: " << customer.id << " - " << customer.name << " - " << customer.token << std::endl;
@@ -137,10 +159,12 @@ int main(int argc, char **argv)
         std::cout << "Current customer token: " << CustomerHelper::getToken() << std::endl;
     }
 
+    // post http request
     auto httpRequest = HttpRequest("http://httpbin.org/post", HttpMethod::METHOD_POST, {}, {}, "");
     auto httpResponse = HttpClient::shared()->doRequest(httpRequest);
     std::cout << "Response: " << httpResponse.body << std::endl;
 
+    // secret key store internal
     auto secret = EnvironmentHelper::getSecretKey();
 
     std::cout << "SECRET: " << secret << std::endl;

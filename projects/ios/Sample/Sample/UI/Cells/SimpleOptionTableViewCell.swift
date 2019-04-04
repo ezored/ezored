@@ -54,7 +54,7 @@ class SimpleOptionTableViewCell: UITableViewCell {
         
         // icon
         ivIcon = UIImageView()
-        ivIcon.tintColor = UIColor(hexString: "#3d5afe")!
+        ivIcon.tintColor = UIColor(hexString: "#ff3860")!
         ivIcon.translatesAutoresizingMaskIntoConstraints = false
         ivIcon.backgroundColor = UIColor.clear
         containerView.addSubview(ivIcon)
@@ -62,29 +62,29 @@ class SimpleOptionTableViewCell: UITableViewCell {
     
     func layoutAll() {
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[containerView]-|", options: [], metrics: nil, views: [
-            "containerView": containerView,
+            "containerView": containerView!,
             ]))
         
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[lineView]|", options: [], metrics: nil, views: [
-            "lineView": lineView,
+            "lineView": lineView!,
             ]))
         
         contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[containerView]-[lineView(1)]|", options: [], metrics: nil, views: [
-            "containerView": containerView,
-            "lineView": lineView
+            "containerView": containerView!,
+            "lineView": lineView!
             ]))
         
         containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[ivIcon(26)]-[lbDescription]|", options: [], metrics: nil, views: [
-            "ivIcon": ivIcon,
-            "lbDescription": lbDescription
+            "ivIcon": ivIcon!,
+            "lbDescription": lbDescription!
             ]))
         
         containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-6-[ivIcon(26)]-6-|", options: [], metrics: nil, views: [
-            "ivIcon": ivIcon
+            "ivIcon": ivIcon!
             ]))
         
         containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-6-[lbDescription]-6-|", options: [], metrics: nil, views: [
-            "lbDescription": lbDescription
+            "lbDescription": lbDescription!
             ]))
     }
     

@@ -33,7 +33,7 @@ class SimpleOption {
     }
     
     func getImage() -> UIImage {
-        return UIImage(named: "IcoSimpleOption")!.imageWithColor(color: UIColor(hexString: "#3d5afe")!)!
+        return UIImage(named: "IcoSimpleOption")!.imageWithColor(color: UIColor(hexString: "#ff3860")!)!
     }
     
 }

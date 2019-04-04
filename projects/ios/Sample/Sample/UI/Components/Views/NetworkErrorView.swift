@@ -56,28 +56,28 @@ class NetworkErrorView: UIView {
     }
     
     func layoutAll() {
-        addConstraint(NSLayoutConstraint(item: container, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
-        addConstraint(NSLayoutConstraint(item: container, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
-        addConstraint(NSLayoutConstraint(item: container, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 26.0))
-        addConstraint(NSLayoutConstraint(item: container, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: -26.0))
+        addConstraint(NSLayoutConstraint(item: container!, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+        addConstraint(NSLayoutConstraint(item: container!, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
+        addConstraint(NSLayoutConstraint(item: container!, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 26.0))
+        addConstraint(NSLayoutConstraint(item: container!, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: -26.0))
         
-        container.addConstraint(NSLayoutConstraint(item: lbMessage, attribute: .centerX, relatedBy: .equal, toItem: container, attribute: .centerX, multiplier: 1.0, constant: 0.0))
-        container.addConstraint(NSLayoutConstraint(item: lbMessage, attribute: .leading, relatedBy: .equal, toItem: container, attribute: .leading, multiplier: 1.0, constant: 0.0))
-        container.addConstraint(NSLayoutConstraint(item: lbMessage, attribute: .trailing, relatedBy: .equal, toItem: container, attribute: .trailing, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: lbMessage!, attribute: .centerX, relatedBy: .equal, toItem: container, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: lbMessage!, attribute: .leading, relatedBy: .equal, toItem: container, attribute: .leading, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: lbMessage!, attribute: .trailing, relatedBy: .equal, toItem: container, attribute: .trailing, multiplier: 1.0, constant: 0.0))
         
-        container.addConstraint(NSLayoutConstraint(item: ivIcon, attribute: .centerX, relatedBy: .equal, toItem: container, attribute: .centerX, multiplier: 1.0, constant: 0.0))
-        container.addConstraint(NSLayoutConstraint(item: ivIcon, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 64.0))
-        container.addConstraint(NSLayoutConstraint(item: ivIcon, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 64.0))
+        container.addConstraint(NSLayoutConstraint(item: ivIcon!, attribute: .centerX, relatedBy: .equal, toItem: container, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: ivIcon!, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 64.0))
+        container.addConstraint(NSLayoutConstraint(item: ivIcon!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 64.0))
         
-        container.addConstraint(NSLayoutConstraint(item: btRefresh, attribute: .centerX, relatedBy: .equal, toItem: container, attribute: .centerX, multiplier: 1.0, constant: 0.0))
-        container.addConstraint(NSLayoutConstraint(item: btRefresh, attribute: .leading, relatedBy: .equal, toItem: container, attribute: .leading, multiplier: 1.0, constant: 0.0))
-        container.addConstraint(NSLayoutConstraint(item: btRefresh, attribute: .trailing, relatedBy: .equal, toItem: container, attribute: .trailing, multiplier: 1.0, constant: 0.0))
-        container.addConstraint(NSLayoutConstraint(item: btRefresh, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 44.0))
+        container.addConstraint(NSLayoutConstraint(item: btRefresh!, attribute: .centerX, relatedBy: .equal, toItem: container, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: btRefresh!, attribute: .leading, relatedBy: .equal, toItem: container, attribute: .leading, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: btRefresh!, attribute: .trailing, relatedBy: .equal, toItem: container, attribute: .trailing, multiplier: 1.0, constant: 0.0))
+        container.addConstraint(NSLayoutConstraint(item: btRefresh!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 44.0))
         
         container.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-[ivIcon]-20-[lbMessage]-60-[btRefresh]-|", options: [], metrics: nil, views: [
-            "lbMessage": lbMessage,
-            "ivIcon": ivIcon,
-            "btRefresh": btRefresh
+            "lbMessage": lbMessage!,
+            "ivIcon": ivIcon!,
+            "btRefresh": btRefresh!
             ]))
     }
     

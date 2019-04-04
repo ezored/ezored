@@ -1,6 +1,7 @@
 # Header search paths
 set(PROJECT_HEADER_SEARCH_PATHS
     "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/cpp"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/cpp"
     "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/cpp"
     "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/cpp"
     "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/cpp"
@@ -14,6 +15,7 @@ set(PROJECT_HEADER_SEARCH_PATHS
     "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/cpp"
 
     "${PROJECT_ROOT_PATH}/files/src/app-domain/cpp"
+    "${PROJECT_ROOT_PATH}/files/src/app-enums/cpp"
     "${PROJECT_ROOT_PATH}/files/src/app-core/cpp"
     "${PROJECT_ROOT_PATH}/files/src/app-data-services/cpp"
     "${PROJECT_ROOT_PATH}/files/src/app-system-services/cpp"
@@ -36,6 +38,9 @@ set(PROJECT_LIBRARY_SEARCH_PATHS "" CACHE INTERNAL "")
 # Header files
 file(GLOB H_FILES_APP_DOMAIN_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/cpp/ezored/domain/*.hpp")
 file(GLOB H_FILES_APP_DOMAIN_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-domain/cpp/ezored/domain/*.hpp")
+
+file(GLOB H_FILES_APP_ENUMS_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/cpp/ezored/enums/*.hpp")
+file(GLOB H_FILES_APP_ENUMS_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-enums/cpp/ezored/enums/*.hpp")
 
 file(GLOB H_FILES_APP_CORE_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/cpp/ezored/core/*.hpp")
 file(GLOB H_FILES_APP_CORE_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-core/cpp/ezored/core/*.hpp")
@@ -70,6 +75,9 @@ file(GLOB H_FILES_SHARED_DATA_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/shared-da
 # Source files
 file(GLOB S_FILES_APP_DOMAIN_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/cpp/ezored/domain/*.cpp")
 file(GLOB S_FILES_APP_DOMAIN_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-domain/cpp/ezored/domain/*.cpp")
+
+file(GLOB S_FILES_APP_ENUMS_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/cpp/ezored/enums/*.cpp")
+file(GLOB S_FILES_APP_ENUMS_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-enums/cpp/ezored/enums/*.cpp")
 
 file(GLOB S_FILES_APP_CORE_LIB "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/cpp/ezored/core/*.cpp")
 file(GLOB S_FILES_APP_CORE_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/app-core/cpp/ezored/core/*.cpp")
@@ -106,6 +114,8 @@ set(
     PROJECT_HEADER_FILES 
     ${H_FILES_APP_DOMAIN_LIB}
     ${H_FILES_APP_DOMAIN_LIB_IMPL}
+    ${H_FILES_APP_ENUMS_LIB}
+    ${H_FILES_APP_ENUMS_LIB_IMPL}
     ${H_FILES_APP_CORE_LIB}
     ${H_FILES_APP_CORE_LIB_IMPL}
     ${H_FILES_APP_DATA_SERVICES_LIB}
@@ -133,6 +143,8 @@ set(
     PROJECT_SOURCE_FILES 
     ${S_FILES_APP_DOMAIN_LIB}
     ${S_FILES_APP_DOMAIN_LIB_IMPL}
+    ${S_FILES_APP_ENUMS_LIB}
+    ${S_FILES_APP_ENUMS_LIB_IMPL}
     ${S_FILES_APP_CORE_LIB}
     ${S_FILES_APP_CORE_LIB_IMPL}
     ${S_FILES_APP_DATA_SERVICES_LIB}

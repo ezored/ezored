@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include "ezored/enums/CustomerStatusEnum.hpp"
 #include <cstdint>
 #include <string>
 #include <utility>
@@ -13,13 +14,16 @@ struct Customer final {
     int64_t id;
     std::string name;
     std::string token;
+    ::ezored::enums::CustomerStatusEnum status;
 
     Customer(int64_t id_,
              std::string name_,
-             std::string token_)
+             std::string token_,
+             ::ezored::enums::CustomerStatusEnum status_)
     : id(std::move(id_))
     , name(std::move(name_))
     , token(std::move(token_))
+    , status(std::move(status_))
     {}
 };
 

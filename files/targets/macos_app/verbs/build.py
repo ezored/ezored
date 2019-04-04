@@ -3,11 +3,11 @@
 import os
 
 import ezored.app.const as const
-from ezored.mod import file
-from ezored.mod import log
-from ezored.mod import runner
-from ezored.mod import target
-from ezored.mod import util
+from ezored.modules import file
+from ezored.modules import log
+from ezored.modules import runner
+from ezored.modules import target
+from ezored.modules import util
 
 
 # -----------------------------------------------------------------------------

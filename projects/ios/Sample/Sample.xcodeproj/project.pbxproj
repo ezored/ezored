@@ -46,6 +46,7 @@
 		3A2F231D2214A57D00A2FB4F /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FB2214A57D00A2FB4F /* AppData.swift */; };
 		3A2F231E2214A57D00A2FB4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FC2214A57D00A2FB4F /* AppDelegate.swift */; };
 		3A2F23242214A7A800A2FB4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F23262214A7A800A2FB4F /* Localizable.strings */; };
+		3AD9F93D22569DA600ED622F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD9F93C22569DA600ED622F /* MainViewController.swift */; };
 		3ADA2D8222162454005E6BD0 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enums.swift */; };
 		3ADA2D8422162556005E6BD0 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */; };
 		3ADA2D8922162760005E6BD0 /* SimpleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8822162760005E6BD0 /* SimpleOption.swift */; };
@@ -118,6 +119,7 @@
 		3A2F23252214A7A800A2FB4F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3A2F23282214A84D00A2FB4F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3A2F23302214B05B00A2FB4F /* Sample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sample-Bridging-Header.h"; sourceTree = "<group>"; };
+		3AD9F93C22569DA600ED622F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3ADA2D8122162454005E6BD0 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeUtil.swift; sourceTree = "<group>"; };
 		3ADA2D8822162760005E6BD0 /* SimpleOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleOption.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			children = (
 				3ADA2D9122163EEE005E6BD0 /* Base */,
 				3A2F22D82214A57D00A2FB4F /* HomeViewController.swift */,
+				3AD9F93C22569DA600ED622F /* MainViewController.swift */,
 				3A2F22D92214A57D00A2FB4F /* SettingsViewController.swift */,
 				3ADE826A2229D0E000D3FD7A /* TodoListViewController.swift */,
 			);
@@ -343,6 +346,7 @@
 				TargetAttributes = {
 					3A2F22C02214A4DA00A2FB4F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -443,6 +447,7 @@
 				3A2F23112214A57D00A2FB4F /* SwiftColorsExtension.swift in Sources */,
 				3ADA2D9C22163F0E005E6BD0 /* NetworkErrorView.swift in Sources */,
 				3ADA2D8422162556005E6BD0 /* DateTimeUtil.swift in Sources */,
+				3AD9F93D22569DA600ED622F /* MainViewController.swift in Sources */,
 				3ADE826B2229D0E000D3FD7A /* TodoListViewController.swift in Sources */,
 				3A2F230A2214A57D00A2FB4F /* UITableViewExtension.swift in Sources */,
 				3A2F231B2214A57D00A2FB4F /* UIUtil.swift in Sources */,
@@ -615,7 +620,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sample/Sample-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -640,7 +645,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sample/Sample-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

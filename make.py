@@ -21,7 +21,7 @@ if not os.path.isdir(ezored_path):
 sys.path.insert(0, ezored_path)
 
 try:
-    from mod import ezored
+    from ezored.modules import ezored
 except ImportError:
     error_msg = "[ERROR] Failed to initialize ezored-core in '{0}'"
     print(error_msg.format(proj_path))

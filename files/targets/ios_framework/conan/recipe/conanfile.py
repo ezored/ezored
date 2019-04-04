@@ -26,6 +26,7 @@ class TargetConan(ConanFile):
         'enable_arc': 'ANY',
         'enable_visibility': 'ANY',
         'cmake_toolchain_file': 'ANY',
+        'sqlite3:threadsafe': 1,
         'Poco:enable_xml': False,
         'Poco:enable_json': False,
         'Poco:enable_mongodb': False,

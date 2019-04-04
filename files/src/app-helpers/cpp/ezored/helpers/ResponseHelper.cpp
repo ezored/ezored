@@ -59,36 +59,45 @@ Response ResponseHelper::fromHttpResponse(const HttpResponse httpResponse)
                         {
                             if (!errorData.IsNull() && errorData.IsArray())
                             {
+                                /**
+                                 * In this case errors is:
+                                 * "data":{
+                                 *     "errors":[
+                                 *         [
+                                 *             "error-field",
+                                 *             ["error-message"]
+                                 *         ]
+                                 *     ]
+                                 * }
+                                 */
+
                                 std::string errorField = "";
                                 std::string errorMessage = "";
+
                                 auto x = 0;
 
                                 for (auto &errorFieldMessageData : errorData.GetArray())
                                 {
-                                    if (!errorFieldMessageData.IsNull() && errorFieldMessageData.IsArray())
+                                    if (!errorFieldMessageData.IsNull())
                                     {
-                                        /**
-                                         * In this case errors is:
-                                         * "data":{
-                                         *     "errors":[
-                                         *         [
-                                         *             "error-field",
-                                         *             ["error-message"]
-                                         *         ]
-                                         *     ]
-                                         * }
-                                         */
-                                        for (auto &errorFieldMessageDataItem : errorFieldMessageData.GetArray())
+                                        if (errorFieldMessageData.IsString())
                                         {
-                                            if (!errorFieldMessageDataItem.IsNull() && errorFieldMessageDataItem.IsString())
+                                            errorField = errorFieldMessageData.GetString();
+                                        }
+                                        else if (errorFieldMessageData.IsArray())
+                                        {
+                                            for (auto &errorFieldMessageDataItem : errorFieldMessageData.GetArray())
                                             {
-                                                if (x == 1)
+                                                if (!errorFieldMessageDataItem.IsNull() && errorFieldMessageDataItem.IsString())
                                                 {
-                                                    errorMessage = errorFieldMessageDataItem.GetString();
-                                                }
-                                                else
-                                                {
-                                                    break;
+                                                    if (x == 1)
+                                                    {
+                                                        errorMessage = errorFieldMessageDataItem.GetString();
+                                                    }
+                                                    else
+                                                    {
+                                                        break;
+                                                    }
                                                 }
                                             }
                                         }

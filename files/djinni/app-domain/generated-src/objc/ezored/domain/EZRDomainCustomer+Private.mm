@@ -3,6 +3,7 @@
 
 #import "ezored/domain/EZRDomainCustomer+Private.h"
 #import "DJIMarshal+Private.h"
+#import "ezored/enums/EZREnumsCustomerStatusEnum+Private.h"
 #include <cassert>
 
 namespace djinni_generated {
@@ -12,14 +13,16 @@ auto Customer::toCpp(ObjcType obj) -> CppType
     assert(obj);
     return {::djinni::I64::toCpp(obj.id),
             ::djinni::String::toCpp(obj.name),
-            ::djinni::String::toCpp(obj.token)};
+            ::djinni::String::toCpp(obj.token),
+            ::djinni::Enum<::ezored::enums::CustomerStatusEnum, EZREnumsCustomerStatusEnum>::toCpp(obj.status)};
 }
 
 auto Customer::fromCpp(const CppType& cpp) -> ObjcType
 {
     return [[EZRDomainCustomer alloc] initWithId:(::djinni::I64::fromCpp(cpp.id))
                                             name:(::djinni::String::fromCpp(cpp.name))
-                                           token:(::djinni::String::fromCpp(cpp.token))];
+                                           token:(::djinni::String::fromCpp(cpp.token))
+                                          status:(::djinni::Enum<::ezored::enums::CustomerStatusEnum, EZREnumsCustomerStatusEnum>::fromCpp(cpp.status))];
 }
 
 }  // namespace djinni_generated

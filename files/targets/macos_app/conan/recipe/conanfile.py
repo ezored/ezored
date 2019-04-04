@@ -12,6 +12,7 @@ class TargetConan(ConanFile):
     default_options = {
         'shared': False,
         'fPIC': True,
+        'sqlite3:threadsafe': 1,
         'Poco:enable_xml': False,
         'Poco:enable_json': False,
         'Poco:enable_mongodb': False,

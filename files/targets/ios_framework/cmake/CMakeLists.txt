@@ -39,6 +39,7 @@ set(PROJECT_HEADER_SEARCH_PATHS
     "${PROJECT_ROOT_PATH}/files/djinni/support-lib/objc"
 
     "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/objc"
     "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/objc"
     "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/objc"
     "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/objc"
@@ -64,6 +65,7 @@ file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib
 file(GLOB H_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/support-lib/objc/*.h")
 
 file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_APP_ENUMS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/objc/*.h")
 file(GLOB_RECURSE H_FILES_APP_CORE_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/objc/*.h")
 file(GLOB_RECURSE H_FILES_APP_DATA_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/objc/*.h")
 file(GLOB_RECURSE H_FILES_APP_SYSTEM_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/objc/*.h")
@@ -88,6 +90,7 @@ file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib
 file(GLOB S_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/support-lib/objc/*.mm")
 
 file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_APP_ENUMS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/objc/*.mm")
 file(GLOB_RECURSE S_FILES_APP_CORE_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/objc/*.mm")
 file(GLOB_RECURSE S_FILES_APP_DATA_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/objc/*.mm")
 file(GLOB_RECURSE S_FILES_APP_SYSTEM_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/objc/*.mm")
@@ -113,6 +116,7 @@ set(
     ${H_FILES_SUPPORT_LIB_CPP}
     ${H_FILES_SUPPORT_LIB_OBJC}
     ${H_FILES_APP_DOMAIN_LIB_OBJC}
+    ${H_FILES_APP_ENUMS_LIB_OBJC}
     ${H_FILES_APP_CORE_LIB_OBJC}
     ${H_FILES_APP_DATA_SERVICES_LIB_OBJC}
     ${H_FILES_APP_SYSTEM_SERVICES_LIB_OBJC}
@@ -133,6 +137,7 @@ set(
     ${S_FILES_SUPPORT_LIB_CPP}
     ${S_FILES_SUPPORT_LIB_OBJC}
     ${S_FILES_APP_DOMAIN_LIB_OBJC}
+    ${S_FILES_APP_ENUMS_LIB_OBJC}
     ${S_FILES_APP_CORE_LIB_OBJC}
     ${S_FILES_APP_DATA_SERVICES_LIB_OBJC}
     ${S_FILES_APP_SYSTEM_SERVICES_LIB_OBJC}
