@@ -9,14 +9,14 @@ cpp:
   header: '"ezored/dataservices/TodoDataService.hpp"'
   byValue: false
 objc:
-  typename: 'EZRDataServiceTodoDataService'
+  typename: 'EZRDataServicesTodoDataService'
   pointer: true
   hash: '%s.hash'
-  boxed: 'EZRDataServiceTodoDataService'
-  header: '"ezored/dataservices/EZRDataServiceTodoDataService.h"'
+  boxed: 'EZRDataServicesTodoDataService'
+  header: '"ezored/dataservices/EZRDataServicesTodoDataService.h"'
 objcpp:
   translator: '::djinni_generated::TodoDataService'
-  header: '"ezored/dataservices/EZRDataServiceTodoDataService+Private.h"'
+  header: '"ezored/dataservices/EZRDataServicesTodoDataService+Private.h"'
 java:
   reference: true
   typename: 'com.ezored.dataservices.TodoDataService'
@@ -26,7 +26,7 @@ java:
   hash: '%s.hashCode()'
   boxed: 'com.ezored.dataservices.TodoDataService'
 jni:
-  translator: '::djinni_generated::EZRDataServiceTodoDataService'
-  header: '"com/ezored/dataservices/EZRDataServiceTodoDataService.hpp"'
+  translator: '::djinni_generated::EZRDataServicesTodoDataService'
+  header: '"com/ezored/dataservices/EZRDataServicesTodoDataService.hpp"'
   typename: jobject
   typeSignature: 'Lcom/ezored/dataservices/TodoDataService;'

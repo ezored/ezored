@@ -15,7 +15,7 @@ cpp_include_prefix = "ezored/helpers/"
 cpp_out = "generated-src/cpp/{0}".format(cpp_include_prefix)
 
 # objc configuration
-objc_prefix = "EZRHelper"
+objc_prefix = "EZRHelpers"
 objc_out = "generated-src/objc/{0}".format(cpp_include_prefix)
 objc_include_cpp_prefix = "{0}".format(cpp_include_prefix)
 objc_include_prefix = "{0}".format(cpp_include_prefix)
@@ -27,8 +27,8 @@ java_parcelable = "true"
 
 # jni configuration
 jni_out = "generated-src/jni/{0}".format(java_package.replace(".", "/"))
-jni_class = "EZRHelperFooBar"
-jni_file = "EZRHelperFooBar"
+jni_class = "EZRHelpersFooBar"
+jni_file = "EZRHelpersFooBar"
 jni_include_cpp_prefix = "{0}".format(cpp_include_prefix)
 jni_include_prefix = "{0}/".format(java_package.replace(".", "/"))
 

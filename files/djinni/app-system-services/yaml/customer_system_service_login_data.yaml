@@ -9,14 +9,14 @@ cpp:
   header: '"ezored/systemservices/CustomerSystemServiceLoginData.hpp"'
   byValue: false
 objc:
-  typename: 'EZRSystemServiceCustomerSystemServiceLoginData'
+  typename: 'EZRSystemServicesCustomerSystemServiceLoginData'
   pointer: true
   hash: '%s.hash'
-  boxed: 'EZRSystemServiceCustomerSystemServiceLoginData'
-  header: '"ezored/systemservices/EZRSystemServiceCustomerSystemServiceLoginData.h"'
+  boxed: 'EZRSystemServicesCustomerSystemServiceLoginData'
+  header: '"ezored/systemservices/EZRSystemServicesCustomerSystemServiceLoginData.h"'
 objcpp:
   translator: '::djinni_generated::CustomerSystemServiceLoginData'
-  header: '"ezored/systemservices/EZRSystemServiceCustomerSystemServiceLoginData+Private.h"'
+  header: '"ezored/systemservices/EZRSystemServicesCustomerSystemServiceLoginData+Private.h"'
 java:
   reference: true
   typename: 'com.ezored.systemservices.CustomerSystemServiceLoginData'
@@ -26,7 +26,7 @@ java:
   hash: '%s.hashCode()'
   boxed: 'com.ezored.systemservices.CustomerSystemServiceLoginData'
 jni:
-  translator: '::djinni_generated::EZRSystemServiceCustomerSystemServiceLoginData'
-  header: '"com/ezored/systemservices/EZRSystemServiceCustomerSystemServiceLoginData.hpp"'
+  translator: '::djinni_generated::EZRSystemServicesCustomerSystemServiceLoginData'
+  header: '"com/ezored/systemservices/EZRSystemServicesCustomerSystemServiceLoginData.hpp"'
   typename: jobject
   typeSignature: 'Lcom/ezored/systemservices/CustomerSystemServiceLoginData;'

@@ -9,14 +9,14 @@ cpp:
   header: '"ezored/helpers/EnvironmentHelper.hpp"'
   byValue: false
 objc:
-  typename: 'EZRHelperEnvironmentHelper'
+  typename: 'EZRHelpersEnvironmentHelper'
   pointer: true
   hash: '%s.hash'
-  boxed: 'EZRHelperEnvironmentHelper'
-  header: '"ezored/helpers/EZRHelperEnvironmentHelper.h"'
+  boxed: 'EZRHelpersEnvironmentHelper'
+  header: '"ezored/helpers/EZRHelpersEnvironmentHelper.h"'
 objcpp:
   translator: '::djinni_generated::EnvironmentHelper'
-  header: '"ezored/helpers/EZRHelperEnvironmentHelper+Private.h"'
+  header: '"ezored/helpers/EZRHelpersEnvironmentHelper+Private.h"'
 java:
   reference: true
   typename: 'com.ezored.helpers.EnvironmentHelper'
@@ -26,7 +26,7 @@ java:
   hash: '%s.hashCode()'
   boxed: 'com.ezored.helpers.EnvironmentHelper'
 jni:
-  translator: '::djinni_generated::EZRHelperEnvironmentHelper'
-  header: '"com/ezored/helpers/EZRHelperEnvironmentHelper.hpp"'
+  translator: '::djinni_generated::EZRHelpersEnvironmentHelper'
+  header: '"com/ezored/helpers/EZRHelpersEnvironmentHelper.hpp"'
   typename: jobject
   typeSignature: 'Lcom/ezored/helpers/EnvironmentHelper;'

@@ -80,7 +80,7 @@ class HomeViewController: BaseTableViewController {
     // MARK: Actions
     
     func doActionSharedData() {
-        EZRHelperSharedDataHelper.setDemoFlag(!EZRHelperSharedDataHelper.getDemoFlag())
+        EZRHelpersSharedDataHelper.setDemoFlag(!EZRHelpersSharedDataHelper.getDemoFlag())
         tableView.reloadData()
     }
     
@@ -136,7 +136,7 @@ class HomeViewController: BaseTableViewController {
     }
     
     func doActionSecretKey() {
-        let secretKey = EZRHelperEnvironmentHelper.getSecretKey()
+        let secretKey = EZRHelpersEnvironmentHelper.getSecretKey()
         let message = String(format: "KEY IS:\n%@", secretKey)
         
         UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: message, onClose: nil)
@@ -147,7 +147,7 @@ class HomeViewController: BaseTableViewController {
         
         DispatchQueue.global(qos: .background).async {
             // add some rows
-            EZRDataServiceTodoDataService.truncate()
+            EZRDataServicesTodoDataService.truncate()
             
             for i in 1...100 {
                 let todo = EZRDomainTodo(
@@ -160,7 +160,7 @@ class HomeViewController: BaseTableViewController {
                     updatedAt: Date()
                 )
                 
-                EZRDataServiceTodoDataService.add(todo)
+                EZRDataServicesTodoDataService.add(todo)
             }
             
             // show list view controller

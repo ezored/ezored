@@ -9,14 +9,14 @@ cpp:
   header: '"ezored/helpers/TodoHelper.hpp"'
   byValue: false
 objc:
-  typename: 'EZRHelperTodoHelper'
+  typename: 'EZRHelpersTodoHelper'
   pointer: true
   hash: '%s.hash'
-  boxed: 'EZRHelperTodoHelper'
-  header: '"ezored/helpers/EZRHelperTodoHelper.h"'
+  boxed: 'EZRHelpersTodoHelper'
+  header: '"ezored/helpers/EZRHelpersTodoHelper.h"'
 objcpp:
   translator: '::djinni_generated::TodoHelper'
-  header: '"ezored/helpers/EZRHelperTodoHelper+Private.h"'
+  header: '"ezored/helpers/EZRHelpersTodoHelper+Private.h"'
 java:
   reference: true
   typename: 'com.ezored.helpers.TodoHelper'
@@ -26,7 +26,7 @@ java:
   hash: '%s.hashCode()'
   boxed: 'com.ezored.helpers.TodoHelper'
 jni:
-  translator: '::djinni_generated::EZRHelperTodoHelper'
-  header: '"com/ezored/helpers/EZRHelperTodoHelper.hpp"'
+  translator: '::djinni_generated::EZRHelpersTodoHelper'
+  header: '"com/ezored/helpers/EZRHelpersTodoHelper.hpp"'
   typename: jobject
   typeSignature: 'Lcom/ezored/helpers/TodoHelper;'

@@ -15,7 +15,7 @@ class SimpleOption {
         if type == .secretKey {
             return "OptionSecretKey".localized
         } else if type == .sharedData {
-            let demoFlag = EZRHelperSharedDataHelper.getDemoFlag()
+            let demoFlag = EZRHelpersSharedDataHelper.getDemoFlag()
             return String(format: "%@ %@", "OptionSharedData".localized, (demoFlag ? "ON" : "OFF"))
         } else if type == .httpRequest {
             return "OptionHttpRequest".localized

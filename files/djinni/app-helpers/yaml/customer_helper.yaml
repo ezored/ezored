@@ -9,14 +9,14 @@ cpp:
   header: '"ezored/helpers/CustomerHelper.hpp"'
   byValue: false
 objc:
-  typename: 'EZRHelperCustomerHelper'
+  typename: 'EZRHelpersCustomerHelper'
   pointer: true
   hash: '%s.hash'
-  boxed: 'EZRHelperCustomerHelper'
-  header: '"ezored/helpers/EZRHelperCustomerHelper.h"'
+  boxed: 'EZRHelpersCustomerHelper'
+  header: '"ezored/helpers/EZRHelpersCustomerHelper.h"'
 objcpp:
   translator: '::djinni_generated::CustomerHelper'
-  header: '"ezored/helpers/EZRHelperCustomerHelper+Private.h"'
+  header: '"ezored/helpers/EZRHelpersCustomerHelper+Private.h"'
 java:
   reference: true
   typename: 'com.ezored.helpers.CustomerHelper'
@@ -26,7 +26,7 @@ java:
   hash: '%s.hashCode()'
   boxed: 'com.ezored.helpers.CustomerHelper'
 jni:
-  translator: '::djinni_generated::EZRHelperCustomerHelper'
-  header: '"com/ezored/helpers/EZRHelperCustomerHelper.hpp"'
+  translator: '::djinni_generated::EZRHelpersCustomerHelper'
+  header: '"com/ezored/helpers/EZRHelpersCustomerHelper.hpp"'
   typename: jobject
   typeSignature: 'Lcom/ezored/helpers/CustomerHelper;'

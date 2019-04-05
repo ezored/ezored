@@ -9,14 +9,14 @@ cpp:
   header: '"ezored/systemservices/CustomerSystemService.hpp"'
   byValue: false
 objc:
-  typename: 'EZRSystemServiceCustomerSystemService'
+  typename: 'EZRSystemServicesCustomerSystemService'
   pointer: true
   hash: '%s.hash'
-  boxed: 'EZRSystemServiceCustomerSystemService'
-  header: '"ezored/systemservices/EZRSystemServiceCustomerSystemService.h"'
+  boxed: 'EZRSystemServicesCustomerSystemService'
+  header: '"ezored/systemservices/EZRSystemServicesCustomerSystemService.h"'
 objcpp:
   translator: '::djinni_generated::CustomerSystemService'
-  header: '"ezored/systemservices/EZRSystemServiceCustomerSystemService+Private.h"'
+  header: '"ezored/systemservices/EZRSystemServicesCustomerSystemService+Private.h"'
 java:
   reference: true
   typename: 'com.ezored.systemservices.CustomerSystemService'
@@ -26,7 +26,7 @@ java:
   hash: '%s.hashCode()'
   boxed: 'com.ezored.systemservices.CustomerSystemService'
 jni:
-  translator: '::djinni_generated::EZRSystemServiceCustomerSystemService'
-  header: '"com/ezored/systemservices/EZRSystemServiceCustomerSystemService.hpp"'
+  translator: '::djinni_generated::EZRSystemServicesCustomerSystemService'
+  header: '"com/ezored/systemservices/EZRSystemServicesCustomerSystemService.hpp"'
   typename: jobject
   typeSignature: 'Lcom/ezored/systemservices/CustomerSystemService;'
