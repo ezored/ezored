@@ -4,8 +4,8 @@ include(default)
 os=Android
 os.api_level=21
 compiler=clang
-compiler.version=7.0
+compiler.version=8
 arch=armv7
 
 [build_requires]
-android-ndk/r18@theodelrieu/testing
+android_ndk_installer/r19b@bincrafters/stable

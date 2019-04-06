@@ -133,8 +133,6 @@ Each platform requirements list now. Maybe you already have it, because are basi
 
 1. NDK supported operational system: macOS, Linux or Windows.  
     Conan will download NDK and other things to build based on your system.
-2. Add NDK toolchain repository:  
-    ```conan remote add theodelrieu https://api.bintray.com/conan/theodelrieu/conan-repo```
 
 **iOS Requirements:**
 
