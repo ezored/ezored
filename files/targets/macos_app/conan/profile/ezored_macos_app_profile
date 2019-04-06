@@ -4,6 +4,3 @@ include(default)
 os=Macos
 os.version=10.9
 arch=i386
-
-[build_requires]
-darwin-toolchain/1.0.4@theodelrieu/stable
