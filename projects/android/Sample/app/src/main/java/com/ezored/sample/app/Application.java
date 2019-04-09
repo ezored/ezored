@@ -1,10 +1,8 @@
 package com.ezored.sample.app;
 
 import android.arch.lifecycle.ProcessLifecycleOwner;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.multidex.MultiDexApplication;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
 
@@ -68,15 +66,6 @@ public class Application extends MultiDexApplication {
         return instance;
     }
 
-    public void startServiceOrForegroundService(Intent intent) {
-        try {
-            ContextCompat.startForegroundService(this, intent);
-        } catch (Exception e) {
-            Logger.e("[Application : startServiceOrForegroundService] Failed to start foreground service");
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public void onTerminate() {
         Logger.i("[Application : onTerminate] App terminated");
@@ -95,7 +84,7 @@ public class Application extends MultiDexApplication {
 
     private void loadNativeLibrary() {
         try {
-            System.loadLibrary("Core");
+            System.loadLibrary("Ezored");
 
             JNILoader.load();
 

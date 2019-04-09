@@ -121,9 +121,11 @@ If you want create your own commands you only need put it inside folder **"files
 
 **The general requirements is:**
 
-1. Python (https://www.python.org/)
-2. cmake (https://cmake.org/)
-3. conan (https://conan.io/)
+1. Python (https://www.python.org/)  
+2. Cmake (https://cmake.org/)  
+3. Conan (https://conan.io/)
+4. Conan repositories:    
+- `conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan`
 
 They are the basic things to make ezored work. Check on terminal if you have every tool in your path typing their names (python, cmake, conan).
 

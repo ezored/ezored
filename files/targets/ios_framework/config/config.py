@@ -1,6 +1,6 @@
 def run(params):
     return {
-        'project_name': 'Core',
+        'project_name': 'Ezored',
         'bitcode': True,
         'min_version': '9.0',
         'enable_arc': True,

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -478,10 +479,17 @@ public class UIUtil {
                         }
                     }
                 }
-
             }
         });
     }
 
+    public void startServiceOrForegroundService(Context context, Intent intent) {
+        try {
+            ContextCompat.startForegroundService(context, intent);
+        } catch (Exception e) {
+            Logger.e("[Application : startServiceOrForegroundService] Failed to start foreground service");
+            e.printStackTrace();
+        }
+    }
 
 }

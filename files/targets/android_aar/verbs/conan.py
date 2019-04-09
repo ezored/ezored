@@ -56,6 +56,8 @@ def run(params):
                     '-s',
                     'arch={0}'.format(arch['conan_arch']),
                     '-s',
+                    'os.api_level={0}'.format(arch['api_level']),
+                    '-s',
                     'build_type={0}'.format(build_type),
                     '--build=missing',
                     '--update',
