@@ -8,24 +8,10 @@ class TargetConan(ConanFile):
     options = {
         'shared': [True, False],
         'fPIC': [True, False],
-        'ios_arch': 'ANY',
-        'ios_platform': 'ANY',
-        'ios_deployment_target': 'ANY',
-        'enable_bitcode': 'ANY',
-        'enable_arc': 'ANY',
-        'enable_visibility': 'ANY',
-        'cmake_toolchain_file': 'ANY',
     }
     default_options = {
         'shared': False,
         'fPIC': True,
-        'ios_arch': 'ANY',
-        'ios_platform': 'ANY',
-        'ios_deployment_target': 'ANY',
-        'enable_bitcode': 'ANY',
-        'enable_arc': 'ANY',
-        'enable_visibility': 'ANY',
-        'cmake_toolchain_file': 'ANY',
         'sqlite3:threadsafe': 1,
         'Poco:enable_xml': False,
         'Poco:enable_json': False,
@@ -50,17 +36,10 @@ class TargetConan(ConanFile):
     generators = 'cmake'
 
     def build(self):
-        cmake = CMake(self)
-        cmake.definitions['CMAKE_BUILD_TYPE'] = self.settings.build_type
-        cmake.definitions['CMAKE_TOOLCHAIN_FILE'] = self.options.cmake_toolchain_file
+        cmake = CMake(self, generator="Xcode")
         cmake.definitions['CMAKE_BUILD_TYPE'] = self.settings.build_type
         cmake.definitions['PROJECT_CONFIG_ARCH'] = self.settings.arch
-        cmake.definitions['IOS_ARCH'] = self.options.ios_arch
-        cmake.definitions['IOS_PLATFORM'] = self.options.ios_platform
-        cmake.definitions['IOS_DEPLOYMENT_TARGET'] = self.options.ios_deployment_target
-        cmake.definitions['ENABLE_BITCODE'] = self.options.enable_bitcode
-        cmake.definitions['ENABLE_ARC'] = self.options.enable_arc
-        cmake.definitions['ENABLE_VISIBILITY'] = self.options.enable_visibility
+        cmake.definitions['CMAKE_OSX_DEPLOYMENT_TARGET'] = self.settings.get_safe("os.version")
         cmake.configure()
         cmake.build()
 

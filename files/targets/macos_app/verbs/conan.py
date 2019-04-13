@@ -6,14 +6,14 @@ import ezored.app.const as const
 from ezored.modules import file
 from ezored.modules import log
 from ezored.modules import runner
-from ezored.modules import target
+from files.config import target_macos_app as config
 
 
 # -----------------------------------------------------------------------------
 def run(params):
     proj_path = params['proj_path']
     target_name = params['target_name']
-    target_config = target.get_target_config(proj_path, target_name)
+    target_config = config.run(proj_path, target_name, params)
 
     archs = target_config['archs']
     build_types = target_config['build_types']
@@ -55,6 +55,8 @@ def run(params):
                     arch['conan_profile'],
                     '-s',
                     'arch={0}'.format(arch['conan_arch']),
+                    '-s',
+                    'os.version={0}'.format(arch['min_version']),
                     '-s',
                     'build_type={0}'.format(build_type),
                     '--build=missing',

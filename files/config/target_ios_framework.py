@@ -1,10 +1,6 @@
-def run(params):
+def run(proj_path, target_name, params):
     return {
         'project_name': 'Ezored',
-        'bitcode': True,
-        'min_version': '9.0',
-        'enable_arc': True,
-        'enable_visibility': True,
         'build_types': ['Debug', 'Release'],
         'archs': [
             {
@@ -12,30 +8,50 @@ def run(params):
                 'conan_arch': 'armv7',
                 'platform': 'OS',
                 'conan_profile': 'ezored_ios_framework_profile',
+                'min_version': '9.0',
+                'enable_bitcode': True,
+                'enable_arc': True,
+                'enable_visibility': True,
             },
             {
                 'arch': 'armv7s',
                 'conan_arch': 'armv7s',
                 'platform': 'OS',
                 'conan_profile': 'ezored_ios_framework_profile',
+                'min_version': '9.0',
+                'enable_bitcode': True,
+                'enable_arc': True,
+                'enable_visibility': True,
             },
             {
                 'arch': 'arm64',
                 'conan_arch': 'armv8',
                 'platform': 'OS64',
                 'conan_profile': 'ezored_ios_framework_profile',
+                'min_version': '9.0',
+                'enable_bitcode': True,
+                'enable_arc': True,
+                'enable_visibility': True,
             },
             {
                 'arch': 'arm64e',
                 'conan_arch': 'armv8.3',
                 'platform': 'OS64',
                 'conan_profile': 'ezored_ios_framework_profile',
+                'min_version': '9.0',
+                'enable_bitcode': True,
+                'enable_arc': True,
+                'enable_visibility': True,
             },
             {
                 'arch': 'x86_64',
                 'conan_arch': 'x86_64',
                 'platform': 'SIMULATOR64',
                 'conan_profile': 'ezored_ios_framework_profile',
+                'min_version': '9.0',
+                'enable_bitcode': True,
+                'enable_arc': True,
+                'enable_visibility': True,
             },
         ],
         'install_headers': [

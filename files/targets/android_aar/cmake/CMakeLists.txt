@@ -132,12 +132,16 @@ set(
     CACHE INTERNAL ""
 )
 
-# CXXFlags
-set(PROJECT_CMAKE_CXX_FLAGS "${PROJECT_CMAKE_CXX_FLAGS} -stdlib=libc++" CACHE INTERNAL "")
-
 # Conan
 include(${PROJECT_BUILD_DIR}/conan/conanbuildinfo.cmake)
 conan_basic_setup()
+
+# CXX flags
+set(PROJECT_CMAKE_CXX_FLAGS "${PROJECT_CMAKE_CXX_FLAGS} -stdlib=libc++" CACHE INTERNAL "")
+
+# Flags
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${PROJECT_CMAKE_C_FLAGS}" CACHE INTERNAL "")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${PROJECT_CMAKE_CXX_FLAGS}" CACHE INTERNAL "")
 
 # Project
 include_directories(${PROJECT_HEADER_SEARCH_PATHS})

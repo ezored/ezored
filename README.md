@@ -126,6 +126,7 @@ If you want create your own commands you only need put it inside folder **"files
 3. Conan (https://conan.io/)
 4. Conan repositories:    
 - `conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan`
+- `conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain`
 
 They are the basic things to make ezored work. Check on terminal if you have every tool in your path typing their names (python, cmake, conan).
 
@@ -142,8 +143,6 @@ Each platform requirements list now. Maybe you already have it, because are basi
 2. Xcode.
 3. Command line tools.  
     Run: ```xcode-select --install```
-4. Add darwin toolchain repository:  
-    ```conan remote add theodelrieu https://api.bintray.com/conan/theodelrieu/conan-repo```
 
 **macOS Requirements:**
 
@@ -261,6 +260,15 @@ We have some samples inside "projects" folder.
 
 Android sample can be download here:
 https://play.google.com/store/apps/details?id=com.ezored.sample
+
+## Troubleshooting:
+
+**Enable conan debug:**
+
+```
+export CONAN_VERBOSE_TRACEBACK=1
+export CONAN_LOGGING_LEVEL=0
+```
 
 ## Supported By Jetbrains IntelliJ IDEA
 

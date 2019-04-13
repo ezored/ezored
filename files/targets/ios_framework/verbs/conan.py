@@ -6,14 +6,14 @@ import ezored.app.const as const
 from ezored.modules import file
 from ezored.modules import log
 from ezored.modules import runner
-from ezored.modules import target
+from files.config import target_ios_framework as config
 
 
 # -----------------------------------------------------------------------------
 def run(params):
     proj_path = params['proj_path']
     target_name = params['target_name']
-    target_config = target.get_target_config(proj_path, target_name)
+    target_config = config.run(proj_path, target_name, params)
 
     archs = target_config['archs']
     build_types = target_config['build_types']
@@ -57,50 +57,19 @@ def run(params):
                     'arch={0}'.format(arch['conan_arch']),
                     '-s',
                     'build_type={0}'.format(build_type),
+                    '-s',
+                    'os.version={0}'.format(arch['min_version']),
                     '-o',
-                    '{0}:ios_arch={1}'.format(
-                        target_name,
-                        arch['arch']
+                    'darwin-toolchain:enable_bitcode={0}'.format(
+                        (True if arch['enable_bitcode'] else False)
                     ),
                     '-o',
-                    '{0}:ios_platform={1}'.format(
-                        target_name,
-                        arch['platform']
+                    'darwin-toolchain:enable_arc={0}'.format(
+                        (True if arch['enable_arc'] else False)
                     ),
                     '-o',
-                    '{0}:ios_deployment_target={1}'.format(
-                        target_name,
-                        target_config['min_version']
-                    ),
-                    '-o',
-                    '{0}:enable_bitcode={1}'.format(
-                        target_name,
-                        ('1' if target_config['bitcode'] else '0')
-                    ),
-                    '-o',
-                    '{0}:enable_arc={1}'.format(
-                        target_name,
-                        ('1' if target_config['enable_arc'] else '0')
-                    ),
-                    '-o',
-                    '{0}:enable_visibility={1}'.format(
-                        target_name,
-                        ('1' if target_config['enable_visibility'] else '0')
-                    ),
-                    '-o',
-                    '{0}:cmake_toolchain_file={1}'.format(
-                        target_name,
-                        os.path.join(
-                            proj_path,
-                            const.DIR_NAME_FILES,
-                            const.DIR_NAME_FILES_CMAKE,
-                            const.DIR_NAME_FILES_CMAKE_TOOLCHAINS,
-                            'ios.cmake',
-                        )
-                    ),
-                    '-o',
-                    'darwin-toolchain:bitcode={0}'.format(
-                        'True' if target_config['bitcode'] else 'False'
+                    'darwin-toolchain:enable_visibility={0}'.format(
+                        (True if arch['enable_visibility'] else False)
                     ),
                     '--build=missing',
                     '--update',

@@ -6,6 +6,7 @@ from ezored.app import const
 from ezored.modules import file
 from ezored.modules import log
 from ezored.modules import runner
+from files.config import djinni as config
 
 
 # -----------------------------------------------------------------------------
@@ -30,6 +31,7 @@ def run(params):
 def generate(params):
     proj_path = params['proj_path']
 
+    # check djinni folder
     djinni_modules_path = os.path.join(
         proj_path,
         const.DIR_NAME_FILES,
@@ -41,15 +43,9 @@ def generate(params):
             djinni_modules_path
         ))
 
-    modules = runner.run_external(
-        path=djinni_modules_path,
-        module_name='djinni_modules',
-        command_name='get_modules',
-        command_params=params,
-        show_log=False,
-        show_error_log=True,
-        throw_error=True,
-    )
+    # get djinni modules
+    djinni_config = config.run(proj_path, None, params)
+    modules = djinni_config['modules']
 
     if modules:
         log.info('Generating files for all modules...')
