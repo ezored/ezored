@@ -50,7 +50,7 @@ You can use it for free, for any purpose, including commercial purposes.
 
 Feel free to collaborate with ezored, creating or improving the project and modules.
 
-## Supported platforms:
+## Supported platforms
 
 1. android
 2. ios
@@ -60,7 +60,7 @@ Feel free to collaborate with ezored, creating or improving the project and modu
 
 Obs: Generally any platform with C++ support will work too, like smart tvs and embeded hardwares.
 
-## Modules:
+## Modules
 
 A module in ezored is C++ implementation of one specific feature. And ezored come with some modules already implemented:
 
@@ -85,7 +85,7 @@ A module in ezored is C++ implementation of one specific feature. And ezored com
 
 Modules source code are stored in **"files/djinni"** and **"files/src"**.
 
-## Targets:
+## Targets
 
 A target in ezored contains all files, config and scripts to build C++ code to the platform. You can see on folder **"files/targets"**.
 
@@ -103,7 +103,7 @@ If you don't remember what verbs are available for a target you can type only th
 
 ```python make.py target android_aar```
 
-## Commands:
+## Commands
 
 A command in ezored is a python file too and a function inside it that will receive all command line arguments use. Example:
 
@@ -117,7 +117,7 @@ If you don't remember what commands are available you can type only this to list
 
 If you want create your own commands you only need put it inside folder **"files/commands"**. Today **ezored** has some custom commands. An implemented custom command inside **ezored** is **dist** that is located in **files/commands/dist.py**.
 
-## Requirements:
+## Requirements
 
 **The general requirements is:**
 
@@ -168,7 +168,7 @@ Each platform requirements list now. Maybe you already have it, because are basi
     Obs 2: Everything was compiled using community version (https://visualstudio.microsoft.com/vs/community/).  
     Obs 3: On installation process select "Desktop development with C++".  
 
-## How to use:
+## How to use
 
 1. Clone reposity:
 > git clone git@github.com:ezored/ezored.git
@@ -247,21 +247,21 @@ You will see the list of formatted files.
 
 If you don't have **clang-format** installed and in your **path**, you will be notified with an error.
 
-## Other ezored samples:
+## Other ezored samples
 
 - [**ezored-basic**](https://github.com/ezored/ezored-basic)  
     Basic ezored sample with minimal requirements.
 - [**ezored-sdl2**](https://github.com/ezored/ezored-sdl2)  
     SDL2 ezored sample GUI application.
 
-## Projects:
+## Projects
 
 We have some samples inside "projects" folder.
 
 Android sample can be download here:
 https://play.google.com/store/apps/details?id=com.ezored.sample
 
-## Troubleshooting:
+## Troubleshooting
 
 **Enable conan debug:**
 
