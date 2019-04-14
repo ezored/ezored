@@ -61,15 +61,15 @@ def run(params):
                     'os.version={0}'.format(arch['min_version']),
                     '-o',
                     'darwin-toolchain:enable_bitcode={0}'.format(
-                        (True if arch['enable_bitcode'] else False)
+                        (True if 'enable_bitcode' in arch and arch['enable_bitcode'] else False)
                     ),
                     '-o',
                     'darwin-toolchain:enable_arc={0}'.format(
-                        (True if arch['enable_arc'] else False)
+                        (True if 'enable_arc' in arch and arch['enable_arc'] else False)
                     ),
                     '-o',
                     'darwin-toolchain:enable_visibility={0}'.format(
-                        (True if arch['enable_visibility'] else False)
+                        (True if 'enable_visibility' in arch and arch['enable_visibility'] else False)
                     ),
                     '--build=missing',
                     '--update',
