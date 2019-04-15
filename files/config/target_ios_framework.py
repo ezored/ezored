@@ -1,40 +1,35 @@
 def run(proj_path, target_name, params):
     return {
         'project_name': 'Ezored',
-        'build_types': ['Debug'],
+        'build_types': ['Debug', 'Release'],
         'archs': [
             {
                 'arch': 'armv7',
                 'conan_arch': 'armv7',
-                'platform': 'OS',
                 'conan_profile': 'ezored_ios_framework_profile',
                 'min_version': '9.0',
             },
             {
                 'arch': 'armv7s',
                 'conan_arch': 'armv7s',
-                'platform': 'OS',
                 'conan_profile': 'ezored_ios_framework_profile',
                 'min_version': '9.0',
             },
             {
                 'arch': 'arm64',
                 'conan_arch': 'armv8',
-                'platform': 'OS64',
                 'conan_profile': 'ezored_ios_framework_profile',
                 'min_version': '9.0',
             },
             {
                 'arch': 'arm64e',
                 'conan_arch': 'armv8.3',
-                'platform': 'OS64',
                 'conan_profile': 'ezored_ios_framework_profile',
                 'min_version': '9.0',
             },
             {
                 'arch': 'x86_64',
                 'conan_arch': 'x86_64',
-                'platform': 'SIMULATOR64',
                 'conan_profile': 'ezored_ios_framework_profile',
                 'min_version': '9.0',
             },
