@@ -171,7 +171,6 @@ set(
 set(PROJECT_FRAMEWORK_LINKS
     ${PROJECT_FRAMEWORK_LINKS}
 	"-framework Foundation"
-	"-framework AVFoundation"
 	"-framework UIKit"
     "-framework CoreFoundation"
     CACHE INTERNAL ""
@@ -182,18 +181,16 @@ include(${PROJECT_BUILD_DIR}/conan/conanbuildinfo.cmake)
 conan_basic_setup()
 
 # C flags
-set(PROJECT_CMAKE_C_FLAGS "${PROJECT_CMAKE_C_FLAGS} -fobjc-arc" CACHE INTERNAL "")
+set(PROJECT_CMAKE_C_FLAGS "${PROJECT_CMAKE_C_FLAGS} -fobjc-arc -fobjc-abi-version=2" CACHE INTERNAL "")
 
 # CXX flags
-set(PROJECT_CMAKE_CXX_FLAGS "${PROJECT_CMAKE_CXX_FLAGS} -fobjc-arc -stdlib=libc++" CACHE INTERNAL "")
+set(PROJECT_CMAKE_CXX_FLAGS "${PROJECT_CMAKE_CXX_FLAGS} -fobjc-arc -fvisibility-inlines-hidden -fobjc-abi-version=2 -stdlib=libc++" CACHE INTERNAL "")
 
 # Flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${PROJECT_CMAKE_C_FLAGS}" CACHE INTERNAL "")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${PROJECT_CMAKE_CXX_FLAGS}" CACHE INTERNAL "")
 
 # Hidden visibilty is required for C++ on iOS.
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fobjc-abi-version=2")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden -fobjc-abi-version=2")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -g ${CMAKE_CXX_FLAGS_DEBUG}")
 set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS} -DNDEBUG -Os -ffast-math ${CMAKE_CXX_FLAGS_MINSIZEREL}")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS} -DNDEBUG -O2 -g -ffast-math ${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
