@@ -13,14 +13,18 @@ set(PROJECT_BUILD_DIR ${PROJECT_ROOT_PATH}/build/${PROJECT_TARGET_NAME}/${CMAKE_
 set(DEVELOPMENT_TEAM_ID "" CACHE STRING "Development Team ID")
 set(CODE_SIGN_IDENTITY "Mac Developer" CACHE STRING "Sign Identity")
 
+# Project
+project(${PROJECT_CONFIG_NAME})
+
+# Conan
+include(${PROJECT_BUILD_DIR}/conan/conanbuildinfo.cmake)
+conan_basic_setup()
+
 # Include: common
 add_subdirectory(
     ${PROJECT_ROOT_PATH}/files/cmake/common
     ${PROJECT_BUILD_DIR}/common
 )
-
-# Project
-project(${PROJECT_CONFIG_NAME})
 
 # Source files
 file(GLOB S_FILES_PROJECT "${PROJECT_ROOT_PATH}/projects/samples/simple/*.cpp")
@@ -64,10 +68,6 @@ set(PROJECT_FRAMEWORK_LINKS
 	"-framework Foundation"
     CACHE INTERNAL ""
 )
-
-# Conan
-include(${PROJECT_BUILD_DIR}/conan/conanbuildinfo.cmake)
-conan_basic_setup()
 
 # CXX flags
 set(PROJECT_CMAKE_CXX_FLAGS "${PROJECT_CMAKE_CXX_FLAGS} -stdlib=libc++" CACHE INTERNAL "")

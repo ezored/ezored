@@ -9,14 +9,18 @@ set(PROJECT_CONFIG_ARCH "" CACHE STRING "Architecture")
 set(PROJECT_ROOT_PATH ${CMAKE_SOURCE_REALPATH})
 set(PROJECT_BUILD_DIR ${PROJECT_ROOT_PATH}/build/${PROJECT_TARGET_NAME}/${CMAKE_BUILD_TYPE}/${PROJECT_CONFIG_ARCH} CACHE INTERNAL "")
 
+# Project
+project(${PROJECT_CONFIG_NAME})
+
+# Conan
+include(${PROJECT_BUILD_DIR}/conan/conanbuildinfo.cmake)
+conan_basic_setup()
+
 # Include: common
 add_subdirectory(
     ${PROJECT_ROOT_PATH}/files/cmake/common
     ${PROJECT_BUILD_DIR}/common
 )
-
-# Project
-project(${PROJECT_CONFIG_NAME})
 
 # Header search paths
 set(PROJECT_HEADER_SEARCH_PATHS
@@ -131,10 +135,6 @@ set(
     ${TARGET_SOURCE_FILES}
     CACHE INTERNAL ""
 )
-
-# Conan
-include(${PROJECT_BUILD_DIR}/conan/conanbuildinfo.cmake)
-conan_basic_setup()
 
 # CXX flags
 set(PROJECT_CMAKE_CXX_FLAGS "${PROJECT_CMAKE_CXX_FLAGS} -stdlib=libc++" CACHE INTERNAL "")

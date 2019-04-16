@@ -10,6 +10,20 @@ set(PROJECT_CONFIG_ARCH "" CACHE STRING "Architecture")
 set(PROJECT_ROOT_PATH ${CMAKE_SOURCE_REALPATH})
 set(PROJECT_BUILD_DIR ${PROJECT_ROOT_PATH}/build/${PROJECT_TARGET_NAME}/${CMAKE_BUILD_TYPE}/${PROJECT_CONFIG_ARCH} CACHE INTERNAL "")
 
+# Platform configurations
+set(DEVELOPMENT_TEAM_ID "" CACHE STRING "Development Team ID")
+set(CODE_SIGN_IDENTITY "iPhone Developer" CACHE STRING "Sign Identity")
+set(FRAMEWORK_NAME "${PROJECT_CONFIG_NAME}" CACHE STRING "Framework Name")
+set(FRAMEWORK_BUNDLE_IDENTIFIER "com.ezored.library" CACHE STRING "Bundle Identifier")
+set(DEVICE_FAMILY "1,2" CACHE STRING "Device Family")
+
+# Project
+project(${PROJECT_CONFIG_NAME})
+
+# Conan
+include(${PROJECT_BUILD_DIR}/conan/conanbuildinfo.cmake)
+conan_basic_setup()
+
 # Include: common
 add_subdirectory(
     ${PROJECT_ROOT_PATH}/files/cmake/common
@@ -20,13 +34,6 @@ add_subdirectory(
 if(NOT CMAKE_VERSION VERSION_LESS 3.9)
     cmake_policy(SET CMP0068 NEW)
 endif()
-
-# Platform configurations
-set(DEVELOPMENT_TEAM_ID "" CACHE STRING "Development Team ID")
-set(CODE_SIGN_IDENTITY "iPhone Developer" CACHE STRING "Sign Identity")
-set(FRAMEWORK_NAME "${PROJECT_CONFIG_NAME}" CACHE STRING "Framework Name")
-set(FRAMEWORK_BUNDLE_IDENTIFIER "com.ezored.library" CACHE STRING "Bundle Identifier")
-set(DEVICE_FAMILY "1,2" CACHE STRING "Device Family")
 
 # Header search paths
 set(PROJECT_HEADER_SEARCH_PATHS
@@ -172,10 +179,6 @@ set(PROJECT_FRAMEWORK_LINKS
     "-framework CoreFoundation"
     CACHE INTERNAL ""
 )
-
-# Conan
-include(${PROJECT_BUILD_DIR}/conan/conanbuildinfo.cmake)
-conan_basic_setup()
 
 # C flags
 set(PROJECT_CMAKE_C_FLAGS "${PROJECT_CMAKE_C_FLAGS} -fobjc-arc -fobjc-abi-version=2" CACHE INTERNAL "")

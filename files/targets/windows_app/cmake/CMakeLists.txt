@@ -9,14 +9,18 @@ set(PROJECT_CONFIG_ARCH "" CACHE STRING "Architecture")
 set(PROJECT_ROOT_PATH ${CMAKE_SOURCE_REALPATH})
 set(PROJECT_BUILD_DIR ${PROJECT_ROOT_PATH}/build/${PROJECT_TARGET_NAME}/${CMAKE_BUILD_TYPE}/${PROJECT_CONFIG_ARCH} CACHE INTERNAL "")
 
+# Project
+project(${PROJECT_CONFIG_NAME})
+
+# Conan
+include(${PROJECT_BUILD_DIR}/conan/conanbuildinfo.cmake)
+conan_basic_setup()
+
 # Include: common
 add_subdirectory(
     ${PROJECT_ROOT_PATH}/files/cmake/common
     ${PROJECT_BUILD_DIR}/common
 )
-
-# Project
-project(${PROJECT_CONFIG_NAME})
 
 # Source files
 file(GLOB S_FILES_PROJECT "${PROJECT_ROOT_PATH}/projects/samples/simple/*.cpp")
@@ -53,10 +57,6 @@ set(
     ${TARGET_HEADER_FILES}
     CACHE INTERNAL ""
 )
-
-# Conan
-include(${PROJECT_BUILD_DIR}/conan/conanbuildinfo.cmake)
-conan_basic_setup()
 
 # Project
 include_directories(${PROJECT_HEADER_SEARCH_PATHS})
