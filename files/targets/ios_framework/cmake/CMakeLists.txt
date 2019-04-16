@@ -28,9 +28,6 @@ set(FRAMEWORK_NAME "${PROJECT_CONFIG_NAME}" CACHE STRING "Framework Name")
 set(FRAMEWORK_BUNDLE_IDENTIFIER "com.ezored.library" CACHE STRING "Bundle Identifier")
 set(DEVICE_FAMILY "1,2" CACHE STRING "Device Family")
 
-# Project
-project(${PROJECT_CONFIG_NAME})
-
 # Header search paths
 set(PROJECT_HEADER_SEARCH_PATHS
     ${PROJECT_HEADER_SEARCH_PATHS}
