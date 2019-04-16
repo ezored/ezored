@@ -1,8 +1,8 @@
 #include "EZRCustomerHelper.hpp"
 
 #include "ezored/core/ApplicationCore.hpp"
-#include "ezored/helpers/SharedDataHelper.hpp"
 #include "ezored/enums/CustomerStatusEnum.hpp"
+#include "ezored/helpers/SharedDataHelper.hpp"
 
 #include "rapidjson/document.h"
 #include "rapidjson/stringbuffer.h"

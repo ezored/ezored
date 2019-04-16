@@ -1,8 +1,8 @@
 #include "ezored/core/ApplicationCore.hpp"
 
 #include "ezored/util/Logger.hpp"
-#include "ezored/util/SimpleLoggerPlatformService.hpp"
 #include "ezored/util/LoggerLevel.hpp"
+#include "ezored/util/SimpleLoggerPlatformService.hpp"
 
 #include "ezored/net/http/HttpClient.hpp"
 #include "ezored/net/http/HttpClientLoggerImpl.hpp"

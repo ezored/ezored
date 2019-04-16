@@ -3,9 +3,8 @@
 import os
 
 import ezored.app.const as const
-from ezored.modules import file
+from ezored.modules import file, runner
 from ezored.modules import log
-from ezored.modules import runner
 from ezored.modules import util
 from files.config import target_ios_framework as config
 
@@ -119,9 +118,10 @@ def run(params):
                         )
 
                         if header['type'] == 'dir':
-                            file.copy_all_inside(
+                            file.copy_dir(
                                 source_header_dir,
                                 dist_headers_dir,
+                                ignore_file=_header_ignore_list
                             )
                         else:
                             log.error('Invalid type for install header list for {0}'.format(
@@ -132,3 +132,8 @@ def run(params):
         log.error('Arch list for "{0}" is invalid or empty'.format(
             target_name
         ))
+
+
+# -----------------------------------------------------------------------------
+def _header_ignore_list(filename):
+    return not filename.lower().endswith('.h')
