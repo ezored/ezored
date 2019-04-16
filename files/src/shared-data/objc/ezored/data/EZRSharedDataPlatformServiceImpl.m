@@ -235,7 +235,7 @@
 
 - (BOOL)has:(nonnull NSString *)key {
     if (_userDefaults != nil) {
-        if ([[[_userDefaults dictionaryRepresentation] allKeys] containsObject:[self getKeyName:key]]) {
+        if ([[[_userDefaults dictionaryRepresentation] allKeys] containsObject:key]) {
             return YES;
         }
     }
