@@ -3,7 +3,7 @@
 
 package com.ezored.net.http;
 
-public final class HttpRequestParam {
+public final class HttpRequestParam implements android.os.Parcelable {
 
 
     /*package*/ final String mName;
@@ -31,6 +31,36 @@ public final class HttpRequestParam {
                 "mName=" + mName +
                 "," + "mValue=" + mValue +
         "}";
+    }
+
+
+    public static final android.os.Parcelable.Creator<HttpRequestParam> CREATOR
+        = new android.os.Parcelable.Creator<HttpRequestParam>() {
+        @Override
+        public HttpRequestParam createFromParcel(android.os.Parcel in) {
+            return new HttpRequestParam(in);
+        }
+
+        @Override
+        public HttpRequestParam[] newArray(int size) {
+            return new HttpRequestParam[size];
+        }
+    };
+
+    public HttpRequestParam(android.os.Parcel in) {
+        this.mName = in.readString();
+        this.mValue = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(android.os.Parcel out, int flags) {
+        out.writeString(this.mName);
+        out.writeString(this.mValue);
     }
 
 }

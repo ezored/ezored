@@ -5,7 +5,7 @@ package com.ezored.net.http;
 
 import java.util.ArrayList;
 
-public final class HttpResponse {
+public final class HttpResponse implements android.os.Parcelable {
 
 
     /*package*/ final int mCode;
@@ -42,6 +42,39 @@ public final class HttpResponse {
                 "," + "mBody=" + mBody +
                 "," + "mHeaders=" + mHeaders +
         "}";
+    }
+
+
+    public static final android.os.Parcelable.Creator<HttpResponse> CREATOR
+        = new android.os.Parcelable.Creator<HttpResponse>() {
+        @Override
+        public HttpResponse createFromParcel(android.os.Parcel in) {
+            return new HttpResponse(in);
+        }
+
+        @Override
+        public HttpResponse[] newArray(int size) {
+            return new HttpResponse[size];
+        }
+    };
+
+    public HttpResponse(android.os.Parcel in) {
+        this.mCode = in.readInt();
+        this.mBody = in.readString();
+        this.mHeaders = new ArrayList<HttpHeader>();
+        in.readList(this.mHeaders, getClass().getClassLoader());
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(android.os.Parcel out, int flags) {
+        out.writeInt(this.mCode);
+        out.writeString(this.mBody);
+        out.writeList(this.mHeaders);
     }
 
 }

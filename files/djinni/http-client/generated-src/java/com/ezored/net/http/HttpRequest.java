@@ -5,7 +5,7 @@ package com.ezored.net.http;
 
 import java.util.ArrayList;
 
-public final class HttpRequest {
+public final class HttpRequest implements android.os.Parcelable {
 
 
     /*package*/ final String mUrl;
@@ -60,6 +60,44 @@ public final class HttpRequest {
                 "," + "mHeaders=" + mHeaders +
                 "," + "mBody=" + mBody +
         "}";
+    }
+
+
+    public static final android.os.Parcelable.Creator<HttpRequest> CREATOR
+        = new android.os.Parcelable.Creator<HttpRequest>() {
+        @Override
+        public HttpRequest createFromParcel(android.os.Parcel in) {
+            return new HttpRequest(in);
+        }
+
+        @Override
+        public HttpRequest[] newArray(int size) {
+            return new HttpRequest[size];
+        }
+    };
+
+    public HttpRequest(android.os.Parcel in) {
+        this.mUrl = in.readString();
+        this.mMethod = HttpMethod.values()[in.readInt()];
+        this.mParams = new ArrayList<HttpRequestParam>();
+        in.readList(this.mParams, getClass().getClassLoader());
+        this.mHeaders = new ArrayList<HttpHeader>();
+        in.readList(this.mHeaders, getClass().getClassLoader());
+        this.mBody = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(android.os.Parcel out, int flags) {
+        out.writeString(this.mUrl);
+        out.writeInt(this.mMethod.ordinal());
+        out.writeList(this.mParams);
+        out.writeList(this.mHeaders);
+        out.writeString(this.mBody);
     }
 
 }

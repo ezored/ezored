@@ -13,18 +13,18 @@ http_method = enum {
 http_header = record {
     name: string;
 	value: string;
-}
+} deriving(parcelable)
 
 http_response = record {
     code: i32;
     body: string;
 	headers: list<http_header>;
-}
+} deriving(parcelable)
 
 http_request_param = record {
     name: string;
 	value: string;
-}
+} deriving(parcelable)
 
 http_request = record {
 	url: string;
@@ -32,7 +32,7 @@ http_request = record {
     params: list<http_request_param>;
 	headers: list<http_header>;
 	body: string;
-}
+} deriving(parcelable)
 
 http_client_platform_service = interface +c {
 	do_request(request: http_request): http_response;
