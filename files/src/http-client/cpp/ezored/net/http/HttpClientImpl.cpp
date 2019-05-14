@@ -80,7 +80,7 @@ HttpResponse HttpClientImpl::doRequest(const HttpRequest &request)
         return response;
     }
 
-    return HttpResponse(0, "", std::vector<HttpHeader>{});
+    return HttpResponse(0, "", "", std::vector<HttpHeader>{});
 }
 
 } // namespace http

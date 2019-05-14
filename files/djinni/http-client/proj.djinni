@@ -18,7 +18,8 @@ http_header = record {
 http_response = record {
     code: i32;
     body: string;
-	headers: list<http_header>;
+	url: string;
+	headers: list<http_header>;	
 } deriving(parcelable)
 
 http_request_param = record {

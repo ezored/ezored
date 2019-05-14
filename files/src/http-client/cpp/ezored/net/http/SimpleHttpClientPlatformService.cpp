@@ -41,7 +41,7 @@ using namespace ezored::helpers;
 
 HttpResponse SimpleHttpClientPlatformService::doRequest(const HttpRequest &request)
 {
-    auto response = HttpResponse{0, "", {}};
+    auto response = HttpResponse{0, "", "", {}};
 
     try
     {
@@ -114,6 +114,7 @@ HttpResponse SimpleHttpClientPlatformService::doRequest(const HttpRequest &reque
 
         response.body = ss.str();
         response.code = res.getStatus();
+        response.url = request.url;
 
         Poco::Net::NameValueCollection::ConstIterator i = res.begin();
 

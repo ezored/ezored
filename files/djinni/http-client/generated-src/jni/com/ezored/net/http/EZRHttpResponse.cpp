@@ -16,17 +16,19 @@ auto EZRHttpResponse::fromCpp(JNIEnv* jniEnv, const CppType& c) -> ::djinni::Loc
     auto r = ::djinni::LocalRef<JniType>{jniEnv->NewObject(data.clazz.get(), data.jconstructor,
                                                            ::djinni::get(::djinni::I32::fromCpp(jniEnv, c.code)),
                                                            ::djinni::get(::djinni::String::fromCpp(jniEnv, c.body)),
+                                                           ::djinni::get(::djinni::String::fromCpp(jniEnv, c.url)),
                                                            ::djinni::get(::djinni::List<::djinni_generated::EZRHttpHeader>::fromCpp(jniEnv, c.headers)))};
     ::djinni::jniExceptionCheck(jniEnv);
     return r;
 }
 
 auto EZRHttpResponse::toCpp(JNIEnv* jniEnv, JniType j) -> CppType {
-    ::djinni::JniLocalScope jscope(jniEnv, 4);
+    ::djinni::JniLocalScope jscope(jniEnv, 5);
     assert(j != nullptr);
     const auto& data = ::djinni::JniClass<EZRHttpResponse>::get();
     return {::djinni::I32::toCpp(jniEnv, jniEnv->GetIntField(j, data.field_mCode)),
             ::djinni::String::toCpp(jniEnv, (jstring)jniEnv->GetObjectField(j, data.field_mBody)),
+            ::djinni::String::toCpp(jniEnv, (jstring)jniEnv->GetObjectField(j, data.field_mUrl)),
             ::djinni::List<::djinni_generated::EZRHttpHeader>::toCpp(jniEnv, jniEnv->GetObjectField(j, data.field_mHeaders))};
 }
 

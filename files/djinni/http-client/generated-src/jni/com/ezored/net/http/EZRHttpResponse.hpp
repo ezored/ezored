@@ -25,9 +25,10 @@ private:
     friend ::djinni::JniClass<EZRHttpResponse>;
 
     const ::djinni::GlobalRef<jclass> clazz { ::djinni::jniFindClass("com/ezored/net/http/HttpResponse") };
-    const jmethodID jconstructor { ::djinni::jniGetMethodID(clazz.get(), "<init>", "(ILjava/lang/String;Ljava/util/ArrayList;)V") };
+    const jmethodID jconstructor { ::djinni::jniGetMethodID(clazz.get(), "<init>", "(ILjava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;)V") };
     const jfieldID field_mCode { ::djinni::jniGetFieldID(clazz.get(), "mCode", "I") };
     const jfieldID field_mBody { ::djinni::jniGetFieldID(clazz.get(), "mBody", "Ljava/lang/String;") };
+    const jfieldID field_mUrl { ::djinni::jniGetFieldID(clazz.get(), "mUrl", "Ljava/lang/String;") };
     const jfieldID field_mHeaders { ::djinni::jniGetFieldID(clazz.get(), "mHeaders", "Ljava/util/ArrayList;") };
 };
 

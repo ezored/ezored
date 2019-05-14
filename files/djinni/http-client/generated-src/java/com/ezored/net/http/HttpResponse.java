@@ -12,14 +12,18 @@ public final class HttpResponse implements android.os.Parcelable {
 
     /*package*/ final String mBody;
 
+    /*package*/ final String mUrl;
+
     /*package*/ final ArrayList<HttpHeader> mHeaders;
 
     public HttpResponse(
             int code,
             String body,
+            String url,
             ArrayList<HttpHeader> headers) {
         this.mCode = code;
         this.mBody = body;
+        this.mUrl = url;
         this.mHeaders = headers;
     }
 
@@ -31,6 +35,10 @@ public final class HttpResponse implements android.os.Parcelable {
         return mBody;
     }
 
+    public String getUrl() {
+        return mUrl;
+    }
+
     public ArrayList<HttpHeader> getHeaders() {
         return mHeaders;
     }
@@ -40,6 +48,7 @@ public final class HttpResponse implements android.os.Parcelable {
         return "HttpResponse{" +
                 "mCode=" + mCode +
                 "," + "mBody=" + mBody +
+                "," + "mUrl=" + mUrl +
                 "," + "mHeaders=" + mHeaders +
         "}";
     }
@@ -61,6 +70,7 @@ public final class HttpResponse implements android.os.Parcelable {
     public HttpResponse(android.os.Parcel in) {
         this.mCode = in.readInt();
         this.mBody = in.readString();
+        this.mUrl = in.readString();
         this.mHeaders = new ArrayList<HttpHeader>();
         in.readList(this.mHeaders, getClass().getClassLoader());
     }
@@ -74,6 +84,7 @@ public final class HttpResponse implements android.os.Parcelable {
     public void writeToParcel(android.os.Parcel out, int flags) {
         out.writeInt(this.mCode);
         out.writeString(this.mBody);
+        out.writeString(this.mUrl);
         out.writeList(this.mHeaders);
     }
 
