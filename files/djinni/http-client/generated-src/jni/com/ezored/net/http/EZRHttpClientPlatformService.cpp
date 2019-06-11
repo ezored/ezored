@@ -11,6 +11,19 @@ EZRHttpClientPlatformService::EZRHttpClientPlatformService() : ::djinni::JniInte
 
 EZRHttpClientPlatformService::~EZRHttpClientPlatformService() = default;
 
+EZRHttpClientPlatformService::JavaProxy::JavaProxy(JniType j) : Handle(::djinni::jniGetThreadEnv(), j) { }
+
+EZRHttpClientPlatformService::JavaProxy::~JavaProxy() = default;
+
+::ezored::net::http::HttpResponse EZRHttpClientPlatformService::JavaProxy::doRequest(const ::ezored::net::http::HttpRequest & c_request) {
+    auto jniEnv = ::djinni::jniGetThreadEnv();
+    ::djinni::JniLocalScope jscope(jniEnv, 10);
+    const auto& data = ::djinni::JniClass<::djinni_generated::EZRHttpClientPlatformService>::get();
+    auto jret = jniEnv->CallObjectMethod(Handle::get().get(), data.method_doRequest,
+                                         ::djinni::get(::djinni_generated::EZRHttpRequest::fromCpp(jniEnv, c_request)));
+    ::djinni::jniExceptionCheck(jniEnv);
+    return ::djinni_generated::EZRHttpResponse::toCpp(jniEnv, jret);
+}
 
 CJNIEXPORT void JNICALL Java_com_ezored_net_http_HttpClientPlatformService_00024CppProxy_nativeDestroy(JNIEnv* jniEnv, jobject /*this*/, jlong nativeRef)
 {

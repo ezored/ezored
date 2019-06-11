@@ -100,5 +100,9 @@ def run(proj_path, target_name, params):
                 'type': 'dir',
                 'path': 'files/src/shared-data/objc',
             },
+            {
+                'type': 'dir',
+                'path': 'files/src/http-client/objc',
+            },
         ]
     }

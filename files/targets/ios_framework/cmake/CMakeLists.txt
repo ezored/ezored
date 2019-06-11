@@ -1,5 +1,5 @@
 # Configurations
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.14)
 get_filename_component(CMAKE_SOURCE_REALPATH "${CMAKE_SOURCE_DIR}/../../../../" REALPATH)
 
 set(PROJECT_CONFIG_NAME "Ezored" CACHE STRING "Project name")
@@ -29,11 +29,6 @@ add_subdirectory(
     ${PROJECT_ROOT_PATH}/files/cmake/common
     ${PROJECT_BUILD_DIR}/common
 )
-
-# Suppress macOS X RPATH warnings and adopt new related behaviors
-if(NOT CMAKE_VERSION VERSION_LESS 3.9)
-    cmake_policy(SET CMP0068 NEW)
-endif()
 
 # Header search paths
 set(PROJECT_HEADER_SEARCH_PATHS
@@ -78,6 +73,7 @@ file(GLOB_RECURSE H_FILES_LOGGER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/log
 file(GLOB H_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/objc/ezored/util/*.h")
 
 file(GLOB_RECURSE H_FILES_HTTP_CLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/objc/*.h")
+file(GLOB H_FILES_HTTP_CLIENT_LIB_IMPL_OBJC "${PROJECT_ROOT_PATH}/files/src/http-client/objc/ezored/net/http/*.h")
 file(GLOB H_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.hpp")
 
 file(GLOB_RECURSE H_FILES_FILE_HELPER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/objc/*.h")
@@ -103,6 +99,7 @@ file(GLOB_RECURSE S_FILES_LOGGER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/log
 file(GLOB S_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/objc/ezored/util/*.m")
 
 file(GLOB_RECURSE S_FILES_HTTP_CLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/objc/*.mm")
+file(GLOB S_FILES_HTTP_CLIENT_LIB_IMPL_OBJC "${PROJECT_ROOT_PATH}/files/src/http-client/objc/ezored/net/http/*.m")
 file(GLOB S_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.cpp")
 
 file(GLOB_RECURSE S_FILES_FILE_HELPER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/objc/*.mm")
@@ -127,6 +124,7 @@ set(
     ${H_FILES_LOGGER_LIB_OBJC}
     ${H_FILES_LOGGER_LIB_IMPL}
     ${H_FILES_HTTP_CLIENT_LIB_OBJC}
+    ${H_FILES_HTTP_CLIENT_LIB_IMPL_OBJC}
     ${H_FILES_HTTP_CLIENT_LIB_IMPL}
     ${H_FILES_FILE_HELPER_LIB_OBJC}
     ${H_FILES_FILE_HELPER_LIB_IMPL}
@@ -148,6 +146,7 @@ set(
     ${S_FILES_LOGGER_LIB_OBJC}
     ${S_FILES_LOGGER_LIB_IMPL}
     ${S_FILES_HTTP_CLIENT_LIB_OBJC}
+    ${S_FILES_HTTP_CLIENT_LIB_IMPL_OBJC}
     ${S_FILES_HTTP_CLIENT_LIB_IMPL}
     ${S_FILES_FILE_HELPER_LIB_OBJC}
     ${S_FILES_FILE_HELPER_LIB_IMPL}

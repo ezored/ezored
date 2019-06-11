@@ -6,16 +6,16 @@
 #import <Foundation/Foundation.h>
 @class EZRHttpClient;
 @class EZRHttpClientLogger;
-@class EZRHttpClientPlatformService;
+@protocol EZRHttpClientPlatformService;
 
 
 @interface EZRHttpClient : NSObject
 
 + (nullable EZRHttpClient *)shared;
 
-- (void)setPlatformService:(nullable EZRHttpClientPlatformService *)ps;
+- (void)setPlatformService:(nullable id<EZRHttpClientPlatformService>)ps;
 
-- (nullable EZRHttpClientPlatformService *)getPlatformService;
+- (nullable id<EZRHttpClientPlatformService>)getPlatformService;
 
 - (BOOL)hasPlatformService;
 

@@ -5,6 +5,7 @@
 #import "ezored/net/http/EZRHttpClientPlatformService.h"
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
+#import "DJIObjcWrapperCache+Private.h"
 #import "ezored/net/http/EZRHttpRequest+Private.h"
 #import "ezored/net/http/EZRHttpResponse+Private.h"
 #include <exception>
@@ -13,13 +14,13 @@
 
 static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for this file");
 
-@interface EZRHttpClientPlatformService ()
+@interface EZRHttpClientPlatformServiceCppProxy : NSObject<EZRHttpClientPlatformService>
 
 - (id)initWithCpp:(const std::shared_ptr<::ezored::net::http::HttpClientPlatformService>&)cppRef;
 
 @end
 
-@implementation EZRHttpClientPlatformService {
+@implementation EZRHttpClientPlatformServiceCppProxy {
     ::djinni::CppProxyCache::Handle<std::shared_ptr<::ezored::net::http::HttpClientPlatformService>> _cppRefHandle;
 }
 
@@ -40,12 +41,35 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 
 namespace djinni_generated {
 
+class HttpClientPlatformService::ObjcProxy final
+: public ::ezored::net::http::HttpClientPlatformService
+, private ::djinni::ObjcProxyBase<ObjcType>
+{
+    friend class ::djinni_generated::HttpClientPlatformService;
+public:
+    using ObjcProxyBase::ObjcProxyBase;
+    ::ezored::net::http::HttpResponse doRequest(const ::ezored::net::http::HttpRequest & c_request) override
+    {
+        @autoreleasepool {
+            auto objcpp_result_ = [djinni_private_get_proxied_objc_object() doRequest:(::djinni_generated::HttpRequest::fromCpp(c_request))];
+            return ::djinni_generated::HttpResponse::toCpp(objcpp_result_);
+        }
+    }
+};
+
+}  // namespace djinni_generated
+
+namespace djinni_generated {
+
 auto HttpClientPlatformService::toCpp(ObjcType objc) -> CppType
 {
     if (!objc) {
         return nullptr;
     }
-    return objc->_cppRefHandle.get();
+    if ([(id)objc isKindOfClass:[EZRHttpClientPlatformServiceCppProxy class]]) {
+        return ((EZRHttpClientPlatformServiceCppProxy*)objc)->_cppRefHandle.get();
+    }
+    return ::djinni::get_objc_proxy<ObjcProxy>(objc);
 }
 
 auto HttpClientPlatformService::fromCppOpt(const CppOptType& cpp) -> ObjcType
@@ -53,7 +77,10 @@ auto HttpClientPlatformService::fromCppOpt(const CppOptType& cpp) -> ObjcType
     if (!cpp) {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRHttpClientPlatformService>(cpp);
+    if (auto cppPtr = dynamic_cast<ObjcProxy*>(cpp.get())) {
+        return cppPtr->djinni_private_get_proxied_objc_object();
+    }
+    return ::djinni::get_cpp_proxy<EZRHttpClientPlatformServiceCppProxy>(cpp);
 }
 
 }  // namespace djinni_generated

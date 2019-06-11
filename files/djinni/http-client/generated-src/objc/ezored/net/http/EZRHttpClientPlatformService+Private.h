@@ -6,7 +6,7 @@
 
 static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for this file");
 
-@class EZRHttpClientPlatformService;
+@protocol EZRHttpClientPlatformService;
 
 namespace djinni_generated {
 
@@ -15,7 +15,7 @@ class HttpClientPlatformService
 public:
     using CppType = std::shared_ptr<::ezored::net::http::HttpClientPlatformService>;
     using CppOptType = std::shared_ptr<::ezored::net::http::HttpClientPlatformService>;
-    using ObjcType = EZRHttpClientPlatformService*;
+    using ObjcType = id<EZRHttpClientPlatformService>;
 
     using Boxed = HttpClientPlatformService;
 

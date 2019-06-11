@@ -67,11 +67,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     if (gradle.ext.usePrebuiltLibrary) {
-        if (gradle.ext.isDebuggable) {
-            implementation(name: 'library-debug', ext: 'aar')
-        } else {
-            implementation(name: 'library-release', ext: 'aar')
-        }
+        implementation(name: 'library', ext: 'aar')
     } else {
         implementation project(':ezored-library')
     }

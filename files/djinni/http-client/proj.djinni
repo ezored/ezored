@@ -35,7 +35,7 @@ http_request = record {
 	body: string;
 } deriving(parcelable)
 
-http_client_platform_service = interface +c {
+http_client_platform_service = interface +c +j +o {
 	do_request(request: http_request): http_response;
 }
 

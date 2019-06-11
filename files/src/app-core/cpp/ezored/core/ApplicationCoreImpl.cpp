@@ -78,15 +78,21 @@ void ApplicationCoreImpl::initializeCustomer()
     Logger::shared()->i("Customer initialized");
 }
 
-void ApplicationCoreImpl::initializeHttpClient()
-{
-    HttpClient::shared()->setPlatformService(std::make_shared<SimpleHttpClientPlatformService>());
-}
-
 void ApplicationCoreImpl::initializeHttpLogger()
 {
-    auto loggerPS = std::make_shared<HttpClientLoggerImpl>();
-    HttpClient::shared()->setLogger(loggerPS);
+    if (HttpClient::shared()->getLogger() == nullptr)
+    {
+        auto loggerPS = std::make_shared<HttpClientLoggerImpl>();
+        HttpClient::shared()->setLogger(loggerPS);
+    }
+}
+
+void ApplicationCoreImpl::initializeHttpClient()
+{
+    if (HttpClient::shared()->getPlatformService() == nullptr)
+    {
+        HttpClient::shared()->setPlatformService(std::make_shared<SimpleHttpClientPlatformService>());
+    }
 }
 
 InitializationData ApplicationCoreImpl::getInitializationData()

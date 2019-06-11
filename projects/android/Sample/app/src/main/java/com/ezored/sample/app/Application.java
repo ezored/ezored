@@ -2,6 +2,7 @@ package com.ezored.sample.app;
 
 import android.arch.lifecycle.ProcessLifecycleOwner;
 import android.content.IntentFilter;
+import android.os.StrictMode;
 import android.support.multidex.MultiDexApplication;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
@@ -14,6 +15,8 @@ import com.ezored.domain.DeviceData;
 import com.ezored.domain.InitializationData;
 import com.ezored.io.FileHelper;
 import com.ezored.io.FileHelperPlatformServiceImpl;
+import com.ezored.net.http.HttpClient;
+import com.ezored.net.http.HttpClientPlatformServiceImpl;
 import com.ezored.sample.BuildConfig;
 import com.ezored.sample.data.AppData;
 import com.ezored.sample.observers.AppLifecycleObserver;
@@ -90,6 +93,7 @@ public class Application extends MultiDexApplication {
 
             initializeLogger();
             initializeSharedData();
+            initializeHTTPClient();
             initializeFileHelper();
             initializeCore();
         } catch (UnsatisfiedLinkError e) {
@@ -121,6 +125,11 @@ public class Application extends MultiDexApplication {
 
     private void initializeFileHelper() {
         FileHelper.shared().setPlatformService(new FileHelperPlatformServiceImpl());
+    }
+
+    private void initializeHTTPClient() {
+        // http client (uncomment to use platform http client)
+        //HttpClient.shared().setPlatformService(new HttpClientPlatformServiceImpl());
     }
 
 }

@@ -41,13 +41,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (void)setPlatformService:(nullable EZRHttpClientPlatformService *)ps {
+- (void)setPlatformService:(nullable id<EZRHttpClientPlatformService>)ps {
     try {
         _cppRefHandle.get()->setPlatformService(::djinni_generated::HttpClientPlatformService::toCpp(ps));
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-- (nullable EZRHttpClientPlatformService *)getPlatformService {
+- (nullable id<EZRHttpClientPlatformService>)getPlatformService {
     try {
         auto objcpp_result_ = _cppRefHandle.get()->getPlatformService();
         return ::djinni_generated::HttpClientPlatformService::fromCpp(objcpp_result_);

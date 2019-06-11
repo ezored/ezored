@@ -54,6 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // shared data
         EZRSharedData.shared()?.setPlatformService(EZRSharedDataPlatformServiceImpl())
         
+        // http client (uncomment to use platform http client)
+        // EZRHttpClient.shared()?.setPlatformService(EZRHttpClientPlatformServiceImpl())
+
         // file helper
         EZRFileHelper.shared()?.setPlatformService(EZRFileHelperPlatformServiceImpl())
         

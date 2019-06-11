@@ -27,6 +27,20 @@ private:
     friend ::djinni::JniClass<EZRHttpClientPlatformService>;
     friend ::djinni::JniInterface<::ezored::net::http::HttpClientPlatformService, EZRHttpClientPlatformService>;
 
+    class JavaProxy final : ::djinni::JavaProxyHandle<JavaProxy>, public ::ezored::net::http::HttpClientPlatformService
+    {
+    public:
+        JavaProxy(JniType j);
+        ~JavaProxy();
+
+        ::ezored::net::http::HttpResponse doRequest(const ::ezored::net::http::HttpRequest & request) override;
+
+    private:
+        friend ::djinni::JniInterface<::ezored::net::http::HttpClientPlatformService, ::djinni_generated::EZRHttpClientPlatformService>;
+    };
+
+    const ::djinni::GlobalRef<jclass> clazz { ::djinni::jniFindClass("com/ezored/net/http/HttpClientPlatformService") };
+    const jmethodID method_doRequest { ::djinni::jniGetMethodID(clazz.get(), "doRequest", "(Lcom/ezored/net/http/HttpRequest;)Lcom/ezored/net/http/HttpResponse;") };
 };
 
 }  // namespace djinni_generated
