@@ -236,16 +236,14 @@ If you will use djinni to generate files follow these steps:
 
 If you don't will use djinni in your project, ignore **djinni** section, because some people prefer create the bridge files manually.
 
-## Clang tools
+## Code tools
 
-Ezored has support for **clang-format** tool and **"clang"** command is available.
+Ezored has support for code format, the **"code"** command is available for it.
 
 To format all supported files, run the following command:  
-> python make.py clang format  
+> python make.py code format  
 
-You will see the list of formatted files.
-
-If you don't have **clang-format** installed and in your **path**, you will be notified with an error.
+Obs: Code format use **clang-format** tool inside. You need have it installed and in your **path** to be located.
 
 ## Other ezored samples
 
