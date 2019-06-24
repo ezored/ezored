@@ -33,7 +33,7 @@ public class MainFragment extends BaseFragment implements BottomNavigationView.O
         super.createAll(view);
 
         // view pager
-        adapter = new MainViewPagerAdapter(getActivity().getSupportFragmentManager());
+        adapter = new MainViewPagerAdapter(getChildFragmentManager());
 
         homeFragment = HomeFragment.newInstance();
         adapter.addFragment(homeFragment);
