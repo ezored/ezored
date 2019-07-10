@@ -18,28 +18,23 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.*;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
-
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import com.ezored.sample.R;
 import com.ezored.sample.interfaces.Closure;
 import com.ezored.util.Logger;
@@ -148,7 +143,7 @@ public class UIUtil {
         }
 
         TypedValue typedValue = new TypedValue();
-        activity.getTheme().resolveAttribute(android.support.v7.appcompat.R.attr.drawableSize, typedValue, true);
+        activity.getTheme().resolveAttribute(androidx.appcompat.R.attr.drawableSize, typedValue, true);
         paddingTop += TypedValue.complexToDimensionPixelOffset(typedValue.data, activity.getResources().getDisplayMetrics());
         activity.findViewById(R.id.toolbar).setPadding(0, paddingTop, 0, 0);
     }

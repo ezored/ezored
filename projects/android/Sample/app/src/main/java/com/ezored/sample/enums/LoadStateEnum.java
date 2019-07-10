@@ -4,6 +4,6 @@ public enum LoadStateEnum {
 
     NOT_LOADED,
     LOADING,
-    LOADED;
+    LOADED
 
 }

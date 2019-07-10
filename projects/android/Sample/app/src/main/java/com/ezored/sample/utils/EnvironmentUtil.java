@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-
 import com.ezored.domain.DeviceData;
 import com.ezored.domain.InitializationData;
 import com.ezored.sample.BuildConfig;

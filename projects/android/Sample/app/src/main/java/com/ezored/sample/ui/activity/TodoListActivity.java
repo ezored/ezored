@@ -6,12 +6,11 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
-
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import com.ezored.sample.R;
 import com.ezored.sample.ui.activity.base.BaseActivity;
 import com.ezored.sample.ui.fragment.TodoListFragment;
@@ -27,7 +26,7 @@ public class TodoListActivity extends BaseActivity {
 
     @Override
     protected BaseFragment getFragmentInstance() {
-        fragment = TodoListFragment.newInstance();
+        fragment = TodoListFragment.Companion.newInstance();
         return fragment;
     }
 
@@ -47,7 +46,7 @@ public class TodoListActivity extends BaseActivity {
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setIconifiedByDefault(false);
 
-        View closeButton = searchView.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
+        View closeButton = searchView.findViewById(androidx.appcompat.R.id.search_close_btn);
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

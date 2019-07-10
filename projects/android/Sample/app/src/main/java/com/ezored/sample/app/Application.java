@@ -1,12 +1,10 @@
 package com.ezored.sample.app;
 
-import android.arch.lifecycle.ProcessLifecycleOwner;
 import android.content.IntentFilter;
-import android.os.StrictMode;
-import android.support.multidex.MultiDexApplication;
-import android.support.v7.app.AppCompatDelegate;
 import android.util.Log;
-
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.lifecycle.ProcessLifecycleOwner;
+import androidx.multidex.MultiDexApplication;
 import com.dropbox.djinni.JNILoader;
 import com.ezored.core.ApplicationCore;
 import com.ezored.data.SharedData;
@@ -15,8 +13,6 @@ import com.ezored.domain.DeviceData;
 import com.ezored.domain.InitializationData;
 import com.ezored.io.FileHelper;
 import com.ezored.io.FileHelperPlatformServiceImpl;
-import com.ezored.net.http.HttpClient;
-import com.ezored.net.http.HttpClientPlatformServiceImpl;
 import com.ezored.sample.BuildConfig;
 import com.ezored.sample.data.AppData;
 import com.ezored.sample.observers.AppLifecycleObserver;

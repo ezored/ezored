@@ -1,7 +1,6 @@
 package com.ezored.sample.models;
 
 import android.content.Context;
-
 import com.ezored.sample.R;
 import com.ezored.sample.enums.SimpleOptionTypeEnum;
 
