@@ -10,7 +10,6 @@
     <string name="dialog_progress_message">Please wait…</string>
     <string name="dialog_title">Message</string>
     <string name="button_refresh">Refresh</string>
-    <string name="option_http_request">HTTP Request</string>
     <string name="option_https_request">HTTPS Request</string>
     <string name="option_secret_key">Get a secret key</string>
     <string name="option_app_version">App version</string>

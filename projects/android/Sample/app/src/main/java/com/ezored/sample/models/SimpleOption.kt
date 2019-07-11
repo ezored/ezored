@@ -9,7 +9,6 @@ class SimpleOption(val type: SimpleOptionTypeEnum) {
     fun getDescription(context: Context): String {
         return when {
             type === SimpleOptionTypeEnum.SHARED_DATA -> context.getString(R.string.option_shared_data)
-            type === SimpleOptionTypeEnum.HTTP_REQUEST -> context.getString(R.string.option_http_request)
             type === SimpleOptionTypeEnum.HTTPS_REQUEST -> context.getString(R.string.option_https_request)
             type === SimpleOptionTypeEnum.SECRET_KEY -> context.getString(R.string.option_secret_key)
             type === SimpleOptionTypeEnum.APP_VERSION -> context.getString(R.string.option_app_version)

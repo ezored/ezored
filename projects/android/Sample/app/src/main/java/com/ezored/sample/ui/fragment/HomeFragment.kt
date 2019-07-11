@@ -16,7 +16,6 @@ import com.ezored.sample.enums.SimpleOptionTypeEnum
 import com.ezored.sample.models.SimpleOption
 import com.ezored.sample.ui.activity.TodoListActivity
 import com.ezored.sample.ui.fragment.base.BaseListFragment
-import com.ezored.sample.utils.EnvironmentUtil
 import com.ezored.sample.utils.UIUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -57,14 +56,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
         listData?.let { listData ->
             listData.add(SimpleOption(SimpleOptionTypeEnum.SECRET_KEY))
             listData.add(SimpleOption(SimpleOptionTypeEnum.SHARED_DATA))
-
-            if (EnvironmentUtil.isInstantApp()) {
-                listData.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
-            } else {
-                listData.add(SimpleOption(SimpleOptionTypeEnum.HTTP_REQUEST))
-                listData.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
-            }
-
+            listData.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
             listData.add(SimpleOption(SimpleOptionTypeEnum.FILE_HELPER))
             listData.add(SimpleOption(SimpleOptionTypeEnum.TODO))
         }
@@ -82,18 +74,12 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
     override fun onSimpleOptionItemClick(view: View, position: Int) {
         val option = listData!![position]
 
-        if (option.type == SimpleOptionTypeEnum.SHARED_DATA) {
-            doActionSharedData()
-        } else if (option.type == SimpleOptionTypeEnum.HTTP_REQUEST) {
-            doActionHttpRequest()
-        } else if (option.type == SimpleOptionTypeEnum.HTTPS_REQUEST) {
-            doActionHttpsRequest()
-        } else if (option.type == SimpleOptionTypeEnum.SECRET_KEY) {
-            doActionSecretKey()
-        } else if (option.type == SimpleOptionTypeEnum.TODO) {
-            doActionTodo()
-        } else if (option.type == SimpleOptionTypeEnum.FILE_HELPER) {
-            doActionFileHelper()
+        when {
+            option.type == SimpleOptionTypeEnum.SHARED_DATA -> doActionSharedData()
+            option.type == SimpleOptionTypeEnum.HTTPS_REQUEST -> doActionHttpsRequest()
+            option.type == SimpleOptionTypeEnum.SECRET_KEY -> doActionSecretKey()
+            option.type == SimpleOptionTypeEnum.TODO -> doActionTodo()
+            option.type == SimpleOptionTypeEnum.FILE_HELPER -> doActionFileHelper()
         }
     }
 
@@ -171,7 +157,6 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
         showLoadingView()
 
         GlobalScope.launch {
-            // add some rows
             TodoDataService.truncate()
 
             for (i in 1..100) {

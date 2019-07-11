@@ -17,10 +17,6 @@ import static android.provider.Settings.Secure;
 
 public class EnvironmentUtil {
 
-    public static boolean isInstantApp() {
-        return true;
-    }
-
     public static String getAndroidId() {
         String id = Secure.getString(Application.getInstance().getContentResolver(), Secure.ANDROID_ID);
 
