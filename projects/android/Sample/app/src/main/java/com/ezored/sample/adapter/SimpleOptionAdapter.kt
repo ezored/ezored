@@ -33,22 +33,23 @@ class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder>
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val option = listData!![position]
+        listData?.let { listData ->
+            val option = listData[position]
 
-        if (option.type == SimpleOptionTypeEnum.SHARED_DATA) {
-            val demoFlag = SharedDataHelper.getDemoFlag()
-            holder.tvTitle.text = context.getString(R.string.option_shared_data, if (demoFlag) "ON" else "OFF")
-        } else {
-            holder.tvTitle.text = option.getDescription(context)
+            if (option.type == SimpleOptionTypeEnum.SHARED_DATA) {
+                val demoFlag = SharedDataHelper.getDemoFlag()
+                holder.tvTitle.text = context.getString(R.string.option_shared_data, if (demoFlag) "ON" else "OFF")
+            } else {
+                holder.tvTitle.text = option.getDescription(context)
+            }
+
+            holder.ivIcon.setImageResource(option.getImage())
+            holder.ivIcon.setColorFilter(ContextCompat.getColor(context, R.color.list_item_icon_color))
         }
-
-        holder.ivIcon.setImageResource(option.getImage(context))
-        holder.ivIcon.setColorFilter(ContextCompat.getColor(context, R.color.list_item_icon_color))
     }
 
     override fun getItemCount(): Int {
         return listData?.size ?: 0
-
     }
 
     fun setListener(listener: SimpleOptionAdapterListener) {
@@ -61,20 +62,15 @@ class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder>
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
-        val tvTitle: TextView
-        val ivIcon: ImageView
+        val tvTitle: TextView = itemView.findViewById(R.id.tv_title)
+        val ivIcon: ImageView = itemView.findViewById(R.id.iv_icon)
 
         init {
-            tvTitle = itemView.findViewById(R.id.tv_title)
-            ivIcon = itemView.findViewById(R.id.iv_icon)
-
             itemView.setOnClickListener(this)
         }
 
         override fun onClick(view: View) {
-            if (listener != null) {
-                listener!!.onSimpleOptionItemClick(view, adapterPosition)
-            }
+            listener?.onSimpleOptionItemClick(view, adapterPosition)
         }
 
     }

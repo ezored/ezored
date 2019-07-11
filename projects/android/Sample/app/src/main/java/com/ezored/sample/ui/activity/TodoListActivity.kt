@@ -26,7 +26,7 @@ class TodoListActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        fragment!!.onActivityResult(requestCode, resultCode, data)
+        fragment?.onActivityResult(requestCode, resultCode, data)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -42,7 +42,8 @@ class TodoListActivity : BaseActivity() {
         closeButton.setOnClickListener {
             val toolbar = findViewById<Toolbar>(R.id.toolbar)
             toolbar.collapseActionView()
-            fragment!!.search("")
+
+            fragment?.search("")
         }
 
         for (i in 0 until menu.size()) {
@@ -70,7 +71,7 @@ class TodoListActivity : BaseActivity() {
     private fun handleIntent(intent: Intent) {
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
-            fragment!!.search(query)
+            fragment?.search(query)
         }
     }
 

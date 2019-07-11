@@ -31,20 +31,22 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.ViewHolder> {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val todo = listData!![position]
+        listData?.let { listData ->
+            val todo = listData[position]
 
-        holder.tvId.text = String.format(Locale.getDefault(), "ID: %d", todo.id)
-        holder.tvTitle.text = String.format(Locale.getDefault(), "Title: %s", todo.title)
-        holder.tvBody.text = String.format(Locale.getDefault(), "Body: %s", todo.body)
-        holder.tvCreatedAt.text = String.format(Locale.getDefault(), "Created at: %s", todo.createdAt)
+            holder.tvId.text = String.format(Locale.getDefault(), "ID: %d", todo.id)
+            holder.tvTitle.text = String.format(Locale.getDefault(), "Title: %s", todo.title)
+            holder.tvBody.text = String.format(Locale.getDefault(), "Body: %s", todo.body)
+            holder.tvCreatedAt.text = String.format(Locale.getDefault(), "Created at: %s", todo.createdAt)
 
-        if (todo.done) {
-            holder.ivIcon.setImageResource(R.drawable.ic_item_on)
-        } else {
-            holder.ivIcon.setImageResource(R.drawable.ic_item_off)
+            if (todo.done) {
+                holder.ivIcon.setImageResource(R.drawable.ic_item_on)
+            } else {
+                holder.ivIcon.setImageResource(R.drawable.ic_item_off)
+            }
+
+            holder.ivIcon.setColorFilter(ContextCompat.getColor(context, R.color.black))
         }
-
-        holder.ivIcon.setColorFilter(ContextCompat.getColor(context, R.color.black))
     }
 
     override fun getItemCount(): Int {
@@ -62,26 +64,18 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.ViewHolder> {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
-        val tvId: TextView
-        val tvTitle: TextView
-        val tvBody: TextView
-        val tvCreatedAt: TextView
-        val ivIcon: ImageView
+        val tvId: TextView = itemView.findViewById(R.id.tv_id)
+        val tvTitle: TextView = itemView.findViewById(R.id.tv_title)
+        val tvBody: TextView = itemView.findViewById(R.id.tv_body)
+        val tvCreatedAt: TextView = itemView.findViewById(R.id.tv_created_at)
+        val ivIcon: ImageView = itemView.findViewById(R.id.iv_icon)
 
         init {
-            tvId = itemView.findViewById(R.id.tv_id)
-            tvTitle = itemView.findViewById(R.id.tv_title)
-            tvBody = itemView.findViewById(R.id.tv_body)
-            tvCreatedAt = itemView.findViewById(R.id.tv_created_at)
-            ivIcon = itemView.findViewById(R.id.iv_icon)
-
             itemView.setOnClickListener(this)
         }
 
         override fun onClick(view: View) {
-            if (listener != null) {
-                listener!!.onTodoItemClick(view, adapterPosition)
-            }
+            listener?.onTodoItemClick(view, adapterPosition)
         }
 
     }

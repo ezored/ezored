@@ -35,6 +35,7 @@ class MainFragment : BaseFragment(), BottomNavigationView.OnNavigationItemSelect
         settingsFragment = SettingsFragment.newInstance()
         adapter?.addFragment(settingsFragment!!)
 
+        // view pager
         viewPager = view.findViewById(R.id.main_view_pager)
 
         viewPager?.let { viewPager ->
@@ -71,7 +72,6 @@ class MainFragment : BaseFragment(), BottomNavigationView.OnNavigationItemSelect
     }
 
     companion object {
-
         fun newInstance(): MainFragment {
             return MainFragment()
         }

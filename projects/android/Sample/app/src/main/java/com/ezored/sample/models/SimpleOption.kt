@@ -18,7 +18,7 @@ class SimpleOption(val type: SimpleOptionTypeEnum) {
         }
     }
 
-    fun getImage(context: Context): Int {
+    fun getImage(): Int {
         return R.drawable.ic_simple_option
     }
 

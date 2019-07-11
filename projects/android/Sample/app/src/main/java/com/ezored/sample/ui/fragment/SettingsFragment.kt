@@ -31,7 +31,6 @@ class SettingsFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.S
     override fun createAll(view: View) {
         super.createAll(view)
 
-        // toolbar
         setupToolbar(R.string.title_settings)
     }
 
@@ -39,7 +38,7 @@ class SettingsFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.S
         super.onLoadNewData()
 
         listData = ArrayList()
-        listData!!.add(SimpleOption(SimpleOptionTypeEnum.APP_VERSION))
+        listData?.add(SimpleOption(SimpleOptionTypeEnum.APP_VERSION))
 
         updateAdapter()
 
@@ -51,21 +50,30 @@ class SettingsFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.S
     }
 
     override fun onSimpleOptionItemClick(view: View, position: Int) {
-        val option = listData!![position]
+        listData?.let { listData ->
+            val option = listData[position]
 
-        if (option.type == SimpleOptionTypeEnum.APP_VERSION) {
-            doActionAppVersion()
+            if (option.type == SimpleOptionTypeEnum.APP_VERSION) {
+                doActionAppVersion()
+            }
         }
     }
 
     private fun doActionAppVersion() {
         try {
-            val manager = context!!.packageManager
-            val info = manager.getPackageInfo(context!!.packageName, PackageManager.GET_ACTIVITIES)
-            val version =
-                String.format(Locale.getDefault(), "Version: %s\nBuild: %d", info.versionName, info.versionCode)
+            context?.let { context ->
+                val manager = context.packageManager
+                val info = manager.getPackageInfo(context.packageName, PackageManager.GET_ACTIVITIES)
 
-            UIUtil.showAlert(context, getString(R.string.dialog_title), version)
+                val version = String.format(
+                    Locale.getDefault(),
+                    "Version: %s\nBuild: %d",
+                    info.versionName,
+                    info.versionCode
+                )
+
+                UIUtil.showAlert(context, getString(R.string.dialog_title), version)
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }

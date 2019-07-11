@@ -282,13 +282,13 @@ open class BaseFragment : Fragment() {
 
     protected fun validateCache() {
         if (hasCache()) {
-            lastCacheUpdate = if (lastCacheUpdate > 0) lastCacheUpdate else DateTimeUtils.getCurrentTimestamp()
+            lastCacheUpdate = if (lastCacheUpdate > 0) lastCacheUpdate else DateTimeUtils.currentTimestamp
 
-            val currentTime = DateTimeUtils.getCurrentTimestamp()
+            val currentTime = DateTimeUtils.currentTimestamp
             val expireTime = lastCacheUpdate + cacheExpireInterval()
 
             if (currentTime >= expireTime) {
-                lastCacheUpdate = DateTimeUtils.getCurrentTimestamp()
+                lastCacheUpdate = DateTimeUtils.currentTimestamp
                 onCacheExpired()
             }
         }
@@ -353,10 +353,8 @@ open class BaseFragment : Fragment() {
     }
 
     protected fun showToolbarBackButton(show: Boolean) {
-        if (supportActionBar != null) {
-            supportActionBar!!.setDisplayHomeAsUpEnabled(show)
-            supportActionBar!!.setDisplayShowHomeEnabled(show)
-        }
+        supportActionBar?.setDisplayHomeAsUpEnabled(show)
+        supportActionBar?.setDisplayShowHomeEnabled(show)
     }
 
     protected fun hasToolbarLogo(): Boolean {

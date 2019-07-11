@@ -9,12 +9,12 @@ class AppLifecycleObserver : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun onMoveToForeground() {
-        Application.getInstance().onMoveToForeground()
+        Application.instance.onMoveToForeground()
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun onMoveToBackground() {
-        Application.getInstance().onMoveToBackground()
+        Application.instance.onMoveToBackground()
     }
 
 }

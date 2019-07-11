@@ -69,12 +69,13 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
     }
 
     override fun onTodoItemClick(view: View, position: Int) {
-        val todo = listData!![position]
-        TodoDataService.setDoneById(todo.id, !todo.done)
-        listData!![position] = TodoDataService.findById(todo.id)
+        listData?.let { listData ->
+            val todo = listData[position]
+            TodoDataService.setDoneById(todo.id, !todo.done)
 
-        if (rvList.adapter != null) {
-            rvList.adapter!!.notifyDataSetChanged()
+            listData[position] = TodoDataService.findById(todo.id)
+
+            rvList.adapter?.notifyDataSetChanged()
         }
     }
 
@@ -87,11 +88,13 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        when (item!!.itemId) {
-            R.id.menu_search -> return true
-
-            else -> return super.onOptionsItemSelected(item)
+        item?.let {
+            if (it.itemId == R.id.menu_search) {
+                return true
+            }
         }
+
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {

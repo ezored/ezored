@@ -42,9 +42,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
     override fun createAll(view: View) {
         super.createAll(view)
 
-        // toolbar
         setupToolbar(R.string.title_home)
-
         validateLoadData()
     }
 
@@ -52,16 +50,12 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
         super.onLoadNewData()
 
         listData = ArrayList()
+        listData?.add(SimpleOption(SimpleOptionTypeEnum.SECRET_KEY))
+        listData?.add(SimpleOption(SimpleOptionTypeEnum.SHARED_DATA))
+        listData?.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
+        listData?.add(SimpleOption(SimpleOptionTypeEnum.FILE_HELPER))
+        listData?.add(SimpleOption(SimpleOptionTypeEnum.TODO))
 
-        listData?.let { listData ->
-            listData.add(SimpleOption(SimpleOptionTypeEnum.SECRET_KEY))
-            listData.add(SimpleOption(SimpleOptionTypeEnum.SHARED_DATA))
-            listData.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
-            listData.add(SimpleOption(SimpleOptionTypeEnum.FILE_HELPER))
-            listData.add(SimpleOption(SimpleOptionTypeEnum.TODO))
-        }
-
-        // list
         updateAdapter()
 
         remoteDataLoadState = LoadStateEnum.LOADED
@@ -84,11 +78,17 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
     }
 
     private fun doActionSecretKey() {
-        UIUtil.showAlert(
-            context,
-            getString(R.string.dialog_title),
-            String.format(Locale.getDefault(), "KEY IS:\n%s", EnvironmentHelper.getSecretKey())
-        )
+        context?.let { context ->
+            UIUtil.showAlert(
+                context,
+                getString(R.string.dialog_title),
+                String.format(
+                    Locale.getDefault(),
+                    "KEY IS:\n%s",
+                    EnvironmentHelper.getSecretKey()
+                )
+            )
+        }
     }
 
     private fun doActionHttpsRequest() {
@@ -106,28 +106,10 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
             val response = HttpClient.shared().doRequest(request)
 
             withContext(context = Dispatchers.Main) {
-                UIUtil.showAlert(context, getString(R.string.dialog_title), response.body)
-                showMainView()
-            }
-        }
-    }
+                context?.let {
+                    UIUtil.showAlert(it, getString(R.string.dialog_title), response.body)
+                }
 
-    private fun doActionHttpRequest() {
-        showLoadingView()
-
-        GlobalScope.launch {
-            val headers = ArrayList<HttpHeader>()
-            headers.add(HttpHeader("Content-Type", "application/x-www-form-urlencoded"))
-
-            val params = ArrayList<HttpRequestParam>()
-            params.add(HttpRequestParam("username", "demo"))
-            params.add(HttpRequestParam("password", "demo"))
-
-            val request = HttpRequest("https://httpbin.org/post", HttpMethod.METHOD_POST, params, headers, "")
-            val response = HttpClient.shared().doRequest(request)
-
-            withContext(context = Dispatchers.Main) {
-                UIUtil.showAlert(context, getString(R.string.dialog_title), response.body)
                 showMainView()
             }
         }
@@ -135,10 +117,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
 
     private fun doActionSharedData() {
         SharedDataHelper.setDemoFlag(!SharedDataHelper.getDemoFlag())
-
-        if (rvList.adapter != null) {
-            rvList.adapter!!.notifyDataSetChanged()
-        }
+        rvList.adapter?.notifyDataSetChanged()
     }
 
     private fun doActionFileHelper() {
@@ -148,9 +127,17 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
                 "database.db3"
             )
         )
-        val message = String.format(Locale.getDefault(), "%d bytes / %.5f mbytes", size, size.toDouble() / 1048576)
 
-        UIUtil.showAlert(context, getString(R.string.dialog_title), message)
+        val message = String.format(
+            Locale.getDefault(),
+            "%d bytes / %.5f mbytes",
+            size,
+            (size.toDouble() / 1048576)
+        )
+
+        context?.let {
+            UIUtil.showAlert(it, getString(R.string.dialog_title), message)
+        }
     }
 
     private fun doActionTodo() {
