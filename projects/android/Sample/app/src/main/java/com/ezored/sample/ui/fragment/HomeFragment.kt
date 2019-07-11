@@ -16,14 +16,19 @@ import com.ezored.sample.enums.SimpleOptionTypeEnum
 import com.ezored.sample.models.SimpleOption
 import com.ezored.sample.ui.activity.TodoListActivity
 import com.ezored.sample.ui.fragment.base.BaseListFragment
+import com.ezored.sample.utils.EnvironmentUtil
 import com.ezored.sample.utils.UIUtil
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.SimpleOptionAdapterListener {
 
     override var adapter: RecyclerView.Adapter<*>
         get() {
-            val adapter = SimpleOptionAdapter(context, listData)
+            val adapter = SimpleOptionAdapter(context!!, listData)
             adapter.setListener(this)
 
             return adapter
@@ -48,12 +53,21 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
         super.onLoadNewData()
 
         listData = ArrayList()
-        listData!!.add(SimpleOption(SimpleOptionTypeEnum.SECRET_KEY))
-        listData!!.add(SimpleOption(SimpleOptionTypeEnum.SHARED_DATA))
-        listData!!.add(SimpleOption(SimpleOptionTypeEnum.HTTP_REQUEST))
-        listData!!.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
-        listData!!.add(SimpleOption(SimpleOptionTypeEnum.FILE_HELPER))
-        listData!!.add(SimpleOption(SimpleOptionTypeEnum.TODO))
+
+        listData?.let { listData ->
+            listData.add(SimpleOption(SimpleOptionTypeEnum.SECRET_KEY))
+            listData.add(SimpleOption(SimpleOptionTypeEnum.SHARED_DATA))
+
+            if (EnvironmentUtil.isInstantApp()) {
+                listData.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
+            } else {
+                listData.add(SimpleOption(SimpleOptionTypeEnum.HTTP_REQUEST))
+                listData.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
+            }
+
+            listData.add(SimpleOption(SimpleOptionTypeEnum.FILE_HELPER))
+            listData.add(SimpleOption(SimpleOptionTypeEnum.TODO))
+        }
 
         // list
         updateAdapter()
@@ -94,7 +108,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
     private fun doActionHttpsRequest() {
         showLoadingView()
 
-        UIUtil.runOnNewThread {
+        GlobalScope.launch {
             val headers = ArrayList<HttpHeader>()
             headers.add(HttpHeader("Content-Type", "application/x-www-form-urlencoded"))
 
@@ -105,7 +119,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
             val request = HttpRequest("https://httpbin.org/post", HttpMethod.METHOD_POST, params, headers, "")
             val response = HttpClient.shared().doRequest(request)
 
-            UIUtil.runOnMainThread {
+            withContext(context = Dispatchers.Main) {
                 UIUtil.showAlert(context, getString(R.string.dialog_title), response.body)
                 showMainView()
             }
@@ -115,7 +129,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
     private fun doActionHttpRequest() {
         showLoadingView()
 
-        UIUtil.runOnNewThread {
+        GlobalScope.launch {
             val headers = ArrayList<HttpHeader>()
             headers.add(HttpHeader("Content-Type", "application/x-www-form-urlencoded"))
 
@@ -126,7 +140,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
             val request = HttpRequest("https://httpbin.org/post", HttpMethod.METHOD_POST, params, headers, "")
             val response = HttpClient.shared().doRequest(request)
 
-            UIUtil.runOnMainThread {
+            withContext(context = Dispatchers.Main) {
                 UIUtil.showAlert(context, getString(R.string.dialog_title), response.body)
                 showMainView()
             }
@@ -156,7 +170,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
     private fun doActionTodo() {
         showLoadingView()
 
-        UIUtil.runOnNewThread {
+        GlobalScope.launch {
             // add some rows
             TodoDataService.truncate()
 
@@ -178,11 +192,10 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
                 TodoDataService.add(todo)
             }
 
-            // show list activity
-            UIUtil.runOnMainThread {
+            withContext(context = Dispatchers.Main) {
                 showMainView()
 
-                val intent = TodoListActivity.newIntent(context)
+                val intent = TodoListActivity.newIntent(context!!)
                 startActivity(intent)
             }
         }

@@ -1,6 +1,6 @@
-package com.ezored.sample.enums;
+package com.ezored.sample.enums
 
-public enum SimpleOptionTypeEnum {
+enum class SimpleOptionTypeEnum {
 
     SECRET_KEY,
     SHARED_DATA,

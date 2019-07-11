@@ -30,10 +30,10 @@ class MainFragment : BaseFragment(), BottomNavigationView.OnNavigationItemSelect
         adapter = MainViewPagerAdapter(childFragmentManager)
 
         homeFragment = HomeFragment.newInstance()
-        adapter?.addFragment(homeFragment)
+        adapter?.addFragment(homeFragment!!)
 
         settingsFragment = SettingsFragment.newInstance()
-        adapter?.addFragment(settingsFragment)
+        adapter?.addFragment(settingsFragment!!)
 
         viewPager = view.findViewById(R.id.main_view_pager)
 

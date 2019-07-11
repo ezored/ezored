@@ -16,7 +16,7 @@ class SettingsFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.S
 
     override var adapter: RecyclerView.Adapter<*>
         get() {
-            val adapter = SimpleOptionAdapter(context, listData)
+            val adapter = SimpleOptionAdapter(context!!, listData)
             adapter.setListener(this)
 
             return adapter
@@ -63,13 +63,12 @@ class SettingsFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.S
             val manager = context!!.packageManager
             val info = manager.getPackageInfo(context!!.packageName, PackageManager.GET_ACTIVITIES)
             val version =
-                String.format(Locale.getDefault(), "Version: %s\nBuild: %d", info.versionName, info.longVersionCode)
+                String.format(Locale.getDefault(), "Version: %s\nBuild: %d", info.versionName, info.versionCode)
 
             UIUtil.showAlert(context, getString(R.string.dialog_title), version)
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 
     companion object {

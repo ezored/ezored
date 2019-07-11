@@ -18,7 +18,7 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
 
     override var adapter: RecyclerView.Adapter<*>
         get() {
-            val adapter = TodoAdapter(context, listData)
+            val adapter = TodoAdapter(context!!, listData)
             adapter.setListener(this)
 
             return adapter

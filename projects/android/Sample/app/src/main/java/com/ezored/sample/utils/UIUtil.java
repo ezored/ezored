@@ -15,7 +15,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
-import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.text.SpannableString;
@@ -36,7 +35,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import com.ezored.sample.R;
-import com.ezored.sample.interfaces.Closure;
 import com.ezored.util.Logger;
 
 import java.lang.reflect.Field;
@@ -171,58 +169,6 @@ public class UIUtil {
         }
 
         return drawable;
-    }
-
-    public static void runOnMainThread(final Closure closure) {
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                if (closure != null) {
-                    closure.exec();
-                }
-            }
-        });
-    }
-
-    public static void runOnMainThreadDelayed(final Closure closure, final long millis) {
-        Handler handler = new Handler(Looper.getMainLooper());
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (closure != null) {
-                    closure.exec();
-                }
-            }
-        }, millis);
-    }
-
-    public static void runOnNewThread(final Closure closure) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if (closure != null) {
-                    closure.exec();
-                }
-            }
-        }).start();
-    }
-
-    public static void runOnNewThreadDelayed(final Closure closure, final long millis) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(millis);
-                } catch (Exception e) {
-                    // ignore
-                }
-
-                if (closure != null) {
-                    closure.exec();
-                }
-            }
-        }).start();
     }
 
     public static void changeVisibility(View view, int visibility, boolean animate) {
