@@ -1,7 +1,7 @@
 package com.ezored.sample.ui.fragment
 
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.MutableLiveData
 import com.ezored.core.ApplicationCore
 import com.ezored.dataservices.TodoDataService
 import com.ezored.domain.Todo
@@ -25,17 +25,6 @@ import java.util.*
 
 class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.SimpleOptionAdapterListener {
 
-    override var adapter: RecyclerView.Adapter<*>
-        get() {
-            val adapter = SimpleOptionAdapter(context!!, listData)
-            adapter.setListener(this)
-
-            return adapter
-        }
-        set(value) {
-            super.adapter = value
-        }
-
     override val screenNameForAnalytics: String?
         get() = "Home"
 
@@ -43,31 +32,26 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
         super.createAll(view)
 
         setupToolbar(R.string.title_home)
+        createLiveData()
         validateLoadData()
     }
 
     override fun onLoadNewData() {
         super.onLoadNewData()
 
-        listData = ArrayList()
-        listData?.add(SimpleOption(SimpleOptionTypeEnum.SECRET_KEY))
-        listData?.add(SimpleOption(SimpleOptionTypeEnum.SHARED_DATA))
-        listData?.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
-        listData?.add(SimpleOption(SimpleOptionTypeEnum.FILE_HELPER))
-        listData?.add(SimpleOption(SimpleOptionTypeEnum.TODO))
+        var list = ArrayList<SimpleOption>()
+        list.add(SimpleOption(SimpleOptionTypeEnum.SECRET_KEY))
+        list.add(SimpleOption(SimpleOptionTypeEnum.SHARED_DATA))
+        list.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
+        list.add(SimpleOption(SimpleOptionTypeEnum.FILE_HELPER))
+        list.add(SimpleOption(SimpleOptionTypeEnum.TODO))
 
-        updateAdapter()
+        listData?.value = list
 
         remoteDataLoadState = LoadStateEnum.LOADED
     }
 
-    override fun needLoadNewData(): Boolean {
-        return isAdded
-    }
-
-    override fun onSimpleOptionItemClick(view: View, position: Int) {
-        val option = listData!![position]
-
+    override fun onSimpleOptionItemClick(view: View, option: SimpleOption) {
         when {
             option.type == SimpleOptionTypeEnum.SHARED_DATA -> doActionSharedData()
             option.type == SimpleOptionTypeEnum.HTTPS_REQUEST -> doActionHttpsRequest()
@@ -75,6 +59,23 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
             option.type == SimpleOptionTypeEnum.TODO -> doActionTodo()
             option.type == SimpleOptionTypeEnum.FILE_HELPER -> doActionFileHelper()
         }
+    }
+
+    private fun createLiveData() {
+        listData = MutableLiveData()
+
+        (listData as MutableLiveData<ArrayList<SimpleOption>>).observe(this, androidx.lifecycle.Observer { list ->
+            adapter = SimpleOptionAdapter(context!!, list)
+            (adapter as SimpleOptionAdapter).setListener(this)
+
+            updateAdapter()
+
+            adapter.notifyDataSetChanged()
+        })
+    }
+
+    override fun needLoadNewData(): Boolean {
+        return isAdded
     }
 
     private fun doActionSecretKey() {

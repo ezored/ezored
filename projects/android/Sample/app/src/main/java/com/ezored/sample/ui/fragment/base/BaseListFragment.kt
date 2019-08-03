@@ -2,6 +2,7 @@ package com.ezored.sample.ui.fragment.base
 
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,7 @@ import java.util.*
 
 open class BaseListFragment<T> : BaseFragment() {
 
-    protected var listData: ArrayList<T>? = null
+    protected var listData: MutableLiveData<ArrayList<T>>? = null
     protected lateinit var rvList: RecyclerView
     protected lateinit var layoutManager: LinearLayoutManager
     protected open lateinit var adapter: Adapter<*>

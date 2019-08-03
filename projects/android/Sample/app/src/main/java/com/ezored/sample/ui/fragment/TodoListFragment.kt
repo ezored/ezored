@@ -3,8 +3,7 @@ package com.ezored.sample.ui.fragment
 import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
-
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.MutableLiveData
 import com.ezored.dataservices.TodoDataService
 import com.ezored.domain.Todo
 import com.ezored.sample.R
@@ -15,21 +14,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListener {
 
     private var searchText: String? = null
-
-    override var adapter: RecyclerView.Adapter<*>
-        get() {
-            val adapter = TodoAdapter(context!!, listData)
-            adapter.setListener(this)
-
-            return adapter
-        }
-        set(value) {
-            super.adapter = value
-        }
 
     override val fragmentLayout: Int
         get() = R.layout.fragment_todo_list
@@ -42,7 +31,8 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
 
         setupToolbar(R.string.title_todo_list)
         showToolbarBackButton(true)
-
+        showLoadingView()
+        createLiveData()
         validateLoadData()
     }
 
@@ -50,32 +40,42 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
         super.onLoadNewData()
 
         GlobalScope.launch {
-            listData = if (TextUtils.isEmpty(searchText)) {
+            var list = if (TextUtils.isEmpty(searchText)) {
                 TodoDataService.findAllOrderByCreatedAtDesc()
             } else {
                 TodoDataService.findByTitle(searchText)
             }
 
             withContext(context = Dispatchers.Main) {
-                updateAdapter()
-
+                listData?.value = list
                 remoteDataLoadState = LoadStateEnum.LOADED
             }
         }
+    }
+
+    private fun createLiveData() {
+        listData = MutableLiveData()
+
+        (listData as MutableLiveData<ArrayList<Todo>>).observe(this, androidx.lifecycle.Observer { list ->
+            adapter = TodoAdapter(context!!, list)
+            (adapter as TodoAdapter).setListener(this)
+
+            updateAdapter()
+
+            adapter.notifyDataSetChanged()
+        })
     }
 
     override fun needLoadNewData(): Boolean {
         return isAdded
     }
 
-    override fun onTodoItemClick(view: View, position: Int) {
-        listData?.let { listData ->
-            val todo = listData[position]
-            TodoDataService.setDoneById(todo.id, !todo.done)
+    override fun onTodoItemClick(view: View, todo: Todo) {
+        TodoDataService.setDoneById(todo.id, !todo.done)
 
-            listData[position] = TodoDataService.findById(todo.id)
-
-            rvList.adapter?.notifyDataSetChanged()
+        if (remoteDataLoadState != LoadStateEnum.LOADING) {
+            remoteDataLoadState = LoadStateEnum.NOT_LOADED
+            validateLoadData()
         }
     }
 

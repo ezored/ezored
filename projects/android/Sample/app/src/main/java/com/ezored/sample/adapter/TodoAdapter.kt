@@ -59,7 +59,7 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.ViewHolder> {
     }
 
     interface TodoAdapterListener {
-        fun onTodoItemClick(view: View, position: Int)
+        fun onTodoItemClick(view: View, todo: Todo)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
@@ -75,7 +75,7 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.ViewHolder> {
         }
 
         override fun onClick(view: View) {
-            listener?.onTodoItemClick(view, adapterPosition)
+            listener?.onTodoItemClick(view, listData!![adapterPosition])
         }
 
     }

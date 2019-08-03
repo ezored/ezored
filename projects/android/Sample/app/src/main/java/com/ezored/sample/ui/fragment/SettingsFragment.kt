@@ -2,7 +2,7 @@ package com.ezored.sample.ui.fragment
 
 import android.content.pm.PackageManager
 import android.view.View
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.MutableLiveData
 import com.ezored.sample.R
 import com.ezored.sample.adapter.SimpleOptionAdapter
 import com.ezored.sample.enums.LoadStateEnum
@@ -14,17 +14,6 @@ import java.util.*
 
 class SettingsFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.SimpleOptionAdapterListener {
 
-    override var adapter: RecyclerView.Adapter<*>
-        get() {
-            val adapter = SimpleOptionAdapter(context!!, listData)
-            adapter.setListener(this)
-
-            return adapter
-        }
-        set(value) {
-            super.adapter = value
-        }
-
     override val screenNameForAnalytics: String?
         get() = "Settings"
 
@@ -32,30 +21,40 @@ class SettingsFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.S
         super.createAll(view)
 
         setupToolbar(R.string.title_settings)
+        createLiveData()
     }
 
     override fun onLoadNewData() {
         super.onLoadNewData()
 
-        listData = ArrayList()
-        listData?.add(SimpleOption(SimpleOptionTypeEnum.APP_VERSION))
+        var list = ArrayList<SimpleOption>()
+        list.add(SimpleOption(SimpleOptionTypeEnum.APP_VERSION))
 
-        updateAdapter()
+        listData?.value = list
 
         remoteDataLoadState = LoadStateEnum.LOADED
+    }
+
+    private fun createLiveData() {
+        listData = MutableLiveData()
+
+        (listData as MutableLiveData<ArrayList<SimpleOption>>).observe(this, androidx.lifecycle.Observer { list ->
+            adapter = SimpleOptionAdapter(context!!, list)
+            (adapter as SimpleOptionAdapter).setListener(this)
+
+            updateAdapter()
+
+            adapter.notifyDataSetChanged()
+        })
     }
 
     override fun needLoadNewData(): Boolean {
         return true
     }
 
-    override fun onSimpleOptionItemClick(view: View, position: Int) {
-        listData?.let { listData ->
-            val option = listData[position]
-
-            if (option.type == SimpleOptionTypeEnum.APP_VERSION) {
-                doActionAppVersion()
-            }
+    override fun onSimpleOptionItemClick(view: View, option: SimpleOption) {
+        when {
+            option.type == SimpleOptionTypeEnum.APP_VERSION -> doActionAppVersion()
         }
     }
 

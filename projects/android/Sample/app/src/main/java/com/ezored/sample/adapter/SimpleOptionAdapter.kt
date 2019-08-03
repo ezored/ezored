@@ -57,7 +57,7 @@ class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder>
     }
 
     interface SimpleOptionAdapterListener {
-        fun onSimpleOptionItemClick(view: View, position: Int)
+        fun onSimpleOptionItemClick(view: View, option: SimpleOption)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
@@ -70,7 +70,7 @@ class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder>
         }
 
         override fun onClick(view: View) {
-            listener?.onSimpleOptionItemClick(view, adapterPosition)
+            listener?.onSimpleOptionItemClick(view, listData!![adapterPosition])
         }
 
     }
