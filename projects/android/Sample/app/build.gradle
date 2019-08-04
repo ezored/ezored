@@ -20,8 +20,8 @@ android {
         applicationId 'com.ezored.sample'
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 10
-        versionName '1.1.0'
+        versionCode 11
+        versionName '1.2.0'
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -67,7 +67,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     if (gradle.ext.usePrebuiltLibrary) {
-        implementation(name: 'library', ext: 'aar')
+        if (gradle.ext.isDebuggable) {
+            implementation(name: 'library-debug', ext: 'aar')
+        } else {
+            implementation(name: 'library-release', ext: 'aar')
+        }
     } else {
         implementation project(':ezored-library')
     }

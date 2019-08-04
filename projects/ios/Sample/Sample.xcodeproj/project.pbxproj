@@ -399,7 +399,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/../../../files/scripts/strip-framework.sh Core\n";
+			shellScript = "${SRCROOT}/../../../files/scripts/strip-framework.sh Ezored\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
