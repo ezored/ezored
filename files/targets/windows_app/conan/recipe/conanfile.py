@@ -46,7 +46,7 @@ class TargetConan(ConanFile):
         self.copy("*.dll", dst="bin", keep_path=False)
 
     def requirements(self):
-        self.requires('sqlite3/3.29.0@bincrafters/stable')
+        self.requires('sqlite3/3.27.2@bincrafters/stable')
         self.requires('sqlitecpp/2.3.0@bincrafters/stable')
         self.requires('rapidjson/1.1.0@bincrafters/stable')
         self.requires('Poco/1.9.2@pocoproject/stable')
