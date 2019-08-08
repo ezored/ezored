@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A1CCC0C2220D00F0005DB7B /* Ezored.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1CCC0B2220D00F0005DB7B /* Ezored.framework */; };
-		3A1CCC0D2220D00F0005DB7B /* Ezored.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1CCC0B2220D00F0005DB7B /* Ezored.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3A02CD9A22F6BDA000855C8A /* Ezored.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A02CD9922F6BDA000855C8A /* Ezored.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		3A02CD9B22F6BDA000855C8A /* Ezored.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A02CD9922F6BDA000855C8A /* Ezored.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A2F22CC2214A4DB00A2FB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F22CB2214A4DB00A2FB4F /* Assets.xcassets */; };
 		3A2F22CF2214A4DB00A2FB4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F22CD2214A4DB00A2FB4F /* LaunchScreen.storyboard */; };
 		3A2F22FD2214A57D00A2FB4F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22D82214A57D00A2FB4F /* HomeViewController.swift */; };
@@ -63,13 +63,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3A2F232C2214AC1000A2FB4F /* Embed Frameworks */ = {
+		3A02CD9C22F6BDA000855C8A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3A1CCC0D2220D00F0005DB7B /* Ezored.framework in Embed Frameworks */,
+				3A02CD9B22F6BDA000855C8A /* Ezored.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,7 +77,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3A1CCC0B2220D00F0005DB7B /* Ezored.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ezored.framework; path = ../../../dist/ios_framework/Debug/Ezored.framework; sourceTree = "<group>"; };
+		3A02CD9922F6BDA000855C8A /* Ezored.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ezored.framework; path = "$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)/Ezored.framework"; sourceTree = "<group>"; };
 		3A2F22C12214A4DA00A2FB4F /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A2F22CB2214A4DB00A2FB4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A2F22CE2214A4DB00A2FB4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A1CCC0C2220D00F0005DB7B /* Ezored.framework in Frameworks */,
+				3A02CD9A22F6BDA000855C8A /* Ezored.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +150,7 @@
 		3A2F22B82214A4DA00A2FB4F = {
 			isa = PBXGroup;
 			children = (
-				3A1CCC0B2220D00F0005DB7B /* Ezored.framework */,
+				3A02CD9922F6BDA000855C8A /* Ezored.framework */,
 				3A2F22C32214A4DA00A2FB4F /* Sample */,
 				3A2F22C22214A4DA00A2FB4F /* Products */,
 			);
@@ -322,7 +322,7 @@
 				3A2F22BD2214A4DA00A2FB4F /* Sources */,
 				3A2F22BE2214A4DA00A2FB4F /* Frameworks */,
 				3A2F22BF2214A4DA00A2FB4F /* Resources */,
-				3A2F232C2214AC1000A2FB4F /* Embed Frameworks */,
+				3A02CD9C22F6BDA000855C8A /* Embed Frameworks */,
 				3ADA2D9022163DD6005E6BD0 /* Strip Frameworks */,
 			);
 			buildRules = (
@@ -399,7 +399,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${SRCROOT}/../../../files/scripts/strip-framework.sh Core\n";
+			shellScript = "${SRCROOT}/../../../files/scripts/strip-framework.sh Ezored\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -604,6 +604,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 54BDV6YZ73;
 				ENABLE_BITCODE = YES;
@@ -629,6 +630,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 54BDV6YZ73;
 				ENABLE_BITCODE = YES;

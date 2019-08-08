@@ -10,6 +10,11 @@ set(PROJECT_CONFIG_ARCH "" CACHE STRING "Architecture")
 set(PROJECT_ROOT_PATH ${CMAKE_SOURCE_REALPATH})
 set(PROJECT_BUILD_DIR ${PROJECT_ROOT_PATH}/build/${PROJECT_TARGET_NAME}/${CMAKE_BUILD_TYPE}/${PROJECT_CONFIG_ARCH} CACHE INTERNAL "")
 
+# Suppress macOS X RPATH warnings and adopt new related behaviors
+if(NOT CMAKE_VERSION VERSION_LESS 3.9)
+    cmake_policy(SET CMP0068 NEW)
+endif()
+
 # Platform configurations
 set(DEVELOPMENT_TEAM_ID "" CACHE STRING "Development Team ID")
 set(CODE_SIGN_IDENTITY "iPhone Developer" CACHE STRING "Sign Identity")
