@@ -10,29 +10,29 @@
 
 **Code reuse. Write once. Run everywhere.**
 
-C++ boostrap toolkit for multi-platform code reuse, including mobile and desktop.
+Quick start C++ toolkit for cross-platform development with the same code including mobile and desktop.
 
-Ezored was designed to have a convenient and organized struture of scripts and folders, so you can download this repository and start build sample files to test and see it working now.
+Ezored was designed to be the fastest way to start your project with C++, having a convenient and organized struture of scripts and folders, so you can download this repository and start build current sample projects to test and see it working.
 
-Basically you build shared libraries for mobile (android is **aar** and ios is **framework**) and **executables** for desktop (linux, mac, windows).
+Basically you build shared libraries for mobile (Android is **aar** and iOS is **framework**) and **executables** for desktop (Linux, macOS and Windows).
 
-Don't think about how you will start your C++ project for mobile or desktop, use ezored as a bootstrap project.
+Don't think about how you will start your C++ project for **mobile** and **desktop**, use ezored as a quick start project.
 
 ![](extras/images/what-is.png)
 
 **What ezored is:**
 
-- Ready-to-use bootstrap toolkit to build and reuse C++ code for multi-platform.
+- Cross-platform and ready-to-use quick start toolkit to build and reuse C++ code for any project.
 - Scripts, files and folders well-organized to you only need add your things to continue.
-- Mobile and desktop samples that use some C++ code that access database, make requests, parser json data, store preference data, show logger, work with string and datetime.
-- Easy and ready way that you can start create everything in C++ (you can create native SDK for mobile, command line tools, http server applications for API and everything more).
-- Progressive, that is, allows you to use in a project in progress. Maybe you want only a performance agressive thing in your SDK or executable.
-- Toolkit with market used tools (python, cmake and conan).
+- Mobile and desktop samples that use C++ code that access database, make requests, parser json data, store preference data, show logger, work with string and datetime.
+- Easy and ready way that you can start create everything in C++ (you can create native SDK for mobile, command line tools for desktop, http server applications for API and everything more).
+- Can be used as a progressive SDK into your current project.
+- Use all best market tools (python, cmake and conan).
 
 **What ezored not is:**
 
 - Interface or UI for mobile or desktop.
-- New way to write applications with a custom and new tool on market.
+- New IDE or framework that will replace your application.
 - Dependency manager.
 
 **Why you need use it?**
