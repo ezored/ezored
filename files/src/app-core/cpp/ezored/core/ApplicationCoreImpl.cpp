@@ -90,7 +90,7 @@ void ApplicationCoreImpl::initializeHttpClient()
 {
     if (HttpClient::shared()->getPlatformService() == nullptr)
     {
-        Logger::shared()->i("HTTP client is not initialized");        
+        Logger::shared()->i("HTTP client is not initialized");
     }
 }
 
