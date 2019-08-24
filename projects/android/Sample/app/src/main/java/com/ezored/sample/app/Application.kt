@@ -12,6 +12,8 @@ import com.ezored.data.SharedData
 import com.ezored.data.SharedDataPlatformServiceImpl
 import com.ezored.io.FileHelper
 import com.ezored.io.FileHelperPlatformServiceImpl
+import com.ezored.net.http.HttpClient
+import com.ezored.net.http.HttpClientPlatformServiceImpl
 import com.ezored.sample.BuildConfig
 import com.ezored.sample.data.AppData
 import com.ezored.sample.observers.AppLifecycleObserver
@@ -107,7 +109,7 @@ class Application : MultiDexApplication() {
 
     private fun initializeHTTPClient() {
         // http client (uncomment to use platform http client)
-        //HttpClient.shared().setPlatformService(new HttpClientPlatformServiceImpl());
+        HttpClient.shared().platformService = HttpClientPlatformServiceImpl()
     }
 
     private fun initializeStrictMode() {
@@ -130,7 +132,7 @@ class Application : MultiDexApplication() {
     }
 
     companion object {
-        private val LOG_GROUP = "SAMPLE"
+        private const val LOG_GROUP = "SAMPLE"
 
         lateinit var instance: Application
             private set

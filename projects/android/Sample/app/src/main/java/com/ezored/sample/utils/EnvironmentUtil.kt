@@ -72,7 +72,8 @@ object EnvironmentUtil {
     val currentRegionCode: String
         get() {
             try {
-                val tm = Application.instance.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+                val tm =
+                    Application.instance.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
                 val code = tm.networkCountryIso
 
                 if (!TextUtils.isEmpty(code)) {
@@ -89,7 +90,6 @@ object EnvironmentUtil {
         get() {
             val context = Application.instance
             return context.applicationInfo?.loadLabel(context.packageManager)?.toString() ?: ""
-
         }
 
     val deviceData: DeviceData
@@ -100,11 +100,11 @@ object EnvironmentUtil {
             var systemVersion = formattedSystemVersion
             val model = Build.DEVICE
             val localizedModel = Build.DEVICE
-            var appVersion = EnvironmentUtil.appVersionCode.toString()
+            var appVersion = appVersionCode.toString()
             var appShortVersion = appVersionName
             var appName = appName
-            val screenWidth = EnvironmentUtil.screenWidth.toFloat()
-            val screenHeight = EnvironmentUtil.screenHeight.toFloat()
+            val screenWidth = screenWidth.toFloat()
+            val screenHeight = screenHeight.toFloat()
             val screenScale = screenScale
             val systemOSName = "android"
             var systemLanguage = Locale.getDefault().language

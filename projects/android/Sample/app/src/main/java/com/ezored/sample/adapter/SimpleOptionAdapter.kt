@@ -38,13 +38,19 @@ class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder>
 
             if (option.type == SimpleOptionTypeEnum.SHARED_DATA) {
                 val demoFlag = SharedDataHelper.getDemoFlag()
-                holder.tvTitle.text = context.getString(R.string.option_shared_data, if (demoFlag) "ON" else "OFF")
+                holder.tvTitle.text =
+                    context.getString(R.string.option_shared_data, if (demoFlag) "ON" else "OFF")
             } else {
                 holder.tvTitle.text = option.getDescription(context)
             }
 
             holder.ivIcon.setImageResource(option.getImage())
-            holder.ivIcon.setColorFilter(ContextCompat.getColor(context, R.color.list_item_icon_color))
+            holder.ivIcon.setColorFilter(
+                ContextCompat.getColor(
+                    context,
+                    R.color.list_item_icon_color
+                )
+            )
         }
     }
 
@@ -60,7 +66,8 @@ class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder>
         fun onSimpleOptionItemClick(view: View, option: SimpleOption)
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
 
         val tvTitle: TextView = itemView.findViewById(R.id.tv_title)
         val ivIcon: ImageView = itemView.findViewById(R.id.iv_icon)

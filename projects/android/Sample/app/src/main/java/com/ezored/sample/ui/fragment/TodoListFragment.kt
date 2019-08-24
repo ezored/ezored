@@ -56,14 +56,16 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
     private fun createLiveData() {
         listData = MutableLiveData()
 
-        (listData as MutableLiveData<ArrayList<Todo>>).observe(this, androidx.lifecycle.Observer { list ->
-            adapter = TodoAdapter(context!!, list)
-            (adapter as TodoAdapter).setListener(this)
+        (listData as MutableLiveData<ArrayList<Todo>>).observe(
+            this,
+            androidx.lifecycle.Observer { list ->
+                adapter = TodoAdapter(context!!, list)
+                (adapter as TodoAdapter).setListener(this)
 
-            updateAdapter()
+                updateAdapter()
 
-            adapter.notifyDataSetChanged()
-        })
+                adapter.notifyDataSetChanged()
+            })
     }
 
     override fun needLoadNewData(): Boolean {

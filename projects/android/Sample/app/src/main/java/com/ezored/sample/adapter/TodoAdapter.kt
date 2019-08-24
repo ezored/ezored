@@ -37,7 +37,8 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.ViewHolder> {
             holder.tvId.text = String.format(Locale.getDefault(), "ID: %d", todo.id)
             holder.tvTitle.text = String.format(Locale.getDefault(), "Title: %s", todo.title)
             holder.tvBody.text = String.format(Locale.getDefault(), "Body: %s", todo.body)
-            holder.tvCreatedAt.text = String.format(Locale.getDefault(), "Created at: %s", todo.createdAt)
+            holder.tvCreatedAt.text =
+                String.format(Locale.getDefault(), "Created at: %s", todo.createdAt)
 
             if (todo.done) {
                 holder.ivIcon.setImageResource(R.drawable.ic_item_on)
@@ -62,7 +63,8 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.ViewHolder> {
         fun onTodoItemClick(view: View, todo: Todo)
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
 
         val tvId: TextView = itemView.findViewById(R.id.tv_id)
         val tvTitle: TextView = itemView.findViewById(R.id.tv_title)
