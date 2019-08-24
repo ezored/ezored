@@ -4,7 +4,6 @@
 
 #include "ezored/net/http/HttpClient.hpp"
 #include "ezored/net/http/HttpClientLoggerImpl.hpp"
-#include "ezored/net/http/SimpleHttpClientPlatformService.hpp"
 
 #include "ezored/helpers/CustomerHelper.hpp"
 #include "ezored/helpers/DatabaseHelper.hpp"
@@ -91,7 +90,7 @@ void ApplicationCoreImpl::initializeHttpClient()
 {
     if (HttpClient::shared()->getPlatformService() == nullptr)
     {
-        HttpClient::shared()->setPlatformService(std::make_shared<SimpleHttpClientPlatformService>());
+        Logger::shared()->i("HTTP client is not initialized");
     }
 }
 

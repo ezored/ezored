@@ -1,5 +1,4 @@
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/network_error_view"
         android:layout_width="match_parent"
@@ -18,7 +17,7 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:tint="@color/blue_900"
-                app:srcCompat="@drawable/ic_network_error"/>
+                app:srcCompat="@drawable/ic_network_error" />
 
         <TextView
                 android:id="@+id/tv_message"
@@ -29,7 +28,7 @@
                 android:paddingStart="30dp"
                 android:paddingEnd="30dp"
                 android:text="@string/app_name"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
 
         <Button
                 android:id="@+id/bt_network_error"
@@ -39,7 +38,7 @@
                 android:layout_marginTop="30dp"
                 android:paddingStart="40dp"
                 android:paddingEnd="40dp"
-                android:text="@string/button_refresh"/>
+                android:text="@string/button_refresh" />
 
     </LinearLayout>
 

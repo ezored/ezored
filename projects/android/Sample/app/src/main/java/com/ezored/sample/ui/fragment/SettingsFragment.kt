@@ -12,7 +12,8 @@ import com.ezored.sample.ui.fragment.base.BaseListFragment
 import com.ezored.sample.utils.UIUtil
 import java.util.*
 
-class SettingsFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.SimpleOptionAdapterListener {
+class SettingsFragment : BaseListFragment<SimpleOption>(),
+    SimpleOptionAdapter.SimpleOptionAdapterListener {
 
     override val screenNameForAnalytics: String?
         get() = "Settings"
@@ -38,14 +39,16 @@ class SettingsFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.S
     private fun createLiveData() {
         listData = MutableLiveData()
 
-        (listData as MutableLiveData<ArrayList<SimpleOption>>).observe(this, androidx.lifecycle.Observer { list ->
-            adapter = SimpleOptionAdapter(context!!, list)
-            (adapter as SimpleOptionAdapter).setListener(this)
+        (listData as MutableLiveData<ArrayList<SimpleOption>>).observe(
+            this,
+            androidx.lifecycle.Observer { list ->
+                adapter = SimpleOptionAdapter(context!!, list)
+                (adapter as SimpleOptionAdapter).setListener(this)
 
-            updateAdapter()
+                updateAdapter()
 
-            adapter.notifyDataSetChanged()
-        })
+                adapter.notifyDataSetChanged()
+            })
     }
 
     override fun needLoadNewData(): Boolean {
@@ -62,7 +65,8 @@ class SettingsFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.S
         try {
             context?.let { context ->
                 val manager = context.packageManager
-                val info = manager.getPackageInfo(context.packageName, PackageManager.GET_ACTIVITIES)
+                val info =
+                    manager.getPackageInfo(context.packageName, PackageManager.GET_ACTIVITIES)
 
                 val version = String.format(
                     Locale.getDefault(),

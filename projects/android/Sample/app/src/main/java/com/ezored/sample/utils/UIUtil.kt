@@ -151,14 +151,22 @@ class UIUtil {
             }
 
             val typedValue = TypedValue()
-            activity.theme.resolveAttribute(androidx.appcompat.R.attr.drawableSize, typedValue, true)
-            paddingTop += TypedValue.complexToDimensionPixelOffset(typedValue.data, activity.resources.displayMetrics)
+            activity.theme.resolveAttribute(
+                androidx.appcompat.R.attr.drawableSize,
+                typedValue,
+                true
+            )
+            paddingTop += TypedValue.complexToDimensionPixelOffset(
+                typedValue.data,
+                activity.resources.displayMetrics
+            )
             activity.findViewById<View>(R.id.toolbar).setPadding(0, paddingTop, 0, 0)
         }
 
         fun getStatusBarHeight(activity: Activity): Int {
             var result = 0
-            val resourceId = activity.resources.getIdentifier("status_bar_height", "dimen", "android")
+            val resourceId =
+                activity.resources.getIdentifier("status_bar_height", "dimen", "android")
 
             if (resourceId > 0) {
                 result = activity.resources.getDimensionPixelSize(resourceId)
@@ -218,7 +226,11 @@ class UIUtil {
                     Bitmap.Config.ARGB_8888
                 ) // Single color bitmap will be created of 1x1 pixel
             } else {
-                bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+                bitmap = Bitmap.createBitmap(
+                    drawable.intrinsicWidth,
+                    drawable.intrinsicHeight,
+                    Bitmap.Config.ARGB_8888
+                )
             }
 
             val canvas = Canvas(bitmap!!)
@@ -285,7 +297,10 @@ class UIUtil {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 val window = activity.window
-                window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+                window.setFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN
+                )
             }
         }
 
@@ -301,7 +316,8 @@ class UIUtil {
 
                     if (token != null) {
                         try {
-                            val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                            val imm =
+                                context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                             imm.hideSoftInputFromWindow(token, 0)
                         } catch (e: Exception) {
                             e.printStackTrace()
@@ -384,7 +400,10 @@ class UIUtil {
                 return
             }
 
-            val drawable = GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, intArrayOf(topColor, bottomColor))
+            val drawable = GradientDrawable(
+                GradientDrawable.Orientation.TOP_BOTTOM,
+                intArrayOf(topColor, bottomColor)
+            )
 
             view.background = drawable
         }
@@ -407,7 +426,14 @@ class UIUtil {
 
                         if (item != null && item.title != null) {
                             val s = SpannableString(item.title)
-                            s.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, colorRes)), 0, s.length, 0)
+                            s.setSpan(
+                                ForegroundColorSpan(
+                                    ContextCompat.getColor(
+                                        context,
+                                        colorRes
+                                    )
+                                ), 0, s.length, 0
+                            )
                             item.title = s
                         }
                     }

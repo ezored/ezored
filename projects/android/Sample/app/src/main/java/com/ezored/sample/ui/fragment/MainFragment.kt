@@ -50,7 +50,8 @@ class MainFragment : BaseFragment(), BottomNavigationView.OnNavigationItemSelect
             navigation = view.findViewById<BottomNavigationView>(R.id.navigation)
 
             navigation?.let { navigation ->
-                navigation.background = ColorDrawable(ContextCompat.getColor(context, R.color.white))
+                navigation.background =
+                    ColorDrawable(ContextCompat.getColor(context, R.color.white))
                 navigation.setOnNavigationItemSelectedListener(this)
             }
         }

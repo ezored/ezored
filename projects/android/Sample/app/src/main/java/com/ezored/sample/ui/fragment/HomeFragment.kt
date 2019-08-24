@@ -23,7 +23,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
 
-class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.SimpleOptionAdapterListener {
+class HomeFragment : BaseListFragment<SimpleOption>(),
+    SimpleOptionAdapter.SimpleOptionAdapterListener {
 
     override val screenNameForAnalytics: String?
         get() = "Home"
@@ -64,14 +65,16 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
     private fun createLiveData() {
         listData = MutableLiveData()
 
-        (listData as MutableLiveData<ArrayList<SimpleOption>>).observe(this, androidx.lifecycle.Observer { list ->
-            adapter = SimpleOptionAdapter(context!!, list)
-            (adapter as SimpleOptionAdapter).setListener(this)
+        (listData as MutableLiveData<ArrayList<SimpleOption>>).observe(
+            this,
+            androidx.lifecycle.Observer { list ->
+                adapter = SimpleOptionAdapter(context!!, list)
+                (adapter as SimpleOptionAdapter).setListener(this)
 
-            updateAdapter()
+                updateAdapter()
 
-            adapter.notifyDataSetChanged()
-        })
+                adapter.notifyDataSetChanged()
+            })
     }
 
     override fun needLoadNewData(): Boolean {
@@ -103,7 +106,8 @@ class HomeFragment : BaseListFragment<SimpleOption>(), SimpleOptionAdapter.Simpl
             params.add(HttpRequestParam("username", "demo"))
             params.add(HttpRequestParam("password", "demo"))
 
-            val request = HttpRequest("https://httpbin.org/post", HttpMethod.METHOD_POST, params, headers, "")
+            val request =
+                HttpRequest("https://httpbin.org/post", HttpMethod.METHOD_POST, params, headers, "")
             val response = HttpClient.shared().doRequest(request)
 
             withContext(context = Dispatchers.Main) {

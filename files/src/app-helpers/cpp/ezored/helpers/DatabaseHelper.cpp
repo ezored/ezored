@@ -17,7 +17,7 @@ std::shared_ptr<SQLite::Database> DatabaseHelper::initializeDatabase(const std::
 {
     // some logs
     Logger::shared()->d("Initializing database...");
-    Logger::shared()->i("SQlite3 version: " + std::string(SQLite::VERSION) + " (" + std::string(SQLite::getLibVersion()) + ")");
+    Logger::shared()->i("SQlite3 version: " + std::string(SQLite::getLibVersion()));
     Logger::shared()->i("SQliteC++ version: " + std::string(SQLITECPP_VERSION));
 
     // create database

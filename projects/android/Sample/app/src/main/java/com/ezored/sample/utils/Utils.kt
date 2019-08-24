@@ -16,16 +16,19 @@ object Utils {
 
     val isNetworkAvailable: Boolean
         get() {
-            val cm = Application.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val cm =
+                Application.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             return cm.activeNetworkInfo != null && cm.activeNetworkInfo.isConnected
         }
 
     private val isNetworkWifi: Boolean
         get() {
-            val cm = Application.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val cm =
+                Application.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                cm.getNetworkCapabilities(cm.activeNetwork).hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                cm.getNetworkCapabilities(cm.activeNetwork)
+                    .hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
             } else {
                 cm.activeNetworkInfo?.type == ConnectivityManager.TYPE_WIFI
             }

@@ -75,7 +75,11 @@ open class BaseFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(fragmentLayout, container, false)
     }
 
@@ -127,7 +131,12 @@ open class BaseFragment : Fragment() {
         context?.let { context ->
             view?.let { view ->
                 view.findViewById<View>(R.id.main_view)?.let { mainView ->
-                    mainView.setBackgroundColor(ContextCompat.getColor(context, viewBackgroundColor))
+                    mainView.setBackgroundColor(
+                        ContextCompat.getColor(
+                            context,
+                            viewBackgroundColor
+                        )
+                    )
                 }
 
                 UIUtil.showViewById(view, R.id.main_view)
@@ -141,7 +150,12 @@ open class BaseFragment : Fragment() {
         context?.let { context ->
             view?.let { view ->
                 view.findViewById<View>(R.id.loading_view)?.let { loadingView ->
-                    loadingView.setBackgroundColor(ContextCompat.getColor(context, viewBackgroundColor))
+                    loadingView.setBackgroundColor(
+                        ContextCompat.getColor(
+                            context,
+                            viewBackgroundColor
+                        )
+                    )
                 }
 
                 view.findViewById<ProgressBar>(R.id.pbLoadingView)?.let { pbLoadingView ->
@@ -164,7 +178,12 @@ open class BaseFragment : Fragment() {
         context?.let { context ->
             view?.let { view ->
                 view.findViewById<View>(R.id.network_error_view)?.let { networkErrorView ->
-                    networkErrorView.setBackgroundColor(ContextCompat.getColor(context, viewBackgroundColor))
+                    networkErrorView.setBackgroundColor(
+                        ContextCompat.getColor(
+                            context,
+                            viewBackgroundColor
+                        )
+                    )
 
                     networkErrorView.findViewById<TextView>(R.id.tv_message)?.let { tvMessage ->
                         tvMessage.text = message
@@ -186,7 +205,12 @@ open class BaseFragment : Fragment() {
         context?.let { context ->
             view?.let { view ->
                 view.findViewById<View>(R.id.error_view)?.let { errorView ->
-                    errorView.setBackgroundColor(ContextCompat.getColor(context, viewBackgroundColor))
+                    errorView.setBackgroundColor(
+                        ContextCompat.getColor(
+                            context,
+                            viewBackgroundColor
+                        )
+                    )
 
                     errorView.findViewById<TextView>(R.id.tv_message)?.let { tvMessage ->
                         tvMessage.text = message
@@ -282,7 +306,8 @@ open class BaseFragment : Fragment() {
 
     protected fun validateCache() {
         if (hasCache()) {
-            lastCacheUpdate = if (lastCacheUpdate > 0) lastCacheUpdate else DateTimeUtils.currentTimestamp
+            lastCacheUpdate =
+                if (lastCacheUpdate > 0) lastCacheUpdate else DateTimeUtils.currentTimestamp
 
             val currentTime = DateTimeUtils.currentTimestamp
             val expireTime = lastCacheUpdate + cacheExpireInterval()
@@ -307,7 +332,12 @@ open class BaseFragment : Fragment() {
             view?.let { view ->
                 view.findViewById<Toolbar>(R.id.toolbar)?.let { toolbar ->
                     toolbar.title = ""
-                    toolbar.setBackgroundColor(ContextCompat.getColor(context, toolbarBackgroundColor))
+                    toolbar.setBackgroundColor(
+                        ContextCompat.getColor(
+                            context,
+                            toolbarBackgroundColor
+                        )
+                    )
                     toolbar.setTitleTextColor(ContextCompat.getColor(context, toolbarTextColor))
 
                     (activity as BaseActivity).setSupportActionBar(toolbar)
@@ -315,14 +345,15 @@ open class BaseFragment : Fragment() {
                     supportActionBar?.let { supportActionBar ->
                         supportActionBar.elevation = UIUtil.convertDpToPixel(4f)
 
-                        ContextCompat.getDrawable(context, R.drawable.ic_arrow_back)?.let { backArrowDrawable ->
-                            backArrowDrawable.setColorFilter(
-                                ContextCompat.getColor(context, toolbarIconColor),
-                                PorterDuff.Mode.SRC_ATOP
-                            )
+                        ContextCompat.getDrawable(context, R.drawable.ic_arrow_back)
+                            ?.let { backArrowDrawable ->
+                                backArrowDrawable.setColorFilter(
+                                    ContextCompat.getColor(context, toolbarIconColor),
+                                    PorterDuff.Mode.SRC_ATOP
+                                )
 
-                            supportActionBar.setHomeAsUpIndicator(backArrowDrawable)
-                        }
+                                supportActionBar.setHomeAsUpIndicator(backArrowDrawable)
+                            }
                     }
 
                     if (hasToolbarLogo()) {
@@ -331,10 +362,16 @@ open class BaseFragment : Fragment() {
                         }
                     } else {
                         title?.let { title ->
-                            view.findViewById<TextView>(R.id.tv_toolbar_title)?.let { tvToolbarTitle ->
-                                tvToolbarTitle.text = title
-                                tvToolbarTitle.setTextColor(ContextCompat.getColor(context, toolbarTextColor))
-                            }
+                            view.findViewById<TextView>(R.id.tv_toolbar_title)
+                                ?.let { tvToolbarTitle ->
+                                    tvToolbarTitle.text = title
+                                    tvToolbarTitle.setTextColor(
+                                        ContextCompat.getColor(
+                                            context,
+                                            toolbarTextColor
+                                        )
+                                    )
+                                }
                         }
                     }
                 }
@@ -345,7 +382,13 @@ open class BaseFragment : Fragment() {
     fun onSetToolbarLogo(logo: ImageView) {
         context?.let { context ->
             if (paintToolbarLogo) {
-                logo.setImageDrawable(UIUtil.drawableColorChange(context, toolbarLogo, toolbarTextColor))
+                logo.setImageDrawable(
+                    UIUtil.drawableColorChange(
+                        context,
+                        toolbarLogo,
+                        toolbarTextColor
+                    )
+                )
             } else {
                 logo.setImageDrawable(ContextCompat.getDrawable(context, toolbarLogo))
             }
