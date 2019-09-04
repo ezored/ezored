@@ -41,7 +41,7 @@ class TargetConan(ConanFile):
 
     def requirements(self):
         self.requires("sqlite3/3.29.0@bincrafters/stable")
-        self.requires("sqlitecpp/2.3.0@bincrafters/stable")
+        self.requires("sqlitecpp/2.4.0@bincrafters/stable")
         self.requires("rapidjson/1.1.0@bincrafters/stable")
 
         # uncomment only if you want use C++ http client instead of native android http client
