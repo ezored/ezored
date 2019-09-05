@@ -1,8 +1,8 @@
 package com.ezored.sample.ui.fragment
 
-import android.content.pm.PackageManager
 import android.view.View
 import androidx.lifecycle.MutableLiveData
+import com.ezored.sample.BuildConfig
 import com.ezored.sample.R
 import com.ezored.sample.adapter.SimpleOptionAdapter
 import com.ezored.sample.enums.LoadStateEnum
@@ -28,7 +28,7 @@ class SettingsFragment : BaseListFragment<SimpleOption>(),
     override fun onLoadNewData() {
         super.onLoadNewData()
 
-        var list = ArrayList<SimpleOption>()
+        val list = ArrayList<SimpleOption>()
         list.add(SimpleOption(SimpleOptionTypeEnum.APP_VERSION))
 
         listData?.value = list
@@ -64,15 +64,11 @@ class SettingsFragment : BaseListFragment<SimpleOption>(),
     private fun doActionAppVersion() {
         try {
             context?.let { context ->
-                val manager = context.packageManager
-                val info =
-                    manager.getPackageInfo(context.packageName, PackageManager.GET_ACTIVITIES)
-
                 val version = String.format(
                     Locale.getDefault(),
                     "Version: %s\nBuild: %d",
-                    info.versionName,
-                    info.versionCode
+                    BuildConfig.VERSION_NAME,
+                    BuildConfig.VERSION_CODE
                 )
 
                 UIUtil.showAlert(context, getString(R.string.dialog_title), version)

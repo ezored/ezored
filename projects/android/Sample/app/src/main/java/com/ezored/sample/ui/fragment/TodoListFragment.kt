@@ -40,7 +40,7 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
         super.onLoadNewData()
 
         GlobalScope.launch {
-            var list = if (TextUtils.isEmpty(searchText)) {
+            val list = if (TextUtils.isEmpty(searchText)) {
                 TodoDataService.findAllOrderByCreatedAtDesc()
             } else {
                 TodoDataService.findByTitle(searchText)

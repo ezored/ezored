@@ -42,12 +42,12 @@ class MainFragment : BaseFragment(), BottomNavigationView.OnNavigationItemSelect
             viewPager.disableScroll(true)
             viewPager.offscreenPageLimit = adapter!!.count
             viewPager.adapter = adapter
-            viewPager.setOnTouchListener { v, event -> true }
+            viewPager.setOnTouchListener { _, _ -> true }
         }
 
         // bottom navigation
         context?.let { context ->
-            navigation = view.findViewById<BottomNavigationView>(R.id.navigation)
+            navigation = view.findViewById(R.id.navigation)
 
             navigation?.let { navigation ->
                 navigation.background =

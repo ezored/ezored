@@ -8,90 +8,97 @@
 
 ## About
 
-**Code reuse. Write once. Run everywhere.**
+**Write once. Compile anywhere.**
 
-Quick start C++ toolkit for cross-platform development with the same code including mobile and desktop.
+C++ cross-platform development toolkit. Use the same code on mobile and desktop applications.
 
-Ezored was designed to be the fastest way to start your project with C++, having a convenient and organized struture of scripts and folders, so you can download this repository and start build current sample projects to test and see it working.
+Ezored is the most convenient and fatest way to start your C++ project for mobile and desktop.
 
-Basically you build shared libraries for mobile (Android is **aar** and iOS is **framework**) and **executables** for desktop (Linux, macOS and Windows).
+**Background work**
 
-Don't think about how you will start your C++ project for **mobile** and **desktop**, use ezored as a quick start project.
+Don't reinvent the wheel, adopt new tools or use new editors, only use what your systems already support that is **compiled code** into your current or new projects.
+
+It has a simple but well designed structure of scripts and folders that make this work very easy, leaving you thinking about your project instead of strucute it. Download this repository and start use current samples to test and see it working.
+
+Write C++ code and build shared libraries for mobile (Android is **AAR** and iOS is **Framework**) and **binary executables** for desktop (Linux, macOS and Windows).
+
+Don't think about how you will start your C++ project for **mobile** and **desktop**, use ezored as a quick start toolkit.
 
 ![](extras/images/what-is.png)
 
-**What ezored is:**
-
-- Cross-platform and ready-to-use quick start toolkit to build and reuse C++ code for any project.
-- Scripts, files and folders well-organized to you only need add your things to continue.
-- Mobile and desktop samples that use C++ code that access database, make requests, parser json data, store preference data, show logger, work with string and datetime.
-- Easy and ready way that you can start create everything in C++ (you can create native SDK for mobile, command line tools for desktop, http server applications for API and everything more).
-- Can be used as a progressive SDK into your current project.
-- Use all best market tools (python, cmake and conan).
-
-**What ezored not is:**
-
-- Interface or UI for mobile or desktop.
-- New IDE or framework that will replace your application.
-- Dependency manager.
-
 **Why you need use it?**
 
-- Code reuse. Write once. Run everyone.
-- Do not worry about the project organization or the structure of it, ezored is this, it is a complete and functional project for you to start any other.
-- Generally you made a mobile application for each market platform (android, ios, smart tv etc). You need a team for each platform and each team will implement the same code of business logic on each platform. With ezored you can start create your business logic in C++ and compile one single code for all supported platforms, and the teams only need create UI and on button click call your C++ function.
-- Every developer like command line tools and generally need write one. With ezored you have a sample of working CLI tool that use the same C++ code that mobile uses.
-- HTTP server applications need have good performance and low memory usage, at the same time respond to a lot of requests. Use any C++ HTTP server framework with ezored to make your server applications.
-- Drivers for database SQL or NO/SQL generally are made with C/C++, and with ezored you can easy use it and start create your greate application.
+- Write once. Compile anywhere.
+- Write a single C++ code and use it on **mobile** and **desktop**
+- It come with a well designed structure to you maintain the focus on what you need do, your own business code.
+- Don't need new editors or languages, most things are done from command line.
+- Don't replace well user interface code (swift, interface builder, android xml, etc), only attach very fast compiled code for your project actions.
+- Already used in production for some years and come with some modules (https, sqlite, shared data, datetime utils, string utils, logger, file management and more)
 
 **Free for ever:**
 
 You can use it for free, for any purpose, including commercial purposes.
 
-Feel free to collaborate with ezored, creating or improving the project and modules.
+Feel free to collaborate with ezored, creating or improving the main project, samples and modules.
+
+After download ezored, you don't need this project more, because all your changes is only for your business things.
 
 ## Supported platforms
 
-1. android
-2. ios
-3. macos
-4. linux
-5. windows
+1. Android
+2. iOS
+3. macOS
+4. Linux
+5. Windows
 
-Obs: Generally any platform with C++ support will work too, like smart tvs and embeded hardwares.
+Obs: Generally any platform with C++ support will work too, like smart TVs and embeded devices.
 
 ## Modules
 
-A module in ezored is C++ implementation of one specific feature. And ezored come with some modules already implemented:
+A module in ezored is C++ implementation of one specific feature and ezored come with some modules already implemented:
 
-1. **datetime**  
-    Some functions to work with date and time.
+1. **date and time helper**  
+    Functions to work with date and time.
+
 2. **file helper**  
-    Helper functions to work with files (write, read, create folder, delete files etc).
+    Functions to work with files (write, read, create folder, delete files etc).
+
 3. **http client**  
-    A http client to make http and https requests.
+    Http client to make http and https requests.
+
 4. **logger**  
     Logger functions to show messages with different levels.
+
 5. **shared data**  
-    Shared data storage (android = shared preferences, ios = NSUserDefaults)
+    Shared data storage.
+
+    1. Android = using shared preferences
+    2. iOS = using NSUserDefaults
+    3. Desktop = using local file
+
 6. **string helper**  
-    Some string helper functions.
+    Functions to work with string.
+
 7. **sqlite3**  
-    SQLite3 come with ezored and let you use the same database on all platforms. Internally you can check our migration implementation. A library called "sqlitecpp" is used too, and make the job more easy.
+    SQLite3 is ready to use with ezored and let you use the same database on all platforms. Internally you can check our scheme migration implementation. A library called "sqlitecpp" is used to make this job easier.
+
 8. **rapidjson**  
     RapidJSON is used to parsing json from remote requests in ezored samples. It works on all tested platforms nice and fast.
-9. **support lib**  
-    Mobile modules use djinni, and for mobile (Android and iOS) this module is used to make the bridge between codes works. Maybe your project don't need it, but current code use it instead of generate bridge files manually.
 
-Modules source code are stored in **"files/djinni"** and **"files/src"**.
+9. **support lib**  
+    Mobile bridge code is automatically generated using Dropbox Djinni tool. It can be removed if you do it manually.
+
+Modules source code are stored in **"files/src"** and **"files/djinni"**.
 
 ## Targets
 
-A target in ezored contains all files, config and scripts to build C++ code to the platform. You can see on folder **"files/targets"**.
+A target in ezored contains all files and scripts to build C++ code to the target platform. You can see on folder **"files/targets"**.
 
-Currently all targets use cmake structure to compile all. So each target has their own **CMakeLists.txt** file inside target folder **"cmake"**.
+Currently all targets use CMake to compile and generate project files ready to build. So each target has their own **CMakeLists.txt** file inside target folder **"cmake"**.
 
-Generally all targets shared the same C++ code and because of this ezored has a commom **CMakeLists.txt** file inside folder **"files/cmake/common"**. Some targets add more source files, **"android_aar"** add their JNI files and "ios_framework" add their OBJC files.
+Generally all targets shared the same C++ code and because of this ezored has a commom **CMakeLists.txt** file inside folder **"files/cmake/common"**.
+
+Some targets add more source files and compile parameters. Some examples are the targets **"android_aar"** that add their JNI files and **"ios_framework"** that add their OBJC files.
 
 A target has their **"verbs"**, that can be any file name **"build"**, **"package"** etc. All verbs are store inside **"verbs"** folder of a target and the file name will be use to find it when you call on terminal. Example:
 
@@ -105,17 +112,19 @@ If you don't remember what verbs are available for a target you can type only th
 
 ## Commands
 
-A command in ezored is a python file too and a function inside it that will receive all command line arguments use. Example:
+Every command script in ezored is a python file. 
+
+All commands are simple functions that will receive command line arguments and based on this arguments will executed desired operations. Example:
 
 ```python make.py clean```
 
-With this command ezored will search for a file with path **"ezored/cmd/clean.py"** and will send all parameter to a function called **"run"** inside it.
+With this execution ezored will search for a file with path **"ezored/bcommands/clean.py"** or **"files/commands/clean.py"** and will send all parameter to a function called **"run"** inside file **clean.py**.
 
 If you don't remember what commands are available you can type only this to list all commands:
 
 ```python make.py```
 
-If you want create your own commands you only need put it inside folder **"files/commands"**. Today **ezored** has some custom commands. An implemented custom command inside **ezored** is **dist** that is located in **files/commands/dist.py**.
+If you want create your own commands you only need put it inside folder **"files/commands"** and **ezored** already has some custom commands. One example of custom command inside **ezored** is **dist** that is located in **files/commands/dist.py**.
 
 ## Requirements
 
@@ -134,7 +143,8 @@ Each platform requirements list now. Maybe you already have it, because are basi
 
 **Android Requirements:**
 
-1. NDK supported operational system: macOS, Linux or Windows.  
+1. Supported operational system for NDK: macOS, Linux or Windows.  
+    
     Conan will download NDK and other things to build based on your system.
 
 **iOS Requirements:**
@@ -157,21 +167,25 @@ Each platform requirements list now. Maybe you already have it, because are basi
 **Linux Requirements:**
 
 1. Linux operational system.
-2. C++ compiler installed.  
-    Obs: On Ubuntu run on terminal ```sudo apt install build-essential```.
+2. C++ compiler installed.
+
+    Example: On Ubuntu run on terminal: ```sudo apt install build-essential```.
 
 **Windows Requirements:**
 
 1. Windows operational system.
 2. Visual Studio installed.  
-    Obs 1: Current example in ezored is using version 2017 (15), change for your needs in conan profile.  
-    Obs 2: Everything was compiled using community version (https://visualstudio.microsoft.com/vs/community/).  
+
+    Obs 1: Current example in ezored is using version 2017 (15), change for your needs in conan profile file.
+
+    Obs 2: Everything was compiled using community version (https://visualstudio.microsoft.com/vs/).  
+
     Obs 3: On installation process select "Desktop development with C++".  
 
 ## How to use
 
 1. Clone reposity:
-> git clone git@github.com:ezored/ezored.git
+> git clone https://github.com/ezored/ezored.git
 
 2. Enter on cloned folder:
 > cd ezored
@@ -193,12 +207,13 @@ Example: If you are on **Linux**, you can build the **linux_app** target, if on 
 
 **Obs:**
 
-1. After run this commands above, a folder called **"dist"** will be created with compiled binaries of applications. The rule is the same for other targets.
-2. The execution order is important. Before build your targets, install conan dependencies, build it and finally package. Package verbs will copy files to a non versioned folder called **"dist"** in root path.
-3. You don't need run conan verb everytime, only run if you never run it before or if you change configuration, added dependencies, changed dependency version or other things that need call conan to rebuilt your dependencies.
-4. Conan profiles are required to specify basic environment profile things to build targets, but some settings are changed while build, like **arch** and **build_type**.
-5. Check requirements for each target. Example: iOS target require that you have a macOS system.
-6. Ezored **core** is downloaded only one time, always that **ezored** folder not exists.
+1. You can download the project as a ZIP file too: https://github.com/ezored/ezored/archive/master.zip.
+2. After run this commands above, a folder called **"dist"** will be created with compiled binaries of applications. The rule is the same for other targets.
+3. The execution order is important. Before build your targets, install conan dependencies, build it and finally package. Package verbs will copy files to a non versioned folder called **"dist"** in root path.
+4. You don't need run conan verb everytime, only run if you never run it before or if you change configuration, added dependencies, changed dependency version or other things that need call conan to rebuilt your dependencies.
+5. Conan profiles are required to specify basic environment profile things to build targets, but some settings are changed while build, like **arch** and **build_type**.
+6. Check requirements for each target. Example: iOS target require that you have a macOS system.
+7. Ezored **core** is downloaded only one time, always that **ezored** folder not exists.
 
 ## Dist folder prebuilt
 
@@ -243,7 +258,9 @@ Ezored has support for code format, the **"code"** command is available for it.
 To format all supported files, run the following command:  
 > python make.py code format  
 
-Obs: Code format use **clang-format** tool inside. You need have it installed and in your **path** to be located.
+Obs 1: Code format use **clang-format** tool inside to format C++ files. You need have it installed and in your **path** to be located.
+
+Obs 2: Code format use **black** tool inside to format PYTHON files. You need have it installed and in your **path** to be located.
 
 ## Other ezored samples
 

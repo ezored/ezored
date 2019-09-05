@@ -12,7 +12,7 @@ import android.view.accessibility.AccessibilityManager
 import com.ezored.sample.app.Application
 import java.util.*
 
-object Utils {
+object Util {
 
     val isNetworkAvailable: Boolean
         get() {
@@ -87,6 +87,19 @@ object Utils {
 
         val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
         context.startActivity(browserIntent)
+    }
+
+    fun randomString(size: Int): String {
+        val generator = Random()
+        val randomStringBuilder = StringBuilder()
+        var tempChar: Char
+
+        for (i in 0 until size) {
+            tempChar = (generator.nextInt(96) + 32).toChar()
+            randomStringBuilder.append(tempChar)
+        }
+
+        return randomStringBuilder.toString()
     }
 
 }

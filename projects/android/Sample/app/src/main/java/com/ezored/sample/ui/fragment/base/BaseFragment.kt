@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment
 import com.ezored.sample.R
 import com.ezored.sample.enums.LoadStateEnum
 import com.ezored.sample.ui.activity.base.BaseActivity
-import com.ezored.sample.utils.DateTimeUtils
+import com.ezored.sample.utils.DateTimeUtil
 import com.ezored.sample.utils.UIUtil
 import com.ezored.util.Logger
 
@@ -307,13 +307,13 @@ open class BaseFragment : Fragment() {
     protected fun validateCache() {
         if (hasCache()) {
             lastCacheUpdate =
-                if (lastCacheUpdate > 0) lastCacheUpdate else DateTimeUtils.currentTimestamp
+                if (lastCacheUpdate > 0) lastCacheUpdate else DateTimeUtil.currentTimestamp
 
-            val currentTime = DateTimeUtils.currentTimestamp
+            val currentTime = DateTimeUtil.currentTimestamp
             val expireTime = lastCacheUpdate + cacheExpireInterval()
 
             if (currentTime >= expireTime) {
-                lastCacheUpdate = DateTimeUtils.currentTimestamp
+                lastCacheUpdate = DateTimeUtil.currentTimestamp
                 onCacheExpired()
             }
         }

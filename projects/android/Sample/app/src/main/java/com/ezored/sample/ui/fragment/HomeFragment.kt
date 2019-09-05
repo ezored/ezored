@@ -40,7 +40,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
     override fun onLoadNewData() {
         super.onLoadNewData()
 
-        var list = ArrayList<SimpleOption>()
+        val list = ArrayList<SimpleOption>()
         list.add(SimpleOption(SimpleOptionTypeEnum.SECRET_KEY))
         list.add(SimpleOption(SimpleOptionTypeEnum.SHARED_DATA))
         list.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))

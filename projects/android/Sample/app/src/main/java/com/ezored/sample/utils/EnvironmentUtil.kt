@@ -2,8 +2,6 @@ package com.ezored.sample.utils
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
 import android.os.Build
 import android.provider.Settings.Secure
 import android.telephony.TelephonyManager
@@ -30,34 +28,14 @@ object EnvironmentUtil {
     val formattedSystemVersion: String
         get() = String.format("Android %s (API %s)", Build.VERSION.RELEASE, Build.VERSION.SDK_INT)
 
-    private val packageInfo: PackageInfo
-        @Throws(PackageManager.NameNotFoundException::class)
-        get() {
-            val context = Application.instance
-            val manager = context.packageManager
-            return manager.getPackageInfo(context.packageName, 0)
-        }
-
     val appVersionName: String
         get() {
-            try {
-                return packageInfo.versionName
-            } catch (e: PackageManager.NameNotFoundException) {
-                e.printStackTrace()
-            }
-
-            return ""
+            return BuildConfig.VERSION_NAME
         }
 
     val appVersionCode: Int
         get() {
-            try {
-                return packageInfo.versionCode
-            } catch (e: PackageManager.NameNotFoundException) {
-                e.printStackTrace()
-            }
-
-            return 0
+            return BuildConfig.VERSION_CODE
         }
 
     val screenWidth: Int

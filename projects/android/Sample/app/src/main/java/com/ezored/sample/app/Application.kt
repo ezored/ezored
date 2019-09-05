@@ -73,7 +73,7 @@ class Application : MultiDexApplication() {
 
             initializeLogger()
             initializeSharedData()
-            initializeHTTPClient()
+            initializeHttpClient()
             initializeFileHelper()
             initializeCore()
         } catch (e: UnsatisfiedLinkError) {
@@ -107,7 +107,7 @@ class Application : MultiDexApplication() {
         FileHelper.shared().platformService = FileHelperPlatformServiceImpl()
     }
 
-    private fun initializeHTTPClient() {
+    private fun initializeHttpClient() {
         // http client (uncomment to use platform http client)
         HttpClient.shared().platformService = HttpClientPlatformServiceImpl()
     }
