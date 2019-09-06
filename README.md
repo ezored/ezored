@@ -217,9 +217,9 @@ Example: If you are on **Linux**, you can build the **linux_app** target, if on 
 6. Check requirements for each target. Example: iOS target require that you have a macOS system.
 7. Ezored **core** is downloaded only one time, always that **ezored** folder not exists.
 
-## Dist folder prebuilt
+## Distribution folder prebuilt
 
-The folder containing all prebuilt things (android, ios, windows, macos, linux and others) are not versioned, but you can download a full version with the following command:
+The folder with name **dist** has all prebuilt things (Android, iOS, Windows, macOS, Linux and others) and this folder is not versioned, but you can download the full version with the following command:
 
 > python make.py dist download
 
