@@ -291,7 +291,7 @@ export CONAN_LOGGING_LEVEL=0
 
 ## Buy me a coffee
 
-<a href="https://www.buymeacoffee.com/paulocoutinho" target="_blank"><img src="extras/images/buy-me-a-coffee.png" alt="Buy Me A Coffee" style="height: 40px !important;" ></a>
+<a href="https://www.buymeacoffee.com/paulocoutinho" target="_blank"><img src="extras/images/buy-me-a-coffee.png" alt="Buy Me A Coffee" style="height: 40px !important; max-height: 40px !important;" height="40"></a>
 
 ## Supported By Jetbrains IntelliJ IDEA
 
