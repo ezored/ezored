@@ -26,7 +26,7 @@ Write C++ code and build shared libraries for mobile (Android is **AAR** and iOS
 
 Don't think about how you will start your C++ project for **mobile** and **desktop**, use ezored as a quick start toolkit.
 
-![](extras/images/what-is.png)
+<img src="extras/images/what-is.png" alt="What is ezored" style="max-height: 300px !important;" height="300">
 
 **Why you need use it?**
 
