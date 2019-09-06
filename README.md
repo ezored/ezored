@@ -289,6 +289,10 @@ export CONAN_VERBOSE_TRACEBACK=1
 export CONAN_LOGGING_LEVEL=0
 ```
 
+## Buy me a coffee
+
+<a href="https://www.buymeacoffee.com/paulocoutinho" target="_blank"><img src="extras/images/buy-me-a-coffee.png" alt="Buy Me A Coffee" style="height: 40px !important;" ></a>
+
 ## Supported By Jetbrains IntelliJ IDEA
 
 ![Supported By Jetbrains IntelliJ IDEA](extras/images/jetbrains-logo.png "Supported By Jetbrains IntelliJ IDEA")
