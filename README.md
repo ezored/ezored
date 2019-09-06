@@ -14,7 +14,7 @@ C++ cross-platform development toolkit. Use the same code on mobile and desktop 
 
 Ezored is the most convenient and fatest way to start your C++ project for mobile and desktop.
 
-**Toolkit background**
+**Toolkit background:**
 
 You don't need stop write your user interface code into your already used platform code like swift or kotlin.
 
