@@ -43,5 +43,5 @@ class TargetConan(ConanFile):
         self.requires("sqlite3/3.29.0@bincrafters/stable")
         self.requires("sqlitecpp/2.4.0@bincrafters/stable")
         self.requires("rapidjson/1.1.0@bincrafters/stable")
-        self.requires("Poco/1.9.3@pocoproject/stable")
+        self.requires("Poco/1.9.4@pocoproject/stable")
         self.requires("OpenSSL/1.1.1c@conan/stable")

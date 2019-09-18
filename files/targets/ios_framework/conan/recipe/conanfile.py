@@ -48,5 +48,5 @@ class TargetConan(ConanFile):
         self.requires("rapidjson/1.1.0@bincrafters/stable")
 
         # uncomment only if you want use C++ http client instead of native android http client
-        # self.requires('Poco/1.9.3@pocoproject/stable')
+        # self.requires('Poco/1.9.4@pocoproject/stable')
         # self.requires('OpenSSL/1.1.1c@conan/stable')
