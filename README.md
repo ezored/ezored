@@ -4,7 +4,10 @@
 
 ![](https://img.shields.io/github/repo-size/ezored/ezored.svg)
 [![Build Status](https://travis-ci.com/ezored/ezored.svg?branch=master)](https://travis-ci.com/ezored/ezored)
-[![Build Status AppVeyor](https://ci.appveyor.com/api/projects/status/github/ezored/ezored?svg=true)](https://ci.appveyor.com/project/PauloCoutinho/ezored)
+[![Build Status AppVeyor](https://ci.appveyor.com/api/projects/status/github/ezored/ezored?svg=true&branch=master)](https://ci.appveyor.com/project/PauloCoutinho/ezored)
+
+https://ci.appveyor.com/api/projects/status/5im3vf4od3qw4v2g/branch/master?svg=true
+
 
 ## About
 
