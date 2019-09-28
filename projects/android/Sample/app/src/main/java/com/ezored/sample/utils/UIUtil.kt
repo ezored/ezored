@@ -366,16 +366,16 @@ object UIUtil {
         get() = Looper.getMainLooper().thread === Thread.currentThread()
 
     fun checkThread(prefix: String) {
-        var prefix = prefix
+        var newPrefix = prefix
 
         if (!TextUtils.isEmpty(prefix)) {
-            prefix = "$prefix "
+            newPrefix = "$prefix "
         }
 
         if (isOnMainThread) {
-            Logger.i(prefix + "Main thread")
+            Logger.i(newPrefix + "Main thread")
         } else {
-            Logger.i(prefix + "New thread")
+            Logger.i(newPrefix + "New thread")
         }
     }
 

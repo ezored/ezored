@@ -5,20 +5,25 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import java.util.*
 
-class MainViewPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
+class MainViewPagerAdapter(fm: FragmentManager) :
+    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    private var fragmentList: ArrayList<Fragment> = ArrayList()
+    private var fragmentList: ArrayList<Fragment>? = null
+
+    init {
+        this.fragmentList = ArrayList()
+    }
 
     override fun getItem(position: Int): Fragment {
-        return fragmentList[position]
+        return fragmentList?.get(position) ?: Fragment()
     }
 
     override fun getCount(): Int {
-        return fragmentList.size
+        return fragmentList?.size ?: 0
     }
 
     fun addFragment(fragment: Fragment) {
-        fragmentList.add(fragment)
+        fragmentList?.add(fragment)
     }
 
 }

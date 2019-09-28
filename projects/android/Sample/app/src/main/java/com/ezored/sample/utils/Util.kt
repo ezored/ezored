@@ -12,13 +12,14 @@ import android.view.accessibility.AccessibilityManager
 import com.ezored.sample.app.Application
 import java.util.*
 
+@Suppress("Deprecation", "Unused")
 object Util {
 
     val isNetworkAvailable: Boolean
         get() {
             val cm =
                 Application.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            return cm.activeNetworkInfo != null && cm.activeNetworkInfo.isConnected
+            return cm.activeNetworkInfo != null && (cm.activeNetworkInfo?.isConnected ?: false)
         }
 
     private val isNetworkWifi: Boolean
@@ -27,8 +28,8 @@ object Util {
                 Application.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                cm.getNetworkCapabilities(cm.activeNetwork)
-                    .hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                cm.getNetworkCapabilities(cm.activeNetwork)?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                    ?: false
             } else {
                 cm.activeNetworkInfo?.type == ConnectivityManager.TYPE_WIFI
             }
@@ -53,13 +54,12 @@ object Util {
 
     fun toClockTimestampInSecondsFormat(ms: Long): String {
         // converts to seconds first
-        var ms = ms
-        ms = ms / 1000
+        val newMS = ms / 1000
 
         // convert others
-        val h = ms / 3600
-        val m = ms % 3600 / 60
-        val s = ms % 60
+        val h = newMS / 3600
+        val m = newMS % 3600 / 60
+        val s = newMS % 60
 
         var str = String.format("%02d:", m) + String.format("%02d", s)
 

@@ -52,19 +52,26 @@ class MainFragment : BaseFragment(), BottomNavigationView.OnNavigationItemSelect
             navigation?.let { navigation ->
                 navigation.background =
                     ColorDrawable(ContextCompat.getColor(context, R.color.white))
+
                 navigation.setOnNavigationItemSelectedListener(this)
             }
         }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        homeFragment?.userVisibleHint = false
+        settingsFragment?.userVisibleHint = false
+
         when (item.itemId) {
             R.id.navigation_home -> {
-                viewPager!!.currentItem = 0
+                viewPager?.currentItem = 0
+                homeFragment?.userVisibleHint = true
                 return true
             }
+
             R.id.navigation_settings -> {
-                viewPager!!.currentItem = 1
+                viewPager?.currentItem = 1
+                settingsFragment?.userVisibleHint = true
                 return true
             }
         }

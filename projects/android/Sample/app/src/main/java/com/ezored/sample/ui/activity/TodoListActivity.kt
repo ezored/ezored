@@ -71,7 +71,7 @@ class TodoListActivity : BaseActivity() {
     private fun handleIntent(intent: Intent) {
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
-            fragment?.search(query)
+            fragment?.search(query ?: "")
         }
     }
 

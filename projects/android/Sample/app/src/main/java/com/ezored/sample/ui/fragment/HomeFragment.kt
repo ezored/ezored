@@ -18,9 +18,7 @@ import com.ezored.sample.ui.activity.TodoListActivity
 import com.ezored.sample.ui.fragment.base.BaseListFragment
 import com.ezored.sample.utils.UIUtil
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.util.*
 
 class HomeFragment : BaseListFragment<SimpleOption>(),
@@ -98,7 +96,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
     private fun doActionHttpsRequest() {
         showLoadingView()
 
-        GlobalScope.launch {
+        launch(Dispatchers.IO) {
             val headers = ArrayList<HttpHeader>()
             headers.add(HttpHeader("Content-Type", "application/x-www-form-urlencoded"))
 
@@ -110,7 +108,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
                 HttpRequest("https://httpbin.org/post", HttpMethod.METHOD_POST, params, headers, "")
             val response = HttpClient.shared().doRequest(request)
 
-            withContext(context = Dispatchers.Main) {
+            launch(Dispatchers.Main) {
                 context?.let {
                     UIUtil.showAlert(it, getString(R.string.dialog_title), response.body)
                 }
@@ -148,7 +146,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
     private fun doActionTodo() {
         showLoadingView()
 
-        GlobalScope.launch {
+        launch(Dispatchers.IO) {
             TodoDataService.truncate()
 
             for (i in 1..100) {
@@ -169,11 +167,13 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
                 TodoDataService.add(todo)
             }
 
-            withContext(context = Dispatchers.Main) {
+            launch(Dispatchers.Main) {
                 showMainView()
 
-                val intent = TodoListActivity.newIntent(context!!)
-                startActivity(intent)
+                context?.let {
+                    val intent = TodoListActivity.newIntent(it)
+                    startActivity(intent)
+                }
             }
         }
     }

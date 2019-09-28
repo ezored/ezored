@@ -10,6 +10,7 @@ import org.greenrobot.eventbus.EventBus
 
 class ConnectivityChangeReceiver : BroadcastReceiver() {
 
+    @Suppress("Deprecation")
     override fun onReceive(context: Context, intent: Intent) {
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = cm.activeNetworkInfo

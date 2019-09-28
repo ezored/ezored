@@ -20,10 +20,14 @@ import com.ezored.sample.ui.activity.base.BaseActivity
 import com.ezored.sample.utils.DateTimeUtil
 import com.ezored.sample.utils.UIUtil
 import com.ezored.util.Logger
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 
 import org.greenrobot.eventbus.EventBus
 
-open class BaseFragment : Fragment() {
+open class BaseFragment : Fragment(), CoroutineScope {
+
+    override val coroutineContext = Dispatchers.Main
 
     protected var remoteDataLoadState = LoadStateEnum.NOT_LOADED
 
