@@ -51,6 +51,9 @@ class TodoTableViewCell: UITableViewCell {
     }
     
     func createAll() {
+        // content
+        contentView.backgroundColor = UIColor(hexString: "#FFFFFF")!
+        
         // container
         containerView = UIView()
         containerView.translatesAutoresizingMaskIntoConstraints = false

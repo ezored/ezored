@@ -19,6 +19,8 @@ class MainViewController: UITabBarController, UITabBarControllerDelegate {
         let settingsNC = UINavigationController(rootViewController: settingsViewController)
         
         viewControllers = [homeNC, settingsNC]
+        
+        tabBar.barTintColor = UIColor(hexString: "#FFFFFF")
     }
     
 }
