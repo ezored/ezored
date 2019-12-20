@@ -293,6 +293,19 @@ export CONAN_LOGGING_LEVEL=0
 
 <a href='https://ko-fi.com/paulocoutinho' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi1.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
+## Training
+
+Udemy (portuguese): Crie aplicativos Android, iOS e Desktop de alta performance com C++ usando um único código multi-plataforma
+
+https://www.udemy.com/course/desenvolvendo-aplicativos-mobile-com-cpp-para-android-e-ios/
+
+![Udemy Training](extras/images/udemy-training.png)
+
+## Mac Catalyst
+
+Ezored sample project has support for Mac Catalyst. You can use the same iPad application on macOS desktop. See in action here:
+
+https://www.youtube.com/watch?v=ro2WVX_wHuQ
 
 ## Supported By Jetbrains IntelliJ IDEA
 

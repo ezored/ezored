@@ -58,18 +58,18 @@
 		3ADE82652229C56500D3FD7A /* SimpleSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE82642229C56500D3FD7A /* SimpleSearchBar.swift */; };
 		3ADE82692229C9C000D3FD7A /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE82682229C9C000D3FD7A /* TodoTableViewCell.swift */; };
 		3ADE826B2229D0E000D3FD7A /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE826A2229D0E000D3FD7A /* TodoListViewController.swift */; };
-		3AE05FDE23AC43190036BE36 /* Ezored.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE05FDA23AC40C80036BE36 /* Ezored.xcframework */; };
-		3AE05FDF23AC43190036BE36 /* Ezored.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE05FDA23AC40C80036BE36 /* Ezored.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		3AE5BDEE23ACEA6D00A5C3AA /* Ezored.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE05FDA23AC40C80036BE36 /* Ezored.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
+		3AE5BDEF23ACEA6D00A5C3AA /* Ezored.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE05FDA23AC40C80036BE36 /* Ezored.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3AE05FE023AC43190036BE36 /* Embed Frameworks */ = {
+		3AE5BDF023ACEA6D00A5C3AA /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3AE05FDF23AC43190036BE36 /* Ezored.xcframework in Embed Frameworks */,
+				3AE5BDEF23ACEA6D00A5C3AA /* Ezored.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,7 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AE05FDE23AC43190036BE36 /* Ezored.xcframework in Frameworks */,
+				3AE5BDEE23ACEA6D00A5C3AA /* Ezored.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +341,7 @@
 				3A2F22BE2214A4DA00A2FB4F /* Frameworks */,
 				3A2F22BF2214A4DA00A2FB4F /* Resources */,
 				3ADA2D9022163DD6005E6BD0 /* Strip Frameworks */,
-				3AE05FE023AC43190036BE36 /* Embed Frameworks */,
+				3AE5BDF023ACEA6D00A5C3AA /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -625,7 +625,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_ENTITLEMENTS = Sample/Sample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)";
@@ -654,7 +653,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_ENTITLEMENTS = Sample/Sample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)";

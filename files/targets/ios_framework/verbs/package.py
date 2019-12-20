@@ -110,20 +110,21 @@ def run(params):
                 lipo_archs_args = []
 
                 for arch in archs:
-                    lipo_archs_args.append(
-                        os.path.join(
-                            proj_path,
-                            const.DIR_NAME_BUILD,
-                            target_name,
-                            build_type,
-                            arch["group"],
-                            arch["conan_arch"],
-                            const.DIR_NAME_BUILD_TARGET,
-                            "lib",
-                            "{0}.framework".format(target_config["project_name"]),
-                            target_config["project_name"],
+                    if is_valid_group(arch["group"]):
+                        lipo_archs_args.append(
+                            os.path.join(
+                                proj_path,
+                                const.DIR_NAME_BUILD,
+                                target_name,
+                                build_type,
+                                arch["group"],
+                                arch["conan_arch"],
+                                const.DIR_NAME_BUILD_TARGET,
+                                "lib",
+                                "{0}.framework".format(target_config["project_name"]),
+                                target_config["project_name"],
+                            )
                         )
-                    )
 
                 lipo_args = [
                     "lipo",
@@ -149,3 +150,8 @@ def run(params):
             )
     else:
         log.info('Arch list for "{0}" is invalid or empty'.format(target_name))
+
+
+# -----------------------------------------------------------------------------
+def is_valid_group(group):
+    return not ("catalyst" in group)

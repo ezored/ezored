@@ -15,9 +15,9 @@
 #include "ezored/io/FileHelper.hpp"
 #include "ezored/io/SimpleFileHelperPlatformService.hpp"
 
-#include "ezored/helpers/StringHelper.hpp"
 #include "ezored/helpers/CustomerHelper.hpp"
 #include "ezored/helpers/EnvironmentHelper.hpp"
+#include "ezored/helpers/StringHelper.hpp"
 #include "ezored/helpers/TodoHelper.hpp"
 
 #include "ezored/data/SharedData.hpp"
