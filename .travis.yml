@@ -4,6 +4,8 @@ jobs:
     osx_image: xcode11.2
     install:
       - pip install conan    
+      - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+      - conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain
     before_script:
       - conan profile new default --detect
       - python make.py conan install_profiles
@@ -14,7 +16,9 @@ jobs:
   - os: osx
     osx_image: xcode11.2
     install:
-      - pip install conan    
+      - pip install conan  
+      - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+      - conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain  
     before_script:
       - conan profile new default --detect
       - python make.py conan install_profiles    
@@ -35,6 +39,7 @@ jobs:
           - g++-multilib
     install:
       - pip install conan
+      - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
     before_script:
       - conan profile new default --detect
       - conan profile update settings.compiler.libcxx=libstdc++11 default

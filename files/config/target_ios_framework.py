@@ -36,8 +36,8 @@ def run(proj_path, target_name, params):
             #     "group": "ios",
             # },
             {
-                "arch": "x86_64h",
-                "conan_arch": "x86_64h",
+                "arch": "x86_64",
+                "conan_arch": "x86_64",
                 "conan_profile": "ezored_ios_framework_catalyst_profile",
                 "min_version": "10.15",
                 "enable_bitcode": False,
