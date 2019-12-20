@@ -5,10 +5,11 @@ class TargetConan(ConanFile):
     name = "ios_framework"
     version = "1.0.0"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False], "fPIC": [True, False]}
+    options = {"shared": [True, False], "fPIC": [True, False], "group": "ANY"}
     default_options = {
         "shared": False,
         "fPIC": True,
+        "group": "",
         "sqlite3:threadsafe": 1,
         "Poco:enable_xml": False,
         "Poco:enable_json": False,
@@ -36,9 +37,7 @@ class TargetConan(ConanFile):
         cmake = CMake(self)
         cmake.definitions["CMAKE_BUILD_TYPE"] = self.settings.build_type
         cmake.definitions["PROJECT_CONFIG_ARCH"] = self.settings.arch
-        cmake.definitions["CMAKE_OSX_DEPLOYMENT_TARGET"] = self.settings.get_safe(
-            "os.version"
-        )
+        cmake.definitions["PROJECT_CONFIG_GROUP"] = self.options.group
         cmake.configure()
         cmake.build()
 

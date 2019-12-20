@@ -1,0 +1,13 @@
+include(default)
+
+[settings]
+os=Macos
+os.version=10.15
+arch=x86_64h
+
+[build_requires]
+darwin-toolchain/1.1.0@ezored/stable
+
+[env]
+CFLAGS=-DTARGET_OS_MACCATALYST=1 -DTARGET_OS_EMBEDDED=1
+CXXFLAGS=-DTARGET_OS_MACCATALYST=1 -DTARGET_OS_EMBEDDED=1

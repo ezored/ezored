@@ -1,19 +1,45 @@
-os: linux
-dist: xenial
-language: python
-python: "3.7"
-addons:
-  apt:
-    packages:
-      - gcc-multilib
-      - g++-multilib
-install:
-  - pip install conan
-before_script:
-  - conan profile new default --detect
-  - conan profile update settings.compiler.libcxx=libstdc++11 default
-  - python make.py conan install_profiles
-script:
-  - python make.py target linux_app conan
-  - python make.py target linux_app build
-  - python make.py target linux_app package
+jobs:
+  include:
+  - os: osx
+    osx_image: xcode11.2
+    install:
+      - pip install conan    
+    before_script:
+      - conan profile new default --detect
+      - python make.py conan install_profiles
+    script:
+      - python make.py target macos_app conan
+      - python make.py target macos_app build
+      - python make.py target macos_app package
+  - os: osx
+    osx_image: xcode11.2
+    install:
+      - pip install conan    
+    before_script:
+      - conan profile new default --detect
+      - python make.py conan install_profiles    
+    script:
+      - python make.py target ios_framework conan
+      - python make.py target ios_framework build
+      - python make.py target ios_framework package
+      - python make.py target ios_framework package_xcframework
+      - python make.py target ios_framework gen_bridge_header
+  - os: linux
+    dist: xenial
+    language: python
+    python: "3.7"
+    addons:
+      apt:
+        packages:
+          - gcc-multilib
+          - g++-multilib
+    install:
+      - pip install conan
+    before_script:
+      - conan profile new default --detect
+      - conan profile update settings.compiler.libcxx=libstdc++11 default
+      - python make.py conan install_profiles
+    script:
+      - python make.py target linux_app conan
+      - python make.py target linux_app build
+      - python make.py target linux_app package

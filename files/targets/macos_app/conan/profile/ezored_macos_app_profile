@@ -6,4 +6,4 @@ os.version=10.9
 arch=i386
 
 [build_requires]
-darwin-toolchain/1.0.0@ezored/stable
+darwin-toolchain/1.1.0@ezored/stable

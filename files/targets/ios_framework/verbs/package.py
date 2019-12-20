@@ -27,11 +27,12 @@ def run(params):
 
                 # add minimum version inside plist to submit for apple
                 for arch in archs:
-                    plist_path = os.path.join(
+                    plist_path1 = os.path.join(
                         proj_path,
                         const.DIR_NAME_BUILD,
                         target_name,
                         build_type,
+                        arch["group"],
                         arch["conan_arch"],
                         const.DIR_NAME_BUILD_TARGET,
                         "lib",
@@ -39,17 +40,47 @@ def run(params):
                         "Info.plist",
                     )
 
-                    runner.run(
-                        [
-                            "plutil",
-                            "-replace",
-                            "MinimumOSVersion",
-                            "-string",
-                            arch["min_version"],
-                            plist_path,
-                        ],
+                    plist_path2 = os.path.join(
                         proj_path,
+                        const.DIR_NAME_BUILD,
+                        target_name,
+                        build_type,
+                        arch["group"],
+                        arch["conan_arch"],
+                        const.DIR_NAME_BUILD_TARGET,
+                        "lib",
+                        "{0}.framework".format(target_config["project_name"]),
+                        "Versions",
+                        "Current",
+                        "Resources",
+                        "Info.plist",
                     )
+
+                    if os.path.exists(plist_path1):
+                        runner.run(
+                            [
+                                "plutil",
+                                "-replace",
+                                "MinimumOSVersion",
+                                "-string",
+                                arch["min_version"],
+                                plist_path1,
+                            ],
+                            proj_path,
+                        )
+
+                    if os.path.exists(plist_path2):
+                        runner.run(
+                            [
+                                "plutil",
+                                "-replace",
+                                "MinimumOSVersion",
+                                "-string",
+                                arch["min_version"],
+                                plist_path2,
+                            ],
+                            proj_path,
+                        )
 
                 # copy first folder for base
                 framework_dir = os.path.join(
@@ -57,6 +88,7 @@ def run(params):
                     const.DIR_NAME_BUILD,
                     target_name,
                     build_type,
+                    archs[0]["group"],
                     archs[0]["conan_arch"],
                     const.DIR_NAME_BUILD_TARGET,
                     "lib",
@@ -84,6 +116,7 @@ def run(params):
                             const.DIR_NAME_BUILD,
                             target_name,
                             build_type,
+                            arch["group"],
                             arch["conan_arch"],
                             const.DIR_NAME_BUILD_TARGET,
                             "lib",

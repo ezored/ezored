@@ -10,10 +10,12 @@
 #include "ezored/net/http/HttpResponse.hpp"
 #include "ezored/net/http/SimpleHttpClientPlatformService.hpp"
 
-#include "ezored/helpers/StringHelper.hpp"
-#include "ezored/io/FileHelper.hpp"
 #include "ezored/time/DateTime.hpp"
 
+#include "ezored/io/FileHelper.hpp"
+#include "ezored/io/SimpleFileHelperPlatformService.hpp"
+
+#include "ezored/helpers/StringHelper.hpp"
 #include "ezored/helpers/CustomerHelper.hpp"
 #include "ezored/helpers/EnvironmentHelper.hpp"
 #include "ezored/helpers/TodoHelper.hpp"
@@ -30,7 +32,6 @@
 #include "ezored/systemservices/CustomerSystemService.hpp"
 #include "ezored/systemservices/CustomerSystemServiceLoginData.hpp"
 
-#include "Poco/File.h"
 #include "Poco/Path.h"
 
 #include <iostream>
@@ -55,12 +56,13 @@ int main(int argc, char **argv)
     Logger::shared()->setPlatformService(std::make_shared<SimpleLoggerPlatformService>());
     Logger::shared()->setLevel(LoggerLevel::VERBOSE);
 
+    FileHelper::shared()->setPlatformService(std::make_shared<SimpleFileHelperPlatformService>());
     HttpClient::shared()->setPlatformService(std::make_shared<SimpleHttpClientPlatformService>());
     SharedData::shared()->setPlatformService(std::make_shared<SimpleSharedDataPlatformService>());
 
     // application core
-    auto homeDir = Poco::Path::home() + "ezored";
-    Poco::File(homeDir).createDirectory();
+    auto homeDir = FileHelper::join(Poco::Path::home(), "ezored");
+    FileHelper::createDir(homeDir);
 
     auto initializationData = InitializationData{"com.ezored.sample", "ezored", homeDir, 0, true};
     auto deviceData = DeviceData{"", "", "", "", "", "", "", "", "", 0, 0, 0, "", "", "", ""};
@@ -172,7 +174,19 @@ int main(int argc, char **argv)
     std::cout << "STRING TO UPPER: " << StringHelper::toUpper(StringHelper::trim(" ezored ")) << std::endl;
 
     // file helper
-    FileHelper::createDir(FileHelper::join("path1", "path2"));
+    {
+        Logger::i("Filename: " + FileHelper::getFilename(FileHelper::join(homeDir, "database.db3")));
+        Logger::i("Basename: " + FileHelper::getBasename(FileHelper::join(homeDir, "database.db3")));
+        Logger::i("File size: " + std::to_string(FileHelper::getFileSize(FileHelper::join(homeDir, "database.db3"))));
+        Logger::i("File extesion: " + FileHelper::getExtension(FileHelper::join(homeDir, "database.db3")));
+        Logger::i("Is file (file): " + std::to_string(FileHelper::isFile(FileHelper::join(homeDir, "database.db3"))));
+        Logger::i("Is file (dir): " + std::to_string(FileHelper::isFile(homeDir)));
+        Logger::i("Is dir (file): " + std::to_string(FileHelper::isDir(FileHelper::join(homeDir, "database.db3"))));
+        Logger::i("Is dir (dir): " + std::to_string(FileHelper::isDir(homeDir)));
+
+        Logger::i("URL basename: " + FileHelper::getBasenameFromUrl("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"));
+        Logger::i("URL filename: " + FileHelper::getFilenameFromUrl("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"));
+    }
 
     // shared data
     SharedData::shared()->start("app");
