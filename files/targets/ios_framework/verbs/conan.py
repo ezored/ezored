@@ -81,6 +81,10 @@ def run(params):
                     "darwin-toolchain:catalyst={0}".format(
                         (arch["catalyst"] if "catalyst" in arch else False)
                     ),
+                    "-o",
+                    "sqlite3:disable_gethostuuid={0}".format(
+                        (arch["catalyst"] if "catalyst" in arch else False)
+                    ),
                     "--build=missing",
                     "--update",
                 ]

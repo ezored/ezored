@@ -44,6 +44,8 @@
 		3A2F231D2214A57D00A2FB4F /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FB2214A57D00A2FB4F /* AppData.swift */; };
 		3A2F231E2214A57D00A2FB4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FC2214A57D00A2FB4F /* AppDelegate.swift */; };
 		3A2F23242214A7A800A2FB4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F23262214A7A800A2FB4F /* Localizable.strings */; };
+		3ACFD34123ADD0B70018E58E /* Ezored.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE05FDA23AC40C80036BE36 /* Ezored.xcframework */; };
+		3ACFD34223ADD0B70018E58E /* Ezored.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE05FDA23AC40C80036BE36 /* Ezored.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		3AD9F93D22569DA600ED622F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD9F93C22569DA600ED622F /* MainViewController.swift */; };
 		3ADA2D8222162454005E6BD0 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enums.swift */; };
 		3ADA2D8422162556005E6BD0 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */; };
@@ -58,18 +60,16 @@
 		3ADE82652229C56500D3FD7A /* SimpleSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE82642229C56500D3FD7A /* SimpleSearchBar.swift */; };
 		3ADE82692229C9C000D3FD7A /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE82682229C9C000D3FD7A /* TodoTableViewCell.swift */; };
 		3ADE826B2229D0E000D3FD7A /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE826A2229D0E000D3FD7A /* TodoListViewController.swift */; };
-		3AE5BDEE23ACEA6D00A5C3AA /* Ezored.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE05FDA23AC40C80036BE36 /* Ezored.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
-		3AE5BDEF23ACEA6D00A5C3AA /* Ezored.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE05FDA23AC40C80036BE36 /* Ezored.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3AE5BDF023ACEA6D00A5C3AA /* Embed Frameworks */ = {
+		3ACFD34323ADD0B70018E58E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3AE5BDEF23ACEA6D00A5C3AA /* Ezored.xcframework in Embed Frameworks */,
+				3ACFD34223ADD0B70018E58E /* Ezored.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,7 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AE5BDEE23ACEA6D00A5C3AA /* Ezored.xcframework in Frameworks */,
+				3ACFD34123ADD0B70018E58E /* Ezored.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +341,7 @@
 				3A2F22BE2214A4DA00A2FB4F /* Frameworks */,
 				3A2F22BF2214A4DA00A2FB4F /* Resources */,
 				3ADA2D9022163DD6005E6BD0 /* Strip Frameworks */,
-				3AE5BDF023ACEA6D00A5C3AA /* Embed Frameworks */,
+				3ACFD34323ADD0B70018E58E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -630,7 +630,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)";
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)",
-					"$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)/Ezored.framework/Headers",
+					"$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)/Ezored.xcframework/ios-x86_64-maccatalyst/Ezored.framework/Headers",
 				);
 				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -658,7 +658,7 @@
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)";
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)",
-					"$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)/Ezored.framework/Headers",
+					"$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)/Ezored.xcframework/ios-x86_64-maccatalyst/Ezored.framework/Headers",
 				);
 				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
