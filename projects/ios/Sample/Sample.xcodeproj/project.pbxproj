@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A00E98223AF29DF0054007D /* Ezored.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A00E97D23AF245E0054007D /* Ezored.xcframework */; };
-		3A00E98323AF29DF0054007D /* Ezored.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A00E97D23AF245E0054007D /* Ezored.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		3A2F22CC2214A4DB00A2FB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F22CB2214A4DB00A2FB4F /* Assets.xcassets */; };
 		3A2F22CF2214A4DB00A2FB4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F22CD2214A4DB00A2FB4F /* LaunchScreen.storyboard */; };
 		3A2F22FD2214A57D00A2FB4F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22D82214A57D00A2FB4F /* HomeViewController.swift */; };
@@ -46,6 +44,8 @@
 		3A2F231D2214A57D00A2FB4F /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FB2214A57D00A2FB4F /* AppData.swift */; };
 		3A2F231E2214A57D00A2FB4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FC2214A57D00A2FB4F /* AppDelegate.swift */; };
 		3A2F23242214A7A800A2FB4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F23262214A7A800A2FB4F /* Localizable.strings */; };
+		3A9E4F4D23AF55D600E31504 /* Ezored.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A00E97D23AF245E0054007D /* Ezored.xcframework */; };
+		3A9E4F4E23AF55D600E31504 /* Ezored.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A00E97D23AF245E0054007D /* Ezored.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		3AD9F93D22569DA600ED622F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD9F93C22569DA600ED622F /* MainViewController.swift */; };
 		3ADA2D8222162454005E6BD0 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enums.swift */; };
 		3ADA2D8422162556005E6BD0 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */; };
@@ -63,13 +63,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3A00E98423AF29DF0054007D /* Embed Frameworks */ = {
+		3A9E4F4F23AF55D600E31504 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3A00E98323AF29DF0054007D /* Ezored.xcframework in Embed Frameworks */,
+				3A9E4F4E23AF55D600E31504 /* Ezored.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,7 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A00E98223AF29DF0054007D /* Ezored.xcframework in Frameworks */,
+				3A9E4F4D23AF55D600E31504 /* Ezored.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,8 +332,8 @@
 				3A2F22BD2214A4DA00A2FB4F /* Sources */,
 				3A2F22BE2214A4DA00A2FB4F /* Frameworks */,
 				3A2F22BF2214A4DA00A2FB4F /* Resources */,
-				3A00E98423AF29DF0054007D /* Embed Frameworks */,
 				3A00E98523AF4E1F0054007D /* Strip Frameworks */,
+				3A9E4F4F23AF55D600E31504 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -24,3 +24,7 @@ shared_data_helper = interface +c {
     static set_demo_flag(value: bool);
     static get_demo_flag(): bool;
 }
+
+security_helper = interface +c {
+    static generate_uuid_v4(): string;
+}
