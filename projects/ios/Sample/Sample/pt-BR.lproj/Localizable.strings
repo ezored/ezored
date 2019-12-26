@@ -7,6 +7,9 @@
 "DialogProgressMessage" = "Progresso: %d%%";
 "DialogTitle" = "Mensagem";
 "DialogTitleNotification" = "Notificação";
+"DialogSecretKeyMessage" = "Sua chave secreta é:\n%@\n\nGuarde-a com você!";
+"DialogHttpMessage" = "Nós fizemos uma requisição JSON para %@ e o servidor retornou estes dados:\n\n%@\n\nSe os dados estiverem corretos então a conexão funcionou!";
+"DialogDatabaseSizeMessage" = "O tamanho do banco de dados interno é: %d b / %.5f mb";
 
 "TitleHome" = "Home";
 "TitleSettings" = "Configurações";

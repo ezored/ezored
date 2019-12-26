@@ -89,7 +89,7 @@ class HomeViewController: BaseTableViewController {
         
         let size = EZRFileHelper.getFileSize(EZRFileHelper.join(core.getInitializationData().basePath, second: "database.db3"))
         
-        let message = String(format: "%d bytes / %.5f mbytes", size, (Double(size) / 1048576))
+        let message = String(format: "DialogDatabaseSizeMessage".localized, size, (Double(size) / 1048576))
         UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: message, onClose: nil)
     }
     
@@ -108,7 +108,7 @@ class HomeViewController: BaseTableViewController {
             let response = EZRHttpClient.shared()?.do(request)
             
             DispatchQueue.main.async {
-                UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: response?.body, onClose: nil)
+                UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: String(format: "DialogHttpMessage".localized, request.url, response?.body ?? ""), onClose: nil)
                 self.showMainView()
             }
         }
@@ -129,7 +129,7 @@ class HomeViewController: BaseTableViewController {
             let response = EZRHttpClient.shared()?.do(request)
             
             DispatchQueue.main.async {
-                UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: response?.body, onClose: nil)
+                UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: String(format: "DialogHttpMessage".localized, request.url, response?.body ?? ""), onClose: nil)
                 self.showMainView()
             }
         }
@@ -137,7 +137,7 @@ class HomeViewController: BaseTableViewController {
     
     func doActionSecretKey() {
         let secretKey = EZRHelpersEnvironmentHelper.getSecretKey()
-        let message = String(format: "KEY IS:\n%@", secretKey)
+        let message = String(format: "DialogSecretKeyMessage".localized, secretKey)
         
         UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: message, onClose: nil)
     }
