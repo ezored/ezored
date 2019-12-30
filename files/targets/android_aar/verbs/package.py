@@ -44,7 +44,9 @@ def run(params):
                     "android-aar-project",
                 )
 
-                file.copy_dir(android_project_dir, android_library_build_dir)
+                file.copy_dir(
+                    android_project_dir, android_library_build_dir, symlinks=True
+                )
 
                 # copy djinni support lib files
                 djinni_support_lib_dir = os.path.join(

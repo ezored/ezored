@@ -34,10 +34,10 @@ def download(params):
     proj_path = params["proj_path"]
 
     log.info("Removing old file...")
-    file.remove_file(const.FILE_NAME_DIST_PACKED)
+    file.remove_file(const.FILE_NAME_DIST_PACKED_TAR)
 
-    log.info("Downloading {0} file...".format(const.FILE_NAME_DIST_PACKED))
-    dst_file = os.path.join(proj_path, const.FILE_NAME_DIST_PACKED)
+    log.info("Downloading {0} file...".format(const.FILE_NAME_DIST_PACKED_TAR))
+    dst_file = os.path.join(proj_path, const.FILE_NAME_DIST_PACKED_TAR)
     net.download(const.URL_DIST_FILE_PACKED, dst_file)
 
     log.info("Removing old folder...")
@@ -53,17 +53,17 @@ def download(params):
 def pack_dist_folder(params):
     proj_path = params["proj_path"]
 
-    dist_file = os.path.join(proj_path, const.FILE_NAME_DIST_PACKED)
+    dist_file = os.path.join(proj_path, const.FILE_NAME_DIST_PACKED_TAR)
     dist_folder = os.path.join(proj_path, const.DIR_NAME_DIST)
 
     if not os.path.isdir(dist_folder):
         log.error("Distribution folder not exists: {0}".format(dist_folder))
 
     log.info("Removing old file...")
-    file.remove_file(const.FILE_NAME_DIST_PACKED)
+    file.remove_file(const.FILE_NAME_DIST_PACKED_TAR)
 
     log.info("Packing {0} folder...".format(const.DIR_NAME_DIST))
-    pack.make_zipfile(dist_file, dist_folder)
+    pack.tar_dir(dist_file, dist_folder)
 
     log.ok("")
 

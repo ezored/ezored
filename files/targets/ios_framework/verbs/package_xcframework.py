@@ -87,7 +87,7 @@ def run(params):
                     )
 
                     file.remove_dir(group_xcframework_dir)
-                    file.copy_dir(framework_dir, group_xcframework_dir)
+                    file.copy_dir(framework_dir, group_xcframework_dir, symlinks=True)
 
                     # generate single framework for group
                     lipo_archs_args = []

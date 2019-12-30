@@ -104,7 +104,7 @@ def run(params):
                 )
 
                 file.remove_dir(dist_dir)
-                file.copy_dir(framework_dir, dist_dir)
+                file.copy_dir(framework_dir, dist_dir, symlinks=True)
 
                 # lipo
                 lipo_archs_args = []

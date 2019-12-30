@@ -120,6 +120,7 @@ def run(params):
                                 source_header_dir,
                                 dist_headers_dir,
                                 ignore_file=_header_ignore_list,
+                                symlinks=True,
                             )
                         else:
                             log.error(

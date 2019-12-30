@@ -40,8 +40,9 @@ def run(proj_path, target_name, params):
                 "conan_arch": "x86_64",
                 "conan_profile": "ezored_ios_framework_catalyst_profile",
                 "min_version": "10.15",
+                "catalyst_version": "13.0",
                 "enable_bitcode": False,
-                "catalyst": True,
+                "enable_catalyst": True,
                 "group": "ios_catalyst",
             },
             {
@@ -50,7 +51,6 @@ def run(proj_path, target_name, params):
                 "conan_profile": "ezored_ios_framework_profile",
                 "min_version": "9.0",
                 "enable_bitcode": False,
-                "catalyst": False,
                 "group": "ios_simulator",
             },
         ],
