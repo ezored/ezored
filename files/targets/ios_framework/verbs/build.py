@@ -95,6 +95,70 @@ def run(params):
 
                 runner.run(run_args, build_dir)
 
+                # find correct info plist file
+                plist_path1 = os.path.join(
+                    proj_path,
+                    const.DIR_NAME_BUILD,
+                    target_name,
+                    build_type,
+                    arch["group"],
+                    arch["conan_arch"],
+                    const.DIR_NAME_BUILD_TARGET,
+                    "lib",
+                    "{0}.framework".format(target_config["project_name"]),
+                    "Info.plist",
+                )
+
+                plist_path2 = os.path.join(
+                    proj_path,
+                    const.DIR_NAME_BUILD,
+                    target_name,
+                    build_type,
+                    arch["group"],
+                    arch["conan_arch"],
+                    const.DIR_NAME_BUILD_TARGET,
+                    "lib",
+                    "{0}.framework".format(target_config["project_name"]),
+                    "Versions",
+                    "Current",
+                    "Resources",
+                    "Info.plist",
+                )
+
+                plist_path = ""
+
+                if os.path.exists(plist_path1):
+                    plist_path = plist_path1
+
+                if os.path.exists(plist_path2):
+                    plist_path = plist_path2
+
+                # add minimum version inside plist
+                runner.run(
+                    [
+                        "plutil",
+                        "-replace",
+                        "MinimumOSVersion",
+                        "-string",
+                        arch["min_version"],
+                        plist_path,
+                    ],
+                    proj_path,
+                )
+
+                # add supported platform inside plist
+                runner.run(
+                    [
+                        "plutil",
+                        "-replace",
+                        "CFBundleSupportedPlatforms",
+                        "-json",
+                        '[ "{0}" ]'.format(arch["supported_platform"]),
+                        plist_path,
+                    ],
+                    proj_path,
+                )
+
                 # headers
                 dist_headers_dir = os.path.join(
                     proj_path,

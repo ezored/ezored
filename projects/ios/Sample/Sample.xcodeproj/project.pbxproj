@@ -652,7 +652,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CODE_SIGN_ENTITLEMENTS = Sample/Sample.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
@@ -672,7 +672,7 @@
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.ezored.sample.mac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "ezored sample - prod - ios";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "ezored sample - prod - mac";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "ezored sample - prod - mac - store";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Sample/Sample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
