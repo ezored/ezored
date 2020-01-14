@@ -28,7 +28,6 @@ class TargetConan(ConanFile):
         "poco:enable_tests": False,
         "poco:poco_unbundled": False,
         "poco:cxx_14": False,
-        "openssl:add_apple_flags": False,
     }
     exports_sources = "*"
     generators = "cmake"
@@ -48,4 +47,4 @@ class TargetConan(ConanFile):
         self.requires("rapidjson/1.1.0")
         self.requires("poco/1.9.4")
         self.requires("openssl/1.1.1c")
-        self.requires("sqlitecpp/2.4.0@bincrafters/stable")
+        self.requires("sqlitecpp/2.5.0")
