@@ -23,6 +23,7 @@ jobs:
       - conan profile new default --detect
       - python make.py conan install_profiles    
     script:
+      - export CONAN_LOGGING_LEVEL=30
       - python make.py target ios_framework conan
       - python make.py target ios_framework build
       - python make.py target ios_framework package
@@ -45,6 +46,7 @@ jobs:
       - conan profile update settings.compiler.libcxx=libstdc++11 default
       - python make.py conan install_profiles
     script:
+      - export CONAN_LOGGING_LEVEL=30
       - python make.py target linux_app conan
       - python make.py target linux_app build
       - python make.py target linux_app package
