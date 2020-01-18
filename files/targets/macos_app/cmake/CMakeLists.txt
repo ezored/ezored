@@ -11,7 +11,7 @@ set(PROJECT_BUILD_DIR ${PROJECT_ROOT_PATH}/build/${PROJECT_TARGET_NAME}/${CMAKE_
 
 # Platform configurations
 set(DEVELOPMENT_TEAM_ID "" CACHE STRING "Development Team ID")
-set(CODE_SIGN_IDENTITY "Mac Developer" CACHE STRING "Sign Identity")
+set(CODE_SIGN_IDENTITY "" CACHE STRING "Sign Identity")
 
 # Project
 project(${PROJECT_CONFIG_NAME})

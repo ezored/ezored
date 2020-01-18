@@ -19,6 +19,7 @@ import com.ezored.sample.ui.fragment.base.BaseListFragment
 import com.ezored.sample.utils.UIUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 
 class HomeFragment : BaseListFragment<SimpleOption>(),
@@ -84,11 +85,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
             UIUtil.showAlert(
                 context,
                 getString(R.string.dialog_title),
-                String.format(
-                    Locale.getDefault(),
-                    "KEY IS:\n%s",
-                    EnvironmentHelper.getSecretKey()
-                )
+                getString(R.string.dialog_secret_key_message, EnvironmentHelper.getSecretKey())
             )
         }
     }
@@ -108,9 +105,13 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
                 HttpRequest("https://httpbin.org/post", HttpMethod.METHOD_POST, params, headers, "")
             val response = HttpClient.shared().doRequest(request)
 
-            launch(Dispatchers.Main) {
+            withContext(Dispatchers.Main) {
                 context?.let {
-                    UIUtil.showAlert(it, getString(R.string.dialog_title), response.body)
+                    UIUtil.showAlert(
+                        it,
+                        getString(R.string.dialog_title),
+                        getString(R.string.dialog_http_message, request.url, response.body)
+                    )
                 }
 
                 showMainView()
@@ -131,12 +132,8 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
             )
         )
 
-        val message = String.format(
-            Locale.getDefault(),
-            "%d bytes / %.5f mbytes",
-            size,
-            (size.toDouble() / 1048576)
-        )
+        val message =
+            getString(R.string.dialog_database_size_message, size, (size.toDouble() / 1048576))
 
         context?.let {
             UIUtil.showAlert(it, getString(R.string.dialog_title), message)
@@ -155,7 +152,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
                     String.format(Locale.getDefault(), "Title %d", i),
                     String.format(
                         Locale.getDefault(),
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. %d",
+                        "New TODO item description: %d",
                         i
                     ),
                     HashMap(),
@@ -167,7 +164,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
                 TodoDataService.add(todo)
             }
 
-            launch(Dispatchers.Main) {
+            withContext(Dispatchers.Main) {
                 showMainView()
 
                 context?.let {

@@ -11,7 +11,6 @@ import com.ezored.sample.adapter.TodoAdapter
 import com.ezored.sample.enums.LoadStateEnum
 import com.ezored.sample.ui.fragment.base.BaseListFragment
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.*
@@ -39,14 +38,14 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
     override fun onLoadNewData() {
         super.onLoadNewData()
 
-        GlobalScope.launch {
+        launch(Dispatchers.IO) {
             val list = if (TextUtils.isEmpty(searchText)) {
                 TodoDataService.findAllOrderByCreatedAtDesc()
             } else {
                 TodoDataService.findByTitle(searchText)
             }
 
-            withContext(context = Dispatchers.Main) {
+            withContext(Dispatchers.Main) {
                 listData?.value = list
                 remoteDataLoadState = LoadStateEnum.LOADED
             }
