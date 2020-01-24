@@ -132,9 +132,9 @@ If you want create your own commands you only need put it inside folder **"files
 
 **The general requirements is:**
 
-1. Python (https://www.python.org/)  
-2. Cmake (https://cmake.org/)  
-3. Conan (https://conan.io/)
+1. Python 3 (https://www.python.org/)  
+2. Cmake 3.14 (https://cmake.org/)  
+3. Conan 1.20.1 (https://conan.io/)
 4. Conan repositories:    
 - `conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan`
 - `conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain`

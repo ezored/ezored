@@ -35,7 +35,6 @@ class TargetConan(ConanFile):
 
     def build(self):
         cmake = CMake(self, generator="Xcode")
-        cmake.definitions["CMAKE_SYSTEM_NAME"] = "iOS"
         cmake.definitions["CMAKE_BUILD_TYPE"] = self.settings.build_type
         cmake.definitions["PROJECT_CONFIG_ARCH"] = self.settings.arch
         cmake.definitions["PROJECT_CONFIG_GROUP"] = self.options.group
