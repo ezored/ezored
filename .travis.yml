@@ -13,7 +13,7 @@ jobs:
       - conan profile new default --detect
       - python make.py conan install_profiles
     script:
-      - python make.py target macos_app conan
+      - python make.py target macos_app conan > /dev/null
       - python make.py target macos_app build
       - python make.py target macos_app package
   - os: osx
@@ -29,7 +29,7 @@ jobs:
       - conan profile new default --detect
       - python make.py conan install_profiles    
     script:
-      - python make.py target ios_framework conan
+      - python make.py target ios_framework conan > /dev/null
       - python make.py target ios_framework build
       - python make.py target ios_framework package
       - python make.py target ios_framework package_xcframework
@@ -54,6 +54,6 @@ jobs:
       - conan profile update settings.compiler.libcxx=libstdc++11 default
       - python make.py conan install_profiles
     script:
-      - python make.py target linux_app conan
+      - python make.py target linux_app conan > /dev/null
       - python make.py target linux_app build
       - python make.py target linux_app package
