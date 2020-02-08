@@ -37,5 +37,31 @@ std::string StringHelper::toUpper(const std::string &value)
     return result;
 }
 
+std::vector<std::string> StringHelper::split(const std::string &text, const std::string &sep, bool trimEmpty)
+{
+    std::vector<std::string> tokens;
+
+    std::string::size_type pos, lastPos = 0, length = text.length();
+
+    while (lastPos < length + 1)
+    {
+        pos = text.find_first_of(sep, lastPos);
+
+        if (pos == std::string::npos)
+        {
+            pos = length;
+        }
+
+        if (pos != lastPos || !trimEmpty)
+        {
+            tokens.push_back(std::string(text.data() + lastPos, pos - lastPos));
+        }
+
+        lastPos = pos + 1;
+    }
+
+    return tokens;
+}
+
 } // namespace helpers
 } // namespace ezored

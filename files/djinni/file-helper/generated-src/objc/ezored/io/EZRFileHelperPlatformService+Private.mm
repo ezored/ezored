@@ -163,6 +163,13 @@ public:
             return ::djinni::Binary::toCpp(objcpp_result_);
         }
     }
+    std::string getHomeDir() override
+    {
+        @autoreleasepool {
+            auto objcpp_result_ = [djinni_private_get_proxied_objc_object() getHomeDir];
+            return ::djinni::String::toCpp(objcpp_result_);
+        }
+    }
 };
 
 }  // namespace djinni_generated

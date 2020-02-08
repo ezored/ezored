@@ -51,6 +51,8 @@ public:
     std::string getFileContentAsString(const std::string &path) override;
 
     std::vector<uint8_t> getFileContentAsBinary(const std::string &path) override;
+
+    std::string getHomeDir() override;
 };
 
 } // namespace io

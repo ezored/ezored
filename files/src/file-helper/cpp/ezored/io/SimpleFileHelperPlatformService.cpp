@@ -34,7 +34,7 @@ bool SimpleFileHelperPlatformService::createFileWithStringContent(const std::str
 {
     try
     {
-        Poco::FileOutputStream stream(path, std::ios::binary);
+        Poco::FileOutputStream stream(path, std::ios::out | std::ios::binary | std::ios::trunc);
         stream << content;
         stream.close();
 
@@ -50,7 +50,7 @@ bool SimpleFileHelperPlatformService::createFileWithBinaryContent(const std::str
 {
     try
     {
-        Poco::FileOutputStream stream(path, std::ios::binary);
+        Poco::FileOutputStream stream(path, std::ios::in | std::ios::binary);
 
         for (auto &data : content)
         {
@@ -298,6 +298,11 @@ std::vector<uint8_t> SimpleFileHelperPlatformService::getFileContentAsBinary(con
     {
         return {};
     }
+}
+
+std::string SimpleFileHelperPlatformService::getHomeDir()
+{
+    return Poco::Path::home();
 }
 
 } // namespace io

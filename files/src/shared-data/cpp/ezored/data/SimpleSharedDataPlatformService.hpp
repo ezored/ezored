@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ezored/data/SharedDataPlatformService.hpp"
+#include "rapidjson/document.h"
 #include <string>
 
 namespace ezored
@@ -10,7 +11,14 @@ namespace data
 
 class SimpleSharedDataPlatformService : public SharedDataPlatformService
 {
+private:
+    rapidjson::Document json;
+    std::string filePath;
+    bool initialized;
+
 public:
+    static std::string baseDir;
+
     void setString(const std::string &key, const std::string &value) override;
     void setInteger(const std::string &key, int32_t value) override;
     void setLong(const std::string &key, int64_t value) override;

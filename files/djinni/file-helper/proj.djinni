@@ -29,6 +29,8 @@ file_helper_platform_service = interface +j +o {
     get_file_content_as_string(path: string): string;
     get_file_content_as_binary(path: string): binary;
 
+    get_home_dir(): string;
+
 }
 
 file_helper = interface +c {
@@ -66,5 +68,7 @@ file_helper = interface +c {
 
     static get_file_content_as_string(path: string): string;
     static get_file_content_as_binary(path: string): binary;
+
+    static get_home_dir(): string;
 
 }

@@ -7,4 +7,6 @@ string_helper = interface +c {
     static to_lower(value: string): string;
     static to_upper(value: string): string;
 
+    static split(text: string, sep: string, trim_empty: bool): list<string>;
+
 }

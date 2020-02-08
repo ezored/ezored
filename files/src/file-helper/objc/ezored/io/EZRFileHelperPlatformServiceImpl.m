@@ -389,4 +389,21 @@
     return [[NSData alloc] init];
 }
 
+- (nonnull NSString *)getHomeDir {
+    @try {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        if (documentsDirectory == nil) {
+            documentsDirectory = @"";
+        }
+        
+        return documentsDirectory;
+    } @catch (NSException *exception) {
+        NSLog(@"%@", exception.reason);
+    }
+    
+    return @"";
+}
+
 @end

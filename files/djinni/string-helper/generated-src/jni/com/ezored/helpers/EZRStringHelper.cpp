@@ -64,4 +64,15 @@ CJNIEXPORT jstring JNICALL Java_com_ezored_helpers_StringHelper_00024CppProxy_to
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
+CJNIEXPORT jobject JNICALL Java_com_ezored_helpers_StringHelper_00024CppProxy_split(JNIEnv* jniEnv, jobject /*this*/, jstring j_text, jstring j_sep, jboolean j_trimEmpty)
+{
+    try {
+        DJINNI_FUNCTION_PROLOGUE0(jniEnv);
+        auto r = ::ezored::helpers::StringHelper::split(::djinni::String::toCpp(jniEnv, j_text),
+                                                        ::djinni::String::toCpp(jniEnv, j_sep),
+                                                        ::djinni::Bool::toCpp(jniEnv, j_trimEmpty));
+        return ::djinni::release(::djinni::List<::djinni::String>::fromCpp(jniEnv, r));
+    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
+}
+
 }  // namespace djinni_generated

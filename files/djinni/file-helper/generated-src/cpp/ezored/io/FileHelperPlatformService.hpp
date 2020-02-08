@@ -52,6 +52,8 @@ public:
     virtual std::string getFileContentAsString(const std::string & path) = 0;
 
     virtual std::vector<uint8_t> getFileContentAsBinary(const std::string & path) = 0;
+
+    virtual std::string getHomeDir() = 0;
 };
 
 } }  // namespace ezored::io
