@@ -54,6 +54,12 @@ jobs:
     - name: Upgrade PIP
       run: python -m pip install --upgrade pip
 
+    - name: Display Python version
+      run: python --version
+
+    - name: Display PIP version
+      run: pip --version
+
     - name: Install Ninja and CMake
       id: cmake_and_ninja
       shell: cmake -P {0}
