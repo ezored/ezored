@@ -107,8 +107,13 @@ jobs:
         pip install conan
         conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
         conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain
-        conan profile new default --detect
-        python make.py conan install_profiles
+        conan profile new default --detect        
+
+    - name: Ezored - Core
+      run: git clone https://github.com/ezored/ezored-core.git ezored
+
+    - name: Ezored - Install profiles
+      run: python make.py conan install_profiles
 
     - name: Ezored - Conan
       run: python make.py target ${{ matrix.config.target }} conan
