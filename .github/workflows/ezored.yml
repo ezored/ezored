@@ -17,9 +17,16 @@ jobs:
       matrix:
         config:
         - {
-            name: "Windows Server 2016", artifact: "Windows-MSVC.tar.xz",
+            name: "Windows Latest MSVC", artifact: "Windows-MSVC.tar.xz",
             os: windows-latest,
             cc: "cl", cxx: "cl",
+            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
+            target: "windows_app"
+          }
+        - {
+            name: "Windows Latest MinGW", artifact: "Windows-MinGW.tar.xz",
+            os: windows-latest,
+            cc: "gcc", cxx: "g++",
             target: "windows_app"
           }
         - {
