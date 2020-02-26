@@ -20,7 +20,7 @@ jobs:
             name: "Windows Latest MSVC", artifact: "Windows-MSVC.tar.xz",
             os: windows-latest,
             cc: "cl", cxx: "cl",
-            environment_script: "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat",
+            environment_script: "C:Program Files (x86)/Microsoft Visual Studio/2017/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
             target: "windows_app"
           }
         - {
