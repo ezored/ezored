@@ -110,7 +110,7 @@ jobs:
         conan profile new default --detect        
 
     - name: Configure specific things
-      if: matrix.config.environment_script != ""
+      if: matrix.config.environment_script
       run: ${{ matrix.config.environment_script }}
 
     - name: Ezored - Core
