@@ -1,0 +1,132 @@
+name: Ezored Build Matrix
+
+on: [push, pull_request]
+
+env:
+  CMAKE_VERSION: 3.16.2
+  NINJA_VERSION: 1.9.0
+  BUILD_TYPE: Release
+  CCACHE_VERSION: 3.7.7
+
+jobs:
+  build:
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - {
+            name: "Windows Latest MSVC", artifact: "Windows-MSVC.tar.xz",
+            os: windows-latest,
+            cc: "cl", cxx: "cl",
+            environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat",
+            target: "windows_app"
+          }
+        - {
+            name: "Windows Latest MinGW", artifact: "Windows-MinGW.tar.xz",
+            os: windows-latest,
+            cc: "gcc", cxx: "g++",
+            target: "windows_app"
+          }
+        - {
+            name: "Ubuntu Latest GCC", artifact: "Linux.tar.xz",
+            os: ubuntu-latest,
+            cc: "gcc", cxx: "g++",
+            target: "linux_app"
+          }
+        - {
+            name: "macOS Latest Clang", artifact: "macOS.tar.xz",
+            os: macos-latest,
+            cc: "clang", cxx: "clang++",
+            target: "macos_app"
+          }
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Install Ninja and CMake
+      id: cmake_and_ninja
+      shell: cmake -P {0}
+      run: |
+        set(cmake_version $ENV{CMAKE_VERSION})
+        set(ninja_version $ENV{NINJA_VERSION})
+
+        message(STATUS "Using host CMake version: ${CMAKE_VERSION}")
+
+        if ("${{ runner.os }}" STREQUAL "Windows")
+          set(ninja_suffix "win.zip")
+          set(cmake_suffix "win64-x64.zip")
+          set(cmake_dir "cmake-${cmake_version}-win64-x64/bin")
+        elseif ("${{ runner.os }}" STREQUAL "Linux")
+          set(ninja_suffix "linux.zip")
+          set(cmake_suffix "Linux-x86_64.tar.gz")
+          set(cmake_dir "cmake-${cmake_version}-Linux-x86_64/bin")
+        elseif ("${{ runner.os }}" STREQUAL "macOS")
+          set(ninja_suffix "mac.zip")
+          set(cmake_suffix "Darwin-x86_64.tar.gz")
+          set(cmake_dir "cmake-${cmake_version}-Darwin-x86_64/CMake.app/Contents/bin")
+        endif()
+
+        set(ninja_url "https://github.com/ninja-build/ninja/releases/download/v${ninja_version}/ninja-${ninja_suffix}")
+        file(DOWNLOAD "${ninja_url}" ./ninja.zip SHOW_PROGRESS)
+        execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf ./ninja.zip)
+
+        set(cmake_url "https://github.com/Kitware/CMake/releases/download/v${cmake_version}/cmake-${cmake_version}-${cmake_suffix}")
+        file(DOWNLOAD "${cmake_url}" ./cmake.zip SHOW_PROGRESS)
+        execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf ./cmake.zip)
+
+        # Save the path for other steps
+        file(TO_CMAKE_PATH "$ENV{GITHUB_WORKSPACE}/${cmake_dir}" cmake_dir)
+        message("::set-output name=cmake_dir::${cmake_dir}")
+
+        if (NOT "${{ runner.os }}" STREQUAL "Windows")
+          execute_process(
+            COMMAND chmod +x ninja
+            COMMAND chmod +x ${cmake_dir}/cmake
+          )
+        endif()
+
+    - name: Configure Conan
+      shell: cmake -P {0}
+      run: |
+        execute_process(
+          COMMAND "pip install conan"
+        )
+
+        execute_process(
+          COMMAND "conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan"
+        )
+
+        execute_process(
+          COMMAND "conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain"
+        )
+
+        execute_process(
+          COMMAND "conan profile new default --detect"
+        )
+
+        execute_process(
+          COMMAND "python make.py conan install_profiles"
+        )
+
+    - name: Ezored - Conan
+      shell: cmake -P {0}
+      run: |
+        execute_process(
+          COMMAND "python make.py target ${{ matrix.config.environment_script }} conan"
+        )
+
+    - name: Ezored - Build
+      shell: cmake -P {0}
+      run: |
+        execute_process(
+          COMMAND "python make.py target ${{ matrix.config.environment_script }} build"
+        )
+
+    - name: Ezored - Package
+      shell: cmake -P {0}
+      run: |
+        execute_process(
+          COMMAND "python make.py target ${{ matrix.config.environment_script }} package"
+        )
