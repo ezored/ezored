@@ -5,8 +5,6 @@ on: [push, pull_request]
 env:
   CMAKE_VERSION: 3.16.2
   NINJA_VERSION: 1.9.0
-  BUILD_TYPE: Release
-  CCACHE_VERSION: 3.7.7
 
 jobs:
   build:
@@ -17,28 +15,18 @@ jobs:
       matrix:
         config:
         - {
-            name: "Windows Latest MSVC", artifact: "Windows-MSVC.tar.xz",
+            name: "Windows Latest MSVC",
             os: windows-latest,
-            cc: "cl", cxx: "cl",
-            environment_script: "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat",
             target: "windows_app"
-          }
+          }  
         - {
-            name: "Windows Latest MinGW", artifact: "Windows-MinGW.tar.xz",
-            os: windows-latest,
-            cc: "gcc", cxx: "g++",
-            target: "windows_app"
-          }
-        - {
-            name: "Ubuntu Latest GCC", artifact: "Linux.tar.xz",
+            name: "Ubuntu Latest GCC",
             os: ubuntu-latest,
-            cc: "gcc", cxx: "g++",
             target: "linux_app"
           }
         - {
-            name: "macOS Latest Clang", artifact: "macOS.tar.xz",
+            name: "macOS Latest Clang",
             os: macos-latest,
-            cc: "clang", cxx: "clang++",
             target: "macos_app"
           }
         python-version: [3.7]
