@@ -103,37 +103,18 @@ jobs:
         endif()
 
     - name: Configure Conan
-      shell: cmake -P {0}
       run: |
-        execute_process(COMMAND "pip install conan" RESULT_VARIABLE result)
-        message("result='${result}'")
-
-        execute_process(COMMAND "conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan" RESULT_VARIABLE result)
-        message("result='${result}'")
-
-        execute_process(COMMAND "conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain" RESULT_VARIABLE result)
-        message("result='${result}'")
-
-        execute_process(COMMAND "conan profile new default --detect" RESULT_VARIABLE result)
-        message("result='${result}'")
-
-        execute_process(COMMAND "python make.py conan install_profiles" RESULT_VARIABLE result)
-        message("result='${result}'")
+        pip install conan
+        conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+        conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain
+        conan profile new default --detect
+        python make.py conan install_profiles
 
     - name: Ezored - Conan
-      shell: cmake -P {0}
-      run: |
-        execute_process(COMMAND "python make.py target ${{ matrix.config.target }} conan" RESULT_VARIABLE result)
-        message("result='${result}'")
+      run: python make.py target ${{ matrix.config.target }} conan
 
     - name: Ezored - Build
-      shell: cmake -P {0}
-      run: |
-        execute_process(COMMAND "python make.py target ${{ matrix.config.target }} build" RESULT_VARIABLE result)
-        message("result='${result}'")
+      run: python make.py target ${{ matrix.config.target }} build
 
     - name: Ezored - Package
-      shell: cmake -P {0}
-      run: |
-        execute_process(COMMAND "python make.py target ${{ matrix.config.target }} package" RESULT_VARIABLE result)
-        message("result='${result}'")
+      run: python make.py target ${{ matrix.config.target }} package
