@@ -52,7 +52,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     
     - name: Upgrade PIP
-      run: python -m pip install --upgrade pip
+      run: python -m pip install --upgrade pip setuptools wheel
 
     - name: Display Python version
       run: python --version
@@ -123,17 +123,17 @@ jobs:
     - name: Ezored - Conan
       shell: cmake -P {0}
       run: |
-        execute_process(COMMAND "python make.py target ${{ matrix.config.environment_script }} conan" RESULT_VARIABLE result)
+        execute_process(COMMAND "python make.py target ${{ matrix.config.target }} conan" RESULT_VARIABLE result)
         message("result='${result}'")
 
     - name: Ezored - Build
       shell: cmake -P {0}
       run: |
-        execute_process(COMMAND "python make.py target ${{ matrix.config.environment_script }} build" RESULT_VARIABLE result)
+        execute_process(COMMAND "python make.py target ${{ matrix.config.target }} build" RESULT_VARIABLE result)
         message("result='${result}'")
 
     - name: Ezored - Package
       shell: cmake -P {0}
       run: |
-        execute_process(COMMAND "python make.py target ${{ matrix.config.environment_script }} package" RESULT_VARIABLE result)
+        execute_process(COMMAND "python make.py target ${{ matrix.config.target }} package" RESULT_VARIABLE result)
         message("result='${result}'")
