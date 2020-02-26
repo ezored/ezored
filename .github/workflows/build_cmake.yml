@@ -110,20 +110,8 @@ jobs:
         conan profile new default --detect        
 
     - name: Configure specific things
-      shell: cmake -P {0}
-      run: |
-        if ("${{ runner.os }}" STREQUAL "Windows" AND NOT "x${{ matrix.config.environment_script }}" STREQUAL "x")
-          execute_process(
-            COMMAND "${{ matrix.config.environment_script }}" && set
-            OUTPUT_FILE environment_script_output.txt
-          )
-          file(STRINGS environment_script_output.txt output_lines)
-          foreach(line IN LISTS output_lines)
-            if (line MATCHES "^([a-zA-Z0-9_-]+)=(.*)$")
-              set(ENV{${CMAKE_MATCH_1}} "${CMAKE_MATCH_2}")
-            endif()
-          endforeach()
-        endif()
+      if: ${{ matrix.config.environment_script }} != ""
+      run: ${{ matrix.config.environment_script }}
 
     - name: Ezored - Core
       run: git clone https://github.com/ezored/ezored-core.git ezored
