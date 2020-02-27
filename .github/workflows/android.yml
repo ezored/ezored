@@ -1,6 +1,6 @@
 name: Ezored - Android
 
-on: [push, pull_request]
+on: [push]
 
 env:
   CMAKE_VERSION: 3.16.2
