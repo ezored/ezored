@@ -1,4 +1,4 @@
-name: Ezored Build Matrix
+name: Ezored - Windows
 
 on: [push, pull_request]
 
@@ -18,16 +18,6 @@ jobs:
             name: "Windows Latest MSVC",
             os: windows-latest,
             target: "windows_app"
-          }  
-        - {
-            name: "Ubuntu Latest GCC",
-            os: ubuntu-latest,
-            target: "linux_app"
-          }
-        - {
-            name: "macOS Latest Clang",
-            os: macos-latest,
-            target: "macos_app"
           }
         python-version: [3.7]
 
