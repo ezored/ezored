@@ -34,10 +34,10 @@ def download(params):
     proj_path = params["proj_path"]
 
     log.info("Removing old file...")
-    file.remove_file(const.FILE_NAME_DIST_PACKED_TAR)
+    file.remove_file(const.FILE_NAME_DIST_PACKED)
 
-    log.info("Downloading {0} file...".format(const.FILE_NAME_DIST_PACKED_TAR))
-    dst_file = os.path.join(proj_path, const.FILE_NAME_DIST_PACKED_TAR)
+    log.info("Downloading {0} file...".format(const.FILE_NAME_DIST_PACKED))
+    dst_file = os.path.join(proj_path, const.FILE_NAME_DIST_PACKED)
     net.download(const.URL_DIST_FILE_PACKED, dst_file)
 
     log.info("Removing old folder...")
@@ -53,7 +53,7 @@ def download(params):
 def pack_dist_folder(params):
     proj_path = params["proj_path"]
 
-    dist_file = os.path.join(proj_path, const.FILE_NAME_DIST_PACKED_TAR)
+    dist_file = os.path.join(proj_path, const.FILE_NAME_DIST_PACKED)
     dist_folder = os.path.join(proj_path, const.DIR_NAME_DIST)
 
     if not os.path.isdir(dist_folder):
