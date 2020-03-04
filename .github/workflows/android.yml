@@ -80,6 +80,9 @@ jobs:
           )
         endif()
 
+    - name: Install NDK
+      run: sdkmanager 'ndk;20.0.5594570'
+
     - name: Configure Conan
       run: |
         pip install conan
