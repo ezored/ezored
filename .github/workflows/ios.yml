@@ -3,8 +3,8 @@ name: Ezored - iOS
 on: [push]
 
 env:
-  CMAKE_VERSION: 3.16.2
-  NINJA_VERSION: 1.9.0
+  CMAKE_VERSION: "3.16.2"
+  NINJA_VERSION: "1.9.0"
 
 jobs:
   build:

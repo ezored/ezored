@@ -3,8 +3,10 @@ name: Ezored - Android
 on: [push]
 
 env:
-  CMAKE_VERSION: 3.16.2
-  NINJA_VERSION: 1.9.0
+  CMAKE_VERSION: "3.16.2"
+  NINJA_VERSION: "1.9.0"
+  ANDROID_SDK_TOOLS: "4333796"
+  ANDROID_NDK: "20.0.5594570"
 
 jobs:
   build:
@@ -80,8 +82,14 @@ jobs:
           )
         endif()
 
-    - name: Install NDK
-      run: sdkmanager 'ndk;20.0.5594570'
+    - name: Install Android sdkmanager
+      run: |
+        wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip
+        sudo unzip -d $ANDROID_HOME android-sdk.zip > /dev/null
+
+    - name: Install required Android tools
+      run: |
+        echo "y" | sudo $ANDROID_HOME/tools/bin/sdkmanager "ndk;${ANDROID_NDK}" > /dev/null
 
     - name: Configure Conan
       run: |
