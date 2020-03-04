@@ -5,7 +5,6 @@ on: [push]
 env:
   CMAKE_VERSION: "3.16.2"
   NINJA_VERSION: "1.9.0"
-  ANDROID_SDK_TOOLS: "4333796"
   ANDROID_NDK: "20.0.5594570"
 
 jobs:
