@@ -82,7 +82,7 @@ jobs:
         endif()
 
     - name: Install required Android tools
-      run: echo "y" | sudo ${ANDROID_ROOT}/tools/bin/sdkmanager "ndk;${ANDROID_NDK}" > /dev/null
+      run: echo "y" | sudo /usr/local/lib/android/tools/bin/sdkmanager "ndk;${ANDROID_NDK}" > /dev/null
 
     - name: Configure Conan
       run: |
