@@ -295,6 +295,11 @@ export CONAN_VERBOSE_TRACEBACK=1
 export CONAN_LOGGING_LEVEL=0
 ```
 
+**Linux error when execute ezored commands:**
+
+If you get a message with *distutils.dir_util* error, try install the separated package for it. Example:  
+```sudo apt install python3-pip```
+
 ## Buy me a coffee
 
 <a href='https://ko-fi.com/paulocoutinho' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi1.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
