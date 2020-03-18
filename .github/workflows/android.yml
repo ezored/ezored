@@ -81,7 +81,7 @@ jobs:
         endif()
 
     - name: Install NDK
-      run: $ANDROID_HOME/tools/bin/sdkmanager 'ndk;20.0.5594570'
+      run: echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install 'ndk;20.0.5594570'
 
     - name: Configure Conan
       run: |
