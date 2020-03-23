@@ -10,6 +10,7 @@ class TargetConan(ConanFile):
         "shared": False,
         "fPIC": True,
         "sqlite3:threadsafe": 1,
+        "sqlite3:build_executable": False,
         "poco:enable_xml": False,
         "poco:enable_json": False,
         "poco:enable_mongodb": False,
@@ -42,6 +43,6 @@ class TargetConan(ConanFile):
     def requirements(self):
         self.requires("sqlite3/3.31.1")
         self.requires("rapidjson/1.1.0")
-        self.requires("poco/1.10.1")
+        self.requires("poco/1.9.4")
         self.requires("openssl/1.1.1c")
         self.requires("sqlitecpp/2.5.0")

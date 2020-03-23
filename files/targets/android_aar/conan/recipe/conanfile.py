@@ -10,6 +10,7 @@ class TargetConan(ConanFile):
         "shared": False,
         "fPIC": True,
         "sqlite3:threadsafe": 1,
+        "sqlite3:build_executable": False,
         "poco:enable_xml": False,
         "poco:enable_json": False,
         "poco:enable_mongodb": False,
@@ -46,4 +47,4 @@ class TargetConan(ConanFile):
         self.requires("sqlitecpp/2.5.0")
 
         # uncomment only if you want use C++ http client instead of native android http client
-        # self.requires("poco/1.10.1")
+        # self.requires("poco/1.9.4")
