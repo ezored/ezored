@@ -14,42 +14,35 @@
 
 ## About
 
-**Write once. Compile anywhere.**
+**Write once and compile anywhere**
 
-C++ cross-platform development toolkit. Use the same code on mobile and desktop applications.
+C++ cross-platform development toolkit.
+
+Use the same code on mobile and desktop applications.
 
 Ezored is the most convenient and fatest way to start your C++ project for mobile and desktop.
 
-**Toolkit background:**
+**Toolkit**
 
-You don't need stop write your user interface code into your already used platform code like swift or kotlin.
+Use this toolkit to generate a native SDK to plug into your **new** or **already existing** application and call SDK methods from your project in Swift, ObjectiveC, Java, Kotlin, Cordova or Flutter.
 
-Don't reinvent the wheel, adopt new tools or use new editors, only use what your systems already support that is **compiled code** into your current or new projects.
+Ezored toolkit is a simple but well designed structure of scripts and folders that make this job very easy, leaving you thinking about your project instead of structure it. Download this repository and check samples to test and see it working.
 
-It has a simple but well designed structure of scripts and folders that make this work very easy, leaving you thinking about your project instead of strucute it. Download this repository and start use current samples to test and see it working.
+**SDK**
 
-Write C++ code and build shared libraries for mobile (Android is **AAR** and iOS is **Framework**) and **binary executables** for desktop (Linux, macOS and Windows).
+Write C++ code and build shared libraries for mobile (Android is **AAR** and iOS is **Framework**) and **binary executables** or **shared libraries** for desktop (Linux, macOS and Windows).
 
 Don't think about how you will start your C++ project for **mobile** and **desktop**, use ezored as a quick start toolkit.
 
 ![](extras/images/what-is.png)
 
-**Why you need use it?**
-
-- Write once. Compile anywhere.
-- Write a single C++ code and use it on **mobile** and **desktop**
-- It come with a well designed structure to you maintain the focus on what you need do, your own business code.
-- Don't need new editors or languages, most things are done from command line.
-- Don't replace well user interface code (swift, interface builder, android xml, etc), only attach very fast compiled code for your project actions.
-- Already used in production for some years and come with some modules (https, sqlite, shared data, datetime utils, string utils, logger, file management and more)
-
-**Free for ever:**
+**Free for ever**
 
 You can use it for free, for any purpose, including commercial purposes.
 
 Feel free to collaborate with ezored, creating or improving the main project, samples and modules.
 
-After download ezored, you don't need this project more, because all your changes is only for your business things.
+After download ezored you need upload to your repository because all C++ code will only make sense to your project.
 
 ## Supported platforms
 
@@ -87,10 +80,10 @@ A module in ezored is C++ implementation of one specific feature and ezored come
 6. **string helper**  
     Functions to work with string.
 
-7. **sqlite3**  
+7. **database**  
     SQLite3 is ready to use with ezored and let you use the same database on all platforms. Internally you can check our scheme migration implementation. A library called "sqlitecpp" is used to make this job easier.
 
-8. **rapidjson**  
+8. **json**  
     RapidJSON is used to parsing json from remote requests in ezored samples. It works on all tested platforms nice and fast.
 
 9. **support lib**  
@@ -231,7 +224,7 @@ The folder with name **dist** has all prebuilt things (Android, iOS, Windows, ma
 
 This command will download the following file:
 
-> http://public.ezored.com/ezored/prebuilt/dist.zip
+> http://public.ezored.com/ezored/prebuilt/dist.tar.gz
 
 And will unpack for you creating a folder called **"dist"** with all prebuilt files in the project root folder.
 
