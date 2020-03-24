@@ -10,12 +10,14 @@
 #include "ezored/net/http/HttpResponse.hpp"
 #include "ezored/net/http/SimpleHttpClientPlatformService.hpp"
 
-#include "ezored/helpers/StringHelper.hpp"
-#include "ezored/io/FileHelper.hpp"
 #include "ezored/time/DateTime.hpp"
+
+#include "ezored/io/FileHelper.hpp"
+#include "ezored/io/SimpleFileHelperPlatformService.hpp"
 
 #include "ezored/helpers/CustomerHelper.hpp"
 #include "ezored/helpers/EnvironmentHelper.hpp"
+#include "ezored/helpers/StringHelper.hpp"
 #include "ezored/helpers/TodoHelper.hpp"
 
 #include "ezored/data/SharedData.hpp"
@@ -29,9 +31,6 @@
 
 #include "ezored/systemservices/CustomerSystemService.hpp"
 #include "ezored/systemservices/CustomerSystemServiceLoginData.hpp"
-
-#include "Poco/File.h"
-#include "Poco/Path.h"
 
 #include <iostream>
 #include <memory>
@@ -55,12 +54,13 @@ int main(int argc, char **argv)
     Logger::shared()->setPlatformService(std::make_shared<SimpleLoggerPlatformService>());
     Logger::shared()->setLevel(LoggerLevel::VERBOSE);
 
+    FileHelper::shared()->setPlatformService(std::make_shared<SimpleFileHelperPlatformService>());
     HttpClient::shared()->setPlatformService(std::make_shared<SimpleHttpClientPlatformService>());
     SharedData::shared()->setPlatformService(std::make_shared<SimpleSharedDataPlatformService>());
 
     // application core
-    auto homeDir = Poco::Path::home() + "ezored";
-    Poco::File(homeDir).createDirectory();
+    auto homeDir = FileHelper::join(FileHelper::getHomeDir(), "ezored");
+    FileHelper::createDir(homeDir);
 
     auto initializationData = InitializationData{"com.ezored.sample", "ezored", homeDir, 0, true};
     auto deviceData = DeviceData{"", "", "", "", "", "", "", "", "", 0, 0, 0, "", "", "", ""};
@@ -70,9 +70,9 @@ int main(int argc, char **argv)
     // get initialized customer is stored before
     {
         auto customer = ApplicationCore::shared()->getCustomer();
-        std::cout << "Current customer: " << customer.id << " - " << customer.name << " - " << customer.token << std::endl;
-        std::cout << "Current customer is logged: " << CustomerHelper::isLogged() << std::endl;
-        std::cout << "Current customer token: " << CustomerHelper::getToken() << std::endl;
+        Logger::i("Current customer ID: " + std::to_string(customer.id) + " - " + customer.name + " - " + customer.token);
+        Logger::i("Current customer token: " + CustomerHelper::getToken());
+        Logger::i("Current customer is logged: " + std::string((CustomerHelper::isLogged() ? "YES" : "NO")));
     }
 
     // clear and add TODO items to database
@@ -113,79 +113,91 @@ int main(int argc, char **argv)
 
         for (auto &item : list)
         {
-            std::cout << "Todo: " << item.title << std::endl;
+            Logger::i("ToDo: " + item.title);
         }
     }
 
     // login error
     {
         auto data = CustomerSystemService::login("demo-error", "demo-error");
-        std::cout << "Customer system service login: " << data.response.message << std::endl;
+        Logger::i("Customer system service login: " + data.response.message);
 
         if (data.response.success)
         {
-            std::cout << "Customer system service login: OK" << std::endl;
-            std::cout << "Customer system service login customer / ID:" << data.customer.id << " / Name: " << data.customer.name << " / Token: " << data.customer.token << " / Status: " << static_cast<int>(data.customer.status) << std::endl;
+            Logger::i("Customer system service login: OK");
+            Logger::i("Customer system service login customer / ID: " + std::to_string(data.customer.id) + " / Name: " + data.customer.name + " / Token: " + data.customer.token + " / Status: " + std::to_string(static_cast<int>(data.customer.status)));
         }
         else
         {
-            std::cout << "Customer system service login: FAIL" << std::endl;
-            std::cout << "Customer system service login error: " << data.response.error.message << std::endl;
+            Logger::e("Customer system service login: FAIL");
+            Logger::e("Customer system service login error: " + data.response.error.message);
         }
     }
 
     // login success
     {
         auto data = CustomerSystemService::login("demo", "demo");
-        std::cout << "Customer system service login: " << data.response.message << std::endl;
+        Logger::i("Customer system service login: " + data.response.message);
 
         if (data.response.success)
         {
-            std::cout << "Customer system service login: OK" << std::endl;
-            std::cout << "Customer system service login customer / ID:" << data.customer.id << " / Name: " << data.customer.name << " / Token: " << data.customer.token << " / Status: " << static_cast<int>(data.customer.status) << std::endl;
+            Logger::i("Customer system service login: OK");
+            Logger::i("Customer system service login customer / ID: " + std::to_string(data.customer.id) + " / Name: " + data.customer.name + " / Token: " + data.customer.token + " / Status: " + std::to_string(static_cast<int>(data.customer.status)));
         }
         else
         {
-            std::cout << "Customer system service login: FAIL" << std::endl;
-            std::cout << "Customer system service login error: " << data.response.error.message << std::endl;
+            Logger::e("Customer system service login: FAIL");
+            Logger::e("Customer system service login error: " + data.response.error.message);
         }
     }
 
     // show logged user
     {
         auto customer = ApplicationCore::shared()->getCustomer();
-        std::cout << "Current customer: " << customer.id << " - " << customer.name << " - " << customer.token << std::endl;
-        std::cout << "Current customer is logged: " << CustomerHelper::isLogged() << std::endl;
-        std::cout << "Current customer token: " << CustomerHelper::getToken() << std::endl;
+        Logger::i("Current customer ID: " + std::to_string(customer.id) + " - " + customer.name + " - " + customer.token);
+        Logger::i("Current customer token: " + CustomerHelper::getToken());
+        Logger::i("Current customer is logged: " + std::string((CustomerHelper::isLogged() ? "YES" : "NO")));
     }
 
     // post http request
     auto httpRequest = HttpRequest("http://httpbin.org/post", HttpMethod::METHOD_POST, {}, {}, "");
     auto httpResponse = HttpClient::shared()->doRequest(httpRequest);
-    std::cout << "Response: " << httpResponse.body << std::endl;
+    Logger::i("Response: " + httpResponse.body);
 
     // secret key store internal
     auto secret = EnvironmentHelper::getSecretKey();
 
-    std::cout << "SECRET: " << secret << std::endl;
-    std::cout << "CURRENT DATETIME UTC: " << DateTime::getCurrentDateTimeAsString() << std::endl;
-    std::cout << "STRING TO UPPER: " << StringHelper::toUpper(StringHelper::trim(" ezored ")) << std::endl;
+    Logger::i("Secret: " + secret);
+    Logger::i("Current datetime UTC: " + DateTime::getCurrentDateTimeAsString());
+    Logger::i("String to upper: " + StringHelper::toUpper(StringHelper::trim(" ezored ")));
 
     // file helper
-    FileHelper::createDir(FileHelper::join("path1", "path2"));
+    {
+        Logger::i("Filename: " + FileHelper::getFilename(FileHelper::join(homeDir, "database.db3")));
+        Logger::i("Basename: " + FileHelper::getBasename(FileHelper::join(homeDir, "database.db3")));
+        Logger::i("File size: " + std::to_string(FileHelper::getFileSize(FileHelper::join(homeDir, "database.db3"))));
+        Logger::i("File extesion: " + FileHelper::getExtension(FileHelper::join(homeDir, "database.db3")));
+        Logger::i("Is file (file): " + std::to_string(FileHelper::isFile(FileHelper::join(homeDir, "database.db3"))));
+        Logger::i("Is file (dir): " + std::to_string(FileHelper::isFile(homeDir)));
+        Logger::i("Is dir (file): " + std::to_string(FileHelper::isDir(FileHelper::join(homeDir, "database.db3"))));
+        Logger::i("Is dir (dir): " + std::to_string(FileHelper::isDir(homeDir)));
+
+        Logger::i("URL basename: " + FileHelper::getBasenameFromUrl("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"));
+        Logger::i("URL filename: " + FileHelper::getFilenameFromUrl("https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"));
+    }
 
     // shared data
     SharedData::shared()->start("app");
 
-    if (SharedData::shared()->getBoolWithDefaultValue("first-open", true) == true)
+    if (SharedData::shared()->getBoolWithDefaultValue("first-open", true))
     {
-        std::cout << "FIRST OPEN: YES" << std::endl;
+        Logger::i("First open: YES");
         SharedData::shared()->setBool("first-open", false);
         SharedData::shared()->saveAsync();
     }
     else
     {
-        std::cout << "FIRST OPEN: NO" << std::endl;
+        Logger::i("First open: NO");
         SharedData::shared()->finish();
     }
 

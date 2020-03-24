@@ -5,29 +5,31 @@ class TargetConan(ConanFile):
     name = "ios_framework"
     version = "1.0.0"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False], "fPIC": [True, False]}
+    options = {"shared": [True, False], "fPIC": [True, False], "group": "ANY"}
     default_options = {
         "shared": False,
         "fPIC": True,
+        "group": "",
         "sqlite3:threadsafe": 1,
-        "Poco:enable_xml": False,
-        "Poco:enable_json": False,
-        "Poco:enable_mongodb": False,
-        "Poco:enable_pdf": False,
-        "Poco:enable_data": False,
-        "Poco:enable_data_sqlite": False,
-        "Poco:enable_data_mysql": False,
-        "Poco:enable_data_odbc": False,
-        "Poco:enable_sevenzip": False,
-        "Poco:enable_zip": False,
-        "Poco:enable_apacheconnector": False,
-        "Poco:enable_cppparser": False,
-        "Poco:enable_pocodoc": False,
-        "Poco:enable_pagecompiler": False,
-        "Poco:enable_pagecompiler_file2page": False,
-        "Poco:enable_tests": False,
-        "Poco:poco_unbundled": False,
-        "Poco:cxx_14": False,
+        "sqlite3:build_executable": False,
+        "poco:enable_xml": False,
+        "poco:enable_json": False,
+        "poco:enable_mongodb": False,
+        "poco:enable_pdf": False,
+        "poco:enable_data": False,
+        "poco:enable_data_sqlite": False,
+        "poco:enable_data_mysql": False,
+        "poco:enable_data_odbc": False,
+        "poco:enable_sevenzip": False,
+        "poco:enable_zip": False,
+        "poco:enable_apacheconnector": False,
+        "poco:enable_cppparser": False,
+        "poco:enable_pocodoc": False,
+        "poco:enable_pagecompiler": False,
+        "poco:enable_pagecompiler_file2page": False,
+        "poco:enable_tests": False,
+        "poco:poco_unbundled": False,
+        "poco:cxx_14": False,
     }
     exports_sources = "*"
     generators = "cmake"
@@ -36,17 +38,15 @@ class TargetConan(ConanFile):
         cmake = CMake(self)
         cmake.definitions["CMAKE_BUILD_TYPE"] = self.settings.build_type
         cmake.definitions["PROJECT_CONFIG_ARCH"] = self.settings.arch
-        cmake.definitions["CMAKE_OSX_DEPLOYMENT_TARGET"] = self.settings.get_safe(
-            "os.version"
-        )
+        cmake.definitions["PROJECT_CONFIG_GROUP"] = self.options.group
         cmake.configure()
         cmake.build()
 
     def requirements(self):
-        self.requires("sqlite3/3.29.0@bincrafters/stable")
-        self.requires("sqlitecpp/2.4.0@bincrafters/stable")
-        self.requires("rapidjson/1.1.0@bincrafters/stable")
+        self.requires("sqlite3/3.31.1")
+        self.requires("rapidjson/1.1.0")
+        self.requires("openssl/1.1.1c")
+        self.requires("sqlitecpp/2.5.0")
 
         # uncomment only if you want use C++ http client instead of native android http client
-        # self.requires('Poco/1.9.4@pocoproject/stable')
-        # self.requires('OpenSSL/1.1.1c@conan/stable')
+        # self.requires("poco/1.9.4")

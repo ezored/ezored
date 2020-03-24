@@ -199,5 +199,13 @@ std::vector<uint8_t> EZRFileHelperPlatformService::JavaProxy::getFileContentAsBi
     ::djinni::jniExceptionCheck(jniEnv);
     return ::djinni::Binary::toCpp(jniEnv, jret);
 }
+std::string EZRFileHelperPlatformService::JavaProxy::getHomeDir() {
+    auto jniEnv = ::djinni::jniGetThreadEnv();
+    ::djinni::JniLocalScope jscope(jniEnv, 10);
+    const auto& data = ::djinni::JniClass<::djinni_generated::EZRFileHelperPlatformService>::get();
+    auto jret = (jstring)jniEnv->CallObjectMethod(Handle::get().get(), data.method_getHomeDir);
+    ::djinni::jniExceptionCheck(jniEnv);
+    return ::djinni::String::toCpp(jniEnv, jret);
+}
 
 }  // namespace djinni_generated

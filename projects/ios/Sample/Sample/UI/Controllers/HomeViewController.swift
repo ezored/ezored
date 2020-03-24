@@ -89,7 +89,7 @@ class HomeViewController: BaseTableViewController {
         
         let size = EZRFileHelper.getFileSize(EZRFileHelper.join(core.getInitializationData().basePath, second: "database.db3"))
         
-        let message = String(format: "%d bytes / %.5f mbytes", size, (Double(size) / 1048576))
+        let message = String(format: "DialogDatabaseSizeMessage".localized, size, (Double(size) / 1048576))
         UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: message, onClose: nil)
     }
     
@@ -108,7 +108,7 @@ class HomeViewController: BaseTableViewController {
             let response = EZRHttpClient.shared()?.do(request)
             
             DispatchQueue.main.async {
-                UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: response?.body, onClose: nil)
+                UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: String(format: "DialogHttpMessage".localized, request.url, response?.body ?? ""), onClose: nil)
                 self.showMainView()
             }
         }
@@ -129,7 +129,7 @@ class HomeViewController: BaseTableViewController {
             let response = EZRHttpClient.shared()?.do(request)
             
             DispatchQueue.main.async {
-                UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: response?.body, onClose: nil)
+                UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: String(format: "DialogHttpMessage".localized, request.url, response?.body ?? ""), onClose: nil)
                 self.showMainView()
             }
         }
@@ -137,7 +137,7 @@ class HomeViewController: BaseTableViewController {
     
     func doActionSecretKey() {
         let secretKey = EZRHelpersEnvironmentHelper.getSecretKey()
-        let message = String(format: "KEY IS:\n%@", secretKey)
+        let message = String(format: "DialogSecretKeyMessage".localized, secretKey)
         
         UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: message, onClose: nil)
     }
@@ -153,7 +153,7 @@ class HomeViewController: BaseTableViewController {
                 let todo = EZRDomainTodo(
                     id: 0,
                     title: String(format: "Title %i", i),
-                    body: String(format: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. %i", i),
+                    body: String(format: "New TODO item description: %i", i),
                     data: [:],
                     done: false,
                     createdAt: Date(),

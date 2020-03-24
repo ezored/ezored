@@ -59,6 +59,7 @@ void ApplicationCoreImpl::initialize(const InitializationData &initializationDat
     initializeHttpClient();
     initializeHttpLogger();
     initializeDB();
+    initializeCustomer();
 
     Logger::shared()->i("Application initialized");
 }

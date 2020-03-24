@@ -242,5 +242,15 @@ std::vector<uint8_t> FileHelper::getFileContentAsBinary(const std::string &path)
     return {};
 }
 
+std::string FileHelper::getHomeDir()
+{
+    if (FileHelper::shared()->hasPlatformService())
+    {
+        return FileHelper::shared()->getPlatformService()->getHomeDir();
+    }
+
+    return "";
+}
+
 } // namespace io
 } // namespace ezored

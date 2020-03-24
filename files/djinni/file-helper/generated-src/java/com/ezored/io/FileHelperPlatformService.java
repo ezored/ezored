@@ -45,4 +45,6 @@ public abstract class FileHelperPlatformService {
     public abstract String getFileContentAsString(String path);
 
     public abstract byte[] getFileContentAsBinary(String path);
+
+    public abstract String getHomeDir();
 }

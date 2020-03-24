@@ -3,6 +3,7 @@
 
 package com.ezored.helpers;
 
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class StringHelper {
@@ -29,6 +30,13 @@ public abstract class StringHelper {
     public static String toUpper(String value)
     {
         return CppProxy.toUpper(value);
+    }
+
+    public static ArrayList<String> split(String text, String sep, boolean trimEmpty)
+    {
+        return CppProxy.split(text,
+                              sep,
+                              trimEmpty);
     }
 
     private static final class CppProxy extends StringHelper
@@ -63,5 +71,7 @@ public abstract class StringHelper {
         public static native String toLower(String value);
 
         public static native String toUpper(String value);
+
+        public static native ArrayList<String> split(String text, String sep, boolean trimEmpty);
     }
 }

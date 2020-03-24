@@ -16,4 +16,8 @@
 
 + (nonnull NSString *)toUpper:(nonnull NSString *)value;
 
++ (nonnull NSArray<NSString *> *)split:(nonnull NSString *)text
+                                   sep:(nonnull NSString *)sep
+                             trimEmpty:(BOOL)trimEmpty;
+
 @end

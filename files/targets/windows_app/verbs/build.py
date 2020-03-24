@@ -119,6 +119,6 @@ def run(params):
                         )
 
                         file.remove_dir(build_assets_dir)
-                        file.copy_dir(assets_dir, build_assets_dir)
+                        file.copy_dir(assets_dir, build_assets_dir, symlinks=True)
     else:
         log.error('Arch list for "{0}" is invalid or empty'.format(target_name))

@@ -61,4 +61,6 @@
 
 + (nonnull NSData *)getFileContentAsBinary:(nonnull NSString *)path;
 
++ (nonnull NSString *)getHomeDir;
+
 @end

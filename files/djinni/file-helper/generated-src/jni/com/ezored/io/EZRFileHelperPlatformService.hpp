@@ -53,6 +53,7 @@ private:
         std::string join(const std::string & first, const std::string & second) override;
         std::string getFileContentAsString(const std::string & path) override;
         std::vector<uint8_t> getFileContentAsBinary(const std::string & path) override;
+        std::string getHomeDir() override;
 
     private:
         friend ::djinni::JniInterface<::ezored::io::FileHelperPlatformService, ::djinni_generated::EZRFileHelperPlatformService>;
@@ -79,6 +80,7 @@ private:
     const jmethodID method_join { ::djinni::jniGetMethodID(clazz.get(), "join", "(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;") };
     const jmethodID method_getFileContentAsString { ::djinni::jniGetMethodID(clazz.get(), "getFileContentAsString", "(Ljava/lang/String;)Ljava/lang/String;") };
     const jmethodID method_getFileContentAsBinary { ::djinni::jniGetMethodID(clazz.get(), "getFileContentAsBinary", "(Ljava/lang/String;)[B") };
+    const jmethodID method_getHomeDir { ::djinni::jniGetMethodID(clazz.get(), "getHomeDir", "()Ljava/lang/String;") };
 };
 
 }  // namespace djinni_generated

@@ -1,5 +1,7 @@
 package com.ezored.io;
 
+import android.content.Context;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,6 +13,16 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class FileHelperPlatformServiceImpl extends FileHelperPlatformService {
+
+    private Context context;
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
 
     @Override
     public boolean createFile(String path) {
@@ -402,6 +414,27 @@ public class FileHelperPlatformServiceImpl extends FileHelperPlatformService {
         }
 
         return data;
+    }
+
+    @Override
+    public String getHomeDir() {
+        if (context == null) {
+            return "";
+        }
+
+        try {
+            String basePath = context.getFilesDir().getAbsolutePath();
+
+            if (basePath == null) {
+                basePath = "";
+            }
+
+            return basePath;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
 }

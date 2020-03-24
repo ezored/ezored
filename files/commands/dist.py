@@ -60,10 +60,10 @@ def pack_dist_folder(params):
         log.error("Distribution folder not exists: {0}".format(dist_folder))
 
     log.info("Removing old file...")
-    file.remove_file(const.FILE_NAME_DIST_PACKED)
+    file.remove_file(const.FILE_NAME_DIST_PACKED_TAR)
 
     log.info("Packing {0} folder...".format(const.DIR_NAME_DIST))
-    pack.make_zipfile(dist_file, dist_folder)
+    pack.tar_dir(dist_file, dist_folder)
 
     log.ok("")
 

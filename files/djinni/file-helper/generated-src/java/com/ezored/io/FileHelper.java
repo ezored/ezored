@@ -123,6 +123,11 @@ public abstract class FileHelper {
         return CppProxy.getFileContentAsBinary(path);
     }
 
+    public static String getHomeDir()
+    {
+        return CppProxy.getHomeDir();
+    }
+
     private static final class CppProxy extends FileHelper
     {
         private final long nativeRef;
@@ -211,5 +216,7 @@ public abstract class FileHelper {
         public static native String getFileContentAsString(String path);
 
         public static native byte[] getFileContentAsBinary(String path);
+
+        public static native String getHomeDir();
     }
 }

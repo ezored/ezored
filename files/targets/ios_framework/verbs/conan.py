@@ -31,6 +31,7 @@ def run(params):
                     const.DIR_NAME_BUILD,
                     target_name,
                     build_type,
+                    arch["group"],
                     arch["conan_arch"],
                     const.DIR_NAME_BUILD_CONAN,
                 )
@@ -59,6 +60,8 @@ def run(params):
                     "-s",
                     "os.version={0}".format(arch["min_version"]),
                     "-o",
+                    "group={0}".format(arch["group"]),
+                    "-o",
                     "darwin-toolchain:enable_bitcode={0}".format(
                         (arch["enable_bitcode"] if "enable_bitcode" in arch else None)
                     ),
@@ -72,6 +75,26 @@ def run(params):
                             arch["enable_visibility"]
                             if "enable_visibility" in arch
                             else None
+                        )
+                    ),
+                    "-o",
+                    "darwin-toolchain:enable_catalyst={0}".format(
+                        (
+                            arch["enable_catalyst"]
+                            if "enable_catalyst" in arch
+                            else False
+                        )
+                    ),
+                    "-o",
+                    "darwin-toolchain:catalyst_version={0}".format(
+                        (arch["catalyst_version"] if "catalyst_version" in arch else "")
+                    ),
+                    "-o",
+                    "sqlite3:disable_gethostuuid={0}".format(
+                        (
+                            arch["enable_catalyst"]
+                            if "enable_catalyst" in arch
+                            else False
                         )
                     ),
                     "--build=missing",

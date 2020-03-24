@@ -8,6 +8,9 @@
     <string name="dialog_button_ok">OK</string>
     <string name="dialog_button_yes">Yes</string>
     <string name="dialog_progress_message">Please wait…</string>
+    <string name="dialog_secret_key_message">Your secret key is:\n%s\n\nStore it with you!</string>
+    <string name="dialog_http_message">We do a JSON request to %1$s and server return this data:\n\n%2$s\n\nIf the data is correct the connection works!</string>
+    <string name="dialog_database_size_message">The size of internal database is: %d b / %.5f mb</string>
     <string name="dialog_title">Message</string>
     <string name="button_refresh">Refresh</string>
     <string name="option_https_request">HTTPS Request</string>

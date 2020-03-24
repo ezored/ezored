@@ -25,38 +25,13 @@ def run(params):
             for build_type in build_types:
                 log.info("Copying for: {0}...".format(build_type))
 
-                # add minimum version inside plist to submit for apple
-                for arch in archs:
-                    plist_path = os.path.join(
-                        proj_path,
-                        const.DIR_NAME_BUILD,
-                        target_name,
-                        build_type,
-                        arch["conan_arch"],
-                        const.DIR_NAME_BUILD_TARGET,
-                        "lib",
-                        "{0}.framework".format(target_config["project_name"]),
-                        "Info.plist",
-                    )
-
-                    runner.run(
-                        [
-                            "plutil",
-                            "-replace",
-                            "MinimumOSVersion",
-                            "-string",
-                            arch["min_version"],
-                            plist_path,
-                        ],
-                        proj_path,
-                    )
-
                 # copy first folder for base
                 framework_dir = os.path.join(
                     proj_path,
                     const.DIR_NAME_BUILD,
                     target_name,
                     build_type,
+                    archs[0]["group"],
                     archs[0]["conan_arch"],
                     const.DIR_NAME_BUILD_TARGET,
                     "lib",
@@ -72,25 +47,59 @@ def run(params):
                 )
 
                 file.remove_dir(dist_dir)
-                file.copy_dir(framework_dir, dist_dir)
+                file.copy_dir(framework_dir, dist_dir, symlinks=True)
+
+                # group supported platforms
+                supported_platforms = []
+
+                for arch in archs:
+                    if not arch["supported_platform"] in supported_platforms:
+                        supported_platforms.append(arch["supported_platform"])
+
+                if supported_platforms:
+                    # update info plist file
+                    plist_path = os.path.join(
+                        proj_path,
+                        const.DIR_NAME_DIST,
+                        target_name,
+                        build_type,
+                        "{0}.framework".format(target_config["project_name"]),
+                        "Info.plist",
+                    )
+
+                    if os.path.exists(plist_path):
+                        # add supported platforms inside plist
+                        runner.run(
+                            [
+                                "plutil",
+                                "-replace",
+                                "CFBundleSupportedPlatforms",
+                                "-json",
+                                '[ "{0}" ]'.format('", "'.join(supported_platforms)),
+                                plist_path,
+                            ],
+                            proj_path,
+                        )
 
                 # lipo
                 lipo_archs_args = []
 
                 for arch in archs:
-                    lipo_archs_args.append(
-                        os.path.join(
-                            proj_path,
-                            const.DIR_NAME_BUILD,
-                            target_name,
-                            build_type,
-                            arch["conan_arch"],
-                            const.DIR_NAME_BUILD_TARGET,
-                            "lib",
-                            "{0}.framework".format(target_config["project_name"]),
-                            target_config["project_name"],
+                    if is_valid_group(arch["group"]):
+                        lipo_archs_args.append(
+                            os.path.join(
+                                proj_path,
+                                const.DIR_NAME_BUILD,
+                                target_name,
+                                build_type,
+                                arch["group"],
+                                arch["conan_arch"],
+                                const.DIR_NAME_BUILD_TARGET,
+                                "lib",
+                                "{0}.framework".format(target_config["project_name"]),
+                                target_config["project_name"],
+                            )
                         )
-                    )
 
                 lipo_args = [
                     "lipo",
@@ -116,3 +125,8 @@ def run(params):
             )
     else:
         log.info('Arch list for "{0}" is invalid or empty'.format(target_name))
+
+
+# -----------------------------------------------------------------------------
+def is_valid_group(group):
+    return not ("catalyst" in group)

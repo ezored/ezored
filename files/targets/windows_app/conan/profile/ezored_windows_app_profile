@@ -4,4 +4,4 @@ include(default)
 os=Windows
 arch=x86_64
 compiler=Visual Studio
-compiler.version=15
+compiler.version=16

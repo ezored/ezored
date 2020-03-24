@@ -34,12 +34,16 @@ file(GLOB S_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-clie
 file(GLOB H_FILES_SHARED_DATA_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/shared-data/cpp/ezored/data/Simple*.hpp")
 file(GLOB S_FILES_SHARED_DATA_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/shared-data/cpp/ezored/data/Simple*.cpp")
 
+file(GLOB H_FILES_FILE_HELPER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/file-helper/cpp/ezored/io/Simple*.hpp")
+file(GLOB S_FILES_FILE_HELPER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/file-helper/cpp/ezored/io/Simple*.cpp")
+
 # Merge lists
 set(
     TARGET_HEADER_FILES     
     ${H_FILES_LOGGER_LIB_IMPL}
     ${H_FILES_HTTP_CLIENT_LIB_IMPL}
     ${H_FILES_SHARED_DATA_LIB_IMPL}
+    ${H_FILES_FILE_HELPER_LIB_IMPL}
 )
 
 set(
@@ -47,6 +51,7 @@ set(
     ${S_FILES_LOGGER_LIB_IMPL}
     ${S_FILES_HTTP_CLIENT_LIB_IMPL}
     ${S_FILES_SHARED_DATA_LIB_IMPL}
+    ${S_FILES_FILE_HELPER_LIB_IMPL}    
     ${S_FILES_PROJECT}    
 )
 
