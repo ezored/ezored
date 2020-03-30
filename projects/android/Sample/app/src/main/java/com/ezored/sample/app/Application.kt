@@ -25,7 +25,7 @@ import com.ezored.util.LoggerPlatformServiceImpl
 
 class Application : MultiDexApplication() {
 
-    var appData: AppData = AppData()
+    private var appData: AppData = AppData()
 
     override fun onCreate() {
         super.onCreate()
