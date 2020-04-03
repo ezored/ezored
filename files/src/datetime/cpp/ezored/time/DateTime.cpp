@@ -55,5 +55,25 @@ int64_t DateTime::getTimestampInSecondsFromDateTime(const std::chrono::system_cl
     return std::chrono::duration_cast<std::chrono::seconds>(value.time_since_epoch()).count();
 }
 
+std::string DateTime::getCurrentTimestampInSecondsAsString()
+{
+    return std::to_string(getCurrentTimestampInSeconds());
+}
+
+int64_t DateTime::getCurrentTimestampInSeconds()
+{
+    return std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+}
+
+std::string DateTime::getCurrentTimestampInMillisecondsAsString()
+{
+    return std::to_string(getCurrentTimestampInMilliseconds());
+}
+
+int64_t DateTime::getCurrentTimestampInMilliseconds()
+{
+    return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+}
+
 } // namespace time
 } // namespace ezored

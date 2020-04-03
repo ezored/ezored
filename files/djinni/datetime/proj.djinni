@@ -12,4 +12,10 @@ date_time = interface +c {
     static get_timestamp_in_milliseconds_from_date_time(value: date): i64;
     static get_timestamp_in_seconds_from_date_time(value: date): i64;
 
+    static get_current_timestamp_in_seconds_as_string(): string;
+    static get_current_timestamp_in_seconds(): i64;
+
+    static get_current_timestamp_in_milliseconds_as_string(): string;
+    static get_current_timestamp_in_milliseconds(): i64;
+
 }

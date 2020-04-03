@@ -47,6 +47,26 @@ public abstract class DateTime {
         return CppProxy.getTimestampInSecondsFromDateTime(value);
     }
 
+    public static String getCurrentTimestampInSecondsAsString()
+    {
+        return CppProxy.getCurrentTimestampInSecondsAsString();
+    }
+
+    public static long getCurrentTimestampInSeconds()
+    {
+        return CppProxy.getCurrentTimestampInSeconds();
+    }
+
+    public static String getCurrentTimestampInMillisecondsAsString()
+    {
+        return CppProxy.getCurrentTimestampInMillisecondsAsString();
+    }
+
+    public static long getCurrentTimestampInMilliseconds()
+    {
+        return CppProxy.getCurrentTimestampInMilliseconds();
+    }
+
     private static final class CppProxy extends DateTime
     {
         private final long nativeRef;
@@ -85,5 +105,13 @@ public abstract class DateTime {
         public static native long getTimestampInMillisecondsFromDateTime(Date value);
 
         public static native long getTimestampInSecondsFromDateTime(Date value);
+
+        public static native String getCurrentTimestampInSecondsAsString();
+
+        public static native long getCurrentTimestampInSeconds();
+
+        public static native String getCurrentTimestampInMillisecondsAsString();
+
+        public static native long getCurrentTimestampInMilliseconds();
     }
 }
