@@ -22,4 +22,12 @@
 
 + (int64_t)getTimestampInSecondsFromDateTime:(nonnull NSDate *)value;
 
++ (nonnull NSString *)getCurrentTimestampInSecondsAsString;
+
++ (int64_t)getCurrentTimestampInSeconds;
+
++ (nonnull NSString *)getCurrentTimestampInMillisecondsAsString;
+
++ (int64_t)getCurrentTimestampInMilliseconds;
+
 @end

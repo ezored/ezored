@@ -28,6 +28,14 @@ public:
     static int64_t getTimestampInMillisecondsFromDateTime(const std::chrono::system_clock::time_point & value);
 
     static int64_t getTimestampInSecondsFromDateTime(const std::chrono::system_clock::time_point & value);
+
+    static std::string getCurrentTimestampInSecondsAsString();
+
+    static int64_t getCurrentTimestampInSeconds();
+
+    static std::string getCurrentTimestampInMillisecondsAsString();
+
+    static int64_t getCurrentTimestampInMilliseconds();
 };
 
 } }  // namespace ezored::time

@@ -86,6 +86,34 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
++ (nonnull NSString *)getCurrentTimestampInSecondsAsString {
+    try {
+        auto objcpp_result_ = ::ezored::time::DateTime::getCurrentTimestampInSecondsAsString();
+        return ::djinni::String::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
++ (int64_t)getCurrentTimestampInSeconds {
+    try {
+        auto objcpp_result_ = ::ezored::time::DateTime::getCurrentTimestampInSeconds();
+        return ::djinni::I64::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
++ (nonnull NSString *)getCurrentTimestampInMillisecondsAsString {
+    try {
+        auto objcpp_result_ = ::ezored::time::DateTime::getCurrentTimestampInMillisecondsAsString();
+        return ::djinni::String::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
++ (int64_t)getCurrentTimestampInMilliseconds {
+    try {
+        auto objcpp_result_ = ::ezored::time::DateTime::getCurrentTimestampInMilliseconds();
+        return ::djinni::I64::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
 namespace djinni_generated {
 
 auto DateTime::toCpp(ObjcType objc) -> CppType
