@@ -49,37 +49,27 @@ def run(params):
                 file.remove_dir(dist_dir)
                 file.copy_dir(framework_dir, dist_dir, symlinks=True)
 
-                # group supported platforms
-                supported_platforms = []
+                # update info plist file
+                plist_path = os.path.join(
+                    proj_path,
+                    const.DIR_NAME_DIST,
+                    target_name,
+                    build_type,
+                    "{0}.framework".format(target_config["project_name"]),
+                    "Info.plist",
+                )
 
-                for arch in archs:
-                    if not arch["supported_platform"] in supported_platforms:
-                        supported_platforms.append(arch["supported_platform"])
-
-                if supported_platforms:
-                    # update info plist file
-                    plist_path = os.path.join(
+                if os.path.exists(plist_path):
+                    # remove supported platforms inside plist
+                    runner.run(
+                        [
+                            "plutil",
+                            "-remove",
+                            "CFBundleSupportedPlatforms",
+                            plist_path,
+                        ],
                         proj_path,
-                        const.DIR_NAME_DIST,
-                        target_name,
-                        build_type,
-                        "{0}.framework".format(target_config["project_name"]),
-                        "Info.plist",
                     )
-
-                    if os.path.exists(plist_path):
-                        # add supported platforms inside plist
-                        runner.run(
-                            [
-                                "plutil",
-                                "-replace",
-                                "CFBundleSupportedPlatforms",
-                                "-json",
-                                '[ "{0}" ]'.format('", "'.join(supported_platforms)),
-                                plist_path,
-                            ],
-                            proj_path,
-                        )
 
                 # lipo
                 lipo_archs_args = []
