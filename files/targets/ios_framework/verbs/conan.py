@@ -77,26 +77,6 @@ def run(params):
                             else None
                         )
                     ),
-                    "-o",
-                    "darwin-toolchain:enable_catalyst={0}".format(
-                        (
-                            arch["enable_catalyst"]
-                            if "enable_catalyst" in arch
-                            else False
-                        )
-                    ),
-                    "-o",
-                    "darwin-toolchain:catalyst_version={0}".format(
-                        (arch["catalyst_version"] if "catalyst_version" in arch else "")
-                    ),
-                    "-o",
-                    "sqlite3:disable_gethostuuid={0}".format(
-                        (
-                            arch["enable_catalyst"]
-                            if "enable_catalyst" in arch
-                            else False
-                        )
-                    ),
                     "--build=missing",
                     "--update",
                 ]

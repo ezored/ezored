@@ -119,4 +119,4 @@ def run(params):
 
 # -----------------------------------------------------------------------------
 def is_valid_group(group):
-    return not ("catalyst" in group)
+    return True

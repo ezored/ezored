@@ -301,12 +301,6 @@ https://www.udemy.com/course/desenvolvendo-aplicativos-mobile-com-cpp-para-andro
 
 ![Udemy Training](extras/images/udemy-training.png)
 
-## Mac Catalyst
-
-Ezored sample project has support for Mac Catalyst. You can use the same iPad application on macOS desktop. See in action here:
-
-https://www.youtube.com/watch?v=ro2WVX_wHuQ
-
 ## Supported By Jetbrains IntelliJ IDEA
 
 ![Supported By Jetbrains IntelliJ IDEA](extras/images/jetbrains-logo.png "Supported By Jetbrains IntelliJ IDEA")

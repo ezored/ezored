@@ -151,7 +151,7 @@ object EnvironmentUtil {
 
             return InitializationData(
                 Application.instance.packageName,
-                BuildConfig.FLAVOR,
+                "ezored",
                 basePath,
                 0,
                 BuildConfig.DEBUG

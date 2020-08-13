@@ -1,9 +1,6 @@
 import Foundation
 import UIKit
-
-#if !targetEnvironment(macCatalyst)
-    import CoreTelephony
-#endif
+import CoreTelephony
 
 class EnvironmentUtil {
     
@@ -20,20 +17,18 @@ class EnvironmentUtil {
     }
     
     static func getCurrentRegionCode() -> String {
-        #if !targetEnvironment(macCatalyst)
-            let networkInfo = CTTelephonyNetworkInfo()
-            
-            if let carrier = networkInfo.subscriberCellularProvider {
-                if let countryCode = carrier.isoCountryCode {
-                    return countryCode
-                }
+        let networkInfo = CTTelephonyNetworkInfo()
+
+        if let carrier = networkInfo.subscriberCellularProvider {
+            if let countryCode = carrier.isoCountryCode {
+                return countryCode
             }
-        #endif
-        
+        }
+
         if let regionCode = Locale.current.regionCode {
             return regionCode
         }
-        
+
         return ""
     }
     

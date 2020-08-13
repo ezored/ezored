@@ -48,17 +48,6 @@ def run(proj_path, target_name, params):
                 "enable_bitcode": False,
                 "group": "ios_simulator",
             },
-            {
-                "arch": "x86_64",
-                "conan_arch": "x86_64",
-                "conan_profile": "ezored_ios_framework_catalyst_profile",
-                "min_version": "10.15",
-                "supported_platform": "MacOSX",
-                "catalyst_version": "13.0",
-                "enable_bitcode": False,
-                "enable_catalyst": True,
-                "group": "ios_catalyst",
-            },
         ],
         "install_headers": [
             {"type": "dir", "path": "files/djinni/app-domain/generated-src/objc"},

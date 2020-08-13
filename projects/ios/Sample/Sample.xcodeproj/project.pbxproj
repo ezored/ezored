@@ -216,34 +216,34 @@
 		3A2F22DA2214A57D00A2FB4F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3A2F22DB2214A57D00A2FB4F /* ViewClearConstraintsRecursivellyExtension.swift */,
-				3A2F22DC2214A57D00A2FB4F /* UITextFieldPaddingViewExtension.swift */,
-				3A2F22DD2214A57D00A2FB4F /* UIButtonImageSpacingExtension.swift */,
-				3A2F22DE2214A57D00A2FB4F /* ViewControllerIsVisibleExtension.swift */,
-				3A2F22DF2214A57D00A2FB4F /* StringBase64Extension.swift */,
-				3A2F22E02214A57D00A2FB4F /* UIColorToRGBExtension.swift */,
-				3A2F22E12214A57D00A2FB4F /* UIColorToHexExtension.swift */,
-				3A2F22E22214A57D00A2FB4F /* ViewConstraintsExtension.swift */,
-				3A2F22E32214A57D00A2FB4F /* UIImageFixRotationExtension.swift */,
-				3A2F22E42214A57D00A2FB4F /* StringExtensions.swift */,
-				3A2F22E52214A57D00A2FB4F /* WKWebViewEvaluateExtension.swift */,
-				3A2F22E62214A57D00A2FB4F /* UITableViewExtension.swift */,
-				3A2F22E72214A57D00A2FB4F /* TimePartsExtension.swift */,
+				3A2F22F12214A57D00A2FB4F /* ApplicationTopViewControllerExtension.swift */,
+				3A2F22F42214A57D00A2FB4F /* CollectionExtensions.swift */,
 				3A2F22E82214A57D00A2FB4F /* DictionaryMergeExtension.swift */,
 				3A2F22E92214A57D00A2FB4F /* FadeViewExtension.swift */,
+				3A2F22EE2214A57D00A2FB4F /* IntToTimeIntervalExtension.swift */,
 				3A2F22EA2214A57D00A2FB4F /* ShuffleExtension.swift */,
+				3A2F22EF2214A57D00A2FB4F /* SKProductLocalizedPriceExtension.swift */,
+				3A2F22DF2214A57D00A2FB4F /* StringBase64Extension.swift */,
+				3A2F22E42214A57D00A2FB4F /* StringExtensions.swift */,
+				3A2F22F22214A57D00A2FB4F /* StringsLocalizedExtension.swift */,
+				3A2F22ED2214A57D00A2FB4F /* SwiftColorsExtension.swift */,
+				3A2F22E72214A57D00A2FB4F /* TimePartsExtension.swift */,
+				3A2F22DD2214A57D00A2FB4F /* UIButtonImageSpacingExtension.swift */,
+				3A2F22E12214A57D00A2FB4F /* UIColorToHexExtension.swift */,
+				3A2F22E02214A57D00A2FB4F /* UIColorToRGBExtension.swift */,
 				3A2F22EB2214A57D00A2FB4F /* UIDeviceTypeExtension.swift */,
 				3A2F22EC2214A57D00A2FB4F /* UIImageColors.swift */,
-				3A2F22ED2214A57D00A2FB4F /* SwiftColorsExtension.swift */,
-				3A2F22EE2214A57D00A2FB4F /* IntToTimeIntervalExtension.swift */,
-				3A2F22EF2214A57D00A2FB4F /* SKProductLocalizedPriceExtension.swift */,
-				3A2F22F02214A57D00A2FB4F /* UIImageViewBlurExtension.swift */,
-				3A2F22F12214A57D00A2FB4F /* ApplicationTopViewControllerExtension.swift */,
-				3A2F22F22214A57D00A2FB4F /* StringsLocalizedExtension.swift */,
 				3A2F22F32214A57D00A2FB4F /* UIImageExtension.swift */,
-				3A2F22F42214A57D00A2FB4F /* CollectionExtensions.swift */,
+				3A2F22E32214A57D00A2FB4F /* UIImageFixRotationExtension.swift */,
 				3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */,
+				3A2F22F02214A57D00A2FB4F /* UIImageViewBlurExtension.swift */,
+				3A2F22E62214A57D00A2FB4F /* UITableViewExtension.swift */,
+				3A2F22DC2214A57D00A2FB4F /* UITextFieldPaddingViewExtension.swift */,
+				3A2F22DB2214A57D00A2FB4F /* ViewClearConstraintsRecursivellyExtension.swift */,
 				3A2F22F62214A57D00A2FB4F /* ViewConstrainToEdgesExtension.swift */,
+				3A2F22E22214A57D00A2FB4F /* ViewConstraintsExtension.swift */,
+				3A2F22DE2214A57D00A2FB4F /* ViewControllerIsVisibleExtension.swift */,
+				3A2F22E52214A57D00A2FB4F /* WKWebViewEvaluateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -619,25 +619,25 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_BITCODE = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)";
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)",
-					"$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)/Ezored.xcframework/ios-x86_64-maccatalyst/Ezored.framework/Headers",
+					"$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)/Ezored.framework/Headers",
 				);
 				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Sample/Sample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -653,25 +653,22 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_BITCODE = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)";
-				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)",
-					"$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)/Ezored.xcframework/ios-x86_64-maccatalyst/Ezored.framework/Headers",
-				);
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../../dist/ios_framework/$(CONFIGURATION)/Ezored.framework/Headers";
 				INFOPLIST_FILE = Sample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Sample/Sample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
