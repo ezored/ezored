@@ -3,7 +3,7 @@ name: Ezored - Android
 on: [push]
 
 env:
-  CMAKE_VERSION: "3.16.2"
+  CMAKE_VERSION: "3.14.1"
   NINJA_VERSION: "1.9.0"
 
 jobs:
@@ -103,4 +103,4 @@ jobs:
       run: python make.py target ${{ matrix.config.target }} build
 
     - name: Ezored - Package
-      run: sudo python make.py target ${{ matrix.config.target }} package
+      run: python make.py target ${{ matrix.config.target }} package
