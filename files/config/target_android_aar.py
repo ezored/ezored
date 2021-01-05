@@ -2,7 +2,6 @@ def run(proj_path, target_name, params):
     return {
         "project_name": "Ezored",
         "build_types": ["Debug", "Release"],
-        "build_types": ["Release"],
         "archs": [
             {
                 "arch": "armeabi-v7a",
