@@ -49,4 +49,4 @@ class TargetConan(ConanFile):
         self.requires("sqlitecpp/2.5.0")
 
         # uncomment only if you want use C++ http client instead of native android http client
-        # self.requires("poco/1.10.1")
+        # self.requires("poco/1.9.4")
