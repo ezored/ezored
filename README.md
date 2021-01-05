@@ -239,7 +239,7 @@ If you will use Djinni to generate files follow these steps:
 1. Download Djinni (https://github.com/dropbox/djinni).
 2. Set environment var **DJINNI_HOME** as the root folder of Djinni (where you cloned or downloaded it).
 
-If you don't will use Djinni in your project, ignore **Djinni** section, because some people prefer create the bridge files manually.
+If you don't will use Djinni in your project, ignore **Djinni** section, because some people prefer create the glue code files manually.
 
 ## Code tools
 

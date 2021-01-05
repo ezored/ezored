@@ -28,12 +28,10 @@ FILE_NAME_FILES_TARGET_CONAN_RECIPE_CONANFILE_TXT = "conanfile.txt"
 FILE_NAME_FILES_TARGET_CONAN_RECIPE_CONANFILE_PY = "conanfile.py"
 FILE_NAME_DIST_PACKED = "dist.tar.gz"
 
-URL_DIST_FILE_PACKED = "http://public.ezored.com/ezored/prebuilt/dist.tar.gz"
-
 AWS_S3_KEY_ENV = "EZORED_AWS_KEY"
 AWS_S3_SECRET_ENV = "EZORED_AWS_SECRET"
 AWS_S3_BUCKET_NAME = "EZORED_AWS_SECRET"
 AWS_S3_BUCKET_PATH = "sdk"
-AWS_S3_URL = "https://s3.amazonaws.com/{0}/sdk".format(AWS_S3_BUCKET_NAME)
+AWS_S3_URL = "https://ezored.s3.amazonaws.com/sdk".format(AWS_S3_BUCKET_NAME)
 
 TARGET_VERBS_INTERNAL = ["config"]

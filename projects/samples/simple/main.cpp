@@ -187,18 +187,14 @@ int main(int argc, char **argv)
     }
 
     // shared data
-    SharedData::shared()->start("app");
-
-    if (SharedData::shared()->getBoolWithDefaultValue("first-open", true))
+    if (SharedData::shared()->getBoolWithDefaultValue("app", "first-open", true))
     {
         Logger::i("First open: YES");
-        SharedData::shared()->setBool("first-open", false);
-        SharedData::shared()->saveAsync();
+        SharedData::shared()->setBool("app", "first-open", false);
     }
     else
     {
         Logger::i("First open: NO");
-        SharedData::shared()->finish();
     }
 
     return EXIT_SUCCESS;

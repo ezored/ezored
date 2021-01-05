@@ -87,8 +87,8 @@ jobs:
         conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain
         conan profile new default --detect        
 
-    - name: Ezored - Core
-      run: git clone https://github.com/ezored/ezored-core.git ezored
+    - name: Ezored - Install python dependencies
+      run: pip install -r requirements.txt
 
     - name: Ezored - Install profiles
       run: python make.py conan install_profiles
@@ -102,8 +102,5 @@ jobs:
     - name: Ezored - Package
       run: python make.py target ${{ matrix.config.target }} package
 
-    - name: Ezored - Package XC Framework
+    - name: Ezored - Package XCFramework
       run: python make.py target ${{ matrix.config.target }} package_xcframework
-
-    - name: Ezored - Gen Bridge Header
-      run: python make.py target ${{ matrix.config.target }} gen_bridge_header
