@@ -23,16 +23,12 @@ void SharedDataHelper::setCustomer(const Customer &value)
 {
     auto customerJson = EZRCustomerHelper::toJson(value);
 
-    SharedData::shared()->start("customer");
-    SharedData::shared()->setString("data", customerJson);
-    SharedData::shared()->saveAsync();
+    SharedData::shared()->setString("customer", "data", customerJson);
 }
 
 Customer SharedDataHelper::getCustomer()
 {
-    SharedData::shared()->start("customer");
-    auto customerJson = SharedData::shared()->getString("data");
-    SharedData::shared()->finish();
+    auto customerJson = SharedData::shared()->getString("customer", "data");
 
     rapidjson::Document json;
     json.Parse(customerJson.c_str());
@@ -52,17 +48,12 @@ void SharedDataHelper::storeCustomer()
 
 void SharedDataHelper::setDemoFlag(bool value)
 {
-    SharedData::shared()->start("demo");
-    SharedData::shared()->setBool("flag", value);
-    SharedData::shared()->saveAsync();
+    SharedData::shared()->setBool("demo", "flag", value);
 }
 
 bool SharedDataHelper::getDemoFlag()
 {
-    SharedData::shared()->start("demo");
-    auto value = SharedData::shared()->getBool("flag");
-    SharedData::shared()->finish();
-    return value;
+    return SharedData::shared()->getBool("demo", "flag");
 }
 
 } // namespace helpers

@@ -1,5 +1,5 @@
 # Configurations
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.14.1)
 get_filename_component(CMAKE_SOURCE_REALPATH "${CMAKE_SOURCE_DIR}/../../../../" REALPATH)
 
 set(PROJECT_CONFIG_NAME "Ezored" CACHE STRING "Project Name")
@@ -21,11 +21,6 @@ set(FRAMEWORK_NAME "${PROJECT_CONFIG_NAME}" CACHE STRING "Framework Name")
 set(FRAMEWORK_BUNDLE_IDENTIFIER "com.ezored.library" CACHE STRING "Bundle Identifier")
 set(DEVICE_FAMILY "1,2" CACHE STRING "Device Family")
 
-# Suppress macOS X RPATH warnings and adopt new related behaviors
-if(NOT CMAKE_VERSION VERSION_LESS 3.9)
-    cmake_policy(SET CMP0068 NEW)
-endif()
-
 # Project
 project(${PROJECT_CONFIG_NAME})
 
@@ -42,22 +37,22 @@ add_subdirectory(
 # Header search paths
 set(PROJECT_HEADER_SEARCH_PATHS
     ${PROJECT_HEADER_SEARCH_PATHS}
-    "${PROJECT_ROOT_PATH}/files/djinni/support-lib"
-    "${PROJECT_ROOT_PATH}/files/djinni/support-lib/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/support-lib"
+    "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/objc"
 
-    "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/app-core/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/app-data-services/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/app-system-services/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/app-helpers/generated-src/objc"
 
-    "${PROJECT_ROOT_PATH}/files/djinni/core/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/core/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/logger/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/http-client/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/file-helper/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/shared-data/generated-src/objc"
+    "${PROJECT_ROOT_PATH}/files/gluecode/datetime/generated-src/objc"
 
     "${PROJECT_ROOT_PATH}/files/src/logger/objc"
     "${PROJECT_ROOT_PATH}/files/src/file-helper/objc"
@@ -68,60 +63,60 @@ set(PROJECT_HEADER_SEARCH_PATHS
 )
 
 # Header files
-file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib/*.hpp")
-file(GLOB H_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/support-lib/objc/*.h")
+file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/*.hpp")
+file(GLOB H_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/objc/*.h")
 
-file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/objc/*.h")
-file(GLOB_RECURSE H_FILES_APP_ENUMS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/objc/*.h")
-file(GLOB_RECURSE H_FILES_APP_CORE_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/objc/*.h")
-file(GLOB_RECURSE H_FILES_APP_DATA_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/objc/*.h")
-file(GLOB_RECURSE H_FILES_APP_SYSTEM_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/objc/*.h")
-file(GLOB_RECURSE H_FILES_APP_HELPERS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_APP_ENUMS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_APP_CORE_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-core/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_APP_DATA_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-data-services/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_APP_SYSTEM_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-system-services/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_APP_HELPERS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-helpers/generated-src/objc/*.h")
 
-file(GLOB_RECURSE H_FILES_LOGGER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_LOGGER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/logger/generated-src/objc/*.h")
 file(GLOB H_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/objc/ezored/util/*.h")
 
-file(GLOB_RECURSE H_FILES_HTTP_CLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_HTTP_CLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/http-client/generated-src/objc/*.h")
 file(GLOB H_FILES_HTTP_CLIENT_LIB_IMPL_OBJC "${PROJECT_ROOT_PATH}/files/src/http-client/objc/ezored/net/http/*.h")
 
 # uncomment only if you want use C++ http client instead of native android http client
 #file(GLOB H_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.hpp")
 
-file(GLOB_RECURSE H_FILES_FILE_HELPER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_FILE_HELPER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/file-helper/generated-src/objc/*.h")
 file(GLOB H_FILES_FILE_HELPER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/file-helper/objc/ezored/io/*.h")
 
-file(GLOB_RECURSE H_FILES_SHARED_DATA_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_SHARED_DATA_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/shared-data/generated-src/objc/*.h")
 file(GLOB H_FILES_SHARED_DATA_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/shared-data/objc/ezored/data/*.h")
 
-file(GLOB_RECURSE H_FILES_DATETIME_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/objc/*.h")
+file(GLOB_RECURSE H_FILES_DATETIME_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/datetime/generated-src/objc/*.h")
 
 # Source files
-file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib/*.cpp")
-file(GLOB S_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/support-lib/objc/*.mm")
+file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/*.cpp")
+file(GLOB S_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/objc/*.mm")
 
-file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/objc/*.mm")
-file(GLOB_RECURSE S_FILES_APP_ENUMS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/objc/*.mm")
-file(GLOB_RECURSE S_FILES_APP_CORE_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/objc/*.mm")
-file(GLOB_RECURSE S_FILES_APP_DATA_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/objc/*.mm")
-file(GLOB_RECURSE S_FILES_APP_SYSTEM_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/objc/*.mm")
-file(GLOB_RECURSE S_FILES_APP_HELPERS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_APP_ENUMS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_APP_CORE_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-core/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_APP_DATA_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-data-services/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_APP_SYSTEM_SERVICES_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-system-services/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_APP_HELPERS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-helpers/generated-src/objc/*.mm")
 
-file(GLOB_RECURSE S_FILES_LOGGER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_LOGGER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/logger/generated-src/objc/*.mm")
 file(GLOB S_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/objc/ezored/util/*.m")
 
-file(GLOB_RECURSE S_FILES_HTTP_CLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_HTTP_CLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/http-client/generated-src/objc/*.mm")
 file(GLOB S_FILES_HTTP_CLIENT_LIB_IMPL_OBJC "${PROJECT_ROOT_PATH}/files/src/http-client/objc/ezored/net/http/*.m")
 
 # uncomment only if you want use C++ http client instead of native android http client
 #file(GLOB S_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.cpp")
 
-file(GLOB_RECURSE S_FILES_FILE_HELPER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_FILE_HELPER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/file-helper/generated-src/objc/*.mm")
 file(GLOB S_FILES_FILE_HELPER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/file-helper/objc/ezored/io/*.m")
 
-file(GLOB_RECURSE S_FILES_SHARED_DATA_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_SHARED_DATA_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/shared-data/generated-src/objc/*.mm")
 file(GLOB S_FILES_SHARED_DATA_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/shared-data/objc/ezored/data/*.m")
 
-file(GLOB_RECURSE S_FILES_DATETIME_LIB_OBJC "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/objc/*.mm")
+file(GLOB_RECURSE S_FILES_DATETIME_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/datetime/generated-src/objc/*.mm")
 
 # Merge lists
 set(
@@ -200,7 +195,6 @@ set(PROJECT_CMAKE_CXX_FLAGS "${PROJECT_CMAKE_CXX_FLAGS} -fobjc-arc -fvisibility-
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${PROJECT_CMAKE_C_FLAGS}" CACHE INTERNAL "")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${PROJECT_CMAKE_CXX_FLAGS}" CACHE INTERNAL "")
 
-# Hidden visibilty is required for C++ on iOS.
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -g ${CMAKE_CXX_FLAGS_DEBUG}")
 set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS} -DNDEBUG -Os -ffast-math ${CMAKE_CXX_FLAGS_MINSIZEREL}")
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS} -DNDEBUG -O2 -g -ffast-math ${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
@@ -247,11 +241,7 @@ set_target_properties(${PROJECT_CONFIG_NAME} PROPERTIES
 set_target_properties(${PROJECT_CONFIG_NAME} PROPERTIES INSTALL_NAME_DIR "@rpath")
 
 if(NOT CMAKE_SKIP_BUILD_RPATH)
-    if(CMAKE_VERSION VERSION_LESS 3.9)
-        set_target_properties(${PROJECT_CONFIG_NAME} PROPERTIES BUILD_WITH_INSTALL_RPATH TRUE)
-    else()
-        set_target_properties(${PROJECT_CONFIG_NAME} PROPERTIES BUILD_WITH_INSTALL_NAME_DIR TRUE)
-    endif()
+    set_target_properties(${PROJECT_CONFIG_NAME} PROPERTIES BUILD_WITH_INSTALL_NAME_DIR TRUE)
 endif()
 
 target_compile_options(${PROJECT_CONFIG_NAME} PUBLIC "${PROJECT_COMPILE_OPTIONS}")

@@ -16,7 +16,8 @@ namespace helpers
 
 std::string SecurityHelper::generateUuidV4()
 {
-    union {
+    union
+    {
         struct
         {
             uint32_t time_low;

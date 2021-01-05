@@ -1,0 +1,62 @@
+shared_data_platform_service = interface +j +o {
+
+    set_string(group_name: string, key: string, value: string);
+    set_integer(group_name: string, key: string, value: i32);
+    set_long(group_name: string, key: string, value: i64);
+    set_bool(group_name: string, key: string, value: bool);
+    set_float(group_name: string, key: string, value: f32);
+    set_double(group_name: string, key: string, value: f64);
+
+    get_string(group_name: string, key: string): string;
+    get_integer(group_name: string, key: string): i32;
+    get_long(group_name: string, key: string): i64;
+    get_bool(group_name: string, key: string): bool;
+    get_float(group_name: string, key: string): f32;
+    get_double(group_name: string, key: string): f64;
+
+    get_string_with_default_value(group_name: string, key: string, default_value: string): string;
+    get_integer_with_default_value(group_name: string, key: string, default_value: i32): i32;
+    get_long_with_default_value(group_name: string, key: string, default_value: i64): i64;
+    get_bool_with_default_value(group_name: string, key: string, default_value: bool): bool;
+    get_float_with_default_value(group_name: string, key: string, default_value: f32): f32;
+    get_double_with_default_value(group_name: string, key: string, default_value: f64): f64;
+
+    has(group_name: string, key: string): bool;
+    remove(group_name: string, key: string);
+    clear(group_name: string);
+
+}
+
+shared_data = interface +c {
+
+    static shared(): shared_data;
+    set_platform_service(ps: shared_data_platform_service);
+    get_platform_service(): shared_data_platform_service;
+    has_platform_service(): bool;
+
+    set_string(group_name: string, key: string, value: string);
+    set_integer(group_name: string, key: string, value: i32);
+    set_long(group_name: string, key: string, value: i64);
+    set_bool(group_name: string, key: string, value: bool);
+    set_float(group_name: string, key: string, value: f32);
+    set_double(group_name: string, key: string, value: f64);
+
+    get_string(group_name: string, key: string): string;
+    get_integer(group_name: string, key: string): i32;
+    get_long(group_name: string, key: string): i64;
+    get_bool(group_name: string, key: string): bool;
+    get_float(group_name: string, key: string): f32;
+    get_double(group_name: string, key: string): f64;
+
+    get_string_with_default_value(group_name: string, key: string, default_value: string): string;
+    get_integer_with_default_value(group_name: string, key: string, default_value: i32): i32;
+    get_long_with_default_value(group_name: string, key: string, default_value: i64): i64;
+    get_bool_with_default_value(group_name: string, key: string, default_value: bool): bool;
+    get_float_with_default_value(group_name: string, key: string, default_value: f32): f32;
+    get_double_with_default_value(group_name: string, key: string, default_value: f64): f64;
+
+    has(group_name: string, key: string): bool;
+    remove(group_name: string, key: string);
+    clear(group_name: string);
+
+}

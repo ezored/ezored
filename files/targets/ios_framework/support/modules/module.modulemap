@@ -1,0 +1,6 @@
+framework module Ezored {
+    umbrella header "Ezored.h"
+
+    export *
+    module * { export * }
+}

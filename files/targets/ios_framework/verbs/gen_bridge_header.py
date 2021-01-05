@@ -2,9 +2,9 @@
 
 import os
 
-import ezored.app.const as const
-from ezored.modules import file
-from ezored.modules import log
+from files.modules import const
+from files.modules import file
+from files.modules import log
 from files.config import target_ios_framework as config
 
 
@@ -24,16 +24,20 @@ def run(params):
             for build_type in build_types:
                 log.info("Generating for: {0}...".format(build_type))
 
-                dist_headers_dir = os.path.join(
+                build_headers_dir = os.path.join(
                     proj_path,
-                    const.DIR_NAME_DIST,
+                    const.DIR_NAME_BUILD,
                     target_name,
                     build_type,
+                    archs[0]["group"],
+                    archs[0]["conan_arch"],
+                    "target",
+                    "lib",
                     "{0}.framework".format(target_config["project_name"]),
                     "Headers",
                 )
 
-                header_files = file.find_files(dist_headers_dir, "*.h")
+                header_files = file.find_files(build_headers_dir, "*.h")
 
                 bridge_file = os.path.join(
                     proj_path,
@@ -46,12 +50,7 @@ def run(params):
                 content = ""
 
                 for header_file in header_files:
-                    header_file_name = os.path.basename(header_file)
-
-                    if not validate_header_file_name(header_file_name):
-                        continue
-
-                    header_file = header_file.replace(dist_headers_dir + "/", "")
+                    header_file = header_file.replace(build_headers_dir + "/", "")
 
                     content = content + '#include "{0}"\n'.format(header_file)
 
@@ -68,7 +67,7 @@ def run(params):
                 else:
                     log.error(
                         "{0}".format(
-                            "File not generate because framework headers is empty"
+                            "File not generated because framework headers is empty"
                         )
                     )
         else:
@@ -77,11 +76,3 @@ def run(params):
             )
     else:
         log.info('Arch list for "{0}" is invalid or empty'.format(target_name))
-
-
-# -----------------------------------------------------------------------------
-def validate_header_file_name(header_file_name):
-    if "+Private" in header_file_name:
-        return False
-
-    return True

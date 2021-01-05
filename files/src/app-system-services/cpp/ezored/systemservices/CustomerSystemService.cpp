@@ -33,11 +33,11 @@ CustomerSystemServiceLoginData CustomerSystemService::login(const std::string &u
     httpParams.push_back(HttpRequestParam{"username", username});
     httpParams.push_back(HttpRequestParam{"password", password});
 
-    auto httpURL = "https://public.ezored.com/http-test/login-ok.json";
+    auto httpURL = "https://raw.githubusercontent.com/ezored/ezored.github.io/master/extras/http-test/login-success.json";
 
     if (username != "demo" || password != "demo")
     {
-        httpURL = "https://public.ezored.com/http-test/login-error.json";
+        httpURL = "https://raw.githubusercontent.com/ezored/ezored.github.io/master/extras/http-test/login-error.json";
     }
 
     auto httpRequest = HttpRequest{httpURL, HttpMethod::METHOD_GET, httpParams, httpHeaders, ""};

@@ -12,42 +12,36 @@ namespace data
 class SimpleSharedDataPlatformService : public SharedDataPlatformService
 {
 private:
-    rapidjson::Document json;
-    std::string filePath;
-    bool initialized;
+    rapidjson::Document create(const std::string &groupName);
+    void save(rapidjson::Document &json, const std::string &groupName);
 
 public:
     static std::string baseDir;
 
-    void setString(const std::string &key, const std::string &value) override;
-    void setInteger(const std::string &key, int32_t value) override;
-    void setLong(const std::string &key, int64_t value) override;
-    void setBool(const std::string &key, bool value) override;
-    void setFloat(const std::string &key, float value) override;
-    void setDouble(const std::string &key, double value) override;
+    void setString(const std::string &groupName, const std::string &key, const std::string &value) override;
+    void setInteger(const std::string &groupName, const std::string &key, int32_t value) override;
+    void setLong(const std::string &groupName, const std::string &key, int64_t value) override;
+    void setBool(const std::string &groupName, const std::string &key, bool value) override;
+    void setFloat(const std::string &groupName, const std::string &key, float value) override;
+    void setDouble(const std::string &groupName, const std::string &key, double value) override;
 
-    std::string getString(const std::string &key) override;
-    int32_t getInteger(const std::string &key) override;
-    int64_t getLong(const std::string &key) override;
-    bool getBool(const std::string &key) override;
-    float getFloat(const std::string &key) override;
-    double getDouble(const std::string &key) override;
+    std::string getString(const std::string &groupName, const std::string &key) override;
+    int32_t getInteger(const std::string &groupName, const std::string &key) override;
+    int64_t getLong(const std::string &groupName, const std::string &key) override;
+    bool getBool(const std::string &groupName, const std::string &key) override;
+    float getFloat(const std::string &groupName, const std::string &key) override;
+    double getDouble(const std::string &groupName, const std::string &key) override;
 
-    std::string getStringWithDefaultValue(const std::string &key, const std::string &defaultValue) override;
-    int32_t getIntegerWithDefaultValue(const std::string &key, int32_t defaultValue) override;
-    int64_t getLongWithDefaultValue(const std::string &key, int64_t defaultValue) override;
-    bool getBoolWithDefaultValue(const std::string &key, bool defaultValue) override;
-    float getFloatWithDefaultValue(const std::string &key, float defaultValue) override;
-    double getDoubleWithDefaultValue(const std::string &key, double defaultValue) override;
+    std::string getStringWithDefaultValue(const std::string &groupName, const std::string &key, const std::string &defaultValue) override;
+    int32_t getIntegerWithDefaultValue(const std::string &groupName, const std::string &key, int32_t defaultValue) override;
+    int64_t getLongWithDefaultValue(const std::string &groupName, const std::string &key, int64_t defaultValue) override;
+    bool getBoolWithDefaultValue(const std::string &groupName, const std::string &key, bool defaultValue) override;
+    float getFloatWithDefaultValue(const std::string &groupName, const std::string &key, float defaultValue) override;
+    double getDoubleWithDefaultValue(const std::string &groupName, const std::string &key, double defaultValue) override;
 
-    bool has(const std::string &key) override;
-    void remove(const std::string &key) override;
-    void clear() override;
-    void save(bool async, bool autoFinish) override;
-    void saveAsync() override;
-    void saveSync() override;
-    void start(const std::string &groupName) override;
-    void finish() override;
+    bool has(const std::string &groupName, const std::string &key) override;
+    void remove(const std::string &groupName, const std::string &key) override;
+    void clear(const std::string &groupName) override;
 };
 
 } // namespace data

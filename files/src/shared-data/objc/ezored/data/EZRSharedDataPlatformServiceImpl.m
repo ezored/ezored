@@ -1,8 +1,6 @@
 #import "EZRSharedDataPlatformServiceImpl.h"
 
 @interface EZRSharedDataPlatformServiceImpl ()
-@property (strong, nonatomic) NSString *groupName;
-@property (strong, nonatomic) NSUserDefaults *userDefaults;
 @end
 
 @implementation EZRSharedDataPlatformServiceImpl
@@ -22,14 +20,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-
-    }
-    return self;
-}
-
-- (instancetype)initWithGroupName:(NSString *)groupName {
-    if (self = [super init]) {
-        self.groupName = groupName;
+        
     }
     return self;
 }
@@ -38,45 +29,59 @@
 #pragma mark - EZRSharedDataPlatformServiceImpl
 //------------------------------------------------------------------------------
 
-- (void)setString:(nonnull NSString *)key value:(nonnull NSString *)value {
-    if (_userDefaults != nil) {
-        [_userDefaults setObject:value forKey:[self getKeyName:key]];
+- (void)setString:(nonnull NSString *)groupName key:(nonnull NSString *)key value:(nonnull NSString *)value {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        [userDefaults setObject:value forKey:[self getKeyName:groupName key:key]];
     }
 }
 
-- (void)setInteger:(nonnull NSString *)key value:(int32_t)value {
-    if (_userDefaults != nil) {
-        [_userDefaults setInteger:value forKey:[self getKeyName:key]];
+- (void)setInteger:(nonnull NSString *)groupName key:(nonnull NSString *)key value:(int32_t)value {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        [userDefaults setInteger:value forKey:[self getKeyName:groupName key:key]];
     }
 }
 
-- (void)setLong:(nonnull NSString *)key value:(int64_t)value {
-    if (_userDefaults != nil) {
-        [_userDefaults setObject:[NSNumber numberWithLongLong:value] forKey:[self getKeyName:key]];
+- (void)setLong:(nonnull NSString *)groupName key:(nonnull NSString *)key value:(int64_t)value {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        [userDefaults setObject:[NSNumber numberWithLongLong:value] forKey:[self getKeyName:groupName key:key]];
     }
 }
 
-- (void)setBool:(nonnull NSString *)key value:(BOOL)value {
-    if (_userDefaults != nil) {
-        [_userDefaults setBool:value forKey:[self getKeyName:key]];
+- (void)setBool:(nonnull NSString *)groupName key:(nonnull NSString *)key value:(BOOL)value {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        [userDefaults setBool:value forKey:[self getKeyName:groupName key:key]];
     }
 }
 
-- (void)setFloat:(nonnull NSString *)key value:(float)value {
-    if (_userDefaults != nil) {
-        [_userDefaults setFloat:value forKey:[self getKeyName:key]];
+- (void)setFloat:(nonnull NSString *)groupName key:(nonnull NSString *)key value:(float)value {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        [userDefaults setFloat:value forKey:[self getKeyName:groupName key:key]];
     }
 }
 
-- (void)setDouble:(nonnull NSString *)key value:(double)value {
-    if (_userDefaults != nil) {
-        [_userDefaults setDouble:value forKey:[self getKeyName:key]];
+- (void)setDouble:(nonnull NSString *)groupName key:(nonnull NSString *)key value:(double)value {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        [userDefaults setDouble:value forKey:[self getKeyName:groupName key:key]];
     }
 }
 
-- (nonnull NSString *)getString:(nonnull NSString *)key {
-    if (_userDefaults != nil) {
-        NSString *value = [_userDefaults stringForKey:[self getKeyName:key]];
+- (nonnull NSString *)getString:(nonnull NSString *)groupName key:(nonnull NSString *)key {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        NSString *value = [userDefaults stringForKey:[self getKeyName:groupName key:key]];
         
         if (value != nil) {
             return value;
@@ -86,17 +91,21 @@
     return @"";
 }
 
-- (int32_t)getInteger:(nonnull NSString *)key {
-    if (_userDefaults != nil) {
-        return (int32_t)[_userDefaults integerForKey:[self getKeyName:key]];
+- (int32_t)getInteger:(nonnull NSString *)groupName key:(nonnull NSString *)key {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        return (int32_t)[userDefaults integerForKey:[self getKeyName:groupName key:key]];
     }
     
     return 0;
 }
 
-- (int64_t)getLong:(nonnull NSString *)key {
-    if (_userDefaults != nil) {
-        NSNumber *value = [_userDefaults objectForKey:[self getKeyName:key]];
+- (int64_t)getLong:(nonnull NSString *)groupName key:(nonnull NSString *)key {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        NSNumber *value = [userDefaults objectForKey:[self getKeyName:groupName key:key]];
         
         if (value != nil) {
             return [value longLongValue];
@@ -106,109 +115,95 @@
     return 0;
 }
 
-- (BOOL)getBool:(nonnull NSString *)key {
-    if (_userDefaults != nil) {
-        return [_userDefaults boolForKey:[self getKeyName:key]];
+- (BOOL)getBool:(nonnull NSString *)groupName key:(nonnull NSString *)key {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        return [userDefaults boolForKey:[self getKeyName:groupName key:key]];
     }
     
     return NO;
 }
 
-- (float)getFloat:(nonnull NSString *)key {
-    if (_userDefaults != nil) {
-        return [_userDefaults floatForKey:[self getKeyName:key]];
+- (float)getFloat:(nonnull NSString *)groupName key:(nonnull NSString *)key {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        return [userDefaults floatForKey:[self getKeyName:groupName key:key]];
     }
     
     return 0.0;
 }
 
-- (double)getDouble:(nonnull NSString *)key {
-    if (_userDefaults != nil) {
-        return [_userDefaults doubleForKey:[self getKeyName:key]];
+- (double)getDouble:(nonnull NSString *)groupName key:(nonnull NSString *)key {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        return [userDefaults doubleForKey:[self getKeyName:groupName key:key]];
     }
     
     return 0.0;
 }
 
-- (void)save:(BOOL)async autoFinish:(BOOL)autoFinish {
-    if (async) {
-        [self saveAsync];
-    } else {
-        [self saveSync];
-    }
-    
-    if (autoFinish) {
-        [self finish];
-    }
-}
-
-- (void)saveAsync {
-    [self finish];
-}
-
-- (void)saveSync {
-    [self finish];
-}
-
-- (void)start:(nonnull NSString *)groupName {
-    _groupName = groupName;    
-    _userDefaults = [NSUserDefaults standardUserDefaults];
-}
-
-- (void)finish {
-    _groupName = nil;
-    _userDefaults = nil;
-}
-
-- (void)clear {
+- (void)clear:(nonnull NSString *)groupName {
     NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
     [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
 }
 
-- (BOOL)getBoolWithDefaultValue:(nonnull NSString *)key defaultValue:(BOOL)defaultValue {
-    if (_userDefaults != nil) {
-        if ([self has:[self getKeyName:key]]) {
-            return [_userDefaults boolForKey:[self getKeyName:key]];
+- (BOOL)getBoolWithDefaultValue:(nonnull NSString *)groupName key:(nonnull NSString *)key defaultValue:(BOOL)defaultValue {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        if ([[[userDefaults dictionaryRepresentation] allKeys] containsObject:[self getKeyName:groupName key:key]]) {
+            return [userDefaults boolForKey:[self getKeyName:groupName key:key]];
         }
     }
     
     return defaultValue;
 }
 
-- (double)getDoubleWithDefaultValue:(nonnull NSString *)key defaultValue:(double)defaultValue {
-    if (_userDefaults != nil) {
-        if ([self has:[self getKeyName:key]]) {
-            return [_userDefaults doubleForKey:[self getKeyName:key]];
+- (double)getDoubleWithDefaultValue:(nonnull NSString *)groupName key:(nonnull NSString *)key defaultValue:(double)defaultValue {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        if ([[[userDefaults dictionaryRepresentation] allKeys] containsObject:[self getKeyName:groupName key:key]]) {
+            return [userDefaults doubleForKey:[self getKeyName:groupName key:key]];
         }
     }
     
     return defaultValue;
 }
 
-- (float)getFloatWithDefaultValue:(nonnull NSString *)key defaultValue:(float)defaultValue {
-    if (_userDefaults != nil) {
-        if ([self has:[self getKeyName:key]]) {
-            return [_userDefaults floatForKey:[self getKeyName:key]];
+- (float)getFloatWithDefaultValue:(nonnull NSString *)groupName key:(nonnull NSString *)key defaultValue:(float)defaultValue {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        if ([[[userDefaults dictionaryRepresentation] allKeys] containsObject:[self getKeyName:groupName key:key]]) {
+            return [userDefaults floatForKey:[self getKeyName:groupName key:key]];
         }
     }
     
     return defaultValue;
 }
 
-- (int32_t)getIntegerWithDefaultValue:(nonnull NSString *)key defaultValue:(int32_t)defaultValue {
-    if (_userDefaults != nil) {
-        if ([self has:[self getKeyName:key]]) {
-            return (int32_t)[_userDefaults integerForKey:[self getKeyName:key]];
+- (int32_t)getIntegerWithDefaultValue:(nonnull NSString *)groupName key:(nonnull NSString *)key defaultValue:(int32_t)defaultValue {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        if ([[[userDefaults dictionaryRepresentation] allKeys] containsObject:[self getKeyName:groupName key:key]]) {
+            return (int32_t)[userDefaults integerForKey:[self getKeyName:groupName key:key]];
         }
     }
     
     return defaultValue;
 }
 
-- (int64_t)getLongWithDefaultValue:(nonnull NSString *)key defaultValue:(int64_t)defaultValue {
-    if (_userDefaults != nil) {
-        if ([self has:[self getKeyName:key]]) {
-            NSNumber *value = [_userDefaults objectForKey:[self getKeyName:key]];
+- (int64_t)getLongWithDefaultValue:(nonnull NSString *)groupName key:(nonnull NSString *)key defaultValue:(int64_t)defaultValue {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        if ([[[userDefaults dictionaryRepresentation] allKeys] containsObject:[self getKeyName:groupName key:key]]) {
+            NSNumber *value = [userDefaults objectForKey:[self getKeyName:groupName key:key]];
             
             if (value != nil) {
                 return [value longLongValue];
@@ -219,10 +214,12 @@
     return defaultValue;
 }
 
-- (nonnull NSString *)getStringWithDefaultValue:(nonnull NSString *)key defaultValue:(nonnull NSString *)defaultValue {
-    if (_userDefaults != nil) {
-        if ([self has:[self getKeyName:key]]) {
-            NSString *value = [_userDefaults stringForKey:[self getKeyName:key]];
+- (nonnull NSString *)getStringWithDefaultValue:(nonnull NSString *)groupName key:(nonnull NSString *)key defaultValue:(nonnull NSString *)defaultValue {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        if ([[[userDefaults dictionaryRepresentation] allKeys] containsObject:[self getKeyName:groupName key:key]]) {
+            NSString *value = [userDefaults stringForKey:[self getKeyName:groupName key:key]];
             
             if (value != nil) {
                 return value;
@@ -233,9 +230,11 @@
     return defaultValue;
 }
 
-- (BOOL)has:(nonnull NSString *)key {
-    if (_userDefaults != nil) {
-        if ([[[_userDefaults dictionaryRepresentation] allKeys] containsObject:key]) {
+- (BOOL)has:(nonnull NSString *)groupName key:(nonnull NSString *)key {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        if ([[[userDefaults dictionaryRepresentation] allKeys] containsObject:key]) {
             return YES;
         }
     }
@@ -243,17 +242,19 @@
     return NO;
 }
 
-- (void)remove:(nonnull NSString *)key {
-    if (_userDefaults != nil) {
-        [_userDefaults removeObjectForKey:[self getKeyName:key]];
+- (void)remove:(nonnull NSString *)groupName key:(nonnull NSString *)key {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    if (userDefaults != nil) {
+        [userDefaults removeObjectForKey:[self getKeyName:groupName key:key]];
     }
 }
 
-- (NSString *)getKeyName:(nonnull NSString *)key {
-    if (_groupName == nil || [_groupName length] == 0) {
+- (NSString *)getKeyName:(nonnull NSString *)groupName key:(nonnull NSString *)key {
+    if (groupName == nil || [groupName length] == 0) {
         return [NSString stringWithFormat:@"%@", key];
     } else {
-        return [NSString stringWithFormat:@"%@[%@]", _groupName, key];
+        return [NSString stringWithFormat:@"%@[%@]", groupName, key];
     }
 }
 

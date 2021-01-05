@@ -1,5 +1,5 @@
 # Configurations
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.14.1)
 get_filename_component(CMAKE_SOURCE_REALPATH "${CMAKE_SOURCE_DIR}/../../../../" REALPATH)
 
 set(PROJECT_CONFIG_NAME "Ezored" CACHE STRING "Project Name")
@@ -26,62 +26,62 @@ add_subdirectory(
 # Header search paths
 set(PROJECT_HEADER_SEARCH_PATHS
     ${PROJECT_HEADER_SEARCH_PATHS}
-    "${PROJECT_ROOT_PATH}/files/djinni/support-lib"
-    "${PROJECT_ROOT_PATH}/files/djinni/support-lib/jni"
+    "${PROJECT_ROOT_PATH}/files/gluecode/support-lib"
+    "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/jni"
 
-    "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/gluecode/app-core/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/gluecode/app-data-services/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/gluecode/app-system-services/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/gluecode/app-helpers/generated-src/jni"
 
-    "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/jni"
-    "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/gluecode/logger/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/gluecode/http-client/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/gluecode/file-helper/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/gluecode/shared-data/generated-src/jni"
+    "${PROJECT_ROOT_PATH}/files/gluecode/datetime/generated-src/jni"
 
     CACHE INTERNAL ""
 )
 
 # Header files
-file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib/*.hpp")
-file(GLOB H_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/support-lib/jni/*.hpp")
+file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/*.hpp")
+file(GLOB H_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/jni/*.hpp")
 
-file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_APP_ENUMS_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_APP_CORE_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_APP_DATA_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_APP_SYSTEM_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_APP_HELPERS_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_APP_ENUMS_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_APP_CORE_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-core/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_APP_DATA_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-data-services/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_APP_SYSTEM_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-system-services/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_APP_HELPERS_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-helpers/generated-src/jni/*.h")
 
-file(GLOB_RECURSE H_FILES_LOGGER_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_HTTP_CLIENT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_FILE_HELPER_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_SHARED_DATA_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/jni/*.h")
-file(GLOB_RECURSE H_FILES_DATETIME_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_LOGGER_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/logger/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_HTTP_CLIENT_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/http-client/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_FILE_HELPER_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/file-helper/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_SHARED_DATA_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/shared-data/generated-src/jni/*.h")
+file(GLOB_RECURSE H_FILES_DATETIME_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/datetime/generated-src/jni/*.h")
 
 # uncomment only if you want use C++ http client instead of native android http client
 #file(GLOB H_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.hpp")
 
 # Source files
-file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib/*.cpp")
-file(GLOB S_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/support-lib/jni/*.cpp")
-file(GLOB S_FILES_SUPPORT_MAIN_LIB_CPP "${PROJECT_ROOT_PATH}/files/djinni/support-lib/jni/main-ext/*.cpp")
+file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/*.cpp")
+file(GLOB S_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/jni/*.cpp")
+file(GLOB S_FILES_SUPPORT_MAIN_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/jni/main-ext/*.cpp")
 
-file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-domain/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_APP_ENUMS_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-enums/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_APP_CORE_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-core/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_APP_DATA_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-data-services/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_APP_SYSTEM_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-system-services/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_APP_HELPERS_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/app-helpers/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_APP_ENUMS_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_APP_CORE_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-core/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_APP_DATA_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-data-services/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_APP_SYSTEM_SERVICES_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-system-services/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_APP_HELPERS_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-helpers/generated-src/jni/*.cpp")
 
-file(GLOB_RECURSE S_FILES_LOGGER_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/logger/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_HTTP_CLIENT_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/http-client/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_FILE_HELPER_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/file-helper/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_SHARED_DATA_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/shared-data/generated-src/jni/*.cpp")
-file(GLOB_RECURSE S_FILES_DATETIME_LIB_JNI "${PROJECT_ROOT_PATH}/files/djinni/datetime/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_LOGGER_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/logger/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_HTTP_CLIENT_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/http-client/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_FILE_HELPER_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/file-helper/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_SHARED_DATA_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/shared-data/generated-src/jni/*.cpp")
+file(GLOB_RECURSE S_FILES_DATETIME_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/datetime/generated-src/jni/*.cpp")
 
 # uncomment only if you want use C++ http client instead of native android http client
 #file(GLOB S_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.cpp")
@@ -140,11 +140,18 @@ set(
 )
 
 # CXX flags
-set(PROJECT_CMAKE_CXX_FLAGS "${PROJECT_CMAKE_CXX_FLAGS} -stdlib=libc++" CACHE INTERNAL "")
+set(PROJECT_CMAKE_CXX_FLAGS "${PROJECT_CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden -stdlib=libc++" CACHE INTERNAL "")
 
 # Flags
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${PROJECT_CMAKE_C_FLAGS}" CACHE INTERNAL "")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${PROJECT_CMAKE_CXX_FLAGS}" CACHE INTERNAL "")
+
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -g ${CMAKE_CXX_FLAGS_DEBUG}")
+set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS} -DNDEBUG -Os -ffast-math ${CMAKE_CXX_FLAGS_MINSIZEREL}")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS} -DNDEBUG -O2 -g -ffast-math ${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -DNDEBUG -O3 -ffast-math ${CMAKE_CXX_FLAGS_RELEASE}")
+set(CMAKE_C_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_C_LINK_FLAGS}")
+set(CMAKE_CXX_LINK_FLAGS "-Wl,-search_paths_first ${CMAKE_CXX_LINK_FLAGS}")
 
 # Project
 include_directories(${PROJECT_HEADER_SEARCH_PATHS})

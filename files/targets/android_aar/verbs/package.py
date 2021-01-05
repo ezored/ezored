@@ -2,10 +2,10 @@
 
 import os
 
-import ezored.app.const as const
-from ezored.modules import file
-from ezored.modules import log
-from ezored.modules import runner
+from files.modules import const
+from files.modules import file
+from files.modules import log
+from files.modules import runner
 from files.config import target_android_aar as config
 
 
@@ -48,20 +48,20 @@ def run(params):
                     android_project_dir, android_library_build_dir, symlinks=True
                 )
 
-                # copy djinni support lib files
-                djinni_support_lib_dir = os.path.join(
-                    proj_path, const.DIR_NAME_FILES, "djinni", "support-lib"
+                # copy glue code support lib files
+                gluecode_support_lib_dir = os.path.join(
+                    proj_path, const.DIR_NAME_FILES, "gluecode", "support-lib"
                 )
 
                 file.copy_all_inside(
-                    os.path.join(djinni_support_lib_dir, "java"),
+                    os.path.join(gluecode_support_lib_dir, "java"),
                     os.path.join(
                         android_library_build_dir, module_name, "src", "main", "java"
                     ),
                 )
 
-                # copy all modules djinni files
-                modules_dir = os.path.join(proj_path, const.DIR_NAME_FILES, "djinni")
+                # copy all modules glue code files
+                modules_dir = os.path.join(proj_path, const.DIR_NAME_FILES, "gluecode")
 
                 modules = file.find_dirs_simple(modules_dir, "*")
 

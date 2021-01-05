@@ -1,66 +1,81 @@
 package com.ezored.data;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
 
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
-    private Context context;
-
-    private String groupName;
+    private final Context context;
 
     public SharedDataPlatformServiceImpl(Context context) {
         this.context = context;
     }
 
     @Override
-    public void setString(String key, String value) {
-        if (editor != null) {
+    public void setString(String groupName, String key, String value) {
+        SharedPreferences.Editor editor = createEditor(groupName);
+
+        if (editor != null && key != null) {
             editor.putString(key, value);
+            editor.apply();
         }
     }
 
     @Override
-    public void setInteger(String key, int value) {
-        if (editor != null) {
+    public void setInteger(String groupName, String key, int value) {
+        SharedPreferences.Editor editor = createEditor(groupName);
+
+        if (editor != null && key != null) {
             editor.putInt(key, value);
+            editor.apply();
         }
     }
 
     @Override
-    public void setLong(String key, long value) {
-        if (editor != null) {
+    public void setLong(String groupName, String key, long value) {
+        SharedPreferences.Editor editor = createEditor(groupName);
+
+        if (editor != null && key != null) {
             editor.putLong(key, value);
+            editor.apply();
         }
     }
 
     @Override
-    public void setBool(String key, boolean value) {
-        if (editor != null) {
+    public void setBool(String groupName, String key, boolean value) {
+        SharedPreferences.Editor editor = createEditor(groupName);
+
+        if (editor != null && key != null) {
             editor.putBoolean(key, value);
+            editor.apply();
         }
     }
 
     @Override
-    public void setFloat(String key, float value) {
-        if (editor != null) {
+    public void setFloat(String groupName, String key, float value) {
+        SharedPreferences.Editor editor = createEditor(groupName);
+
+        if (editor != null && key != null) {
             editor.putFloat(key, value);
+            editor.apply();
         }
     }
 
     @Override
-    public void setDouble(String key, double value) {
-        if (editor != null) {
+    public void setDouble(String groupName, String key, double value) {
+        SharedPreferences.Editor editor = createEditor(groupName);
+
+        if (editor != null && key != null) {
             editor.putFloat(key, (float) value);
+            editor.apply();
         }
     }
 
     @Override
-    public String getString(String key) {
-        if (sharedPreferences != null) {
+    public String getString(String groupName, String key) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
+
+        if (sharedPreferences != null && key != null) {
             String value = sharedPreferences.getString(key, null);
 
             if (value != null) {
@@ -72,8 +87,10 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
     }
 
     @Override
-    public int getInteger(String key) {
-        if (sharedPreferences != null) {
+    public int getInteger(String groupName, String key) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
+
+        if (sharedPreferences != null && key != null) {
             return sharedPreferences.getInt(key, 0);
         }
 
@@ -81,8 +98,10 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
     }
 
     @Override
-    public long getLong(String key) {
-        if (sharedPreferences != null) {
+    public long getLong(String groupName, String key) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
+
+        if (sharedPreferences != null && key != null) {
             return sharedPreferences.getLong(key, 0);
         }
 
@@ -90,8 +109,10 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
     }
 
     @Override
-    public boolean getBool(String key) {
-        if (sharedPreferences != null) {
+    public boolean getBool(String groupName, String key) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
+
+        if (sharedPreferences != null && key != null) {
             return sharedPreferences.getBoolean(key, false);
         }
 
@@ -99,8 +120,10 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
     }
 
     @Override
-    public float getFloat(String key) {
-        if (sharedPreferences != null) {
+    public float getFloat(String groupName, String key) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
+
+        if (sharedPreferences != null && key != null) {
             return sharedPreferences.getFloat(key, 0);
         }
 
@@ -108,8 +131,10 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
     }
 
     @Override
-    public double getDouble(String key) {
-        if (sharedPreferences != null) {
+    public double getDouble(String groupName, String key) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
+
+        if (sharedPreferences != null && key != null) {
             return sharedPreferences.getFloat(key, 0);
         }
 
@@ -117,51 +142,11 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
     }
 
     @Override
-    public void save(boolean async, boolean autoFinish) {
-        if (editor != null) {
-            if (async) {
-                editor.apply();
-            } else {
-                editor.commit();
-            }
-        }
+    public String getStringWithDefaultValue(String groupName, String key, String defaultValue) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
 
-        if (autoFinish) {
-            finish();
-        }
-    }
-
-    @SuppressLint("CommitPrefEdits")
-    @Override
-    public void start(String groupName) {
-        if (context != null) {
-            this.groupName = groupName;
-
-            sharedPreferences = context.getSharedPreferences(groupName, Context.MODE_PRIVATE);
-            editor = sharedPreferences.edit();
-        }
-    }
-
-    @Override
-    public void finish() {
-        sharedPreferences = null;
-        editor = null;
-    }
-
-    @Override
-    public void saveAsync() {
-        save(true, true);
-    }
-
-    @Override
-    public void saveSync() {
-        save(false, true);
-    }
-
-    @Override
-    public String getStringWithDefaultValue(String key, String defaultValue) {
-        if (sharedPreferences != null) {
-            if (has(key)) {
+        if (sharedPreferences != null && key != null) {
+            if (sharedPreferences.contains(key)) {
                 String value = sharedPreferences.getString(key, null);
 
                 if (value != null) {
@@ -170,13 +155,19 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
             }
         }
 
-        return defaultValue;
+        if (defaultValue != null) {
+            return defaultValue;
+        } else {
+            return "";
+        }
     }
 
     @Override
-    public int getIntegerWithDefaultValue(String key, int defaultValue) {
-        if (sharedPreferences != null) {
-            if (has(key)) {
+    public int getIntegerWithDefaultValue(String groupName, String key, int defaultValue) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
+
+        if (sharedPreferences != null && key != null) {
+            if (sharedPreferences.contains(key)) {
                 return sharedPreferences.getInt(key, 0);
             }
         }
@@ -185,9 +176,11 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
     }
 
     @Override
-    public long getLongWithDefaultValue(String key, long defaultValue) {
-        if (sharedPreferences != null) {
-            if (has(key)) {
+    public long getLongWithDefaultValue(String groupName, String key, long defaultValue) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
+
+        if (sharedPreferences != null && key != null) {
+            if (sharedPreferences.contains(key)) {
                 return sharedPreferences.getLong(key, 0);
             }
         }
@@ -196,9 +189,11 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
     }
 
     @Override
-    public boolean getBoolWithDefaultValue(String key, boolean defaultValue) {
-        if (sharedPreferences != null) {
-            if (has(key)) {
+    public boolean getBoolWithDefaultValue(String groupName, String key, boolean defaultValue) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
+
+        if (sharedPreferences != null && key != null) {
+            if (sharedPreferences.contains(key)) {
                 return sharedPreferences.getBoolean(key, false);
             }
         }
@@ -207,9 +202,11 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
     }
 
     @Override
-    public float getFloatWithDefaultValue(String key, float defaultValue) {
-        if (sharedPreferences != null) {
-            if (has(key)) {
+    public float getFloatWithDefaultValue(String groupName, String key, float defaultValue) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
+
+        if (sharedPreferences != null && key != null) {
+            if (sharedPreferences.contains(key)) {
                 return sharedPreferences.getFloat(key, 0);
             }
         }
@@ -218,9 +215,11 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
     }
 
     @Override
-    public double getDoubleWithDefaultValue(String key, double defaultValue) {
-        if (sharedPreferences != null) {
-            if (has(key)) {
+    public double getDoubleWithDefaultValue(String groupName, String key, double defaultValue) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
+
+        if (sharedPreferences != null && key != null) {
+            if (sharedPreferences.contains(key)) {
                 return sharedPreferences.getFloat(key, 0);
             }
         }
@@ -229,8 +228,10 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
     }
 
     @Override
-    public boolean has(String key) {
-        if (sharedPreferences != null) {
+    public boolean has(String groupName, String key) {
+        SharedPreferences sharedPreferences = createSharedPreferences(groupName);
+
+        if (sharedPreferences != null && key != null) {
             return sharedPreferences.contains(key);
         }
 
@@ -238,17 +239,30 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
     }
 
     @Override
-    public void remove(String key) {
-        if (editor != null) {
+    public void remove(String groupName, String key) {
+        SharedPreferences.Editor editor = createEditor(groupName);
+
+        if (editor != null && key != null) {
             editor.remove(key);
         }
     }
 
     @Override
-    public void clear() {
+    public void clear(String groupName) {
+        SharedPreferences.Editor editor = createEditor(groupName);
+
         if (editor != null) {
             editor.clear();
         }
+    }
+
+    private SharedPreferences createSharedPreferences(String groupName) {
+        return context.getSharedPreferences(groupName, Context.MODE_PRIVATE);
+    }
+
+    private SharedPreferences.Editor createEditor(String groupName) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(groupName, Context.MODE_PRIVATE);
+        return sharedPreferences.edit();
     }
 
 }

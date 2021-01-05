@@ -2,10 +2,10 @@
 
 import os
 
-import ezored.app.const as const
-from ezored.modules import file
-from ezored.modules import log
-from ezored.modules import runner
+from files.modules import const
+from files.modules import file
+from files.modules import log
+from files.modules import runner
 from files.config import target_linux_app as config
 
 

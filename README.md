@@ -12,33 +12,25 @@
 
 **Write once and compile anywhere**
 
-C++ cross-platform development toolkit.
+C++ cross-platform toolkit template.
 
-Use the same code on mobile and desktop applications.
+This project is called **ezored** and is a toolkit template that let you use the same C++ code on mobile and desktop applications generating a native shared/static library or executable for it.
 
-Ezored is the most convenient and fatest way to start your C++ project for mobile and desktop.
+It will enable you call C++ native methods from your project in Swift, ObjectiveC, Java, Kotlin, Cordova or Flutter.
 
-**Toolkit**
+This project aim to let you thinking about your project code instead of it structure.
 
-Use this toolkit to generate a native SDK to plug into your **new** or **already existing** application and call SDK methods from your project in Swift, ObjectiveC, Java, Kotlin, Cordova or Flutter.
-
-Ezored toolkit is a simple but well designed structure of scripts and folders that make this job very easy, leaving you thinking about your project instead of structure it. Download this repository and check samples to test and see it working.
-
-**SDK**
-
-Write C++ code and build shared libraries for mobile (Android is **AAR** and iOS is **Framework**) and **binary executables** or **shared libraries** for desktop (Linux, macOS and Windows).
-
-Don't think about how you will start your C++ project for **mobile** and **desktop**, use ezored as a quick start toolkit.
+Download this template and check samples to test and see it working on mobile and desktop.
 
 ![](extras/images/what-is.png)
 
 **Free for ever**
 
+Since it is a template for your project, after download ezored you need upload to your repository because all C++ code will only make sense to your project.
+
 You can use it for free, for any purpose, including commercial purposes.
 
 Feel free to collaborate with ezored, creating or improving the main project, samples and modules.
-
-After download ezored you need upload to your repository because all C++ code will only make sense to your project.
 
 ## Supported platforms
 
@@ -48,11 +40,11 @@ After download ezored you need upload to your repository because all C++ code wi
 4. Linux
 5. Windows
 
-Obs: Generally any platform with C++ support will work too, like smart TVs and embeded devices.
+Obs: Generally any platform with C++ support will work too, like raspberry, web assembly, smart TVs and other embeded devices.
 
 ## Modules
 
-A module in ezored is C++ implementation of one specific feature and ezored come with some modules already implemented:
+A module in ezored is a C++ implementation of one specific feature and ezored come with some modules already implemented:
 
 1. **date and time helper**  
     Functions to work with date and time.
@@ -83,13 +75,13 @@ A module in ezored is C++ implementation of one specific feature and ezored come
     RapidJSON is used to parsing json from remote requests in ezored samples. It works on all tested platforms nice and fast.
 
 9. **support lib**  
-    Mobile bridge code is automatically generated using Dropbox Djinni tool. It can be removed if you do it manually.
+    Mobile glue code is automatically generated using Dropbox Djinni tool. It can be removed if you do it manually.
 
-Modules source code are stored in **"files/src"** and **"files/djinni"**.
+Obs: Modules source code are stored in **"files/src"** and **"files/gluecode"**.
 
 ## Targets
 
-A target in ezored contains all files and scripts to build C++ code to the target platform. You can see on folder **"files/targets"**.
+A target in ezored contains all files and scripts to build C++ code to some platform. You can see on folder **"files/targets"**.
 
 Currently all targets use CMake to compile and generate project files ready to build. So each target has their own **CMakeLists.txt** file inside target folder **"cmake"**.
 
@@ -97,11 +89,11 @@ Generally all targets shared the same C++ code and because of this ezored has a 
 
 Some targets add more source files and compile parameters. Some examples are the targets **"android_aar"** that add their JNI files and **"ios_framework"** that add their OBJC files.
 
-A target has their **"verbs"**, that can be any file name **"build"**, **"package"** etc. All verbs are store inside **"verbs"** folder of a target and the file name will be use to find it when you call on terminal. Example:
+A target has their **"verbs"** that can have any file name like **"build"**, **"package"** etc. All verbs are stored inside **"verbs"** folder of a target and this will be used to appear on target verb list when you call on terminal. Example:
 
 ```python make.py target android_aar build```
 
-It will execute bootstrap file of ezored, that will do some validations and will search for a file with the path **"files/targets/android_aar/verbs/build.py"** and will send all parameter to a function called "run" inside it.
+It will execute bootstrap file of ezored, that will do some validations and will search for a file with the path **"files/targets/android_aar/verbs/build.py"** and will send all parameter to a function called **"run"** inside it.
 
 If you don't remember what verbs are available for a target you can type only this to list all verbs:
 
@@ -115,24 +107,23 @@ All commands are simple functions that will receive command line arguments and b
 
 ```python make.py clean```
 
-With this execution ezored will search for a file with path **"ezored/bcommands/clean.py"** or **"files/commands/clean.py"** and will send all parameter to a function called **"run"** inside file **clean.py**.
+With this execution ezored will search for a file with path **"files/commands/clean.py"** and will send all parameter to a function called **"run"** inside file **clean.py**.
 
 If you don't remember what commands are available you can type only this to list all commands:
 
 ```python make.py```
 
-If you want create your own commands you only need put it inside folder **"files/commands"** and **ezored** already has some custom commands. One example of custom command inside **ezored** is **dist** that is located in **files/commands/dist.py**.
+If you want create your own commands you only need put it inside folder **"files/commands"** and **ezored**.
 
 ## Requirements
 
 **The general requirements is:**
 
 1. Python 3 (https://www.python.org/)  
-2. Cmake 3.14 (https://cmake.org/)  
-3. Conan 1.20.1 (https://conan.io/)
-4. Conan repositories:    
-- `conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan`
-- `conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain`
+2. PIP (https://pip.pypa.io/)
+3. CMake 3.14.1 (https://cmake.org/)  
+4. Conan 1.32.1 (https://conan.io/)
+5. Conan extra repositories (conan-darwin-toolchain):
 
 They are the basic things to make ezored work. Check on terminal if you have every tool in your path typing their names (python, cmake, conan).
 
@@ -187,13 +178,19 @@ Each platform requirements list now. Maybe you already have it, because are basi
 2. Enter on cloned folder:
 > cd ezored
 
-3. Execute to download **ezored-core** and to show bootstrap menu:
+3. Install python requirements:
+> pip install -r requirements.txt
+
+4. Install conan extra repositories:
+> conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain
+
+5. Execute to download **ezored-core** and to show bootstrap menu:
 > python make.py
 
-4. Install conan profiles:
+6. Install conan profiles:
 > python make.py conan install_profiles
 
-5. Now all commands are available. run the following command to list all targets that you can build:
+7. Now all commands are available. run the following command to list all targets that you can build:
 > python make.py target
 
 Example: If you are on **Linux**, you can build the **linux_app** target, if on **macOS** you can run **macos_app** target and if on **Windows** you can run **windows_app**.
@@ -212,41 +209,37 @@ Example: If you are on **Linux**, you can build the **linux_app** target, if on 
 6. Check requirements for each target. Example: iOS target require that you have a macOS system.
 7. Ezored **core** is downloaded only one time, always that **ezored** folder not exists.
 
-## Distribution folder prebuilt
+## Distribution folder
 
-The folder with name **dist** has all prebuilt things (Android, iOS, Windows, macOS, Linux and others) and this folder is not versioned, but you can download the full version with the following command:
+The folder with name **dist** has all **final** things (Android, iOS, Windows, macOS, Linux and others) and this folder is not versioned, but you can download the full version with the following command:
 
-> python make.py dist download
+> python make.py dist download --version=1.0.0
 
-This command will download the following file:
+This command will download a packed file and will unpack to dist folder:
 
-> http://public.ezored.com/ezored/prebuilt/dist.tar.gz
+You can also generate a packed **"dist"** folder again using:
 
-And will unpack for you creating a folder called **"dist"** with all prebuilt files in the project root folder.
-
-You can also pack **"dist"** folder again using:
-
-> python make.py dist pack
+> python make.py dist generate
 
 ## Djinni
 
-Almost all modules use djinni to generate bridge files between C++ and mobile platform code (Android and iOS - Java, JNI, ObjC and ObjC++ files).
+Almost all modules use Djinni to generate glue code files between C++ and mobile platform code (Android and iOS - Java, JNI, ObjC and ObjC++ files).
 
-If you want create more modules, ezored come with a easy way to do it. Only duplicate any folder inside **"files/djinni"** and change files:
+If you want create more modules, ezored come with a easy way to do it. Only duplicate any folder inside **"files/gluecode"** and change files:
 
 - proj.djinni
 - generate.py
 
-The file **"proj.djinni"** contain all interface things to be generated and file **"generate.py"** contain the script that will call djinni passing all required params, only change the params (package name, namespace etc).
+The file **"proj.djinni"** contain all interface things to be generated and file **"generate.py"** contain the script that will call Djinni passing all required params, only change the params (package name, namespace etc).
 
-After create your new djinni module folder, add it to the list, in your prefered order, inside file **"files/djinni/djinni_modules.py"**. We need it because when you import other djinni yaml file for reference, you need generate imported file before, so the current order generate isolated modules before modules that will require it.
+After create your new Djinni module folder, add it to the list, in your prefered order, inside file **"files/config/gluecode.py"**. We need it because when you import other Djinni yaml file for reference, you need generate imported file before, so the current order generate isolated modules before modules that will require it.
 
-If you will use djinni to generate files follow these steps:
+If you will use Djinni to generate files follow these steps:
 
-1. Download djinni (https://github.com/dropbox/djinni).
-2. Set environment var **DJINNI_HOME** as the root folder of djinni (where you cloned or downloaded it).
+1. Download Djinni (https://github.com/dropbox/djinni).
+2. Set environment var **DJINNI_HOME** as the root folder of Djinni (where you cloned or downloaded it).
 
-If you don't will use djinni in your project, ignore **djinni** section, because some people prefer create the bridge files manually.
+If you don't will use Djinni in your project, ignore **Djinni** section, because some people prefer create the bridge files manually.
 
 ## Code tools
 
@@ -274,6 +267,9 @@ We have some samples inside "projects" folder.
 
 Android sample can be download here:
 https://play.google.com/store/apps/details?id=com.ezored.sample
+
+iOS sample can be download here:
+https://apps.apple.com/br/app/ezored-c-tasks/id1492446109
 
 ## Troubleshooting
 

@@ -15,331 +15,322 @@ namespace data
 
 std::string SimpleSharedDataPlatformService::baseDir = "ezored";
 
-void SimpleSharedDataPlatformService::setString(const std::string &key, const std::string &value)
+void SimpleSharedDataPlatformService::setString(const std::string &groupName, const std::string &key, const std::string &value)
 {
-    if (initialized)
-    {
-        if (json.HasMember(key.c_str()))
-        {
-            rapidjson::Value &jsonValue = json[key.c_str()];
-            jsonValue.SetString(rapidjson::StringRef(value.c_str()));
-        }
-        else
-        {
-            auto jsonKey = rapidjson::Value(key.c_str(), json.GetAllocator());
-            rapidjson::Value jsonValue;
-            jsonValue.SetString(rapidjson::StringRef(value.c_str()));
+    auto json = create(groupName);
 
-            json.AddMember(jsonKey, jsonValue, json.GetAllocator());
-        }
+    if (json.HasMember(key.c_str()))
+    {
+        rapidjson::Value &jsonValue = json[key.c_str()];
+        jsonValue.SetString(rapidjson::StringRef(value.c_str()));
     }
-}
-
-void SimpleSharedDataPlatformService::setInteger(const std::string &key, int32_t value)
-{
-    if (initialized)
+    else
     {
-        if (json.HasMember(key.c_str()))
-        {
-            rapidjson::Value &jsonValue = json[key.c_str()];
-            jsonValue.SetInt(value);
-        }
-        else
-        {
-            auto jsonKey = rapidjson::Value(key.c_str(), json.GetAllocator());
-            rapidjson::Value jsonValue;
-            jsonValue.SetInt(value);
+        auto jsonKey = rapidjson::Value(key.c_str(), json.GetAllocator());
+        rapidjson::Value jsonValue;
+        jsonValue.SetString(rapidjson::StringRef(value.c_str()));
 
-            json.AddMember(jsonKey, jsonValue, json.GetAllocator());
-        }
-    }
-}
-
-void SimpleSharedDataPlatformService::setLong(const std::string &key, int64_t value)
-{
-    if (initialized)
-    {
-        if (json.HasMember(key.c_str()))
-        {
-            rapidjson::Value &jsonValue = json[key.c_str()];
-            jsonValue.SetInt64(value);
-        }
-        else
-        {
-            auto jsonKey = rapidjson::Value(key.c_str(), json.GetAllocator());
-            rapidjson::Value jsonValue;
-            jsonValue.SetInt64(value);
-
-            json.AddMember(jsonKey, jsonValue, json.GetAllocator());
-        }
-    }
-}
-
-void SimpleSharedDataPlatformService::setBool(const std::string &key, bool value)
-{
-    if (initialized)
-    {
-        if (json.HasMember(key.c_str()))
-        {
-            rapidjson::Value &jsonValue = json[key.c_str()];
-            jsonValue.SetBool(value);
-        }
-        else
-        {
-            auto jsonKey = rapidjson::Value(key.c_str(), json.GetAllocator());
-            rapidjson::Value jsonValue;
-            jsonValue.SetBool(value);
-
-            json.AddMember(jsonKey, jsonValue, json.GetAllocator());
-        }
-    }
-}
-
-void SimpleSharedDataPlatformService::setFloat(const std::string &key, float value)
-{
-    if (initialized)
-    {
-        if (json.HasMember(key.c_str()))
-        {
-            rapidjson::Value &jsonValue = json[key.c_str()];
-            jsonValue.SetFloat(value);
-        }
-        else
-        {
-            auto jsonKey = rapidjson::Value(key.c_str(), json.GetAllocator());
-            rapidjson::Value jsonValue;
-            jsonValue.SetFloat(value);
-
-            json.AddMember(jsonKey, jsonValue, json.GetAllocator());
-        }
-    }
-}
-
-void SimpleSharedDataPlatformService::setDouble(const std::string &key, double value)
-{
-    if (initialized)
-    {
-        if (json.HasMember(key.c_str()))
-        {
-            rapidjson::Value &jsonValue = json[key.c_str()];
-            jsonValue.SetDouble(value);
-        }
-        else
-        {
-            auto jsonKey = rapidjson::Value(key.c_str(), json.GetAllocator());
-            rapidjson::Value jsonValue;
-            jsonValue.SetDouble(value);
-
-            json.AddMember(jsonKey, jsonValue, json.GetAllocator());
-        }
-    }
-}
-
-std::string SimpleSharedDataPlatformService::getString(const std::string &key)
-{
-    return getStringWithDefaultValue(key, "");
-}
-
-int32_t SimpleSharedDataPlatformService::getInteger(const std::string &key)
-{
-    return getIntegerWithDefaultValue(key, 0);
-}
-
-int64_t SimpleSharedDataPlatformService::getLong(const std::string &key)
-{
-    return getLongWithDefaultValue(key, 0);
-}
-
-bool SimpleSharedDataPlatformService::getBool(const std::string &key)
-{
-    return getBoolWithDefaultValue(key, false);
-}
-
-float SimpleSharedDataPlatformService::getFloat(const std::string &key)
-{
-    return getFloatWithDefaultValue(key, 0);
-}
-
-double SimpleSharedDataPlatformService::getDouble(const std::string &key)
-{
-    return getDoubleWithDefaultValue(key, 0);
-}
-
-std::string SimpleSharedDataPlatformService::getStringWithDefaultValue(const std::string &key, const std::string &defaultValue)
-{
-    if (initialized)
-    {
-        if (json.HasMember(key.c_str()))
-        {
-            const rapidjson::Value &value = json[key.c_str()];
-
-            if (value.IsString())
-            {
-                return value.GetString();
-            }
-        }
+        json.AddMember(jsonKey, jsonValue, json.GetAllocator());
     }
 
-    return defaultValue;
+    save(json, groupName);
 }
 
-int32_t SimpleSharedDataPlatformService::getIntegerWithDefaultValue(const std::string &key, int32_t defaultValue)
+void SimpleSharedDataPlatformService::setInteger(const std::string &groupName, const std::string &key, int32_t value)
 {
-    if (initialized)
-    {
-        if (json.HasMember(key.c_str()))
-        {
-            const rapidjson::Value &value = json[key.c_str()];
+    auto json = create(groupName);
 
-            if (value.IsInt())
-            {
-                return value.GetInt();
-            }
+    if (json.HasMember(key.c_str()))
+    {
+        rapidjson::Value &jsonValue = json[key.c_str()];
+        jsonValue.SetInt(value);
+    }
+    else
+    {
+        auto jsonKey = rapidjson::Value(key.c_str(), json.GetAllocator());
+        rapidjson::Value jsonValue;
+        jsonValue.SetInt(value);
+
+        json.AddMember(jsonKey, jsonValue, json.GetAllocator());
+    }
+
+    save(json, groupName);
+}
+
+void SimpleSharedDataPlatformService::setLong(const std::string &groupName, const std::string &key, int64_t value)
+{
+    auto json = create(groupName);
+
+    if (json.HasMember(key.c_str()))
+    {
+        rapidjson::Value &jsonValue = json[key.c_str()];
+        jsonValue.SetInt64(value);
+    }
+    else
+    {
+        auto jsonKey = rapidjson::Value(key.c_str(), json.GetAllocator());
+        rapidjson::Value jsonValue;
+        jsonValue.SetInt64(value);
+
+        json.AddMember(jsonKey, jsonValue, json.GetAllocator());
+    }
+
+    save(json, groupName);
+}
+
+void SimpleSharedDataPlatformService::setBool(const std::string &groupName, const std::string &key, bool value)
+{
+    auto json = create(groupName);
+
+    if (json.HasMember(key.c_str()))
+    {
+        rapidjson::Value &jsonValue = json[key.c_str()];
+        jsonValue.SetBool(value);
+    }
+    else
+    {
+        auto jsonKey = rapidjson::Value(key.c_str(), json.GetAllocator());
+        rapidjson::Value jsonValue;
+        jsonValue.SetBool(value);
+
+        json.AddMember(jsonKey, jsonValue, json.GetAllocator());
+    }
+
+    save(json, groupName);
+}
+
+void SimpleSharedDataPlatformService::setFloat(const std::string &groupName, const std::string &key, float value)
+{
+    auto json = create(groupName);
+
+    if (json.HasMember(key.c_str()))
+    {
+        rapidjson::Value &jsonValue = json[key.c_str()];
+        jsonValue.SetFloat(value);
+    }
+    else
+    {
+        auto jsonKey = rapidjson::Value(key.c_str(), json.GetAllocator());
+        rapidjson::Value jsonValue;
+        jsonValue.SetFloat(value);
+
+        json.AddMember(jsonKey, jsonValue, json.GetAllocator());
+    }
+
+    save(json, groupName);
+}
+
+void SimpleSharedDataPlatformService::setDouble(const std::string &groupName, const std::string &key, double value)
+{
+    auto json = create(groupName);
+
+    if (json.HasMember(key.c_str()))
+    {
+        rapidjson::Value &jsonValue = json[key.c_str()];
+        jsonValue.SetDouble(value);
+    }
+    else
+    {
+        auto jsonKey = rapidjson::Value(key.c_str(), json.GetAllocator());
+        rapidjson::Value jsonValue;
+        jsonValue.SetDouble(value);
+
+        json.AddMember(jsonKey, jsonValue, json.GetAllocator());
+    }
+
+    save(json, groupName);
+}
+
+std::string SimpleSharedDataPlatformService::getString(const std::string &groupName, const std::string &key)
+{
+    return getStringWithDefaultValue(groupName, key, "");
+}
+
+int32_t SimpleSharedDataPlatformService::getInteger(const std::string &groupName, const std::string &key)
+{
+    return getIntegerWithDefaultValue(groupName, key, 0);
+}
+
+int64_t SimpleSharedDataPlatformService::getLong(const std::string &groupName, const std::string &key)
+{
+    return getLongWithDefaultValue(groupName, key, 0);
+}
+
+bool SimpleSharedDataPlatformService::getBool(const std::string &groupName, const std::string &key)
+{
+    return getBoolWithDefaultValue(groupName, key, false);
+}
+
+float SimpleSharedDataPlatformService::getFloat(const std::string &groupName, const std::string &key)
+{
+    return getFloatWithDefaultValue(groupName, key, 0);
+}
+
+double SimpleSharedDataPlatformService::getDouble(const std::string &groupName, const std::string &key)
+{
+    return getDoubleWithDefaultValue(groupName, key, 0);
+}
+
+std::string SimpleSharedDataPlatformService::getStringWithDefaultValue(const std::string &groupName, const std::string &key, const std::string &defaultValue)
+{
+    auto json = create(groupName);
+
+    if (json.HasMember(key.c_str()))
+    {
+        const rapidjson::Value &value = json[key.c_str()];
+
+        if (value.IsString())
+        {
+            return value.GetString();
         }
     }
 
     return defaultValue;
 }
 
-int64_t SimpleSharedDataPlatformService::getLongWithDefaultValue(const std::string &key, int64_t defaultValue)
+int32_t SimpleSharedDataPlatformService::getIntegerWithDefaultValue(const std::string &groupName, const std::string &key, int32_t defaultValue)
 {
-    if (initialized)
-    {
-        if (json.HasMember(key.c_str()))
-        {
-            const rapidjson::Value &value = json[key.c_str()];
+    auto json = create(groupName);
 
-            if (value.IsInt64())
-            {
-                return value.GetInt64();
-            }
+    if (json.HasMember(key.c_str()))
+    {
+        const rapidjson::Value &value = json[key.c_str()];
+
+        if (value.IsInt())
+        {
+            return value.GetInt();
         }
     }
 
     return defaultValue;
 }
 
-bool SimpleSharedDataPlatformService::getBoolWithDefaultValue(const std::string &key, bool defaultValue)
+int64_t SimpleSharedDataPlatformService::getLongWithDefaultValue(const std::string &groupName, const std::string &key, int64_t defaultValue)
 {
-    if (initialized)
-    {
-        if (json.HasMember(key.c_str()))
-        {
-            const rapidjson::Value &value = json[key.c_str()];
+    auto json = create(groupName);
 
-            if (value.IsBool())
-            {
-                return value.GetBool();
-            }
+    if (json.HasMember(key.c_str()))
+    {
+        const rapidjson::Value &value = json[key.c_str()];
+
+        if (value.IsInt64())
+        {
+            return value.GetInt64();
         }
     }
 
     return defaultValue;
 }
 
-float SimpleSharedDataPlatformService::getFloatWithDefaultValue(const std::string &key, float defaultValue)
+bool SimpleSharedDataPlatformService::getBoolWithDefaultValue(const std::string &groupName, const std::string &key, bool defaultValue)
 {
-    if (initialized)
-    {
-        if (json.HasMember(key.c_str()))
-        {
-            const rapidjson::Value &value = json[key.c_str()];
+    auto json = create(groupName);
 
-            if (value.IsFloat())
-            {
-                return value.GetFloat();
-            }
+    if (json.HasMember(key.c_str()))
+    {
+        const rapidjson::Value &value = json[key.c_str()];
+
+        if (value.IsBool())
+        {
+            return value.GetBool();
         }
     }
 
     return defaultValue;
 }
 
-double SimpleSharedDataPlatformService::getDoubleWithDefaultValue(const std::string &key, double defaultValue)
+float SimpleSharedDataPlatformService::getFloatWithDefaultValue(const std::string &groupName, const std::string &key, float defaultValue)
 {
-    if (initialized)
-    {
-        if (json.HasMember(key.c_str()))
-        {
-            const rapidjson::Value &value = json[key.c_str()];
+    auto json = create(groupName);
 
-            if (value.IsDouble())
-            {
-                return value.GetDouble();
-            }
+    if (json.HasMember(key.c_str()))
+    {
+        const rapidjson::Value &value = json[key.c_str()];
+
+        if (value.IsFloat())
+        {
+            return value.GetFloat();
         }
     }
 
     return defaultValue;
 }
 
-bool SimpleSharedDataPlatformService::has(const std::string &key)
+double SimpleSharedDataPlatformService::getDoubleWithDefaultValue(const std::string &groupName, const std::string &key, double defaultValue)
 {
-    if (initialized)
+    auto json = create(groupName);
+
+    if (json.HasMember(key.c_str()))
     {
-        if (json.HasMember(key.c_str()))
+        const rapidjson::Value &value = json[key.c_str()];
+
+        if (value.IsDouble())
         {
-            return true;
+            return value.GetDouble();
         }
+    }
+
+    return defaultValue;
+}
+
+bool SimpleSharedDataPlatformService::has(const std::string &groupName, const std::string &key)
+{
+    auto json = create(groupName);
+
+    if (json.HasMember(key.c_str()))
+    {
+        return true;
     }
 
     return false;
 }
 
-void SimpleSharedDataPlatformService::remove(const std::string &key)
+void SimpleSharedDataPlatformService::remove(const std::string &groupName, const std::string &key)
 {
-    if (initialized)
+    auto json = create(groupName);
+
+    if (json.HasMember(key.c_str()))
     {
-        if (has(key))
-        {
-            json.RemoveMember(key.c_str());
-        }
+        json.RemoveMember(key.c_str());
     }
+
+    save(json, groupName);
 }
 
-void SimpleSharedDataPlatformService::clear()
+void SimpleSharedDataPlatformService::clear(const std::string &groupName)
 {
-    if (initialized)
-    {
-        json = rapidjson::Document();
-        json.SetObject();
-    }
+    std::string homeDir = FileHelper::join(FileHelper::getHomeDir(), baseDir);
+    FileHelper::createDir(homeDir);
+
+    homeDir = FileHelper::join(homeDir, "shared-data");
+
+    std::string filename = groupName + ".json";
+    std::string filePath = FileHelper::join(homeDir, filename);
+
+    FileHelper::removeFile(filePath);
 }
 
-void SimpleSharedDataPlatformService::save(bool async, bool autoFinish)
+void SimpleSharedDataPlatformService::save(rapidjson::Document &json, const std::string &groupName)
 {
-    if (initialized)
-    {
-        rapidjson::StringBuffer buffer;
-        buffer.Clear();
+    rapidjson::StringBuffer buffer;
+    buffer.Clear();
 
-        rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(buffer);
-        json.Accept(writer);
+    rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(buffer);
+    json.Accept(writer);
 
-        FileHelper::createFileWithStringContent(filePath, std::string(buffer.GetString()));
+    std::string homeDir = FileHelper::join(FileHelper::getHomeDir(), baseDir);
+    homeDir = FileHelper::join(homeDir, "shared-data");
 
-        if (autoFinish)
-        {
-            finish();
-        }
-    }
+    std::string filename = groupName + ".json";
+    std::string filePath = FileHelper::join(homeDir, filename);
+
+    FileHelper::createFileWithStringContent(filePath, std::string(buffer.GetString()));
 }
 
-void SimpleSharedDataPlatformService::saveAsync()
-{
-    save(true, true);
-}
-
-void SimpleSharedDataPlatformService::saveSync()
-{
-    save(false, true);
-}
-
-void SimpleSharedDataPlatformService::start(const std::string &groupName)
+rapidjson::Document SimpleSharedDataPlatformService::create(const std::string &groupName)
 {
     // reset data
-    initialized = false;
-    json = rapidjson::Document();
+    auto json = rapidjson::Document();
     json.SetObject();
 
     // prepare data
@@ -350,7 +341,7 @@ void SimpleSharedDataPlatformService::start(const std::string &groupName)
     FileHelper::createDir(homeDir);
 
     std::string filename = groupName + ".json";
-    filePath = FileHelper::join(homeDir, filename);
+    std::string filePath = FileHelper::join(homeDir, filename);
 
     // create file to check errors
     if (!FileHelper::isFile(filePath))
@@ -362,15 +353,9 @@ void SimpleSharedDataPlatformService::start(const std::string &groupName)
     if (FileHelper::isFile(filePath))
     {
         json.Parse(FileHelper::getFileContentAsString(filePath).c_str());
-        initialized = true;
     }
-}
 
-void SimpleSharedDataPlatformService::finish()
-{
-    initialized = false;
-    json = rapidjson::Document();
-    json.SetObject();
+    return json;
 }
 
 } // namespace data

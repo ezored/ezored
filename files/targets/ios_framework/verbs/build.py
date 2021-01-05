@@ -2,11 +2,11 @@
 
 import os
 
-import ezored.app.const as const
-from ezored.modules import file
-from ezored.modules import log
-from ezored.modules import runner
-from ezored.modules import util
+from files.modules import const
+from files.modules import file
+from files.modules import log
+from files.modules import runner
+from files.modules import util
 from files.config import target_ios_framework as config
 
 
@@ -193,10 +193,88 @@ def run(params):
                                 )
                             )
 
+                # modules
+                support_modules_dir = os.path.join(
+                    proj_path,
+                    const.DIR_NAME_FILES,
+                    const.DIR_NAME_FILES_TARGETS,
+                    target_name,
+                    "support",
+                    "modules",
+                )
+
+                modules_dir = os.path.join(
+                    proj_path,
+                    const.DIR_NAME_BUILD,
+                    target_name,
+                    build_type,
+                    arch["group"],
+                    arch["conan_arch"],
+                    const.DIR_NAME_BUILD_TARGET,
+                    "lib",
+                    "{0}.framework".format(target_config["project_name"]),
+                    "Modules",
+                )
+
+                file.remove_dir(modules_dir)
+                file.create_dir(modules_dir)
+
+                file.copy_file(
+                    os.path.join(support_modules_dir, "module.modulemap"),
+                    os.path.join(modules_dir, "module.modulemap"),
+                )
+
+                # umbrella header
+                build_headers_dir = os.path.join(
+                    proj_path,
+                    const.DIR_NAME_BUILD,
+                    target_name,
+                    build_type,
+                    arch["group"],
+                    arch["conan_arch"],
+                    const.DIR_NAME_BUILD_TARGET,
+                    "lib",
+                    "{0}.framework".format(target_config["project_name"]),
+                    "Headers",
+                )
+
+                header_files = file.find_files(build_headers_dir, "*.h")
+
+                content = file.read_file(
+                    os.path.join(support_modules_dir, "umbrella-header.h")
+                )
+
+                for header_file in header_files:
+                    header_file = header_file.replace(build_headers_dir + "/", "")
+
+                    content = content + '#import "{0}"\n'.format(header_file)
+
+                if len(content) > 0:
+                    umbrella_file = os.path.join(
+                        build_headers_dir, target_config["umbrella_header"]
+                    )
+
+                    file.copy_file(
+                        os.path.join(support_modules_dir, "umbrella-header.h"),
+                        umbrella_file,
+                    )
+
+                    file.write_to_file(
+                        os.path.dirname(umbrella_file),
+                        os.path.basename(umbrella_file),
+                        content,
+                    )
+                else:
+                    log.error(
+                        "{0}".format(
+                            "File not generated because framework headers is empty"
+                        )
+                    )
+
     else:
         log.error('Arch list for "{0}" is invalid or empty'.format(target_name))
 
 
 # -----------------------------------------------------------------------------
 def _header_ignore_list(filename):
-    return not filename.lower().endswith(".h")
+    return not filename.lower().endswith(".h") or "+Private" in filename

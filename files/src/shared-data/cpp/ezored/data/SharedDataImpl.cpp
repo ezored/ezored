@@ -37,243 +37,203 @@ std::shared_ptr<SharedDataPlatformService> SharedDataImpl::getPlatformService()
     return ps;
 }
 
-void SharedDataImpl::setString(const std::string &key, const std::string &value)
+void SharedDataImpl::setString(const std::string &groupName, const std::string &key, const std::string &value)
 {
     if (ps != nullptr)
     {
-        ps->setString(key, value);
+        ps->setString(groupName, key, value);
     }
 }
 
-void SharedDataImpl::setInteger(const std::string &key, int32_t value)
+void SharedDataImpl::setInteger(const std::string &groupName, const std::string &key, int32_t value)
 {
     if (ps != nullptr)
     {
-        ps->setInteger(key, value);
+        ps->setInteger(groupName, key, value);
     }
 }
 
-void SharedDataImpl::setLong(const std::string &key, int64_t value)
+void SharedDataImpl::setLong(const std::string &groupName, const std::string &key, int64_t value)
 {
     if (ps != nullptr)
     {
-        ps->setLong(key, value);
+        ps->setLong(groupName, key, value);
     }
 }
 
-void SharedDataImpl::setBool(const std::string &key, bool value)
+void SharedDataImpl::setBool(const std::string &groupName, const std::string &key, bool value)
 {
     if (ps != nullptr)
     {
-        ps->setBool(key, value);
+        ps->setBool(groupName, key, value);
     }
 }
 
-void SharedDataImpl::setFloat(const std::string &key, float value)
+void SharedDataImpl::setFloat(const std::string &groupName, const std::string &key, float value)
 {
     if (ps != nullptr)
     {
-        ps->setFloat(key, value);
+        ps->setFloat(groupName, key, value);
     }
 }
 
-void SharedDataImpl::setDouble(const std::string &key, double value)
+void SharedDataImpl::setDouble(const std::string &groupName, const std::string &key, double value)
 {
     if (ps != nullptr)
     {
-        ps->setDouble(key, value);
+        ps->setDouble(groupName, key, value);
     }
 }
 
-std::string SharedDataImpl::getString(const std::string &key)
+std::string SharedDataImpl::getString(const std::string &groupName, const std::string &key)
 {
     if (ps != nullptr)
     {
-        return ps->getString(key);
+        return ps->getString(groupName, key);
     }
 
     return "";
 }
 
-int32_t SharedDataImpl::getInteger(const std::string &key)
+int32_t SharedDataImpl::getInteger(const std::string &groupName, const std::string &key)
 {
     if (ps != nullptr)
     {
-        return ps->getInteger(key);
+        return ps->getInteger(groupName, key);
     }
 
     return 0;
 }
 
-int64_t SharedDataImpl::getLong(const std::string &key)
+int64_t SharedDataImpl::getLong(const std::string &groupName, const std::string &key)
 {
     if (ps != nullptr)
     {
-        return ps->getLong(key);
+        return ps->getLong(groupName, key);
     }
 
     return 0;
 }
 
-bool SharedDataImpl::getBool(const std::string &key)
+bool SharedDataImpl::getBool(const std::string &groupName, const std::string &key)
 {
     if (ps != nullptr)
     {
-        return ps->getBool(key);
+        return ps->getBool(groupName, key);
     }
 
     return false;
 }
 
-float SharedDataImpl::getFloat(const std::string &key)
+float SharedDataImpl::getFloat(const std::string &groupName, const std::string &key)
 {
     if (ps != nullptr)
     {
-        return ps->getFloat(key);
+        return ps->getFloat(groupName, key);
     }
 
     return 0.0;
 }
 
-double SharedDataImpl::getDouble(const std::string &key)
+double SharedDataImpl::getDouble(const std::string &groupName, const std::string &key)
 {
     if (ps != nullptr)
     {
-        return ps->getDouble(key);
+        return ps->getDouble(groupName, key);
     }
 
     return 0.0;
 }
 
-std::string SharedDataImpl::getStringWithDefaultValue(const std::string &key, const std::string &defaultValue)
+std::string SharedDataImpl::getStringWithDefaultValue(const std::string &groupName, const std::string &key, const std::string &defaultValue)
 {
     if (ps != nullptr)
     {
-        return ps->getStringWithDefaultValue(key, defaultValue);
+        return ps->getStringWithDefaultValue(groupName, key, defaultValue);
     }
 
     return defaultValue;
 }
 
-int32_t SharedDataImpl::getIntegerWithDefaultValue(const std::string &key, int32_t defaultValue)
+int32_t SharedDataImpl::getIntegerWithDefaultValue(const std::string &groupName, const std::string &key, int32_t defaultValue)
 {
     if (ps != nullptr)
     {
-        return ps->getIntegerWithDefaultValue(key, defaultValue);
+        return ps->getIntegerWithDefaultValue(groupName, key, defaultValue);
     }
 
     return defaultValue;
 }
 
-int64_t SharedDataImpl::getLongWithDefaultValue(const std::string &key, int64_t defaultValue)
+int64_t SharedDataImpl::getLongWithDefaultValue(const std::string &groupName, const std::string &key, int64_t defaultValue)
 {
     if (ps != nullptr)
     {
-        return ps->getLongWithDefaultValue(key, defaultValue);
+        return ps->getLongWithDefaultValue(groupName, key, defaultValue);
     }
 
     return defaultValue;
 }
 
-bool SharedDataImpl::getBoolWithDefaultValue(const std::string &key, bool defaultValue)
+bool SharedDataImpl::getBoolWithDefaultValue(const std::string &groupName, const std::string &key, bool defaultValue)
 {
     if (ps != nullptr)
     {
-        return ps->getBoolWithDefaultValue(key, defaultValue);
+        return ps->getBoolWithDefaultValue(groupName, key, defaultValue);
     }
 
     return defaultValue;
 }
 
-float SharedDataImpl::getFloatWithDefaultValue(const std::string &key, float defaultValue)
+float SharedDataImpl::getFloatWithDefaultValue(const std::string &groupName, const std::string &key, float defaultValue)
 {
     if (ps != nullptr)
     {
-        return ps->getFloatWithDefaultValue(key, defaultValue);
+        return ps->getFloatWithDefaultValue(groupName, key, defaultValue);
     }
 
     return defaultValue;
 }
 
-double SharedDataImpl::getDoubleWithDefaultValue(const std::string &key, double defaultValue)
+double SharedDataImpl::getDoubleWithDefaultValue(const std::string &groupName, const std::string &key, double defaultValue)
 {
     if (ps != nullptr)
     {
-        return ps->getDoubleWithDefaultValue(key, defaultValue);
+        return ps->getDoubleWithDefaultValue(groupName, key, defaultValue);
     }
 
     return defaultValue;
 }
 
-bool SharedDataImpl::has(const std::string &key)
+bool SharedDataImpl::has(const std::string &groupName, const std::string &key)
 {
     if (ps != nullptr)
     {
-        return ps->has(key);
+        return ps->has(groupName, key);
     }
 
     return false;
 }
 
-void SharedDataImpl::remove(const std::string &key)
+void SharedDataImpl::remove(const std::string &groupName, const std::string &key)
 {
     if (ps != nullptr)
     {
-        ps->remove(key);
+        ps->remove(groupName, key);
     }
 }
 
-void SharedDataImpl::clear()
+void SharedDataImpl::clear(const std::string &groupName)
 {
     if (ps != nullptr)
     {
-        ps->clear();
+        ps->clear(groupName);
     }
 }
 
 bool SharedDataImpl::hasPlatformService()
 {
     return (ps != nullptr);
-}
-
-void SharedDataImpl::save(bool async, bool autoFinish)
-{
-    if (ps != nullptr)
-    {
-        ps->save(async, autoFinish);
-    }
-}
-
-void SharedDataImpl::start(const std::string &groupName)
-{
-    if (ps != nullptr)
-    {
-        ps->start(groupName);
-    }
-}
-
-void SharedDataImpl::finish()
-{
-    if (ps != nullptr)
-    {
-        ps->finish();
-    }
-}
-
-void SharedDataImpl::saveAsync()
-{
-    if (ps != nullptr)
-    {
-        ps->saveAsync();
-    }
-}
-
-void SharedDataImpl::saveSync()
-{
-    if (ps != nullptr)
-    {
-        ps->saveSync();
-    }
 }
 
 } // namespace data
