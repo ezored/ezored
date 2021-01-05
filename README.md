@@ -8,17 +8,13 @@
 ![Ezored - iOS](https://github.com/ezored/ezored/workflows/Ezored%20-%20iOS/badge.svg)
 ![Ezored - Android](https://github.com/ezored/ezored/workflows/Ezored%20-%20Android/badge.svg)
 
-## About
+## Ezored
 
-**Write once and compile anywhere**
+C++ cross-platform toolkit template with the philosophy "write once and compile anywhere".
 
-C++ cross-platform toolkit template.
+It will enable you call C++ native methods from your project in Swift, ObjectiveC, Java, Kotlin, Cordova, Flutter and others platforms.
 
-This project is called **ezored** and is a toolkit template that let you use the same C++ code on mobile and desktop applications generating a native shared/static library or executable for it.
-
-It will enable you call C++ native methods from your project in Swift, ObjectiveC, Java, Kotlin, Cordova or Flutter.
-
-This project aim to let you thinking about your project code instead of it structure.
+This template aim to let you thinking about your project code instead of it structure.
 
 Download this template and check samples to test and see it working on mobile and desktop.
 
@@ -305,4 +301,4 @@ https://www.udemy.com/course/desenvolvendo-aplicativos-mobile-com-cpp-para-andro
 
 [MIT](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2019-present, Paulo Coutinho
+Copyright (c) 2019-2021, Paulo Coutinho
