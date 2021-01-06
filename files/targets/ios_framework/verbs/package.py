@@ -109,6 +109,8 @@ def run(params):
                     ["file", os.path.join(dist_dir, target_config["project_name"])],
                     proj_path,
                 )
+
+            log.ok()
         else:
             log.info(
                 'Build type list for "{0}" is invalid or empty'.format(target_name)

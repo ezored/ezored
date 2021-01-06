@@ -152,6 +152,8 @@ def run(params):
                 file.remove_dir(dist_dir)
 
                 file.copy_all_inside(arr_dir, dist_dir)
+
+            log.ok()
         else:
             log.info(
                 'Build type list for "{0}" is invalid or empty'.format(target_name)

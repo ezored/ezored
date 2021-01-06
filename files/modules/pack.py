@@ -6,6 +6,9 @@ import tarfile
 import zipfile
 import gzip
 
+from files.modules import const
+from files.modules import log
+from files.modules import file
 
 # -----------------------------------------------------------------------------
 def unpack(src_path, dst_path, filename=""):
@@ -73,3 +76,30 @@ def tar_dir(output_filename, source_dir):
         filter=lambda x: None if x.name in exclude_list else x,
     )
     tar_out.close()
+
+
+# -----------------------------------------------------------------------------
+def generate(proj_path, target_name, version):
+    # version
+    if not version or len(version) == 0:
+        log.error("You need define version name (parameter: --version)")
+
+    build_dir = os.path.join(
+        proj_path, const.DIR_NAME_BUILD, target_name, const.DIR_NAME_DIST
+    )
+
+    dist_file = os.path.join(build_dir, const.FILE_NAME_DIST_PACKED)
+    dist_folder = os.path.join(proj_path, const.DIR_NAME_DIST, target_name)
+
+    if not os.path.isdir(dist_folder):
+        log.error("Distribution folder not exists: {0}".format(dist_folder))
+
+    log.info("Removing old files...")
+
+    file.remove_dir(build_dir)
+    file.create_dir(build_dir)
+
+    log.info("Packing folder {0}...".format(dist_folder))
+    tar_dir(dist_file, dist_folder)
+
+    log.ok("")

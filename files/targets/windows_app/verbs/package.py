@@ -50,5 +50,7 @@ def run(params):
 
                 # copy files
                 file.copy_all_inside(build_dir, dist_dir)
+
+        log.ok()
     else:
         log.error('Arch list for "{0}" is invalid or empty'.format(target_name))

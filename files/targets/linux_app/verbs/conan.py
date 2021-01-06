@@ -61,5 +61,7 @@ def run(params):
                 ]
 
                 runner.run(run_args, build_dir)
+
+        log.ok()
     else:
         log.error('Arch list for "{0}" is invalid or empty'.format(target_name))

@@ -101,3 +101,6 @@ jobs:
 
     - name: Ezored - Package
       run: python make.py target ${{ matrix.config.target }} package
+
+    - name: Ezored - Dist Generate
+      run: python make.py target ${{ matrix.config.target }} dist generate --version=1.0.0

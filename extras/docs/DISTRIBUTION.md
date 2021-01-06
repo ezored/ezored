@@ -1,0 +1,29 @@
+# Distribution
+
+Distribution can be done individually by target. Today all **dist.py** (target verb) upload final file to AWS S3.
+
+You can call "dist" verb from any target, example:
+
+> python make.py target linux_app dist
+
+The folder with name **dist** has all **final** things (Android, iOS, Windows, macOS, Linux and others) and this folder is not versioned, but you can download distribution file with the following command:
+
+> python make.py target linux_app dist download --version=1.0.0
+
+This command will download a packed file and will unpack to **"dist"** folder:
+
+You can also generate a packed **"dist"** folder again using:
+
+> python make.py target linux_app dist generate --version=1.0.0
+
+And you can upload with:
+
+> python make.py target linux_app dist upload --version=1.0.0
+
+Obs 1: This template come configured with AWS S3 when upload distribution files.
+
+Obs 2: Set environment keys "EZORED_AWS_KEY_ID" and "EZORED_AWS_SECRET_KEY" with your AWS key data.
+
+Obs 3: You can change all AWS configurations like bucket name and bucket path from file **files/modules/const.py**.
+
+Obs 4: You can download version 1.0.0 for all targets and not only "linux_app" because we have everything compiled and uploaded for all targets and version 1.0.0 for tests.

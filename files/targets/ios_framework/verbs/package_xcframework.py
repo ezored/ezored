@@ -147,6 +147,8 @@ def run(params):
                 log.info("Checking file for: {0}...".format(build_type))
 
                 runner.run(["ls", xcframework_dir], proj_path)
+
+            log.ok()
         else:
             log.info(
                 'Build type list for "{0}" is invalid or empty'.format(target_name)

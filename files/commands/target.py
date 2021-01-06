@@ -59,8 +59,6 @@ def run(params):
                         show_error_log=True,
                         throw_error=True,
                     )
-
-                    log.ok()
                 else:
                     show_target_verb_list = True
             else:
