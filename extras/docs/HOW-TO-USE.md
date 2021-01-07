@@ -16,7 +16,7 @@
 > python make.py
 
 6. Install conan profiles:
-> python make.py conan install_profiles
+> python make.py conan setup
 
 7. Now all commands are available. run the following command to list all targets that you can build:
 > python make.py target

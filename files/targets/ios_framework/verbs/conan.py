@@ -60,7 +60,11 @@ def run(params):
                     "-s",
                     "os.version={0}".format(arch["min_version"]),
                     "-o",
-                    "group={0}".format(arch["group"]),
+                    "ezored_arch={0}".format(arch["conan_arch"]),
+                    "-o",
+                    "ezored_name={0}".format(target_config["project_name"]),
+                    "-o",
+                    "ezored_group={0}".format(arch["group"]),
                     "-o",
                     "darwin-toolchain:enable_bitcode={0}".format(
                         (arch["enable_bitcode"] if "enable_bitcode" in arch else None)

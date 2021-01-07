@@ -16,8 +16,8 @@ def run(params):
         action = args[0]
 
         if action:
-            if action == "install_profiles":
-                install_profiles(params)
+            if action == "setup":
+                setup(params)
             else:
                 show_help(params)
         else:
@@ -27,7 +27,7 @@ def run(params):
 
 
 # -----------------------------------------------------------------------------
-def install_profiles(params):
+def setup(params):
     proj_path = params["proj_path"]
     targets = target.get_all_targets(proj_path)
 
@@ -66,7 +66,7 @@ def install_profiles(params):
 # -----------------------------------------------------------------------------
 def show_help(params):
     log.colored("Available actions:\n", log.PURPLE)
-    log.normal("  - install_profiles")
+    log.normal("  - setup")
 
 
 # -----------------------------------------------------------------------------

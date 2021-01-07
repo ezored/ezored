@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.14.1)
 get_filename_component(CMAKE_SOURCE_REALPATH "${CMAKE_SOURCE_DIR}/../../../../" REALPATH)
 
-set(PROJECT_CONFIG_NAME "Sample" CACHE STRING "Project Name")
+set(PROJECT_CONFIG_NAME "ezored" CACHE STRING "Project Name")
 set(PROJECT_CONFIG_CPP_STANDARD "11" CACHE STRING "Cpp Standard")
 set(PROJECT_TARGET_NAME "macos_app" CACHE STRING "Target Name")
 set(PROJECT_CONFIG_ARCH "x86_64" CACHE STRING "Architecture")
@@ -14,11 +14,6 @@ set(PROJECT_BUILD_DIR ${PROJECT_ROOT_PATH}/build/${PROJECT_TARGET_NAME}/${CMAKE_
 set(CMAKE_OSX_ARCHITECTURES "${PROJECT_CONFIG_ARCH}")
 set(DEVELOPMENT_TEAM_ID "" CACHE STRING "Development Team ID")
 set(CODE_SIGN_IDENTITY "" CACHE STRING "Sign Identity")
-
-# Suppress macOS X RPATH warnings and adopt new related behaviors
-if(NOT CMAKE_VERSION VERSION_LESS 3.9)
-    cmake_policy(SET CMP0068 NEW)
-endif()
 
 # Project
 project(${PROJECT_CONFIG_NAME})
@@ -34,7 +29,7 @@ add_subdirectory(
 )
 
 # Source files
-file(GLOB S_FILES_PROJECT "${PROJECT_ROOT_PATH}/projects/samples/simple/*.cpp")
+file(GLOB S_FILES_PROJECT "${PROJECT_ROOT_PATH}/projects/ezored/*.cpp")
 
 file(GLOB H_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/cpp/ezored/util/Simple*.hpp")
 file(GLOB S_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/cpp/ezored/util/Simple*.cpp")

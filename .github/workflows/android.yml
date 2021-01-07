@@ -94,7 +94,7 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Ezored - Install profiles
-      run: python make.py conan install_profiles
+      run: python make.py conan setup
 
     - name: Ezored - Conan
       run: python make.py target ${{ matrix.config.target }} conan

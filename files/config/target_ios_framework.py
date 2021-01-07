@@ -1,6 +1,6 @@
 def run(proj_path, target_name, params):
     return {
-        "project_name": "Ezored",
+        "project_name": "ezored",
         "build_types": ["Debug", "Release"],
         "archs": [
             {

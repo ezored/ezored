@@ -32,6 +32,8 @@ AWS_KEY_ID_ENV = "EZORED_AWS_KEY_ID"
 AWS_SECRET_KEY_ENV = "EZORED_AWS_SECRET_KEY"
 AWS_S3_BUCKET_NAME = "ezored"
 AWS_S3_BUCKET_PATH = "dist"
-AWS_S3_URL = "https://{0}.s3.amazonaws.com/{1}".format(AWS_S3_BUCKET_NAME, AWS_S3_BUCKET_PATH)
+AWS_S3_URL = "https://{0}.s3.amazonaws.com/{1}".format(
+    AWS_S3_BUCKET_NAME, AWS_S3_BUCKET_PATH
+)
 
 TARGET_VERBS_INTERNAL = ["config"]

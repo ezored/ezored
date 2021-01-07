@@ -58,6 +58,10 @@ def run(params):
                     "os.version={0}".format(arch["min_version"]),
                     "-s",
                     "build_type={0}".format(build_type),
+                    "-o",
+                    "ezored_arch={0}".format(arch["conan_arch"]),
+                    "-o",
+                    "ezored_name={0}".format(target_config["project_name"]),
                     "--build=missing",
                     "--update",
                 ]

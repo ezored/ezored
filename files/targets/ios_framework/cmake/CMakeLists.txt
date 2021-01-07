@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.14.1)
 get_filename_component(CMAKE_SOURCE_REALPATH "${CMAKE_SOURCE_DIR}/../../../../" REALPATH)
 
-set(PROJECT_CONFIG_NAME "Ezored" CACHE STRING "Project Name")
+set(PROJECT_CONFIG_NAME "ezored" CACHE STRING "Project Name")
 set(PROJECT_CONFIG_CPP_STANDARD "11" CACHE STRING "Cpp Standard")
 set(PROJECT_TARGET_NAME "ios_framework" CACHE STRING "Target Name")
 set(PROJECT_CONFIG_ARCH "armv8" CACHE STRING "Architecture")
