@@ -1,4 +1,4 @@
-"""Install and build conan dependencies"""
+"""Prepare target files and dependencies"""
 
 import os
 
@@ -6,7 +6,7 @@ from files.modules import const
 from files.modules import file
 from files.modules import log
 from files.modules import runner
-from files.config import target_windows_app as config
+from files.config import target_android_aar as config
 
 
 # -----------------------------------------------------------------------------
@@ -54,6 +54,8 @@ def run(params):
                     arch["conan_profile"],
                     "-s",
                     "arch={0}".format(arch["conan_arch"]),
+                    "-s",
+                    "os.api_level={0}".format(arch["api_level"]),
                     "-s",
                     "build_type={0}".format(build_type),
                     "-o",

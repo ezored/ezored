@@ -1,4 +1,4 @@
-"""Build executable"""
+"""Build target"""
 
 import os
 

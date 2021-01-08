@@ -1,4 +1,4 @@
-"""Create framework and xcframework"""
+"""Package target"""
 
 import os
 

@@ -208,3 +208,8 @@ def copy_dir(src, dst, symlinks=False, ignore=None, ignore_file=None):
 def copy_all_inside(root_path, dst):
     create_dir(dst)
     copy_tree(root_path, dst, update=1)
+
+
+# -----------------------------------------------------------------------------
+def file_ref_abs_dir(file_ref):
+    return os.path.dirname(os.path.abspath(file_ref))

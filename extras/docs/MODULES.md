@@ -31,6 +31,6 @@ A module in ezored is a C++ implementation of one specific feature and ezored co
     RapidJSON is used to parsing json from remote requests in ezored samples. It works on all tested platforms nice and fast.
 
 9. **support lib**  
-    Mobile glue code is automatically generated using Dropbox Djinni tool. It can be removed if you do it manually.
+    Mobile glue code is automatically generated using Djinni tool. It can be removed if you don't use.
 
 Obs: Modules source code are stored in **"files/src"** and **"files/gluecode"**.

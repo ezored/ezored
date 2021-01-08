@@ -1,4 +1,4 @@
-"""Create final executable"""
+"""Package target"""
 
 import os
 

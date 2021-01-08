@@ -88,3 +88,18 @@ def run(args, cwd):
         )
 
         log.error("Command execution has failed")
+
+
+# -----------------------------------------------------------------------------
+def run_as_shell(args, cwd):
+    ret = subprocess.call(args, cwd=cwd, shell=True)
+
+    if ret > 0:
+        log.normal(
+            "{2}COMMAND:{3} {0}\n"
+            "{4}WORKING DIR:{5} {1}".format(
+                " ".join(args), cwd, log.YELLOW, log.ENDC, log.YELLOW, log.ENDC
+            )
+        )
+
+        log.error("Command execution has failed")

@@ -1,4 +1,4 @@
-"""Distribution manager tool"""
+"""Distribute target package"""
 
 import os
 import sys

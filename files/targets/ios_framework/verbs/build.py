@@ -1,4 +1,4 @@
-"""Build library"""
+"""Build target"""
 
 import os
 

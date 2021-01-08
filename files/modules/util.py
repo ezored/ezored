@@ -1,5 +1,6 @@
 """Module: Util"""
 
+import platform
 
 # -----------------------------------------------------------------------------
 def filter_list(full_list, excludes):
@@ -48,3 +49,8 @@ def get_arg_value(key, args):
     for arg in args:
         if arg and arg.startswith("{0}=".format(key)):
             return arg[(len(key) + 1) :]
+
+
+# -----------------------------------------------------------------------------
+def is_windows_platform():
+    return any(platform.win32_ver())

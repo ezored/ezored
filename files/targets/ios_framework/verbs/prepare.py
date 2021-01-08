@@ -1,4 +1,4 @@
-"""Install and build conan dependencies"""
+"""Prepare target files and dependencies"""
 
 import os
 
@@ -6,7 +6,7 @@ from files.modules import const
 from files.modules import file
 from files.modules import log
 from files.modules import runner
-from files.config import target_linux_app as config
+from files.config import target_ios_framework as config
 
 
 # -----------------------------------------------------------------------------
@@ -31,6 +31,7 @@ def run(params):
                     const.DIR_NAME_BUILD,
                     target_name,
                     build_type,
+                    arch["group"],
                     arch["conan_arch"],
                     const.DIR_NAME_BUILD_CONAN,
                 )
@@ -56,10 +57,30 @@ def run(params):
                     "arch={0}".format(arch["conan_arch"]),
                     "-s",
                     "build_type={0}".format(build_type),
+                    "-s",
+                    "os.version={0}".format(arch["min_version"]),
                     "-o",
                     "ezored_arch={0}".format(arch["conan_arch"]),
                     "-o",
                     "ezored_name={0}".format(target_config["project_name"]),
+                    "-o",
+                    "ezored_group={0}".format(arch["group"]),
+                    "-o",
+                    "darwin-toolchain:enable_bitcode={0}".format(
+                        (arch["enable_bitcode"] if "enable_bitcode" in arch else None)
+                    ),
+                    "-o",
+                    "darwin-toolchain:enable_arc={0}".format(
+                        (arch["enable_arc"] if "enable_arc" in arch else None)
+                    ),
+                    "-o",
+                    "darwin-toolchain:enable_visibility={0}".format(
+                        (
+                            arch["enable_visibility"]
+                            if "enable_visibility" in arch
+                            else None
+                        )
+                    ),
                     "--build=missing",
                     "--update",
                 ]

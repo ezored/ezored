@@ -5,6 +5,7 @@
 ```
 export CONAN_VERBOSE_TRACEBACK=1
 export CONAN_LOGGING_LEVEL=0
+export CONAN_PRINT_RUN_COMMANDS=1
 ```
 
 **Linux error when execute ezored commands:**

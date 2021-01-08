@@ -90,11 +90,16 @@ jobs:
     - name: Ezored - Install python dependencies
       run: pip install -r requirements.txt
 
+    - name: Ezored - Install glue code tool
+      run: | 
+        python make.py gluecode setup
+        python make.py gluecode version
+
     - name: Ezored - Install profiles
       run: python make.py conan setup
 
-    - name: Ezored - Conan
-      run: python make.py target ${{ matrix.config.target }} conan
+    - name: Ezored - Prepare
+      run: python make.py target ${{ matrix.config.target }} prepare
 
     - name: Ezored - Build
       run: python make.py target ${{ matrix.config.target }} build

@@ -1,4 +1,4 @@
-"""Create AAR library"""
+"""Package target"""
 
 import os
 
