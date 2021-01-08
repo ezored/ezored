@@ -21,8 +21,6 @@ def get_tool_path(params):
             proj_path, const.DIR_NAME_BUILD, const.DIR_NAME_GLUECODE, "djinni"
         )
 
-        tool_file_path = "{0}".format(tool_file_path)
-
     return tool_file_path
 
 
