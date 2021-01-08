@@ -4,9 +4,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 repositories {
-    if (gradle.ext.usePrebuiltLibrary) {
+    if (gradle.ext.useLocalLibrary) {
         flatDir {
-            dirs 'libs', gradle.ext.prebuiltDir
+            dirs gradle.ext.localLibraryDir
+        }
+    }
+
+    if (gradle.ext.useRemoteLibrary) {
+        flatDir {
+            dirs gradle.ext.remoteLibraryDir
         }
     }
 }
@@ -67,11 +73,11 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    if (gradle.ext.usePrebuiltLibrary) {
+    if (gradle.ext.useLocalLibrary || gradle.ext.useRemoteLibrary) {
         if (gradle.ext.isDebuggable) {
-            implementation(name: 'library-debug', ext: 'aar')
+            implementation(name: "library-debug", ext: "aar")
         } else {
-            implementation(name: 'library-release', ext: 'aar')
+            implementation(name: "library-release", ext: "aar")
         }
     } else {
         implementation project(':ezored-library')
@@ -98,7 +104,26 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test:runner:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
+
+// custom SDK download task
+apply plugin: "de.undercouch.download"
+
+task downloadEzoredSdkFile(type: Download) {
+    src "https://ezored.s3.amazonaws.com/dist/android_aar/${gradle.ext.ezoredSdkVersion}/dist.tar.gz"
+    dest new File(gradle.ext.ezoredSdkCacheDir, "ezored-sdk/sdk-${gradle.ext.ezoredSdkVersion}.tar.gz")
+    tempAndMove true
+    onlyIfModified true
+    overwrite false
+    downloadTaskDir gradle.ext.ezoredSdkCacheDir
+}
+
+task getEzoredSDK(dependsOn: downloadEzoredSdkFile, type: Copy) {
+    from tarTree(downloadEzoredSdkFile.dest)
+    into new File(buildDir, "ezored-sdk")
+}
+
+preBuild.dependsOn getEzoredSDK

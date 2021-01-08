@@ -79,27 +79,41 @@ def tar_dir(output_filename, source_dir):
 
 
 # -----------------------------------------------------------------------------
-def generate(proj_path, target_name, version):
+def tar_files(output_filename, source_files):
+    exclude_list = ["Thumbs.db", ".DS_Store"]
+
+    tar_out = tarfile.open(output_filename, "w:gz")
+
+    for source_file in source_files:
+        tar_out.add(
+            source_file["path"],
+            arcname=source_file["arcname"],
+            filter=lambda x: None if x.name in exclude_list else x,
+        )
+
+    tar_out.close()
+
+
+# -----------------------------------------------------------------------------
+def generate(proj_path, target_name, version, source_files):
     # version
     if not version or len(version) == 0:
         log.error("You need define version name (parameter: --version)")
 
+    # build dir
     build_dir = os.path.join(
         proj_path, const.DIR_NAME_BUILD, target_name, const.DIR_NAME_DIST
     )
-
-    dist_file = os.path.join(build_dir, const.FILE_NAME_DIST_PACKED)
-    dist_folder = os.path.join(proj_path, const.DIR_NAME_DIST, target_name)
-
-    if not os.path.isdir(dist_folder):
-        log.error("Distribution folder not exists: {0}".format(dist_folder))
 
     log.info("Removing old files...")
 
     file.remove_dir(build_dir)
     file.create_dir(build_dir)
 
-    log.info("Packing folder {0}...".format(dist_folder))
-    tar_dir(dist_file, dist_folder)
+    # pack files
+    log.info("Packing {0} files...".format(len(source_files)))
+
+    dist_file = os.path.join(build_dir, const.FILE_NAME_DIST_PACKED)
+    tar_files(dist_file, source_files)
 
     log.ok("")

@@ -54,7 +54,6 @@ def run(params):
                     arch["conan_profile"],
                     "-s",
                     "arch={0}".format(arch["conan_arch"]),
-                    "-s",
                     "-o",
                     "ezored_arch={0}".format(arch["conan_arch"]),
                     "-o",

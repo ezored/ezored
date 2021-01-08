@@ -41,7 +41,9 @@ def download(
 
     log.info("Unpacking downloaded file...")
 
-    pack.unpack(dist_file_path, os.path.join(proj_path, const.DIR_NAME_DIST))
+    pack.unpack(
+        dist_file_path, os.path.join(proj_path, const.DIR_NAME_DIST, dist_folder)
+    )
 
     log.ok("")
 
@@ -50,6 +52,7 @@ def download(
 def upload(
     proj_path,
     version,
+    force,
     dist_file_path,
     dist_file_name,
     dist_folder,
@@ -92,7 +95,18 @@ def upload(
     has_version = s3_key_exists(s3_client, aws_bucket_name, object_name)
 
     if has_version:
-        log.error("The version {0} already exists".format(version))
+        if force:
+            log.info("The version {0} already exists, removing...".format(version))
+
+            s3_prefix_delete(
+                s3_client,
+                aws_bucket_name,
+                object_name,
+                aws_secret_key,
+                aws_key_id,
+            )
+        else:
+            log.error("The version {0} already exists".format(version))
 
     # upload
     log.info(
@@ -124,6 +138,25 @@ def s3_key_exists(s3, bucket, key):
 
         if error_code >= 400 and error_code <= 499:
             return False
+
+    return True
+
+
+# -----------------------------------------------------------------------------
+def s3_prefix_delete(s3, bucket, key, aws_secret_access_key, aws_access_key_id):
+    import boto3
+    from botocore.exceptions import ClientError
+
+    try:
+        s3_resource = boto3.resource(
+            "s3",
+            aws_secret_access_key=aws_secret_access_key,
+            aws_access_key_id=aws_access_key_id,
+        )
+
+        s3_resource.Object(bucket, key).delete()
+    except Exception as e:
+        log.error("Failed to delete key {0} from AWS S3: {1}".format(key, e))
 
     return True
 

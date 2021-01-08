@@ -67,7 +67,7 @@ class Application : MultiDexApplication() {
 
     private fun loadNativeLibrary() {
         try {
-            System.loadLibrary("Ezored")
+            System.loadLibrary("ezored")
 
             JNILoader.load()
 

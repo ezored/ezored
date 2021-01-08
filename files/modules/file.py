@@ -113,16 +113,20 @@ def normalize_path(path):
 # -----------------------------------------------------------------------------
 def create_dir(path):
     if not os.path.isdir(path):
-        os.makedirs(path)
+        try:
+            os.makedirs(path, exist_ok=True)
+        except FileExistsError:
+            # directory already exists
+            pass
 
 
 # -----------------------------------------------------------------------------
-def write_to_file(dir_path, filename, content, method="w"):
-    full_file_path = os.path.join(dir_path, filename)
-    remove_file(full_file_path)
-    create_dir(dir_path)
+def write_to_file(file_path, content, method="w"):
+    file_dir = os.path.dirname(file_path)
+    remove_file(file_path)
+    create_dir(file_dir)
 
-    with open(full_file_path, method) as f:
+    with open(file_path, method) as f:
         f.write(content)
         f.close()
 

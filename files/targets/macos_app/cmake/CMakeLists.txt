@@ -29,7 +29,8 @@ add_subdirectory(
 )
 
 # Source files
-file(GLOB S_FILES_PROJECT "${PROJECT_ROOT_PATH}/projects/ezored/*.cpp")
+file(GLOB H_FILES_PROJECT "${PROJECT_ROOT_PATH}/projects/others/ezored/include/*.h" "${PROJECT_ROOT_PATH}/projects/others/ezored/include/*.hpp")
+file(GLOB S_FILES_PROJECT "${PROJECT_ROOT_PATH}/projects/others/ezored/src/*.cpp")
 
 file(GLOB H_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/cpp/ezored/util/Simple*.hpp")
 file(GLOB S_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/cpp/ezored/util/Simple*.cpp")
@@ -50,6 +51,7 @@ set(
     ${H_FILES_HTTP_CLIENT_LIB_IMPL}
     ${H_FILES_SHARED_DATA_LIB_IMPL}
     ${H_FILES_FILE_HELPER_LIB_IMPL}
+    ${H_FILES_PROJECT}
 )
 
 set(

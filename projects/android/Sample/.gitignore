@@ -1,3 +1,8 @@
+# trash
+Thumbs.db
+.DS_Store
+
+# project
 *.iml
 .gradle
 /local.properties
@@ -7,10 +12,9 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
-.DS_Store
 /build
 /captures
 .externalNativeBuild
 .vscode
 .vs
-Thumbs.db
+

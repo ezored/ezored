@@ -1,0 +1,23 @@
+# variables
+IOS_PLATFORM = '9.0'
+EZORED_SDK_LOCAL = false
+EZORED_SDK_VERSION = '1.0.0'
+
+# settings
+platform :ios, IOS_PLATFORM
+use_frameworks!
+
+# dependencies
+def shared_pods
+  
+  if EZORED_SDK_LOCAL
+    pod 'ezored', :http => 'http://127.0.0.1:8000/dist.tar.gz'
+    else
+    pod 'ezored', :http => 'https://ezored.s3.amazonaws.com/dist/ios_framework/' + EZORED_SDK_VERSION + '/dist.tar.gz'
+  end
+
+end
+
+target 'Sample' do
+  shared_pods
+end

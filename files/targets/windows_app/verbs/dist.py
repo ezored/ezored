@@ -9,6 +9,7 @@ from files.modules import log
 from files.modules import pack
 from files.modules import util
 from files.modules import aws
+from files.config import target_windows_app as config
 
 
 # -----------------------------------------------------------------------------
@@ -68,6 +69,7 @@ def upload(params):
     )
 
     version = util.get_arg_value("--version", params["args"])
+    force = util.list_has_key(params["args"], "--force")
     dist_file_path = os.path.join(build_dir, const.FILE_NAME_DIST_PACKED)
     dist_file_name = const.FILE_NAME_DIST_PACKED
     dist_folder = target_name
@@ -79,6 +81,7 @@ def upload(params):
     aws.upload(
         proj_path=proj_path,
         version=version,
+        force=force,
         dist_file_path=dist_file_path,
         dist_file_name=dist_file_name,
         dist_folder=dist_folder,
@@ -91,14 +94,33 @@ def upload(params):
 
 # -----------------------------------------------------------------------------
 def generate(params):
+    # prepare data
     proj_path = params["proj_path"]
     target_name = params["target_name"]
-    version = util.get_arg_value("--version", params["args"])
 
+    target_config = config.run(proj_path, target_name, params)
+    build_types = target_config["build_types"]
+
+    version = util.get_arg_value("--version", params["args"])
+    source_files = []
+
+    dist_folder = os.path.join(proj_path, const.DIR_NAME_DIST, target_name)
+
+    # add folders
+    for build_type in build_types:
+        source_files.append(
+            {
+                "path": os.path.join(dist_folder, build_type),
+                "arcname": build_type,
+            }
+        )
+
+    # generate
     pack.generate(
         proj_path=proj_path,
         target_name=target_name,
         version=version,
+        source_files=source_files,
     )
 
 

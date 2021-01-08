@@ -259,11 +259,7 @@ def run(params):
                         umbrella_file,
                     )
 
-                    file.write_to_file(
-                        os.path.dirname(umbrella_file),
-                        os.path.basename(umbrella_file),
-                        content,
-                    )
+                    file.write_to_file(umbrella_file, content)
                 else:
                     log.error(
                         "{0}".format(

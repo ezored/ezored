@@ -6,7 +6,7 @@ You can call "dist" verb from any target, example:
 
 > python make.py target linux_app dist
 
-The folder with name **dist** has all **final** things (Android, iOS, Windows, macOS, Linux and others) and this folder is not versioned, but you can download distribution file with the following command:
+The folder with name **dist** has data to deploy (Android, iOS, Windows, macOS, Linux and others) and this folder is not versioned, but you can download distribution file with the following command:
 
 > python make.py target linux_app dist download --version=1.0.0
 
@@ -27,3 +27,27 @@ Obs 2: Set environment keys "EZORED_AWS_KEY_ID" and "EZORED_AWS_SECRET_KEY" with
 Obs 3: You can change all AWS configurations like bucket name and bucket path from file **files/modules/const.py**.
 
 Obs 4: You can download version 1.0.0 for all targets and not only "linux_app" because we have everything compiled and uploaded for all targets and version 1.0.0 for tests.
+
+Obs 5: You can force AWS S3 delete file if it exists using parameter --force.
+
+## Android
+
+Android sample project is configured with a custom task to download SDK from AWS S3. You can change to local path or attach SDK project as module.
+
+1. Local repository mode
+2. Remote repository mode
+2. Module project
+
+## iOS
+
+iOS sample project is configured with a custom pod to download SDK from AWS S3. You can change to local path or remote file.
+
+1. Local repository mode
+2. Remote repository mode
+
+When use local path, you need start a simple HTTP server to cocoapods tool download file "dist.tar.gz" that was generated:
+
+```
+cd build/ios_framework/dist
+python -m http.server
+```

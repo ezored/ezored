@@ -1,15 +1,20 @@
-gradle.ext.usePrebuiltLibrary = true
+gradle.ext.useLocalLibrary = false
+gradle.ext.useRemoteLibrary = true
 gradle.ext.isDebuggable = false
+gradle.ext.ezoredSdkVersion = "1.0.0"
+gradle.ext.ezoredSdkCacheDir = (System.getProperty("user.home") + "/.gradle-ezored")
 
 if (gradle.ext.isDebuggable) {
-    gradle.ext.prebuiltDir = "../../../../dist/android_aar/Debug"
+    gradle.ext.localLibraryDir = "../../../../dist/android_aar/Debug"
+    gradle.ext.remoteLibraryDir = "build/ezored-sdk/android_aar/Debug"
 } else {
-    gradle.ext.prebuiltDir = "../../../../dist/android_aar/Release"
+    gradle.ext.localLibraryDir = "../../../../dist/android_aar/Release"
+    gradle.ext.remoteLibraryDir = "build/ezored-sdk/android_aar/Release"
 }
 
 include ':app'
 
-if (!gradle.ext.usePrebuiltLibrary) {
+if (!gradle.ext.useLocalLibrary && !gradle.ext.useRemoteLibrary) {
     include ':ezored-library'
 
     if (gradle.ext.isDebuggable) {
