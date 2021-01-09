@@ -95,10 +95,13 @@ def run_as_shell(args, cwd):
     ret = subprocess.call(args, cwd=cwd, shell=True)
 
     if ret > 0:
+        if not isinstance(args, str):
+            args = " ".join(args)
+
         log.normal(
             "{2}COMMAND:{3} {0}\n"
             "{4}WORKING DIR:{5} {1}".format(
-                " ".join(args), cwd, log.YELLOW, log.ENDC, log.YELLOW, log.ENDC
+                args, cwd, log.YELLOW, log.ENDC, log.YELLOW, log.ENDC
             )
         )
 

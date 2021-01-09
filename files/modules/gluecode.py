@@ -32,6 +32,12 @@ def generate(params):
     if not module_data:
         log.error("Module data is invalid")
 
+    # check required tool
+    gluecode_tool_path = get_tool_path(params)
+
+    if not os.path.isfile(gluecode_tool_path):
+        log.error("Glue code tool was not found: {0}".format(gluecode_tool_path))
+
     # module data
     module_name = module_data["name"]
     tool_params = module_data["tool_params"]
@@ -45,13 +51,11 @@ def generate(params):
     file.remove_dir(os.path.join(module_dir, "yaml"))
 
     # run
-    gluecode_tool_path = get_tool_path(params)
-
     runner_args = []
     runner_args.extend([gluecode_tool_path])
     runner_args.extend(tool_params)
 
     runner.run_as_shell(
-        args=[" ".join(runner_args)],
+        args=" ".join(runner_args),
         cwd=module_dir,
     )

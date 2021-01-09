@@ -118,7 +118,10 @@ def generate(params):
 def version(params):
     tool_path = gluecode.get_tool_path(params)
 
-    runner.run_as_shell(["{0} --version".format(tool_path)], cwd=os.getcwd())
+    if not os.path.isfile(tool_path):
+        log.error("Glue code tool was not found: {0}".format(tool_path))
+
+    runner.run_as_shell("{0} --version".format(tool_path), cwd=os.getcwd())
 
 
 # -----------------------------------------------------------------------------
