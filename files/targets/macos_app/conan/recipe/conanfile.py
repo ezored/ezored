@@ -32,7 +32,6 @@ class TargetConan(ConanFile):
         "poco:enable_mongodb": False,
         "poco:enable_net": True,
         "poco:enable_netssl": True,
-        "poco:enable_netssl_win": False,
         "poco:enable_pdf": False,
         "poco:enable_pagecompiler": False,
         "poco:enable_pagecompiler_file2page": False,
