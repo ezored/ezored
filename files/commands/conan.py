@@ -5,6 +5,7 @@ import os
 from files.modules import const
 from files.modules import file
 from files.modules import log
+from files.modules import runner
 from files.modules import target
 
 
@@ -30,6 +31,20 @@ def run(params):
 def setup(params):
     proj_path = params["proj_path"]
     targets = target.get_all_targets(proj_path)
+
+    log.info("Creating default profile...")
+
+    runner.run(
+        [
+            "conan",
+            "profile",
+            "new",
+            "default",
+            "--detect",
+            "--force",
+        ],
+        cwd=os.getcwd(),
+    )
 
     log.info("Copying files...")
 
