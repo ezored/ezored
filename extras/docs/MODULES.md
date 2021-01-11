@@ -1,4 +1,6 @@
-# Modules
+<p align="center"><a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer"><img width="180" src="../images/doc-logo.png" alt="ezored logo"></a></p>
+
+<h1 align="center"><strong>Modules</strong></h1>
 
 A module in ezored is a C++ implementation of one specific feature and ezored come with some modules already implemented:
 

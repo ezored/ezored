@@ -1,4 +1,6 @@
-# Projects
+<p align="center"><a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer"><img width="180" src="../images/doc-logo.png" alt="ezored logo"></a></p>
+
+<h1 align="center"><strong>Projects</strong></h1>
 
 We have some samples inside "projects" folder.
 

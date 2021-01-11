@@ -1,4 +1,6 @@
-# Requirements
+<p align="center"><a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer"><img width="180" src="../images/doc-logo.png" alt="ezored logo"></a></p>
+
+<h1 align="center"><strong>Requirements</strong></h1>
 
 **The general requirements is:**
 
@@ -6,11 +8,11 @@
 2. PIP (https://pip.pypa.io/)
 3. CMake 3.14.1 (https://cmake.org/)  
 4. Conan 1.32.1 (https://conan.io/)
-5. Conan extra repositories (conan-darwin-toolchain):
+5. Conan extra repositories (https://github.com/ezored/conan-darwin-toolchain/):
 
-They are the basic things to make ezored work. Check on terminal if you have every tool in your path typing their names (python, cmake, conan).
+They are the basic things to make ezored work. Check on terminal if you have every tool in your path typing their names (python, pip, cmake, conan).
 
-Each platform requirements list now. Maybe you already have it, because are basic tools.
+Each platform requirements list now. Maybe you already have it because are basic tools.
 
 **Android Requirements:**
 
@@ -31,7 +33,7 @@ Each platform requirements list now. Maybe you already have it, because are basi
 2. Xcode.
 3. Command line tools.  
     Run: ```xcode-select --install```
-4. macOS system headers.  
+4. macOS system headers (only if you have problems on old macOS systems).  
     Run: ```open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg```  
     The path can change for each macOS version (10.14 is mojave) and this is required because old softwares search on old places for this headers, like old openssl versions.
 
@@ -47,7 +49,7 @@ Each platform requirements list now. Maybe you already have it, because are basi
 1. Windows operational system.
 2. Visual Studio installed.  
 
-    Obs 1: Current example in ezored is using version 2017 (15), change for your needs in conan profile file.
+    Obs 1: Current example in ezored is using version 2019 (16), change for your needs in conan profile file.
 
     Obs 2: Everything was compiled using community version (https://visualstudio.microsoft.com/vs/).  
 

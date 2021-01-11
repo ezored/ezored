@@ -1,4 +1,6 @@
-# Troubleshooting
+<p align="center"><a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer"><img width="180" src="../images/doc-logo.png" alt="ezored logo"></a></p>
+
+<h1 align="center"><strong>Troubleshooting</strong></h1>
 
 **Enable conan debug:**
 

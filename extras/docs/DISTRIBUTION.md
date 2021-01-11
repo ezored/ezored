@@ -1,4 +1,6 @@
-# Distribution
+<p align="center"><a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer"><img width="180" src="../images/doc-logo.png" alt="ezored logo"></a></p>
+
+<h1 align="center"><strong>Distribution</strong></h1>
 
 Distribution can be done individually by target. Today all **dist.py** (target verb) upload final file to AWS S3.
 
