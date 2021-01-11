@@ -16,6 +16,8 @@ public abstract class ApplicationCore {
 
     public abstract void setCustomer(com.ezored.domain.Customer customer);
 
+    public abstract String getVersion();
+
     public static ApplicationCore shared()
     {
         return CppProxy.shared();
@@ -83,6 +85,14 @@ public abstract class ApplicationCore {
             native_setCustomer(this.nativeRef, customer);
         }
         private native void native_setCustomer(long _nativeRef, com.ezored.domain.Customer customer);
+
+        @Override
+        public String getVersion()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getVersion(this.nativeRef);
+        }
+        private native String native_getVersion(long _nativeRef);
 
         public static native ApplicationCore shared();
     }

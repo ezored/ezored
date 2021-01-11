@@ -62,6 +62,8 @@ def run(params):
                     "ezored_arch={0}".format(arch["conan_arch"]),
                     "-o",
                     "ezored_name={0}".format(target_config["project_name"]),
+                    "-o",
+                    "ezored_version={0}".format(target_config["version"]),
                     "--build=missing",
                     "--update",
                 ]

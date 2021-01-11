@@ -23,4 +23,6 @@
 
 - (void)setCustomer:(nonnull EZRDomainCustomer *)customer;
 
+- (nonnull NSString *)getVersion;
+
 @end

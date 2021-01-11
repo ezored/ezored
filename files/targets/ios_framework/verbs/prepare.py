@@ -64,6 +64,8 @@ def run(params):
                     "-o",
                     "ezored_name={0}".format(target_config["project_name"]),
                     "-o",
+                    "ezored_version={0}".format(target_config["version"]),
+                    "-o",
                     "ezored_group={0}".format(arch["group"]),
                     "-o",
                     "darwin-toolchain:enable_bitcode={0}".format(

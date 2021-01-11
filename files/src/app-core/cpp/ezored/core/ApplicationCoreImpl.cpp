@@ -138,5 +138,16 @@ std::shared_ptr<SQLite::Database> ApplicationCoreImpl::getDB()
     return db;
 }
 
+std::string ApplicationCoreImpl::getVersion()
+{
+#ifdef PROJECT_CONFIG_VERSION
+#define PROJECT_CONFIG_VERSION_STR PROJECT_CONFIG_VERSION
+#else
+#define PROJECT_CONFIG_VERSION_STR "1.0.0"
+#endif
+
+    return PROJECT_CONFIG_VERSION_STR;
+}
+
 } // namespace core
 } // namespace ezored

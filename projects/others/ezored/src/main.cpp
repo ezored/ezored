@@ -197,5 +197,10 @@ int main(int argc, char **argv)
         Logger::i("First open: NO");
     }
 
+    // version
+    {
+        Logger::d("Version: " + ApplicationCore::shared()->getVersion());
+    }
+
     return EXIT_SUCCESS;
 }

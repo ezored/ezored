@@ -11,4 +11,6 @@ application_core = interface +c {
 
     get_customer(): customer;
     set_customer(customer: customer);
+
+    get_version(): string;
 }

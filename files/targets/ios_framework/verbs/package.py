@@ -99,6 +99,9 @@ def run(params):
         target_pod_file_path,
     )
 
+    file.replace_in_file(target_pod_file_path, "{NAME}", target_config["project_name"])
+    file.replace_in_file(target_pod_file_path, "{VERSION}", target_config["version"])
+
     # finish
     log.ok()
 

@@ -9,12 +9,14 @@ class TargetConan(ConanFile):
         "shared": [True, False],
         "fPIC": [True, False],
         "ezored_name": "ANY",
+        "ezored_version": "ANY",
         "ezored_arch": "ANY",
     }
     default_options = {
         "shared": False,
         "fPIC": True,
         "ezored_name": "ezored",
+        "ezored_version": "ANY",
         "ezored_arch": "ANY",
         "sqlite3:threadsafe": 1,
         "sqlite3:build_executable": False,
@@ -49,6 +51,9 @@ class TargetConan(ConanFile):
         cmake = CMake(self)
         cmake.definitions["CMAKE_BUILD_TYPE"] = self.settings.build_type
         cmake.definitions["PROJECT_CONFIG_NAME"] = self.options.get_safe("ezored_name")
+        cmake.definitions["PROJECT_CONFIG_VERSION"] = self.options.get_safe(
+            "ezored_version"
+        )
         cmake.definitions["PROJECT_CONFIG_ARCH"] = self.options.get_safe("ezored_arch")
         cmake.configure()
         cmake.build()

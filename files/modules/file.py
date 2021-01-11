@@ -213,3 +213,96 @@ def copy_all_inside(root_path, dst):
 # -----------------------------------------------------------------------------
 def file_ref_abs_dir(file_ref):
     return os.path.dirname(os.path.abspath(file_ref))
+
+
+# -----------------------------------------------------------------------------
+def file_has_content(file, content):
+    with open(file) as f:
+        if content in f.read():
+            return True
+
+    return False
+
+
+# -----------------------------------------------------------------------------
+def get_file_content(file):
+    file = open(file, mode="r")
+    content = file.read()
+    file.close()
+    return content
+
+
+# -----------------------------------------------------------------------------
+def prepend_to_file(file, content):
+    file_content = content + "\n" + get_file_content(file)
+    file_dest = open(file, "w")
+    file_dest.write(file_content)
+    file_dest.close()
+
+
+# -----------------------------------------------------------------------------
+def append_to_file(file, content):
+    file_content = get_file_content(file) + "\n" + content
+    file_dest = open(file, "w")
+    file_dest.write(file_content)
+    file_dest.close()
+
+
+# -----------------------------------------------------------------------------
+def replace_in_file(filename, old_string, new_string):
+    with open(filename) as f:
+        s = f.read()
+        if old_string not in s:
+            # print('"{old_string}" not found in {filename}.'.format(**locals()))
+            return
+
+    # Safely write the changed content, if found in the file
+    with open(filename, "w") as f:
+        # print('Changing "{old_string}" to "{new_string}" in {filename}'.format(**locals()))
+        s = s.replace(old_string, new_string)
+        f.write(s)
+        f.close()
+
+
+# -----------------------------------------------------------------------------
+def replace_line_in_file(filename, line, content):
+    with open(filename) as f:
+        lines = f.readlines()
+        lines[line - 1] = content
+        f.close()
+
+        with open(filename, "w") as f:
+            f.writelines(lines)
+            f.close()
+
+
+# -----------------------------------------------------------------------------
+def get_file_line_content(filename, line):
+    with open(filename) as f:
+        lines = f.readlines()
+        content = lines[line - 1]
+        f.close()
+
+        return content
+
+    return None
+
+
+# -----------------------------------------------------------------------------
+def file_line_has_content(filename, line, content):
+    line_content = get_file_line_content(filename, line)
+    return line_content == content
+
+
+# -----------------------------------------------------------------------------
+def file_line_comment(filename, line, comment="#"):
+    line_content = get_file_line_content(filename, line)
+
+    if not line_content.startswith(comment):
+        replace_line_in_file(filename, line, comment + line_content)
+
+
+# -----------------------------------------------------------------------------
+def file_line_comment_range(filename, line_start, line_end, comment="#"):
+    for x in range(line_start, line_end + 1):
+        file_line_comment(filename, x, comment)

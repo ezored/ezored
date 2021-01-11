@@ -5,6 +5,7 @@
 #import "ezored/core/EZRCoreApplicationCore.h"
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
+#import "DJIMarshal+Private.h"
 #import "ezored/domain/EZRDomainCustomer+Private.h"
 #import "ezored/domain/EZRDomainDeviceData+Private.h"
 #import "ezored/domain/EZRDomainInitializationData+Private.h"
@@ -71,6 +72,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 - (void)setCustomer:(nonnull EZRDomainCustomer *)customer {
     try {
         _cppRefHandle.get()->setCustomer(::djinni_generated::Customer::toCpp(customer));
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nonnull NSString *)getVersion {
+    try {
+        auto objcpp_result_ = _cppRefHandle.get()->getVersion();
+        return ::djinni::String::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

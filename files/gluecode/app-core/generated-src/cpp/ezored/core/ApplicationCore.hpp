@@ -7,6 +7,7 @@
 #include "ezored/domain/DeviceData.hpp"
 #include "ezored/domain/InitializationData.hpp"
 #include <memory>
+#include <string>
 
 namespace ezored { namespace core {
 
@@ -25,6 +26,8 @@ public:
     virtual ::ezored::domain::Customer getCustomer() = 0;
 
     virtual void setCustomer(const ::ezored::domain::Customer & customer) = 0;
+
+    virtual std::string getVersion() = 0;
 };
 
 } }  // namespace ezored::core

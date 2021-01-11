@@ -48,6 +48,8 @@ public:
     Customer getCustomer() override;
     void setCustomer(const Customer &customer) override;
 
+    std::string getVersion() override;
+
 private:
     static std::shared_ptr<ApplicationCoreImpl> instance;
     std::shared_ptr<SQLite::Database> db;
