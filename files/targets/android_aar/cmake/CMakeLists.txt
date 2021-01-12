@@ -18,6 +18,9 @@ project(${PROJECT_CONFIG_NAME})
 include(${PROJECT_BUILD_DIR}/conan/conanbuildinfo.cmake)
 conan_basic_setup()
 
+# STL
+find_package(ndk-stl REQUIRED PATHS ".")
+
 # Include: common
 add_subdirectory(
     ${PROJECT_ROOT_PATH}/files/cmake/common
