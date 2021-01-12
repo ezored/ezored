@@ -100,6 +100,8 @@ def generate(proj_path, target_name, version, source_files):
     if not version or len(version) == 0:
         log.error("You need define version name (parameter: --version)")
 
+    log.info("Version defined: {0}".format(version))
+
     # build dir
     build_dir = os.path.join(
         proj_path, const.DIR_NAME_BUILD, target_name, const.DIR_NAME_DIST

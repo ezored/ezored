@@ -83,13 +83,6 @@ jobs:
     - name: Install NDK
       run: echo "y" | sudo /usr/local/lib/android/sdk/tools/bin/sdkmanager --install "ndk;21.0.6113669" --sdk_root=${ANDROID_SDK_ROOT}
 
-    - name: Configure Conan
-      run: |
-        pip install conan
-        conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
-        conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain
-        conan profile new default --detect        
-
     - name: Ezored - Install python dependencies
       run: pip install -r requirements.txt
 
@@ -98,7 +91,7 @@ jobs:
         python make.py gluecode setup
         python make.py gluecode version
 
-    - name: Ezored - Install profiles
+    - name: Ezored - Setup conan
       run: python make.py conan setup
 
     - name: Ezored - Prepare
@@ -110,5 +103,5 @@ jobs:
     - name: Ezored - Package
       run: python make.py target ${{ matrix.config.target }} package
 
-    - name: Ezored - Dist Generate
-      run: python make.py target ${{ matrix.config.target }} dist generate --version=1.0.0
+    - name: Ezored - Dist generate
+      run: python make.py target ${{ matrix.config.target }} dist generate

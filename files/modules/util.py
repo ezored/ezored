@@ -54,3 +54,16 @@ def get_arg_value(key, args):
 # -----------------------------------------------------------------------------
 def is_windows_platform():
     return any(platform.win32_ver())
+
+
+# -----------------------------------------------------------------------------
+def get_version(params, config):
+    version = get_arg_value("--version", params["args"])
+
+    if not version or len(version) == 0:
+        proj_path = params["proj_path"]
+        target_name = params["target_name"]
+        target_config = config.run(proj_path, target_name, params)
+        version = target_config["version"]
+
+    return version

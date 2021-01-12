@@ -19,6 +19,8 @@ def download(
     if not version or len(version) == 0:
         log.error("You need define version name (parameter: --version)")
 
+    log.info("Version defined: {0}".format(version))
+
     # remove file
     log.info("Removing old file...")
     file.remove_file(dist_file_path)
@@ -66,6 +68,8 @@ def upload(
     # version
     if not version or len(version) == 0:
         log.error("You need define version name (parameter: --version)")
+
+    log.info("Version defined: {0}".format(version))
 
     # prepare to upload
     if not os.path.isfile(dist_file_path):

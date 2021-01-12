@@ -28,9 +28,11 @@ Obs 2: Set environment keys "EZORED_AWS_KEY_ID" and "EZORED_AWS_SECRET_KEY" with
 
 Obs 3: You can change all AWS configurations like bucket name and bucket path from file **files/modules/const.py**.
 
-Obs 4: You can download version 1.0.0 for all targets and not only "linux_app" because we have everything compiled and uploaded for all targets and version 1.0.0 for tests.
+Obs 4: The parameter "--version" is optional and if you omit it will use version from the target configuration file.
 
-Obs 5: You can force AWS S3 delete file if it exists using parameter --force.
+Obs 5: You can download version 1.0.0 for all targets and not only "linux_app" because we have everything compiled and uploaded for all targets and version 1.0.0 for tests.
+
+Obs 6: You can force AWS S3 delete file if it exists using parameter --force.
 
 ## Android
 

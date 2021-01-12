@@ -30,6 +30,7 @@ def run(params):
                     proj_path, const.DIR_NAME_BUILD, target_name, build_type
                 )
 
+                # copy library project template
                 android_library_build_dir = os.path.join(build_dir, "aar")
 
                 file.remove_dir(android_library_build_dir)
@@ -46,6 +47,20 @@ def run(params):
 
                 file.copy_dir(
                     android_project_dir, android_library_build_dir, symlinks=True
+                )
+
+                # replace data
+                build_gradle_file = os.path.join(
+                    android_library_build_dir,
+                    "library",
+                    "build.gradle",
+                )
+
+                file.replace_in_file(
+                    build_gradle_file, "{VERSION}", target_config["version"]
+                )
+                file.replace_in_file(
+                    build_gradle_file, "{VERSION_CODE}", target_config["version_code"]
                 )
 
                 # copy glue code support lib files

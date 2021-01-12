@@ -11,16 +11,10 @@
 3. Install python requirements:
 > pip install -r requirements.txt
 
-4. Install conan extra repositories:
-> conan remote add darwin-toolchain https://api.bintray.com/conan/ezored/conan-darwin-toolchain
-
-5. Execute main file to test and show bootstrap menu:
-> python make.py
-
-6. Install conan profiles:
+4. Setup conan:
 > python make.py conan setup
 
-7. Now all commands are available. Run the following command to list all targets that you can build:
+5. Now all commands are available. Run the following command to list all targets that you can build:
 > python make.py target
 
 Example: If you are on **Linux**, you can build the **linux_app** target, if on **macOS** you can run **macos_app** target and if on **Windows** you can run **windows_app**.

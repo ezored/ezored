@@ -34,6 +34,7 @@ def setup(params):
 
     log.info("Creating default profile...")
 
+    # create default profile
     runner.run(
         [
             "conan",
@@ -46,6 +47,7 @@ def setup(params):
         cwd=os.getcwd(),
     )
 
+    # copy all targets profile
     log.info("Copying files...")
 
     if targets:
@@ -74,6 +76,21 @@ def setup(params):
                     log.info('Copying profile "{0}"...'.format(filename))
 
                     file.copy_file(item, os.path.join(conan_profile_dir, filename))
+
+    # add darwin toolchain
+    log.info("Adding darwin toolchain repository...")
+
+    runner.run(
+        [
+            "conan",
+            "remote",
+            "add",
+            "darwin-toolchain",
+            "https://api.bintray.com/conan/ezored/conan-darwin-toolchain",
+            "--force",
+        ],
+        cwd=os.getcwd(),
+    )
 
     log.ok()
 

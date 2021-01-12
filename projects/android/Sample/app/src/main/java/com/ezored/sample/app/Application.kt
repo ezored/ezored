@@ -77,7 +77,7 @@ class Application : MultiDexApplication() {
             initializeFileHelper()
             initializeCore()
         } catch (e: UnsatisfiedLinkError) {
-            Log.e(LOG_GROUP, "Could not load native library")
+            Log.e(LOG_GROUP, "Could not load native library: " + e.message)
             e.printStackTrace()
         }
     }

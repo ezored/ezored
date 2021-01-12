@@ -42,7 +42,7 @@ def download(params):
         proj_path, const.DIR_NAME_BUILD, target_name, const.DIR_NAME_DIST
     )
 
-    version = util.get_arg_value("--version", params["args"])
+    version = util.get_version(params, config)
     dist_file_path = os.path.join(build_dir, const.FILE_NAME_DIST_PACKED)
     dist_file_name = const.FILE_NAME_DIST_PACKED
     dist_folder = target_name
@@ -67,7 +67,7 @@ def upload(params):
         proj_path, const.DIR_NAME_BUILD, target_name, const.DIR_NAME_DIST
     )
 
-    version = util.get_arg_value("--version", params["args"])
+    version = util.get_version(params, config)
     force = util.list_has_key(params["args"], "--force")
     dist_file_path = os.path.join(build_dir, const.FILE_NAME_DIST_PACKED)
     dist_file_name = const.FILE_NAME_DIST_PACKED
@@ -100,7 +100,7 @@ def generate(params):
     target_config = config.run(proj_path, target_name, params)
     build_types = target_config["build_types"]
 
-    version = util.get_arg_value("--version", params["args"])
+    version = util.get_version(params, config)
     source_files = []
 
     dist_folder = os.path.join(proj_path, const.DIR_NAME_DIST, target_name)

@@ -8,7 +8,6 @@
 2. PIP (https://pip.pypa.io/)
 3. CMake 3.14.1 (https://cmake.org/)  
 4. Conan 1.32.1 (https://conan.io/)
-5. Conan extra repositories (https://github.com/ezored/conan-darwin-toolchain/):
 
 They are the basic things to make ezored work. Check on terminal if you have every tool in your path typing their names (python, pip, cmake, conan).
 
