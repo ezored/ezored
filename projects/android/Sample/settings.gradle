@@ -6,10 +6,10 @@ gradle.ext.ezoredSdkCacheDir = (System.getProperty("user.home") + "/.gradle-ezor
 
 if (gradle.ext.isDebuggable) {
     gradle.ext.localLibraryDir = "../../../../dist/android_aar/Debug"
-    gradle.ext.remoteLibraryDir = "build/ezored-sdk/android_aar/Debug"
+    gradle.ext.remoteLibraryDir = "build/ezored-sdk/Debug"
 } else {
     gradle.ext.localLibraryDir = "../../../../dist/android_aar/Release"
-    gradle.ext.remoteLibraryDir = "build/ezored-sdk/android_aar/Release"
+    gradle.ext.remoteLibraryDir = "build/ezored-sdk/Release"
 }
 
 include ':app'
