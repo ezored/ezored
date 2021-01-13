@@ -6,6 +6,7 @@ from files.modules import const
 from files.modules import file
 from files.modules import log
 from files.modules import runner
+from files.modules import util
 from files.config import target_android_aar as config
 
 
@@ -151,7 +152,16 @@ def run(params):
                     android_library_build_dir, module_name
                 )
 
-                run_args = ["../gradlew", "bundle{0}Aar".format(build_type)]
+                if util.is_windows_platform():
+                    run_args = [
+                        os.path.join("..", "gradlew.bat"),
+                        "bundle{0}Aar".format(build_type),
+                    ]
+                else:
+                    run_args = [
+                        os.path.join("..", "gradlew"),
+                        "bundle{0}Aar".format(build_type),
+                    ]
 
                 runner.run(run_args, android_module_dir)
 

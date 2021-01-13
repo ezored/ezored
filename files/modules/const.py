@@ -40,3 +40,8 @@ AWS_S3_URL = "https://{0}.s3.amazonaws.com/{1}".format(
 )
 
 TARGET_VERBS_INTERNAL = ["config"]
+
+PROFILE_BUILD_WINDOWS = "default"
+PROFILE_BUILD_MACOS = "default"
+PROFILE_BUILD_LINUX = "default"
+PROFILE_BUILD_DEFAULT = "default"

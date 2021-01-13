@@ -6,6 +6,7 @@ from files.modules import const
 from files.modules import file
 from files.modules import log
 from files.modules import runner
+from files.modules import util
 
 
 # -----------------------------------------------------------------------------
@@ -58,3 +59,15 @@ def get_all_target_verbs(proj_path, target_name):
 
     results.sort()
     return results
+
+
+# -----------------------------------------------------------------------------
+def get_build_profile():
+    if util.is_windows_platform():
+        return const.PROFILE_BUILD_WINDOWS
+    elif util.is_linux_platform():
+        return const.PROFILE_BUILD_LINUX
+    elif util.is_macos_platform():
+        return const.PROFILE_BUILD_MACOS
+    else:
+        return const.PROFILE_BUILD_DEFAULT

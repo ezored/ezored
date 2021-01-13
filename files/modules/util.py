@@ -57,6 +57,16 @@ def is_windows_platform():
 
 
 # -----------------------------------------------------------------------------
+def is_macos_platform():
+    return platform.system().lower().startswith("darwin")
+
+
+# -----------------------------------------------------------------------------
+def is_linux_platform():
+    return platform.system().lower().startswith("linux")
+
+
+# -----------------------------------------------------------------------------
 def get_version(params, config):
     version = get_arg_value("--version", params["args"])
 
