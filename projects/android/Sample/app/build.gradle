@@ -110,20 +110,22 @@ dependencies {
 }
 
 // custom SDK download task
-apply plugin: "de.undercouch.download"
+if (gradle.ext.useRemoteLibrary) {
+    apply plugin: "de.undercouch.download"
 
-task downloadEzoredSdkFile(type: Download) {
-    src "https://ezored.s3.amazonaws.com/dist/android_aar/${gradle.ext.ezoredSdkVersion}/dist.tar.gz"
-    dest new File(gradle.ext.ezoredSdkCacheDir, "ezored-sdk/sdk-${gradle.ext.ezoredSdkVersion}.tar.gz")
-    tempAndMove true
-    onlyIfModified true
-    overwrite false
-    downloadTaskDir gradle.ext.ezoredSdkCacheDir
+    task downloadEzoredSdkFile(type: Download) {
+        src "https://ezored.s3.amazonaws.com/dist/android_aar/${gradle.ext.ezoredSdkVersion}/dist.tar.gz"
+        dest new File(gradle.ext.ezoredSdkCacheDir, "ezored-sdk/sdk-${gradle.ext.ezoredSdkVersion}.tar.gz")
+        tempAndMove true
+        onlyIfModified true
+        overwrite false
+        downloadTaskDir gradle.ext.ezoredSdkCacheDir
+    }
+
+    task getEzoredSDK(dependsOn: downloadEzoredSdkFile, type: Copy) {
+        from tarTree(downloadEzoredSdkFile.dest)
+        into new File(buildDir, "ezored-sdk")
+    }
+
+    preBuild.dependsOn getEzoredSDK
 }
-
-task getEzoredSDK(dependsOn: downloadEzoredSdkFile, type: Copy) {
-    from tarTree(downloadEzoredSdkFile.dest)
-    into new File(buildDir, "ezored-sdk")
-}
-
-preBuild.dependsOn getEzoredSDK
