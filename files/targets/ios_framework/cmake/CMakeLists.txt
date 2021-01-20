@@ -30,7 +30,7 @@ conan_basic_setup()
 
 # Include: common
 add_subdirectory(
-    ${PROJECT_ROOT_PATH}/files/cmake/common
+    ${PROJECT_ROOT_PATH}/files/common/cmake
     ${PROJECT_BUILD_DIR}/common
 )
 

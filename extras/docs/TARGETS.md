@@ -6,7 +6,7 @@ A target in ezored contains all files and scripts to build C++ code to some plat
 
 Currently all targets use CMake to compile and generate project files ready to build. So each target has their own **CMakeLists.txt** file inside target folder **"cmake"**.
 
-Generally all targets shared the same C++ code and because of this ezored has a commom **CMakeLists.txt** file inside folder **"files/cmake/common"**.
+Generally all targets shared the same C++ code and because of this ezored has a commom **CMakeLists.txt** file inside folder **"files/common/cmake"**.
 
 Some targets add more source files and compile parameters. Some examples are the targets **"android_aar"** that add their JNI files and **"ios_framework"** that add their OBJC files.
 

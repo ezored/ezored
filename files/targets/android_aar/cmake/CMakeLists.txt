@@ -23,7 +23,7 @@ find_package(ndk-stl REQUIRED PATHS ".")
 
 # Include: common
 add_subdirectory(
-    ${PROJECT_ROOT_PATH}/files/cmake/common
+    ${PROJECT_ROOT_PATH}/files/common/cmake
     ${PROJECT_BUILD_DIR}/common
 )
 
@@ -172,7 +172,8 @@ set_target_properties(${PROJECT_CONFIG_NAME} PROPERTIES
     CXX_VISIBILITY_PRESET default
     VERSION "${PROJECT_CONFIG_VERSION}"
     SOVERSION "${PROJECT_CONFIG_VERSION}"
-    PUBLIC_HEADER "${PROJECT_HEADER_FILES}"    
+    PUBLIC_HEADER "${PROJECT_HEADER_FILES}"
+    LINK_FLAGS_RELEASE -s
 )
 
 target_compile_options(${PROJECT_CONFIG_NAME} PUBLIC "${PROJECT_COMPILE_OPTIONS}")
