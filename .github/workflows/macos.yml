@@ -102,3 +102,6 @@ jobs:
 
     - name: Ezored - Dist generate
       run: python make.py target ${{ matrix.config.target }} dist generate
+
+    - name: Ezored - Dist upload
+      run: python make.py target ${{ matrix.config.target }} dist upload --force
