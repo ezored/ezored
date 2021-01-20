@@ -105,3 +105,6 @@ jobs:
 
     - name: Ezored - Dist upload
       run: python make.py target ${{ matrix.config.target }} dist upload --force
+      env:
+        EZORED_AWS_KEY_ID: ${{ secrets.EZORED_AWS_KEY_ID }}
+        EZORED_AWS_SECRET_KEY: ${{ secrets.EZORED_AWS_SECRET_KEY }}
