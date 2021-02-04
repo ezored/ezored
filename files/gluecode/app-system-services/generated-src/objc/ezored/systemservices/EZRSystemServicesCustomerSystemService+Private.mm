@@ -3,9 +3,9 @@
 
 #import "ezored/systemservices/EZRSystemServicesCustomerSystemService+Private.h"
 #import "ezored/systemservices/EZRSystemServicesCustomerSystemService.h"
-#import "DJICppWrapperCache+Private.h"
-#import "DJIError.h"
-#import "DJIMarshal+Private.h"
+#import "djinni/objc/DJICppWrapperCache+Private.h"
+#import "djinni/objc/DJIError.h"
+#import "djinni/objc/DJIMarshal+Private.h"
 #import "ezored/systemservices/EZRSystemServicesCustomerSystemServiceLoginData+Private.h"
 #include <exception>
 #include <stdexcept>

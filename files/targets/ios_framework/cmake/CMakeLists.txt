@@ -38,7 +38,6 @@ add_subdirectory(
 set(PROJECT_HEADER_SEARCH_PATHS
     ${PROJECT_HEADER_SEARCH_PATHS}
     "${PROJECT_ROOT_PATH}/files/gluecode/support-lib"
-    "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/objc"
 
     "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/objc"
     "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/objc"
@@ -63,8 +62,8 @@ set(PROJECT_HEADER_SEARCH_PATHS
 )
 
 # Header files
-file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/*.hpp")
-file(GLOB H_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/objc/*.h")
+file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/*.hpp")
+file(GLOB H_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/objc/*.h")
 
 file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/objc/*.h")
 file(GLOB_RECURSE H_FILES_APP_ENUMS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/objc/*.h")
@@ -91,8 +90,8 @@ file(GLOB H_FILES_SHARED_DATA_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/shared-da
 file(GLOB_RECURSE H_FILES_DATETIME_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/datetime/generated-src/objc/*.h")
 
 # Source files
-file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/*.cpp")
-file(GLOB S_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/objc/*.mm")
+file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/*.cpp")
+file(GLOB S_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/objc/*.mm")
 
 file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/objc/*.mm")
 file(GLOB_RECURSE S_FILES_APP_ENUMS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/objc/*.mm")

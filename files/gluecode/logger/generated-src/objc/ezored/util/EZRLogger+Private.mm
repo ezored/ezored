@@ -3,9 +3,9 @@
 
 #import "ezored/util/EZRLogger+Private.h"
 #import "ezored/util/EZRLogger.h"
-#import "DJICppWrapperCache+Private.h"
-#import "DJIError.h"
-#import "DJIMarshal+Private.h"
+#import "djinni/objc/DJICppWrapperCache+Private.h"
+#import "djinni/objc/DJIError.h"
+#import "djinni/objc/DJIMarshal+Private.h"
 #import "ezored/util/EZRLoggerLevel+Private.h"
 #import "ezored/util/EZRLoggerPlatformService+Private.h"
 #include <exception>

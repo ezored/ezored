@@ -31,7 +31,6 @@ add_subdirectory(
 set(PROJECT_HEADER_SEARCH_PATHS
     ${PROJECT_HEADER_SEARCH_PATHS}
     "${PROJECT_ROOT_PATH}/files/gluecode/support-lib"
-    "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/jni"
 
     "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/jni"
     "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/jni"
@@ -50,8 +49,8 @@ set(PROJECT_HEADER_SEARCH_PATHS
 )
 
 # Header files
-file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/*.hpp")
-file(GLOB H_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/jni/*.hpp")
+file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/*.hpp")
+file(GLOB H_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/jni/*.hpp")
 
 file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/jni/*.h")
 file(GLOB_RECURSE H_FILES_APP_ENUMS_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/jni/*.h")
@@ -70,9 +69,10 @@ file(GLOB_RECURSE H_FILES_DATETIME_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/
 #file(GLOB H_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.hpp")
 
 # Source files
-file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/*.cpp")
-file(GLOB S_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/jni/*.cpp")
-file(GLOB S_FILES_SUPPORT_MAIN_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/jni/main-ext/*.cpp")
+file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/*.cpp")
+file(GLOB S_FILES_SUPPORT_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/jni/*.cpp")
+
+file(GLOB S_FILES_SUPPORT_MAIN_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/jni/main-ext/*.cpp")
 
 file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/jni/*.cpp")
 file(GLOB_RECURSE S_FILES_APP_ENUMS_LIB_JNI "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/jni/*.cpp")

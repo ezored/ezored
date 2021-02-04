@@ -3,9 +3,9 @@
 
 #import "ezored/core/EZRCoreApplicationCore+Private.h"
 #import "ezored/core/EZRCoreApplicationCore.h"
-#import "DJICppWrapperCache+Private.h"
-#import "DJIError.h"
-#import "DJIMarshal+Private.h"
+#import "djinni/objc/DJICppWrapperCache+Private.h"
+#import "djinni/objc/DJIError.h"
+#import "djinni/objc/DJIMarshal+Private.h"
 #import "ezored/domain/EZRDomainCustomer+Private.h"
 #import "ezored/domain/EZRDomainDeviceData+Private.h"
 #import "ezored/domain/EZRDomainInitializationData+Private.h"

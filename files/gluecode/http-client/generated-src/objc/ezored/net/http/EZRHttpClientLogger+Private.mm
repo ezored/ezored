@@ -3,8 +3,8 @@
 
 #import "ezored/net/http/EZRHttpClientLogger+Private.h"
 #import "ezored/net/http/EZRHttpClientLogger.h"
-#import "DJICppWrapperCache+Private.h"
-#import "DJIError.h"
+#import "djinni/objc/DJICppWrapperCache+Private.h"
+#import "djinni/objc/DJIError.h"
 #import "ezored/net/http/EZRHttpRequest+Private.h"
 #import "ezored/net/http/EZRHttpResponse+Private.h"
 #include <exception>

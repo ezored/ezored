@@ -3,8 +3,8 @@
 
 #import "ezored/helpers/EZRHelpersTodoHelper+Private.h"
 #import "ezored/helpers/EZRHelpersTodoHelper.h"
-#import "DJICppWrapperCache+Private.h"
-#import "DJIError.h"
+#import "djinni/objc/DJICppWrapperCache+Private.h"
+#import "djinni/objc/DJIError.h"
 #import "ezored/domain/EZRDomainTodo+Private.h"
 #include <exception>
 #include <stdexcept>
