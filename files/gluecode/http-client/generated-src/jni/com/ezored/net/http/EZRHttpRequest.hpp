@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "djinni_support.hpp"
+#include "djinni/jni/djinni_support.hpp"
 #include "ezored/net/http/HttpRequest.hpp"
 
 namespace djinni_generated {

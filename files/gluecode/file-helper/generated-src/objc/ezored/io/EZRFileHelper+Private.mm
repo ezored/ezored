@@ -3,9 +3,9 @@
 
 #import "ezored/io/EZRFileHelper+Private.h"
 #import "ezored/io/EZRFileHelper.h"
-#import "DJICppWrapperCache+Private.h"
-#import "DJIError.h"
-#import "DJIMarshal+Private.h"
+#import "djinni/objc/DJICppWrapperCache+Private.h"
+#import "djinni/objc/DJIError.h"
+#import "djinni/objc/DJIMarshal+Private.h"
 #import "ezored/io/EZRFileHelperPlatformService+Private.h"
 #include <exception>
 #include <stdexcept>

@@ -14,18 +14,25 @@
 // limitations under the License.
 //
 
-// This provides a minimal JNI_OnLoad and JNI_OnUnload implementation - include it if your
-// app doesn't use JNI except through Djinni.
+// Paulo Coutinho <paulo@prsolucoes.com>
 
-#include "djinni_support.hpp"
+// This provides a method to load and unload JNI in Djinni context
+// Include it if your app already have a JNI_OnLoad and/or JNI_OnUnload
+// methods
 
-// Called when library is loaded by the first class which uses it.
-CJNIEXPORT jint JNICALL JNI_OnLoad(JavaVM * jvm, void * /*reserved*/) {
+// You can call it from Java after load your library (.so) and call
+// unload when your library is unloaded or application terminated.
+
+#include "djinni/jni/djinni_support.hpp"
+
+CJNIEXPORT void JNICALL Java_com_dropbox_djinni_JNILoader_load(JNIEnv *env, jobject /*this*/, jlong nativeRef)
+{
+    JavaVM *jvm;
+    env->GetJavaVM(&jvm);
     djinni::jniInit(jvm);
-    return JNI_VERSION_1_6;
 }
 
-// (Potentially) called when library is about to be unloaded.
-CJNIEXPORT void JNICALL JNI_OnUnload(JavaVM * /*jvm*/, void * /*reserved*/) {
+CJNIEXPORT void JNICALL Java_com_dropbox_djinni_JNILoader_unload(JNIEnv *env, jobject /*this*/, jlong nativeRef)
+{
     djinni::jniShutdown();
 }

@@ -3,9 +3,9 @@
 
 #import "ezored/net/http/EZRHttpClient+Private.h"
 #import "ezored/net/http/EZRHttpClient.h"
-#import "DJICppWrapperCache+Private.h"
-#import "DJIError.h"
-#import "DJIMarshal+Private.h"
+#import "djinni/objc/DJICppWrapperCache+Private.h"
+#import "djinni/objc/DJIError.h"
+#import "djinni/objc/DJIMarshal+Private.h"
 #import "ezored/net/http/EZRHttpClientLogger+Private.h"
 #import "ezored/net/http/EZRHttpClientPlatformService+Private.h"
 #import "ezored/net/http/EZRHttpRequest+Private.h"

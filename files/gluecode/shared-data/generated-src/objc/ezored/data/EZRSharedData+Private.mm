@@ -3,9 +3,9 @@
 
 #import "ezored/data/EZRSharedData+Private.h"
 #import "ezored/data/EZRSharedData.h"
-#import "DJICppWrapperCache+Private.h"
-#import "DJIError.h"
-#import "DJIMarshal+Private.h"
+#import "djinni/objc/DJICppWrapperCache+Private.h"
+#import "djinni/objc/DJIError.h"
+#import "djinni/objc/DJIMarshal+Private.h"
 #import "ezored/data/EZRSharedDataPlatformService+Private.h"
 #include <exception>
 #include <stdexcept>
