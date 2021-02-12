@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 extension UIImage {
-    
     func imageWithColor(color: UIColor) -> UIImage? {
         var image = withRenderingMode(.alwaysTemplate)
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
@@ -12,5 +11,4 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return image
     }
-    
 }

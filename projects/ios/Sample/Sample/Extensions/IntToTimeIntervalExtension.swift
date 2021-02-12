@@ -1,33 +1,31 @@
 import Foundation
 
 extension Int {
-    
     var seconds: Int {
         return self
     }
-    
+
     var minutes: Int {
-        return self.seconds * 60
+        return seconds * 60
     }
-    
+
     var hours: Int {
-        return self.minutes * 60
+        return minutes * 60
     }
-    
+
     var days: Int {
-        return self.hours * 24
+        return hours * 24
     }
-    
+
     var weeks: Int {
-        return self.days * 7
+        return days * 7
     }
-    
+
     var months: Int {
-        return self.weeks * 4
+        return weeks * 4
     }
-    
+
     var years: Int {
-        return self.months * 12
+        return months * 12
     }
-    
 }

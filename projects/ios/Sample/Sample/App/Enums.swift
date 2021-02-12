@@ -1,10 +1,10 @@
 import Foundation
 
-enum NetworkErrorViewAction : Int {
+enum NetworkErrorViewAction: Int {
     case refresh = 0
 }
 
-enum RemoteDataLoadState : Int {
+enum RemoteDataLoadState: Int {
     case loaded = 0
     case loading = 1
     case notLoaded = 2
@@ -17,5 +17,5 @@ enum OptionTypeEnum {
     case httpsRequest
     case fileHelper
     case appVersion
-    case todo    
+    case todo
 }
