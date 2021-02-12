@@ -57,6 +57,7 @@ def run(proj_path, target_name, params):
                 "supported_platform": "MacOSX",
                 "enable_bitcode": False,
                 "group": "ios_catalyst",
+                "build_min_version": "10.15",
             },
         ],
         "install_headers": [
