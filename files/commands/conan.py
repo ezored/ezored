@@ -77,6 +77,21 @@ def setup(params):
 
                     file.copy_file(item, os.path.join(conan_profile_dir, filename))
 
+    # add darwin toolchain
+    log.info("Adding darwin toolchain repository...")
+
+    runner.run(
+        [
+            "conan",
+            "remote",
+            "add",
+            "darwin-toolchain",
+            "https://api.bintray.com/conan/ezored/conan-darwin-toolchain",
+            "--force",
+        ],
+        cwd=os.getcwd(),
+    )
+
     log.ok()
 
 
