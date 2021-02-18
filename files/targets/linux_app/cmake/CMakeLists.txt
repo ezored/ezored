@@ -1,5 +1,5 @@
 # Configurations
-cmake_minimum_required(VERSION 3.14.1)
+cmake_minimum_required(VERSION 3.19.0)
 get_filename_component(CMAKE_SOURCE_REALPATH "${CMAKE_SOURCE_DIR}/../../../../" REALPATH)
 
 set(PROJECT_CONFIG_NAME "ezored" CACHE STRING "Project Name")
