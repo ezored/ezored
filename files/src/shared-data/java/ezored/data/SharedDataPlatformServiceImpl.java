@@ -16,8 +16,7 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
         SharedPreferences.Editor editor = createEditor(groupName);
 
         if (editor != null && key != null) {
-            editor.putString(key, value);
-            editor.apply();
+            editor.putString(key, value).apply();
         }
     }
 
@@ -26,8 +25,7 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
         SharedPreferences.Editor editor = createEditor(groupName);
 
         if (editor != null && key != null) {
-            editor.putInt(key, value);
-            editor.apply();
+            editor.putInt(key, value).apply();
         }
     }
 
@@ -36,8 +34,7 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
         SharedPreferences.Editor editor = createEditor(groupName);
 
         if (editor != null && key != null) {
-            editor.putLong(key, value);
-            editor.apply();
+            editor.putLong(key, value).apply();
         }
     }
 
@@ -46,8 +43,7 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
         SharedPreferences.Editor editor = createEditor(groupName);
 
         if (editor != null && key != null) {
-            editor.putBoolean(key, value);
-            editor.apply();
+            editor.putBoolean(key, value).apply();
         }
     }
 
@@ -56,8 +52,7 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
         SharedPreferences.Editor editor = createEditor(groupName);
 
         if (editor != null && key != null) {
-            editor.putFloat(key, value);
-            editor.apply();
+            editor.putFloat(key, value).apply();
         }
     }
 
@@ -66,8 +61,7 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
         SharedPreferences.Editor editor = createEditor(groupName);
 
         if (editor != null && key != null) {
-            editor.putFloat(key, (float) value);
-            editor.apply();
+            editor.putFloat(key, (float) value).apply();
         }
     }
 
@@ -243,7 +237,7 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
         SharedPreferences.Editor editor = createEditor(groupName);
 
         if (editor != null && key != null) {
-            editor.remove(key);
+            editor.remove(key).apply();
         }
     }
 
@@ -252,7 +246,7 @@ public class SharedDataPlatformServiceImpl extends SharedDataPlatformService {
         SharedPreferences.Editor editor = createEditor(groupName);
 
         if (editor != null) {
-            editor.clear();
+            editor.clear().apply();
         }
     }
 
