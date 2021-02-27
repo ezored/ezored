@@ -33,7 +33,6 @@ class TargetConan(ConanFile):
         "poco:enable_jwt": True,
         "poco:enable_mongodb": False,
         "poco:enable_net": True,
-        "poco:enable_netssl": False,
         "poco:enable_netssl_win": True,
         "poco:enable_pdf": False,
         "poco:enable_pagecompiler": False,
@@ -63,7 +62,7 @@ class TargetConan(ConanFile):
         self.copy("*.dll", dst="bin", keep_path=False)
 
     def requirements(self):
-        self.requires("sqlite3/3.34.0")
+        self.requires("sqlite3/3.34.1")
         self.requires("rapidjson/1.1.0")
         self.requires("poco/1.10.1")
         self.requires("openssl/1.1.1i")

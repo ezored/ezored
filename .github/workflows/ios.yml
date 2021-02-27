@@ -3,7 +3,7 @@ name: Ezored - iOS
 on: [push]
 
 env:
-  CMAKE_VERSION: "3.14.1"
+  CMAKE_VERSION: "3.19.0"
   NINJA_VERSION: "1.9.0"
 
 jobs:
@@ -98,7 +98,7 @@ jobs:
       run: python make.py target ${{ matrix.config.target }} build
 
     - name: Ezored - Package
-      run: python make.py target ${{ matrix.config.target }} package
+      run: python make.py target ${{ matrix.config.target }} package --no-framework
 
     - name: Ezored - Dist generate
       run: python make.py target ${{ matrix.config.target }} dist generate

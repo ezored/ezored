@@ -1,13 +1,11 @@
 import UIKit
 
 extension UIView {
-    
     func clearConstraintsRecursivelly() {
-        for subview in self.subviews {
+        for subview in subviews {
             subview.clearConstraintsRecursivelly()
         }
-        
-        self.removeConstraints(self.constraints)
+
+        removeConstraints(constraints)
     }
-    
 }

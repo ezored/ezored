@@ -50,7 +50,7 @@ class TargetConan(ConanFile):
     generators = "cmake"
 
     def build(self):
-        cmake = CMake(self)
+        cmake = CMake(self, generator='Xcode')
         cmake.definitions["CMAKE_BUILD_TYPE"] = self.settings.build_type
         cmake.definitions["PROJECT_CONFIG_NAME"] = self.options.get_safe("ezored_name")
         cmake.definitions["PROJECT_CONFIG_VERSION"] = self.options.get_safe(
@@ -64,7 +64,7 @@ class TargetConan(ConanFile):
         cmake.build()
 
     def requirements(self):
-        self.requires("sqlite3/3.34.0")
+        self.requires("sqlite3/3.34.1")
         self.requires("rapidjson/1.1.0")
         self.requires("openssl/1.1.1i")
         self.requires("sqlitecpp/2.5.0")

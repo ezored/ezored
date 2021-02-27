@@ -59,7 +59,7 @@ class TargetConan(ConanFile):
         cmake.build()
 
     def requirements(self):
-        self.requires("sqlite3/3.34.0")
+        self.requires("sqlite3/3.34.1")
         self.requires("rapidjson/1.1.0")
         self.requires("openssl/1.1.1i")
         self.requires("sqlitecpp/2.5.0")

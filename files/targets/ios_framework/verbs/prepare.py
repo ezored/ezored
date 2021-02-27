@@ -6,6 +6,7 @@ from files.modules import const
 from files.modules import file
 from files.modules import log
 from files.modules import runner
+from files.modules import target
 from files.config import target_ios_framework as config
 
 
@@ -51,14 +52,24 @@ def run(params):
                         const.DIR_NAME_FILES_TARGET_CONAN_RECIPE,
                         const.FILE_NAME_FILES_TARGET_CONAN_RECIPE_CONANFILE_PY,
                     ),
-                    "--profile",
+                    "-pr:b",
+                    target.get_build_profile(),
+                    "-pr:h",
                     arch["conan_profile"],
-                    "-s",
+                    "-s:h",
                     "arch={0}".format(arch["conan_arch"]),
-                    "-s",
+                    "-s:h",
                     "build_type={0}".format(build_type),
-                    "-s",
+                    "-s:h",
                     "os.version={0}".format(arch["min_version"]),
+                    "-s:b",
+                    "os.version={0}".format(
+                        (
+                            arch["build_min_version"]
+                            if "build_min_version" in arch
+                            else None
+                        )
+                    ),
                     "-o",
                     "ezored_arch={0}".format(arch["conan_arch"]),
                     "-o",

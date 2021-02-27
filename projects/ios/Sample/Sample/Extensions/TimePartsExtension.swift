@@ -14,26 +14,24 @@ struct TimeParts: CustomStringConvertible {
 let EmptyTimeParts = Int32(0).toTimeParts()
 
 extension Int32 {
-    
     /// The time parts for this integer represented from total seconds in time.
     /// -- returns: A TimeParts struct that describes the parts of time
     func toTimeParts() -> TimeParts {
         let seconds = self
-        
+
         var mins: Int32 = 0
         var secs: Int32 = seconds
-        
+
         if seconds >= 60 {
             mins = Int32(seconds / 60)
             secs = seconds - (mins * 60)
         }
-        
+
         return TimeParts(seconds: secs, minutes: mins)
     }
-    
+
     /// The string representation of the time parts (ex: 07:37)
     func asTimeString() -> String {
         return toTimeParts().description
     }
-    
 }
