@@ -24,7 +24,7 @@ pods-update:
 	rm -rf Pods
 	rm -rf Podfile.lock
 	rm -rf Sample.xcworkspace
-	pod update
+	pod cache clean --all
 	pod install --repo-update
 
 remove-pods:
