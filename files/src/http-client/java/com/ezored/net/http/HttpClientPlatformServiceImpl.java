@@ -22,6 +22,10 @@ public class HttpClientPlatformServiceImpl extends HttpClientPlatformService {
 
     @Override
     public HttpResponse doRequest(HttpRequest request) {
+        int responseCode = 0;
+        StringBuilder responseBody = new StringBuilder();
+        ArrayList<HttpHeader> responseHeaders = new ArrayList<>();
+
         try {
             // general
             URL url = new URL(request.getUrl());
@@ -98,37 +102,48 @@ public class HttpClientPlatformServiceImpl extends HttpClientPlatformService {
                 connection.connect();
             }
 
-            // prepare and do the request
-            InputStream is = connection.getInputStream();
-
-            // check for gzip encoding
-            String encoding = connection.getHeaderField("Content-Encoding");
-
-            if (encoding != null && encoding.contains("gzip")) {
-                is = new GZIPInputStream(is);
+            // get response code
+            try {
+                responseCode = connection.getResponseCode();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
-            // get response data
-            int responseCode = connection.getResponseCode();
-
-            BufferedReader br = new BufferedReader(new InputStreamReader(is));
-            StringBuilder responseBody = new StringBuilder();
-            String line = "";
-
-            while ((line = br.readLine()) != null) {
-                responseBody.append(line);
-            }
-
-            br.close();
 
             // get response headers
-            ArrayList<HttpHeader> responseHeaders = getResponseHeaders(connection);
+            try {
+                responseHeaders = getResponseHeaders(connection);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-            return new HttpResponse(responseCode, responseBody.toString(), request.getUrl(), responseHeaders);
+            // get content
+            try {
+                InputStream is = connection.getInputStream();
+
+                // check for gzip encoding
+                String encoding = connection.getHeaderField("Content-Encoding");
+
+                if (encoding != null && encoding.contains("gzip")) {
+                    is = new GZIPInputStream(is);
+                }
+
+                // get response data
+                BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                String line = "";
+
+                while ((line = br.readLine()) != null) {
+                    responseBody.append(line);
+                }
+
+                br.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } catch (Exception e) {
             e.printStackTrace();
-            return new HttpResponse(0, "", request.getUrl(), new ArrayList<HttpHeader>());
         }
+
+        return new HttpResponse(responseCode, responseBody.toString(), request.getUrl(), responseHeaders);
     }
 
     private String getMethodFromHttpMethod(HttpMethod httpMethod) {
