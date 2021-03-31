@@ -6,8 +6,8 @@
 
 1. Python 3 (https://www.python.org/)  
 2. PIP (https://pip.pypa.io/)
-3. CMake 3.19.0 (https://cmake.org/)  
-4. Conan 1.32.1 (https://conan.io/)
+3. CMake 3.20.0 (https://cmake.org/)  
+4. Conan 1.35.0 (https://conan.io/)
 
 They are the basic things to make ezored work. Check on terminal if you have every tool in your path typing their names (python, pip, cmake, conan).
 

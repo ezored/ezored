@@ -22,7 +22,7 @@ Download this template and check samples to test and see it working on mobile an
 
 Read the docs by topic.
 
-## Topics
+## Table of contents
 
 - [Free](extras/docs/FREE.md)
 - [Platforms](extras/docs/PLATFORMS.md)
