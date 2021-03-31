@@ -82,7 +82,7 @@
     // prepare and do the request
     NSURLResponse *response = nil;
     NSError *error = nil;
-    NSData *receivedData = [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
+    NSData *receivedData = [self sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
     
     if (error != nil) {
@@ -154,6 +154,35 @@
             return @"";
             break;
     }
+}
+
+- (NSData *)sendSynchronousRequest:(NSURLRequest *)request returningResponse:(NSURLResponse **)response error:(NSError **)error {
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_enter(group);
+
+    NSError __block *err = NULL;
+    NSData __block *data;
+    NSURLResponse __block *resp;
+
+    [[[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData* _data, NSURLResponse* _response, NSError* _error) {
+        resp = _response;
+        err = _error;
+        data = _data;
+        dispatch_group_leave(group);
+
+    }] resume];
+
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER);
+
+    if (response) {
+        *response = resp;
+    }
+    
+    if (error) {
+        *error = err;
+    }
+
+    return data;
 }
 
 @end
