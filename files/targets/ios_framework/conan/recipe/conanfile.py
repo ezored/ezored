@@ -50,7 +50,7 @@ class TargetConan(ConanFile):
     generators = "cmake"
 
     def build(self):
-        cmake = CMake(self, generator='Xcode')
+        cmake = CMake(self, generator="Xcode")
         cmake.definitions["CMAKE_BUILD_TYPE"] = self.settings.build_type
         cmake.definitions["PROJECT_CONFIG_NAME"] = self.options.get_safe("ezored_name")
         cmake.definitions["PROJECT_CONFIG_VERSION"] = self.options.get_safe(
