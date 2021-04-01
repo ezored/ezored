@@ -81,7 +81,7 @@ def run(proj_path, target_name, params):
                 "arch": "armv7k",
                 "conan_arch": "armv7k",
                 "conan_profile": "ezored_watchos_framework_profile",
-                "min_version": "4.0",
+                "min_version": "5.0",
                 "supported_platform": "watchOS",
                 "enable_bitcode": True,
                 "group": "watchos",

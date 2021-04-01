@@ -11,6 +11,8 @@ Pod::Spec.new do |s|
   s.vendored_frameworks = 'Release/{NAME}.xcframework'
 
   s.ios.deployment_target = '9.0'
+  s.watchos.deployment_target = '5.0'
+  s.tvos.deployment_target = '11.0'
 
   s.public_header_files = 'Release/{NAME}.xcframework/ios-arm64_arm64e_armv7_armv7s/{NAME}.framework/Headers/**/*.h'
   s.source_files = 'Release/{NAME}.xcframework/ios-arm64_arm64e_armv7_armv7s/{NAME}.framework/Headers/**/*.h'
