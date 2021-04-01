@@ -104,6 +104,15 @@ def run(proj_path, target_name, params):
                 "enable_bitcode": False,
                 "group": "watchos_simulator",
             },
+            {
+                "arch": "x86_64",
+                "conan_arch": "x86_64",
+                "conan_profile": "ezored_watchos_framework_profile",
+                "min_version": "5.0",
+                "supported_platform": "watchSimulator",
+                "enable_bitcode": False,
+                "group": "watchos_simulator",
+            },
         ],
         "install_headers": [
             {
