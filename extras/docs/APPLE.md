@@ -94,6 +94,18 @@ SWIFT
 
 or
 
+if #available(macOS 10.9, *) {
+  // compiles for OS X
+} else if #available(iOS 9, *) {
+  // compiles for iOS
+} else if #available(tvOS 11, *) {
+  // compiles for TV OS
+} else if #available(watchOS 5, *) {
+  // compiles for Watch OS
+}
+
+or
+
 #if os(OSX) && os(iOS)
   // compiles for OS X and iOS
 #endif
@@ -108,6 +120,18 @@ or
 OBJ-C
 
 ```
+#if TARGET_OS_OSX
+    // compiles for OS X
+#elif TARGET_OS_IOS
+    // compiles for iOS
+#elif TARGET_OS_TV
+    // compiles for TV OS
+#elif TARGET_OS_WATCH
+    // compiles for WATCH OS
+#endif
+
+or 
+
 if (@available(macOS 10.9, *)) {
   // compiles for OS X
 } else if (@available(iOS 9, *)) {
