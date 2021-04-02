@@ -96,15 +96,6 @@ def run(proj_path, target_name, params):
                 "group": "watchos",
             },
             {
-                "arch": "i386",
-                "conan_arch": "x86",
-                "conan_profile": "ezored_watchos_framework_profile",
-                "min_version": "5.0",
-                "supported_platform": "WatchSimulator",
-                "enable_bitcode": False,
-                "group": "watchos_simulator",
-            },
-            {
                 "arch": "x86_64",
                 "conan_arch": "x86_64",
                 "conan_profile": "ezored_watchos_framework_profile",

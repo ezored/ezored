@@ -26,6 +26,7 @@ Read the docs by topic.
 
 - [Free](extras/docs/FREE.md)
 - [Platforms](extras/docs/PLATFORMS.md)
+- [Apple](extras/docs/APPLE.md)
 - [Requirements](extras/docs/REQUIREMENTS.md)
 - [Modules](extras/docs/MODULES.md)
 - [Commands](extras/docs/COMMANDS.md)
