@@ -74,3 +74,19 @@ end
 
 #endif /* Bridging_Header_h */
 ```
+
+### Utilities
+
+Check OS and execute specific code for that OS:
+
+```
+#if os(OSX)
+  // compiles for OS X
+#elseif os(iOS)
+  // compiles for iOS
+#elseif os(tvOS)
+  // compiles for TV OS
+#elseif os(watchOS)
+  // compiles for Apple watch
+#endif
+```
