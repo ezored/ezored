@@ -3,13 +3,13 @@
 <h1 align="center"><strong>Apple</strong></h1>
 
 
-### iOS
+## iOS
 
 1. Add your framework or xcframework as dependency (see example files below)
 2. Create **Obj-C Bridging Header** file to include your public headers or the main header file
 3. Add to your target **Build Settings** in row **Objective-C Bridging Header** the path of bridging header file, example: "Sample/Sample-Bridging-Header.h"
 
-### WatchOS
+## WatchOS
 
 1. Add your framework or xcframework as dependency (see example files below)
 2. Create **Obj-C Bridging Header** file to include your public headers or the main header file
@@ -18,13 +18,13 @@
     > Debug > Any watchOS Simulator SDK > i386 arm64      
     > Release > Any watchOS Simulator SDK > i386 arm64  
 
-### TvOS
+## TvOS
 
 1. Add your framework or xcframework as dependency (see example files below)
 2. Create **Obj-C Bridging Header** file to include your public headers or the main header file
 3. Add to your target **Build Settings** in row **Objective-C Bridging Header** the path of bridging header file, example: "Sample/Sample-Bridging-Header.h"
 
-### Examples files
+## Examples files
 
 **Podfile**
 
@@ -75,9 +75,11 @@ end
 #endif /* Bridging_Header_h */
 ```
 
-### Utilities
+## Utilities
 
 Check OS and execute specific code for that OS:
+
+SWIFT
 
 ```
 #if os(OSX)
@@ -87,6 +89,38 @@ Check OS and execute specific code for that OS:
 #elseif os(tvOS)
   // compiles for TV OS
 #elseif os(watchOS)
-  // compiles for Apple watch
+  // compiles for Watch OS
 #endif
+
+or
+
+#if os(OSX) && os(iOS)
+  // compiles for OS X and iOS
+#endif
+
+or
+
+#if os(OSX) || os(iOS)
+  // compiles for OS X or iOS
+#endif
+```
+
+OBJ-C
+
+```
+if (@available(macOS 10.9, *)) {
+  // compiles for OS X
+} else if (@available(iOS 9, *)) {
+  // compiles for iOS
+} else if (@available(tvOS 11, *)) {
+  // compiles for TV OS
+} else if (@available(watchOS 5, *)) {
+  // compiles for Watch OS
+}
+
+or
+
+if (@available(macOS 10.9, iOS 9, tvOS 11, watchOS 5, *)) {
+  // compiles for OS X and iOS and TV OS and Watch OS with specified versions
+}
 ```
