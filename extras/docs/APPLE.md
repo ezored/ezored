@@ -62,6 +62,15 @@ target 'TvDemo' do
   platform :tvos, '11.0'
   shared_pods
 end
+
+# remove watch simulator invalid archs
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+              config.build_settings['EXCLUDED_ARCHS[sdk=watchsimulator*]'] = 'i386 arm64'
+        end
+  end
+end
 ```
 
 **Sample-Bridging-Header.h**
