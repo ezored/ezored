@@ -1,6 +1,4 @@
-import CoreTelephony
 import Foundation
-import UIKit
 
 class EnvironmentUtil {
     static func getCurrentLanguageCode() -> String {
@@ -13,25 +11,7 @@ class EnvironmentUtil {
         }
 
         return "en"
-    }
-
-    static func getCurrentRegionCode() -> String {
-        #if !targetEnvironment(macCatalyst)
-            let networkInfo = CTTelephonyNetworkInfo()
-
-            if let carrier = networkInfo.subscriberCellularProvider {
-                if let countryCode = carrier.isoCountryCode {
-                    return countryCode
-                }
-            }
-        #endif
-
-        if let regionCode = Locale.current.regionCode {
-            return regionCode
-        }
-
-        return ""
-    }
+    }    
 
     static func getAppVersion() -> String {
         if let value = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
@@ -65,11 +45,4 @@ class EnvironmentUtil {
         return ""
     }
 
-    static func getDeviceId() -> String {
-        if let value = UIDevice.current.identifierForVendor?.uuidString {
-            return value
-        }
-
-        return ""
-    }
 }
