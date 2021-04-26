@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 
 extension String {
     func sizeOfString(constrainedToHeight height: CGFloat, withFontSize fontSize: CGFloat) -> CGSize {

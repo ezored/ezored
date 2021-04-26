@@ -20,13 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#if os(iOS)
-    import UIKit
-    typealias SWColor = UIColor
-#else
-    import Cocoa
-    typealias SWColor = NSColor
-#endif
+import UIKit
+typealias SWColor = UIColor
 
 public extension SWColor {
     /**

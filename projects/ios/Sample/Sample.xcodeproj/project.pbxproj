@@ -58,6 +58,14 @@
 		3ADE82652229C56500D3FD7A /* SimpleSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE82642229C56500D3FD7A /* SimpleSearchBar.swift */; };
 		3ADE82692229C9C000D3FD7A /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE82682229C9C000D3FD7A /* TodoTableViewCell.swift */; };
 		3ADE826B2229D0E000D3FD7A /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE826A2229D0E000D3FD7A /* TodoListViewController.swift */; };
+		AB9E18832637199600225E57 /* SimpleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8822162760005E6BD0 /* SimpleOption.swift */; };
+		AB9E1887263719A500225E57 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enums.swift */; };
+		AB9E188F263719E400225E57 /* StringsLocalizedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F22214A57D00A2FB4F /* StringsLocalizedExtension.swift */; };
+		AB9E1890263719E400225E57 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22E42214A57D00A2FB4F /* StringExtensions.swift */; };
+		AB9E1891263719E400225E57 /* StringBase64Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22DF2214A57D00A2FB4F /* StringBase64Extension.swift */; };
+		AB9E189526371A1600225E57 /* SwiftColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22ED2214A57D00A2FB4F /* SwiftColorsExtension.swift */; };
+		AB9E189C26371AB800225E57 /* UIImageTintedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */; };
+		AB9E18A426371AE800225E57 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */; };
 		ABCDC1A8261D0A4C00BEEF5C /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABCDC1A6261D0A4C00BEEF5C /* Interface.storyboard */; };
 		ABCDC1AA261D0A4F00BEEF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABCDC1A9261D0A4F00BEEF5C /* Assets.xcassets */; };
 		ABCDC1B1261D0A4F00BEEF5C /* Sample-AppleWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ABCDC1B0261D0A4F00BEEF5C /* Sample-AppleWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -267,7 +275,6 @@
 				3A2F22D02214A4DB00A2FB4F /* Info.plist */,
 				3A2F22CD2214A4DB00A2FB4F /* LaunchScreen.storyboard */,
 				3A2F23262214A7A800A2FB4F /* Localizable.strings */,
-				3ADA2D8722162760005E6BD0 /* Models */,
 				3A2F22D62214A57D00A2FB4F /* UI */,
 				3A2F22F72214A57D00A2FB4F /* Utils */,
 			);
@@ -306,10 +313,6 @@
 				3A2F22EE2214A57D00A2FB4F /* IntToTimeIntervalExtension.swift */,
 				3A2F22EA2214A57D00A2FB4F /* ShuffleExtension.swift */,
 				3A2F22EF2214A57D00A2FB4F /* SKProductLocalizedPriceExtension.swift */,
-				3A2F22DF2214A57D00A2FB4F /* StringBase64Extension.swift */,
-				3A2F22E42214A57D00A2FB4F /* StringExtensions.swift */,
-				3A2F22F22214A57D00A2FB4F /* StringsLocalizedExtension.swift */,
-				3A2F22ED2214A57D00A2FB4F /* SwiftColorsExtension.swift */,
 				3A2F22E72214A57D00A2FB4F /* TimePartsExtension.swift */,
 				3A2F22DD2214A57D00A2FB4F /* UIButtonImageSpacingExtension.swift */,
 				3A2F22E12214A57D00A2FB4F /* UIColorToHexExtension.swift */,
@@ -318,7 +321,6 @@
 				3A2F22EC2214A57D00A2FB4F /* UIImageColors.swift */,
 				3A2F22F32214A57D00A2FB4F /* UIImageExtension.swift */,
 				3A2F22E32214A57D00A2FB4F /* UIImageFixRotationExtension.swift */,
-				3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */,
 				3A2F22F02214A57D00A2FB4F /* UIImageViewBlurExtension.swift */,
 				3A2F22E62214A57D00A2FB4F /* UITableViewExtension.swift */,
 				3A2F22DC2214A57D00A2FB4F /* UITextFieldPaddingViewExtension.swift */,
@@ -334,7 +336,6 @@
 		3A2F22F72214A57D00A2FB4F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */,
 				3A2F22F82214A57D00A2FB4F /* UIUtil.swift */,
 			);
 			path = Utils;
@@ -345,7 +346,6 @@
 			children = (
 				3A2F22FB2214A57D00A2FB4F /* AppData.swift */,
 				3A2F22FC2214A57D00A2FB4F /* AppDelegate.swift */,
-				3ADA2D8122162454005E6BD0 /* Enums.swift */,
 				ABCDC221261D22AC00BEEF5C /* EnvironmentUtil+iOS.swift */,
 			);
 			path = App;
@@ -403,6 +403,26 @@
 				3ADE82642229C56500D3FD7A /* SimpleSearchBar.swift */,
 			);
 			path = Controls;
+			sourceTree = "<group>";
+		};
+		AB9E188E263719D700225E57 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */,
+				3A2F22DF2214A57D00A2FB4F /* StringBase64Extension.swift */,
+				3A2F22E42214A57D00A2FB4F /* StringExtensions.swift */,
+				3A2F22ED2214A57D00A2FB4F /* SwiftColorsExtension.swift */,
+				3A2F22F22214A57D00A2FB4F /* StringsLocalizedExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AB9E18A326371AE200225E57 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		ABCDC1A5261D0A4C00BEEF5C /* Sample-AppleWatch */ = {
@@ -465,6 +485,9 @@
 		ABCDC219261D222300BEEF5C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				AB9E18A326371AE200225E57 /* Utils */,
+				AB9E188E263719D700225E57 /* Extensions */,
+				3ADA2D8722162760005E6BD0 /* Models */,
 				ABCDC22E261D239200BEEF5C /* App */,
 			);
 			path = Shared;
@@ -473,6 +496,7 @@
 		ABCDC22E261D239200BEEF5C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				3ADA2D8122162454005E6BD0 /* Enums.swift */,
 				3A2F22F92214A57D00A2FB4F /* EnvironmentUtil.swift */,
 			);
 			path = App;
@@ -766,10 +790,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB9E188F263719E400225E57 /* StringsLocalizedExtension.swift in Sources */,
 				ABCDC1B8261D0A4F00BEEF5C /* ContentView.swift in Sources */,
 				ABCDC227261D22FF00BEEF5C /* EnvironmentUtil+watchOS.swift in Sources */,
+				AB9E1890263719E400225E57 /* StringExtensions.swift in Sources */,
 				ABCDC1B6261D0A4F00BEEF5C /* HostingController.swift in Sources */,
+				AB9E189C26371AB800225E57 /* UIImageTintedExtension.swift in Sources */,
+				AB9E1891263719E400225E57 /* StringBase64Extension.swift in Sources */,
+				AB9E18A426371AE800225E57 /* DateTimeUtil.swift in Sources */,
 				ABCDC1BA261D0A4F00BEEF5C /* ExtensionDelegate.swift in Sources */,
+				AB9E1887263719A500225E57 /* Enums.swift in Sources */,
+				AB9E189526371A1600225E57 /* SwiftColorsExtension.swift in Sources */,
+				AB9E18832637199600225E57 /* SimpleOption.swift in Sources */,
 				ABCDC21D261D224C00BEEF5C /* EnvironmentUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
