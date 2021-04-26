@@ -3,6 +3,16 @@
 <h1 align="center"><strong>Apple</strong></h1>
 
 
+## macOS
+
+If you are on a machine with ARM (M1) processor you can change your macOS profile file `ezored_macos_app_profile` or you can change in the default profile `arch` and `arch_build` settings for `x86_64` with the following commands:
+
+```
+conan profile new default --detect
+conan profile update settings.arch="x86_64" default
+conan profile update settings.arch_build="x86_64" default
+```
+
 ## iOS
 
 1. Add your framework or xcframework as dependency (see example files below)

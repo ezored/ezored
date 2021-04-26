@@ -86,7 +86,7 @@ def setup(params):
             "remote",
             "add",
             "darwin-toolchain",
-            "https://api.bintray.com/conan/ezored/conan-darwin-toolchain",
+            "https://ezoredrepository.jfrog.io/artifactory/api/conan/conan-local",
             "--force",
         ],
         cwd=os.getcwd(),
