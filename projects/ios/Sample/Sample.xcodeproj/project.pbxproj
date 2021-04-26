@@ -66,11 +66,12 @@
 		AB9E189526371A1600225E57 /* SwiftColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22ED2214A57D00A2FB4F /* SwiftColorsExtension.swift */; };
 		AB9E189C26371AB800225E57 /* UIImageTintedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */; };
 		AB9E18A426371AE800225E57 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */; };
+		AB9E18AA26371C6400225E57 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18A926371C6400225E57 /* SettingsView.swift */; };
+		AB9E18B226371C7400225E57 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18B126371C7400225E57 /* HomeView.swift */; };
+		AB9E18B726371C8100225E57 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18B626371C8100225E57 /* TodoListView.swift */; };
 		ABCDC1A8261D0A4C00BEEF5C /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABCDC1A6261D0A4C00BEEF5C /* Interface.storyboard */; };
 		ABCDC1AA261D0A4F00BEEF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABCDC1A9261D0A4F00BEEF5C /* Assets.xcassets */; };
 		ABCDC1B1261D0A4F00BEEF5C /* Sample-AppleWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ABCDC1B0261D0A4F00BEEF5C /* Sample-AppleWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		ABCDC1B6261D0A4F00BEEF5C /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCDC1B5261D0A4F00BEEF5C /* HostingController.swift */; };
-		ABCDC1B8261D0A4F00BEEF5C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCDC1B7261D0A4F00BEEF5C /* ContentView.swift */; };
 		ABCDC1BA261D0A4F00BEEF5C /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCDC1B9261D0A4F00BEEF5C /* ExtensionDelegate.swift */; };
 		ABCDC1BE261D0A5000BEEF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABCDC1BD261D0A5000BEEF5C /* Assets.xcassets */; };
 		ABCDC1C1261D0A5000BEEF5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABCDC1C0261D0A5000BEEF5C /* Preview Assets.xcassets */; };
@@ -186,13 +187,14 @@
 		44B5C818ABAE48BF038C2B08 /* Pods-Sample-AppleWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample-AppleWatch Extension.debug.xcconfig"; path = "Target Support Files/Pods-Sample-AppleWatch Extension/Pods-Sample-AppleWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		5FDAA0743304F74D3D1644FD /* Pods_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E91F0FCFB4F5DC6F65D06D /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
+		AB9E18A926371C6400225E57 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AB9E18B126371C7400225E57 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		AB9E18B626371C8100225E57 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		ABCDC1A4261D0A4C00BEEF5C /* Sample-AppleWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample-AppleWatch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABCDC1A7261D0A4C00BEEF5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		ABCDC1A9261D0A4F00BEEF5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABCDC1AB261D0A4F00BEEF5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABCDC1B0261D0A4F00BEEF5C /* Sample-AppleWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Sample-AppleWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABCDC1B5261D0A4F00BEEF5C /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
-		ABCDC1B7261D0A4F00BEEF5C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ABCDC1B9261D0A4F00BEEF5C /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		ABCDC1BD261D0A5000BEEF5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABCDC1C0261D0A5000BEEF5C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -456,8 +458,9 @@
 		ABCDC1D7261D0B4800BEEF5C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				ABCDC1B5261D0A4F00BEEF5C /* HostingController.swift */,
-				ABCDC1B7261D0A4F00BEEF5C /* ContentView.swift */,
+				AB9E18A926371C6400225E57 /* SettingsView.swift */,
+				AB9E18B126371C7400225E57 /* HomeView.swift */,
+				AB9E18B626371C8100225E57 /* TodoListView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -791,13 +794,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB9E188F263719E400225E57 /* StringsLocalizedExtension.swift in Sources */,
-				ABCDC1B8261D0A4F00BEEF5C /* ContentView.swift in Sources */,
 				ABCDC227261D22FF00BEEF5C /* EnvironmentUtil+watchOS.swift in Sources */,
+				AB9E18B226371C7400225E57 /* HomeView.swift in Sources */,
 				AB9E1890263719E400225E57 /* StringExtensions.swift in Sources */,
-				ABCDC1B6261D0A4F00BEEF5C /* HostingController.swift in Sources */,
 				AB9E189C26371AB800225E57 /* UIImageTintedExtension.swift in Sources */,
 				AB9E1891263719E400225E57 /* StringBase64Extension.swift in Sources */,
+				AB9E18AA26371C6400225E57 /* SettingsView.swift in Sources */,
 				AB9E18A426371AE800225E57 /* DateTimeUtil.swift in Sources */,
+				AB9E18B726371C8100225E57 /* TodoListView.swift in Sources */,
 				ABCDC1BA261D0A4F00BEEF5C /* ExtensionDelegate.swift in Sources */,
 				AB9E1887263719A500225E57 /* Enums.swift in Sources */,
 				AB9E189526371A1600225E57 /* SwiftColorsExtension.swift in Sources */,
