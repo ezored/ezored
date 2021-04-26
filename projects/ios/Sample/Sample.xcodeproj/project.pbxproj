@@ -58,6 +58,10 @@
 		3ADE82652229C56500D3FD7A /* SimpleSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE82642229C56500D3FD7A /* SimpleSearchBar.swift */; };
 		3ADE82692229C9C000D3FD7A /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE82682229C9C000D3FD7A /* TodoTableViewCell.swift */; };
 		3ADE826B2229D0E000D3FD7A /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE826A2229D0E000D3FD7A /* TodoListViewController.swift */; };
+		AB578450263746A000558651 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB57844F263746A000558651 /* ViewExtensions.swift */; };
+		AB5784AB26376AE600558651 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F23262214A7A800A2FB4F /* Localizable.strings */; };
+		AB5784B0263771F800558651 /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5784AF263771F800558651 /* SharedAssets.xcassets */; };
+		AB5784B1263771F800558651 /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5784AF263771F800558651 /* SharedAssets.xcassets */; };
 		AB9E18832637199600225E57 /* SimpleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8822162760005E6BD0 /* SimpleOption.swift */; };
 		AB9E1887263719A500225E57 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enums.swift */; };
 		AB9E188F263719E400225E57 /* StringsLocalizedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F22214A57D00A2FB4F /* StringsLocalizedExtension.swift */; };
@@ -66,9 +70,11 @@
 		AB9E189526371A1600225E57 /* SwiftColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22ED2214A57D00A2FB4F /* SwiftColorsExtension.swift */; };
 		AB9E189C26371AB800225E57 /* UIImageTintedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */; };
 		AB9E18A426371AE800225E57 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */; };
-		AB9E18AA26371C6400225E57 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18A926371C6400225E57 /* SettingsView.swift */; };
 		AB9E18B226371C7400225E57 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18B126371C7400225E57 /* HomeView.swift */; };
 		AB9E18B726371C8100225E57 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18B626371C8100225E57 /* TodoListView.swift */; };
+		AB9E18C62637238400225E57 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18C52637238400225E57 /* HomeViewModel.swift */; };
+		AB9E18CE2637255500225E57 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F42214A57D00A2FB4F /* CollectionExtensions.swift */; };
+		AB9E18D526372A7200225E57 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18D426372A7200225E57 /* ViewModelState.swift */; };
 		ABCDC1A8261D0A4C00BEEF5C /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABCDC1A6261D0A4C00BEEF5C /* Interface.storyboard */; };
 		ABCDC1AA261D0A4F00BEEF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABCDC1A9261D0A4F00BEEF5C /* Assets.xcassets */; };
 		ABCDC1B1261D0A4F00BEEF5C /* Sample-AppleWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = ABCDC1B0261D0A4F00BEEF5C /* Sample-AppleWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -187,9 +193,12 @@
 		44B5C818ABAE48BF038C2B08 /* Pods-Sample-AppleWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample-AppleWatch Extension.debug.xcconfig"; path = "Target Support Files/Pods-Sample-AppleWatch Extension/Pods-Sample-AppleWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		5FDAA0743304F74D3D1644FD /* Pods_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E91F0FCFB4F5DC6F65D06D /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
-		AB9E18A926371C6400225E57 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AB57844F263746A000558651 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
+		AB5784AF263771F800558651 /* SharedAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SharedAssets.xcassets; sourceTree = "<group>"; };
 		AB9E18B126371C7400225E57 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AB9E18B626371C8100225E57 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
+		AB9E18C52637238400225E57 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		AB9E18D426372A7200225E57 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
 		ABCDC1A4261D0A4C00BEEF5C /* Sample-AppleWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample-AppleWatch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABCDC1A7261D0A4C00BEEF5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		ABCDC1A9261D0A4F00BEEF5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -309,7 +318,6 @@
 			isa = PBXGroup;
 			children = (
 				3A2F22F12214A57D00A2FB4F /* ApplicationTopViewControllerExtension.swift */,
-				3A2F22F42214A57D00A2FB4F /* CollectionExtensions.swift */,
 				3A2F22E82214A57D00A2FB4F /* DictionaryMergeExtension.swift */,
 				3A2F22E92214A57D00A2FB4F /* FadeViewExtension.swift */,
 				3A2F22EE2214A57D00A2FB4F /* IntToTimeIntervalExtension.swift */,
@@ -407,9 +415,18 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
+		AB57844E2637469000558651 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AB57844F263746A000558651 /* ViewExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		AB9E188E263719D700225E57 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3A2F22F42214A57D00A2FB4F /* CollectionExtensions.swift */,
 				3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */,
 				3A2F22DF2214A57D00A2FB4F /* StringBase64Extension.swift */,
 				3A2F22E42214A57D00A2FB4F /* StringExtensions.swift */,
@@ -427,6 +444,23 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		AB9E18C42637236F00225E57 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				AB9E18B126371C7400225E57 /* HomeView.swift */,
+				AB9E18C52637238400225E57 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AB9E18D326372A6800225E57 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AB9E18D426372A7200225E57 /* ViewModelState.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		ABCDC1A5261D0A4C00BEEF5C /* Sample-AppleWatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,6 +474,8 @@
 		ABCDC1B4261D0A4F00BEEF5C /* Sample-AppleWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AB57844E2637469000558651 /* Extensions */,
+				AB9E18D326372A6800225E57 /* Models */,
 				ABCDC1E7261D1EA800BEEF5C /* Resources */,
 				ABCDC1E6261D1E9D00BEEF5C /* App */,
 				ABCDC1D7261D0B4800BEEF5C /* UI */,
@@ -458,8 +494,7 @@
 		ABCDC1D7261D0B4800BEEF5C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				AB9E18A926371C6400225E57 /* SettingsView.swift */,
-				AB9E18B126371C7400225E57 /* HomeView.swift */,
+				AB9E18C42637236F00225E57 /* Home */,
 				AB9E18B626371C8100225E57 /* TodoListView.swift */,
 			);
 			path = UI;
@@ -492,6 +527,7 @@
 				AB9E188E263719D700225E57 /* Extensions */,
 				3ADA2D8722162760005E6BD0 /* Models */,
 				ABCDC22E261D239200BEEF5C /* App */,
+				AB5784AF263771F800558651 /* SharedAssets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -627,6 +663,7 @@
 			files = (
 				3A2F22CF2214A4DB00A2FB4F /* LaunchScreen.storyboard in Resources */,
 				3A2F23242214A7A800A2FB4F /* Localizable.strings in Resources */,
+				AB5784B0263771F800558651 /* SharedAssets.xcassets in Resources */,
 				3A2F22CC2214A4DB00A2FB4F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -645,6 +682,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABCDC1C1261D0A5000BEEF5C /* Preview Assets.xcassets in Resources */,
+				AB5784AB26376AE600558651 /* Localizable.strings in Resources */,
+				AB5784B1263771F800558651 /* SharedAssets.xcassets in Resources */,
 				ABCDC1BE261D0A5000BEEF5C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -794,18 +833,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB9E188F263719E400225E57 /* StringsLocalizedExtension.swift in Sources */,
+				AB9E18CE2637255500225E57 /* CollectionExtensions.swift in Sources */,
+				AB9E18D526372A7200225E57 /* ViewModelState.swift in Sources */,
 				ABCDC227261D22FF00BEEF5C /* EnvironmentUtil+watchOS.swift in Sources */,
 				AB9E18B226371C7400225E57 /* HomeView.swift in Sources */,
+				AB578450263746A000558651 /* ViewExtensions.swift in Sources */,
 				AB9E1890263719E400225E57 /* StringExtensions.swift in Sources */,
 				AB9E189C26371AB800225E57 /* UIImageTintedExtension.swift in Sources */,
 				AB9E1891263719E400225E57 /* StringBase64Extension.swift in Sources */,
-				AB9E18AA26371C6400225E57 /* SettingsView.swift in Sources */,
 				AB9E18A426371AE800225E57 /* DateTimeUtil.swift in Sources */,
 				AB9E18B726371C8100225E57 /* TodoListView.swift in Sources */,
 				ABCDC1BA261D0A4F00BEEF5C /* ExtensionDelegate.swift in Sources */,
 				AB9E1887263719A500225E57 /* Enums.swift in Sources */,
 				AB9E189526371A1600225E57 /* SwiftColorsExtension.swift in Sources */,
 				AB9E18832637199600225E57 /* SimpleOption.swift in Sources */,
+				AB9E18C62637238400225E57 /* HomeViewModel.swift in Sources */,
 				ABCDC21D261D224C00BEEF5C /* EnvironmentUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,34 +1,28 @@
 import Foundation
 import UIKit
 
-class SimpleOption {
-    var type: OptionTypeEnum!
-    var hasSeparator: Bool!
-
-    init(type: OptionTypeEnum, hasSeparator: Bool) {
-        self.type = type
-        self.hasSeparator = hasSeparator
-    }
+struct SimpleOption: Hashable {
+    let type: OptionTypeEnum
+    let hasSeparator: Bool
 
     func getDescription() -> String {
-        if type == .secretKey {
+        switch type {
+        case .secretKey:
             return "OptionSecretKey".localized
-        } else if type == .sharedData {
+        case .sharedData:
             let demoFlag = EZRHelpersSharedDataHelper.getDemoFlag()
             return String(format: "%@ %@", "OptionSharedData".localized, demoFlag ? "ON" : "OFF")
-        } else if type == .httpRequest {
+        case .httpRequest:
             return "OptionHttpRequest".localized
-        } else if type == .httpsRequest {
+        case .httpsRequest:
             return "OptionHttpsRequest".localized
-        } else if type == .fileHelper {
+        case .fileHelper:
             return "OptionFileHelper".localized
-        } else if type == .appVersion {
+        case .appVersion:
             return "OptionAppVersion".localized
-        } else if type == .todo {
+        case .todo:
             return "OptionTodo".localized
         }
-
-        return ""
     }
 
     func getImage() -> UIImage {

@@ -10,20 +10,9 @@
         <!--Home Hosting Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <hostingController id="3mp-fW-waa" customClass="HomeHostingController" customModule="Sample_AppleWatch_Extension">
-                    <connections>
-                        <segue destination="4Aq-kE-e1t" kind="relationship" relationship="nextPage" id="LR1-De-tPb"/>
-                    </connections>
-                </hostingController>
+                <hostingController id="3mp-fW-waa" customClass="HomeHostingController" customModule="Sample_AppleWatch_Extension"/>
             </objects>
             <point key="canvasLocation" x="-125" y="-50"/>
-        </scene>
-        <!--Settings Hosting Controller-->
-        <scene sceneID="2cH-6G-8vp">
-            <objects>
-                <hostingController id="4Aq-kE-e1t" customClass="SettingsHostingController" customModule="Sample_AppleWatch_Extension"/>
-            </objects>
-            <point key="canvasLocation" x="163" y="-44"/>
         </scene>
     </scenes>
 </document>
