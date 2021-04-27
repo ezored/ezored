@@ -20,7 +20,7 @@ extension EnvironmentUtil {
 
         return ""
     }
-        
+
     static func getDeviceId() -> String {
         if let value = UIDevice.current.identifierForVendor?.uuidString {
             return value

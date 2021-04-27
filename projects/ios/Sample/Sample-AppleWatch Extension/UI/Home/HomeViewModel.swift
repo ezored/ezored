@@ -32,9 +32,8 @@ class HomeViewModel: NSObject, ObservableObject {
         NSLog("Changing listData")
     }
 
-    func selectItem(at index: Int) {
-        guard let option = listData.get(at: index)?.type else { return }
-        switch option {
+    func selectItem(_ item: SimpleOption) {
+        switch item.type {
         case .secretKey:
             doActionSecretKey()
         case .sharedData:

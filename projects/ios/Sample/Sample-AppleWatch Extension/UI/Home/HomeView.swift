@@ -29,8 +29,9 @@ struct HomeView: View {
                         Image(uiImage: item.getImage())
                         Text("\(item.getDescription())")
                             .foregroundColor(Color(mainColor))
-//                        Spacer()
-//                            .frame(height: 5)
+                    }
+                    .onTapGesture {
+                        viewModel.selectItem(item)
                     }
                     .listRowBackground(
                         RoundedRectangle(cornerRadius: 8)
@@ -39,6 +40,13 @@ struct HomeView: View {
                 }
             }
         }
+        NavigationLink(
+            destination: Text("Destination"),
+            isActive: $viewModel.showTodoList,
+            label: {
+                EmptyView()
+            }
+        ).isHidden(true)
     }
 }
 
