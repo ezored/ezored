@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ico-home-option.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

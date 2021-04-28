@@ -1,10 +1,10 @@
 # variables
 IOS_PLATFORM = '9.0'
+WATCHOS_PLATFORM = '6.2'
 EZORED_SDK_LOCAL = false
 EZORED_SDK_VERSION = '1.0.0'
 
 # settings
-platform :ios, IOS_PLATFORM
 use_frameworks!
 
 # dependencies
@@ -19,14 +19,21 @@ def shared_pods
 end
 
 target 'Sample' do
+  platform :ios, IOS_PLATFORM
   shared_pods
 end
 
-# remove watch simulator invalid archs
+target 'Sample-AppleWatch Extension' do
+  platform :watchos, WATCHOS_PLATFORM
+  shared_pods
+end
+
 post_install do |installer|
+  
   installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
-              config.build_settings['EXCLUDED_ARCHS[sdk=watchsimulator*]'] = 'i386 arm64'
+              config.build_settings['EXCLUDED_ARCHS[sdk=watchsimulator*]'] = 'arm64 i386'
         end
   end
+  
 end
