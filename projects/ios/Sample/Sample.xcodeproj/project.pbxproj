@@ -62,6 +62,9 @@
 		AB5784AB26376AE600558651 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F23262214A7A800A2FB4F /* Localizable.strings */; };
 		AB5784B0263771F800558651 /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5784AF263771F800558651 /* SharedAssets.xcassets */; };
 		AB5784B1263771F800558651 /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5784AF263771F800558651 /* SharedAssets.xcassets */; };
+		AB5785682639CD1900558651 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5785672639CD1900558651 /* ToDoListView.swift */; };
+		AB57856D2639D0C300558651 /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB57856C2639D0C300558651 /* ToDoListViewModel.swift */; };
+		AB5785732639D22F00558651 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5785722639D22F00558651 /* LoadingView.swift */; };
 		AB9E18832637199600225E57 /* SimpleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8822162760005E6BD0 /* SimpleOption.swift */; };
 		AB9E1887263719A500225E57 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enums.swift */; };
 		AB9E188F263719E400225E57 /* StringsLocalizedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F22214A57D00A2FB4F /* StringsLocalizedExtension.swift */; };
@@ -195,6 +198,9 @@
 		A6E91F0FCFB4F5DC6F65D06D /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
 		AB57844F263746A000558651 /* ViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		AB5784AF263771F800558651 /* SharedAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SharedAssets.xcassets; sourceTree = "<group>"; };
+		AB5785672639CD1900558651 /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
+		AB57856C2639D0C300558651 /* ToDoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewModel.swift; sourceTree = "<group>"; };
+		AB5785722639D22F00558651 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AB9E18B126371C7400225E57 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		AB9E18B626371C8100225E57 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		AB9E18C52637238400225E57 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -423,6 +429,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		AB5785662639CD0B00558651 /* ToDoList */ = {
+			isa = PBXGroup;
+			children = (
+				AB5785672639CD1900558651 /* ToDoListView.swift */,
+				AB57856C2639D0C300558651 /* ToDoListViewModel.swift */,
+			);
+			path = ToDoList;
+			sourceTree = "<group>";
+		};
+		AB5785712639D22300558651 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AB5785722639D22F00558651 /* LoadingView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		AB9E188E263719D700225E57 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +517,8 @@
 		ABCDC1D7261D0B4800BEEF5C /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				AB5785712639D22300558651 /* Common */,
+				AB5785662639CD0B00558651 /* ToDoList */,
 				AB9E18C42637236F00225E57 /* Home */,
 				AB9E18B626371C8100225E57 /* TodoListView.swift */,
 			);
@@ -833,6 +858,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB9E188F263719E400225E57 /* StringsLocalizedExtension.swift in Sources */,
+				AB57856D2639D0C300558651 /* ToDoListViewModel.swift in Sources */,
 				AB9E18CE2637255500225E57 /* CollectionExtensions.swift in Sources */,
 				AB9E18D526372A7200225E57 /* ViewModelState.swift in Sources */,
 				ABCDC227261D22FF00BEEF5C /* EnvironmentUtil+watchOS.swift in Sources */,
@@ -844,6 +870,8 @@
 				AB9E18A426371AE800225E57 /* DateTimeUtil.swift in Sources */,
 				AB9E18B726371C8100225E57 /* TodoListView.swift in Sources */,
 				ABCDC1BA261D0A4F00BEEF5C /* ExtensionDelegate.swift in Sources */,
+				AB5785732639D22F00558651 /* LoadingView.swift in Sources */,
+				AB5785682639CD1900558651 /* ToDoListView.swift in Sources */,
 				AB9E1887263719A500225E57 /* Enums.swift in Sources */,
 				AB9E189526371A1600225E57 /* SwiftColorsExtension.swift in Sources */,
 				AB9E18832637199600225E57 /* SimpleOption.swift in Sources */,

@@ -28,25 +28,27 @@ struct HomeView: View {
             
             ZStack(alignment: .top) {
                 List {
-                    Spacer()
-                        .frame(height: 30)
-                        .listRowBackground(Color.clear)
-                        .foregroundColor(Color.clear)
-                    ForEach(self.viewModel.listData, id: \.self) { item in
-                        HStack {
-                            Image(uiImage: item.getImage())
-                            Text("\(item.getDescription())")
-                                .foregroundColor(Color(mainColor))
+                    Section(
+                        header: Rectangle()
+                            .frame(height:26)
+                            .foregroundColor(Color.clear)
+                    ) {
+                        ForEach(self.viewModel.listData, id: \.self) { item in
+                            HStack {
+                                Image(uiImage: item.getImage())
+                                Text("\(item.getDescription())")
+                                    .foregroundColor(Color(mainColor))
+                            }
+                            .onTapGesture {
+                                viewModel.selectItem(item)
+                            }
+                            .listRowBackground(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .foregroundColor(Color(rowBackgroundColor))
+                            )
                         }
-                        .onTapGesture {
-                            viewModel.selectItem(item)
-                        }
-                        .listRowBackground(
-                            RoundedRectangle(cornerRadius: 8)
-                                .foregroundColor(Color(rowBackgroundColor))
-                        )
                     }
-                }
+                }.listStyle(PlainListStyle())
                 ZStack(alignment: .top) {
                     LinearGradient(gradient: Gradient(colors: [Color.black, Color.black, Color.black, Color.clear]), startPoint: .top, endPoint: .bottom)
                     Text("Home")

@@ -12,11 +12,6 @@ class HomeViewModel: NSObject, ObservableObject {
     @Published var listData: [SimpleOption] = []
     @Published var alertMessage: ViewModelState<String, Never> = .notLoaded
     @Published var showTodoList: Bool = false
-
-    
-    override init() {
-        NSLog("INITIALIZING VIEW MODEL")
-    }
     
     func loadData() {
         var data: [SimpleOption] = []
