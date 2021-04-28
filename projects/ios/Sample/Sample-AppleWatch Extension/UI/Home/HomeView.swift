@@ -20,11 +20,12 @@ struct HomeView: View {
         ZStack {
             NavigationLink(
                 destination: Text("Destination"),
-                isActive: $viewModel.showTodoList,
+                tag: ActionState.active,
+                selection: $viewModel.showTodoList,
                 label: {
                     EmptyView()
                 }
-            ).hidden()
+            )
             
             ZStack(alignment: .top) {
                 List {
@@ -58,6 +59,15 @@ struct HomeView: View {
                 .frame(height: 30)
             }
             
+            if let message = viewModel.alertMessage.data {
+                AlertMessageView(message: message)
+                    .onTapGesture {
+                        viewModel.tapAlertMessage()
+                    }
+            }
+            
+            LoadingView()
+                .isHidden(!viewModel.alertMessage.isLoading && !viewModel.showTodoList.isLoading)
         }
         .onAppear {
             DispatchQueue.main.async {

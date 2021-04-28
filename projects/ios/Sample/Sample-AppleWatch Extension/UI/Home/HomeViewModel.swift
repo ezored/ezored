@@ -9,9 +9,10 @@
 import Foundation
 
 class HomeViewModel: NSObject, ObservableObject {
-    @Published var listData: [SimpleOption] = []
+    @Published private(set) var listData: [SimpleOption] = []
     @Published var alertMessage: ViewModelState<String, Never> = .notLoaded
-    @Published var showTodoList: Bool = false
+    @Published var showTodoList: ActionState? = .inactive
+        
     
     func loadData() {
         var data: [SimpleOption] = []
@@ -24,7 +25,14 @@ class HomeViewModel: NSObject, ObservableObject {
         data.append(SimpleOption(type: .appVersion, hasSeparator: false))
         
         listData = data
+        showTodoList = .inactive
+        alertMessage = .notLoaded
+        
         NSLog("Changing listData")
+    }
+    
+    func tapAlertMessage() {
+        alertMessage = .notLoaded
     }
 
     func selectItem(_ item: SimpleOption) {
@@ -112,7 +120,7 @@ class HomeViewModel: NSObject, ObservableObject {
     }
 
     private func doActionTodo() {
-        alertMessage = .loading(data: nil)
+        self.showTodoList = .loading
 
         DispatchQueue.global(qos: .background).async {
             // add some rows
@@ -134,12 +142,19 @@ class HomeViewModel: NSObject, ObservableObject {
 
             // show list view controller
             DispatchQueue.main.async {
-                self.showTodoList = true
+                self.showTodoList = .active
             }
         }
     }
 
     private func doAppVersion() {
-        
+        guard let dictionary = Bundle.main.infoDictionary,
+              let version = dictionary["CFBundleShortVersionString"] as? String,
+              let build = dictionary["CFBundleVersion"] as? String else {
+            return
+        }
+
+        let message = "Version: \(version)\nBuild: \(build)"
+        alertMessage = .loaded(data: message)
     }
 }
