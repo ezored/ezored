@@ -19,7 +19,7 @@ struct HomeView: View {
     var body: some View {
         ZStack {
             NavigationLink(
-                destination: Text("Destination"),
+                destination: ToDoListView(),
                 tag: ActionState.active,
                 selection: $viewModel.showTodoList,
                 label: {
@@ -35,13 +35,14 @@ struct HomeView: View {
                             .foregroundColor(Color.clear)
                     ) {
                         ForEach(self.viewModel.listData, id: \.self) { item in
-                            HStack {
-                                Image(uiImage: item.getImage())
-                                Text("\(item.getDescription())")
-                                    .foregroundColor(Color(mainColor))
-                            }
-                            .onTapGesture {
+                            Button {
                                 viewModel.selectItem(item)
+                            } label: {
+                                HStack {
+                                    Image(uiImage: item.getImage())
+                                    Text("\(item.getDescription())")
+                                        .foregroundColor(Color(mainColor))
+                                }
                             }
                             .listRowBackground(
                                 RoundedRectangle(cornerRadius: 8)
@@ -49,7 +50,7 @@ struct HomeView: View {
                             )
                         }
                     }
-                }.listStyle(PlainListStyle())
+                }
                 ZStack(alignment: .top) {
                     LinearGradient(gradient: Gradient(colors: [Color.black, Color.black, Color.black, Color.clear]), startPoint: .top, endPoint: .bottom)
                     Text("Home")

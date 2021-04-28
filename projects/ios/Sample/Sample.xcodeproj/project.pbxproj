@@ -75,7 +75,6 @@
 		AB9E189C26371AB800225E57 /* UIImageTintedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */; };
 		AB9E18A426371AE800225E57 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */; };
 		AB9E18B226371C7400225E57 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18B126371C7400225E57 /* HomeView.swift */; };
-		AB9E18B726371C8100225E57 /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18B626371C8100225E57 /* TodoListView.swift */; };
 		AB9E18C62637238400225E57 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18C52637238400225E57 /* HomeViewModel.swift */; };
 		AB9E18CE2637255500225E57 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F42214A57D00A2FB4F /* CollectionExtensions.swift */; };
 		AB9E18D526372A7200225E57 /* ViewModelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18D426372A7200225E57 /* ViewModelState.swift */; };
@@ -204,7 +203,6 @@
 		AB5785722639D22F00558651 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AB5785792639E8FA00558651 /* AlertMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMessageView.swift; sourceTree = "<group>"; };
 		AB9E18B126371C7400225E57 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		AB9E18B626371C8100225E57 /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
 		AB9E18C52637238400225E57 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AB9E18D426372A7200225E57 /* ViewModelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelState.swift; sourceTree = "<group>"; };
 		ABCDC1A4261D0A4C00BEEF5C /* Sample-AppleWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample-AppleWatch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -523,7 +521,6 @@
 				AB5785712639D22300558651 /* Common */,
 				AB5785662639CD0B00558651 /* ToDoList */,
 				AB9E18C42637236F00225E57 /* Home */,
-				AB9E18B626371C8100225E57 /* TodoListView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -872,7 +869,6 @@
 				AB9E189C26371AB800225E57 /* UIImageTintedExtension.swift in Sources */,
 				AB9E1891263719E400225E57 /* StringBase64Extension.swift in Sources */,
 				AB9E18A426371AE800225E57 /* DateTimeUtil.swift in Sources */,
-				AB9E18B726371C8100225E57 /* TodoListView.swift in Sources */,
 				ABCDC1BA261D0A4F00BEEF5C /* ExtensionDelegate.swift in Sources */,
 				AB5785732639D22F00558651 /* LoadingView.swift in Sources */,
 				AB5785682639CD1900558651 /* ToDoListView.swift in Sources */,
