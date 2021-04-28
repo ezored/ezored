@@ -11,7 +11,7 @@ import SwiftUI
 import WatchKit
 
 struct HomeView: View {
-    @ObservedObject private(set) var viewModel: HomeViewModel
+    @ObservedObject private(set) var viewModel = HomeViewModel()
     
     private let mainColor = UIColor(hexString: "#ff3860")!
     private let rowBackgroundColor = UIColor(hexString: "#ffffff")!
@@ -57,18 +57,16 @@ struct HomeView: View {
             }
             
         }
+        .onAppear {
+            DispatchQueue.main.async {
+                self.viewModel.loadData()
+            }
+        }
     }
 }
 
 class HomeHostingController: WKHostingController<HomeView> {
-    let viewModel = HomeViewModel()
-    
     override var body: HomeView {
-        return HomeView(viewModel: self.viewModel)
-    }
-    
-    override func awake(withContext context: Any?) {
-        super.awake(withContext: context)
-        viewModel.loadData()
+        return HomeView()
     }
 }
