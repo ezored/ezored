@@ -1,10 +1,3 @@
-//
-//  ExtensionDelegate.swift
-//  Sample-AppleWatch Extension
-//
-//  Created by ubook on 06/04/21.
-//  Copyright © 2021 PRSoluções. All rights reserved.
-//
 
 import WatchKit
 
