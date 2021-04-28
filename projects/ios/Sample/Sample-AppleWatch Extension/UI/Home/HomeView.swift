@@ -17,36 +17,46 @@ struct HomeView: View {
     private let rowBackgroundColor = UIColor(hexString: "#ffffff")!
     
     var body: some View {
-        VStack {
-            Text("Home")
-                .font(.headline)
-                .foregroundColor(Color(mainColor))
-            Spacer()
-                .frame(height: 10)
-            List {
-                ForEach(self.viewModel.listData, id: \.self) { item in
-                    HStack {
-                        Image(uiImage: item.getImage())
-                        Text("\(item.getDescription())")
-                            .foregroundColor(Color(mainColor))
-                    }
-                    .onTapGesture {
-                        viewModel.selectItem(item)
-                    }
-                    .listRowBackground(
-                        RoundedRectangle(cornerRadius: 8)
-                            .foregroundColor(Color(rowBackgroundColor))
-                    )
+        ZStack {
+            NavigationLink(
+                destination: Text("Destination"),
+                isActive: $viewModel.showTodoList,
+                label: {
+                    EmptyView()
                 }
+            ).hidden()
+            
+            ZStack(alignment: .top) {
+                List {
+                    Spacer()
+                        .frame(height: 30)
+                        .listRowBackground(Color.clear)
+                        .foregroundColor(Color.clear)
+                    ForEach(self.viewModel.listData, id: \.self) { item in
+                        HStack {
+                            Image(uiImage: item.getImage())
+                            Text("\(item.getDescription())")
+                                .foregroundColor(Color(mainColor))
+                        }
+                        .onTapGesture {
+                            viewModel.selectItem(item)
+                        }
+                        .listRowBackground(
+                            RoundedRectangle(cornerRadius: 8)
+                                .foregroundColor(Color(rowBackgroundColor))
+                        )
+                    }
+                }
+                ZStack(alignment: .top) {
+                    LinearGradient(gradient: Gradient(colors: [Color.black, Color.black, Color.black, Color.clear]), startPoint: .top, endPoint: .bottom)
+                    Text("Home")
+                        .font(.headline)
+                        .foregroundColor(Color.pink)
+                }
+                .frame(height: 30)
             }
+            
         }
-        NavigationLink(
-            destination: Text("Destination"),
-            isActive: $viewModel.showTodoList,
-            label: {
-                EmptyView()
-            }
-        ).isHidden(true)
     }
 }
 
