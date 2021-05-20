@@ -42,27 +42,27 @@
 
 - (void)v:(nonnull NSString *)message 
 {
-    NSLog(@"💜 %@", message);
+    printf("[%s] 💜 %s\n", [[[NSDate date] description] UTF8String], [[NSString stringWithFormat:@"%@", message] UTF8String]);
 }
 
 - (void)d:(nonnull NSString *)message 
 {
-    NSLog(@"💚 %@", message);
+    printf("[%s] 💚 %s\n", [[[NSDate date] description] UTF8String], [[NSString stringWithFormat:@"%@", message] UTF8String]);
 }
 
 - (void)i:(nonnull NSString *)message 
 {
-    NSLog(@"💙 %@", message);
+    printf("[%s] 💙 %s\n", [[[NSDate date] description] UTF8String], [[NSString stringWithFormat:@"%@", message] UTF8String]);
 }
 
 - (void)w:(nonnull NSString *)message 
 {
-    NSLog(@"💛 %@", message);
+    printf("[%s] 💛 %s\n", [[[NSDate date] description] UTF8String], [[NSString stringWithFormat:@"%@", message] UTF8String]);
 }
 
 - (void)e:(nonnull NSString *)message 
 {
-    NSLog(@"❤️ %@", message);
+    printf("[%s] ❤️ %s\n", [[[NSDate date] description] UTF8String], [[NSString stringWithFormat:@"%@", message] UTF8String]);
 }
 
 - (void)setGroup:(nonnull NSString *)group 
