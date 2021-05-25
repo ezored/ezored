@@ -90,7 +90,8 @@
     }
     
     // get response body
-    NSString *responseBody = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+    NSString *responseBody = @"";
+    [NSString stringEncodingForData:receivedData encodingOptions:nil convertedString:&responseBody usedLossyConversion:nil];
     
     // get response headers
     NSDictionary *responderHeaders = [(NSHTTPURLResponse *)response allHeaderFields];
