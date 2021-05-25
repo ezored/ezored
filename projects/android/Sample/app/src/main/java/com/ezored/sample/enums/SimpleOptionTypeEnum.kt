@@ -8,5 +8,4 @@ enum class SimpleOptionTypeEnum {
     FILE_HELPER,
     APP_VERSION,
     TODO
-
 }

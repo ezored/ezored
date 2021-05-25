@@ -12,7 +12,6 @@ import com.ezored.helpers.SharedDataHelper
 import com.ezored.sample.R
 import com.ezored.sample.enums.SimpleOptionTypeEnum
 import com.ezored.sample.models.SimpleOption
-import java.util.*
 
 class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder> {
 
@@ -79,7 +78,5 @@ class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder>
         override fun onClick(view: View) {
             listener?.onSimpleOptionItemClick(view, listData!![adapterPosition])
         }
-
     }
-
 }

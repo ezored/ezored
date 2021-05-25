@@ -137,5 +137,4 @@ class Application : MultiDexApplication() {
         lateinit var instance: Application
             private set
     }
-
 }

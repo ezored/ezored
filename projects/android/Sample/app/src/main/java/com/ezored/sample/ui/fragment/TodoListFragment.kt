@@ -13,7 +13,6 @@ import com.ezored.sample.ui.fragment.base.BaseListFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
 
 class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListener {
 
@@ -101,5 +100,4 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
             return TodoListFragment()
         }
     }
-
 }

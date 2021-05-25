@@ -10,7 +10,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.accessibility.AccessibilityManager
 import com.ezored.sample.app.Application
-import java.util.*
+import java.util.Random
 
 @Suppress("Deprecation", "Unused")
 object Util {
@@ -28,7 +28,8 @@ object Util {
                 Application.instance.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                cm.getNetworkCapabilities(cm.activeNetwork)?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                cm.getNetworkCapabilities(cm.activeNetwork)
+                    ?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
                     ?: false
             } else {
                 cm.activeNetworkInfo?.type == ConnectivityManager.TYPE_WIFI
@@ -101,5 +102,4 @@ object Util {
 
         return randomStringBuilder.toString()
     }
-
 }

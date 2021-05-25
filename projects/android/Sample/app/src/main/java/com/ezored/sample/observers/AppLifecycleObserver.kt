@@ -16,5 +16,4 @@ class AppLifecycleObserver : LifecycleObserver {
     fun onMoveToBackground() {
         Application.instance.onMoveToBackground()
     }
-
 }

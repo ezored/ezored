@@ -10,7 +10,7 @@ import com.ezored.domain.DeviceData
 import com.ezored.domain.InitializationData
 import com.ezored.sample.BuildConfig
 import com.ezored.sample.app.Application
-import java.util.*
+import java.util.Locale
 
 object EnvironmentUtil {
 
@@ -22,7 +22,6 @@ object EnvironmentUtil {
             return if (TextUtils.isEmpty(id)) {
                 ""
             } else id
-
         }
 
     val formattedSystemVersion: String
@@ -157,5 +156,4 @@ object EnvironmentUtil {
                 BuildConfig.DEBUG
             )
         }
-
 }

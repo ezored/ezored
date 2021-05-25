@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.ezored.domain.Todo
 import com.ezored.sample.R
-import java.util.*
+import java.util.Locale
 
 class TodoAdapter : RecyclerView.Adapter<TodoAdapter.ViewHolder> {
 
@@ -52,7 +52,6 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.ViewHolder> {
 
     override fun getItemCount(): Int {
         return listData?.size ?: 0
-
     }
 
     fun setListener(listener: TodoAdapterListener) {
@@ -79,7 +78,5 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.ViewHolder> {
         override fun onClick(view: View) {
             listener?.onTodoItemClick(view, listData!![adapterPosition])
         }
-
     }
-
 }

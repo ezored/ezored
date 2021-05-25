@@ -5,5 +5,4 @@ enum class LoadStateEnum {
     NOT_LOADED,
     LOADING,
     LOADED
-
 }

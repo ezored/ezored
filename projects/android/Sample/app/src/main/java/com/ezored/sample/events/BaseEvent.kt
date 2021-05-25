@@ -9,5 +9,4 @@ open class BaseEvent {
             false
         } else tag == tagToCompare
     }
-
 }

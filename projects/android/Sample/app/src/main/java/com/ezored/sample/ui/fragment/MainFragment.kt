@@ -84,5 +84,4 @@ class MainFragment : BaseFragment(), BottomNavigationView.OnNavigationItemSelect
             return MainFragment()
         }
     }
-
 }

@@ -29,5 +29,4 @@ class ConnectivityChangeReceiver : BroadcastReceiver() {
             Logger.d("[ConnectivityChangeReceiver : onReceive] Connected: NO")
         }
     }
-
 }

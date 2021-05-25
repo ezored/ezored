@@ -8,7 +8,11 @@ import com.ezored.domain.Todo
 import com.ezored.helpers.EnvironmentHelper
 import com.ezored.helpers.SharedDataHelper
 import com.ezored.io.FileHelper
-import com.ezored.net.http.*
+import com.ezored.net.http.HttpClient
+import com.ezored.net.http.HttpHeader
+import com.ezored.net.http.HttpMethod
+import com.ezored.net.http.HttpRequest
+import com.ezored.net.http.HttpRequestParam
 import com.ezored.sample.R
 import com.ezored.sample.adapter.SimpleOptionAdapter
 import com.ezored.sample.enums.LoadStateEnum
@@ -20,7 +24,8 @@ import com.ezored.sample.utils.UIUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 class HomeFragment : BaseListFragment<SimpleOption>(),
     SimpleOptionAdapter.SimpleOptionAdapterListener {
@@ -67,7 +72,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
         (listData as MutableLiveData<ArrayList<SimpleOption>>).observe(
             this,
             androidx.lifecycle.Observer { list ->
-                adapter = SimpleOptionAdapter(context!!, list)
+                adapter = SimpleOptionAdapter(requireContext(), list)
                 (adapter as SimpleOptionAdapter).setListener(this)
 
                 updateAdapter()
@@ -101,8 +106,14 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
             params.add(HttpRequestParam("username", "demo"))
             params.add(HttpRequestParam("password", "demo"))
 
-            val request =
-                HttpRequest("https://httpbin.org/post", HttpMethod.METHOD_POST, params, headers, "")
+            val request = HttpRequest(
+                "https://httpbin.org/post",
+                HttpMethod.METHOD_POST,
+                params,
+                headers,
+                "",
+            )
+
             val response = HttpClient.shared().doRequest(request)
 
             withContext(Dispatchers.Main) {
@@ -180,5 +191,4 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
             return HomeFragment()
         }
     }
-
 }

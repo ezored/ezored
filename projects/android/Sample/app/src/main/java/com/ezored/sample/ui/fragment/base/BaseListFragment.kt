@@ -4,12 +4,11 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.ezored.sample.R
-import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
-import java.util.*
 
 open class BaseListFragment<T> : BaseFragment() {
 
@@ -38,11 +37,16 @@ open class BaseListFragment<T> : BaseFragment() {
             rvList.setHasFixedSize(true)
 
             context?.let { context ->
-                rvList.addItemDecoration(
-                    HorizontalDividerItemDecoration.Builder(context).color(
-                        ContextCompat.getColor(context, R.color.grey_200)
-                    ).build()
+                val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+
+                divider.setDrawable(
+                    ContextCompat.getDrawable(
+                        context,
+                        R.drawable.list_item_separator
+                    )!!
                 )
+
+                rvList.addItemDecoration(divider)
             }
         }
     }
@@ -56,5 +60,4 @@ open class BaseListFragment<T> : BaseFragment() {
     protected fun updateAdapter() {
         rvList.adapter = adapter
     }
-
 }

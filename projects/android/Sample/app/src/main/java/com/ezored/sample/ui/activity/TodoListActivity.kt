@@ -80,5 +80,4 @@ class TodoListActivity : BaseActivity() {
             return Intent(context, TodoListActivity::class.java)
         }
     }
-
 }

@@ -10,7 +10,7 @@ import com.ezored.sample.enums.SimpleOptionTypeEnum
 import com.ezored.sample.models.SimpleOption
 import com.ezored.sample.ui.fragment.base.BaseListFragment
 import com.ezored.sample.utils.UIUtil
-import java.util.*
+import java.util.Locale
 
 class SettingsFragment : BaseListFragment<SimpleOption>(),
     SimpleOptionAdapter.SimpleOptionAdapterListener {
@@ -42,7 +42,7 @@ class SettingsFragment : BaseListFragment<SimpleOption>(),
         (listData as MutableLiveData<ArrayList<SimpleOption>>).observe(
             this,
             androidx.lifecycle.Observer { list ->
-                adapter = SimpleOptionAdapter(context!!, list)
+                adapter = SimpleOptionAdapter(requireContext(), list)
                 (adapter as SimpleOptionAdapter).setListener(this)
 
                 updateAdapter()
@@ -83,5 +83,4 @@ class SettingsFragment : BaseListFragment<SimpleOption>(),
             return SettingsFragment()
         }
     }
-
 }

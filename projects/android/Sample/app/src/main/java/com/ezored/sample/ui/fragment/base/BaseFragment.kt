@@ -407,5 +407,4 @@ open class BaseFragment : Fragment(), CoroutineScope {
     protected fun hasToolbarLogo(): Boolean {
         return false
     }
-
 }

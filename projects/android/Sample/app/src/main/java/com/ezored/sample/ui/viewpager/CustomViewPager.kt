@@ -29,5 +29,4 @@ class CustomViewPager : ViewPager {
         //When disable = true not work the scroll and when disble = false work the scroll
         this.disable = disable
     }
-
 }

@@ -20,5 +20,4 @@ class MainActivity : BaseActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         fragment?.onActivityResult(requestCode, resultCode, data)
     }
-
 }

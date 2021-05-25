@@ -350,7 +350,11 @@ object UIUtil {
         }
     }
 
-    fun buildColorStateList(context: Context, @ColorRes pressedColorRes: Int, @ColorRes defaultColorRes: Int): ColorStateList {
+    fun buildColorStateList(
+        context: Context,
+        @ColorRes pressedColorRes: Int,
+        @ColorRes defaultColorRes: Int
+    ): ColorStateList {
         val pressedColor = ContextCompat.getColor(context, pressedColorRes)
         val defaultColor = ContextCompat.getColor(context, defaultColorRes)
 
@@ -424,5 +428,4 @@ object UIUtil {
             }
         }
     }
-
 }

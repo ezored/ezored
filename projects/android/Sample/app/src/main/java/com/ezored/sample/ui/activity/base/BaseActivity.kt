@@ -69,5 +69,4 @@ open class BaseActivity : AppCompatActivity() {
             EventBus.getDefault().unregister(this)
         }
     }
-
 }

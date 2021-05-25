@@ -9,5 +9,4 @@ class EventNetworkStateChanged : BaseEvent {
         this.isConnected = isConnected
         this.type = type
     }
-
 }
