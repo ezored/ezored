@@ -6,21 +6,21 @@ Distribution can be done individually by target. Today all **dist.py** (target v
 
 You can call "dist" verb from any target, example:
 
-> python make.py target linux_app dist
+> python make.py target linux dist
 
 The folder with name **dist** has data to deploy (Android, iOS, Windows, macOS, Linux and others) and this folder is not versioned, but you can download distribution file with the following command:
 
-> python make.py target linux_app dist download --version=1.0.0
+> python make.py target linux dist download --version=1.0.0
 
 This command will download a packed file and will unpack to **"dist"** folder:
 
 You can also generate a packed **"dist"** folder again using:
 
-> python make.py target linux_app dist generate --version=1.0.0
+> python make.py target linux dist generate --version=1.0.0
 
 And you can upload with:
 
-> python make.py target linux_app dist upload --version=1.0.0
+> python make.py target linux dist upload --version=1.0.0
 
 Obs 1: This template come configured with AWS S3 when upload distribution files.
 
@@ -30,7 +30,7 @@ Obs 3: You can change all AWS configurations like bucket name and bucket path fr
 
 Obs 4: The parameter "--version" is optional and if you omit it will use version from the target configuration file.
 
-Obs 5: You can download version 1.0.0 for all targets and not only "linux_app" because we have everything compiled and uploaded for all targets and version 1.0.0 for tests.
+Obs 5: You can download version 1.0.0 for all targets and not only "linux" because we have everything compiled and uploaded for all targets and version 1.0.0 for tests.
 
 Obs 6: You can force AWS S3 delete file if it exists using parameter --force.
 
@@ -52,6 +52,6 @@ iOS sample project is configured with a custom pod to download SDK from AWS S3. 
 When use local path, you need start a simple HTTP server to cocoapods tool download file "dist.tar.gz" that was generated:
 
 ```
-cd build/ios_framework/dist
+cd build/ios/dist
 python -m http.server
 ```

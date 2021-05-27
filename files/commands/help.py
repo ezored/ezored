@@ -2,9 +2,9 @@
 
 import sys
 
-from files.modules import command
-from files.modules import log
-from files.modules.command import ezored_commands
+from files.core import command
+from files.core import log
+from files.core.command import ezored_commands
 
 
 # -----------------------------------------------------------------------------

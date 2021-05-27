@@ -17,12 +17,12 @@
 5. Now all commands are available. Run the following command to list all targets that you can build:
 > python make.py target
 
-Example: If you are on **Linux**, you can build the **linux_app** target, if on **macOS** you can run **macos_app** target and if on **Windows** you can run **windows_app**.
+Example: If you are on **Linux**, you can build the **linux** target, if on **macOS** you can run **macos** target and if on **Windows** you can run **windows**.
 
-> python make.py target linux_app prepare  
-> python make.py target linux_app build  
-> python make.py target linux_app package  
-> python make.py target linux_app dist  
+> python make.py target linux prepare  
+> python make.py target linux build  
+> python make.py target linux package  
+> python make.py target linux dist  
 
 **Obs:**
 

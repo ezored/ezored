@@ -113,7 +113,7 @@ if (gradle.ext.useRemoteLibrary) {
     apply plugin: "de.undercouch.download"
 
     task downloadEzoredSdkFile(type: Download) {
-        src "https://ezored.s3.amazonaws.com/dist/android_aar/${gradle.ext.ezoredSdkVersion}/dist.tar.gz"
+        src "https://ezored.s3.amazonaws.com/dist/android/${gradle.ext.ezoredSdkVersion}/dist.tar.gz"
         dest new File(gradle.ext.ezoredSdkCacheDir, "ezored-sdk/sdk-${gradle.ext.ezoredSdkVersion}.tar.gz")
         tempAndMove true
         onlyIfModified true

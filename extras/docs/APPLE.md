@@ -5,7 +5,7 @@
 
 ## macOS
 
-If you are on a machine with ARM (M1) processor you can change your macOS profile file `ezored_macos_app_profile` or you can change in the default profile `arch` and `arch_build` settings for `x86_64` with the following commands:
+If you are on a machine with ARM (M1) processor you can change your macOS profile file `ezored_macos_profile` or you can change in the default profile `arch` and `arch_build` settings for `x86_64` with the following commands:
 
 ```
 conan profile new default --detect
@@ -54,7 +54,7 @@ def shared_pods
   if EZORED_SDK_LOCAL
     pod 'ezored', :http => 'http://127.0.0.1:8000/dist.tar.gz'
     else
-    pod 'ezored', :http => 'https://ezored.s3.amazonaws.com/dist/ios_framework/' + EZORED_SDK_VERSION + '/dist.tar.gz'
+    pod 'ezored', :http => 'https://ezored.s3.amazonaws.com/dist/ios/' + EZORED_SDK_VERSION + '/dist.tar.gz'
   end
 
 end

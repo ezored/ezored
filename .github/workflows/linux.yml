@@ -13,7 +13,7 @@ jobs:
           - {
               name: "Ubuntu Latest GCC",
               os: ubuntu-latest,
-              target: "linux_app",
+              target: "linux",
             }
         python-version: [3.7]
 

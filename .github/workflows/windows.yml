@@ -13,7 +13,7 @@ jobs:
           - {
               name: "Windows Latest MSVC",
               os: windows-latest,
-              target: "windows_app",
+              target: "windows",
             }
         python-version: [3.7]
 

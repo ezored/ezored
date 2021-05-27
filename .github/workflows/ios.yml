@@ -13,7 +13,7 @@ jobs:
           - {
               name: "macOS Latest Clang",
               os: macos-latest,
-              target: "ios_framework",
+              target: "ios",
             }
         python-version: [3.7]
 

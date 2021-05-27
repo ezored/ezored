@@ -2,11 +2,11 @@
 
 import os
 
-from files.modules import const
-from files.modules import log
-from files.modules import runner
-from files.modules import target
-from files.modules import util
+from files.core import const
+from files.core import log
+from files.core import runner
+from files.core import target
+from files.core import util
 
 
 # -----------------------------------------------------------------------------

@@ -4,7 +4,7 @@ import os
 import subprocess
 import sys
 
-from files.modules import ezored
+from files.core import ezored
 
 proj_path = os.path.dirname(os.path.abspath(__file__))
 

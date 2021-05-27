@@ -4,13 +4,13 @@ import os
 import stat
 import importlib
 
-from files.modules import const
-from files.modules import file
-from files.modules import log
-from files.modules import runner
-from files.modules import util
-from files.modules import net
-from files.modules import gluecode
+from files.core import const
+from files.core import file
+from files.core import log
+from files.core import runner
+from files.core import util
+from files.core import net
+from files.core import gluecode
 from files.config import gluecode as config
 
 

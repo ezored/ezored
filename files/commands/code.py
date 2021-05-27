@@ -3,10 +3,10 @@
 import os
 import subprocess
 
-from files.modules import const
-from files.modules import file
-from files.modules import log
-from files.modules import runner
+from files.core import const
+from files.core import file
+from files.core import log
+from files.core import runner
 
 
 # -----------------------------------------------------------------------------
@@ -38,7 +38,7 @@ def code_format(params):
         dir_list = [
             {
                 "path": os.path.join(
-                    proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_SRC
+                    proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_MODULES
                 ),
                 "patterns": ["*.cpp", "*.hpp"],
             },

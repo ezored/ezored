@@ -2,8 +2,8 @@
 
 import os
 
-from files.modules import file
-from files.modules import log
+from files.core import file
+from files.core import log
 
 
 # -----------------------------------------------------------------------------
