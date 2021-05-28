@@ -1,5 +1,5 @@
-@extern "../app-domain/yaml/customer.yaml"
-@extern "../app-domain/yaml/response.yaml"
+@extern "../../app-domain/gluecode/yaml/customer.yaml"
+@extern "../../app-domain/gluecode/yaml/response.yaml"
 
 customer_system_service_login_data = record {
     response: response;

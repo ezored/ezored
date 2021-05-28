@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
 import os
-import subprocess
 import sys
 
-from files.core import ezored
+from files.core import bootstrap
 
 proj_path = os.path.dirname(os.path.abspath(__file__))
 
 
+# -----------------------------------------------------------------------------
 if __name__ == "__main__":
-    ezored.run(proj_path, sys.argv)
+    bootstrap.run(proj_path, sys.argv)

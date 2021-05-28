@@ -1,4 +1,4 @@
-@extern "../app-enums/yaml/customer_status_enum.yaml"
+@extern "../../app-enums/gluecode/yaml/customer_status_enum.yaml"
 
 todo = record {
     id: i64;

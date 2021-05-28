@@ -1,6 +1,6 @@
-@extern "../app-domain/yaml/initialization_data.yaml"
-@extern "../app-domain/yaml/device_data.yaml"
-@extern "../app-domain/yaml/customer.yaml"
+@extern "../../app-domain/gluecode/yaml/initialization_data.yaml"
+@extern "../../app-domain/gluecode/yaml/device_data.yaml"
+@extern "../../app-domain/gluecode/yaml/customer.yaml"
 
 application_core = interface +c {
     static shared(): application_core;

@@ -1,4 +1,4 @@
-"""Module: Ezored"""
+"""Module: Bootstrap"""
 
 import colorama
 from files.core import command

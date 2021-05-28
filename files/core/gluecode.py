@@ -9,6 +9,8 @@ from files.core import runner
 from files.core import util
 
 # -----------------------------------------------------------------------------
+
+
 def get_tool_path(params):
     proj_path = params["proj_path"]
 
@@ -36,14 +38,22 @@ def generate(params):
     gluecode_tool_path = get_tool_path(params)
 
     if not os.path.isfile(gluecode_tool_path):
-        log.error("Glue code tool was not found: {0}".format(gluecode_tool_path))
+        log.error(
+            "Glue code tool was not found: {0}".format(
+                gluecode_tool_path,
+            )
+        )
 
     # module data
     module_name = module_data["name"]
     tool_params = module_data["tool_params"]
 
     module_dir = os.path.join(
-        proj_path, const.DIR_NAME_FILES, const.DIR_NAME_GLUECODE, module_name
+        proj_path,
+        const.DIR_NAME_FILES,
+        const.DIR_NAME_FILES_MODULES,
+        module_name,
+        const.DIR_NAME_GLUECODE,
     )
 
     # clean old generated src
