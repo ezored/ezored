@@ -59,9 +59,7 @@ def code_format(params):
 
                     for file_item in files:
                         log.info(
-                            'Formatting file "{0}"...'.format(
-                                os.path.relpath(file_item)
-                            )
+                            "Formatting file: {0}...".format(os.path.relpath(file_item))
                         )
 
                         run_args = ["clang-format", "-style", "file", "-i", file_item]
@@ -95,9 +93,7 @@ def code_format(params):
 
                     for file_item in files:
                         log.info(
-                            'Formatting file "{0}"...'.format(
-                                os.path.relpath(file_item)
-                            )
+                            "Formatting file: {0}...".format(os.path.relpath(file_item))
                         )
 
                         run_args = ["black", "-q", file_item]

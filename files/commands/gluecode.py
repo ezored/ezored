@@ -98,6 +98,12 @@ def generate(params):
         log.info("Generating files for all modules...")
 
         for m in modules:
+            if not os.path.isdir(
+                os.path.join(modules_path, m, const.DIR_NAME_GLUECODE)
+            ):
+                log.info('Module "{0}" was skipped'.format(m))
+                continue
+
             log.info('Generating glue code files for "{0}"...'.format(m))
 
             func_path = "files.modules.{0}.gluecode.generate.run".format(m)
