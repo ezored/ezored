@@ -42,7 +42,7 @@ struct ToDoListView: View {
                 LinearGradient(gradient: Gradient(colors: [Color.black, Color.black, Color.black, Color.clear]), startPoint: .top, endPoint: .bottom)
                 Text("ToDo")
                     .font(.headline)
-                    .foregroundColor(Color.pink)
+                    .foregroundColor(Color(hex: "#D21601"))
             }
             .frame(height: 30)
         }

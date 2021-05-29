@@ -27,7 +27,11 @@ Every command to generate, publish, prepare, format etc can be executed from com
 
 Each piece of code is separated by modules, making easy extend with your custom code or any C++ code and library.
 
-Read the docs by topic.
+## Documentation
+
+You can read all about Ezored in the auto-generated documentation:
+
+https://ezored.s3.amazonaws.com/docs/1.0.0/index.html
 
 ## Table of contents
 

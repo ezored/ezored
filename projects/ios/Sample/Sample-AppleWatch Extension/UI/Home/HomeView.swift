@@ -48,7 +48,7 @@ struct HomeView: View {
                     LinearGradient(gradient: Gradient(colors: [Color.black, Color.black, Color.black, Color.clear]), startPoint: .top, endPoint: .bottom)
                     Text("Home")
                         .font(.headline)
-                        .foregroundColor(Color.pink)
+                        .foregroundColor(Color(hex: "#D21601"))
                 }
                 .frame(height: 30)
             }
