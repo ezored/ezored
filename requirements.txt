@@ -2,3 +2,5 @@ conan
 colorama
 boto3>=1.9.232
 botocore>=1.12.232
+mkdocs
+mkdocs-material

@@ -8,9 +8,8 @@ from files.core import log
 from files.core import runner
 from files.core import util
 
+
 # -----------------------------------------------------------------------------
-
-
 def get_tool_path(params):
     proj_path = params["proj_path"]
 

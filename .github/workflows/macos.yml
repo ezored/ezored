@@ -10,11 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {
-              name: "macOS Latest Clang",
-              os: macos-latest,
-              target: "macos",
-            }
+          - { name: "macOS Latest Clang", os: macos-latest, target: "macos" }
         python-version: [3.7]
 
     steps:

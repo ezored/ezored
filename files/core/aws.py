@@ -166,6 +166,55 @@ def s3_prefix_delete(s3, bucket, key, aws_secret_access_key, aws_access_key_id):
 
 
 # -----------------------------------------------------------------------------
+def s3_create_dir(s3, bucket, key, aws_secret_access_key, aws_access_key_id):
+    import boto3
+    from botocore.exceptions import ClientError
+
+    try:
+        s3.put_object(Bucket=bucket, Key=(key + "/"))
+    except Exception as e:
+        log.error("Failed to create dir {0} on AWS S3: {1}".format(key, e))
+
+    return True
+
+
+# -----------------------------------------------------------------------------
+def s3_dir_exists(s3, bucket, key):
+    from botocore.exceptions import ClientError
+
+    try:
+        s3.head_object(Bucket=bucket, Key=key + "/")
+    except ClientError as e:
+        error_code = int(e.response["Error"]["Code"])
+
+        if error_code >= 400 and error_code <= 499:
+            return False
+
+    return True
+
+
+# -----------------------------------------------------------------------------
+def s3_dir_delete(s3, bucket, key, aws_secret_access_key, aws_access_key_id):
+    import boto3
+    from botocore.exceptions import ClientError
+
+    try:
+        s3_resource = boto3.resource(
+            "s3",
+            aws_secret_access_key=aws_secret_access_key,
+            aws_access_key_id=aws_access_key_id,
+        )
+
+        s3_bucket = s3_resource.Bucket(bucket)
+
+        s3_bucket.objects.filter(Prefix=key + "/").delete()
+    except Exception as e:
+        log.error("Failed to delete key {0} from AWS S3: {1}".format(key, e))
+
+    return True
+
+
+# -----------------------------------------------------------------------------
 class ProgressPercentage(object):
     def __init__(self, filename):
         self._filename = filename

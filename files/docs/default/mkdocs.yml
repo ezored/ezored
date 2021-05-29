@@ -1,0 +1,8 @@
+site_name: Ezored Documentation
+theme:
+  name: material
+  language: en
+  direction: ltr
+use_directory_urls: false
+markdown_extensions:
+  - attr_list

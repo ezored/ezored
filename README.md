@@ -7,6 +7,7 @@
 ![Ezored - Windows](https://github.com/ezored/ezored/workflows/Ezored%20-%20Windows/badge.svg)
 ![Ezored - iOS](https://github.com/ezored/ezored/workflows/Ezored%20-%20iOS/badge.svg)
 ![Ezored - Android](https://github.com/ezored/ezored/workflows/Ezored%20-%20Android/badge.svg)
+![Ezored - Docs](https://github.com/ezored/ezored/workflows/Ezored%20-%20Docs/badge.svg)
 
 </p>
 
