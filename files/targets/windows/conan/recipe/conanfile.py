@@ -43,6 +43,7 @@ class TargetConan(ConanFile):
         "poco:enable_util": True,
         "poco:enable_xml": True,
         "poco:enable_zip": False,
+        "date:header_only": True,
     }
     exports_sources = "*"
     generators = "cmake"
@@ -67,3 +68,4 @@ class TargetConan(ConanFile):
         self.requires("poco/1.10.1")
         self.requires("openssl/1.1.1i")
         self.requires("sqlitecpp/2.5.0")
+        self.requires("date/3.0.0")

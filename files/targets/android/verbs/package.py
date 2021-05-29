@@ -66,7 +66,10 @@ def run(params):
 
                 # copy glue code support lib files
                 gluecode_support_lib_dir = os.path.join(
-                    proj_path, const.DIR_NAME_FILES, "gluecode", "support-lib"
+                    proj_path,
+                    const.DIR_NAME_FILES,
+                    const.DIR_NAME_FILES_MODULES,
+                    "support-lib",
                 )
 
                 file.copy_all_inside(
@@ -77,7 +80,11 @@ def run(params):
                 )
 
                 # copy all modules glue code files
-                modules_dir = os.path.join(proj_path, const.DIR_NAME_FILES, "gluecode")
+                modules_dir = os.path.join(
+                    proj_path,
+                    const.DIR_NAME_FILES,
+                    const.DIR_NAME_FILES_MODULES,
+                )
 
                 modules = file.find_dirs_simple(modules_dir, "*")
 
@@ -88,7 +95,11 @@ def run(params):
                         continue
 
                     module_dir = os.path.join(
-                        modules_dir, module_dir_name, "generated-src", "java"
+                        modules_dir,
+                        module_dir_name,
+                        const.DIR_NAME_GLUECODE,
+                        "generated-src",
+                        "java",
                     )
 
                     if file.dir_exists(module_dir):

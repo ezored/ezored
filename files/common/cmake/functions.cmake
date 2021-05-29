@@ -1,18 +1,18 @@
 # add module
-macro(add_module name)
+macro(project_add_module name)
     message(STATUS "Ezored: Adding module: ${name}")
     include(${PROJECT_MODULES_PATH}/${name}/cmake/module.cmake)
 endmacro()
 
 # add all modules
-macro(add_modules)
+macro(project_add_modules)
     message(STATUS "Ezored: Adding modules...")
 
-    list_subdirectories(modules ${PROJECT_MODULES_PATH} TRUE)
+    project_list_subdirs(modules ${PROJECT_MODULES_PATH} TRUE)
 
     foreach(module ${modules})
         if(EXISTS "${PROJECT_MODULES_PATH}/${module}/cmake/module.cmake")
-            add_module(${module})
+            project_add_module(${module})
         endif()
     endforeach()
 
@@ -20,7 +20,7 @@ macro(add_modules)
 endmacro()
 
 # list all subdirs
-macro(list_subdirectories retval curdir return_relative)
+macro(project_list_subdirs retval curdir return_relative)
     file(
         GLOB sub-dir
         RELATIVE ${curdir}

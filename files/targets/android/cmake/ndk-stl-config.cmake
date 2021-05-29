@@ -1,8 +1,6 @@
 # Copy shared STL files to Android Studio output directory so they can be packaged in the APK. Usage:
 #
-# find_package(ndk-stl REQUIRED)
-# or
-# find_package(ndk-stl REQUIRED PATHS ".")
+# find_package(ndk-stl REQUIRED) or find_package(ndk-stl REQUIRED PATHS ".")
 
 if(NOT ${ANDROID_STL} MATCHES "_shared")
     return()
@@ -10,11 +8,8 @@ endif()
 
 function(configure_shared_stl lib_path so_base)
     message("Configuring STL ${so_base} for ${ANDROID_ABI}")
-    
-    configure_file(
-        "${ANDROID_NDK}/sources/cxx-stl/${lib_path}/libs/${ANDROID_ABI}/lib${so_base}.so"
-        "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/lib${so_base}.so" COPYONLY
-    )
+
+    configure_file("${ANDROID_NDK}/sources/cxx-stl/${lib_path}/libs/${ANDROID_ABI}/lib${so_base}.so" "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/lib${so_base}.so" COPYONLY)
 endfunction()
 
 if("${ANDROID_STL}" STREQUAL "libstdc++")

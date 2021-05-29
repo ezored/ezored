@@ -1,4 +1,4 @@
-if(PROJECT_TARGET_NAME STREQUAL "macos")
+if(PROJECT_TARGET_NAME STREQUAL "windows")
     # module files
     file(GLOB H_FILES_C "${PROJECT_ROOT_PATH}/projects/others/ezored/include/*.h")
     file(GLOB H_FILES_CXX "${PROJECT_ROOT_PATH}/projects/others/ezored/include/*.hpp")

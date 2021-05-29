@@ -6,48 +6,62 @@ set(PROJECT_CONFIG_NAME
     "ezored"
     CACHE STRING "Project Name"
 )
-set(PROJECT_CONFIG_CPP_STANDARD
-    "11"
+
+set(PROJECT_CONFIG_CXX_STANDARD
+    "17"
     CACHE STRING "Cpp Standard"
 )
+
 set(PROJECT_TARGET_NAME
     "ios"
     CACHE STRING "Target Name"
 )
+
 set(PROJECT_CONFIG_VERSION
     "1.0.0"
     CACHE STRING "Version"
 )
+
 set(PROJECT_CONFIG_ARCH
     "armv8"
     CACHE STRING "Architecture"
 )
+
 set(PROJECT_CONFIG_GROUP
     "ios"
     CACHE STRING "Group"
 )
 
 set(PROJECT_ROOT_PATH ${CMAKE_SOURCE_REALPATH})
-set(PROJECT_BUILD_DIR
+
+set(PROJECT_BUILD_PATH
     ${PROJECT_ROOT_PATH}/build/${PROJECT_TARGET_NAME}/${CMAKE_BUILD_TYPE}/${PROJECT_CONFIG_GROUP}/${PROJECT_CONFIG_ARCH}
     CACHE INTERNAL ""
 )
 
 # Platform configurations
+set(PROJECT_USE_CXX_HTTP_CLIENT
+    NO
+    CACHE STRING "CXX Http Client"
+)
+
 set(CMAKE_OSX_ARCHITECTURES "${PROJECT_CONFIG_ARCH}")
 
 set(DEVELOPMENT_TEAM_ID
     ""
     CACHE STRING "Development Team ID"
 )
+
 set(CODE_SIGN_IDENTITY
     ""
     CACHE STRING "Sign Identity"
 )
+
 set(FRAMEWORK_NAME
     "${PROJECT_CONFIG_NAME}"
     CACHE STRING "Framework Name"
 )
+
 set(FRAMEWORK_BUNDLE_IDENTIFIER
     "com.ezored.library"
     CACHE STRING "Bundle Identifier"
@@ -81,159 +95,11 @@ endif()
 project(${PROJECT_CONFIG_NAME})
 
 # Conan
-include(${PROJECT_BUILD_DIR}/conan/conanbuildinfo.cmake)
+include(${PROJECT_BUILD_PATH}/conan/conanbuildinfo.cmake)
 conan_basic_setup()
 
-# Include: common
-add_subdirectory(${PROJECT_ROOT_PATH}/files/common/cmake ${PROJECT_BUILD_DIR}/common)
-
-# Header search paths
-set(PROJECT_HEADER_SEARCH_PATHS
-    ${PROJECT_HEADER_SEARCH_PATHS}
-    "${PROJECT_ROOT_PATH}/files/gluecode/support-lib"
-    "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/gluecode/app-core/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/gluecode/app-data-services/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/gluecode/app-system-services/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/gluecode/app-helpers/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/gluecode/core/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/gluecode/logger/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/gluecode/http-client/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/gluecode/file-helper/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/gluecode/shared-data/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/gluecode/datetime/generated-src/objc"
-    "${PROJECT_ROOT_PATH}/files/src/logger/objc"
-    "${PROJECT_ROOT_PATH}/files/src/file-helper/objc"
-    "${PROJECT_ROOT_PATH}/files/src/shared-data/objc"
-    "${PROJECT_ROOT_PATH}/files/src/datetime/objc"
-    CACHE INTERNAL ""
-)
-
-# Header files
-file(GLOB H_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/*.hpp")
-file(GLOB H_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/objc/*.h")
-
-file(GLOB_RECURSE H_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/objc/*.h")
-file(GLOB_RECURSE H_FILES_APP_ENUMS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/objc/*.h")
-file(GLOB_RECURSE H_FILES_APP_CORE_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-core/generated-src/objc/*.h")
-file(GLOB_RECURSE H_FILES_APP_DATA_SERVICES_LIB_OBJC
-     "${PROJECT_ROOT_PATH}/files/gluecode/app-data-services/generated-src/objc/*.h"
-)
-file(GLOB_RECURSE H_FILES_APP_SYSTEM_SERVICES_LIB_OBJC
-     "${PROJECT_ROOT_PATH}/files/gluecode/app-system-services/generated-src/objc/*.h"
-)
-file(GLOB_RECURSE H_FILES_APP_HELPERS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-helpers/generated-src/objc/*.h")
-
-file(GLOB_RECURSE H_FILES_LOGGER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/logger/generated-src/objc/*.h")
-file(GLOB H_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/objc/ezored/util/*.h")
-
-file(GLOB_RECURSE H_FILES_HTTP_CLIENT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/http-client/generated-src/objc/*.h")
-file(GLOB H_FILES_HTTP_CLIENT_LIB_IMPL_OBJC "${PROJECT_ROOT_PATH}/files/src/http-client/objc/ezored/net/http/*.h")
-
-# uncomment only if you want use C++ http client instead of native android http client file(GLOB
-# H_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.hpp")
-
-file(GLOB_RECURSE H_FILES_FILE_HELPER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/file-helper/generated-src/objc/*.h")
-file(GLOB H_FILES_FILE_HELPER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/file-helper/objc/ezored/io/*.h")
-
-file(GLOB_RECURSE H_FILES_SHARED_DATA_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/shared-data/generated-src/objc/*.h")
-file(GLOB H_FILES_SHARED_DATA_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/shared-data/objc/ezored/data/*.h")
-
-file(GLOB_RECURSE H_FILES_DATETIME_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/datetime/generated-src/objc/*.h")
-
-# Source files
-file(GLOB S_FILES_SUPPORT_LIB_CPP "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/*.cpp")
-file(GLOB S_FILES_SUPPORT_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/support-lib/djinni/objc/*.mm")
-
-file(GLOB_RECURSE S_FILES_APP_DOMAIN_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-domain/generated-src/objc/*.mm")
-file(GLOB_RECURSE S_FILES_APP_ENUMS_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-enums/generated-src/objc/*.mm")
-file(GLOB_RECURSE S_FILES_APP_CORE_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/app-core/generated-src/objc/*.mm")
-file(GLOB_RECURSE S_FILES_APP_DATA_SERVICES_LIB_OBJC
-     "${PROJECT_ROOT_PATH}/files/gluecode/app-data-services/generated-src/objc/*.mm"
-)
-file(GLOB_RECURSE S_FILES_APP_SYSTEM_SERVICES_LIB_OBJC
-     "${PROJECT_ROOT_PATH}/files/gluecode/app-system-services/generated-src/objc/*.mm"
-)
-file(GLOB_RECURSE S_FILES_APP_HELPERS_LIB_OBJC
-     "${PROJECT_ROOT_PATH}/files/gluecode/app-helpers/generated-src/objc/*.mm"
-)
-
-file(GLOB_RECURSE S_FILES_LOGGER_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/logger/generated-src/objc/*.mm")
-file(GLOB S_FILES_LOGGER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/logger/objc/ezored/util/*.m")
-
-file(GLOB_RECURSE S_FILES_HTTP_CLIENT_LIB_OBJC
-     "${PROJECT_ROOT_PATH}/files/gluecode/http-client/generated-src/objc/*.mm"
-)
-file(GLOB S_FILES_HTTP_CLIENT_LIB_IMPL_OBJC "${PROJECT_ROOT_PATH}/files/src/http-client/objc/ezored/net/http/*.m")
-
-# uncomment only if you want use C++ http client instead of native android http client file(GLOB
-# S_FILES_HTTP_CLIENT_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/http-client/cpp/ezored/net/http/Simple*.cpp")
-
-file(GLOB_RECURSE S_FILES_FILE_HELPER_LIB_OBJC
-     "${PROJECT_ROOT_PATH}/files/gluecode/file-helper/generated-src/objc/*.mm"
-)
-file(GLOB S_FILES_FILE_HELPER_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/file-helper/objc/ezored/io/*.m")
-
-file(GLOB_RECURSE S_FILES_SHARED_DATA_LIB_OBJC
-     "${PROJECT_ROOT_PATH}/files/gluecode/shared-data/generated-src/objc/*.mm"
-)
-file(GLOB S_FILES_SHARED_DATA_LIB_IMPL "${PROJECT_ROOT_PATH}/files/src/shared-data/objc/ezored/data/*.m")
-
-file(GLOB_RECURSE S_FILES_DATETIME_LIB_OBJC "${PROJECT_ROOT_PATH}/files/gluecode/datetime/generated-src/objc/*.mm")
-
-# Merge lists
-set(TARGET_HEADER_FILES
-    ${H_FILES_SUPPORT_LIB_CPP}
-    ${H_FILES_SUPPORT_LIB_OBJC}
-    ${H_FILES_APP_DOMAIN_LIB_OBJC}
-    ${H_FILES_APP_ENUMS_LIB_OBJC}
-    ${H_FILES_APP_CORE_LIB_OBJC}
-    ${H_FILES_APP_DATA_SERVICES_LIB_OBJC}
-    ${H_FILES_APP_SYSTEM_SERVICES_LIB_OBJC}
-    ${H_FILES_APP_HELPERS_LIB_OBJC}
-    ${H_FILES_LOGGER_LIB_OBJC}
-    ${H_FILES_LOGGER_LIB_IMPL}
-    ${H_FILES_HTTP_CLIENT_LIB_OBJC}
-    ${H_FILES_HTTP_CLIENT_LIB_IMPL_OBJC}
-    ${H_FILES_HTTP_CLIENT_LIB_IMPL}
-    ${H_FILES_FILE_HELPER_LIB_OBJC}
-    ${H_FILES_FILE_HELPER_LIB_IMPL}
-    ${H_FILES_SHARED_DATA_LIB_OBJC}
-    ${H_FILES_SHARED_DATA_LIB_IMPL}
-    ${H_FILES_DATETIME_LIB_OBJC}
-)
-
-set(TARGET_SOURCE_FILES
-    ${S_FILES_SUPPORT_LIB_CPP}
-    ${S_FILES_SUPPORT_LIB_OBJC}
-    ${S_FILES_APP_DOMAIN_LIB_OBJC}
-    ${S_FILES_APP_ENUMS_LIB_OBJC}
-    ${S_FILES_APP_CORE_LIB_OBJC}
-    ${S_FILES_APP_DATA_SERVICES_LIB_OBJC}
-    ${S_FILES_APP_SYSTEM_SERVICES_LIB_OBJC}
-    ${S_FILES_APP_HELPERS_LIB_OBJC}
-    ${S_FILES_LOGGER_LIB_OBJC}
-    ${S_FILES_LOGGER_LIB_IMPL}
-    ${S_FILES_HTTP_CLIENT_LIB_OBJC}
-    ${S_FILES_HTTP_CLIENT_LIB_IMPL_OBJC}
-    ${S_FILES_HTTP_CLIENT_LIB_IMPL}
-    ${S_FILES_FILE_HELPER_LIB_OBJC}
-    ${S_FILES_FILE_HELPER_LIB_IMPL}
-    ${S_FILES_SHARED_DATA_LIB_OBJC}
-    ${S_FILES_SHARED_DATA_LIB_IMPL}
-    ${S_FILES_DATETIME_LIB_OBJC}
-)
-
-set(PROJECT_HEADER_FILES
-    ${PROJECT_HEADER_FILES} ${TARGET_HEADER_FILES}
-    CACHE INTERNAL ""
-)
-
-set(PROJECT_SOURCE_FILES
-    ${PROJECT_SOURCE_FILES} ${TARGET_HEADER_FILES} ${TARGET_SOURCE_FILES}
-    CACHE INTERNAL ""
-)
+# Common
+include(${PROJECT_ROOT_PATH}/files/common/cmake/common.cmake)
 
 # Framework links
 set(PROJECT_FRAMEWORK_LINKS
@@ -258,6 +124,7 @@ set(CMAKE_C_FLAGS
     "${CMAKE_C_FLAGS} ${PROJECT_CMAKE_C_FLAGS}"
     CACHE INTERNAL ""
 )
+
 set(CMAKE_CXX_FLAGS
     "${CMAKE_CXX_FLAGS} ${PROJECT_CMAKE_CXX_FLAGS}"
     CACHE INTERNAL ""
@@ -272,7 +139,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_RELEASE} -O3")
 include_directories(${PROJECT_HEADER_SEARCH_PATHS})
 link_directories(${PROJECT_LIBRARY_SEARCH_PATHS})
 
-add_library(${PROJECT_CONFIG_NAME} SHARED ${PROJECT_SOURCE_FILES})
+add_library(${PROJECT_CONFIG_NAME} SHARED ${PROJECT_SOURCE_FILES_MERGED})
 
 target_link_libraries(${PROJECT_CONFIG_NAME} "${PROJECT_LIBRARY_LINKS}")
 target_link_libraries(${PROJECT_CONFIG_NAME} "${PROJECT_FRAMEWORK_LINKS}")
@@ -280,7 +147,7 @@ target_link_libraries(${PROJECT_CONFIG_NAME} "${CONAN_LIBS}")
 
 set_target_properties(
     ${PROJECT_CONFIG_NAME}
-    PROPERTIES CXX_STANDARD "${PROJECT_CONFIG_CPP_STANDARD}"
+    PROPERTIES CXX_STANDARD "${PROJECT_CONFIG_CXX_STANDARD}"
                CXX_STANDARD_REQUIRED YES
                CXX_EXTENSIONS NO
                CXX_VISIBILITY_PRESET default
@@ -298,25 +165,7 @@ set_target_properties(
                XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH YES
                XCODE_ATTRIBUTE_SKIP_INSTALL YES
                XCODE_ATTRIBUTE_INSTALL_PATH "@loader_path/Frameworks"
-               # Is
-               # "current
-               # version"
-               # in
-               # semantic
-               # format in
-               # Mach-O
-               # binary
-               # file
                VERSION "${PROJECT_CONFIG_VERSION}"
-               # Is
-               # "compatibility
-               # version"
-               # in
-               # semantic
-               # format in
-               # Mach-O
-               # binary
-               # file
                SOVERSION "${PROJECT_CONFIG_VERSION}"
 )
 

@@ -43,6 +43,7 @@ class TargetConan(ConanFile):
         "poco:enable_util": True,
         "poco:enable_xml": True,
         "poco:enable_zip": False,
+        "date:header_only": True,
     }
     exports_sources = "*"
     generators = "cmake"
@@ -63,6 +64,7 @@ class TargetConan(ConanFile):
         self.requires("rapidjson/1.1.0")
         self.requires("openssl/1.1.1i")
         self.requires("sqlitecpp/2.5.0")
+        self.requires("date/3.0.0")
 
         # uncomment only if you want use C++ http client instead of native android http client
         # self.requires("poco/1.10.1")

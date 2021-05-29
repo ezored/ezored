@@ -12,6 +12,7 @@ from files.core import util
 from files.core import net
 from files.core import gluecode
 from files.core import module
+from files.config import gluecode as config
 
 
 # -----------------------------------------------------------------------------
@@ -92,7 +93,8 @@ def generate(params):
         log.error("Modules folder not exists: {0}".format(modules_path))
 
     # get gluecode modules
-    modules = module.get_list(proj_path)
+    gluecode_config = config.run(proj_path, None, params)
+    modules = gluecode_config["modules"]
 
     if modules:
         log.info("Generating files for all modules...")

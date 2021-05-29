@@ -1,6 +1,6 @@
 format:
   disable: false
-  line_width: 120
+  line_width: 1024
   tab_size: 4
   use_tabchars: false
   fractional_tab_policy: use-space

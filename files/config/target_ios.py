@@ -52,7 +52,7 @@ def run(proj_path, target_name, params):
             {
                 "arch": "x86_64",
                 "conan_arch": "x86_64",
-                "conan_profile": "ezored_catalyst_framework_profile",
+                "conan_profile": "ezored_catalyst_profile",
                 "min_version": "13.0",
                 "supported_platform": "MacOSX",
                 "enable_bitcode": False,
@@ -62,7 +62,7 @@ def run(proj_path, target_name, params):
             {
                 "arch": "arm64",
                 "conan_arch": "armv8",
-                "conan_profile": "ezored_tvos_framework_profile",
+                "conan_profile": "ezored_tvos_profile",
                 "min_version": "11.0",
                 "supported_platform": "AppleTVOS",
                 "enable_bitcode": True,
@@ -71,7 +71,7 @@ def run(proj_path, target_name, params):
             {
                 "arch": "x86_64",
                 "conan_arch": "x86_64",
-                "conan_profile": "ezored_tvos_framework_profile",
+                "conan_profile": "ezored_tvos_profile",
                 "min_version": "11.0",
                 "supported_platform": "AppleTVSimulator",
                 "enable_bitcode": False,
@@ -80,7 +80,7 @@ def run(proj_path, target_name, params):
             {
                 "arch": "armv7k",
                 "conan_arch": "armv7k",
-                "conan_profile": "ezored_watchos_framework_profile",
+                "conan_profile": "ezored_watchos_profile",
                 "min_version": "5.0",
                 "supported_platform": "WatchOS",
                 "enable_bitcode": True,
@@ -89,7 +89,7 @@ def run(proj_path, target_name, params):
             {
                 "arch": "arm64_32",
                 "conan_arch": "armv8_32",
-                "conan_profile": "ezored_watchos_framework_profile",
+                "conan_profile": "ezored_watchos_profile",
                 "min_version": "5.0",
                 "supported_platform": "WatchOS",
                 "enable_bitcode": True,
@@ -98,7 +98,7 @@ def run(proj_path, target_name, params):
             {
                 "arch": "x86_64",
                 "conan_arch": "x86_64",
-                "conan_profile": "ezored_watchos_framework_profile",
+                "conan_profile": "ezored_watchos_profile",
                 "min_version": "5.0",
                 "supported_platform": "WatchSimulator",
                 "enable_bitcode": False,
@@ -108,67 +108,67 @@ def run(proj_path, target_name, params):
         "install_headers": [
             {
                 "type": "dir",
-                "path": "files/gluecode/app-domain/generated-src/objc",
+                "path": "files/modules/app-domain/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/gluecode/app-enums/generated-src/objc",
+                "path": "files/modules/app-enums/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/gluecode/app-core/generated-src/objc",
+                "path": "files/modules/app-core/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/gluecode/app-data-services/generated-src/objc",
+                "path": "files/modules/app-data-services/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/gluecode/app-system-services/generated-src/objc",
+                "path": "files/modules/app-system-services/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/gluecode/app-helpers/generated-src/objc",
+                "path": "files/modules/app-helpers/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/gluecode/datetime/generated-src/objc",
+                "path": "files/modules/datetime/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/gluecode/file-helper/generated-src/objc",
+                "path": "files/modules/file-helper/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/gluecode/http-client/generated-src/objc",
+                "path": "files/modules/http-client/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/gluecode/shared-data/generated-src/objc",
+                "path": "files/modules/shared-data/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/gluecode/logger/generated-src/objc",
+                "path": "files/modules/logger/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/gluecode/string-helper/generated-src/objc",
+                "path": "files/modules/string-helper/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/src/file-helper/objc",
+                "path": "files/modules/file-helper/implementation/objc",
             },
             {
                 "type": "dir",
-                "path": "files/src/logger/objc",
+                "path": "files/modules/logger/implementation/objc",
             },
             {
                 "type": "dir",
-                "path": "files/src/shared-data/objc",
+                "path": "files/modules/shared-data/implementation/objc",
             },
             {
                 "type": "dir",
-                "path": "files/src/http-client/objc",
+                "path": "files/modules/http-client/implementation/objc",
             },
         ],
         "umbrella_header": "Ezored.h",
