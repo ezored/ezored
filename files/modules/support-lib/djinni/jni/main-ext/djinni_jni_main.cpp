@@ -14,4 +14,4 @@
 // limitations under the License.
 //
 
-#include "djinni_jni_main.hpp"
+#include "djinni/jni/main-ext/djinni_jni_main.hpp"

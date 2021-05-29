@@ -26,6 +26,6 @@ struct SimpleOption: Hashable {
     }
 
     func getImage() -> UIImage {
-        return UIImage(named: "IcoSimpleOption")!.imageWithColor(color: UIColor(hexString: "#F44336")!)!
+        return UIImage(named: "IcoSimpleOption")!.imageWithColor(color: UIColor(hexString: "#D21601")!)!
     }
 }

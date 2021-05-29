@@ -6,7 +6,7 @@ import WatchKit
 struct HomeView: View {
     @ObservedObject private(set) var viewModel = HomeViewModel()
     
-    private let mainColor = UIColor(hexString: "#F44336")!
+    private let mainColor = UIColor(hexString: "#D21601")!
     private let rowBackgroundColor = UIColor(hexString: "#ffffff")!
     
     var body: some View {

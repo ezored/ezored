@@ -1,7 +1,7 @@
 if(PROJECT_TARGET_NAME STREQUAL "android")
     # module files
-    file(GLOB S_FILES_CXX "${PROJECT_MODULES_PATH}/support-lib/gluecode/djinni/jni/main-ext/*.cpp")
-    file(GLOB H_FILES_CXX "${PROJECT_MODULES_PATH}/support-lib/gluecode/djinni/jni/main-ext/*.hpp")
+    file(GLOB H_FILES_CXX "${PROJECT_MODULES_PATH}/support-lib/djinni/jni/main-ext/*.hpp")
+    file(GLOB S_FILES_CXX "${PROJECT_MODULES_PATH}/support-lib/djinni/jni/main-ext/*.cpp")    
 
     file(GLOB H_FILES_SUPPORT "${PROJECT_MODULES_PATH}/support-lib/djinni/*.hpp")
     file(GLOB S_FILES_SUPPORT "${PROJECT_MODULES_PATH}/support-lib/djinni/*.cpp")

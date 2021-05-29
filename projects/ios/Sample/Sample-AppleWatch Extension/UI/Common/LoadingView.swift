@@ -19,7 +19,7 @@ struct LoadingView: View {
             Circle()
                 .trim(from: 0.5, to: 1.0)
                 .stroke(lineWidth: width)
-                .foregroundColor(Color(UIColor(hexString: "#F44336")!))
+                .foregroundColor(Color(UIColor(hexString: "#D21601")!))
                 .rotationEffect(.degrees(isRotating ? 360 : 0))
                 .frame(width: size * 0.75, height: size  * 0.75, alignment: .center)
                 .onAppear {
