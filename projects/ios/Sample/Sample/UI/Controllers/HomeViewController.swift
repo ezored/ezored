@@ -146,7 +146,7 @@ class HomeViewController: BaseTableViewController {
 
         DispatchQueue.global(qos: .background).async {
             // add some rows
-            EZRDataServicesTodoDataService.truncate()
+            EZRrepositoryTodoRepository.truncate()
 
             for i in 1 ... 100 {
                 let todo = EZRDomainTodo(
@@ -159,7 +159,7 @@ class HomeViewController: BaseTableViewController {
                     updatedAt: Date()
                 )
 
-                EZRDataServicesTodoDataService.add(todo)
+                EZRrepositoryTodoRepository.add(todo)
             }
 
             // show list view controller

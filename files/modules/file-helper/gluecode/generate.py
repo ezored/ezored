@@ -27,6 +27,7 @@ def run(params):
     jni_file = "EZRFooBar"
     jni_include_cpp_prefix = "{0}".format(cpp_include_prefix)
     jni_include_prefix = "{0}/".format(java_package.replace(".", "/"))
+    jni_generate_main = "false"
 
     # module data
     module_data = {
@@ -64,6 +65,8 @@ def run(params):
             jni_include_prefix,
             "--jni-out",
             jni_out,
+            "--jni-generate-main",
+            jni_generate_main,
             "--objc-out",
             objc_out,
             "--objc-type-prefix",

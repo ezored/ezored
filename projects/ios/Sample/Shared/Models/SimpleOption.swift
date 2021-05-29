@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 struct SimpleOption: Hashable {
-    let type: OptionTypeEnum
+    let type: OptionTypeEnumerator
     let hasSeparator: Bool
 
     func getDescription() -> String {

@@ -4,10 +4,13 @@ from files.core import file
 from files.core import const
 import os
 
+
 # -----------------------------------------------------------------------------
 def get_list(proj_path):
     module_dir = os.path.join(
-        proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_MODULES
+        proj_path,
+        const.DIR_NAME_FILES,
+        const.DIR_NAME_FILES_MODULES,
     )
 
     modules_found = file.find_dirs_simple(module_dir, "*")

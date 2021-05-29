@@ -5,9 +5,9 @@
 #include "ezored/net/http/HttpClient.hpp"
 #include "ezored/net/http/HttpClientLoggerImpl.hpp"
 
-#include "ezored/helpers/CustomerHelper.hpp"
-#include "ezored/helpers/DatabaseHelper.hpp"
-#include "ezored/helpers/SharedDataHelper.hpp"
+#include "ezored/helper/CustomerHelper.hpp"
+#include "ezored/helper/DatabaseHelper.hpp"
+#include "ezored/helper/SharedDataHelper.hpp"
 
 #include <iostream>
 #include <map>
@@ -22,7 +22,7 @@ namespace core
 using namespace ezored::domain;
 using namespace ezored::util;
 using namespace ezored::net::http;
-using namespace ezored::helpers;
+using namespace ezored::helper;
 
 std::shared_ptr<ApplicationCoreImpl> ApplicationCoreImpl::instance = nullptr;
 

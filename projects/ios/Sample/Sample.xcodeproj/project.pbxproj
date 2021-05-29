@@ -45,7 +45,7 @@
 		3A2F231E2214A57D00A2FB4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FC2214A57D00A2FB4F /* AppDelegate.swift */; };
 		3A2F23242214A7A800A2FB4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F23262214A7A800A2FB4F /* Localizable.strings */; };
 		3AD9F93D22569DA600ED622F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD9F93C22569DA600ED622F /* MainViewController.swift */; };
-		3ADA2D8222162454005E6BD0 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enums.swift */; };
+		3ADA2D8222162454005E6BD0 /* Enumerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enumerators.swift */; };
 		3ADA2D8422162556005E6BD0 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */; };
 		3ADA2D8922162760005E6BD0 /* SimpleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8822162760005E6BD0 /* SimpleOption.swift */; };
 		3ADA2D8C22162BF7005E6BD0 /* SimpleOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8B22162BF7005E6BD0 /* SimpleOptionTableViewCell.swift */; };
@@ -67,7 +67,7 @@
 		AB5785732639D22F00558651 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5785722639D22F00558651 /* LoadingView.swift */; };
 		AB57857A2639E8FA00558651 /* AlertMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5785792639E8FA00558651 /* AlertMessageView.swift */; };
 		AB9E18832637199600225E57 /* SimpleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8822162760005E6BD0 /* SimpleOption.swift */; };
-		AB9E1887263719A500225E57 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enums.swift */; };
+		AB9E1887263719A500225E57 /* Enumerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enumerators.swift */; };
 		AB9E188F263719E400225E57 /* StringsLocalizedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F22214A57D00A2FB4F /* StringsLocalizedExtension.swift */; };
 		AB9E1890263719E400225E57 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22E42214A57D00A2FB4F /* StringExtensions.swift */; };
 		AB9E1891263719E400225E57 /* StringBase64Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22DF2214A57D00A2FB4F /* StringBase64Extension.swift */; };
@@ -179,7 +179,7 @@
 		3A2F23282214A84D00A2FB4F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3A2F23302214B05B00A2FB4F /* Sample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sample-Bridging-Header.h"; sourceTree = "<group>"; };
 		3AD9F93C22569DA600ED622F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		3ADA2D8122162454005E6BD0 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		3ADA2D8122162454005E6BD0 /* Enumerators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerators.swift; sourceTree = "<group>"; };
 		3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeUtil.swift; sourceTree = "<group>"; };
 		3ADA2D8822162760005E6BD0 /* SimpleOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleOption.swift; sourceTree = "<group>"; };
 		3ADA2D8B22162BF7005E6BD0 /* SimpleOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleOptionTableViewCell.swift; sourceTree = "<group>"; };
@@ -560,7 +560,7 @@
 		ABCDC22E261D239200BEEF5C /* App */ = {
 			isa = PBXGroup;
 			children = (
-				3ADA2D8122162454005E6BD0 /* Enums.swift */,
+				3ADA2D8122162454005E6BD0 /* Enumerators.swift */,
 				3A2F22F92214A57D00A2FB4F /* EnvironmentUtil.swift */,
 			);
 			path = App;
@@ -802,7 +802,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ADA2D8922162760005E6BD0 /* SimpleOption.swift in Sources */,
-				3ADA2D8222162454005E6BD0 /* Enums.swift in Sources */,
+				3ADA2D8222162454005E6BD0 /* Enumerators.swift in Sources */,
 				3A2F231A2214A57D00A2FB4F /* ViewConstrainToEdgesExtension.swift in Sources */,
 				3A2F23122214A57D00A2FB4F /* IntToTimeIntervalExtension.swift in Sources */,
 				3A2F23182214A57D00A2FB4F /* CollectionExtensions.swift in Sources */,
@@ -872,7 +872,7 @@
 				ABCDC1BA261D0A4F00BEEF5C /* ExtensionDelegate.swift in Sources */,
 				AB5785732639D22F00558651 /* LoadingView.swift in Sources */,
 				AB5785682639CD1900558651 /* ToDoListView.swift in Sources */,
-				AB9E1887263719A500225E57 /* Enums.swift in Sources */,
+				AB9E1887263719A500225E57 /* Enumerators.swift in Sources */,
 				AB9E189526371A1600225E57 /* SwiftColorsExtension.swift in Sources */,
 				AB9E18832637199600225E57 /* SimpleOption.swift in Sources */,
 				AB9E18C62637238400225E57 /* HomeViewModel.swift in Sources */,

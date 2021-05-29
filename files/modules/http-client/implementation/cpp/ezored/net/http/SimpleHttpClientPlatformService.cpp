@@ -6,7 +6,7 @@
 #include "ezored/net/http/HttpRequestParam.hpp"
 #include "ezored/net/http/HttpResponse.hpp"
 
-#include "ezored/helpers/StringHelper.hpp"
+#include "ezored/helper/StringHelper.hpp"
 
 #include "Poco/DigestStream.h"
 #include "Poco/MD5Engine.h"
@@ -37,7 +37,7 @@ namespace http
 {
 
 using namespace ezored::net::http;
-using namespace ezored::helpers;
+using namespace ezored::helper;
 
 HttpResponse SimpleHttpClientPlatformService::doRequest(const HttpRequest &request)
 {

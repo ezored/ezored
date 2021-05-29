@@ -6,8 +6,8 @@ def run(params):
     djinni_file = "proj.djinni"
 
     # cpp configuration
-    cpp_namespace = "ezored::helpers"
-    cpp_include_prefix = "ezored/helpers/"
+    cpp_namespace = "ezored::helper"
+    cpp_include_prefix = "ezored/helper/"
     cpp_out = "generated-src/cpp/{0}".format(cpp_include_prefix)
 
     # objc configuration
@@ -17,7 +17,7 @@ def run(params):
     objc_include_prefix = "{0}".format(cpp_include_prefix)
 
     # java configuration
-    java_package = "com.ezored.helpers"
+    java_package = "com.ezored.helper"
     java_out = "generated-src/java/{0}".format(java_package.replace(".", "/"))
     java_parcelable = "true"
 
@@ -27,6 +27,7 @@ def run(params):
     jni_file = "EZRFooBar"
     jni_include_cpp_prefix = "{0}".format(cpp_include_prefix)
     jni_include_prefix = "{0}/".format(java_package.replace(".", "/"))
+    jni_generate_main = "false"
 
     # module data
     module_data = {
@@ -64,6 +65,8 @@ def run(params):
             jni_include_prefix,
             "--jni-out",
             jni_out,
+            "--jni-generate-main",
+            jni_generate_main,
             "--objc-out",
             objc_out,
             "--objc-type-prefix",

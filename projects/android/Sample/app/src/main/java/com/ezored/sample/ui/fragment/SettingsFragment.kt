@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import com.ezored.sample.BuildConfig
 import com.ezored.sample.R
 import com.ezored.sample.adapter.SimpleOptionAdapter
-import com.ezored.sample.enums.LoadStateEnum
-import com.ezored.sample.enums.SimpleOptionTypeEnum
+import com.ezored.sample.enumerator.LoadStateEnumerator
+import com.ezored.sample.enumerator.SimpleOptionTypeEnumerator
 import com.ezored.sample.models.SimpleOption
 import com.ezored.sample.ui.fragment.base.BaseListFragment
 import com.ezored.sample.utils.UIUtil
@@ -29,11 +29,11 @@ class SettingsFragment : BaseListFragment<SimpleOption>(),
         super.onLoadNewData()
 
         val list = ArrayList<SimpleOption>()
-        list.add(SimpleOption(SimpleOptionTypeEnum.APP_VERSION))
+        list.add(SimpleOption(SimpleOptionTypeEnumerator.APP_VERSION))
 
         listData?.value = list
 
-        remoteDataLoadState = LoadStateEnum.LOADED
+        remoteDataLoadState = LoadStateEnumerator.LOADED
     }
 
     private fun createLiveData() {
@@ -57,7 +57,7 @@ class SettingsFragment : BaseListFragment<SimpleOption>(),
 
     override fun onSimpleOptionItemClick(view: View, option: SimpleOption) {
         when {
-            option.type == SimpleOptionTypeEnum.APP_VERSION -> doActionAppVersion()
+            option.type == SimpleOptionTypeEnumerator.APP_VERSION -> doActionAppVersion()
         }
     }
 

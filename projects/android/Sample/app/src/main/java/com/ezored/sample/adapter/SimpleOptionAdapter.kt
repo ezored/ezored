@@ -8,9 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.ezored.helpers.SharedDataHelper
+import com.ezored.helper.SharedDataHelper
 import com.ezored.sample.R
-import com.ezored.sample.enums.SimpleOptionTypeEnum
+import com.ezored.sample.enumerator.SimpleOptionTypeEnumerator
 import com.ezored.sample.models.SimpleOption
 
 class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder> {
@@ -35,7 +35,7 @@ class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder>
         listData?.let { listData ->
             val option = listData[position]
 
-            if (option.type == SimpleOptionTypeEnum.SHARED_DATA) {
+            if (option.type == SimpleOptionTypeEnumerator.SHARED_DATA) {
                 val demoFlag = SharedDataHelper.getDemoFlag()
                 holder.tvTitle.text =
                     context.getString(R.string.option_shared_data, if (demoFlag) "ON" else "OFF")

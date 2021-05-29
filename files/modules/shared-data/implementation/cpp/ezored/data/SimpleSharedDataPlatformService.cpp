@@ -1,12 +1,12 @@
 #include "SimpleSharedDataPlatformService.hpp"
-#include "ezored/helpers/StringHelper.hpp"
+#include "ezored/helper/StringHelper.hpp"
 #include "ezored/io/FileHelper.hpp"
 #include "rapidjson/prettywriter.h"
 #include "rapidjson/stringbuffer.h"
 #include <iostream>
 
 using namespace ezored::io;
-using namespace ezored::helpers;
+using namespace ezored::helper;
 
 namespace ezored
 {

@@ -15,7 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
 import com.ezored.sample.R
-import com.ezored.sample.enums.LoadStateEnum
+import com.ezored.sample.enumerator.LoadStateEnumerator
 import com.ezored.sample.ui.activity.base.BaseActivity
 import com.ezored.sample.utils.DateTimeUtil
 import com.ezored.sample.utils.UIUtil
@@ -29,7 +29,7 @@ open class BaseFragment : Fragment(), CoroutineScope {
 
     override val coroutineContext = Dispatchers.Main
 
-    protected var remoteDataLoadState = LoadStateEnum.NOT_LOADED
+    protected var remoteDataLoadState = LoadStateEnumerator.NOT_LOADED
 
     protected var lastCacheUpdate: Long = 0
 
@@ -46,7 +46,7 @@ open class BaseFragment : Fragment(), CoroutineScope {
         get() = null
 
     protected val isLoading: Boolean
-        get() = remoteDataLoadState == LoadStateEnum.LOADING
+        get() = remoteDataLoadState == LoadStateEnumerator.LOADING
 
     private val paintToolbarLogo: Boolean
         get() = true
@@ -270,11 +270,11 @@ open class BaseFragment : Fragment(), CoroutineScope {
             return
         }
 
-        if (remoteDataLoadState != LoadStateEnum.NOT_LOADED) {
+        if (remoteDataLoadState != LoadStateEnumerator.NOT_LOADED) {
             return
         }
 
-        remoteDataLoadState = LoadStateEnum.LOADING
+        remoteDataLoadState = LoadStateEnumerator.LOADING
 
         onLoadNewData()
     }

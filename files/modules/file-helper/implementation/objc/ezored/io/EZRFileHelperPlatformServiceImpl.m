@@ -107,7 +107,7 @@
         
         NSMutableArray *files = [[NSMutableArray alloc] init];
         
-        [dirContent enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [dirContent enumeratorerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             NSString *filename = (NSString *)obj;
             NSString *filePath = [path stringByAppendingPathComponent:filename];
             

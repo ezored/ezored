@@ -7,7 +7,7 @@ public struct UIImageColors {
     public var detail: UIColor!
 }
 
-public enum UIImageColorsQuality: CGFloat {
+public enumerator UIImageColorsQuality: CGFloat {
     case lowest = 50 // 50px
     case low = 100 // 100px
     case high = 250 // 250px
@@ -221,9 +221,9 @@ public extension UIImage {
             }
         }
 
-        var enumerator = imageColors.objectEnumerator()
+        var enumeratorerator = imageColors.objectEnumeratorerator()
         var sortedColors = NSMutableArray(capacity: imageColors.count)
-        while let K = enumerator.nextObject() as? Double {
+        while let K = enumeratorerator.nextObject() as? Double {
             let C = imageColors.count(for: K)
             if threshold < C {
                 sortedColors.add(UIImageColorsCounter(color: K, count: C))
@@ -253,12 +253,12 @@ public extension UIImage {
         }
         proposed[0] = proposedEdgeColor.color
 
-        enumerator = imageColors.objectEnumerator()
+        enumeratorerator = imageColors.objectEnumeratorerator()
         sortedColors.removeAllObjects()
         sortedColors = NSMutableArray(capacity: imageColors.count)
         let findDarkTextColor = !proposed[0].isDarkColor
 
-        while var K = enumerator.nextObject() as? Double {
+        while var K = enumeratorerator.nextObject() as? Double {
             K = K.with(minSaturation: 0.15)
             if K.isDarkColor == findDarkTextColor {
                 let C = imageColors.count(for: K)

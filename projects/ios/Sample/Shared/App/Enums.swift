@@ -1,16 +1,16 @@
 import Foundation
 
-enum NetworkErrorViewAction: Int {
+enumerator NetworkErrorViewAction: Int {
     case refresh = 0
 }
 
-enum RemoteDataLoadState: Int {
+enumerator RemoteDataLoadState: Int {
     case loaded = 0
     case loading = 1
     case notLoaded = 2
 }
 
-enum OptionTypeEnum {
+enumerator OptionTypeEnumerator {
     case secretKey
     case sharedData
     case httpRequest

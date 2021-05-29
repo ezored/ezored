@@ -2,18 +2,18 @@ package com.ezored.sample.models
 
 import android.content.Context
 import com.ezored.sample.R
-import com.ezored.sample.enums.SimpleOptionTypeEnum
+import com.ezored.sample.enumerator.SimpleOptionTypeEnumerator
 
-class SimpleOption(val type: SimpleOptionTypeEnum) {
+class SimpleOption(val type: SimpleOptionTypeEnumerator) {
 
     fun getDescription(context: Context): String {
         return when {
-            type === SimpleOptionTypeEnum.SHARED_DATA -> context.getString(R.string.option_shared_data)
-            type === SimpleOptionTypeEnum.HTTPS_REQUEST -> context.getString(R.string.option_https_request)
-            type === SimpleOptionTypeEnum.SECRET_KEY -> context.getString(R.string.option_secret_key)
-            type === SimpleOptionTypeEnum.APP_VERSION -> context.getString(R.string.option_app_version)
-            type === SimpleOptionTypeEnum.TODO -> context.getString(R.string.option_todo)
-            type === SimpleOptionTypeEnum.FILE_HELPER -> context.getString(R.string.option_file_helper)
+            type === SimpleOptionTypeEnumerator.SHARED_DATA -> context.getString(R.string.option_shared_data)
+            type === SimpleOptionTypeEnumerator.HTTPS_REQUEST -> context.getString(R.string.option_https_request)
+            type === SimpleOptionTypeEnumerator.SECRET_KEY -> context.getString(R.string.option_secret_key)
+            type === SimpleOptionTypeEnumerator.APP_VERSION -> context.getString(R.string.option_app_version)
+            type === SimpleOptionTypeEnumerator.TODO -> context.getString(R.string.option_todo)
+            type === SimpleOptionTypeEnumerator.FILE_HELPER -> context.getString(R.string.option_file_helper)
             else -> ""
         }
     }

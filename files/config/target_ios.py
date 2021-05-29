@@ -112,7 +112,7 @@ def run(proj_path, target_name, params):
             },
             {
                 "type": "dir",
-                "path": "files/modules/app-enums/gluecode/generated-src/objc",
+                "path": "files/modules/app-enumerator/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
@@ -120,15 +120,15 @@ def run(proj_path, target_name, params):
             },
             {
                 "type": "dir",
-                "path": "files/modules/app-data-services/gluecode/generated-src/objc",
+                "path": "files/modules/app-repository/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/modules/app-system-services/gluecode/generated-src/objc",
+                "path": "files/modules/app-system-service/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",
-                "path": "files/modules/app-helpers/gluecode/generated-src/objc",
+                "path": "files/modules/app-helper/gluecode/generated-src/objc",
             },
             {
                 "type": "dir",

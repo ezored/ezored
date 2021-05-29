@@ -1,9 +1,9 @@
 # module files
-file(GLOB H_FILES "${PROJECT_MODULES_PATH}/string-helper/gluecode/generated-src/cpp/ezored/helpers/StringHelper*.hpp")
-file(GLOB H_FILES_IMPL "${PROJECT_MODULES_PATH}/string-helper/implementation/cpp/ezored/helpers/StringHelper*.hpp")
+file(GLOB H_FILES "${PROJECT_MODULES_PATH}/string-helper/gluecode/generated-src/cpp/ezored/helper/StringHelper*.hpp")
+file(GLOB H_FILES_IMPL "${PROJECT_MODULES_PATH}/string-helper/implementation/cpp/ezored/helper/StringHelper*.hpp")
 
-file(GLOB S_FILES "${PROJECT_MODULES_PATH}/string-helper/gluecode/generated-src/cpp/ezored/helpers/StringHelper*.cpp")
-file(GLOB S_FILES_IMPL "${PROJECT_MODULES_PATH}/string-helper/implementation/cpp/ezored/helpers/StringHelper*.cpp")
+file(GLOB S_FILES "${PROJECT_MODULES_PATH}/string-helper/gluecode/generated-src/cpp/ezored/helper/StringHelper*.cpp")
+file(GLOB S_FILES_IMPL "${PROJECT_MODULES_PATH}/string-helper/implementation/cpp/ezored/helper/StringHelper*.cpp")
 
 # project files
 project_add_header_files("${H_FILES}")

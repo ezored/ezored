@@ -15,10 +15,10 @@
 #include "ezored/io/FileHelper.hpp"
 #include "ezored/io/SimpleFileHelperPlatformService.hpp"
 
-#include "ezored/helpers/CustomerHelper.hpp"
-#include "ezored/helpers/EnvironmentHelper.hpp"
-#include "ezored/helpers/StringHelper.hpp"
-#include "ezored/helpers/TodoHelper.hpp"
+#include "ezored/helper/CustomerHelper.hpp"
+#include "ezored/helper/EnvironmentHelper.hpp"
+#include "ezored/helper/StringHelper.hpp"
+#include "ezored/helper/TodoHelper.hpp"
 
 #include "ezored/data/SharedData.hpp"
 #include "ezored/data/SimpleSharedDataPlatformService.hpp"
@@ -27,10 +27,10 @@
 #include "ezored/domain/InitializationData.hpp"
 #include "ezored/domain/Todo.hpp"
 
-#include "ezored/dataservices/TodoDataService.hpp"
+#include "ezored/repository/TodoRepository.hpp"
 
-#include "ezored/systemservices/CustomerSystemService.hpp"
-#include "ezored/systemservices/CustomerSystemServiceLoginData.hpp"
+#include "ezored/systemservice/CustomerSystemService.hpp"
+#include "ezored/systemservice/CustomerSystemServiceLoginData.hpp"
 
 #include <iostream>
 #include <memory>
@@ -38,15 +38,15 @@
 using namespace ezored::util;
 using namespace ezored::net::http;
 using namespace ezored::time;
-using namespace ezored::helpers;
+using namespace ezored::helper;
 using namespace ezored::io;
 using namespace ezored::data;
 
 using namespace ezored::domain;
 using namespace ezored::core;
-using namespace ezored::dataservices;
-using namespace ezored::systemservices;
-using namespace ezored::helpers;
+using namespace ezored::repository;
+using namespace ezored::systemservice;
+using namespace ezored::helper;
 
 int main(int argc, char **argv)
 {
@@ -77,7 +77,7 @@ int main(int argc, char **argv)
 
     // clear and add TODO items to database
     {
-        TodoDataService::truncate();
+        TodoRepository::truncate();
 
         // todo 1
         auto todo1 = TodoHelper::create();
@@ -86,12 +86,12 @@ int main(int argc, char **argv)
         todo1.done = false;
         todo1.data["key1"] = "value1";
 
-        todo1.id = TodoDataService::add(todo1);
+        todo1.id = TodoRepository::add(todo1);
 
         todo1.done = true;
-        TodoDataService::add(todo1);
+        TodoRepository::add(todo1);
 
-        TodoDataService::setDoneById(todo1.id, false);
+        TodoRepository::setDoneById(todo1.id, false);
 
         // todo 2
         auto todo2 = TodoHelper::create();
@@ -99,17 +99,17 @@ int main(int argc, char **argv)
         todo2.body = "Body 2";
         todo2.done = false;
 
-        todo2.id = TodoDataService::add(todo2);
+        todo2.id = TodoRepository::add(todo2);
 
         todo2.data["key1"] = "value1";
-        TodoDataService::add(todo2);
+        TodoRepository::add(todo2);
 
-        TodoDataService::setDoneById(todo2.id, true);
+        TodoRepository::setDoneById(todo2.id, true);
     }
 
     // get TODO items from database
     {
-        auto list = TodoDataService::findAllOrderByCreatedAtDesc();
+        auto list = TodoRepository::findAllOrderByCreatedAtDesc();
 
         for (auto &item : list)
         {

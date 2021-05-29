@@ -7,6 +7,7 @@ from files.core import file
 from files.core import log
 from files.core import runner
 from files.core import util
+from files.core import module
 from files.config import target_android as config
 
 
@@ -18,7 +19,7 @@ def run(params):
 
     archs = target_config["archs"]
     build_types = target_config["build_types"]
-    module_name = "library"
+    android_module_name = "library"
 
     log.info("Creating AAR library...")
 
@@ -64,7 +65,7 @@ def run(params):
                     build_gradle_file, "{VERSION_CODE}", target_config["version_code"]
                 )
 
-                # copy glue code support lib files
+                # copy support lib files
                 gluecode_support_lib_dir = os.path.join(
                     proj_path,
                     const.DIR_NAME_FILES,
@@ -75,7 +76,11 @@ def run(params):
                 file.copy_all_inside(
                     os.path.join(gluecode_support_lib_dir, "java"),
                     os.path.join(
-                        android_library_build_dir, module_name, "src", "main", "java"
+                        android_library_build_dir,
+                        android_module_name,
+                        "src",
+                        "main",
+                        "java",
                     ),
                 )
 
@@ -86,17 +91,12 @@ def run(params):
                     const.DIR_NAME_FILES_MODULES,
                 )
 
-                modules = file.find_dirs_simple(modules_dir, "*")
+                modules = module.get_list(proj_path)
 
-                for module in modules:
-                    module_dir_name = os.path.basename(module)
-
-                    if module_dir_name == "support-lib":
-                        continue
-
+                for m in modules:
                     module_dir = os.path.join(
                         modules_dir,
-                        module_dir_name,
+                        m,
                         const.DIR_NAME_GLUECODE,
                         "generated-src",
                         "java",
@@ -107,7 +107,7 @@ def run(params):
                             module_dir,
                             os.path.join(
                                 android_library_build_dir,
-                                module_name,
+                                android_module_name,
                                 "src",
                                 "main",
                                 "java",
@@ -116,22 +116,27 @@ def run(params):
 
                 # copy all modules implementation files
                 modules_dir = os.path.join(
-                    proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_MODULES
+                    proj_path,
+                    const.DIR_NAME_FILES,
+                    const.DIR_NAME_FILES_MODULES,
                 )
 
-                modules = file.find_dirs_simple(modules_dir, "*")
+                modules = module.get_list(proj_path)
 
-                for module in modules:
-                    module_dir_name = os.path.basename(module)
-
-                    module_dir = os.path.join(modules_dir, module_dir_name, "java")
+                for m in modules:
+                    module_dir = os.path.join(
+                        modules_dir,
+                        m,
+                        "implementation",
+                        "java",
+                    )
 
                     if file.dir_exists(module_dir):
                         file.copy_all_inside(
                             module_dir,
                             os.path.join(
                                 android_library_build_dir,
-                                module_name,
+                                android_module_name,
                                 "src",
                                 "main",
                                 "java",
@@ -160,7 +165,8 @@ def run(params):
 
                 # build aar
                 android_module_dir = os.path.join(
-                    android_library_build_dir, module_name
+                    android_library_build_dir,
+                    android_module_name,
                 )
 
                 if util.is_windows_platform():
@@ -178,7 +184,11 @@ def run(params):
 
                 # copy files
                 arr_dir = os.path.join(
-                    android_library_build_dir, module_name, "build", "outputs", "aar"
+                    android_library_build_dir,
+                    android_module_name,
+                    "build",
+                    "outputs",
+                    "aar",
                 )
 
                 dist_dir = os.path.join(

@@ -4,11 +4,11 @@ import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import com.ezored.dataservices.TodoDataService
+import com.ezored.repository.TodoRepository
 import com.ezored.domain.Todo
 import com.ezored.sample.R
 import com.ezored.sample.adapter.TodoAdapter
-import com.ezored.sample.enums.LoadStateEnum
+import com.ezored.sample.enumerator.LoadStateEnumerator
 import com.ezored.sample.ui.fragment.base.BaseListFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,14 +39,14 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
 
         launch(Dispatchers.IO) {
             val list = if (TextUtils.isEmpty(searchText)) {
-                TodoDataService.findAllOrderByCreatedAtDesc()
+                TodoRepository.findAllOrderByCreatedAtDesc()
             } else {
-                TodoDataService.findByTitle(searchText)
+                TodoRepository.findByTitle(searchText)
             }
 
             withContext(Dispatchers.Main) {
                 listData?.value = list
-                remoteDataLoadState = LoadStateEnum.LOADED
+                remoteDataLoadState = LoadStateEnumerator.LOADED
             }
         }
     }
@@ -71,17 +71,17 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
     }
 
     override fun onTodoItemClick(view: View, todo: Todo) {
-        TodoDataService.setDoneById(todo.id, !todo.done)
+        TodoRepository.setDoneById(todo.id, !todo.done)
 
-        if (remoteDataLoadState != LoadStateEnum.LOADING) {
-            remoteDataLoadState = LoadStateEnum.NOT_LOADED
+        if (remoteDataLoadState != LoadStateEnumerator.LOADING) {
+            remoteDataLoadState = LoadStateEnumerator.NOT_LOADED
             validateLoadData()
         }
     }
 
     fun search(typedText: String) {
-        if (remoteDataLoadState != LoadStateEnum.LOADING) {
-            remoteDataLoadState = LoadStateEnum.NOT_LOADED
+        if (remoteDataLoadState != LoadStateEnumerator.LOADING) {
+            remoteDataLoadState = LoadStateEnumerator.NOT_LOADED
             searchText = typedText
             validateLoadData()
         }

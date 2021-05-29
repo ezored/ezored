@@ -1,6 +1,6 @@
-package com.ezored.sample.enums
+package com.ezored.sample.enumerator
 
-enum class SimpleOptionTypeEnum {
+enumerator class SimpleOptionTypeEnumerator {
 
     SECRET_KEY,
     SHARED_DATA,

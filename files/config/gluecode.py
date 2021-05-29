@@ -1,12 +1,12 @@
 def run(proj_path, target_name, params):
     return {
         "modules": [
-            "app-enums",
+            "app-enumerator",
             "app-domain",
             "app-core",
-            "app-data-services",
-            "app-system-services",
-            "app-helpers",
+            "app-repository",
+            "app-system-service",
+            "app-helper",
             "datetime",
             "file-helper",
             "http-client",

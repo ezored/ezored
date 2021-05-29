@@ -3,10 +3,10 @@ package com.ezored.sample.ui.fragment
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.ezored.core.ApplicationCore
-import com.ezored.dataservices.TodoDataService
+import com.ezored.repository.TodoRepository
 import com.ezored.domain.Todo
-import com.ezored.helpers.EnvironmentHelper
-import com.ezored.helpers.SharedDataHelper
+import com.ezored.helper.EnvironmentHelper
+import com.ezored.helper.SharedDataHelper
 import com.ezored.io.FileHelper
 import com.ezored.net.http.HttpClient
 import com.ezored.net.http.HttpHeader
@@ -15,8 +15,8 @@ import com.ezored.net.http.HttpRequest
 import com.ezored.net.http.HttpRequestParam
 import com.ezored.sample.R
 import com.ezored.sample.adapter.SimpleOptionAdapter
-import com.ezored.sample.enums.LoadStateEnum
-import com.ezored.sample.enums.SimpleOptionTypeEnum
+import com.ezored.sample.enumerator.LoadStateEnumerator
+import com.ezored.sample.enumerator.SimpleOptionTypeEnumerator
 import com.ezored.sample.models.SimpleOption
 import com.ezored.sample.ui.activity.TodoListActivity
 import com.ezored.sample.ui.fragment.base.BaseListFragment
@@ -45,24 +45,24 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
         super.onLoadNewData()
 
         val list = ArrayList<SimpleOption>()
-        list.add(SimpleOption(SimpleOptionTypeEnum.SECRET_KEY))
-        list.add(SimpleOption(SimpleOptionTypeEnum.SHARED_DATA))
-        list.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
-        list.add(SimpleOption(SimpleOptionTypeEnum.FILE_HELPER))
-        list.add(SimpleOption(SimpleOptionTypeEnum.TODO))
+        list.add(SimpleOption(SimpleOptionTypeEnumerator.SECRET_KEY))
+        list.add(SimpleOption(SimpleOptionTypeEnumerator.SHARED_DATA))
+        list.add(SimpleOption(SimpleOptionTypeEnumerator.HTTPS_REQUEST))
+        list.add(SimpleOption(SimpleOptionTypeEnumerator.FILE_HELPER))
+        list.add(SimpleOption(SimpleOptionTypeEnumerator.TODO))
 
         listData?.value = list
 
-        remoteDataLoadState = LoadStateEnum.LOADED
+        remoteDataLoadState = LoadStateEnumerator.LOADED
     }
 
     override fun onSimpleOptionItemClick(view: View, option: SimpleOption) {
         when {
-            option.type == SimpleOptionTypeEnum.SHARED_DATA -> doActionSharedData()
-            option.type == SimpleOptionTypeEnum.HTTPS_REQUEST -> doActionHttpsRequest()
-            option.type == SimpleOptionTypeEnum.SECRET_KEY -> doActionSecretKey()
-            option.type == SimpleOptionTypeEnum.TODO -> doActionTodo()
-            option.type == SimpleOptionTypeEnum.FILE_HELPER -> doActionFileHelper()
+            option.type == SimpleOptionTypeEnumerator.SHARED_DATA -> doActionSharedData()
+            option.type == SimpleOptionTypeEnumerator.HTTPS_REQUEST -> doActionHttpsRequest()
+            option.type == SimpleOptionTypeEnumerator.SECRET_KEY -> doActionSecretKey()
+            option.type == SimpleOptionTypeEnumerator.TODO -> doActionTodo()
+            option.type == SimpleOptionTypeEnumerator.FILE_HELPER -> doActionFileHelper()
         }
     }
 
@@ -155,7 +155,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
         showLoadingView()
 
         launch(Dispatchers.IO) {
-            TodoDataService.truncate()
+            TodoRepository.truncate()
 
             for (i in 1..100) {
                 val todo = Todo(
@@ -172,7 +172,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
                     Date()
                 )
 
-                TodoDataService.add(todo)
+                TodoRepository.add(todo)
             }
 
             withContext(Dispatchers.Main) {

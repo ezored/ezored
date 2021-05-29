@@ -18,8 +18,61 @@
 
 #include "proxy_cache_interface.hpp"
 #include <functional>
-#include <mutex>
 #include <unordered_map>
+
+#ifdef __cplusplus_cli
+#include <Windows.h>
+
+class Mutex
+{
+    CRITICAL_SECTION _lock;
+
+public:
+    Mutex(const Mutex &) = delete;
+    Mutex(Mutex &&) = delete;
+    Mutex &operator=(const Mutex &) = delete;
+    Mutex &operator=(Mutex &&) = delete;
+
+    Mutex() throw()
+    {
+        InitializeCriticalSection(&_lock);
+    }
+    ~Mutex() throw()
+    {
+        DeleteCriticalSection(&_lock);
+    }
+    void lock() throw()
+    {
+        EnterCriticalSection(&_lock);
+    }
+    void unlock() throw()
+    {
+        LeaveCriticalSection(&_lock);
+    }
+};
+
+template <class T>
+class UniqueLock
+{
+public:
+    UniqueLock(T &mutex) throw() : _mutex(&mutex)
+    {
+        _mutex->lock();
+    }
+    ~UniqueLock() throw()
+    {
+        _mutex->unlock();
+    }
+
+private:
+    T *_mutex;
+};
+#else // __cplusplus_cli
+#include <mutex>
+using Mutex = std::mutex;
+template <class T>
+using UniqueLock = std::unique_lock<T>;
+#endif // __cplusplus_cli
 
 // """
 //    This place is not a place of honor.
@@ -87,7 +140,7 @@ public:
                            const OwningImplPointer &impl,
                            AllocatorFunction *alloc)
     {
-        std::unique_lock<std::mutex> lock(m_mutex);
+        UniqueLock<Mutex> lock(m_mutex);
         UnowningImplPointer ptr = get_unowning(impl);
         auto existing_proxy_iter = m_mapping.find({tag, ptr});
         if (existing_proxy_iter != m_mapping.end())
@@ -114,7 +167,7 @@ public:
      */
     void remove(const std::type_index &tag, const UnowningImplPointer &impl_unowning)
     {
-        std::unique_lock<std::mutex> lock(m_mutex);
+        UniqueLock<Mutex> lock(m_mutex);
         auto it = m_mapping.find({tag, impl_unowning});
         if (it != m_mapping.end())
         {
@@ -134,6 +187,8 @@ public:
         }
     }
 
+    Pimpl() = default;
+
 private:
     struct KeyHash
     {
@@ -152,11 +207,7 @@ private:
     };
 
     std::unordered_map<Key, WeakProxyPointer, KeyHash, KeyEqual> m_mapping;
-    std::mutex m_mutex;
-
-    // Only ProxyCache<Traits>::get_base() can allocate these objects.
-    Pimpl() = default;
-    friend class ProxyCache<Traits>;
+    Mutex m_mutex;
 };
 
 template <typename Traits>
@@ -166,6 +217,44 @@ void ProxyCache<Traits>::cleanup(const std::shared_ptr<Pimpl> &base,
 {
     base->remove(tag, ptr);
 }
+
+#ifdef __cplusplus_cli
+/*
+ * In C++/CLI (Windows), native static variables can only be initialized in the default
+ * AppDomain. As that would be a huge limiting factor for the users of this library, we
+ * work around it by holding the Pimpl instance in a managed class. Also, since managed
+ * classes  can't hold native types by value, we keep the instance as a pointer to
+ * shared_ptr, instantiate it in the static constructor, and schedule it's deletion to take
+ * place when the current AppDomain gets unloaded.
+ */
+template <typename Traits>
+private ref class SingletonHolder
+{
+private:
+    using Pimpl = typename ProxyCache<Traits>::Pimpl;
+    using PimplPtr = std::shared_ptr<Pimpl>;
+    static PimplPtr *_instance;
+    static SingletonHolder()
+    {
+        _instance = new PimplPtr(new Pimpl);
+        System::AppDomain::CurrentDomain->DomainUnload += gcnew System::EventHandler(&OnDomainUnload);
+    }
+    static void OnDomainUnload(System::Object ^, System::EventArgs ^)
+    {
+        System::AppDomain::CurrentDomain->DomainUnload -= gcnew System::EventHandler(&OnDomainUnload);
+        delete _instance;
+    }
+
+public:
+    static property PimplPtr *Instance
+    {
+        PimplPtr *get()
+        {
+            return _instance;
+        }
+    }
+};
+#endif // __cplusplus_cli
 
 /*
  * Magic-static singleton.
@@ -179,10 +268,14 @@ void ProxyCache<Traits>::cleanup(const std::shared_ptr<Pimpl> &base,
 template <typename Traits>
 auto ProxyCache<Traits>::get_base() -> const std::shared_ptr<Pimpl> &
 {
+#ifndef __cplusplus_cli
     static const std::shared_ptr<Pimpl> instance(new Pimpl);
     // Return by const-ref. This is safe to call any time except during static destruction.
     // Returning by reference lets us avoid touching the refcount unless needed.
     return instance;
+#else  // __cplusplus_cli
+    return *SingletonHolder<Traits>::Instance;
+#endif // __cplusplus_cli
 }
 
 template <typename Traits>

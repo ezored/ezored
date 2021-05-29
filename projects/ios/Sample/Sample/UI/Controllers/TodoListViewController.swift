@@ -26,9 +26,9 @@ class TodoListViewController: BaseTableViewController, SimpleSearchBarProtocol {
         super.onLoadNewData()
 
         if searchText.isEmpty {
-            listData = EZRDataServicesTodoDataService.findAllOrderByCreatedAtDesc()
+            listData = EZRrepositoryTodoRepository.findAllOrderByCreatedAtDesc()
         } else {
-            listData = EZRDataServicesTodoDataService.find(byTitle: searchText)
+            listData = EZRrepositoryTodoRepository.find(byTitle: searchText)
         }
 
         tableView.reloadData()
@@ -44,8 +44,8 @@ class TodoListViewController: BaseTableViewController, SimpleSearchBarProtocol {
         tableView.deselectRow(at: indexPath, animated: true)
 
         if let todo = listData?[indexPath.row] {
-            EZRDataServicesTodoDataService.setDoneById(todo.id, done: !todo.done)
-            listData?[indexPath.row] = EZRDataServicesTodoDataService.find(byId: todo.id)
+            EZRrepositoryTodoRepository.setDoneById(todo.id, done: !todo.done)
+            listData?[indexPath.row] = EZRrepositoryTodoRepository.find(byId: todo.id)
             tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }

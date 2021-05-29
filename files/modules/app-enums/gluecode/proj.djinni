@@ -1,4 +1,0 @@
-customer_status_enum = enum {
-    active;
-    inactive;
-}

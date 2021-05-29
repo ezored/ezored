@@ -1,6 +1,6 @@
-package com.ezored.sample.enums
+package com.ezored.sample.enumerator
 
-enum class LoadStateEnum {
+enumerator class LoadStateEnumerator {
 
     NOT_LOADED,
     LOADING,

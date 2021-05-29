@@ -1,4 +1,4 @@
-@extern "../../app-enums/gluecode/yaml/customer_status_enum.yaml"
+@extern "../../app-enumerator/gluecode/yaml/customer_status_enumerator.yaml"
 
 todo = record {
     id: i64;
@@ -26,7 +26,7 @@ customer = record {
     id: i64;
     name: string;
     token: string;
-    status: customer_status_enum;
+    status: customer_status_enumerator;
 } deriving(parcelable)
 
 initialization_data = record {

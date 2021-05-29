@@ -9,7 +9,7 @@ public extension UIView {
     func addConstraintsWithFormat(format: String, views: UIView...) {
         var viewsDictionary = [String: UIView]()
 
-        for (index, view) in views.enumerated() {
+        for (index, view) in views.enumeratorerated() {
             let key = "v\(index)"
             view.translatesAutoresizingMaskIntoConstraints = false
             viewsDictionary[key] = view

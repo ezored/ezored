@@ -117,7 +117,7 @@ class HomeViewModel: NSObject, ObservableObject {
 
         DispatchQueue.global(qos: .background).async {
             // add some rows
-            EZRDataServicesTodoDataService.truncate()
+            EZRrepositoryTodoRepository.truncate()
 
             for i in 1 ... 100 {
                 let todo = EZRDomainTodo(
@@ -130,7 +130,7 @@ class HomeViewModel: NSObject, ObservableObject {
                     updatedAt: Date()
                 )
 
-                EZRDataServicesTodoDataService.add(todo)
+                EZRrepositoryTodoRepository.add(todo)
             }
 
             // show list view controller

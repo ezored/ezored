@@ -6,7 +6,7 @@ extension UIDevice {
         return UIDevice().userInterfaceIdiom == .phone
     }
 
-    enum ScreenType: String {
+    enumerator ScreenType: String {
         case iPhone4
         case iPhone5
         case iPhone6
