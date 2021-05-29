@@ -1106,6 +1106,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "i386 arm64";
 				IBSC_MODULE = Sample_AppleWatch_Extension;
@@ -1131,6 +1132,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "arm64 i386";
@@ -1154,8 +1156,9 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample-AppleWatch Extension/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "i386 arm64";
 				INFOPLIST_FILE = "Sample-AppleWatch Extension/App/Info.plist";
@@ -1183,8 +1186,9 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample-AppleWatch Extension/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "i386 arm64";
 				INFOPLIST_FILE = "Sample-AppleWatch Extension/App/Info.plist";

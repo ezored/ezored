@@ -221,7 +221,7 @@ public extension UIImage {
             }
         }
 
-        var enumeratorerator = imageColors.objectEnumeratorerator()
+        var enumeratorerator = imageColors.objectEnumerator()
         var sortedColors = NSMutableArray(capacity: imageColors.count)
         while let K = enumeratorerator.nextObject() as? Double {
             let C = imageColors.count(for: K)
@@ -253,7 +253,7 @@ public extension UIImage {
         }
         proposed[0] = proposedEdgeColor.color
 
-        enumeratorerator = imageColors.objectEnumeratorerator()
+        enumeratorerator = imageColors.objectEnumerator()
         sortedColors.removeAllObjects()
         sortedColors = NSMutableArray(capacity: imageColors.count)
         let findDarkTextColor = !proposed[0].isDarkColor
