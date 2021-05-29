@@ -8,9 +8,13 @@
 #include <string>
 #include <vector>
 
-namespace ezored { namespace repository {
+namespace ezored
+{
+namespace repository
+{
 
-class TodoRepository {
+class TodoRepository
+{
 public:
     virtual ~TodoRepository() {}
 
@@ -20,17 +24,18 @@ public:
 
     static std::vector<::ezored::domain::Todo> findAllOrderByCreatedAtDesc();
 
-    static std::vector<::ezored::domain::Todo> findByTitle(const std::string & title);
+    static std::vector<::ezored::domain::Todo> findByTitle(const std::string &title);
 
     static void removeById(int64_t id);
 
-    static void update(int64_t id, const ::ezored::domain::Todo & todo);
+    static void update(int64_t id, const ::ezored::domain::Todo &todo);
 
-    static int64_t insert(const ::ezored::domain::Todo & todo);
+    static int64_t insert(const ::ezored::domain::Todo &todo);
 
-    static int64_t add(const ::ezored::domain::Todo & todo);
+    static int64_t add(const ::ezored::domain::Todo &todo);
 
     static void setDoneById(int64_t id, bool done);
 };
 
-} }  // namespace ezored::repository
+} // namespace repository
+} // namespace ezored

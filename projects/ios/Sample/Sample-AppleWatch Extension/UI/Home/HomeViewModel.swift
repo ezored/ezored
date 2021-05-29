@@ -51,7 +51,7 @@ class HomeViewModel: NSObject, ObservableObject {
     // MARK: Actions
 
     private func doActionSharedData() {
-        EZRHelpersSharedDataHelper.setDemoFlag(!EZRHelpersSharedDataHelper.getDemoFlag())
+        EZRHelperSharedDataHelper.setDemoFlag(!EZRHelperSharedDataHelper.getDemoFlag())
         loadData()
     }
 
@@ -106,7 +106,7 @@ class HomeViewModel: NSObject, ObservableObject {
     }
 
     private func doActionSecretKey() {
-        let secretKey = EZRHelpersEnvironmentHelper.getSecretKey()
+        let secretKey = EZRHelperEnvironmentHelper.getSecretKey()
         let message = String(format: "DialogSecretKeyMessage".localized, secretKey)
 
         alertMessage = .loaded(data: message)
@@ -117,7 +117,7 @@ class HomeViewModel: NSObject, ObservableObject {
 
         DispatchQueue.global(qos: .background).async {
             // add some rows
-            EZRrepositoryTodoRepository.truncate()
+            EZRRepositoryTodoRepository.truncate()
 
             for i in 1 ... 100 {
                 let todo = EZRDomainTodo(
@@ -130,7 +130,7 @@ class HomeViewModel: NSObject, ObservableObject {
                     updatedAt: Date()
                 )
 
-                EZRrepositoryTodoRepository.add(todo)
+                EZRRepositoryTodoRepository.add(todo)
             }
 
             // show list view controller

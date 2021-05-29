@@ -7,7 +7,7 @@ public struct UIImageColors {
     public var detail: UIColor!
 }
 
-public enumerator UIImageColorsQuality: CGFloat {
+public enum UIImageColorsQuality: CGFloat {
     case lowest = 50 // 50px
     case low = 100 // 100px
     case high = 250 // 250px

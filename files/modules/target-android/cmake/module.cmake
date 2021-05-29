@@ -1,6 +1,7 @@
 if(PROJECT_TARGET_NAME STREQUAL "android")
     # module files
     file(GLOB S_FILES_CXX "${PROJECT_MODULES_PATH}/support-lib/gluecode/djinni/jni/main-ext/*.cpp")
+    file(GLOB H_FILES_CXX "${PROJECT_MODULES_PATH}/support-lib/gluecode/djinni/jni/main-ext/*.hpp")
 
     file(GLOB H_FILES_SUPPORT "${PROJECT_MODULES_PATH}/support-lib/djinni/*.hpp")
     file(GLOB S_FILES_SUPPORT "${PROJECT_MODULES_PATH}/support-lib/djinni/*.cpp")
@@ -47,6 +48,8 @@ if(PROJECT_TARGET_NAME STREQUAL "android")
     endif()
 
     # header files
+    project_add_header_files("${H_FILES_CXX}")
+
     project_add_header_files("${H_FILES_SUPPORT}")
     project_add_header_files("${H_FILES_SUPPORT_PLATFORM}")
 

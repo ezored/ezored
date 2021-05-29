@@ -6,9 +6,11 @@
 #include "djinni/jni/djinni_support.hpp"
 #include "ezored/helper/SecurityHelper.hpp"
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
-class EZRHelperSecurityHelper final : ::djinni::JniInterface<::ezored::helper::SecurityHelper, EZRHelperSecurityHelper> {
+class EZRHelperSecurityHelper final : ::djinni::JniInterface<::ezored::helper::SecurityHelper, EZRHelperSecurityHelper>
+{
 public:
     using CppType = std::shared_ptr<::ezored::helper::SecurityHelper>;
     using CppOptType = std::shared_ptr<::ezored::helper::SecurityHelper>;
@@ -18,15 +20,14 @@ public:
 
     ~EZRHelperSecurityHelper();
 
-    static CppType toCpp(JNIEnv* jniEnv, JniType j) { return ::djinni::JniClass<EZRHelperSecurityHelper>::get()._fromJava(jniEnv, j); }
-    static ::djinni::LocalRef<JniType> fromCppOpt(JNIEnv* jniEnv, const CppOptType& c) { return {jniEnv, ::djinni::JniClass<EZRHelperSecurityHelper>::get()._toJava(jniEnv, c)}; }
-    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv* jniEnv, const CppType& c) { return fromCppOpt(jniEnv, c); }
+    static CppType toCpp(JNIEnv *jniEnv, JniType j) { return ::djinni::JniClass<EZRHelperSecurityHelper>::get()._fromJava(jniEnv, j); }
+    static ::djinni::LocalRef<JniType> fromCppOpt(JNIEnv *jniEnv, const CppOptType &c) { return {jniEnv, ::djinni::JniClass<EZRHelperSecurityHelper>::get()._toJava(jniEnv, c)}; }
+    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv *jniEnv, const CppType &c) { return fromCppOpt(jniEnv, c); }
 
 private:
     EZRHelperSecurityHelper();
     friend ::djinni::JniClass<EZRHelperSecurityHelper>;
     friend ::djinni::JniInterface<::ezored::helper::SecurityHelper, EZRHelperSecurityHelper>;
-
 };
 
-}  // namespace djinni_generated
+} // namespace djinni_generated

@@ -9,9 +9,15 @@
 #include <utility>
 #include <vector>
 
-namespace ezored { namespace net { namespace http {
+namespace ezored
+{
+namespace net
+{
+namespace http
+{
 
-struct HttpResponse final {
+struct HttpResponse final
+{
     int32_t code;
     std::string body;
     std::string url;
@@ -21,11 +27,11 @@ struct HttpResponse final {
                  std::string body_,
                  std::string url_,
                  std::vector<HttpHeader> headers_)
-    : code(std::move(code_))
-    , body(std::move(body_))
-    , url(std::move(url_))
-    , headers(std::move(headers_))
-    {}
+        : code(std::move(code_)), body(std::move(body_)), url(std::move(url_)), headers(std::move(headers_))
+    {
+    }
 };
 
-} } }  // namespace ezored::net::http
+} // namespace http
+} // namespace net
+} // namespace ezored

@@ -4,11 +4,11 @@ import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import com.ezored.repository.TodoRepository
 import com.ezored.domain.Todo
+import com.ezored.repository.TodoRepository
 import com.ezored.sample.R
 import com.ezored.sample.adapter.TodoAdapter
-import com.ezored.sample.enumerator.LoadStateEnumerator
+import com.ezored.sample.enumerator.LoadStateEnum
 import com.ezored.sample.ui.fragment.base.BaseListFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,7 +46,7 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
 
             withContext(Dispatchers.Main) {
                 listData?.value = list
-                remoteDataLoadState = LoadStateEnumerator.LOADED
+                remoteDataLoadState = LoadStateEnum.LOADED
             }
         }
     }
@@ -57,13 +57,14 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
         (listData as MutableLiveData<ArrayList<Todo>>).observe(
             this,
             androidx.lifecycle.Observer { list ->
-                adapter = TodoAdapter(context!!, list)
+                adapter = TodoAdapter(requireContext(), list)
                 (adapter as TodoAdapter).setListener(this)
 
                 updateAdapter()
 
                 adapter.notifyDataSetChanged()
-            })
+            }
+        )
     }
 
     override fun needLoadNewData(): Boolean {
@@ -73,15 +74,15 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
     override fun onTodoItemClick(view: View, todo: Todo) {
         TodoRepository.setDoneById(todo.id, !todo.done)
 
-        if (remoteDataLoadState != LoadStateEnumerator.LOADING) {
-            remoteDataLoadState = LoadStateEnumerator.NOT_LOADED
+        if (remoteDataLoadState != LoadStateEnum.LOADING) {
+            remoteDataLoadState = LoadStateEnum.NOT_LOADED
             validateLoadData()
         }
     }
 
     fun search(typedText: String) {
-        if (remoteDataLoadState != LoadStateEnumerator.LOADING) {
-            remoteDataLoadState = LoadStateEnumerator.NOT_LOADED
+        if (remoteDataLoadState != LoadStateEnum.LOADING) {
+            remoteDataLoadState = LoadStateEnum.NOT_LOADED
             searchText = typedText
             validateLoadData()
         }

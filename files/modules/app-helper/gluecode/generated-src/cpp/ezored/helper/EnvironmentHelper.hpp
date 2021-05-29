@@ -5,13 +5,18 @@
 
 #include <string>
 
-namespace ezored { namespace helper {
+namespace ezored
+{
+namespace helper
+{
 
-class EnvironmentHelper {
+class EnvironmentHelper
+{
 public:
     virtual ~EnvironmentHelper() {}
 
     static std::string getSecretKey();
 };
 
-} }  // namespace ezored::helper
+} // namespace helper
+} // namespace ezored

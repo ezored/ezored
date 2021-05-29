@@ -155,11 +155,11 @@ class BaseViewController: UIViewController, NetworkErrorViewProtocol {
 
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.barTintColor = UIColor(hexString: "#ff3860")!
+        navigationController?.navigationBar.barTintColor = UIColor(hexString: "#F44336")!
     }
 
     func setupTabBar() {
-        tabBarController?.tabBar.tintColor = UIColor(hexString: "#ff3860")!
+        tabBarController?.tabBar.tintColor = UIColor(hexString: "#F44336")!
     }
 
     func validateLoadData() {

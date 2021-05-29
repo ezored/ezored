@@ -16,9 +16,9 @@ import com.ezored.net.http.HttpClient
 import com.ezored.net.http.HttpClientPlatformServiceImpl
 import com.ezored.sample.BuildConfig
 import com.ezored.sample.data.AppData
-import com.ezored.sample.observers.AppLifecycleObserver
-import com.ezored.sample.receivers.ConnectivityChangeReceiver
-import com.ezored.sample.utils.EnvironmentUtil
+import com.ezored.sample.observer.AppLifecycleObserver
+import com.ezored.sample.receiver.ConnectivityChangeReceiver
+import com.ezored.sample.util.EnvironmentUtil
 import com.ezored.util.Logger
 import com.ezored.util.LoggerLevel
 import com.ezored.util.LoggerPlatformServiceImpl

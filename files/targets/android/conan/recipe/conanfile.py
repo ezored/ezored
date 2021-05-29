@@ -60,10 +60,10 @@ class TargetConan(ConanFile):
         cmake.build()
 
     def requirements(self):
-        self.requires("sqlite3/3.34.1")
+        self.requires("sqlite3/3.35.5")
         self.requires("rapidjson/1.1.0")
-        self.requires("openssl/1.1.1i")
-        self.requires("sqlitecpp/2.5.0")
+        self.requires("openssl/1.1.1k")
+        self.requires("sqlitecpp/3.1.1")
         self.requires("date/3.0.0")
 
         # uncomment only if you want use C++ http client instead of native android http client

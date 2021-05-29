@@ -5,9 +5,15 @@
 
 #include <functional>
 
-namespace ezored { namespace net { namespace http {
+namespace ezored
+{
+namespace net
+{
+namespace http
+{
 
-enum class HttpMethod : int {
+enum class HttpMethod : int
+{
     METHOD_GET,
     METHOD_POST,
     METHOD_HEAD,
@@ -19,15 +25,20 @@ enum class HttpMethod : int {
     METHOD_TRACE,
 };
 
-} } }  // namespace ezored::net::http
+}
+} // namespace net
+} // namespace ezored
 
-namespace std {
+namespace std
+{
 
 template <>
-struct hash<::ezored::net::http::HttpMethod> {
-    size_t operator()(::ezored::net::http::HttpMethod type) const {
+struct hash<::ezored::net::http::HttpMethod>
+{
+    size_t operator()(::ezored::net::http::HttpMethod type) const
+    {
         return std::hash<int>()(static_cast<int>(type));
     }
 };
 
-}  // namespace std
+} // namespace std

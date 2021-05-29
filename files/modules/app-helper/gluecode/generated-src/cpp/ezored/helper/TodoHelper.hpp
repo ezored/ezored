@@ -5,13 +5,18 @@
 
 #include "ezored/domain/Todo.hpp"
 
-namespace ezored { namespace helper {
+namespace ezored
+{
+namespace helper
+{
 
-class TodoHelper {
+class TodoHelper
+{
 public:
     virtual ~TodoHelper() {}
 
     static ::ezored::domain::Todo create();
 };
 
-} }  // namespace ezored::helper
+} // namespace helper
+} // namespace ezored

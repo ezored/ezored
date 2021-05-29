@@ -9,9 +9,13 @@
 #include <unordered_map>
 #include <utility>
 
-namespace ezored { namespace domain {
+namespace ezored
+{
+namespace domain
+{
 
-struct Todo final {
+struct Todo final
+{
     int64_t id;
     std::string title;
     std::string body;
@@ -27,14 +31,10 @@ struct Todo final {
          bool done_,
          std::chrono::system_clock::time_point createdAt_,
          std::chrono::system_clock::time_point updatedAt_)
-    : id(std::move(id_))
-    , title(std::move(title_))
-    , body(std::move(body_))
-    , data(std::move(data_))
-    , done(std::move(done_))
-    , createdAt(std::move(createdAt_))
-    , updatedAt(std::move(updatedAt_))
-    {}
+        : id(std::move(id_)), title(std::move(title_)), body(std::move(body_)), data(std::move(data_)), done(std::move(done_)), createdAt(std::move(createdAt_)), updatedAt(std::move(updatedAt_))
+    {
+    }
 };
 
-} }  // namespace ezored::domain
+} // namespace domain
+} // namespace ezored

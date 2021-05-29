@@ -261,13 +261,13 @@
 		3A2F22B82214A4DA00A2FB4F = {
 			isa = PBXGroup;
 			children = (
-				ABCDC219261D222300BEEF5C /* Shared */,
+				3A00E97C23AF245E0054007D /* Frameworks */,
+				EC345A102B299D92422AC91C /* Pods */,
+				3A2F22C22214A4DA00A2FB4F /* Products */,
 				3A2F22C32214A4DA00A2FB4F /* Sample */,
 				ABCDC1A5261D0A4C00BEEF5C /* Sample-AppleWatch */,
 				ABCDC1B4261D0A4F00BEEF5C /* Sample-AppleWatch Extension */,
-				3A2F22C22214A4DA00A2FB4F /* Products */,
-				3A00E97C23AF245E0054007D /* Frameworks */,
-				EC345A102B299D92422AC91C /* Pods */,
+				ABCDC219261D222300BEEF5C /* Shared */,
 			);
 			sourceTree = "<group>";
 		};
@@ -284,14 +284,14 @@
 		3A2F22C32214A4DA00A2FB4F /* Sample */ = {
 			isa = PBXGroup;
 			children = (
-				3AE05FAD23AA934B0036BE36 /* Sample.entitlements */,
 				3A2F22FA2214A57D00A2FB4F /* App */,
 				3A2F22CB2214A4DB00A2FB4F /* Assets.xcassets */,
-				3A2F23302214B05B00A2FB4F /* Sample-Bridging-Header.h */,
 				3A2F22DA2214A57D00A2FB4F /* Extensions */,
 				3A2F22D02214A4DB00A2FB4F /* Info.plist */,
 				3A2F22CD2214A4DB00A2FB4F /* LaunchScreen.storyboard */,
 				3A2F23262214A7A800A2FB4F /* Localizable.strings */,
+				3A2F23302214B05B00A2FB4F /* Sample-Bridging-Header.h */,
+				3AE05FAD23AA934B0036BE36 /* Sample.entitlements */,
 				3A2F22D62214A57D00A2FB4F /* UI */,
 				3A2F22F72214A57D00A2FB4F /* Utils */,
 			);
@@ -488,9 +488,9 @@
 		ABCDC1A5261D0A4C00BEEF5C /* Sample-AppleWatch */ = {
 			isa = PBXGroup;
 			children = (
-				ABCDC1A6261D0A4C00BEEF5C /* Interface.storyboard */,
 				ABCDC1A9261D0A4F00BEEF5C /* Assets.xcassets */,
 				ABCDC1AB261D0A4F00BEEF5C /* Info.plist */,
+				ABCDC1A6261D0A4C00BEEF5C /* Interface.storyboard */,
 			);
 			path = "Sample-AppleWatch";
 			sourceTree = "<group>";
@@ -498,10 +498,10 @@
 		ABCDC1B4261D0A4F00BEEF5C /* Sample-AppleWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				ABCDC1E6261D1E9D00BEEF5C /* App */,
 				AB57844E2637469000558651 /* Extensions */,
 				AB9E18D326372A6800225E57 /* Models */,
 				ABCDC1E7261D1EA800BEEF5C /* Resources */,
-				ABCDC1E6261D1E9D00BEEF5C /* App */,
 				ABCDC1D7261D0B4800BEEF5C /* UI */,
 			);
 			path = "Sample-AppleWatch Extension";
@@ -548,11 +548,11 @@
 		ABCDC219261D222300BEEF5C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				AB9E18A326371AE200225E57 /* Utils */,
+				ABCDC22E261D239200BEEF5C /* App */,
 				AB9E188E263719D700225E57 /* Extensions */,
 				3ADA2D8722162760005E6BD0 /* Models */,
-				ABCDC22E261D239200BEEF5C /* App */,
 				AB5784AF263771F800558651 /* SharedAssets.xcassets */,
+				AB9E18A326371AE200225E57 /* Utils */,
 			);
 			path = Shared;
 			sourceTree = "<group>";

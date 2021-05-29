@@ -6,9 +6,11 @@
 #include "djinni/jni/djinni_support.hpp"
 #include "ezored/systemservice/CustomerSystemService.hpp"
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
-class EZRSystemServiceCustomerSystemService final : ::djinni::JniInterface<::ezored::systemservice::CustomerSystemService, EZRSystemServiceCustomerSystemService> {
+class EZRSystemServiceCustomerSystemService final : ::djinni::JniInterface<::ezored::systemservice::CustomerSystemService, EZRSystemServiceCustomerSystemService>
+{
 public:
     using CppType = std::shared_ptr<::ezored::systemservice::CustomerSystemService>;
     using CppOptType = std::shared_ptr<::ezored::systemservice::CustomerSystemService>;
@@ -18,15 +20,14 @@ public:
 
     ~EZRSystemServiceCustomerSystemService();
 
-    static CppType toCpp(JNIEnv* jniEnv, JniType j) { return ::djinni::JniClass<EZRSystemServiceCustomerSystemService>::get()._fromJava(jniEnv, j); }
-    static ::djinni::LocalRef<JniType> fromCppOpt(JNIEnv* jniEnv, const CppOptType& c) { return {jniEnv, ::djinni::JniClass<EZRSystemServiceCustomerSystemService>::get()._toJava(jniEnv, c)}; }
-    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv* jniEnv, const CppType& c) { return fromCppOpt(jniEnv, c); }
+    static CppType toCpp(JNIEnv *jniEnv, JniType j) { return ::djinni::JniClass<EZRSystemServiceCustomerSystemService>::get()._fromJava(jniEnv, j); }
+    static ::djinni::LocalRef<JniType> fromCppOpt(JNIEnv *jniEnv, const CppOptType &c) { return {jniEnv, ::djinni::JniClass<EZRSystemServiceCustomerSystemService>::get()._toJava(jniEnv, c)}; }
+    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv *jniEnv, const CppType &c) { return fromCppOpt(jniEnv, c); }
 
 private:
     EZRSystemServiceCustomerSystemService();
     friend ::djinni::JniClass<EZRSystemServiceCustomerSystemService>;
     friend ::djinni::JniInterface<::ezored::systemservice::CustomerSystemService, EZRSystemServiceCustomerSystemService>;
-
 };
 
-}  // namespace djinni_generated
+} // namespace djinni_generated

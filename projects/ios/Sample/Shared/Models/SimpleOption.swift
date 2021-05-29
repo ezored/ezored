@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 struct SimpleOption: Hashable {
-    let type: OptionTypeEnumerator
+    let type: OptionTypeEnum
     let hasSeparator: Bool
 
     func getDescription() -> String {
@@ -10,7 +10,7 @@ struct SimpleOption: Hashable {
         case .secretKey:
             return "OptionSecretKey".localized
         case .sharedData:
-            let demoFlag = EZRHelpersSharedDataHelper.getDemoFlag()
+            let demoFlag = EZRHelperSharedDataHelper.getDemoFlag()
             return String(format: "%@ %@", "OptionSharedData".localized, demoFlag ? "ON" : "OFF")
         case .httpRequest:
             return "OptionHttpRequest".localized
@@ -26,6 +26,6 @@ struct SimpleOption: Hashable {
     }
 
     func getImage() -> UIImage {
-        return UIImage(named: "IcoSimpleOption")!.imageWithColor(color: UIColor(hexString: "#ff3860")!)!
+        return UIImage(named: "IcoSimpleOption")!.imageWithColor(color: UIColor(hexString: "#F44336")!)!
     }
 }

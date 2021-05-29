@@ -5,22 +5,30 @@
 
 #include <functional>
 
-namespace ezored { namespace enumerator {
+namespace ezored
+{
+namespace enumerator
+{
 
-enum class CustomerStatusEnumerator : int {
+enum class CustomerStatusEnumerator : int
+{
     ACTIVE,
     INACTIVE,
 };
 
-} }  // namespace ezored::enumerator
+}
+} // namespace ezored
 
-namespace std {
+namespace std
+{
 
 template <>
-struct hash<::ezored::enumerator::CustomerStatusEnumerator> {
-    size_t operator()(::ezored::enumerator::CustomerStatusEnumerator type) const {
+struct hash<::ezored::enumerator::CustomerStatusEnumerator>
+{
+    size_t operator()(::ezored::enumerator::CustomerStatusEnumerator type) const
+    {
         return std::hash<int>()(static_cast<int>(type));
     }
 };
 
-}  // namespace std
+} // namespace std

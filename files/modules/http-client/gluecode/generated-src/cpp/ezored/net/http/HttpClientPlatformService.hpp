@@ -3,16 +3,24 @@
 
 #pragma once
 
-namespace ezored { namespace net { namespace http {
+namespace ezored
+{
+namespace net
+{
+namespace http
+{
 
 struct HttpRequest;
 struct HttpResponse;
 
-class HttpClientPlatformService {
+class HttpClientPlatformService
+{
 public:
     virtual ~HttpClientPlatformService() {}
 
-    virtual HttpResponse doRequest(const HttpRequest & request) = 0;
+    virtual HttpResponse doRequest(const HttpRequest &request) = 0;
 };
 
-} } }  // namespace ezored::net::http
+} // namespace http
+} // namespace net
+} // namespace ezored

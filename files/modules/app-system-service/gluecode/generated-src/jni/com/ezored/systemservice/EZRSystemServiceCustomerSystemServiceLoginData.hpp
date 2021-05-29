@@ -6,9 +6,11 @@
 #include "djinni/jni/djinni_support.hpp"
 #include "ezored/systemservice/CustomerSystemServiceLoginData.hpp"
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
-class EZRSystemServiceCustomerSystemServiceLoginData final {
+class EZRSystemServiceCustomerSystemServiceLoginData final
+{
 public:
     using CppType = ::ezored::systemservice::CustomerSystemServiceLoginData;
     using JniType = jobject;
@@ -17,17 +19,17 @@ public:
 
     ~EZRSystemServiceCustomerSystemServiceLoginData();
 
-    static CppType toCpp(JNIEnv* jniEnv, JniType j);
-    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv* jniEnv, const CppType& c);
+    static CppType toCpp(JNIEnv *jniEnv, JniType j);
+    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv *jniEnv, const CppType &c);
 
 private:
     EZRSystemServiceCustomerSystemServiceLoginData();
     friend ::djinni::JniClass<EZRSystemServiceCustomerSystemServiceLoginData>;
 
-    const ::djinni::GlobalRef<jclass> clazz { ::djinni::jniFindClass("com/ezored/systemservice/CustomerSystemServiceLoginData") };
-    const jmethodID jconstructor { ::djinni::jniGetMethodID(clazz.get(), "<init>", "(Lcom/ezored/domain/Response;Lcom/ezored/domain/Customer;)V") };
-    const jfieldID field_mResponse { ::djinni::jniGetFieldID(clazz.get(), "mResponse", "Lcom/ezored/domain/Response;") };
-    const jfieldID field_mCustomer { ::djinni::jniGetFieldID(clazz.get(), "mCustomer", "Lcom/ezored/domain/Customer;") };
+    const ::djinni::GlobalRef<jclass> clazz{::djinni::jniFindClass("com/ezored/systemservice/CustomerSystemServiceLoginData")};
+    const jmethodID jconstructor{::djinni::jniGetMethodID(clazz.get(), "<init>", "(Lcom/ezored/domain/Response;Lcom/ezored/domain/Customer;)V")};
+    const jfieldID field_mResponse{::djinni::jniGetFieldID(clazz.get(), "mResponse", "Lcom/ezored/domain/Response;")};
+    const jfieldID field_mCustomer{::djinni::jniGetFieldID(clazz.get(), "mCustomer", "Lcom/ezored/domain/Customer;")};
 };
 
-}  // namespace djinni_generated
+} // namespace djinni_generated

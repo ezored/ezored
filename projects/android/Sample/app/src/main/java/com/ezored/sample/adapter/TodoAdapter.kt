@@ -62,7 +62,8 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.ViewHolder> {
         fun onTodoItemClick(view: View, todo: Todo)
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+    inner class ViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
 
         val tvId: TextView = itemView.findViewById(R.id.tv_id)

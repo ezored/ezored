@@ -5,13 +5,17 @@
 
 #include "ezored/domain/Customer.hpp"
 
-namespace ezored { namespace helper {
+namespace ezored
+{
+namespace helper
+{
 
-class SharedDataHelper {
+class SharedDataHelper
+{
 public:
     virtual ~SharedDataHelper() {}
 
-    static void setCustomer(const ::ezored::domain::Customer & value);
+    static void setCustomer(const ::ezored::domain::Customer &value);
 
     static ::ezored::domain::Customer getCustomer();
 
@@ -22,4 +26,5 @@ public:
     static bool getDemoFlag();
 };
 
-} }  // namespace ezored::helper
+} // namespace helper
+} // namespace ezored

@@ -6,9 +6,13 @@
 #include "ezored/domain/Customer.hpp"
 #include <string>
 
-namespace ezored { namespace helper {
+namespace ezored
+{
+namespace helper
+{
 
-class CustomerHelper {
+class CustomerHelper
+{
 public:
     virtual ~CustomerHelper() {}
 
@@ -18,7 +22,8 @@ public:
 
     static ::ezored::domain::Customer create();
 
-    static void onCustomerLogin(const ::ezored::domain::Customer & customer);
+    static void onCustomerLogin(const ::ezored::domain::Customer &customer);
 };
 
-} }  // namespace ezored::helper
+} // namespace helper
+} // namespace ezored

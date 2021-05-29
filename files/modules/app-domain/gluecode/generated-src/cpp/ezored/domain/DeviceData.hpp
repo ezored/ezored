@@ -6,9 +6,13 @@
 #include <string>
 #include <utility>
 
-namespace ezored { namespace domain {
+namespace ezored
+{
+namespace domain
+{
 
-struct DeviceData final {
+struct DeviceData final
+{
     std::string uniqueIdentifier;
     std::string name;
     std::string systemName;
@@ -42,23 +46,10 @@ struct DeviceData final {
                std::string language_,
                std::string imei_,
                std::string region_)
-    : uniqueIdentifier(std::move(uniqueIdentifier_))
-    , name(std::move(name_))
-    , systemName(std::move(systemName_))
-    , systemVersion(std::move(systemVersion_))
-    , model(std::move(model_))
-    , localizedModel(std::move(localizedModel_))
-    , appVersion(std::move(appVersion_))
-    , appShortVersion(std::move(appShortVersion_))
-    , appName(std::move(appName_))
-    , screenWidth(std::move(screenWidth_))
-    , screenHeight(std::move(screenHeight_))
-    , screenScale(std::move(screenScale_))
-    , systemOsName(std::move(systemOsName_))
-    , language(std::move(language_))
-    , imei(std::move(imei_))
-    , region(std::move(region_))
-    {}
+        : uniqueIdentifier(std::move(uniqueIdentifier_)), name(std::move(name_)), systemName(std::move(systemName_)), systemVersion(std::move(systemVersion_)), model(std::move(model_)), localizedModel(std::move(localizedModel_)), appVersion(std::move(appVersion_)), appShortVersion(std::move(appShortVersion_)), appName(std::move(appName_)), screenWidth(std::move(screenWidth_)), screenHeight(std::move(screenHeight_)), screenScale(std::move(screenScale_)), systemOsName(std::move(systemOsName_)), language(std::move(language_)), imei(std::move(imei_)), region(std::move(region_))
+    {
+    }
 };
 
-} }  // namespace ezored::domain
+} // namespace domain
+} // namespace ezored

@@ -6,21 +6,23 @@
 #include "djinni/jni/djinni_support.hpp"
 #include "ezored/enumerator/CustomerStatusEnumerator.hpp"
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
-class EZREnumeratorCustomerStatusEnumerator final : ::djinni::JniEnum {
+class EZREnumeratorCustomerStatusEnumerator final : ::djinni::JniEnum
+{
 public:
     using CppType = ::ezored::enumerator::CustomerStatusEnumerator;
     using JniType = jobject;
 
     using Boxed = EZREnumeratorCustomerStatusEnumerator;
 
-    static CppType toCpp(JNIEnv* jniEnv, JniType j) { return static_cast<CppType>(::djinni::JniClass<EZREnumeratorCustomerStatusEnumerator>::get().ordinal(jniEnv, j)); }
-    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv* jniEnv, CppType c) { return ::djinni::JniClass<EZREnumeratorCustomerStatusEnumerator>::get().create(jniEnv, static_cast<jint>(c)); }
+    static CppType toCpp(JNIEnv *jniEnv, JniType j) { return static_cast<CppType>(::djinni::JniClass<EZREnumeratorCustomerStatusEnumerator>::get().ordinal(jniEnv, j)); }
+    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv *jniEnv, CppType c) { return ::djinni::JniClass<EZREnumeratorCustomerStatusEnumerator>::get().create(jniEnv, static_cast<jint>(c)); }
 
 private:
     EZREnumeratorCustomerStatusEnumerator() : JniEnum("com/ezored/enumerator/CustomerStatusEnumerator") {}
     friend ::djinni::JniClass<EZREnumeratorCustomerStatusEnumerator>;
 };
 
-}  // namespace djinni_generated
+} // namespace djinni_generated

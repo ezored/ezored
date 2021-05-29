@@ -10,9 +10,15 @@
 #include <utility>
 #include <vector>
 
-namespace ezored { namespace net { namespace http {
+namespace ezored
+{
+namespace net
+{
+namespace http
+{
 
-struct HttpRequest final {
+struct HttpRequest final
+{
     std::string url;
     HttpMethod method;
     std::vector<HttpRequestParam> params;
@@ -24,12 +30,11 @@ struct HttpRequest final {
                 std::vector<HttpRequestParam> params_,
                 std::vector<HttpHeader> headers_,
                 std::string body_)
-    : url(std::move(url_))
-    , method(std::move(method_))
-    , params(std::move(params_))
-    , headers(std::move(headers_))
-    , body(std::move(body_))
-    {}
+        : url(std::move(url_)), method(std::move(method_)), params(std::move(params_)), headers(std::move(headers_)), body(std::move(body_))
+    {
+    }
 };
 
-} } }  // namespace ezored::net::http
+} // namespace http
+} // namespace net
+} // namespace ezored

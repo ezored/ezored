@@ -5,15 +5,20 @@
 
 #include <string>
 
-namespace ezored { namespace systemservice {
+namespace ezored
+{
+namespace systemservice
+{
 
 struct CustomerSystemServiceLoginData;
 
-class CustomerSystemService {
+class CustomerSystemService
+{
 public:
     virtual ~CustomerSystemService() {}
 
-    static CustomerSystemServiceLoginData login(const std::string & username, const std::string & password);
+    static CustomerSystemServiceLoginData login(const std::string &username, const std::string &password);
 };
 
-} }  // namespace ezored::systemservice
+} // namespace systemservice
+} // namespace ezored

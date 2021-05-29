@@ -9,15 +9,19 @@
 #include <memory>
 #include <string>
 
-namespace ezored { namespace core {
+namespace ezored
+{
+namespace core
+{
 
-class ApplicationCore {
+class ApplicationCore
+{
 public:
     virtual ~ApplicationCore() {}
 
     static std::shared_ptr<ApplicationCore> shared();
 
-    virtual void initialize(const ::ezored::domain::InitializationData & initializationData, const ::ezored::domain::DeviceData & deviceData) = 0;
+    virtual void initialize(const ::ezored::domain::InitializationData &initializationData, const ::ezored::domain::DeviceData &deviceData) = 0;
 
     virtual ::ezored::domain::InitializationData getInitializationData() = 0;
 
@@ -25,9 +29,10 @@ public:
 
     virtual ::ezored::domain::Customer getCustomer() = 0;
 
-    virtual void setCustomer(const ::ezored::domain::Customer & customer) = 0;
+    virtual void setCustomer(const ::ezored::domain::Customer &customer) = 0;
 
     virtual std::string getVersion() = 0;
 };
 
-} }  // namespace ezored::core
+} // namespace core
+} // namespace ezored

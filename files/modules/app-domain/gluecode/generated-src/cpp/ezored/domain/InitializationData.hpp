@@ -7,9 +7,13 @@
 #include <string>
 #include <utility>
 
-namespace ezored { namespace domain {
+namespace ezored
+{
+namespace domain
+{
 
-struct InitializationData final {
+struct InitializationData final
+{
     std::string appId;
     std::string name;
     std::string basePath;
@@ -21,12 +25,10 @@ struct InitializationData final {
                        std::string basePath_,
                        int32_t databaseMigrationMaxVersion_,
                        bool debug_)
-    : appId(std::move(appId_))
-    , name(std::move(name_))
-    , basePath(std::move(basePath_))
-    , databaseMigrationMaxVersion(std::move(databaseMigrationMaxVersion_))
-    , debug(std::move(debug_))
-    {}
+        : appId(std::move(appId_)), name(std::move(name_)), basePath(std::move(basePath_)), databaseMigrationMaxVersion(std::move(databaseMigrationMaxVersion_)), debug(std::move(debug_))
+    {
+    }
 };
 
-} }  // namespace ezored::domain
+} // namespace domain
+} // namespace ezored

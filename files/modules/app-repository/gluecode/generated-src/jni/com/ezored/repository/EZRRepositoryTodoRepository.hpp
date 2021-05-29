@@ -6,9 +6,11 @@
 #include "djinni/jni/djinni_support.hpp"
 #include "ezored/repository/TodoRepository.hpp"
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
-class EZRRepositoryTodoRepository final : ::djinni::JniInterface<::ezored::repository::TodoRepository, EZRRepositoryTodoRepository> {
+class EZRRepositoryTodoRepository final : ::djinni::JniInterface<::ezored::repository::TodoRepository, EZRRepositoryTodoRepository>
+{
 public:
     using CppType = std::shared_ptr<::ezored::repository::TodoRepository>;
     using CppOptType = std::shared_ptr<::ezored::repository::TodoRepository>;
@@ -18,15 +20,14 @@ public:
 
     ~EZRRepositoryTodoRepository();
 
-    static CppType toCpp(JNIEnv* jniEnv, JniType j) { return ::djinni::JniClass<EZRRepositoryTodoRepository>::get()._fromJava(jniEnv, j); }
-    static ::djinni::LocalRef<JniType> fromCppOpt(JNIEnv* jniEnv, const CppOptType& c) { return {jniEnv, ::djinni::JniClass<EZRRepositoryTodoRepository>::get()._toJava(jniEnv, c)}; }
-    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv* jniEnv, const CppType& c) { return fromCppOpt(jniEnv, c); }
+    static CppType toCpp(JNIEnv *jniEnv, JniType j) { return ::djinni::JniClass<EZRRepositoryTodoRepository>::get()._fromJava(jniEnv, j); }
+    static ::djinni::LocalRef<JniType> fromCppOpt(JNIEnv *jniEnv, const CppOptType &c) { return {jniEnv, ::djinni::JniClass<EZRRepositoryTodoRepository>::get()._toJava(jniEnv, c)}; }
+    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv *jniEnv, const CppType &c) { return fromCppOpt(jniEnv, c); }
 
 private:
     EZRRepositoryTodoRepository();
     friend ::djinni::JniClass<EZRRepositoryTodoRepository>;
     friend ::djinni::JniInterface<::ezored::repository::TodoRepository, EZRRepositoryTodoRepository>;
-
 };
 
-}  // namespace djinni_generated
+} // namespace djinni_generated

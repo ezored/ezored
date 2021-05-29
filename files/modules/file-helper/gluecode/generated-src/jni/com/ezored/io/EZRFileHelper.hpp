@@ -6,9 +6,11 @@
 #include "djinni/jni/djinni_support.hpp"
 #include "ezored/io/FileHelper.hpp"
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
-class EZRFileHelper final : ::djinni::JniInterface<::ezored::io::FileHelper, EZRFileHelper> {
+class EZRFileHelper final : ::djinni::JniInterface<::ezored::io::FileHelper, EZRFileHelper>
+{
 public:
     using CppType = std::shared_ptr<::ezored::io::FileHelper>;
     using CppOptType = std::shared_ptr<::ezored::io::FileHelper>;
@@ -18,15 +20,14 @@ public:
 
     ~EZRFileHelper();
 
-    static CppType toCpp(JNIEnv* jniEnv, JniType j) { return ::djinni::JniClass<EZRFileHelper>::get()._fromJava(jniEnv, j); }
-    static ::djinni::LocalRef<JniType> fromCppOpt(JNIEnv* jniEnv, const CppOptType& c) { return {jniEnv, ::djinni::JniClass<EZRFileHelper>::get()._toJava(jniEnv, c)}; }
-    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv* jniEnv, const CppType& c) { return fromCppOpt(jniEnv, c); }
+    static CppType toCpp(JNIEnv *jniEnv, JniType j) { return ::djinni::JniClass<EZRFileHelper>::get()._fromJava(jniEnv, j); }
+    static ::djinni::LocalRef<JniType> fromCppOpt(JNIEnv *jniEnv, const CppOptType &c) { return {jniEnv, ::djinni::JniClass<EZRFileHelper>::get()._toJava(jniEnv, c)}; }
+    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv *jniEnv, const CppType &c) { return fromCppOpt(jniEnv, c); }
 
 private:
     EZRFileHelper();
     friend ::djinni::JniClass<EZRFileHelper>;
     friend ::djinni::JniInterface<::ezored::io::FileHelper, EZRFileHelper>;
-
 };
 
-}  // namespace djinni_generated
+} // namespace djinni_generated

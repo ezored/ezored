@@ -5,13 +5,18 @@
 
 #include <string>
 
-namespace ezored { namespace helper {
+namespace ezored
+{
+namespace helper
+{
 
-class SecurityHelper {
+class SecurityHelper
+{
 public:
     virtual ~SecurityHelper() {}
 
     static std::string generateUuidV4();
 };
 
-} }  // namespace ezored::helper
+} // namespace helper
+} // namespace ezored

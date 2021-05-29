@@ -7,14 +7,16 @@
 
 namespace ezored
 {
-namespace enumerator {
+namespace enumerator
+{
 
-    enumerator class CustomerStatusEnumerator : int{
-        ACTIVE,
+enumerator class CustomerStatusEnumerator : int
+{
+    ACTIVE,
         INACTIVE,
-    };
+};
 
-}
+} // namespace enumerator
 } // namespace ezored
 
 namespace std

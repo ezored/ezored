@@ -1,6 +1,6 @@
 import Foundation
 
-enumerator ActionState: Hashable {
+enum ActionState: Hashable {
     case inactive
     case loading
     case active
@@ -20,7 +20,7 @@ extension Optional where Wrapped == ActionState {
     }
 }
 
-enumerator ViewModelState<TSuccess: Hashable, TError: Hashable>: Hashable {
+enum ViewModelState<TSuccess: Hashable, TError: Hashable>: Hashable {
     case notLoaded
     case loading(data: TSuccess?) /// Sometimes the page is loading but there is already a valid data, such as refreshing/updating requests that runs after a successful load.
     case loaded(data: TSuccess) /// Page is fully loaded

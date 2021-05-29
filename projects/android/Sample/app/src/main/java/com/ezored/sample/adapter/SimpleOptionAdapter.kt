@@ -10,8 +10,8 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.ezored.helper.SharedDataHelper
 import com.ezored.sample.R
-import com.ezored.sample.enumerator.SimpleOptionTypeEnumerator
-import com.ezored.sample.models.SimpleOption
+import com.ezored.sample.enumerator.SimpleOptionTypeEnum
+import com.ezored.sample.model.SimpleOption
 
 class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder> {
 
@@ -35,7 +35,7 @@ class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder>
         listData?.let { listData ->
             val option = listData[position]
 
-            if (option.type == SimpleOptionTypeEnumerator.SHARED_DATA) {
+            if (option.type == SimpleOptionTypeEnum.SHARED_DATA) {
                 val demoFlag = SharedDataHelper.getDemoFlag()
                 holder.tvTitle.text =
                     context.getString(R.string.option_shared_data, if (demoFlag) "ON" else "OFF")
@@ -65,7 +65,8 @@ class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder>
         fun onSimpleOptionItemClick(view: View, option: SimpleOption)
     }
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+    inner class ViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
 
         val tvTitle: TextView = itemView.findViewById(R.id.tv_title)

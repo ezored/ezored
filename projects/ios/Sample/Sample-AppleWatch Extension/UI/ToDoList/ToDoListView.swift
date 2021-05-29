@@ -4,7 +4,7 @@ import SwiftUI
 struct ToDoListView: View {
     @ObservedObject private(set) var viewModel = ToDoListViewModel()
     
-    private let mainColor = UIColor(hexString: "#ff3860")!
+    private let mainColor = UIColor(hexString: "#F44336")!
     private let rowBackgroundColor = UIColor(hexString: "#ffffff")!
     
     var body: some View {

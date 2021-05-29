@@ -5,23 +5,28 @@
 
 #include <string>
 
-namespace ezored { namespace util {
+namespace ezored
+{
+namespace util
+{
 
-class LoggerPlatformService {
+class LoggerPlatformService
+{
 public:
     virtual ~LoggerPlatformService() {}
 
-    virtual void v(const std::string & message) = 0;
+    virtual void v(const std::string &message) = 0;
 
-    virtual void d(const std::string & message) = 0;
+    virtual void d(const std::string &message) = 0;
 
-    virtual void i(const std::string & message) = 0;
+    virtual void i(const std::string &message) = 0;
 
-    virtual void w(const std::string & message) = 0;
+    virtual void w(const std::string &message) = 0;
 
-    virtual void e(const std::string & message) = 0;
+    virtual void e(const std::string &message) = 0;
 
-    virtual void setGroup(const std::string & group) = 0;
+    virtual void setGroup(const std::string &group) = 0;
 };
 
-} }  // namespace ezored::util
+} // namespace util
+} // namespace ezored

@@ -7,9 +7,13 @@
 #include <string>
 #include <utility>
 
-namespace ezored { namespace domain {
+namespace ezored
+{
+namespace domain
+{
 
-struct Response final {
+struct Response final
+{
     bool success;
     std::string message;
     ResponseError error;
@@ -19,11 +23,10 @@ struct Response final {
              std::string message_,
              ResponseError error_,
              bool hasError_)
-    : success(std::move(success_))
-    , message(std::move(message_))
-    , error(std::move(error_))
-    , hasError(std::move(hasError_))
-    {}
+        : success(std::move(success_)), message(std::move(message_)), error(std::move(error_)), hasError(std::move(hasError_))
+    {
+    }
 };
 
-} }  // namespace ezored::domain
+} // namespace domain
+} // namespace ezored

@@ -5,9 +5,13 @@
 
 #include <functional>
 
-namespace ezored { namespace util {
+namespace ezored
+{
+namespace util
+{
 
-enum class LoggerLevel : int {
+enum class LoggerLevel : int
+{
     VERBOSE,
     DEBUG,
     INFO,
@@ -15,15 +19,19 @@ enum class LoggerLevel : int {
     ERROR,
 };
 
-} }  // namespace ezored::util
+}
+} // namespace ezored
 
-namespace std {
+namespace std
+{
 
 template <>
-struct hash<::ezored::util::LoggerLevel> {
-    size_t operator()(::ezored::util::LoggerLevel type) const {
+struct hash<::ezored::util::LoggerLevel>
+{
+    size_t operator()(::ezored::util::LoggerLevel type) const
+    {
         return std::hash<int>()(static_cast<int>(type));
     }
 };
 
-}  // namespace std
+} // namespace std

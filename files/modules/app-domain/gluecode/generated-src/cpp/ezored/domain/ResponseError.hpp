@@ -6,17 +6,22 @@
 #include <string>
 #include <utility>
 
-namespace ezored { namespace domain {
+namespace ezored
+{
+namespace domain
+{
 
-struct ResponseError final {
+struct ResponseError final
+{
     std::string field;
     std::string message;
 
     ResponseError(std::string field_,
                   std::string message_)
-    : field(std::move(field_))
-    , message(std::move(message_))
-    {}
+        : field(std::move(field_)), message(std::move(message_))
+    {
+    }
 };
 
-} }  // namespace ezored::domain
+} // namespace domain
+} // namespace ezored

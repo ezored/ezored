@@ -6,9 +6,11 @@
 #include "djinni/jni/djinni_support.hpp"
 #include "ezored/net/http/HttpHeader.hpp"
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
-class EZRHttpHeader final {
+class EZRHttpHeader final
+{
 public:
     using CppType = ::ezored::net::http::HttpHeader;
     using JniType = jobject;
@@ -17,17 +19,17 @@ public:
 
     ~EZRHttpHeader();
 
-    static CppType toCpp(JNIEnv* jniEnv, JniType j);
-    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv* jniEnv, const CppType& c);
+    static CppType toCpp(JNIEnv *jniEnv, JniType j);
+    static ::djinni::LocalRef<JniType> fromCpp(JNIEnv *jniEnv, const CppType &c);
 
 private:
     EZRHttpHeader();
     friend ::djinni::JniClass<EZRHttpHeader>;
 
-    const ::djinni::GlobalRef<jclass> clazz { ::djinni::jniFindClass("com/ezored/net/http/HttpHeader") };
-    const jmethodID jconstructor { ::djinni::jniGetMethodID(clazz.get(), "<init>", "(Ljava/lang/String;Ljava/lang/String;)V") };
-    const jfieldID field_mName { ::djinni::jniGetFieldID(clazz.get(), "mName", "Ljava/lang/String;") };
-    const jfieldID field_mValue { ::djinni::jniGetFieldID(clazz.get(), "mValue", "Ljava/lang/String;") };
+    const ::djinni::GlobalRef<jclass> clazz{::djinni::jniFindClass("com/ezored/net/http/HttpHeader")};
+    const jmethodID jconstructor{::djinni::jniGetMethodID(clazz.get(), "<init>", "(Ljava/lang/String;Ljava/lang/String;)V")};
+    const jfieldID field_mName{::djinni::jniGetFieldID(clazz.get(), "mName", "Ljava/lang/String;")};
+    const jfieldID field_mValue{::djinni::jniGetFieldID(clazz.get(), "mValue", "Ljava/lang/String;")};
 };
 
-}  // namespace djinni_generated
+} // namespace djinni_generated

@@ -6,18 +6,22 @@
 #include <memory>
 #include <string>
 
-namespace ezored { namespace util {
+namespace ezored
+{
+namespace util
+{
 
 class LoggerPlatformService;
 enum class LoggerLevel;
 
-class Logger {
+class Logger
+{
 public:
     virtual ~Logger() {}
 
     static std::shared_ptr<Logger> shared();
 
-    virtual void setPlatformService(const std::shared_ptr<LoggerPlatformService> & ps) = 0;
+    virtual void setPlatformService(const std::shared_ptr<LoggerPlatformService> &ps) = 0;
 
     virtual std::shared_ptr<LoggerPlatformService> getPlatformService() = 0;
 
@@ -27,17 +31,18 @@ public:
 
     virtual void setLevel(LoggerLevel level) = 0;
 
-    static void v(const std::string & message);
+    static void v(const std::string &message);
 
-    static void d(const std::string & message);
+    static void d(const std::string &message);
 
-    static void i(const std::string & message);
+    static void i(const std::string &message);
 
-    static void w(const std::string & message);
+    static void w(const std::string &message);
 
-    static void e(const std::string & message);
+    static void e(const std::string &message);
 
-    static void setGroup(const std::string & group);
+    static void setGroup(const std::string &group);
 };
 
-} }  // namespace ezored::util
+} // namespace util
+} // namespace ezored

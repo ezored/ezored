@@ -39,17 +39,17 @@ if(PROJECT_TARGET_NAME STREQUAL "ios")
     file(GLOB_RECURSE H_FILES_DATETIME "${PROJECT_MODULES_PATH}/datetime/gluecode/generated-src/objc/*.h")
     file(GLOB_RECURSE S_FILES_DATETIME "${PROJECT_MODULES_PATH}/datetime/gluecode/generated-src/objc/*.mm")
 
-    file(GLOB H_FILES_LOGGER_PLATFORM "${PROJECT_MODULES_PATH}/logger/implementation/cpp/ezored/util/*.h")
-    file(GLOB S_FILES_LOGGER_PLATFORM "${PROJECT_MODULES_PATH}/logger/implementation/cpp/ezored/util/*.m")
+    file(GLOB H_FILES_LOGGER_PLATFORM "${PROJECT_MODULES_PATH}/logger/implementation/objc/ezored/util/*.h")
+    file(GLOB S_FILES_LOGGER_PLATFORM "${PROJECT_MODULES_PATH}/logger/implementation/objc/ezored/util/*.m")
 
-    file(GLOB H_FILES_FILE_HELPER_PLATFORM "${PROJECT_MODULES_PATH}/file-helper/implementation/cpp/ezored/io/*.h")
-    file(GLOB S_FILES_FILE_HELPER_PLATFORM "${PROJECT_MODULES_PATH}/file-helper/implementation/cpp/ezored/io/*.m")
+    file(GLOB H_FILES_FILE_HELPER_PLATFORM "${PROJECT_MODULES_PATH}/file-helper/implementation/objc/ezored/io/*.h")
+    file(GLOB S_FILES_FILE_HELPER_PLATFORM "${PROJECT_MODULES_PATH}/file-helper/implementation/objc/ezored/io/*.m")
 
-    file(GLOB H_FILES_HTTP_CLIENT_PLATFORM "${PROJECT_MODULES_PATH}/http-client/implementation/cpp/ezored/net/http/*.h")
-    file(GLOB S_FILES_HTTP_CLIENT_PLATFORM "${PROJECT_MODULES_PATH}/http-client/implementation/cpp/ezored/net/http/*.m")
+    file(GLOB H_FILES_HTTP_CLIENT_PLATFORM "${PROJECT_MODULES_PATH}/http-client/implementation/objc/ezored/net/http/*.h")
+    file(GLOB S_FILES_HTTP_CLIENT_PLATFORM "${PROJECT_MODULES_PATH}/http-client/implementation/objc/ezored/net/http/*.m")
 
-    file(GLOB H_FILES_SHARED_DATA_PLATFORM "${PROJECT_MODULES_PATH}/shared-data/implementation/cpp/ezored/data/*.h")
-    file(GLOB S_FILES_SHARED_DATA_PLATFORM "${PROJECT_MODULES_PATH}/shared-data/implementation/cpp/ezored/data/*.m")
+    file(GLOB H_FILES_SHARED_DATA_PLATFORM "${PROJECT_MODULES_PATH}/shared-data/implementation/objc/ezored/data/*.h")
+    file(GLOB S_FILES_SHARED_DATA_PLATFORM "${PROJECT_MODULES_PATH}/shared-data/implementation/objc/ezored/data/*.m")
 
     if(PROJECT_USE_CXX_HTTP_CLIENT)
         file(GLOB H_FILES_HTTP_CLIENT_CXX "${PROJECT_MODULES_PATH}/http-client/implementation/cpp/ezored/net/http/Simple*.hpp")

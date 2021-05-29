@@ -7,15 +7,19 @@
 #include <cstdint>
 #include <string>
 
-namespace ezored { namespace time {
+namespace ezored
+{
+namespace time
+{
 
-class DateTime {
+class DateTime
+{
 public:
     virtual ~DateTime() {}
 
-    static std::chrono::system_clock::time_point getDateTimeFromString(const std::string & value);
+    static std::chrono::system_clock::time_point getDateTimeFromString(const std::string &value);
 
-    static std::string getStringFromDateTime(const std::chrono::system_clock::time_point & value);
+    static std::string getStringFromDateTime(const std::chrono::system_clock::time_point &value);
 
     static std::string getCurrentDateTimeAsString();
 
@@ -25,9 +29,9 @@ public:
 
     static std::chrono::system_clock::time_point getDateTimeFromMilliseconds(int64_t value);
 
-    static int64_t getTimestampInMillisecondsFromDateTime(const std::chrono::system_clock::time_point & value);
+    static int64_t getTimestampInMillisecondsFromDateTime(const std::chrono::system_clock::time_point &value);
 
-    static int64_t getTimestampInSecondsFromDateTime(const std::chrono::system_clock::time_point & value);
+    static int64_t getTimestampInSecondsFromDateTime(const std::chrono::system_clock::time_point &value);
 
     static std::string getCurrentTimestampInSecondsAsString();
 
@@ -38,4 +42,5 @@ public:
     static int64_t getCurrentTimestampInMilliseconds();
 };
 
-} }  // namespace ezored::time
+} // namespace time
+} // namespace ezored

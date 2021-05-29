@@ -8,9 +8,13 @@
 #include <string>
 #include <utility>
 
-namespace ezored { namespace domain {
+namespace ezored
+{
+namespace domain
+{
 
-struct Customer final {
+struct Customer final
+{
     int64_t id;
     std::string name;
     std::string token;
@@ -20,11 +24,10 @@ struct Customer final {
              std::string name_,
              std::string token_,
              ::ezored::enumerator::CustomerStatusEnumerator status_)
-    : id(std::move(id_))
-    , name(std::move(name_))
-    , token(std::move(token_))
-    , status(std::move(status_))
-    {}
+        : id(std::move(id_)), name(std::move(name_)), token(std::move(token_)), status(std::move(status_))
+    {
+    }
 };
 
-} }  // namespace ezored::domain
+} // namespace domain
+} // namespace ezored

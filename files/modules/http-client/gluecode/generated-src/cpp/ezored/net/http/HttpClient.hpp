@@ -5,32 +5,40 @@
 
 #include <memory>
 
-namespace ezored { namespace net { namespace http {
+namespace ezored
+{
+namespace net
+{
+namespace http
+{
 
 class HttpClientLogger;
 class HttpClientPlatformService;
 struct HttpRequest;
 struct HttpResponse;
 
-class HttpClient {
+class HttpClient
+{
 public:
     virtual ~HttpClient() {}
 
     static std::shared_ptr<HttpClient> shared();
 
-    virtual void setPlatformService(const std::shared_ptr<HttpClientPlatformService> & ps) = 0;
+    virtual void setPlatformService(const std::shared_ptr<HttpClientPlatformService> &ps) = 0;
 
     virtual std::shared_ptr<HttpClientPlatformService> getPlatformService() = 0;
 
     virtual bool hasPlatformService() = 0;
 
-    virtual HttpResponse doRequest(const HttpRequest & request) = 0;
+    virtual HttpResponse doRequest(const HttpRequest &request) = 0;
 
-    virtual void setLogger(const std::shared_ptr<HttpClientLogger> & logger) = 0;
+    virtual void setLogger(const std::shared_ptr<HttpClientLogger> &logger) = 0;
 
     virtual std::shared_ptr<HttpClientLogger> getLogger() = 0;
 
     virtual bool hasLogger() = 0;
 };
 
-} } }  // namespace ezored::net::http
+} // namespace http
+} // namespace net
+} // namespace ezored
