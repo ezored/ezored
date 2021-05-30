@@ -17,7 +17,7 @@ conan profile update settings.arch_build="x86_64" default
 2. Create **Obj-C Bridging Header** file to include your public headers or the main header file
 3. Add to your target **Build Settings** in row **Objective-C Bridging Header** the path of bridging header file, example: "Sample/Sample-Bridging-Header.h"
 
-## WatchOS
+## watchOS
 
 1. Add your framework or xcframework as dependency (see example files below)
 2. Create **Obj-C Bridging Header** file to include your public headers or the main header file
@@ -26,7 +26,7 @@ conan profile update settings.arch_build="x86_64" default
     > Debug > Any watchOS Simulator SDK > i386 arm64      
     > Release > Any watchOS Simulator SDK > i386 arm64  
 
-## TvOS
+## tvOS
 
 1. Add your framework or xcframework as dependency (see example files below)
 2. Create **Obj-C Bridging Header** file to include your public headers or the main header file

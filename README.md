@@ -3,6 +3,7 @@
         <img width="180" src="extras/images/logo.png" alt="ezored logo">
     </a>
     <br>
+    <br>
     C++ multi-platform toolkit template
     <br>
     Ezored philosophy: write once and compile anywhere
