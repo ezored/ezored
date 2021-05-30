@@ -9,6 +9,8 @@
     <br>
 </p>
 
+<br>
+
 <p align="center">
     <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20Linux/badge.svg">
     <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20macOS/badge.svg">
