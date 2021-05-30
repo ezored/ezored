@@ -3,6 +3,29 @@ theme:
   name: material
   language: en
   direction: ltr
+  palette:
+    primary: blue grey
+    accent: red
 use_directory_urls: false
 markdown_extensions:
   - attr_list
+extra:
+  generator: false
+copyright: Copyright &copy; 2021 Ezored
+nav:
+  - Home: "index.md"
+  - Free: "free.md"
+  - Platforms: "platforms.md"
+  - Requirements: "requirements.md"
+  - Modules: "modules.md"
+  - Commands: "commands.md"
+  - Targets: "targets.md"
+  - How to use: "how-to-use.md"
+  - Distribution: "distribution.md"
+  - Glue code: "glue-code.md"
+  - Code tools: "code-tools.md"
+  - Projects: "projects.md"
+  - Other projects: "other-projects.md"
+  - Training: "training.md"
+  - Troubleshooting: "troubleshooting.md"
+  - Sponsors: "sponsors.md"

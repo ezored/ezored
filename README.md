@@ -1,4 +1,10 @@
-<p align="center"><a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer"><img width="180" src="extras/images/doc-logo.png" alt="ezored logo"></a></p>
+<p align="center"><a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer"><img width="180" src="extras/images/logo.png" alt="ezored logo"></a></p>
+
+<p align="center">C++ multi-platform toolkit template</p>
+
+<p align="center">Ezored philosophy: write once and compile anywhere</p>
+
+<br>
 
 <p align="center">
 
@@ -11,9 +17,7 @@
 
 </p>
 
-<p align="center">C++ multi-platform toolkit template</p>
-
-<p align="center">Ezored philosophy: write once and compile anywhere</p>
+<br>
 
 ## About
 
@@ -32,25 +36,6 @@ Each piece of code is separated by modules, making easy extend with your custom 
 You can read all about Ezored in the auto-generated documentation:
 
 https://ezored.s3.amazonaws.com/docs/1.0.0/index.html
-
-## Table of contents
-
-- [Free](extras/docs/FREE.md)
-- [Platforms](extras/docs/PLATFORMS.md)
-- [Apple](extras/docs/APPLE.md)
-- [Requirements](extras/docs/REQUIREMENTS.md)
-- [Modules](extras/docs/MODULES.md)
-- [Commands](extras/docs/COMMANDS.md)
-- [Targets](extras/docs/TARGETS.md)
-- [How to use](extras/docs/HOW-TO-USE.md)
-- [Distribution](extras/docs/DISTRIBUTION.md)
-- [Glue code](extras/docs/GLUECODE.md)
-- [Code tools](extras/docs/CODE-TOOLS.md)
-- [Projects](extras/docs/PROJECTS.md)
-- [Other projects](extras/docs/OTHER-PROJECTS.md)
-- [Training](extras/docs/TRAINING.md)
-- [Troubleshooting](extras/docs/TROUBLESHOOTING.md)
-- [Sponsors](extras/docs/SPONSORS.md)
 
 ## Buy me a coffee
 

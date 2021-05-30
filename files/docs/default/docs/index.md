@@ -1,10 +1,16 @@
 # Home
 
-![Ezored](images/logo.png){ align=center, width=180 }
-
-C++ multi-platform toolkit template
-
-Ezored philosophy: write once and compile anywhere
+<p align="center">
+    <a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer">
+        <img width="180" src="images/logo.png" alt="ezored logo">
+    </a>
+    <br>
+    <br>
+    C++ multi-platform toolkit template
+    <br>
+    Ezored philosophy: write once and compile anywhere
+    <br>
+</p>
 
 ## Versions
 
@@ -13,11 +19,3 @@ Ezored philosophy: write once and compile anywhere
 * Linux: 1.0.0
 * macOS: 1.0.0
 * Windows: 1.0.0
-
-## Topics
-
-* [iOS](iOS/setup.md)
-* [Android](Android/setup.md)
-* [Linux](Linux/setup.md)
-* [macOS](macOS/setup.md)
-* [Windows](Windows/setup.md)

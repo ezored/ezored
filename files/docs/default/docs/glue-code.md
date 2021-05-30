@@ -1,6 +1,4 @@
-<p align="center"><a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer"><img width="180" src="../images/doc-logo.png" alt="ezored logo"></a></p>
-
-<h1 align="center"><strong>Glue code</strong></h1>
+# Glue code
 
 Almost all modules use Djinni as glue code tool to generate glue code files between C++ and mobile platform code (Android and iOS - Java, JNI, ObjC and ObjC++ files).
 

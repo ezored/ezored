@@ -1,6 +1,4 @@
-<p align="center"><a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer"><img width="180" src="../images/doc-logo.png" alt="ezored logo"></a></p>
-
-<h1 align="center"><strong>Commands</strong></h1>
+# Commands
 
 Every command script in ezored is a python file. 
 

@@ -1,6 +1,4 @@
-<p align="center"><a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer"><img width="180" src="../images/doc-logo.png" alt="ezored logo"></a></p>
-
-<h1 align="center"><strong>Code tools</strong></h1>
+# Code tools
 
 Ezored has support for code format, the **"code"** command is available for it.
 
