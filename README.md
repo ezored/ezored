@@ -1,8 +1,13 @@
-<p align="center"><a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer"><img width="180" src="extras/images/logo.png" alt="ezored logo"></a></p>
-
-<p align="center">C++ multi-platform toolkit template</p>
-
-<p align="center">Ezored philosophy: write once and compile anywhere</p>
+<p align="center">
+    <a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer">
+        <img width="180" src="extras/images/logo.png" alt="ezored logo">
+    </a>
+    <br>
+    C++ multi-platform toolkit template
+    <br>
+    Ezored philosophy: write once and compile anywhere
+    <br>
+</p>
 
 <br>
 
