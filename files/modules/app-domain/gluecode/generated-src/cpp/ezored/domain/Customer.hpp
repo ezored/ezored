@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "ezored/enumerator/CustomerStatusEnumerator.hpp"
+#include "ezored/enumerator/CustomerStatusEnum.hpp"
 #include <cstdint>
 #include <string>
 #include <utility>
@@ -18,12 +18,12 @@ struct Customer final
     int64_t id;
     std::string name;
     std::string token;
-    ::ezored::enumerator::CustomerStatusEnumerator status;
+    ::ezored::enumerator::CustomerStatusEnum status;
 
     Customer(int64_t id_,
              std::string name_,
              std::string token_,
-             ::ezored::enumerator::CustomerStatusEnumerator status_)
+             ::ezored::enumerator::CustomerStatusEnum status_)
         : id(std::move(id_)), name(std::move(name_)), token(std::move(token_)), status(std::move(status_))
     {
     }

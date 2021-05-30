@@ -3,7 +3,7 @@
 
 package com.ezored.enumerator;
 
-public enum CustomerStatusEnumerator {
+public enum CustomerStatusEnum {
     ACTIVE,
     INACTIVE,
     ;

@@ -1,30 +1,46 @@
 from files.core import gluecode
+from files.config import gluecode as config
 
 
 def run(params):
+    proj_path = params["proj_path"]
+    gluecode_config = config.run(proj_path, None, params)
+
     # djinni configurations
     djinni_file = "proj.djinni"
 
     # cpp configuration
-    cpp_namespace = "ezored::helper"
-    cpp_include_prefix = "ezored/helper/"
+    cpp_namespace = "{0}::helper".format(
+        gluecode_config["cpp_namespace_prefix"],
+    )
+    cpp_include_prefix = "{0}/helper/".format(
+        gluecode_config["cpp_include_prefix"],
+    )
     cpp_out = "generated-src/cpp/{0}".format(cpp_include_prefix)
 
     # objc configuration
-    objc_prefix = "EZRHelper"
+    objc_prefix = "{0}Helper".format(
+        gluecode_config["objc_prefix"],
+    )
     objc_out = "generated-src/objc/{0}".format(cpp_include_prefix)
     objc_include_cpp_prefix = "{0}".format(cpp_include_prefix)
     objc_include_prefix = "{0}".format(cpp_include_prefix)
 
     # java configuration
-    java_package = "com.ezored.helper"
+    java_package = "{0}.helper".format(
+        gluecode_config["java_package_prefix"],
+    )
     java_out = "generated-src/java/{0}".format(java_package.replace(".", "/"))
     java_parcelable = "true"
 
     # jni configuration
     jni_out = "generated-src/jni/{0}".format(java_package.replace(".", "/"))
-    jni_class = "EZRHelperFooBar"
-    jni_file = "EZRHelperFooBar"
+    jni_class = "{0}HelperFooBar".format(
+        gluecode_config["jni_class_prefix"],
+    )
+    jni_file = "{0}HelperFooBar".format(
+        gluecode_config["jni_file_prefix"],
+    )
     jni_include_cpp_prefix = "{0}".format(cpp_include_prefix)
     jni_include_prefix = "{0}/".format(java_package.replace(".", "/"))
     jni_generate_main = "false"

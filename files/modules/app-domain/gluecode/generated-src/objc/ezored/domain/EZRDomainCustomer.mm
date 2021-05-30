@@ -9,7 +9,7 @@
 - (nonnull instancetype)initWithId:(int64_t)id
                               name:(nonnull NSString *)name
                              token:(nonnull NSString *)token
-                            status:(EZREnumeratorCustomerStatusEnumerator)status
+                            status:(EZREnumeratorCustomerStatusEnum)status
 {
     if (self = [super init]) {
         _id = id;
@@ -23,7 +23,7 @@
 + (nonnull instancetype)customerWithId:(int64_t)id
                                   name:(nonnull NSString *)name
                                  token:(nonnull NSString *)token
-                                status:(EZREnumeratorCustomerStatusEnumerator)status
+                                status:(EZREnumeratorCustomerStatusEnum)status
 {
     return [(EZRDomainCustomer*)[self alloc] initWithId:id
                                                    name:name

@@ -113,7 +113,7 @@ def docs_serve(params):
 # -----------------------------------------------------------------------------
 def docs_publish(params):
     proj_path = params["proj_path"]
-    
+
     docs_name = util.get_arg_value("--name", params["args"])
 
     if not docs_name:

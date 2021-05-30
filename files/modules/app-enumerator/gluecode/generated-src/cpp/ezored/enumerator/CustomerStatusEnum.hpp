@@ -10,22 +10,22 @@ namespace ezored
 namespace enumerator
 {
 
-enumerator class CustomerStatusEnumerator : int
+enum class CustomerStatusEnum : int
 {
     ACTIVE,
-        INACTIVE,
+    INACTIVE,
 };
 
-} // namespace enumerator
+}
 } // namespace ezored
 
 namespace std
 {
 
 template <>
-struct hash<::ezored::enumerator ::CustomerStatusEnumerator>
+struct hash<::ezored::enumerator::CustomerStatusEnum>
 {
-    size_t operator()(::ezored::enumerator ::CustomerStatusEnumerator type) const
+    size_t operator()(::ezored::enumerator::CustomerStatusEnum type) const
     {
         return std::hash<int>()(static_cast<int>(type));
     }

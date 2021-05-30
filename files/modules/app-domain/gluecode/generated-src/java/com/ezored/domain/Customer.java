@@ -12,13 +12,13 @@ public final class Customer implements android.os.Parcelable {
 
     /*package*/ final String mToken;
 
-    /*package*/ final com.ezored.enumerator.CustomerStatusEnumerator mStatus;
+    /*package*/ final com.ezored.enumerator.CustomerStatusEnum mStatus;
 
     public Customer(
             long id,
             String name,
             String token,
-            com.ezored.enumerator.CustomerStatusEnumerator status) {
+            com.ezored.enumerator.CustomerStatusEnum status) {
         this.mId = id;
         this.mName = name;
         this.mToken = token;
@@ -37,7 +37,7 @@ public final class Customer implements android.os.Parcelable {
         return mToken;
     }
 
-    public com.ezored.enumerator.CustomerStatusEnumerator getStatus() {
+    public com.ezored.enumerator.CustomerStatusEnum getStatus() {
         return mStatus;
     }
 
@@ -69,7 +69,7 @@ public final class Customer implements android.os.Parcelable {
         this.mId = in.readLong();
         this.mName = in.readString();
         this.mToken = in.readString();
-        this.mStatus = com.ezored.enumerator.CustomerStatusEnumerator.values()[in.readInt()];
+        this.mStatus = com.ezored.enumerator.CustomerStatusEnum.values()[in.readInt()];
     }
 
     @Override

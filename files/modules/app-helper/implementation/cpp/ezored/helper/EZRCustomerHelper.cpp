@@ -1,7 +1,7 @@
 #include "EZRCustomerHelper.hpp"
 
 #include "ezored/core/ApplicationCore.hpp"
-#include "ezored/enumerator/CustomerStatusEnumerator.hpp"
+#include "ezored/enumerator/CustomerStatusEnum.hpp"
 #include "ezored/helper/SharedDataHelper.hpp"
 
 #include "rapidjson/document.h"
@@ -94,13 +94,13 @@ Customer EZRCustomerHelper::fromJson(const rapidjson::Value &json)
                     {
                         auto status = value.GetInt();
 
-                        if (status == static_cast<int>(CustomerStatusEnumerator::ACTIVE))
+                        if (status == static_cast<int>(CustomerStatusEnum::ACTIVE))
                         {
-                            customer.status = CustomerStatusEnumerator::ACTIVE;
+                            customer.status = CustomerStatusEnum::ACTIVE;
                         }
-                        else if (status == static_cast<int>(CustomerStatusEnumerator::INACTIVE))
+                        else if (status == static_cast<int>(CustomerStatusEnum::INACTIVE))
                         {
-                            customer.status = CustomerStatusEnumerator::INACTIVE;
+                            customer.status = CustomerStatusEnum::INACTIVE;
                         }
                     }
                 }
@@ -159,7 +159,7 @@ Customer EZRCustomerHelper::fromHttpResponse(const HttpResponse httpResponse)
 
 Customer CustomerHelper::create()
 {
-    return Customer{0, "", "", CustomerStatusEnumerator::INACTIVE};
+    return Customer{0, "", "", CustomerStatusEnum::INACTIVE};
 }
 
 void CustomerHelper::onCustomerLogin(const Customer &customer)
