@@ -210,7 +210,7 @@ public extension UIImage {
             }
         }
 
-        let sortedColorComparator: Comparator = { (main, other) -> ComparisonResult in
+        let sortedColorComparator: Comparator = { main, other -> ComparisonResult in
             let m = main as! UIImageColorsCounter, o = other as! UIImageColorsCounter
             if m.count < o.count {
                 return .orderedDescending
