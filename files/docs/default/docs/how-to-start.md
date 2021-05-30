@@ -1,36 +1,38 @@
 # How to start
 
-1. Clone reposity:
+There are 6 steps to start:
+
+1 - Clone reposity:
 
 ```
 git clone https://github.com/ezored/ezored.git
 ```
 
-2. Enter on cloned folder:
+2 - Enter on cloned folder:
 
 ```
 cd ezored
 ```
 
-3. Install python requirements:
+3 - Install python requirements:
 
 ```
 pip install -r requirements.txt
 ```
 
-4. Setup conan tool:
+4 -  Setup conan tool:
 
 ```
 python make.py conan setup
 ```
 
-5. Setup glue code tool:
+5 - Setup glue code tool:
 
 ```
 python make.py gluecode setup
 ```
 
-6. Now all commands are available. Run the following command to list all targets that you can build:
+6 - Now all commands are available. Run the following command to list all targets that you can build:
 
 ```
 python make.py target
