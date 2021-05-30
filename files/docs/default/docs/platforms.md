@@ -1,9 +1,11 @@
 # Platforms
 
-1. Android
-2. iOS
-3. macOS
-4. Linux
-5. Windows
+Since Ezored is a toolkit template it support most used mobile and desktop platforms, but you can add any other that support C++ like Raspberry, WASM, Smart TV or any others embedded devices.
 
-Obs: Generally any platform with C++ support will work too, like raspberry, web assembly, smart tv and other embedded devices.
+Currently supported platforms:
+
+1. Linux
+2. macOS
+3. Windows
+4. Android
+5. iOS
