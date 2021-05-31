@@ -6,6 +6,7 @@ from files.core import const
 from files.core import file
 from files.core import log
 from files.core import runner
+from files.core import util
 from files.config import target_test as config
 
 
@@ -38,6 +39,7 @@ def run(params):
                 file.remove_dir(build_dir)
                 file.create_dir(build_dir)
 
+                # main run args
                 run_args = [
                     "conan",
                     "install",
@@ -55,8 +57,6 @@ def run(params):
                     "-s",
                     "arch={0}".format(arch["conan_arch"]),
                     "-s",
-                    "os.version={0}".format(arch["min_version"]),
-                    "-s",
                     "build_type={0}".format(build_type),
                     "-o",
                     "ezored_arch={0}".format(arch["conan_arch"]),
@@ -64,9 +64,16 @@ def run(params):
                     "ezored_name={0}".format(target_config["project_name"]),
                     "-o",
                     "ezored_version={0}".format(target_config["version"]),
-                    "--build=missing",
-                    "--update",
                 ]
+
+                # extra run args
+                if util.is_macos_platform():
+                    run_args.append("-s"),
+                    run_args.append("os.version={0}".format(arch["min_version"]))
+
+                # final run args
+                run_args.append("--build=missing")
+                run_args.append("--update")
 
                 runner.run(run_args, build_dir)
 

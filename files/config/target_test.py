@@ -31,7 +31,7 @@ def run(proj_path, target_name, params):
         )
 
     return {
-        "project_name": "test",
+        "project_name": "tests",
         "version": "1.0.0",
         "build_types": ["Release"],
         "archs": archs,

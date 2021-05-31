@@ -13,7 +13,7 @@ set(PROJECT_CONFIG_CXX_STANDARD
 )
 
 set(PROJECT_TARGET_NAME
-    "test"
+    "tests"
     CACHE STRING "Target Name"
 )
 

@@ -1,7 +1,7 @@
-if(PROJECT_TARGET_NAME STREQUAL "test")
+if(PROJECT_TARGET_NAME STREQUAL "tests")
     # module files
-    file(GLOB_RECURSE H_FILES_CXX "${PROJECT_MODULES_PATH}/target-test/tests/include/*.hpp")
-    file(GLOB_RECURSE S_FILES_CXX "${PROJECT_MODULES_PATH}/target-test/tests/src/*.cpp")
+    file(GLOB_RECURSE H_FILES_CXX "${PROJECT_MODULES_PATH}/target-tests/tests/include/*.hpp")
+    file(GLOB_RECURSE S_FILES_CXX "${PROJECT_MODULES_PATH}/target-tests/tests/src/*.cpp")
 
     file(GLOB H_FILES_LOGGER_IMPL "${PROJECT_MODULES_PATH}/logger/implementation/cpp/ezored/util/Simple*.hpp")
     file(GLOB S_FILES_LOGGER_IMPL "${PROJECT_MODULES_PATH}/logger/implementation/cpp/ezored/util/Simple*.cpp")
@@ -32,5 +32,5 @@ if(PROJECT_TARGET_NAME STREQUAL "test")
     project_add_source_files("${S_FILES_FILE_HELPER_IMPL}")
 
     # search paths
-    project_add_search_path("${PROJECT_MODULES_PATH}/target-test/tests/include")
+    project_add_search_path("${PROJECT_MODULES_PATH}/target-tests/tests/include")
 endif()

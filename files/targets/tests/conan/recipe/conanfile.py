@@ -2,7 +2,7 @@ from conans import ConanFile, CMake
 
 
 class TargetConan(ConanFile):
-    name = "test"
+    name = "tests"
     version = "1.0.0"
     settings = "os", "compiler", "build_type", "arch"
     options = {
