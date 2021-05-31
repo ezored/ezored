@@ -1,0 +1,30 @@
+@extern "../../app-domain/gluecode/yaml/customer.yaml"
+@extern "../../app-domain/gluecode/yaml/todo.yaml"
+
+customer_helper = interface +c {
+    static is_logged(): bool;
+    static get_token(): string;
+    static create(): customer;
+    static on_customer_login(customer: customer);
+}
+
+todo_helper = interface +c {
+    static create(): todo;
+}
+
+environment_helper = interface +c {
+    static get_secret_key(): string;
+}
+
+shared_data_helper = interface +c {
+    static set_customer(value: customer);
+    static get_customer(): customer;
+    static store_customer();
+
+    static set_demo_flag(value: bool);
+    static get_demo_flag(): bool;
+}
+
+security_helper = interface +c {
+    static generate_uuid_v4(): string;
+}

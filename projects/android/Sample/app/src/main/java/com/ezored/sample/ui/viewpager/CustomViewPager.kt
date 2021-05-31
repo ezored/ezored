@@ -26,7 +26,7 @@ class CustomViewPager : ViewPager {
     }
 
     fun disableScroll(disable: Boolean) {
-        //When disable = true not work the scroll and when disble = false work the scroll
+        // When disable = true not work the scroll and when disble = false work the scroll
         this.disable = disable
     }
 }

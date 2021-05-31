@@ -44,8 +44,9 @@
 		3A2F231D2214A57D00A2FB4F /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FB2214A57D00A2FB4F /* AppData.swift */; };
 		3A2F231E2214A57D00A2FB4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FC2214A57D00A2FB4F /* AppDelegate.swift */; };
 		3A2F23242214A7A800A2FB4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F23262214A7A800A2FB4F /* Localizable.strings */; };
+		3A5B99612662F0890063EFD0 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5B99602662F0890063EFD0 /* ColorExtensions.swift */; };
 		3AD9F93D22569DA600ED622F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD9F93C22569DA600ED622F /* MainViewController.swift */; };
-		3ADA2D8222162454005E6BD0 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enums.swift */; };
+		3ADA2D8222162454005E6BD0 /* Enumerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enumerators.swift */; };
 		3ADA2D8422162556005E6BD0 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */; };
 		3ADA2D8922162760005E6BD0 /* SimpleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8822162760005E6BD0 /* SimpleOption.swift */; };
 		3ADA2D8C22162BF7005E6BD0 /* SimpleOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8B22162BF7005E6BD0 /* SimpleOptionTableViewCell.swift */; };
@@ -67,7 +68,7 @@
 		AB5785732639D22F00558651 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5785722639D22F00558651 /* LoadingView.swift */; };
 		AB57857A2639E8FA00558651 /* AlertMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5785792639E8FA00558651 /* AlertMessageView.swift */; };
 		AB9E18832637199600225E57 /* SimpleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8822162760005E6BD0 /* SimpleOption.swift */; };
-		AB9E1887263719A500225E57 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enums.swift */; };
+		AB9E1887263719A500225E57 /* Enumerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enumerators.swift */; };
 		AB9E188F263719E400225E57 /* StringsLocalizedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F22214A57D00A2FB4F /* StringsLocalizedExtension.swift */; };
 		AB9E1890263719E400225E57 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22E42214A57D00A2FB4F /* StringExtensions.swift */; };
 		AB9E1891263719E400225E57 /* StringBase64Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22DF2214A57D00A2FB4F /* StringBase64Extension.swift */; };
@@ -178,8 +179,9 @@
 		3A2F23252214A7A800A2FB4F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3A2F23282214A84D00A2FB4F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3A2F23302214B05B00A2FB4F /* Sample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sample-Bridging-Header.h"; sourceTree = "<group>"; };
+		3A5B99602662F0890063EFD0 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		3AD9F93C22569DA600ED622F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		3ADA2D8122162454005E6BD0 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		3ADA2D8122162454005E6BD0 /* Enumerators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerators.swift; sourceTree = "<group>"; };
 		3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeUtil.swift; sourceTree = "<group>"; };
 		3ADA2D8822162760005E6BD0 /* SimpleOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleOption.swift; sourceTree = "<group>"; };
 		3ADA2D8B22162BF7005E6BD0 /* SimpleOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleOptionTableViewCell.swift; sourceTree = "<group>"; };
@@ -261,13 +263,13 @@
 		3A2F22B82214A4DA00A2FB4F = {
 			isa = PBXGroup;
 			children = (
-				ABCDC219261D222300BEEF5C /* Shared */,
+				3A00E97C23AF245E0054007D /* Frameworks */,
+				EC345A102B299D92422AC91C /* Pods */,
+				3A2F22C22214A4DA00A2FB4F /* Products */,
 				3A2F22C32214A4DA00A2FB4F /* Sample */,
 				ABCDC1A5261D0A4C00BEEF5C /* Sample-AppleWatch */,
 				ABCDC1B4261D0A4F00BEEF5C /* Sample-AppleWatch Extension */,
-				3A2F22C22214A4DA00A2FB4F /* Products */,
-				3A00E97C23AF245E0054007D /* Frameworks */,
-				EC345A102B299D92422AC91C /* Pods */,
+				ABCDC219261D222300BEEF5C /* Shared */,
 			);
 			sourceTree = "<group>";
 		};
@@ -284,14 +286,14 @@
 		3A2F22C32214A4DA00A2FB4F /* Sample */ = {
 			isa = PBXGroup;
 			children = (
-				3AE05FAD23AA934B0036BE36 /* Sample.entitlements */,
 				3A2F22FA2214A57D00A2FB4F /* App */,
 				3A2F22CB2214A4DB00A2FB4F /* Assets.xcassets */,
-				3A2F23302214B05B00A2FB4F /* Sample-Bridging-Header.h */,
 				3A2F22DA2214A57D00A2FB4F /* Extensions */,
 				3A2F22D02214A4DB00A2FB4F /* Info.plist */,
 				3A2F22CD2214A4DB00A2FB4F /* LaunchScreen.storyboard */,
 				3A2F23262214A7A800A2FB4F /* Localizable.strings */,
+				3A2F23302214B05B00A2FB4F /* Sample-Bridging-Header.h */,
+				3AE05FAD23AA934B0036BE36 /* Sample.entitlements */,
 				3A2F22D62214A57D00A2FB4F /* UI */,
 				3A2F22F72214A57D00A2FB4F /* Utils */,
 			);
@@ -424,6 +426,7 @@
 		AB57844E2637469000558651 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3A5B99602662F0890063EFD0 /* ColorExtensions.swift */,
 				AB57844F263746A000558651 /* ViewExtensions.swift */,
 			);
 			path = Extensions;
@@ -488,9 +491,9 @@
 		ABCDC1A5261D0A4C00BEEF5C /* Sample-AppleWatch */ = {
 			isa = PBXGroup;
 			children = (
-				ABCDC1A6261D0A4C00BEEF5C /* Interface.storyboard */,
 				ABCDC1A9261D0A4F00BEEF5C /* Assets.xcassets */,
 				ABCDC1AB261D0A4F00BEEF5C /* Info.plist */,
+				ABCDC1A6261D0A4C00BEEF5C /* Interface.storyboard */,
 			);
 			path = "Sample-AppleWatch";
 			sourceTree = "<group>";
@@ -498,10 +501,10 @@
 		ABCDC1B4261D0A4F00BEEF5C /* Sample-AppleWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				ABCDC1E6261D1E9D00BEEF5C /* App */,
 				AB57844E2637469000558651 /* Extensions */,
 				AB9E18D326372A6800225E57 /* Models */,
 				ABCDC1E7261D1EA800BEEF5C /* Resources */,
-				ABCDC1E6261D1E9D00BEEF5C /* App */,
 				ABCDC1D7261D0B4800BEEF5C /* UI */,
 			);
 			path = "Sample-AppleWatch Extension";
@@ -548,11 +551,11 @@
 		ABCDC219261D222300BEEF5C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				AB9E18A326371AE200225E57 /* Utils */,
+				ABCDC22E261D239200BEEF5C /* App */,
 				AB9E188E263719D700225E57 /* Extensions */,
 				3ADA2D8722162760005E6BD0 /* Models */,
-				ABCDC22E261D239200BEEF5C /* App */,
 				AB5784AF263771F800558651 /* SharedAssets.xcassets */,
+				AB9E18A326371AE200225E57 /* Utils */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -560,7 +563,7 @@
 		ABCDC22E261D239200BEEF5C /* App */ = {
 			isa = PBXGroup;
 			children = (
-				3ADA2D8122162454005E6BD0 /* Enums.swift */,
+				3ADA2D8122162454005E6BD0 /* Enumerators.swift */,
 				3A2F22F92214A57D00A2FB4F /* EnvironmentUtil.swift */,
 			);
 			path = App;
@@ -802,7 +805,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ADA2D8922162760005E6BD0 /* SimpleOption.swift in Sources */,
-				3ADA2D8222162454005E6BD0 /* Enums.swift in Sources */,
+				3ADA2D8222162454005E6BD0 /* Enumerators.swift in Sources */,
 				3A2F231A2214A57D00A2FB4F /* ViewConstrainToEdgesExtension.swift in Sources */,
 				3A2F23122214A57D00A2FB4F /* IntToTimeIntervalExtension.swift in Sources */,
 				3A2F23182214A57D00A2FB4F /* CollectionExtensions.swift in Sources */,
@@ -872,11 +875,12 @@
 				ABCDC1BA261D0A4F00BEEF5C /* ExtensionDelegate.swift in Sources */,
 				AB5785732639D22F00558651 /* LoadingView.swift in Sources */,
 				AB5785682639CD1900558651 /* ToDoListView.swift in Sources */,
-				AB9E1887263719A500225E57 /* Enums.swift in Sources */,
+				AB9E1887263719A500225E57 /* Enumerators.swift in Sources */,
 				AB9E189526371A1600225E57 /* SwiftColorsExtension.swift in Sources */,
 				AB9E18832637199600225E57 /* SimpleOption.swift in Sources */,
 				AB9E18C62637238400225E57 /* HomeViewModel.swift in Sources */,
 				ABCDC21D261D224C00BEEF5C /* EnvironmentUtil.swift in Sources */,
+				3A5B99612662F0890063EFD0 /* ColorExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1106,6 +1110,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "i386 arm64";
 				IBSC_MODULE = Sample_AppleWatch_Extension;
@@ -1131,6 +1136,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "arm64 i386";
@@ -1154,8 +1160,9 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample-AppleWatch Extension/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "i386 arm64";
 				INFOPLIST_FILE = "Sample-AppleWatch Extension/App/Info.plist";
@@ -1183,8 +1190,9 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample-AppleWatch Extension/Resources/Preview Content\"";
+				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_PREVIEWS = YES;
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "i386 arm64";
 				INFOPLIST_FILE = "Sample-AppleWatch Extension/App/Info.plist";

@@ -56,7 +56,7 @@ class SimpleOptionTableViewCell: UITableViewCell {
 
         // icon
         ivIcon = UIImageView()
-        ivIcon.tintColor = UIColor(hexString: "#ff3860")!
+        ivIcon.tintColor = UIColor(hexString: "#D21601")!
         ivIcon.translatesAutoresizingMaskIntoConstraints = false
         ivIcon.backgroundColor = UIColor.clear
         containerView.addSubview(ivIcon)

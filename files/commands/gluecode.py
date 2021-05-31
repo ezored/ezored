@@ -4,13 +4,14 @@ import os
 import stat
 import importlib
 
-from files.modules import const
-from files.modules import file
-from files.modules import log
-from files.modules import runner
-from files.modules import util
-from files.modules import net
-from files.modules import gluecode
+from files.core import const
+from files.core import file
+from files.core import log
+from files.core import runner
+from files.core import util
+from files.core import net
+from files.core import gluecode
+from files.core import module
 from files.config import gluecode as config
 
 
@@ -83,15 +84,13 @@ def setup(params):
 def generate(params):
     proj_path = params["proj_path"]
 
-    # check gluecode folder
-    gluecode_modules_path = os.path.join(
-        proj_path, const.DIR_NAME_FILES, const.DIR_NAME_GLUECODE
+    # check modules folder
+    modules_path = os.path.join(
+        proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_MODULES
     )
 
-    if not os.path.isdir(gluecode_modules_path):
-        log.error(
-            "Glue code modules folder not exists: {0}".format(gluecode_modules_path)
-        )
+    if not os.path.isdir(modules_path):
+        log.error("Modules folder not exists: {0}".format(modules_path))
 
     # get gluecode modules
     gluecode_config = config.run(proj_path, None, params)
@@ -100,10 +99,16 @@ def generate(params):
     if modules:
         log.info("Generating files for all modules...")
 
-        for module in modules:
-            log.info('Generating glue code files for "{0}"...'.format(module))
+        for m in modules:
+            if not os.path.isdir(
+                os.path.join(modules_path, m, const.DIR_NAME_GLUECODE)
+            ):
+                log.info('Module "{0}" was skipped'.format(m))
+                continue
 
-            func_path = "files.gluecode.{0}.generate.run".format(module)
+            log.info('Generating glue code files for "{0}"...'.format(m))
+
+            func_path = "files.modules.{0}.gluecode.generate.run".format(m)
             mod_name, func_name = func_path.rsplit(".", 1)
             mod = importlib.import_module(mod_name)
             func = getattr(mod, func_name)
@@ -111,7 +116,7 @@ def generate(params):
 
         log.ok()
     else:
-        log.error("No glue code modules to generate")
+        log.error("No modules to generate")
 
 
 # -----------------------------------------------------------------------------

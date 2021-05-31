@@ -13,7 +13,7 @@ def shared_pods
   if EZORED_SDK_LOCAL
     pod 'ezored', :http => 'http://127.0.0.1:8000/dist.tar.gz'
     else
-    pod 'ezored', :http => 'https://ezored.s3.amazonaws.com/dist/ios_framework/' + EZORED_SDK_VERSION + '/dist.tar.gz'
+    pod 'ezored', :http => 'https://ezored.s3.amazonaws.com/dist/ios/' + EZORED_SDK_VERSION + '/dist.tar.gz'
   end
 
 end

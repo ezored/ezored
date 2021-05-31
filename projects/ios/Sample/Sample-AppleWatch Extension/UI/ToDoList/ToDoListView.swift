@@ -4,7 +4,7 @@ import SwiftUI
 struct ToDoListView: View {
     @ObservedObject private(set) var viewModel = ToDoListViewModel()
     
-    private let mainColor = UIColor(hexString: "#ff3860")!
+    private let mainColor = UIColor(hexString: "#D21601")!
     private let rowBackgroundColor = UIColor(hexString: "#ffffff")!
     
     var body: some View {
@@ -42,7 +42,7 @@ struct ToDoListView: View {
                 LinearGradient(gradient: Gradient(colors: [Color.black, Color.black, Color.black, Color.clear]), startPoint: .top, endPoint: .bottom)
                 Text("ToDo")
                     .font(.headline)
-                    .foregroundColor(Color.pink)
+                    .foregroundColor(Color(hex: "#D21601"))
             }
             .frame(height: 30)
         }

@@ -4,11 +4,11 @@ import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.MutableLiveData
-import com.ezored.dataservices.TodoDataService
 import com.ezored.domain.Todo
+import com.ezored.repository.TodoRepository
 import com.ezored.sample.R
 import com.ezored.sample.adapter.TodoAdapter
-import com.ezored.sample.enums.LoadStateEnum
+import com.ezored.sample.enumerator.LoadStateEnum
 import com.ezored.sample.ui.fragment.base.BaseListFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,9 +39,9 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
 
         launch(Dispatchers.IO) {
             val list = if (TextUtils.isEmpty(searchText)) {
-                TodoDataService.findAllOrderByCreatedAtDesc()
+                TodoRepository.findAllOrderByCreatedAtDesc()
             } else {
-                TodoDataService.findByTitle(searchText)
+                TodoRepository.findByTitle(searchText)
             }
 
             withContext(Dispatchers.Main) {
@@ -57,13 +57,14 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
         (listData as MutableLiveData<ArrayList<Todo>>).observe(
             this,
             androidx.lifecycle.Observer { list ->
-                adapter = TodoAdapter(context!!, list)
+                adapter = TodoAdapter(requireContext(), list)
                 (adapter as TodoAdapter).setListener(this)
 
                 updateAdapter()
 
                 adapter.notifyDataSetChanged()
-            })
+            }
+        )
     }
 
     override fun needLoadNewData(): Boolean {
@@ -71,7 +72,7 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
     }
 
     override fun onTodoItemClick(view: View, todo: Todo) {
-        TodoDataService.setDoneById(todo.id, !todo.done)
+        TodoRepository.setDoneById(todo.id, !todo.done)
 
         if (remoteDataLoadState != LoadStateEnum.LOADING) {
             remoteDataLoadState = LoadStateEnum.NOT_LOADED

@@ -24,7 +24,7 @@ pods-update:
 	rm -rf Pods
 	rm -rf Podfile.lock
 	rm -rf Sample.xcworkspace
-	pod cache clean --all
+	pod cache clean 'ezored' --all
 	pod install --repo-update
 
 remove-pods:

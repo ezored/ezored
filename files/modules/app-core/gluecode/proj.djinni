@@ -1,0 +1,16 @@
+@extern "../../app-domain/gluecode/yaml/initialization_data.yaml"
+@extern "../../app-domain/gluecode/yaml/device_data.yaml"
+@extern "../../app-domain/gluecode/yaml/customer.yaml"
+
+application_core = interface +c {
+    static shared(): application_core;
+    initialize(initialization_data: initialization_data, device_data: device_data);
+
+    get_initialization_data(): initialization_data;
+    get_device_data(): device_data;
+
+    get_customer(): customer;
+    set_customer(customer: customer);
+
+    get_version(): string;
+}

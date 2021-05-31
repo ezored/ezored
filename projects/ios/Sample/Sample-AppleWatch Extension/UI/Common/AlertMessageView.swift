@@ -8,7 +8,7 @@ struct AlertMessageView: View {
             ScrollView(.vertical) {
                 VStack {
                     Text("\(message)")
-                        .foregroundColor(Color(UIColor(hexString: "#ff3860")!))
+                        .foregroundColor(Color(UIColor(hexString: "#D21601")!))
                         .lineLimit(nil)
                         .padding(6)
                         .background(

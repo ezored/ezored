@@ -1,45 +1,43 @@
-<p align="center"><a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer"><img width="180" src="extras/images/doc-logo.png" alt="ezored logo"></a></p>
-
 <p align="center">
-
-![Ezored - macOS](https://github.com/ezored/ezored/workflows/Ezored%20-%20macOS/badge.svg)
-![Ezored - Linux](https://github.com/ezored/ezored/workflows/Ezored%20-%20Linux/badge.svg)
-![Ezored - Windows](https://github.com/ezored/ezored/workflows/Ezored%20-%20Windows/badge.svg)
-![Ezored - iOS](https://github.com/ezored/ezored/workflows/Ezored%20-%20iOS/badge.svg)
-![Ezored - Android](https://github.com/ezored/ezored/workflows/Ezored%20-%20Android/badge.svg)
-
+    <a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer">
+        <img width="180" src="extras/images/logo.png" alt="ezored logo">
+    </a>
+    <br>
+    <br>
+    C++ multi-platform toolkit template
+    <br>
+    Ezored philosophy: write once and compile anywhere
+    <br>
 </p>
 
-<p align="center">C++ cross-platform toolkit template with the philosophy: write once and compile anywhere</p>
+<br>
+
+<p align="center">
+    <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20Linux/badge.svg">
+    <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20macOS/badge.svg">
+    <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20Windows/badge.svg">
+    <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20iOS/badge.svg">
+    <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20Android/badge.svg">
+    <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20Docs/badge.svg">
+</p>
 
 ## About
 
-It will enable you call C++ native methods from your project in Swift, ObjectiveC, Java, Kotlin, Cordova, Flutter and others platforms.
+Ezored enable you call C++ native code from your project in Swift, ObjectiveC, Java, Kotlin, Cordova, Flutter and others platforms where C++ can be used.
 
-This template aim to let you thinking about your project code instead of it structure.
+This template aim to let you thinking about your project code instead of it structure and organization.
 
 Download this template and check samples to test and see it working on mobile and desktop.
 
-Read the docs by topic.
+Every command to generate, publish, prepare, format etc can be executed from command line and you can use any editor to work with Ezored.
 
-## Table of contents
+Each piece of code is separated by modules, making easy extend with your custom code or any C++ code and library.
 
-- [Free](extras/docs/FREE.md)
-- [Platforms](extras/docs/PLATFORMS.md)
-- [Apple](extras/docs/APPLE.md)
-- [Requirements](extras/docs/REQUIREMENTS.md)
-- [Modules](extras/docs/MODULES.md)
-- [Commands](extras/docs/COMMANDS.md)
-- [Targets](extras/docs/TARGETS.md)
-- [How to use](extras/docs/HOW-TO-USE.md)
-- [Distribution](extras/docs/DISTRIBUTION.md)
-- [Glue code](extras/docs/GLUECODE.md)
-- [Code tools](extras/docs/CODE-TOOLS.md)
-- [Projects](extras/docs/PROJECTS.md)
-- [Other projects](extras/docs/OTHER-PROJECTS.md)
-- [Training](extras/docs/TRAINING.md)
-- [Troubleshooting](extras/docs/TROUBLESHOOTING.md)
-- [Sponsors](extras/docs/SPONSORS.md)
+## Documentation
+
+You can read all about Ezored in the auto-generated documentation:
+
+https://ezored.s3.amazonaws.com/docs/1.0.0/index.html
 
 ## Buy me a coffee
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_primary">#ff3860</color>
-    <color name="color_primary_dark">#BD2A47</color>
-    <color name="color_accent">#ff3860</color>
+    <color name="color_primary">#D21601</color>
+    <color name="color_primary_dark">#870E00</color>
+    <color name="color_accent">#D21601</color>
 
-    <color name="button_background_color">#ff3860</color>
-    <color name="button_focused_background_color">#BD2A47</color>
+    <color name="button_background_color">#D21601</color>
+    <color name="button_focused_background_color">#D32F2F</color>
 
-    <color name="list_item_icon_color">#ff3860</color>
+    <color name="list_item_icon_color">#D21601</color>
 
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>

@@ -10,11 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {
-              name: "macOS Latest Clang",
-              os: macos-latest,
-              target: "macos_app",
-            }
+          - { name: "macOS Latest Clang", os: macos-latest, target: "macos" }
         python-version: [3.7]
 
     steps:
@@ -54,6 +50,12 @@ jobs:
 
       - name: Ezored - Setup conan
         run: python make.py conan setup
+
+      - name: Ezored - Test Prepare
+        run: python make.py target tests prepare
+
+      - name: Ezored - Test Run
+        run: python make.py target tests run
 
       - name: Ezored - Prepare
         run: python make.py target ${{ matrix.config.target }} prepare

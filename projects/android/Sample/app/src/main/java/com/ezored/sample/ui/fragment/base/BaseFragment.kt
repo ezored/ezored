@@ -13,16 +13,14 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-
 import com.ezored.sample.R
-import com.ezored.sample.enums.LoadStateEnum
+import com.ezored.sample.enumerator.LoadStateEnum
 import com.ezored.sample.ui.activity.base.BaseActivity
-import com.ezored.sample.utils.DateTimeUtil
-import com.ezored.sample.utils.UIUtil
+import com.ezored.sample.util.DateTimeUtil
+import com.ezored.sample.util.UIUtil
 import com.ezored.util.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-
 import org.greenrobot.eventbus.EventBus
 
 open class BaseFragment : Fragment(), CoroutineScope {
@@ -167,7 +165,8 @@ open class BaseFragment : Fragment(), CoroutineScope {
                         ContextCompat.getColor(
                             context,
                             loadingViewProgressBarColor
-                        ), PorterDuff.Mode.MULTIPLY
+                        ),
+                        PorterDuff.Mode.MULTIPLY
                     )
                 }
 
@@ -261,9 +260,9 @@ open class BaseFragment : Fragment(), CoroutineScope {
         return false
     }
 
-    /////////////////////////////////////////////
+    // ///////////////////////////////////////////
     // REMOTE DATA
-    /////////////////////////////////////////////
+    // ///////////////////////////////////////////
 
     protected fun loadData() {
         if (!needLoadNewData()) {
@@ -292,9 +291,9 @@ open class BaseFragment : Fragment(), CoroutineScope {
         return false
     }
 
-    /////////////////////////////////////////////
+    // ///////////////////////////////////////////
     // CACHE
-    /////////////////////////////////////////////
+    // ///////////////////////////////////////////
 
     protected fun onCacheExpired() {
         Logger.i("[BaseFragment : onCacheExpired] Cache expired now")
@@ -323,9 +322,9 @@ open class BaseFragment : Fragment(), CoroutineScope {
         }
     }
 
-    /////////////////////////////////////////////
+    // ///////////////////////////////////////////
     // TOOLBAR
-    /////////////////////////////////////////////
+    // ///////////////////////////////////////////
 
     fun setupToolbar(resId: Int) {
         setupToolbar(getString(resId))

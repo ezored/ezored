@@ -1,0 +1,11 @@
+@extern "../../app-domain/gluecode/yaml/customer.yaml"
+@extern "../../app-domain/gluecode/yaml/response.yaml"
+
+customer_system_service_login_data = record {
+    response: response;
+    customer: customer;
+}
+
+customer_system_service = interface +c {
+    static login(username: string, password: string): customer_system_service_login_data;
+}

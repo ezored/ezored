@@ -10,11 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {
-              name: "Ubuntu Latest GCC",
-              os: ubuntu-latest,
-              target: "linux_app",
-            }
+          - { name: "Ubuntu Latest GCC", os: ubuntu-latest, target: "linux" }
         python-version: [3.7]
 
     steps:
@@ -54,6 +50,12 @@ jobs:
 
       - name: Ezored - Setup conan
         run: python make.py conan setup
+
+      - name: Ezored - Test Prepare
+        run: python make.py target tests prepare
+
+      - name: Ezored - Test Run
+        run: python make.py target tests run
 
       - name: Ezored - Prepare
         run: python make.py target ${{ matrix.config.target }} prepare

@@ -3,31 +3,32 @@ package com.ezored.sample.ui.fragment
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.ezored.core.ApplicationCore
-import com.ezored.dataservices.TodoDataService
 import com.ezored.domain.Todo
-import com.ezored.helpers.EnvironmentHelper
-import com.ezored.helpers.SharedDataHelper
+import com.ezored.helper.EnvironmentHelper
+import com.ezored.helper.SharedDataHelper
 import com.ezored.io.FileHelper
 import com.ezored.net.http.HttpClient
 import com.ezored.net.http.HttpHeader
 import com.ezored.net.http.HttpMethod
 import com.ezored.net.http.HttpRequest
 import com.ezored.net.http.HttpRequestParam
+import com.ezored.repository.TodoRepository
 import com.ezored.sample.R
 import com.ezored.sample.adapter.SimpleOptionAdapter
-import com.ezored.sample.enums.LoadStateEnum
-import com.ezored.sample.enums.SimpleOptionTypeEnum
-import com.ezored.sample.models.SimpleOption
+import com.ezored.sample.enumerator.LoadStateEnum
+import com.ezored.sample.enumerator.SimpleOptionTypeEnum
+import com.ezored.sample.model.SimpleOption
 import com.ezored.sample.ui.activity.TodoListActivity
 import com.ezored.sample.ui.fragment.base.BaseListFragment
-import com.ezored.sample.utils.UIUtil
+import com.ezored.sample.util.UIUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Date
 import java.util.Locale
 
-class HomeFragment : BaseListFragment<SimpleOption>(),
+class HomeFragment :
+    BaseListFragment<SimpleOption>(),
     SimpleOptionAdapter.SimpleOptionAdapterListener {
 
     override val screenNameForAnalytics: String?
@@ -78,7 +79,8 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
                 updateAdapter()
 
                 adapter.notifyDataSetChanged()
-            })
+            }
+        )
     }
 
     override fun needLoadNewData(): Boolean {
@@ -155,7 +157,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
         showLoadingView()
 
         launch(Dispatchers.IO) {
-            TodoDataService.truncate()
+            TodoRepository.truncate()
 
             for (i in 1..100) {
                 val todo = Todo(
@@ -172,7 +174,7 @@ class HomeFragment : BaseListFragment<SimpleOption>(),
                     Date()
                 )
 
-                TodoDataService.add(todo)
+                TodoRepository.add(todo)
             }
 
             withContext(Dispatchers.Main) {

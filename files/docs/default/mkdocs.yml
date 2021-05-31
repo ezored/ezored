@@ -1,0 +1,32 @@
+site_name: Ezored Documentation
+theme:
+  name: material
+  language: en
+  direction: ltr
+  palette:
+    primary: blue grey
+    accent: red
+use_directory_urls: false
+markdown_extensions:
+  - attr_list
+extra:
+  generator: false
+copyright: Copyright &copy; 2021 Ezored
+nav:
+  - Home: "index.md"
+  - About: "about.md"
+  - Platforms: "platforms.md"
+  - Requirements: "requirements.md"
+  - Modules: "modules.md"
+  - Libraries: "libraries.md"
+  - Commands: "commands.md"
+  - Targets: "targets.md"
+  - How to start: "how-to-start.md"
+  - Distribution: "distribution.md"
+  - Glue code: "glue-code.md"
+  - Code tools: "code-tools.md"
+  - Apple: "apple.md"
+  - Tests: "tests.md"
+  - Projects: "projects.md"
+  - Training: "training.md"
+  - Troubleshooting: "troubleshooting.md"

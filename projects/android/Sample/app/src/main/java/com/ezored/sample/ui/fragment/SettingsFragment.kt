@@ -5,14 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import com.ezored.sample.BuildConfig
 import com.ezored.sample.R
 import com.ezored.sample.adapter.SimpleOptionAdapter
-import com.ezored.sample.enums.LoadStateEnum
-import com.ezored.sample.enums.SimpleOptionTypeEnum
-import com.ezored.sample.models.SimpleOption
+import com.ezored.sample.enumerator.LoadStateEnum
+import com.ezored.sample.enumerator.SimpleOptionTypeEnum
+import com.ezored.sample.model.SimpleOption
 import com.ezored.sample.ui.fragment.base.BaseListFragment
-import com.ezored.sample.utils.UIUtil
+import com.ezored.sample.util.UIUtil
 import java.util.Locale
 
-class SettingsFragment : BaseListFragment<SimpleOption>(),
+class SettingsFragment :
+    BaseListFragment<SimpleOption>(),
     SimpleOptionAdapter.SimpleOptionAdapterListener {
 
     override val screenNameForAnalytics: String?
@@ -48,7 +49,8 @@ class SettingsFragment : BaseListFragment<SimpleOption>(),
                 updateAdapter()
 
                 adapter.notifyDataSetChanged()
-            })
+            }
+        )
     }
 
     override fun needLoadNewData(): Boolean {
