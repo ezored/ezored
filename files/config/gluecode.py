@@ -9,10 +9,10 @@ def run(proj_path, target_name, params):
         "modules": [
             "app-enumerator",
             "app-domain",
-            "app-core",
-            "app-repository",
             "app-system-service",
+            "app-repository",
             "app-helper",
+            "app-core",
             "datetime",
             "file-helper",
             "http-client",
