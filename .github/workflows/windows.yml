@@ -55,6 +55,12 @@ jobs:
       - name: Ezored - Setup conan
         run: python make.py conan setup
 
+      - name: Ezored - Test Prepare
+        run: python make.py target test prepare
+
+      - name: Ezored - Test Run
+        run: python make.py target test run
+
       - name: Ezored - Prepare
         run: python make.py target ${{ matrix.config.target }} prepare
 

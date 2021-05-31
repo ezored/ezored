@@ -1,3 +1,22 @@
+# System
+if(MSVC
+   OR MSYS
+   OR MINGW
+)
+    # for detecting Windows compilers
+    set(PROJECT_SYSTEM_WINDOWS YES)
+endif()
+
+if(APPLE)
+    # for MacOS X or iOS, watchOS, tvOS (since 3.10.3)
+    set(PROJECT_SYSTEM_APPLE YES)
+endif()
+
+if(UNIX AND NOT APPLE)
+    # for Linux, BSD, Solaris, Minix
+    set(PROJECT_SYSTEM_LINUX YES)
+endif()
+
 # Header files
 set(PROJECT_HEADER_FILES
     ""
