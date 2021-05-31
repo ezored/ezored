@@ -33,7 +33,6 @@ class TargetConan(ConanFile):
         "poco:enable_jwt": True,
         "poco:enable_mongodb": False,
         "poco:enable_net": True,
-        "poco:enable_netssl": True,
         "poco:enable_pdf": False,
         "poco:enable_pagecompiler": False,
         "poco:enable_pagecompiler_file2page": False,
@@ -61,6 +60,12 @@ class TargetConan(ConanFile):
         )
         cmake.configure()
         cmake.build()
+
+    def configure(self):
+        if self.settings.os == "Windows":
+            self.options["poco"].enable_netssl_win = True
+        else:
+            self.options["poco"].enable_netssl = True
 
     def requirements(self):
         self.requires("sqlite3/3.35.5")
