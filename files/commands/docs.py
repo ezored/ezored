@@ -92,7 +92,11 @@ def docs_serve(params):
     )
 
     if not os.path.isdir(docs_path):
-        log.error("Directory not found (check documentation name parameter): {0}".format(docs_path,),)
+        log.error(
+            "Directory not found (check documentation name parameter): {0}".format(
+                docs_path,
+            ),
+        )
 
     has_tool = check_tool_mkdocs()
 
@@ -141,7 +145,9 @@ def docs_publish(params):
 
         # prepare data
         version = config_data["version"] if "version" in config_data else None
-        append_version = config_data["append_version"] if "append_version" in config_data else None
+        append_version = (
+            config_data["append_version"] if "append_version" in config_data else None
+        )
         force = util.list_has_key(params["args"], "--force")
 
         aws_key_id = os.getenv(const.AWS_KEY_ID_ENV)
@@ -190,7 +196,7 @@ def docs_publish(params):
 
         # checking for existing path
         log.info(
-            "Checking if remote path \"{0}\" exists on AWS...".format(
+            'Checking if remote path "{0}" exists on AWS...'.format(
                 aws_bucket_path,
             )
         )
@@ -204,7 +210,9 @@ def docs_publish(params):
         if has_remote_path:
             if force:
                 log.info(
-                    "The path \"{0}\" already exists on AWS, removing...".format(aws_bucket_path)
+                    'The path "{0}" already exists on AWS, removing...'.format(
+                        aws_bucket_path
+                    )
                 )
 
                 aws.s3_dir_delete(
@@ -215,7 +223,9 @@ def docs_publish(params):
                     aws_key_id,
                 )
             else:
-                log.error("The path \"{0}\" already exists on AWS".format(aws_bucket_path))
+                log.error(
+                    'The path "{0}" already exists on AWS'.format(aws_bucket_path)
+                )
 
         # create path folder
         aws.s3_create_dir(
@@ -278,15 +288,15 @@ def docs_publish(params):
                 log.normal("")
 
         if append_version:
-            log.colored(            
-            "[DONE] You can access documentation here: {0}/{1}/index.html".format(
-                config_data["url"],
-                version,
-            ),
-            log.BLUE,            
+            log.colored(
+                "[DONE] You can access documentation here: {0}/{1}/index.html".format(
+                    config_data["url"],
+                    version,
+                ),
+                log.BLUE,
             )
         else:
-            log.colored(            
+            log.colored(
                 "[DONE] You can access documentation here: {0}/index.html".format(
                     config_data["url"],
                 ),
