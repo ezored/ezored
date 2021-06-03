@@ -37,7 +37,7 @@ Each piece of code is separated by modules, making easy extend with your custom 
 
 You can read all about Ezored in the auto-generated documentation:
 
-https://ezored.s3.amazonaws.com/docs/1.0.0/index.html
+[https://ezored.s3.amazonaws.com/docs/index.html](https://ezored.s3.amazonaws.com/docs/index.html)
 
 ## Buy me a coffee
 

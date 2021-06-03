@@ -14,8 +14,8 @@
 
 ## Versions
 
-* iOS: 1.0.0
-* Android: 1.0.0
-* Linux: 1.0.0
-* macOS: 1.0.0
-* Windows: 1.0.0
+* iOS: {{ ios_version }}
+* Android: {{ android_version }}
+* Linux: {{ linux_version }}
+* macOS: {{ macos_version }}
+* Windows: {{ windows_version }}

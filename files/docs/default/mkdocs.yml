@@ -1,4 +1,5 @@
 site_name: Ezored Documentation
+copyright: Copyright &copy; 2021 Ezored
 theme:
   name: material
   language: en
@@ -9,9 +10,21 @@ theme:
 use_directory_urls: false
 markdown_extensions:
   - attr_list
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed
+  - pymdownx.highlight:
+      use_pygments: false
 extra:
   generator: false
-copyright: Copyright &copy; 2021 Ezored
+  ios_version: 1.0.0
+  android_version: 1.0.0
+  linux_version: 1.0.0
+  macos_version: 1.0.0
+  windows_version: 1.0.0
+plugins:
+  - macros
+  - search
 nav:
   - Home: "index.md"
   - About: "about.md"
@@ -28,5 +41,6 @@ nav:
   - Apple: "apple.md"
   - Tests: "tests.md"
   - Projects: "projects.md"
+  - Documentation: "documentation.md"
   - Training: "training.md"
   - Troubleshooting: "troubleshooting.md"
