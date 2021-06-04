@@ -69,7 +69,7 @@ class TargetConan(ConanFile):
         self.requires("rapidjson/1.1.0")
         self.requires("openssl/1.1.1k")
         self.requires("sqlitecpp/2.5.0")
-        self.requires("date/3.0.0")
+        self.requires("date/3.0.1")
 
         # uncomment only if you want use C++ http client instead of native android http client
         # self.requires("poco/1.10.1")
