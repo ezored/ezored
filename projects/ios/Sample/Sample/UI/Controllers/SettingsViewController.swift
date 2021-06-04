@@ -67,8 +67,9 @@ class SettingsViewController: BaseTableViewController {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String
         let build = dictionary["CFBundleVersion"] as! String
+        let sdk = EZRCoreApplicationCore.shared()?.getVersion() ?? ""
+        let message = "Version: \(version)\nBuild: \(build)\nSDK: \(sdk)"
 
-        let message = "Version: \(version)\nBuild: \(build)"
         UIUtil.showAlert(parent: self, title: "DialogTitle".localized, message: message, onClose: nil)
     }
 }

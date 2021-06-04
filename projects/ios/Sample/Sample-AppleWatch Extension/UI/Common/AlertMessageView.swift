@@ -13,7 +13,7 @@ struct AlertMessageView: View {
                         .padding(6)
                         .background(
                             RoundedRectangle(cornerRadius: 5)
-                                .foregroundColor(Color(UIColor.white))
+                                .foregroundColor(Color(UIColor(hexString: "#332F2E")!))
                                 .shadow(color: .black, radius: 10, x: 5, y: 5)
                         )
                 }

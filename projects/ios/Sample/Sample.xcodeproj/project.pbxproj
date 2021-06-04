@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -85,7 +85,7 @@
 		ABCDC1BA261D0A4F00BEEF5C /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCDC1B9261D0A4F00BEEF5C /* ExtensionDelegate.swift */; };
 		ABCDC1BE261D0A5000BEEF5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABCDC1BD261D0A5000BEEF5C /* Assets.xcassets */; };
 		ABCDC1C1261D0A5000BEEF5C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABCDC1C0261D0A5000BEEF5C /* Preview Assets.xcassets */; };
-		ABCDC1C5261D0A5000BEEF5C /* Sample-AppleWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = ABCDC1A4261D0A4C00BEEF5C /* Sample-AppleWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ABCDC1C5261D0A5000BEEF5C /* Sample-AppleWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = ABCDC1A4261D0A4C00BEEF5C /* Sample-AppleWatch.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		ABCDC21D261D224C00BEEF5C /* EnvironmentUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F92214A57D00A2FB4F /* EnvironmentUtil.swift */; };
 		ABCDC222261D22AC00BEEF5C /* EnvironmentUtil+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCDC221261D22AC00BEEF5C /* EnvironmentUtil+iOS.swift */; };
 		ABCDC227261D22FF00BEEF5C /* EnvironmentUtil+watchOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCDC226261D22FF00BEEF5C /* EnvironmentUtil+watchOS.swift */; };
@@ -894,6 +894,7 @@
 		};
 		ABCDC1C4261D0A5000BEEF5C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = ABCDC1A3261D0A4C00BEEF5C /* Sample-AppleWatch */;
 			targetProxy = ABCDC1C3261D0A5000BEEF5C /* PBXContainerItemProxy */;
 		};
@@ -1056,17 +1057,22 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_BITCODE = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Sample/Info.plist;
-				MARKETING_VERSION = 1.3.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Sample/Sample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1083,17 +1089,22 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_BITCODE = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
 				INFOPLIST_FILE = Sample/Info.plist;
-				MARKETING_VERSION = 1.3.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Sample/Sample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1110,12 +1121,12 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "i386 arm64";
 				IBSC_MODULE = Sample_AppleWatch_Extension;
 				INFOPLIST_FILE = "Sample-AppleWatch/Info.plist";
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1136,13 +1147,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "arm64 i386";
 				IBSC_MODULE = Sample_AppleWatch_Extension;
 				INFOPLIST_FILE = "Sample-AppleWatch/Info.plist";
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1160,7 +1171,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample-AppleWatch Extension/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_PREVIEWS = YES;
@@ -1171,7 +1182,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1190,7 +1201,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample-AppleWatch Extension/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_PREVIEWS = YES;
@@ -1201,7 +1212,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;

@@ -146,8 +146,10 @@ class HomeViewModel: NSObject, ObservableObject {
               let build = dictionary["CFBundleVersion"] as? String else {
             return
         }
-
-        let message = "Version: \(version)\nBuild: \(build)"
+        
+        let sdk = EZRCoreApplicationCore.shared()?.getVersion() ?? ""
+        let message = "Version: \(version)\nBuild: \(build)\nSDK: \(sdk)"
+        
         alertMessage = .loaded(data: message)
     }
 }

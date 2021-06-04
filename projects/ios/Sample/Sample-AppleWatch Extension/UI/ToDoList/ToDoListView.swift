@@ -5,7 +5,7 @@ struct ToDoListView: View {
     @ObservedObject private(set) var viewModel = ToDoListViewModel()
     
     private let mainColor = UIColor(hexString: "#D21601")!
-    private let rowBackgroundColor = UIColor(hexString: "#ffffff")!
+    private let rowBackgroundColor = UIColor(hexString: "#332F2E")!
     
     var body: some View {
         ZStack(alignment: .top) {
