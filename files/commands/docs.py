@@ -91,12 +91,12 @@ def docs_serve(params):
         docs_name,
     )
 
-    output_path = os.path.join(
-        proj_path,
-        const.DIR_NAME_BUILD,
-        const.DIR_NAME_BUILD_DOCS,
-        docs_name,
-    )
+    if not os.path.isdir(docs_path):
+        log.error(
+            "Directory not found (check documentation name parameter): {0}".format(
+                docs_path,
+            ),
+        )
 
     has_tool = check_tool_mkdocs()
 
@@ -144,13 +144,19 @@ def docs_publish(params):
         params["target_name"] = "docs"
 
         # prepare data
-        version = config_data["version"]
+        version = config_data["version"] if "version" in config_data else None
+        append_version = (
+            config_data["append_version"] if "append_version" in config_data else None
+        )
         force = util.list_has_key(params["args"], "--force")
 
         aws_key_id = os.getenv(const.AWS_KEY_ID_ENV)
         aws_secret_key = os.getenv(const.AWS_SECRET_KEY_ENV)
         aws_bucket_name = config_data["bucket_name"]
-        aws_bucket_path = "{0}/{1}".format(config_data["bucket_path"], version)
+        aws_bucket_path = "{0}".format(config_data["bucket_path"])
+
+        if append_version:
+            aws_bucket_path = "{0}/{1}".format(aws_bucket_path, version)
 
         # generate files
         run_args = [
@@ -166,10 +172,11 @@ def docs_publish(params):
         runner.run(run_args, docs_path)
 
         # version
-        if not version or len(version) == 0:
-            log.error("You need define version name (parameter: --version)")
+        if append_version:
+            if not version or len(version) == 0:
+                log.error("You need define version name (parameter: --version)")
 
-        log.info("Version defined: {0}".format(version))
+            log.info("Version defined: {0}".format(version))
 
         # prepare to upload
         if not os.path.isdir(docs_path):
@@ -187,18 +194,26 @@ def docs_publish(params):
             aws_access_key_id=aws_key_id,
         )
 
-        # checking for existing version
-        log.info("Checking if version exists...")
+        # checking for existing path
+        log.info(
+            'Checking if remote path "{0}" exists on AWS...'.format(
+                aws_bucket_path,
+            )
+        )
 
-        has_version = aws.s3_dir_exists(
+        has_remote_path = aws.s3_dir_exists(
             s3_client,
             aws_bucket_name,
             aws_bucket_path,
         )
 
-        if has_version:
+        if has_remote_path:
             if force:
-                log.info("The version {0} already exists, removing...".format(version))
+                log.info(
+                    'The path "{0}" already exists on AWS, removing...'.format(
+                        aws_bucket_path
+                    )
+                )
 
                 aws.s3_dir_delete(
                     s3_client,
@@ -208,9 +223,11 @@ def docs_publish(params):
                     aws_key_id,
                 )
             else:
-                log.error("The version {0} already exists".format(version))
+                log.error(
+                    'The path "{0}" already exists on AWS'.format(aws_bucket_path)
+                )
 
-        # create version folder
+        # create path folder
         aws.s3_create_dir(
             s3_client,
             aws_bucket_name,
@@ -270,13 +287,21 @@ def docs_publish(params):
 
                 log.normal("")
 
-        log.colored(
-            "[DONE] You can access documentation here: {0}/{1}/index.html".format(
-                config_data["url"],
-                version,
-            ),
-            log.BLUE,
-        )
+        if append_version:
+            log.colored(
+                "[DONE] You can access documentation here: {0}/{1}/index.html".format(
+                    config_data["url"],
+                    version,
+                ),
+                log.BLUE,
+            )
+        else:
+            log.colored(
+                "[DONE] You can access documentation here: {0}/index.html".format(
+                    config_data["url"],
+                ),
+                log.BLUE,
+            )
 
         log.ok("")
 

@@ -11,5 +11,6 @@ def run(proj_path, params):
                 const.AWS_S3_DOCS_BUCKET_NAME,
                 "docs",
             ),
+            "append_version": False,
         },
     }
