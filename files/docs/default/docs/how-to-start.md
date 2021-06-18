@@ -44,7 +44,7 @@ Example: If you are on **Linux**, you can build the **linux** target, if on **ma
 python make.py target linux prepare  
 python make.py target linux build  
 python make.py target linux package  
-python make.py target linux dist  
+python make.py target linux dist generate  
 ```
 
 **Obs:**
