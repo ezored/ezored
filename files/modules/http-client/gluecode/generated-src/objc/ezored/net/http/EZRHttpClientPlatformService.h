@@ -5,7 +5,6 @@
 #import "ezored/net/http/EZRHttpResponse.h"
 #import <Foundation/Foundation.h>
 
-
 @protocol EZRHttpClientPlatformService
 
 - (nonnull EZRHttpResponse *)doRequest:(nonnull EZRHttpRequest *)request;

@@ -3,7 +3,6 @@
 
 #import "ezored/net/http/EZRHttpRequest.h"
 
-
 @implementation EZRHttpRequest
 
 - (nonnull instancetype)initWithUrl:(nonnull NSString *)url
@@ -12,7 +11,8 @@
                             headers:(nonnull NSArray<EZRHttpHeader *> *)headers
                                body:(nonnull NSString *)body
 {
-    if (self = [super init]) {
+    if (self = [super init])
+    {
         _url = [url copy];
         _method = method;
         _params = [params copy];
@@ -28,11 +28,11 @@
                                    headers:(nonnull NSArray<EZRHttpHeader *> *)headers
                                       body:(nonnull NSString *)body
 {
-    return [(EZRHttpRequest*)[self alloc] initWithUrl:url
-                                               method:method
-                                               params:params
-                                              headers:headers
-                                                 body:body];
+    return [(EZRHttpRequest *)[self alloc] initWithUrl:url
+                                                method:method
+                                                params:params
+                                               headers:headers
+                                                  body:body];
 }
 
 - (NSString *)description

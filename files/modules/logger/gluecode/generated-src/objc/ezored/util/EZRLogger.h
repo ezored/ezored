@@ -6,7 +6,6 @@
 @class EZRLogger;
 @protocol EZRLoggerPlatformService;
 
-
 @interface EZRLogger : NSObject
 
 + (nullable EZRLogger *)shared;

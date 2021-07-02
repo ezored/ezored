@@ -21,11 +21,16 @@
 
 #include "../proxy_cache_interface.hpp"
 
-namespace djinni {
+namespace djinni
+{
 
-struct unretained_id_hash { std::size_t operator()(__unsafe_unretained id ptr) const; };
+struct unretained_id_hash
+{
+    std::size_t operator()(__unsafe_unretained id ptr) const;
+};
 
-struct ObjcProxyCacheTraits {
+struct ObjcProxyCacheTraits
+{
     using UnowningImplPointer = __unsafe_unretained id;
     using OwningImplPointer = __strong id;
     using OwningProxyPointer = std::shared_ptr<void>;
@@ -40,17 +45,16 @@ extern template class ProxyCache<ObjcProxyCacheTraits>;
 using ObjcProxyCache = ProxyCache<ObjcProxyCacheTraits>;
 
 template <typename CppType, typename ObjcType>
-static std::shared_ptr<CppType> get_objc_proxy(ObjcType * objcRef) {
+static std::shared_ptr<CppType> get_objc_proxy(ObjcType *objcRef)
+{
     return std::static_pointer_cast<CppType>(ObjcProxyCache::get(
         typeid(objcRef),
         objcRef,
-        [] (const __strong id & objcRef) -> std::pair<std::shared_ptr<void>, __unsafe_unretained id> {
+        [](const __strong id &objcRef) -> std::pair<std::shared_ptr<void>, __unsafe_unretained id> {
             return {
                 std::make_shared<CppType>(objcRef),
-                objcRef
-            };
-        }
-    ));
+                objcRef};
+        }));
 }
 
 // Private implementation base class for all ObjC proxies, which manages the
@@ -66,21 +70,27 @@ static std::shared_ptr<CppType> get_objc_proxy(ObjcType * objcRef) {
 // implementation: The union ensures proper alignment, while leaving construction
 // and destruction under our direct control.
 template <typename ObjcType>
-class ObjcProxyBase {
+class ObjcProxyBase
+{
     using HandleType = ::djinni::ObjcProxyCache::Handle<ObjcType>;
+
 public:
-    ObjcProxyBase(ObjcType objc) {
-        @autoreleasepool {
+    ObjcProxyBase(ObjcType objc)
+    {
+        @autoreleasepool
+        {
             new (&m_djinni_private_proxy_handle) HandleType(objc);
         }
     }
 
-    ObjcProxyBase(const ObjcProxyBase&) = delete;
-    ObjcProxyBase& operator=(const ObjcProxyBase&) = delete;
+    ObjcProxyBase(const ObjcProxyBase &) = delete;
+    ObjcProxyBase &operator=(const ObjcProxyBase &) = delete;
 
     // Not intended for polymorphic use, so dtor is not virtual
-    ~ObjcProxyBase() {
-        @autoreleasepool {
+    ~ObjcProxyBase()
+    {
+        @autoreleasepool
+        {
             m_djinni_private_proxy_handle.~HandleType();
         }
     }
@@ -88,12 +98,14 @@ public:
     // Long name to minimize likelyhood of collision with interface methods.
     // Return by reference to make it clear there's nothing for ARC to do here.
     // Call site should have its own autoreleasepool if necessary.
-    const ObjcType & djinni_private_get_proxied_objc_object() const {
+    const ObjcType &djinni_private_get_proxied_objc_object() const
+    {
         return m_djinni_private_proxy_handle.get();
     }
 
 private:
-    union {
+    union
+    {
         // Long names to minimize likelyhood of collision with interface methods.
         char m_djinni_private_dummy;
         HandleType m_djinni_private_proxy_handle;

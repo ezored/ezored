@@ -8,24 +8,24 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 
 @class EZRLogger;
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
 class Logger
 {
 public:
     using CppType = std::shared_ptr<::ezored::util::Logger>;
     using CppOptType = std::shared_ptr<::ezored::util::Logger>;
-    using ObjcType = EZRLogger*;
+    using ObjcType = EZRLogger *;
 
     using Boxed = Logger;
 
     static CppType toCpp(ObjcType objc);
-    static ObjcType fromCppOpt(const CppOptType& cpp);
-    static ObjcType fromCpp(const CppType& cpp) { return fromCppOpt(cpp); }
+    static ObjcType fromCppOpt(const CppOptType &cpp);
+    static ObjcType fromCpp(const CppType &cpp) { return fromCppOpt(cpp); }
 
 private:
     class ObjcProxy;
 };
 
-}  // namespace djinni_generated
-
+} // namespace djinni_generated

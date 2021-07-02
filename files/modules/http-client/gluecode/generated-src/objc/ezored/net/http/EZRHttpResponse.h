@@ -14,12 +14,12 @@
                                          url:(nonnull NSString *)url
                                      headers:(nonnull NSArray<EZRHttpHeader *> *)headers;
 
-@property (nonatomic, readonly) int32_t code;
+@property(nonatomic, readonly) int32_t code;
 
-@property (nonatomic, readonly, nonnull) NSString * body;
+@property(nonatomic, readonly, nonnull) NSString *body;
 
-@property (nonatomic, readonly, nonnull) NSString * url;
+@property(nonatomic, readonly, nonnull) NSString *url;
 
-@property (nonatomic, readonly, nonnull) NSArray<EZRHttpHeader *> * headers;
+@property(nonatomic, readonly, nonnull) NSArray<EZRHttpHeader *> *headers;
 
 @end

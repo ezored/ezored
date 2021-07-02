@@ -11,8 +11,8 @@
 + (nonnull instancetype)customerSystemServiceLoginDataWithResponse:(nonnull EZRDomainResponse *)response
                                                           customer:(nonnull EZRDomainCustomer *)customer;
 
-@property (nonatomic, readonly, nonnull) EZRDomainResponse * response;
+@property(nonatomic, readonly, nonnull) EZRDomainResponse *response;
 
-@property (nonatomic, readonly, nonnull) EZRDomainCustomer * customer;
+@property(nonatomic, readonly, nonnull) EZRDomainCustomer *customer;
 
 @end

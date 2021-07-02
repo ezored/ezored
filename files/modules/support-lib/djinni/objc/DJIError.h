@@ -16,20 +16,22 @@
 
 #pragma once
 
-namespace djinni {
+namespace djinni
+{
 
 // Throws an exception for an unimplemented method call.
-[[noreturn]] void throwUnimplemented(const char * ctx, NSString * msg);
+[[noreturn]] void throwUnimplemented(const char *ctx, NSString *msg);
 
 // Helper function for exception translation. Do not call directly!
-[[noreturn]] void throwNSExceptionFromCurrent(const char * ctx);
+[[noreturn]] void throwNSExceptionFromCurrent(const char *ctx);
 
 } // namespace djinni
 
 #define DJINNI_UNIMPLEMENTED(msg) \
     ::djinni::throwUnimplemented(__PRETTY_FUNCTION__, msg);
 
-#define DJINNI_TRANSLATE_EXCEPTIONS() \
-    catch (const std::exception & e) { \
+#define DJINNI_TRANSLATE_EXCEPTIONS()                               \
+    catch (const std::exception &e)                                 \
+    {                                                               \
         ::djinni::throwNSExceptionFromCurrent(__PRETTY_FUNCTION__); \
     }

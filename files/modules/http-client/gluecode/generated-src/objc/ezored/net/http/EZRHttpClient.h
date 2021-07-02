@@ -8,7 +8,6 @@
 @class EZRHttpClientLogger;
 @protocol EZRHttpClientPlatformService;
 
-
 @interface EZRHttpClient : NSObject
 
 + (nullable EZRHttpClient *)shared;

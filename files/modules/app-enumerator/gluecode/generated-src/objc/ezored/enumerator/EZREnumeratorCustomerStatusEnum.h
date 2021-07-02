@@ -3,8 +3,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, EZREnumeratorCustomerStatusEnum)
-{
-    EZREnumeratorCustomerStatusEnumActive,
-    EZREnumeratorCustomerStatusEnumInactive,
+typedef NS_ENUM(NSInteger, EZREnumeratorCustomerStatusEnum) { EZREnumeratorCustomerStatusEnumActive,
+                                                              EZREnumeratorCustomerStatusEnumInactive,
 };

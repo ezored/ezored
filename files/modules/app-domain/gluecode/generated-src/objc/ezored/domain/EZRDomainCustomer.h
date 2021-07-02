@@ -14,12 +14,12 @@
                                  token:(nonnull NSString *)token
                                 status:(EZREnumeratorCustomerStatusEnum)status;
 
-@property (nonatomic, readonly) int64_t id;
+@property(nonatomic, readonly) int64_t id;
 
-@property (nonatomic, readonly, nonnull) NSString * name;
+@property(nonatomic, readonly, nonnull) NSString *name;
 
-@property (nonatomic, readonly, nonnull) NSString * token;
+@property(nonatomic, readonly, nonnull) NSString *token;
 
-@property (nonatomic, readonly) EZREnumeratorCustomerStatusEnum status;
+@property(nonatomic, readonly) EZREnumeratorCustomerStatusEnum status;
 
 @end

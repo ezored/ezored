@@ -4,7 +4,6 @@
 #import "ezored/domain/EZRDomainTodo.h"
 #import <Foundation/Foundation.h>
 
-
 @interface EZRHelperTodoHelper : NSObject
 
 + (nonnull EZRDomainTodo *)create;

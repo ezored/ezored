@@ -3,11 +3,9 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, EZRLoggerLevel)
-{
-    EZRLoggerLevelVerbose,
-    EZRLoggerLevelDebug,
-    EZRLoggerLevelInfo,
-    EZRLoggerLevelWarning,
-    EZRLoggerLevelError,
+typedef NS_ENUM(NSInteger, EZRLoggerLevel) { EZRLoggerLevelVerbose,
+                                             EZRLoggerLevelDebug,
+                                             EZRLoggerLevelInfo,
+                                             EZRLoggerLevelWarning,
+                                             EZRLoggerLevelError,
 };

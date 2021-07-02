@@ -8,7 +8,8 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 
 @protocol EZRLoggerPlatformService;
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
 class LoggerPlatformService
 {
@@ -20,12 +21,11 @@ public:
     using Boxed = LoggerPlatformService;
 
     static CppType toCpp(ObjcType objc);
-    static ObjcType fromCppOpt(const CppOptType& cpp);
-    static ObjcType fromCpp(const CppType& cpp) { return fromCppOpt(cpp); }
+    static ObjcType fromCppOpt(const CppOptType &cpp);
+    static ObjcType fromCpp(const CppType &cpp) { return fromCppOpt(cpp); }
 
 private:
     class ObjcProxy;
 };
 
-}  // namespace djinni_generated
-
+} // namespace djinni_generated

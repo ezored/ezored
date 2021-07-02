@@ -3,7 +3,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface EZRHelperEnvironmentHelper : NSObject
 
 + (nonnull NSString *)getSecretKey;

@@ -8,17 +8,18 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 
 @class EZRHttpResponse;
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
 struct HttpResponse
 {
     using CppType = ::ezored::net::http::HttpResponse;
-    using ObjcType = EZRHttpResponse*;
+    using ObjcType = EZRHttpResponse *;
 
     using Boxed = HttpResponse;
 
     static CppType toCpp(ObjcType objc);
-    static ObjcType fromCpp(const CppType& cpp);
+    static ObjcType fromCpp(const CppType &cpp);
 };
 
-}  // namespace djinni_generated
+} // namespace djinni_generated

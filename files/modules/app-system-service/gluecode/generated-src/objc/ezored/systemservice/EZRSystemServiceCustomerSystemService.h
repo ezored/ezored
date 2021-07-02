@@ -4,7 +4,6 @@
 #import "ezored/systemservice/EZRSystemServiceCustomerSystemServiceLoginData.h"
 #import <Foundation/Foundation.h>
 
-
 @interface EZRSystemServiceCustomerSystemService : NSObject
 
 + (nonnull EZRSystemServiceCustomerSystemServiceLoginData *)login:(nonnull NSString *)username

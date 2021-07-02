@@ -18,14 +18,14 @@
                                    headers:(nonnull NSArray<EZRHttpHeader *> *)headers
                                       body:(nonnull NSString *)body;
 
-@property (nonatomic, readonly, nonnull) NSString * url;
+@property(nonatomic, readonly, nonnull) NSString *url;
 
-@property (nonatomic, readonly) EZRHttpMethod method;
+@property(nonatomic, readonly) EZRHttpMethod method;
 
-@property (nonatomic, readonly, nonnull) NSArray<EZRHttpRequestParam *> * params;
+@property(nonatomic, readonly, nonnull) NSArray<EZRHttpRequestParam *> *params;
 
-@property (nonatomic, readonly, nonnull) NSArray<EZRHttpHeader *> * headers;
+@property(nonatomic, readonly, nonnull) NSArray<EZRHttpHeader *> *headers;
 
-@property (nonatomic, readonly, nonnull) NSString * body;
+@property(nonatomic, readonly, nonnull) NSString *body;
 
 @end

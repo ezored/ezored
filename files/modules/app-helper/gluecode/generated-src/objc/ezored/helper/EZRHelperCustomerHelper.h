@@ -4,7 +4,6 @@
 #import "ezored/domain/EZRDomainCustomer.h"
 #import <Foundation/Foundation.h>
 
-
 @interface EZRHelperCustomerHelper : NSObject
 
 + (BOOL)isLogged;

@@ -3,7 +3,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface EZRHelperSecurityHelper : NSObject
 
 + (nonnull NSString *)generateUuidV4;

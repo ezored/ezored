@@ -5,7 +5,6 @@
 #import "ezored/net/http/EZRHttpResponse.h"
 #import <Foundation/Foundation.h>
 
-
 @interface EZRHttpClientLogger : NSObject
 
 - (void)onRequest:(nonnull EZRHttpRequest *)request;

@@ -3,7 +3,6 @@
 
 #import "ezored/domain/EZRDomainResponse.h"
 
-
 @implementation EZRDomainResponse
 
 - (nonnull instancetype)initWithSuccess:(BOOL)success
@@ -11,7 +10,8 @@
                                   error:(nonnull EZRDomainResponseError *)error
                                hasError:(BOOL)hasError
 {
-    if (self = [super init]) {
+    if (self = [super init])
+    {
         _success = success;
         _message = [message copy];
         _error = error;
@@ -25,10 +25,10 @@
                                       error:(nonnull EZRDomainResponseError *)error
                                    hasError:(BOOL)hasError
 {
-    return [(EZRDomainResponse*)[self alloc] initWithSuccess:success
-                                                     message:message
-                                                       error:error
-                                                    hasError:hasError];
+    return [(EZRDomainResponse *)[self alloc] initWithSuccess:success
+                                                      message:message
+                                                        error:error
+                                                     hasError:hasError];
 }
 
 - (NSString *)description

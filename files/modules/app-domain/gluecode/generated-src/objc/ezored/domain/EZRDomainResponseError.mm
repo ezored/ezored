@@ -3,13 +3,13 @@
 
 #import "ezored/domain/EZRDomainResponseError.h"
 
-
 @implementation EZRDomainResponseError
 
 - (nonnull instancetype)initWithField:(nonnull NSString *)field
                               message:(nonnull NSString *)message
 {
-    if (self = [super init]) {
+    if (self = [super init])
+    {
         _field = [field copy];
         _message = [message copy];
     }
@@ -19,8 +19,8 @@
 + (nonnull instancetype)responseErrorWithField:(nonnull NSString *)field
                                        message:(nonnull NSString *)message
 {
-    return [(EZRDomainResponseError*)[self alloc] initWithField:field
-                                                        message:message];
+    return [(EZRDomainResponseError *)[self alloc] initWithField:field
+                                                         message:message];
 }
 
 - (NSString *)description

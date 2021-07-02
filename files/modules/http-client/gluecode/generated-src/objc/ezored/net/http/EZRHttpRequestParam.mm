@@ -3,13 +3,13 @@
 
 #import "ezored/net/http/EZRHttpRequestParam.h"
 
-
 @implementation EZRHttpRequestParam
 
 - (nonnull instancetype)initWithName:(nonnull NSString *)name
                                value:(nonnull NSString *)value
 {
-    if (self = [super init]) {
+    if (self = [super init])
+    {
         _name = [name copy];
         _value = [value copy];
     }
@@ -19,8 +19,8 @@
 + (nonnull instancetype)httpRequestParamWithName:(nonnull NSString *)name
                                            value:(nonnull NSString *)value
 {
-    return [(EZRHttpRequestParam*)[self alloc] initWithName:name
-                                                      value:value];
+    return [(EZRHttpRequestParam *)[self alloc] initWithName:name
+                                                       value:value];
 }
 
 - (NSString *)description

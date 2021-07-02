@@ -3,7 +3,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @protocol EZRLoggerPlatformService
 
 - (void)v:(nonnull NSString *)message;

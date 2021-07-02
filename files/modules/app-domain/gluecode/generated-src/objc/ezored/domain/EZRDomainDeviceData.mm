@@ -3,7 +3,6 @@
 
 #import "ezored/domain/EZRDomainDeviceData.h"
 
-
 @implementation EZRDomainDeviceData
 
 - (nonnull instancetype)initWithUniqueIdentifier:(nonnull NSString *)uniqueIdentifier
@@ -23,7 +22,8 @@
                                             imei:(nonnull NSString *)imei
                                           region:(nonnull NSString *)region
 {
-    if (self = [super init]) {
+    if (self = [super init])
+    {
         _uniqueIdentifier = [uniqueIdentifier copy];
         _name = [name copy];
         _systemName = [systemName copy];
@@ -61,22 +61,22 @@
                                                   imei:(nonnull NSString *)imei
                                                 region:(nonnull NSString *)region
 {
-    return [(EZRDomainDeviceData*)[self alloc] initWithUniqueIdentifier:uniqueIdentifier
-                                                                   name:name
-                                                             systemName:systemName
-                                                          systemVersion:systemVersion
-                                                                  model:model
-                                                         localizedModel:localizedModel
-                                                             appVersion:appVersion
-                                                        appShortVersion:appShortVersion
-                                                                appName:appName
-                                                            screenWidth:screenWidth
-                                                           screenHeight:screenHeight
-                                                            screenScale:screenScale
-                                                           systemOsName:systemOsName
-                                                               language:language
-                                                                   imei:imei
-                                                                 region:region];
+    return [(EZRDomainDeviceData *)[self alloc] initWithUniqueIdentifier:uniqueIdentifier
+                                                                    name:name
+                                                              systemName:systemName
+                                                           systemVersion:systemVersion
+                                                                   model:model
+                                                          localizedModel:localizedModel
+                                                              appVersion:appVersion
+                                                         appShortVersion:appShortVersion
+                                                                 appName:appName
+                                                             screenWidth:screenWidth
+                                                            screenHeight:screenHeight
+                                                             screenScale:screenScale
+                                                            systemOsName:systemOsName
+                                                                language:language
+                                                                    imei:imei
+                                                                  region:region];
 }
 
 - (NSString *)description

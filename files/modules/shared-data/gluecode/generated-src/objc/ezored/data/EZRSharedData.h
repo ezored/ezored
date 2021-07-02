@@ -5,7 +5,6 @@
 @class EZRSharedData;
 @protocol EZRSharedDataPlatformService;
 
-
 @interface EZRSharedData : NSObject
 
 + (nullable EZRSharedData *)shared;

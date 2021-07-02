@@ -9,8 +9,8 @@
 + (nonnull instancetype)httpHeaderWithName:(nonnull NSString *)name
                                      value:(nonnull NSString *)value;
 
-@property (nonatomic, readonly, nonnull) NSString * name;
+@property(nonatomic, readonly, nonnull) NSString *name;
 
-@property (nonatomic, readonly, nonnull) NSString * value;
+@property(nonatomic, readonly, nonnull) NSString *value;
 
 @end

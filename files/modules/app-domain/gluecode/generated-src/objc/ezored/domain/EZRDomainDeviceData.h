@@ -37,36 +37,36 @@
                                                   imei:(nonnull NSString *)imei
                                                 region:(nonnull NSString *)region;
 
-@property (nonatomic, readonly, nonnull) NSString * uniqueIdentifier;
+@property(nonatomic, readonly, nonnull) NSString *uniqueIdentifier;
 
-@property (nonatomic, readonly, nonnull) NSString * name;
+@property(nonatomic, readonly, nonnull) NSString *name;
 
-@property (nonatomic, readonly, nonnull) NSString * systemName;
+@property(nonatomic, readonly, nonnull) NSString *systemName;
 
-@property (nonatomic, readonly, nonnull) NSString * systemVersion;
+@property(nonatomic, readonly, nonnull) NSString *systemVersion;
 
-@property (nonatomic, readonly, nonnull) NSString * model;
+@property(nonatomic, readonly, nonnull) NSString *model;
 
-@property (nonatomic, readonly, nonnull) NSString * localizedModel;
+@property(nonatomic, readonly, nonnull) NSString *localizedModel;
 
-@property (nonatomic, readonly, nonnull) NSString * appVersion;
+@property(nonatomic, readonly, nonnull) NSString *appVersion;
 
-@property (nonatomic, readonly, nonnull) NSString * appShortVersion;
+@property(nonatomic, readonly, nonnull) NSString *appShortVersion;
 
-@property (nonatomic, readonly, nonnull) NSString * appName;
+@property(nonatomic, readonly, nonnull) NSString *appName;
 
-@property (nonatomic, readonly) float screenWidth;
+@property(nonatomic, readonly) float screenWidth;
 
-@property (nonatomic, readonly) float screenHeight;
+@property(nonatomic, readonly) float screenHeight;
 
-@property (nonatomic, readonly) float screenScale;
+@property(nonatomic, readonly) float screenScale;
 
-@property (nonatomic, readonly, nonnull) NSString * systemOsName;
+@property(nonatomic, readonly, nonnull) NSString *systemOsName;
 
-@property (nonatomic, readonly, nonnull) NSString * language;
+@property(nonatomic, readonly, nonnull) NSString *language;
 
-@property (nonatomic, readonly, nonnull) NSString * imei;
+@property(nonatomic, readonly, nonnull) NSString *imei;
 
-@property (nonatomic, readonly, nonnull) NSString * region;
+@property(nonatomic, readonly, nonnull) NSString *region;
 
 @end

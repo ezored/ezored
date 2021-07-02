@@ -3,7 +3,6 @@
 
 #import "ezored/domain/EZRDomainCustomer.h"
 
-
 @implementation EZRDomainCustomer
 
 - (nonnull instancetype)initWithId:(int64_t)id
@@ -11,7 +10,8 @@
                              token:(nonnull NSString *)token
                             status:(EZREnumeratorCustomerStatusEnum)status
 {
-    if (self = [super init]) {
+    if (self = [super init])
+    {
         _id = id;
         _name = [name copy];
         _token = [token copy];
@@ -25,10 +25,10 @@
                                  token:(nonnull NSString *)token
                                 status:(EZREnumeratorCustomerStatusEnum)status
 {
-    return [(EZRDomainCustomer*)[self alloc] initWithId:id
-                                                   name:name
-                                                  token:token
-                                                 status:status];
+    return [(EZRDomainCustomer *)[self alloc] initWithId:id
+                                                    name:name
+                                                   token:token
+                                                  status:status];
 }
 
 - (NSString *)description

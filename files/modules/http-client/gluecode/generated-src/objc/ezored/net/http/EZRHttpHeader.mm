@@ -3,13 +3,13 @@
 
 #import "ezored/net/http/EZRHttpHeader.h"
 
-
 @implementation EZRHttpHeader
 
 - (nonnull instancetype)initWithName:(nonnull NSString *)name
                                value:(nonnull NSString *)value
 {
-    if (self = [super init]) {
+    if (self = [super init])
+    {
         _name = [name copy];
         _value = [value copy];
     }
@@ -19,8 +19,8 @@
 + (nonnull instancetype)httpHeaderWithName:(nonnull NSString *)name
                                      value:(nonnull NSString *)value
 {
-    return [(EZRHttpHeader*)[self alloc] initWithName:name
-                                                value:value];
+    return [(EZRHttpHeader *)[self alloc] initWithName:name
+                                                 value:value];
 }
 
 - (NSString *)description

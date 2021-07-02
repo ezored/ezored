@@ -8,24 +8,24 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 
 @class EZRHelperTodoHelper;
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
 class TodoHelper
 {
 public:
     using CppType = std::shared_ptr<::ezored::helper::TodoHelper>;
     using CppOptType = std::shared_ptr<::ezored::helper::TodoHelper>;
-    using ObjcType = EZRHelperTodoHelper*;
+    using ObjcType = EZRHelperTodoHelper *;
 
     using Boxed = TodoHelper;
 
     static CppType toCpp(ObjcType objc);
-    static ObjcType fromCppOpt(const CppOptType& cpp);
-    static ObjcType fromCpp(const CppType& cpp) { return fromCppOpt(cpp); }
+    static ObjcType fromCppOpt(const CppOptType &cpp);
+    static ObjcType fromCpp(const CppType &cpp) { return fromCppOpt(cpp); }
 
 private:
     class ObjcProxy;
 };
 
-}  // namespace djinni_generated
-
+} // namespace djinni_generated

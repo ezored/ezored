@@ -7,7 +7,6 @@
 #import <Foundation/Foundation.h>
 @class EZRCoreApplicationCore;
 
-
 @interface EZRCoreApplicationCore : NSObject
 
 + (nullable EZRCoreApplicationCore *)shared;

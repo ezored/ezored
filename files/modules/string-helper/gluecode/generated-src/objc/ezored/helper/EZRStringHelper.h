@@ -3,7 +3,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface EZRStringHelper : NSObject
 
 + (nonnull NSString *)trim:(nonnull NSString *)value;

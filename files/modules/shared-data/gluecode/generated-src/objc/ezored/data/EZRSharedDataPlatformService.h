@@ -3,7 +3,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @protocol EZRSharedDataPlatformService
 
 - (void)setString:(nonnull NSString *)groupName

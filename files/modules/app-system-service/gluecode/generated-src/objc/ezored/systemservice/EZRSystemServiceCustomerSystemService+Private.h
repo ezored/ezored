@@ -8,24 +8,24 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 
 @class EZRSystemServiceCustomerSystemService;
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
 class CustomerSystemService
 {
 public:
     using CppType = std::shared_ptr<::ezored::systemservice::CustomerSystemService>;
     using CppOptType = std::shared_ptr<::ezored::systemservice::CustomerSystemService>;
-    using ObjcType = EZRSystemServiceCustomerSystemService*;
+    using ObjcType = EZRSystemServiceCustomerSystemService *;
 
     using Boxed = CustomerSystemService;
 
     static CppType toCpp(ObjcType objc);
-    static ObjcType fromCppOpt(const CppOptType& cpp);
-    static ObjcType fromCpp(const CppType& cpp) { return fromCppOpt(cpp); }
+    static ObjcType fromCppOpt(const CppOptType &cpp);
+    static ObjcType fromCpp(const CppType &cpp) { return fromCppOpt(cpp); }
 
 private:
     class ObjcProxy;
 };
 
-}  // namespace djinni_generated
-
+} // namespace djinni_generated

@@ -17,13 +17,15 @@
 static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for this file");
 
 #include "../proxy_cache_impl.hpp"
-#include "DJIObjcWrapperCache+Private.h"
 #include "DJICppWrapperCache+Private.h"
+#include "DJIObjcWrapperCache+Private.h"
 
-namespace djinni {
+namespace djinni
+{
 
-std::size_t unretained_id_hash::operator()(__unsafe_unretained id ptr) const {
-    return std::hash<void*>()((__bridge void*)ptr);
+std::size_t unretained_id_hash::operator()(__unsafe_unretained id ptr) const
+{
+    return std::hash<void *>()((__bridge void *)ptr);
 }
 
 template class ProxyCache<ObjcProxyCacheTraits>;

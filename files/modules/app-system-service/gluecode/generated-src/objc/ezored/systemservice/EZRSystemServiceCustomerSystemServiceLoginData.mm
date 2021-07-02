@@ -3,13 +3,13 @@
 
 #import "ezored/systemservice/EZRSystemServiceCustomerSystemServiceLoginData.h"
 
-
 @implementation EZRSystemServiceCustomerSystemServiceLoginData
 
 - (nonnull instancetype)initWithResponse:(nonnull EZRDomainResponse *)response
                                 customer:(nonnull EZRDomainCustomer *)customer
 {
-    if (self = [super init]) {
+    if (self = [super init])
+    {
         _response = response;
         _customer = customer;
     }
@@ -19,8 +19,8 @@
 + (nonnull instancetype)customerSystemServiceLoginDataWithResponse:(nonnull EZRDomainResponse *)response
                                                           customer:(nonnull EZRDomainCustomer *)customer
 {
-    return [(EZRSystemServiceCustomerSystemServiceLoginData*)[self alloc] initWithResponse:response
-                                                                                  customer:customer];
+    return [(EZRSystemServiceCustomerSystemServiceLoginData *)[self alloc] initWithResponse:response
+                                                                                   customer:customer];
 }
 
 - (NSString *)description

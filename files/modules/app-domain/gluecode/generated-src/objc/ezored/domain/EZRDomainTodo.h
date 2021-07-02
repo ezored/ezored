@@ -19,18 +19,18 @@
                          createdAt:(nonnull NSDate *)createdAt
                          updatedAt:(nonnull NSDate *)updatedAt;
 
-@property (nonatomic, readonly) int64_t id;
+@property(nonatomic, readonly) int64_t id;
 
-@property (nonatomic, readonly, nonnull) NSString * title;
+@property(nonatomic, readonly, nonnull) NSString *title;
 
-@property (nonatomic, readonly, nonnull) NSString * body;
+@property(nonatomic, readonly, nonnull) NSString *body;
 
-@property (nonatomic, readonly, nonnull) NSDictionary<NSString *, NSString *> * data;
+@property(nonatomic, readonly, nonnull) NSDictionary<NSString *, NSString *> *data;
 
-@property (nonatomic, readonly) BOOL done;
+@property(nonatomic, readonly) BOOL done;
 
-@property (nonatomic, readonly, nonnull) NSDate * createdAt;
+@property(nonatomic, readonly, nonnull) NSDate *createdAt;
 
-@property (nonatomic, readonly, nonnull) NSDate * updatedAt;
+@property(nonatomic, readonly, nonnull) NSDate *updatedAt;
 
 @end

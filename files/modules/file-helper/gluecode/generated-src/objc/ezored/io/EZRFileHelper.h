@@ -5,7 +5,6 @@
 @class EZRFileHelper;
 @protocol EZRFileHelperPlatformService;
 
-
 @interface EZRFileHelper : NSObject
 
 + (nullable EZRFileHelper *)shared;

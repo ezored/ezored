@@ -1,12 +1,12 @@
 #ifndef ASPRINTF_H
 #define ASPRINTF_H
 
-#if defined(__GNUC__) && ! defined(_GNU_SOURCE)
+#if defined(__GNUC__) && !defined(_GNU_SOURCE)
 #define _GNU_SOURCE /* needed for (v)asprintf, affects '#include <stdio.h>' */
 #endif
+#include <stdarg.h> /* needed for va_*         */
 #include <stdio.h>  /* needed for vsnprintf    */
 #include <stdlib.h> /* needed for malloc, free */
-#include <stdarg.h> /* needed for va_*         */
 
 /*
  * vscprintf:
@@ -40,11 +40,12 @@ int vasprintf(char **strp, const char *format, va_list ap)
     int len = vscprintf(format, ap);
     if (len == -1)
         return -1;
-    char *str = (char*)malloc((size_t) len + 1);
+    char *str = (char *)malloc((size_t)len + 1);
     if (!str)
         return -1;
     int retval = vsnprintf(str, len + 1, format, ap);
-    if (retval == -1) {
+    if (retval == -1)
+    {
         free(str);
         return -1;
     }

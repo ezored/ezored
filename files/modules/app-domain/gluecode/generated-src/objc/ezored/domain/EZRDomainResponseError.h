@@ -9,8 +9,8 @@
 + (nonnull instancetype)responseErrorWithField:(nonnull NSString *)field
                                        message:(nonnull NSString *)message;
 
-@property (nonatomic, readonly, nonnull) NSString * field;
+@property(nonatomic, readonly, nonnull) NSString *field;
 
-@property (nonatomic, readonly, nonnull) NSString * message;
+@property(nonatomic, readonly, nonnull) NSString *message;
 
 @end

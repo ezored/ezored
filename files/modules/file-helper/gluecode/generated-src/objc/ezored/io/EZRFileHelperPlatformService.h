@@ -3,7 +3,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @protocol EZRFileHelperPlatformService
 
 - (BOOL)createFile:(nonnull NSString *)path;

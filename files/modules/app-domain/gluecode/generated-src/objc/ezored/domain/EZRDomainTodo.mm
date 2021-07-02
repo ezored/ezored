@@ -3,7 +3,6 @@
 
 #import "ezored/domain/EZRDomainTodo.h"
 
-
 @implementation EZRDomainTodo
 
 - (nonnull instancetype)initWithId:(int64_t)id
@@ -14,7 +13,8 @@
                          createdAt:(nonnull NSDate *)createdAt
                          updatedAt:(nonnull NSDate *)updatedAt
 {
-    if (self = [super init]) {
+    if (self = [super init])
+    {
         _id = id;
         _title = [title copy];
         _body = [body copy];
@@ -34,13 +34,13 @@
                          createdAt:(nonnull NSDate *)createdAt
                          updatedAt:(nonnull NSDate *)updatedAt
 {
-    return [(EZRDomainTodo*)[self alloc] initWithId:id
-                                              title:title
-                                               body:body
-                                               data:data
-                                               done:done
-                                          createdAt:createdAt
-                                          updatedAt:updatedAt];
+    return [(EZRDomainTodo *)[self alloc] initWithId:id
+                                               title:title
+                                                body:body
+                                                data:data
+                                                done:done
+                                           createdAt:createdAt
+                                           updatedAt:updatedAt];
 }
 
 - (NSString *)description

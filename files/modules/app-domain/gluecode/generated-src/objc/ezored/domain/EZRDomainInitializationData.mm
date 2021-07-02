@@ -3,7 +3,6 @@
 
 #import "ezored/domain/EZRDomainInitializationData.h"
 
-
 @implementation EZRDomainInitializationData
 
 - (nonnull instancetype)initWithAppId:(nonnull NSString *)appId
@@ -12,7 +11,8 @@
           databaseMigrationMaxVersion:(int32_t)databaseMigrationMaxVersion
                                 debug:(BOOL)debug
 {
-    if (self = [super init]) {
+    if (self = [super init])
+    {
         _appId = [appId copy];
         _name = [name copy];
         _basePath = [basePath copy];
@@ -28,11 +28,11 @@
                         databaseMigrationMaxVersion:(int32_t)databaseMigrationMaxVersion
                                               debug:(BOOL)debug
 {
-    return [(EZRDomainInitializationData*)[self alloc] initWithAppId:appId
-                                                                name:name
-                                                            basePath:basePath
-                                         databaseMigrationMaxVersion:databaseMigrationMaxVersion
-                                                               debug:debug];
+    return [(EZRDomainInitializationData *)[self alloc] initWithAppId:appId
+                                                                 name:name
+                                                             basePath:basePath
+                                          databaseMigrationMaxVersion:databaseMigrationMaxVersion
+                                                                debug:debug];
 }
 
 - (NSString *)description

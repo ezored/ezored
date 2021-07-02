@@ -4,7 +4,6 @@
 #import "ezored/domain/EZRDomainCustomer.h"
 #import <Foundation/Foundation.h>
 
-
 @interface EZRHelperSharedDataHelper : NSObject
 
 + (void)setCustomer:(nonnull EZRDomainCustomer *)value;

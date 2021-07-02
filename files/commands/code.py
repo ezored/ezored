@@ -40,11 +40,11 @@ def code_format(params):
                 "path": os.path.join(
                     proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_MODULES
                 ),
-                "patterns": ["*.cpp", "*.hpp"],
+                "patterns": ["*.cpp", "*.hpp", "*.c", "*.h", "*.m", "*.mm"],
             },
             {
                 "path": os.path.join(proj_path, const.DIR_NAME_PROJECTS),
-                "patterns": ["*.cpp", "*.hpp"],
+                "patterns": ["*.cpp", "*.hpp", "*.c", "*.h", "*.m", "*.mm"],
             },
         ]
 

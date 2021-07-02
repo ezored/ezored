@@ -3,7 +3,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface EZRDateTime : NSObject
 
 + (nonnull NSDate *)getDateTimeFromString:(nonnull NSString *)value;

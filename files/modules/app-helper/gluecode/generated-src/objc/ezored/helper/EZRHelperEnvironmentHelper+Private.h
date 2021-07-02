@@ -8,24 +8,24 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 
 @class EZRHelperEnvironmentHelper;
 
-namespace djinni_generated {
+namespace djinni_generated
+{
 
 class EnvironmentHelper
 {
 public:
     using CppType = std::shared_ptr<::ezored::helper::EnvironmentHelper>;
     using CppOptType = std::shared_ptr<::ezored::helper::EnvironmentHelper>;
-    using ObjcType = EZRHelperEnvironmentHelper*;
+    using ObjcType = EZRHelperEnvironmentHelper *;
 
     using Boxed = EnvironmentHelper;
 
     static CppType toCpp(ObjcType objc);
-    static ObjcType fromCppOpt(const CppOptType& cpp);
-    static ObjcType fromCpp(const CppType& cpp) { return fromCppOpt(cpp); }
+    static ObjcType fromCppOpt(const CppOptType &cpp);
+    static ObjcType fromCpp(const CppType &cpp) { return fromCppOpt(cpp); }
 
 private:
     class ObjcProxy;
 };
 
-}  // namespace djinni_generated
-
+} // namespace djinni_generated

@@ -15,14 +15,14 @@
                         databaseMigrationMaxVersion:(int32_t)databaseMigrationMaxVersion
                                               debug:(BOOL)debug;
 
-@property (nonatomic, readonly, nonnull) NSString * appId;
+@property(nonatomic, readonly, nonnull) NSString *appId;
 
-@property (nonatomic, readonly, nonnull) NSString * name;
+@property(nonatomic, readonly, nonnull) NSString *name;
 
-@property (nonatomic, readonly, nonnull) NSString * basePath;
+@property(nonatomic, readonly, nonnull) NSString *basePath;
 
-@property (nonatomic, readonly) int32_t databaseMigrationMaxVersion;
+@property(nonatomic, readonly) int32_t databaseMigrationMaxVersion;
 
-@property (nonatomic, readonly) BOOL debug;
+@property(nonatomic, readonly) BOOL debug;
 
 @end

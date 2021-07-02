@@ -14,12 +14,12 @@
                                       error:(nonnull EZRDomainResponseError *)error
                                    hasError:(BOOL)hasError;
 
-@property (nonatomic, readonly) BOOL success;
+@property(nonatomic, readonly) BOOL success;
 
-@property (nonatomic, readonly, nonnull) NSString * message;
+@property(nonatomic, readonly, nonnull) NSString *message;
 
-@property (nonatomic, readonly, nonnull) EZRDomainResponseError * error;
+@property(nonatomic, readonly, nonnull) EZRDomainResponseError *error;
 
-@property (nonatomic, readonly) BOOL hasError;
+@property(nonatomic, readonly) BOOL hasError;
 
 @end
