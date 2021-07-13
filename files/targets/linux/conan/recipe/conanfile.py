@@ -43,6 +43,7 @@ class TargetConan(ConanFile):
         "poco:enable_util": True,
         "poco:enable_xml": True,
         "poco:enable_zip": False,
+        "poco:enable_active_record": False,
         "date:header_only": True,
     }
     exports_sources = "*"
@@ -62,7 +63,7 @@ class TargetConan(ConanFile):
     def requirements(self):
         self.requires("sqlite3/3.35.5")
         self.requires("rapidjson/1.1.0")
-        self.requires("poco/1.10.1")
+        self.requires("poco/1.11.0")
         self.requires("openssl/1.1.1k")
         self.requires("sqlitecpp/2.5.0")
         self.requires("date/3.0.1")

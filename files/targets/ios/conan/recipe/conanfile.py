@@ -45,6 +45,7 @@ class TargetConan(ConanFile):
         "poco:enable_util": True,
         "poco:enable_xml": True,
         "poco:enable_zip": False,
+        "poco:enable_active_record": False,
         "date:header_only": True,
     }
     exports_sources = "*"
@@ -72,4 +73,4 @@ class TargetConan(ConanFile):
         self.requires("date/3.0.1")
 
         # uncomment only if you want use C++ http client instead of native android http client
-        # self.requires("poco/1.10.1")
+        self.requires("poco/1.11.0")

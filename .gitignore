@@ -20,3 +20,10 @@ build
 build-*
 /dist/
 /dist.*
+/*.dmg
+/*.tar
+/*.tar.*
+
+# node
+node_modules
+package-lock.json

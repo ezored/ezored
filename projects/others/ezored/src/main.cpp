@@ -8,6 +8,8 @@
 #include "ezored/net/http/HttpClientLoggerImpl.hpp"
 #include "ezored/net/http/HttpRequest.hpp"
 #include "ezored/net/http/HttpResponse.hpp"
+#include "ezored/net/http/HttpServer.hpp"
+#include "ezored/net/http/HttpServerConfig.hpp"
 #include "ezored/net/http/SimpleHttpClientPlatformService.hpp"
 
 #include "ezored/time/DateTime.hpp"
@@ -32,6 +34,7 @@
 #include "ezored/systemservice/CustomerSystemService.hpp"
 #include "ezored/systemservice/CustomerSystemServiceLoginData.hpp"
 
+#include <cstdlib>
 #include <iostream>
 #include <memory>
 
@@ -187,14 +190,36 @@ int main(int argc, char **argv)
     }
 
     // shared data
-    if (SharedData::shared()->getBoolWithDefaultValue("app", "first-open", true))
     {
-        Logger::i("First open: YES");
-        SharedData::shared()->setBool("app", "first-open", false);
+        if (SharedData::shared()->getBoolWithDefaultValue("app", "first-open", true))
+        {
+            Logger::i("First open: YES");
+            SharedData::shared()->setBool("app", "first-open", false);
+        }
+        else
+        {
+            Logger::i("First open: NO");
+        }
     }
-    else
+
+    // http server
     {
-        Logger::i("First open: NO");
+        auto envStaticPath = std::getenv("EZORED_STATIC_PATH");
+        auto staticPath = (envStaticPath == nullptr ? "" : envStaticPath);
+
+        auto config = HttpServerConfig{9000, staticPath};
+        auto httpServer = HttpServer::shared();
+
+        httpServer->initialize(config);
+        httpServer->start();
+
+        auto envServerOnline = std::getenv("EZORED_HTTP_SERVER_ONLINE");
+        auto serverOnline = (envServerOnline == nullptr ? false : (std::string(envServerOnline) == "1"));
+
+        if (serverOnline)
+        {
+            httpServer->waitForTermination();
+        }
     }
 
     // version

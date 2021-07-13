@@ -35,7 +35,7 @@ def code_format(params):
     has_tool = check_cpp_formatter()
 
     if has_tool:
-        dir_list = [
+        path_list = [
             {
                 "path": os.path.join(
                     proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_MODULES
@@ -43,19 +43,27 @@ def code_format(params):
                 "patterns": ["*.cpp", "*.hpp", "*.c", "*.h", "*.m", "*.mm"],
             },
             {
-                "path": os.path.join(proj_path, const.DIR_NAME_PROJECTS),
+                "path": os.path.join(proj_path, const.DIR_NAME_PROJECTS, "others"),
+                "patterns": ["*.cpp", "*.hpp", "*.c", "*.h", "*.m", "*.mm"],
+            },
+            {
+                "path": os.path.join(proj_path, const.DIR_NAME_PROJECTS, "android"),
+                "patterns": ["*.cpp", "*.hpp", "*.c", "*.h", "*.m", "*.mm"],
+            },
+            {
+                "path": os.path.join(proj_path, const.DIR_NAME_PROJECTS, "ios"),
                 "patterns": ["*.cpp", "*.hpp", "*.c", "*.h", "*.m", "*.mm"],
             },
         ]
 
-        if dir_list:
+        if path_list:
             log.info("Formating C++ files...")
 
-            for dir_item in dir_list:
-                patterns = dir_item["patterns"]
+            for path_list_item in path_list:
+                patterns = path_list_item["patterns"]
 
                 for pattern_item in patterns:
-                    files = file.find_files(dir_item["path"], pattern_item)
+                    files = file.find_files(path_list_item["path"], pattern_item)
 
                     for file_item in files:
                         log.info(
@@ -74,10 +82,9 @@ def code_format(params):
     has_tool = check_python_formatter()
 
     if has_tool:
-        dir_list = [
+        path_list = [
             {
-                "path": proj_path,
-                "patterns": ["make.py"],
+                "path": os.path.join(proj_path, "make.py"),
             },
             {
                 "path": os.path.join(proj_path, const.DIR_NAME_FILES),
@@ -85,16 +92,34 @@ def code_format(params):
             },
         ]
 
-        if dir_list:
+        if path_list:
             log.info("Formating Python files...")
 
-            for dir_item in dir_list:
-                patterns = dir_item["patterns"]
+            for path_list_item in path_list:
+                patterns = (
+                    path_list_item["patterns"] if "patterns" in path_list_item else None
+                )
 
-                for pattern_item in patterns:
-                    files = file.find_files(dir_item["path"], pattern_item)
+                if patterns:
+                    for pattern_item in patterns:
+                        files = file.find_files(path_list_item["path"], pattern_item)
 
-                    for file_item in files:
+                        for file_item in files:
+                            log.info(
+                                "Formatting file: {0}...".format(
+                                    os.path.relpath(file_item)
+                                )
+                            )
+
+                            run_args = ["black", "-q", file_item]
+
+                            runner.run(run_args, proj_path)
+                else:
+                    file_item = (
+                        path_list_item["path"] if "path" in path_list_item else None
+                    )
+
+                    if file_item:
                         log.info(
                             "Formatting file: {0}...".format(os.path.relpath(file_item))
                         )
@@ -111,7 +136,7 @@ def code_format(params):
     has_tool = check_cmake_formatter()
 
     if has_tool:
-        dir_list = [
+        path_list = [
             {
                 "path": os.path.join(proj_path, const.DIR_NAME_FILES),
                 "patterns": ["*.cmake"],
@@ -122,14 +147,14 @@ def code_format(params):
             },
         ]
 
-        if dir_list:
+        if path_list:
             log.info("Formating CMake files...")
 
-            for dir_item in dir_list:
-                patterns = dir_item["patterns"]
+            for path_list_item in path_list:
+                patterns = path_list_item["patterns"]
 
                 for pattern_item in patterns:
-                    files = file.find_files(dir_item["path"], pattern_item)
+                    files = file.find_files(path_list_item["path"], pattern_item)
 
                     for file_item in files:
                         log.info(
