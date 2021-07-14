@@ -17,11 +17,12 @@ using namespace ezored::util;
 SimpleHttpServer::SimpleHttpServer(const std::shared_ptr<HttpServerConfig> config)
 {
     Poco::Net::HTTPServerParams *params = new Poco::Net::HTTPServerParams();
+    params->setMaxQueued(10);
+    params->setMaxThreads(1);
+
     SimpleHttpServerRequestHandlerFactory *requestHandler = new SimpleHttpServerRequestHandlerFactory{config};
     Poco::Net::ServerSocket serverSocket = Poco::Net::ServerSocket{static_cast<Poco::UInt16>(config->port)};
-    //Poco::Net::HTTPServer *httpServer = new Poco::Net::HTTPServer{requestHandler, serverSocket, params};
-    std::shared_ptr<Poco::Net::HTTPServer> httpServer = std::make_shared<Poco::Net::HTTPServer>(requestHandler, serverSocket, params);
-    server = httpServer;
+    server = std::make_shared<Poco::Net::HTTPServer>(requestHandler, serverSocket, params);
 }
 
 SimpleHttpServer::~SimpleHttpServer()

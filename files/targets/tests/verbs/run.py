@@ -7,7 +7,7 @@ from files.core import file
 from files.core import log
 from files.core import runner
 from files.core import util
-from files.config import target_test as config
+from files.config import target_tests as config
 
 
 # -----------------------------------------------------------------------------

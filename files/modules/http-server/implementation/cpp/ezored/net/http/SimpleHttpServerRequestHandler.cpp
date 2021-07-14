@@ -1,6 +1,7 @@
 #include "SimpleHttpServerRequestHandler.hpp"
 
 #include "ezored/core/ApplicationCore.hpp"
+#include "ezored/net/http/controller/HttpServerTodoController.hpp"
 #include "ezored/util/Logger.hpp"
 
 #include "Poco/File.h"
@@ -19,7 +20,9 @@ namespace http
 
 using namespace ezored::core;
 using namespace ezored::net::http;
+using namespace ezored::net::http::controller;
 using namespace ezored::util;
+using namespace ezored::domain;
 
 SimpleHttpServerRequestHandler::SimpleHttpServerRequestHandler(const std::shared_ptr<HttpServerConfig> config)
 {
@@ -31,15 +34,21 @@ void SimpleHttpServerRequestHandler::handleRequest(Poco::Net::HTTPServerRequest 
     // log request
     if (ApplicationCore::shared()->getInitializationData().debug)
     {
-        Logger::d("[SimpleHttpServerRequestHandler : handleRequest] New request for Host: " + request.getHost() + ", Method: " + request.getMethod() + ", URI: " + request.getURI());
+        Logger::d("[SimpleHttpServerRequestHandler : handleRequest] New request for Host: " + request.getHost() + ", Method: " + request.getMethod() + ", URI: " + request.getURI() + ", Version: " + request.getVersion() + ", Content-Type: " + request.getContentType() + ", Transfer-Encoding: " + request.getTransferEncoding());
     }
 
-    std::string lastModifiedHeader = request.get("If-Modified-Since", "");
     Poco::URI uri(request.getURI());
-    std::string staticPathname = serverConfig->staticPath;
+
+    // validate route
+    if (HttpServerTodoController::process(request, response))
+    {
+        return;
+    }
+
+    std::string serverStaticPath = serverConfig->staticPath;
 
     // validate static path
-    if (staticPathname.empty())
+    if (serverStaticPath.empty())
     {
         Logger::d("[SimpleHttpServerRequestHandler : handleRequest] Error: Static path was not defined");
 
@@ -49,7 +58,7 @@ void SimpleHttpServerRequestHandler::handleRequest(Poco::Net::HTTPServerRequest 
     }
 
     // create full path
-    Poco::Path staticPath(staticPathname);
+    Poco::Path staticPath(serverStaticPath);
 
     std::vector<std::string> uriPathSegments;
     uri.getPathSegments(uriPathSegments);

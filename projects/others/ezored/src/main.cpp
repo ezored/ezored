@@ -204,7 +204,7 @@ int main(int argc, char **argv)
 
     // http server
     {
-        auto envStaticPath = std::getenv("EZORED_STATIC_PATH");
+        auto envStaticPath = std::getenv("EZORED_HTTP_SERVER_STATIC_PATH");
         auto staticPath = (envStaticPath == nullptr ? "" : envStaticPath);
 
         auto config = HttpServerConfig{9000, staticPath};
