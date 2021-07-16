@@ -14,6 +14,8 @@ import com.ezored.io.FileHelper
 import com.ezored.io.FileHelperPlatformServiceImpl
 import com.ezored.net.http.HttpClient
 import com.ezored.net.http.HttpClientPlatformServiceImpl
+import com.ezored.net.http.HttpServer
+import com.ezored.net.http.HttpServerConfig
 import com.ezored.sample.BuildConfig
 import com.ezored.sample.data.AppData
 import com.ezored.sample.observer.AppLifecycleObserver
@@ -76,6 +78,7 @@ class Application : MultiDexApplication() {
             initializeHttpClient()
             initializeFileHelper()
             initializeCore()
+            initializeHttpServer()
         } catch (e: UnsatisfiedLinkError) {
             Log.e(LOG_GROUP, "Could not load native library: " + e.message)
             e.printStackTrace()
@@ -129,6 +132,14 @@ class Application : MultiDexApplication() {
                     .build()
             )
         }
+    }
+
+    private fun initializeHttpServer() {
+        val config = HttpServerConfig(0, "")
+        HttpServer.shared().initialize(config)
+        HttpServer.shared().start()
+
+        Logger.i("[Application : initializeHttpServer] Server: " + HttpServer.shared().socketAddress)
     }
 
     companion object {

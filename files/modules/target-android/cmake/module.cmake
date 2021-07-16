@@ -33,6 +33,9 @@ if(PROJECT_TARGET_NAME STREQUAL "android")
     file(GLOB_RECURSE H_FILES_HTTP_CLIENT "${PROJECT_MODULES_PATH}/http-client/gluecode/generated-src/jni/*.h")
     file(GLOB_RECURSE S_FILES_HTTP_CLIENT "${PROJECT_MODULES_PATH}/http-client/gluecode/generated-src/jni/*.cpp")
 
+    file(GLOB_RECURSE H_FILES_HTTP_SERVER "${PROJECT_MODULES_PATH}/http-server/gluecode/generated-src/jni/*.h")
+    file(GLOB_RECURSE S_FILES_HTTP_SERVER "${PROJECT_MODULES_PATH}/http-server/gluecode/generated-src/jni/*.cpp")
+
     file(GLOB_RECURSE H_FILES_FILE_HELPER "${PROJECT_MODULES_PATH}/file-helper/gluecode/generated-src/jni/*.h")
     file(GLOB_RECURSE S_FILES_FILE_HELPER "${PROJECT_MODULES_PATH}/file-helper/gluecode/generated-src/jni/*.cpp")
 
@@ -62,11 +65,10 @@ if(PROJECT_TARGET_NAME STREQUAL "android")
 
     project_add_header_files("${H_FILES_LOGGER}")
     project_add_header_files("${H_FILES_HTTP_CLIENT}")
+    project_add_header_files("${H_FILES_HTTP_SERVER}")
     project_add_header_files("${H_FILES_FILE_HELPER}")
     project_add_header_files("${H_FILES_SHARED_DATA}")
     project_add_header_files("${H_FILES_DATETIME}")
-
-    project_add_header_files("${H_FILES_HTTP_CLIENT_PLATFORM}")
 
     # source files
     project_add_source_files("${S_FILES_CXX}")
@@ -83,11 +85,10 @@ if(PROJECT_TARGET_NAME STREQUAL "android")
 
     project_add_source_files("${S_FILES_LOGGER}")
     project_add_source_files("${S_FILES_HTTP_CLIENT}")
+    project_add_source_files("${S_FILES_HTTP_SERVER}")
     project_add_source_files("${S_FILES_FILE_HELPER}")
     project_add_source_files("${S_FILES_SHARED_DATA}")
     project_add_source_files("${S_FILES_DATETIME}")
-
-    project_add_source_files("${S_FILES_HTTP_CLIENT_PLATFORM}")
 
     # search paths
     project_add_search_path("${PROJECT_MODULES_PATH}/support-lib")
@@ -101,6 +102,7 @@ if(PROJECT_TARGET_NAME STREQUAL "android")
 
     project_add_search_path("${PROJECT_MODULES_PATH}/logger/gluecode/generated-src/jni")
     project_add_search_path("${PROJECT_MODULES_PATH}/http-client/gluecode/generated-src/jni")
+    project_add_search_path("${PROJECT_MODULES_PATH}/http-server/gluecode/generated-src/jni")
     project_add_search_path("${PROJECT_MODULES_PATH}/file-helper/gluecode/generated-src/jni")
     project_add_search_path("${PROJECT_MODULES_PATH}/shared-data/gluecode/generated-src/jni")
     project_add_search_path("${PROJECT_MODULES_PATH}/datetime/gluecode/generated-src/jni")
