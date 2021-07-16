@@ -8,6 +8,7 @@
 #include "Poco/Net/HTTPServerResponse.h"
 
 #include <string>
+#include <memory>
 
 namespace ezored
 {
