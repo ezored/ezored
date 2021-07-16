@@ -1,6 +1,7 @@
 #include "ezored/repository/EZRTodoRepository.hpp"
 #include "ezored/core/ApplicationCore.hpp"
 #include "ezored/core/ApplicationCoreImpl.hpp"
+#include "ezored/helper/DatabaseHelper.hpp"
 #include "ezored/helper/MapHelper.hpp"
 #include "ezored/helper/SimpleStringHelper.hpp"
 #include "ezored/helper/TodoHelper.hpp"
@@ -75,7 +76,7 @@ int64_t TodoRepository::insert(const Todo &todo)
     return db->getLastInsertRowid();
 }
 
-void TodoRepository::update(int64_t id, const Todo &todo)
+int64_t TodoRepository::update(int64_t id, const Todo &todo)
 {
     auto sql =
         "UPDATE todo SET "
@@ -98,6 +99,8 @@ void TodoRepository::update(int64_t id, const Todo &todo)
     query.bind(":done", todo.done);
     query.bind(":updated_at", DateTime::getStringFromDateTime(todo.updatedAt));
     query.exec();
+
+    return DatabaseHelper::getChanges(db);
 }
 
 int64_t TodoRepository::add(const Todo &todo)
@@ -106,8 +109,7 @@ int64_t TodoRepository::add(const Todo &todo)
 
     if (found.id > 0)
     {
-        update(found.id, todo);
-        return found.id;
+        return update(found.id, todo);
     }
     else
     {
@@ -115,7 +117,7 @@ int64_t TodoRepository::add(const Todo &todo)
     }
 }
 
-void TodoRepository::removeById(int64_t id)
+bool TodoRepository::removeById(int64_t id)
 {
     auto sql = "DELETE FROM todo WHERE id = :id";
 
@@ -126,6 +128,10 @@ void TodoRepository::removeById(int64_t id)
 
     query.bind(":id", id);
     query.exec();
+
+    auto rows = DatabaseHelper::getChanges(db);
+
+    return (rows > 0);
 }
 
 std::vector<Todo> TodoRepository::findAllOrderByCreatedAtDesc()
@@ -183,7 +189,7 @@ std::vector<Todo> TodoRepository::findByTitle(const std::string &title)
     return list;
 }
 
-void TodoRepository::setDoneById(int64_t id, bool done)
+bool TodoRepository::setDoneById(int64_t id, bool done)
 {
     auto sql = "UPDATE todo SET done = :done WHERE id = :id";
 
@@ -195,6 +201,10 @@ void TodoRepository::setDoneById(int64_t id, bool done)
     query.bind(":id", id);
     query.bind(":done", done);
     query.exec();
+
+    auto rows = DatabaseHelper::getChanges(db);
+
+    return (rows > 0);
 }
 
 Todo TodoRepository::findById(int64_t id)

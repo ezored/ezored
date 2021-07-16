@@ -72,22 +72,24 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (void)removeById:(int64_t)id
++ (BOOL)removeById:(int64_t)id
 {
     try
     {
-        ::ezored::repository::TodoRepository::removeById(::djinni::I64::toCpp(id));
+        auto objcpp_result_ = ::ezored::repository::TodoRepository::removeById(::djinni::I64::toCpp(id));
+        return ::djinni::Bool::fromCpp(objcpp_result_);
     }
     DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (void)update:(int64_t)id
-          todo:(nonnull EZRDomainTodo *)todo
++ (int64_t)update:(int64_t)id
+             todo:(nonnull EZRDomainTodo *)todo
 {
     try
     {
-        ::ezored::repository::TodoRepository::update(::djinni::I64::toCpp(id),
-                                                     ::djinni_generated::Todo::toCpp(todo));
+        auto objcpp_result_ = ::ezored::repository::TodoRepository::update(::djinni::I64::toCpp(id),
+                                                                           ::djinni_generated::Todo::toCpp(todo));
+        return ::djinni::I64::fromCpp(objcpp_result_);
     }
     DJINNI_TRANSLATE_EXCEPTIONS()
 }
@@ -112,13 +114,14 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (void)setDoneById:(int64_t)id
++ (BOOL)setDoneById:(int64_t)id
                done:(BOOL)done
 {
     try
     {
-        ::ezored::repository::TodoRepository::setDoneById(::djinni::I64::toCpp(id),
-                                                          ::djinni::Bool::toCpp(done));
+        auto objcpp_result_ = ::ezored::repository::TodoRepository::setDoneById(::djinni::I64::toCpp(id),
+                                                                                ::djinni::Bool::toCpp(done));
+        return ::djinni::Bool::fromCpp(objcpp_result_);
     }
     DJINNI_TRANSLATE_EXCEPTIONS()
 }

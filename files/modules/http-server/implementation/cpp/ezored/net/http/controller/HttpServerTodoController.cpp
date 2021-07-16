@@ -1,14 +1,21 @@
-#include "HttpServerTodoController.hpp"
+#include "ezored/net/http/controller/HttpServerTodoController.hpp"
 
 #include "ezored/domain/Todo.hpp"
 #include "ezored/helper/ResponseHelper.hpp"
 #include "ezored/json/JsonMapping.hpp"
+#include "ezored/net/http/helper/HttpServerHelper.hpp"
 #include "ezored/time/DateTime.hpp"
+#include "ezored/util/Logger.hpp"
+
+#include "ezored/repository/TodoRepository.hpp"
 
 #include "Poco/URI.h"
 
 using namespace ezored::time;
 using namespace ezored::helper;
+using namespace ezored::repository;
+using namespace ezored::util;
+using namespace ezored::net::http::helper;
 
 namespace ezored
 {
@@ -28,9 +35,30 @@ bool HttpServerTodoController::process(Poco::Net::HTTPServerRequest &request, Po
         actionTodoList(request, response);
         return true;
     }
+    else if (uri.getPath() == "/todo/create" && request.getMethod() == "POST")
+    {
+        actionTodoCreate(request, response);
+        return true;
+    }
+    else if (uri.getPath() == "/todo/update" && request.getMethod() == "POST")
+    {
+        actionTodoUpdate(request, response);
+        return true;
+    }
+    else if (uri.getPath() == "/todo/delete" && request.getMethod() == "POST")
+    {
+        actionTodoDelete(request, response);
+        return true;
+    }
+    else if (uri.getPath() == "/todo/done-by-id" && request.getMethod() == "POST")
+    {
+        actionTodoDoneById(request, response);
+        return true;
+    }
 
     return false;
 }
+
 void HttpServerTodoController::actionTodoList(Poco::Net::HTTPServerRequest &request, Poco::Net::HTTPServerResponse &response)
 {
     response.setChunkedTransferEncoding(true);
@@ -42,12 +70,209 @@ void HttpServerTodoController::actionTodoList(Poco::Net::HTTPServerRequest &requ
     resp.success = true;
     resp.message = "list";
 
-    auto todo = Todo{1, "test 1", "test 2", {}, true, DateTime::getCurrentDateTime(), DateTime::getCurrentDateTime()};
-    auto list = {todo, todo};
+    auto list = TodoRepository::findAllOrderByCreatedAtDesc();
 
     nlohmann::json json = resp;
     json["data"]["list"] = list;
 
+    responseStream << json;
+}
+
+void HttpServerTodoController::actionTodoCreate(Poco::Net::HTTPServerRequest &request, Poco::Net::HTTPServerResponse &response)
+{
+    response.setChunkedTransferEncoding(true);
+    response.setContentType("application/json");
+
+    std::ostream &responseStream = response.send();
+
+    auto resp = ResponseHelper::create();
+
+    try
+    {
+        auto json = nlohmann::json::parse(HttpServerHelper::getRequestContent(request));
+
+        if (json != nullptr)
+        {
+            auto todo = Todo{
+                0,
+                json["title"].get<std::string>(),
+                json["body"].get<std::string>(),
+                json["data"].get<std::unordered_map<std::string, std::string>>(),
+                json["done"].get<bool>(),
+                json["createdAt"].get<std::chrono::system_clock::time_point>(),
+                json["updatedAt"].get<std::chrono::system_clock::time_point>(),
+            };
+
+            todo.createdAt = DateTime::getCurrentDateTime();
+            todo.updatedAt = DateTime::getCurrentDateTime();
+
+            todo.id = TodoRepository::insert(todo);
+
+            if (todo.id > 0)
+            {
+                todo = TodoRepository::findById(todo.id);
+
+                resp.success = true;
+                resp.message = "created";
+
+                nlohmann::json json = resp;
+
+                json["data"]["todo"] = todo;
+
+                responseStream << json;
+
+                return;
+            }
+        }
+    }
+    catch (std::exception &e)
+    {
+        Logger::e("[HttpServerTodoController : actionTodoCreate] Error: " + std::string(e.what()));
+    }
+
+    nlohmann::json json = resp;
+    responseStream << json;
+}
+
+void HttpServerTodoController::actionTodoUpdate(Poco::Net::HTTPServerRequest &request, Poco::Net::HTTPServerResponse &response)
+{
+    response.setChunkedTransferEncoding(true);
+    response.setContentType("application/json");
+
+    std::ostream &responseStream = response.send();
+
+    auto resp = ResponseHelper::create();
+
+    try
+    {
+        auto json = nlohmann::json::parse(HttpServerHelper::getRequestContent(request));
+
+        if (json != nullptr)
+        {
+            auto todo = Todo{
+                json["id"].get<int64_t>(),
+                json["title"].get<std::string>(),
+                json["body"].get<std::string>(),
+                json["data"].get<std::unordered_map<std::string, std::string>>(),
+                json["done"].get<bool>(),
+                json["createdAt"].get<std::chrono::system_clock::time_point>(),
+                json["updatedAt"].get<std::chrono::system_clock::time_point>(),
+            };
+
+            todo.createdAt = DateTime::getCurrentDateTime();
+            todo.updatedAt = DateTime::getCurrentDateTime();
+
+            auto rows = TodoRepository::update(todo.id, todo);
+
+            if (rows > 0)
+            {
+                todo = TodoRepository::findById(todo.id);
+
+                resp.success = true;
+                resp.message = "updated";
+
+                nlohmann::json json = resp;
+
+                json["data"]["todo"] = todo;
+
+                responseStream << json;
+
+                return;
+            }
+        }
+    }
+    catch (std::exception &e)
+    {
+        Logger::e("[HttpServerTodoController : actionTodoUpdate] Error: " + std::string(e.what()));
+    }
+
+    nlohmann::json json = resp;
+    responseStream << json;
+}
+
+void HttpServerTodoController::actionTodoDelete(Poco::Net::HTTPServerRequest &request, Poco::Net::HTTPServerResponse &response)
+{
+    response.setChunkedTransferEncoding(true);
+    response.setContentType("application/json");
+
+    std::ostream &responseStream = response.send();
+
+    auto resp = ResponseHelper::create();
+
+    try
+    {
+        auto json = nlohmann::json::parse(HttpServerHelper::getRequestContent(request));
+
+        if (json != nullptr)
+        {
+            auto paramId = json["id"].get<int64_t>();
+
+            auto result = TodoRepository::removeById(paramId);
+
+            if (result)
+            {
+                resp.success = true;
+                resp.message = "deleted";
+
+                nlohmann::json json = resp;
+                responseStream << json;
+
+                return;
+            }
+        }
+    }
+    catch (std::exception &e)
+    {
+        Logger::e("[HttpServerTodoController : actionTodoDelete] Error: " + std::string(e.what()));
+    }
+
+    nlohmann::json json = resp;
+    responseStream << json;
+}
+
+void HttpServerTodoController::actionTodoDoneById(Poco::Net::HTTPServerRequest &request, Poco::Net::HTTPServerResponse &response)
+{
+    response.setChunkedTransferEncoding(true);
+    response.setContentType("application/json");
+
+    std::ostream &responseStream = response.send();
+
+    auto resp = ResponseHelper::create();
+
+    try
+    {
+        auto json = nlohmann::json::parse(HttpServerHelper::getRequestContent(request));
+
+        if (json != nullptr)
+        {
+            auto paramId = json["id"].get<int64_t>();
+            auto paramDone = json["done"].get<bool>();
+
+            auto result = TodoRepository::setDoneById(paramId, paramDone);
+
+            if (result)
+            {
+                auto todo = TodoRepository::findById(paramId);
+
+                resp.success = true;
+                resp.message = "updated";
+
+                nlohmann::json json = resp;
+
+                json["data"]["todo"] = todo;
+
+                responseStream << json;
+
+                return;
+            }
+        }
+    }
+    catch (std::exception &e)
+    {
+        Logger::e("[HttpServerTodoController : actionTodoDoneById] Error: " + std::string(e.what()));
+    }
+
+    nlohmann::json json = resp;
     responseStream << json;
 }
 

@@ -1,6 +1,7 @@
 #include "DatabaseHelper.hpp"
 
 #include "SQLiteCpp/SQLiteCpp.h"
+#include "sqlite3.h"
 
 #include "ezored/core/ApplicationCore.hpp"
 #include "ezored/util/Logger.hpp"
@@ -109,6 +110,11 @@ bool DatabaseHelper::canMigrateToVersion(int version)
     }
 
     return false;
+}
+
+int64_t DatabaseHelper::getChanges(std::shared_ptr<SQLite::Database> db)
+{
+    return sqlite3_changes(db->getHandle());
 }
 
 } // namespace helper

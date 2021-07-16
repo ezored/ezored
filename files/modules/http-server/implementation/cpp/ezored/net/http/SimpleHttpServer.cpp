@@ -1,5 +1,5 @@
-#include "SimpleHttpServer.hpp"
-#include "SimpleHttpServerRequestHandlerFactory.hpp"
+#include "ezored/net/http/SimpleHttpServer.hpp"
+#include "ezored/net/http/SimpleHttpServerRequestHandlerFactory.hpp"
 
 #include "ezored/util/Logger.hpp"
 
@@ -19,9 +19,12 @@ SimpleHttpServer::SimpleHttpServer(const std::shared_ptr<HttpServerConfig> confi
     Poco::Net::HTTPServerParams *params = new Poco::Net::HTTPServerParams();
     params->setMaxQueued(10);
     params->setMaxThreads(1);
+    params->setTimeout(15000);
 
-    SimpleHttpServerRequestHandlerFactory *requestHandler = new SimpleHttpServerRequestHandlerFactory{config};
+    auto requestHandler = new SimpleHttpServerRequestHandlerFactory{config};
+
     Poco::Net::ServerSocket serverSocket = Poco::Net::ServerSocket{static_cast<Poco::UInt16>(config->port)};
+
     server = std::make_shared<Poco::Net::HTTPServer>(requestHandler, serverSocket, params);
 }
 

@@ -1,5 +1,5 @@
-#include "SimpleHttpServerRequestHandlerFactory.hpp"
-#include "SimpleHttpServerRequestHandler.hpp"
+#include "ezored/net/http/SimpleHttpServerRequestHandlerFactory.hpp"
+#include "ezored/net/http/SimpleHttpServerRequestHandler.hpp"
 
 #include "ezored/util/Logger.hpp"
 

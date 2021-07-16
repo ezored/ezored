@@ -65,25 +65,27 @@ CJNIEXPORT jobject JNICALL Java_com_ezored_repository_TodoRepository_00024CppPro
     JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT void JNICALL Java_com_ezored_repository_TodoRepository_00024CppProxy_removeById(JNIEnv *jniEnv, jobject /*this*/, jlong j_id)
+CJNIEXPORT jboolean JNICALL Java_com_ezored_repository_TodoRepository_00024CppProxy_removeById(JNIEnv *jniEnv, jobject /*this*/, jlong j_id)
 {
     try
     {
         DJINNI_FUNCTION_PROLOGUE0(jniEnv);
-        ::ezored::repository::TodoRepository::removeById(::djinni::I64::toCpp(jniEnv, j_id));
+        auto r = ::ezored::repository::TodoRepository::removeById(::djinni::I64::toCpp(jniEnv, j_id));
+        return ::djinni::release(::djinni::Bool::fromCpp(jniEnv, r));
     }
-    JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
+    JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT void JNICALL Java_com_ezored_repository_TodoRepository_00024CppProxy_update(JNIEnv *jniEnv, jobject /*this*/, jlong j_id, ::djinni_generated::EZRDomainTodo::JniType j_todo)
+CJNIEXPORT jlong JNICALL Java_com_ezored_repository_TodoRepository_00024CppProxy_update(JNIEnv *jniEnv, jobject /*this*/, jlong j_id, ::djinni_generated::EZRDomainTodo::JniType j_todo)
 {
     try
     {
         DJINNI_FUNCTION_PROLOGUE0(jniEnv);
-        ::ezored::repository::TodoRepository::update(::djinni::I64::toCpp(jniEnv, j_id),
-                                                     ::djinni_generated::EZRDomainTodo::toCpp(jniEnv, j_todo));
+        auto r = ::ezored::repository::TodoRepository::update(::djinni::I64::toCpp(jniEnv, j_id),
+                                                              ::djinni_generated::EZRDomainTodo::toCpp(jniEnv, j_todo));
+        return ::djinni::release(::djinni::I64::fromCpp(jniEnv, r));
     }
-    JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
+    JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
 CJNIEXPORT jlong JNICALL Java_com_ezored_repository_TodoRepository_00024CppProxy_insert(JNIEnv *jniEnv, jobject /*this*/, ::djinni_generated::EZRDomainTodo::JniType j_todo)
@@ -108,15 +110,16 @@ CJNIEXPORT jlong JNICALL Java_com_ezored_repository_TodoRepository_00024CppProxy
     JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT void JNICALL Java_com_ezored_repository_TodoRepository_00024CppProxy_setDoneById(JNIEnv *jniEnv, jobject /*this*/, jlong j_id, jboolean j_done)
+CJNIEXPORT jboolean JNICALL Java_com_ezored_repository_TodoRepository_00024CppProxy_setDoneById(JNIEnv *jniEnv, jobject /*this*/, jlong j_id, jboolean j_done)
 {
     try
     {
         DJINNI_FUNCTION_PROLOGUE0(jniEnv);
-        ::ezored::repository::TodoRepository::setDoneById(::djinni::I64::toCpp(jniEnv, j_id),
-                                                          ::djinni::Bool::toCpp(jniEnv, j_done));
+        auto r = ::ezored::repository::TodoRepository::setDoneById(::djinni::I64::toCpp(jniEnv, j_id),
+                                                                   ::djinni::Bool::toCpp(jniEnv, j_done));
+        return ::djinni::release(::djinni::Bool::fromCpp(jniEnv, r));
     }
-    JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
+    JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
 } // namespace djinni_generated

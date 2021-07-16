@@ -26,15 +26,15 @@ public:
 
     static std::vector<::ezored::domain::Todo> findByTitle(const std::string &title);
 
-    static void removeById(int64_t id);
+    static bool removeById(int64_t id);
 
-    static void update(int64_t id, const ::ezored::domain::Todo &todo);
+    static int64_t update(int64_t id, const ::ezored::domain::Todo &todo);
 
     static int64_t insert(const ::ezored::domain::Todo &todo);
 
     static int64_t add(const ::ezored::domain::Todo &todo);
 
-    static void setDoneById(int64_t id, bool done);
+    static bool setDoneById(int64_t id, bool done);
 };
 
 } // namespace repository

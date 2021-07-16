@@ -27,15 +27,15 @@ public abstract class TodoRepository {
         return CppProxy.findByTitle(title);
     }
 
-    public static void removeById(long id)
+    public static boolean removeById(long id)
     {
-        CppProxy.removeById(id);
+        return CppProxy.removeById(id);
     }
 
-    public static void update(long id, com.ezored.domain.Todo todo)
+    public static long update(long id, com.ezored.domain.Todo todo)
     {
-        CppProxy.update(id,
-                        todo);
+        return CppProxy.update(id,
+                               todo);
     }
 
     public static long insert(com.ezored.domain.Todo todo)
@@ -48,10 +48,10 @@ public abstract class TodoRepository {
         return CppProxy.add(todo);
     }
 
-    public static void setDoneById(long id, boolean done)
+    public static boolean setDoneById(long id, boolean done)
     {
-        CppProxy.setDoneById(id,
-                             done);
+        return CppProxy.setDoneById(id,
+                                    done);
     }
 
     private static final class CppProxy extends TodoRepository
@@ -85,14 +85,14 @@ public abstract class TodoRepository {
 
         public static native ArrayList<com.ezored.domain.Todo> findByTitle(String title);
 
-        public static native void removeById(long id);
+        public static native boolean removeById(long id);
 
-        public static native void update(long id, com.ezored.domain.Todo todo);
+        public static native long update(long id, com.ezored.domain.Todo todo);
 
         public static native long insert(com.ezored.domain.Todo todo);
 
         public static native long add(com.ezored.domain.Todo todo);
 
-        public static native void setDoneById(long id, boolean done);
+        public static native boolean setDoneById(long id, boolean done);
     }
 }

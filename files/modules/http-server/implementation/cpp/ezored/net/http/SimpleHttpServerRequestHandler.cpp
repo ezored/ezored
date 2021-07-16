@@ -1,7 +1,7 @@
-#include "SimpleHttpServerRequestHandler.hpp"
+#include "ezored/net/http/SimpleHttpServerRequestHandler.hpp"
 
 #include "ezored/core/ApplicationCore.hpp"
-#include "ezored/net/http/controller/HttpServerTodoController.hpp"
+#include "ezored/net/http/helper/HttpServerHelper.hpp"
 #include "ezored/util/Logger.hpp"
 
 #include "Poco/File.h"
@@ -20,7 +20,7 @@ namespace http
 
 using namespace ezored::core;
 using namespace ezored::net::http;
-using namespace ezored::net::http::controller;
+using namespace ezored::net::http::helper;
 using namespace ezored::util;
 using namespace ezored::domain;
 
@@ -40,7 +40,7 @@ void SimpleHttpServerRequestHandler::handleRequest(Poco::Net::HTTPServerRequest 
     Poco::URI uri(request.getURI());
 
     // validate route
-    if (HttpServerTodoController::process(request, response))
+    if (HttpServerHelper::process(request, response))
     {
         return;
     }
