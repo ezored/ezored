@@ -10,4 +10,8 @@ http_server = interface +c {
     start();
     stop();
     wait_for_termination();
+    get_socket_port(): i32;
+    get_socket_host(): string;
+    get_socket_address(): string;
+    is_socket_secure(): bool;
 }

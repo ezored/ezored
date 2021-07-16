@@ -78,6 +78,28 @@ void HttpServerImpl::waitForTermination()
     server->waitForTermination();
 }
 
+int32_t HttpServerImpl::getSocketPort()
+{
+    return server->getSocketPort();
+}
+
+std::string HttpServerImpl::getSocketHost()
+{
+    return server->getSocketHost();
+}
+
+std::string HttpServerImpl::getSocketAddress()
+{
+    std::string prefix = isSocketSecure() ? "https" : "http";
+
+    return prefix + "://" + getSocketHost() + ":" + std::to_string(getSocketPort());
+}
+
+bool HttpServerImpl::isSocketSecure()
+{
+    return server->isSocketSecure();
+}
+
 } // namespace http
 } // namespace net
 } // namespace ezored

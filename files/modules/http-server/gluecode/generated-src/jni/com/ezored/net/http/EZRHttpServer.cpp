@@ -3,6 +3,7 @@
 
 #include "com/ezored/net/http/EZRHttpServer.hpp" // my header
 #include "com/ezored/net/http/EZRHttpServerConfig.hpp"
+#include "djinni/jni/Marshal.hpp"
 
 namespace djinni_generated
 {
@@ -86,6 +87,54 @@ CJNIEXPORT void JNICALL Java_com_ezored_net_http_HttpServer_00024CppProxy_native
         ref->waitForTermination();
     }
     JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
+}
+
+CJNIEXPORT jint JNICALL Java_com_ezored_net_http_HttpServer_00024CppProxy_native_1getSocketPort(JNIEnv *jniEnv, jobject /*this*/, jlong nativeRef)
+{
+    try
+    {
+        DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
+        const auto &ref = ::djinni::objectFromHandleAddress<::ezored::net::http::HttpServer>(nativeRef);
+        auto r = ref->getSocketPort();
+        return ::djinni::release(::djinni::I32::fromCpp(jniEnv, r));
+    }
+    JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
+}
+
+CJNIEXPORT jstring JNICALL Java_com_ezored_net_http_HttpServer_00024CppProxy_native_1getSocketHost(JNIEnv *jniEnv, jobject /*this*/, jlong nativeRef)
+{
+    try
+    {
+        DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
+        const auto &ref = ::djinni::objectFromHandleAddress<::ezored::net::http::HttpServer>(nativeRef);
+        auto r = ref->getSocketHost();
+        return ::djinni::release(::djinni::String::fromCpp(jniEnv, r));
+    }
+    JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
+}
+
+CJNIEXPORT jstring JNICALL Java_com_ezored_net_http_HttpServer_00024CppProxy_native_1getSocketAddress(JNIEnv *jniEnv, jobject /*this*/, jlong nativeRef)
+{
+    try
+    {
+        DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
+        const auto &ref = ::djinni::objectFromHandleAddress<::ezored::net::http::HttpServer>(nativeRef);
+        auto r = ref->getSocketAddress();
+        return ::djinni::release(::djinni::String::fromCpp(jniEnv, r));
+    }
+    JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
+}
+
+CJNIEXPORT jboolean JNICALL Java_com_ezored_net_http_HttpServer_00024CppProxy_native_1isSocketSecure(JNIEnv *jniEnv, jobject /*this*/, jlong nativeRef)
+{
+    try
+    {
+        DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
+        const auto &ref = ::djinni::objectFromHandleAddress<::ezored::net::http::HttpServer>(nativeRef);
+        auto r = ref->isSocketSecure();
+        return ::djinni::release(::djinni::Bool::fromCpp(jniEnv, r));
+    }
+    JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
 } // namespace djinni_generated

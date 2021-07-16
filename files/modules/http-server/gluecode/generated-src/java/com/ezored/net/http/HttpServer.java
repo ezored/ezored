@@ -16,6 +16,14 @@ public abstract class HttpServer {
 
     public abstract void waitForTermination();
 
+    public abstract int getSocketPort();
+
+    public abstract String getSocketHost();
+
+    public abstract String getSocketAddress();
+
+    public abstract boolean isSocketSecure();
+
     public static HttpServer shared()
     {
         return CppProxy.shared();
@@ -83,6 +91,38 @@ public abstract class HttpServer {
             native_waitForTermination(this.nativeRef);
         }
         private native void native_waitForTermination(long _nativeRef);
+
+        @Override
+        public int getSocketPort()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getSocketPort(this.nativeRef);
+        }
+        private native int native_getSocketPort(long _nativeRef);
+
+        @Override
+        public String getSocketHost()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getSocketHost(this.nativeRef);
+        }
+        private native String native_getSocketHost(long _nativeRef);
+
+        @Override
+        public String getSocketAddress()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_getSocketAddress(this.nativeRef);
+        }
+        private native String native_getSocketAddress(long _nativeRef);
+
+        @Override
+        public boolean isSocketSecure()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_isSocketSecure(this.nativeRef);
+        }
+        private native boolean native_isSocketSecure(long _nativeRef);
 
         public static native HttpServer shared();
     }

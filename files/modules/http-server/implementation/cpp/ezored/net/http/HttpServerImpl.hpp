@@ -22,16 +22,16 @@ public:
     static std::shared_ptr<HttpServerImpl> internalSharedInstance();
 
     virtual void initialize(const HttpServerConfig &serverConfig) override;
+    virtual HttpServerConfig getConfig() override;
+    virtual void start() override;
+    virtual void stop() override;
+    virtual void waitForTermination() override;
+    virtual int32_t getSocketPort() override;
+    virtual std::string getSocketHost() override;
+    virtual std::string getSocketAddress() override;
+    virtual bool isSocketSecure() override;
 
     std::shared_ptr<SimpleHttpServer> getServer();
-
-    HttpServerConfig getConfig() override;
-
-    void start() override;
-
-    void stop() override;
-
-    void waitForTermination() override;
 
 private:
     static std::shared_ptr<HttpServerImpl> instance;

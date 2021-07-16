@@ -60,6 +60,36 @@ void SimpleHttpServer::waitForTermination()
     }
 }
 
+int32_t SimpleHttpServer::getSocketPort()
+{
+    if (server != nullptr)
+    {
+        return server->socket().address().port();
+    }
+
+    return 0;
+}
+
+std::string SimpleHttpServer::getSocketHost()
+{
+    if (server != nullptr)
+    {
+        return server->socket().address().host().toString();
+    }
+
+    return "";
+}
+
+bool SimpleHttpServer::isSocketSecure()
+{
+    if (server != nullptr)
+    {
+        return server->socket().secure();
+    }
+
+    return false;
+}
+
 std::shared_ptr<SimpleHttpServer> SimpleHttpServer::create(const std::shared_ptr<HttpServerConfig> config)
 {
     return std::make_shared<SimpleHttpServer>(config);

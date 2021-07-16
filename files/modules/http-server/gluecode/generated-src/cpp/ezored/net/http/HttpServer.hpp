@@ -3,7 +3,9 @@
 
 #pragma once
 
+#include <cstdint>
 #include <memory>
+#include <string>
 
 namespace ezored
 {
@@ -30,6 +32,14 @@ public:
     virtual void stop() = 0;
 
     virtual void waitForTermination() = 0;
+
+    virtual int32_t getSocketPort() = 0;
+
+    virtual std::string getSocketHost() = 0;
+
+    virtual std::string getSocketAddress() = 0;
+
+    virtual bool isSocketSecure() = 0;
 };
 
 } // namespace http

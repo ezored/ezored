@@ -33,6 +33,9 @@ public:
     void start();
     void stop();
     void waitForTermination();
+    int32_t getSocketPort();
+    std::string getSocketHost();
+    bool isSocketSecure();
 
 private:
     std::shared_ptr<Poco::Net::HTTPServer> server;

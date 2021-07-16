@@ -3,6 +3,7 @@
 
 #import "djinni/objc/DJICppWrapperCache+Private.h"
 #import "djinni/objc/DJIError.h"
+#import "djinni/objc/DJIMarshal+Private.h"
 #import "ezored/net/http/EZRHttpServer+Private.h"
 #import "ezored/net/http/EZRHttpServer.h"
 #import "ezored/net/http/EZRHttpServerConfig+Private.h"
@@ -84,6 +85,46 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     try
     {
         _cppRefHandle.get()->waitForTermination();
+    }
+    DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (int32_t)getSocketPort
+{
+    try
+    {
+        auto objcpp_result_ = _cppRefHandle.get()->getSocketPort();
+        return ::djinni::I32::fromCpp(objcpp_result_);
+    }
+    DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nonnull NSString *)getSocketHost
+{
+    try
+    {
+        auto objcpp_result_ = _cppRefHandle.get()->getSocketHost();
+        return ::djinni::String::fromCpp(objcpp_result_);
+    }
+    DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (nonnull NSString *)getSocketAddress
+{
+    try
+    {
+        auto objcpp_result_ = _cppRefHandle.get()->getSocketAddress();
+        return ::djinni::String::fromCpp(objcpp_result_);
+    }
+    DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
+- (BOOL)isSocketSecure
+{
+    try
+    {
+        auto objcpp_result_ = _cppRefHandle.get()->isSocketSecure();
+        return ::djinni::Bool::fromCpp(objcpp_result_);
     }
     DJINNI_TRANSLATE_EXCEPTIONS()
 }

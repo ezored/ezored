@@ -216,6 +216,8 @@ int main(int argc, char **argv)
         auto envServerOnline = std::getenv("EZORED_HTTP_SERVER_ONLINE");
         auto serverOnline = (envServerOnline == nullptr ? false : (std::string(envServerOnline) == "1"));
 
+        Logger::i("Server socket address: " + httpServer->getSocketAddress());
+
         if (serverOnline)
         {
             httpServer->waitForTermination();

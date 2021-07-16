@@ -19,4 +19,12 @@
 
 - (void)waitForTermination;
 
+- (int32_t)getSocketPort;
+
+- (nonnull NSString *)getSocketHost;
+
+- (nonnull NSString *)getSocketAddress;
+
+- (BOOL)isSocketSecure;
+
 @end
