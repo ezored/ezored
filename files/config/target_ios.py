@@ -144,6 +144,10 @@ def run(proj_path, target_name, params):
             },
             {
                 "type": "dir",
+                "path": "files/modules/http-server/gluecode/generated-src/objc",
+            },
+            {
+                "type": "dir",
                 "path": "files/modules/shared-data/gluecode/generated-src/objc",
             },
             {
