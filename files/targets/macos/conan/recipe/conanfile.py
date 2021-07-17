@@ -63,12 +63,6 @@ class TargetConan(ConanFile):
         cmake.configure()
         cmake.build()
 
-    def configure(self):
-        if self.settings.os == "tvOS":
-            self.options["poco"].enable_fork = False
-        elif self.settings.os == "watchOS":
-            self.options["poco"].enable_fork = False
-
     def requirements(self):
         self.requires("sqlite3/3.35.5")
         self.requires("rapidjson/1.1.0")
