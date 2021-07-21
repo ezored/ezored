@@ -33,6 +33,7 @@ class TargetConan(ConanFile):
         "poco:enable_jwt": True,
         "poco:enable_mongodb": False,
         "poco:enable_net": True,
+        "poco:enable_netssl": False,
         "poco:enable_netssl_win": True,
         "poco:enable_pdf": False,
         "poco:enable_pagecompiler": False,
