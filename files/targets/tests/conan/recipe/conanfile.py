@@ -64,6 +64,7 @@ class TargetConan(ConanFile):
 
     def configure(self):
         if self.settings.os == "Windows":
+            self.options["poco"].enable_netssl = False
             self.options["poco"].enable_netssl_win = True
         else:
             self.options["poco"].enable_netssl = True
