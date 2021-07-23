@@ -135,7 +135,7 @@ class Application : MultiDexApplication() {
     }
 
     private fun initializeHttpServer() {
-        val config = HttpServerConfig(0, "")
+        val config = HttpServerConfig(9090, "")
         HttpServer.shared().initialize(config)
         HttpServer.shared().stop()
         HttpServer.shared().start()
