@@ -26,11 +26,14 @@ using namespace ezored::domain;
 
 SimpleHttpServerRequestHandler::SimpleHttpServerRequestHandler(const std::shared_ptr<HttpServerConfig> config)
 {
+    Logger::d("[SimpleHttpServerRequestHandler : constructor]");
     serverConfig = config;
 }
 
 void SimpleHttpServerRequestHandler::handleRequest(Poco::Net::HTTPServerRequest &request, Poco::Net::HTTPServerResponse &response)
 {
+    Logger::d("[SimpleHttpServerRequestHandler : handleRequest]");
+
     // log request
     if (ApplicationCore::shared()->getInitializationData().debug)
     {
@@ -40,10 +43,15 @@ void SimpleHttpServerRequestHandler::handleRequest(Poco::Net::HTTPServerRequest 
     Poco::URI uri(request.getURI());
 
     // validate route
+    Logger::d("[SimpleHttpServerRequestHandler : handleRequest] Validating know routes...");
+
     if (HttpServerHelper::process(request, response))
     {
+        Logger::d("[SimpleHttpServerRequestHandler : handleRequest] Route is know");
         return;
     }
+
+    Logger::d("[SimpleHttpServerRequestHandler : handleRequest] Route is a static asset");
 
     std::string serverStaticPath = serverConfig->staticPath;
 

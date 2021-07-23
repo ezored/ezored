@@ -16,11 +16,13 @@ using namespace ezored::util;
 
 SimpleHttpServerRequestHandlerFactory::SimpleHttpServerRequestHandlerFactory(const std::shared_ptr<HttpServerConfig> config)
 {
+    Logger::d("[SimpleHttpServerRequestHandlerFactory : constructor]");
     serverConfig = config;
 }
 
 Poco::Net::HTTPRequestHandler *SimpleHttpServerRequestHandlerFactory::createRequestHandler(const Poco::Net::HTTPServerRequest &request)
 {
+    Logger::d("[SimpleHttpServerRequestHandlerFactory : createRequestHandler]");
     return new SimpleHttpServerRequestHandler{serverConfig};
 }
 
