@@ -18,3 +18,5 @@ Thumbs.db
 .vscode
 .vs
 
+# assets
+app/src/main/assets

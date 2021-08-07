@@ -1,6 +1,7 @@
 package com.ezored.sample.app
 
 import android.content.IntentFilter
+import android.content.res.AssetManager
 import android.os.StrictMode
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
@@ -18,6 +19,7 @@ import com.ezored.net.http.HttpServer
 import com.ezored.net.http.HttpServerConfig
 import com.ezored.sample.BuildConfig
 import com.ezored.sample.data.AppData
+import com.ezored.sample.extension.copyAssetFolder
 import com.ezored.sample.observer.AppLifecycleObserver
 import com.ezored.sample.receiver.ConnectivityChangeReceiver
 import com.ezored.sample.util.EnvironmentUtil
@@ -60,13 +62,11 @@ class Application : MultiDexApplication() {
     fun onMoveToForeground() {
         Logger.i("[Application : onMoveToForeground] App moved to foreground")
         appData.isAppInBackground = false
-        startHttpServer()
     }
 
     fun onMoveToBackground() {
         Logger.i("[Application : onMoveToBackground] App moved to background")
         appData.isAppInBackground = true
-        stopHttpServer()
     }
 
     private fun loadNativeLibrary() {
@@ -137,8 +137,18 @@ class Application : MultiDexApplication() {
     }
 
     private fun initializeHttpServer() {
+        val targetFolder =
+            FileHelper.join(ApplicationCore.shared().initializationData.basePath, "/webapp")
+
+        val assetManager: AssetManager = assets
+        assetManager.copyAssetFolder(
+            "webapp",
+            targetFolder
+        )
+
         val config = HttpServerConfig(9090, "")
         HttpServer.shared().initialize(config)
+        startHttpServer()
 
         Logger.i("[Application : initializeHttpServer] Server: " + HttpServer.shared().socketAddress)
     }

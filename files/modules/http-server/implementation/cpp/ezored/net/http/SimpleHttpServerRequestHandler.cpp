@@ -76,12 +76,13 @@ void SimpleHttpServerRequestHandler::handleRequest(Poco::Net::HTTPServerRequest 
         staticPath.append(segment);
     }
 
+    Poco::File staticFile(staticPath);
+
     if (staticPath.isDirectory())
     {
         staticPath.append("index.html");
+        staticFile = Poco::File(staticPath);
     }
-
-    Poco::File staticFile(staticPath);
 
     // serve file
     if (staticFile.exists())
@@ -89,36 +90,37 @@ void SimpleHttpServerRequestHandler::handleRequest(Poco::Net::HTTPServerRequest 
         Logger::d("[SimpleHttpServerRequestHandler : handleRequest] File: " + staticPath.toString());
 
         std::string mimeType;
+        std::string extension = Poco::Path(staticFile.path()).getExtension();
 
-        if (staticPath.getExtension().compare("gif") == 0)
+        if (extension == "gif")
         {
             mimeType = "image/gif";
         }
-        else if (staticPath.getExtension().compare("css") == 0)
+        else if (extension == "css" == 0)
         {
             mimeType = "text/css";
         }
-        else if (staticPath.getExtension().compare("html") == 0 || staticPath.getExtension().compare("htm") == 0)
+        else if (extension == "html" == 0 || extension == "htm" == 0)
         {
             mimeType = "text/html";
         }
-        else if (staticPath.getExtension().compare("js") == 0)
+        else if (extension == "js" == 0)
         {
             mimeType = "text/javascript";
         }
-        else if (staticPath.getExtension().compare("png") == 0)
+        else if (extension == "png" == 0)
         {
             mimeType = "image/png";
         }
-        else if (staticPath.getExtension().compare("jpg") == 0 || staticPath.getExtension().compare("jpeg") == 0)
+        else if (extension == "jpg" == 0 || extension == "jpeg" == 0)
         {
             mimeType = "image/jpeg";
         }
-        else if (staticPath.getExtension().compare("ico") == 0)
+        else if (extension == "ico" == 0)
         {
             mimeType = "image/ico";
         }
-        else if (staticPath.getExtension().compare("svg") == 0)
+        else if (extension == "svg" == 0)
         {
             mimeType = "image/svg";
         }
