@@ -137,6 +137,8 @@ class Application : MultiDexApplication() {
     }
 
     private fun initializeHttpServer() {
+        Logger.i("[Application : initializeHttpServer]")
+
         val targetFolder =
             FileHelper.join(ApplicationCore.shared().initializationData.basePath, "/webapp")
 

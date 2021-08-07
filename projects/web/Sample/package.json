@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --dest=dist",
     "lint": "vue-cli-service lint",
-    "build-android": "vue-cli-service build --dest=../../../projects/ios/Sample/Sample/webapp",
+    "build-android": "vue-cli-service build --dest=../../../projects/android/Sample/app/src/main/assets/webapp",
     "build-ios": "vue-cli-service build --dest=../../../projects/ios/Sample/Sample/webapp",
     "build-all": "npm run build && npm run build-ios && npm run build-android"
   },

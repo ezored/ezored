@@ -1,6 +1,7 @@
 #include "ezored/net/http/SimpleHttpServerRequestHandler.hpp"
 
 #include "ezored/core/ApplicationCore.hpp"
+#include "ezored/io/FileHelper.hpp"
 #include "ezored/net/http/helper/HttpServerHelper.hpp"
 #include "ezored/util/Logger.hpp"
 
@@ -23,6 +24,7 @@ using namespace ezored::net::http;
 using namespace ezored::net::http::helper;
 using namespace ezored::util;
 using namespace ezored::domain;
+using namespace ezored::io;
 
 SimpleHttpServerRequestHandler::SimpleHttpServerRequestHandler(const std::shared_ptr<HttpServerConfig> config)
 {
@@ -78,7 +80,7 @@ void SimpleHttpServerRequestHandler::handleRequest(Poco::Net::HTTPServerRequest 
 
     Poco::File staticFile(staticPath);
 
-    if (staticPath.isDirectory())
+    if (FileHelper::isDir(staticPath.toString()))
     {
         staticPath.append("index.html");
         staticFile = Poco::File(staticPath);
@@ -96,31 +98,31 @@ void SimpleHttpServerRequestHandler::handleRequest(Poco::Net::HTTPServerRequest 
         {
             mimeType = "image/gif";
         }
-        else if (extension == "css" == 0)
+        else if (extension == "css")
         {
             mimeType = "text/css";
         }
-        else if (extension == "html" == 0 || extension == "htm" == 0)
+        else if (extension == "html" || extension == "htm")
         {
             mimeType = "text/html";
         }
-        else if (extension == "js" == 0)
+        else if (extension == "js")
         {
             mimeType = "text/javascript";
         }
-        else if (extension == "png" == 0)
+        else if (extension == "png")
         {
             mimeType = "image/png";
         }
-        else if (extension == "jpg" == 0 || extension == "jpeg" == 0)
+        else if (extension == "jpg" || extension == "jpeg")
         {
             mimeType = "image/jpeg";
         }
-        else if (extension == "ico" == 0)
+        else if (extension == "ico")
         {
             mimeType = "image/ico";
         }
-        else if (extension == "svg" == 0)
+        else if (extension == "svg")
         {
             mimeType = "image/svg";
         }
