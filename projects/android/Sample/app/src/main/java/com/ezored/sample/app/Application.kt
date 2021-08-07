@@ -60,11 +60,13 @@ class Application : MultiDexApplication() {
     fun onMoveToForeground() {
         Logger.i("[Application : onMoveToForeground] App moved to foreground")
         appData.isAppInBackground = false
+        startHttpServer()
     }
 
     fun onMoveToBackground() {
         Logger.i("[Application : onMoveToBackground] App moved to background")
         appData.isAppInBackground = true
+        stopHttpServer()
     }
 
     private fun loadNativeLibrary() {
@@ -137,10 +139,21 @@ class Application : MultiDexApplication() {
     private fun initializeHttpServer() {
         val config = HttpServerConfig(9090, "")
         HttpServer.shared().initialize(config)
-        HttpServer.shared().stop()
-        HttpServer.shared().start()
 
         Logger.i("[Application : initializeHttpServer] Server: " + HttpServer.shared().socketAddress)
+    }
+
+    private fun startHttpServer() {
+        Logger.i("[Application : startHttpServer]")
+
+        HttpServer.shared().stop()
+        HttpServer.shared().start()
+    }
+
+    private fun stopHttpServer() {
+        Logger.i("[Application : stopHttpServer]")
+
+        HttpServer.shared().stop()
     }
 
     companion object {
