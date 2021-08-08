@@ -30,8 +30,10 @@ if(PROJECT_TARGET_NAME STREQUAL "ios")
     file(GLOB_RECURSE H_FILES_HTTP_CLIENT "${PROJECT_MODULES_PATH}/http-client/gluecode/generated-src/objc/*.h")
     file(GLOB_RECURSE S_FILES_HTTP_CLIENT "${PROJECT_MODULES_PATH}/http-client/gluecode/generated-src/objc/*.mm")
 
-    file(GLOB_RECURSE H_FILES_HTTP_SERVER "${PROJECT_MODULES_PATH}/http-server/gluecode/generated-src/objc/*.h")
-    file(GLOB_RECURSE S_FILES_HTTP_SERVER "${PROJECT_MODULES_PATH}/http-server/gluecode/generated-src/objc/*.mm")
+    if(NOT PROJECT_CONFIG_GROUP MATCHES "tvos|watchos")
+        file(GLOB_RECURSE H_FILES_HTTP_SERVER "${PROJECT_MODULES_PATH}/http-server/gluecode/generated-src/objc/*.h")
+        file(GLOB_RECURSE S_FILES_HTTP_SERVER "${PROJECT_MODULES_PATH}/http-server/gluecode/generated-src/objc/*.mm")
+    endif()
 
     file(GLOB_RECURSE H_FILES_FILE_HELPER "${PROJECT_MODULES_PATH}/file-helper/gluecode/generated-src/objc/*.h")
     file(GLOB_RECURSE S_FILES_FILE_HELPER "${PROJECT_MODULES_PATH}/file-helper/gluecode/generated-src/objc/*.mm")
@@ -72,7 +74,6 @@ if(PROJECT_TARGET_NAME STREQUAL "ios")
 
     project_add_header_files("${H_FILES_LOGGER}")
     project_add_header_files("${H_FILES_HTTP_CLIENT}")
-    project_add_header_files("${H_FILES_HTTP_SERVER}")
     project_add_header_files("${H_FILES_FILE_HELPER}")
     project_add_header_files("${H_FILES_SHARED_DATA}")
     project_add_header_files("${H_FILES_DATETIME}")
@@ -82,7 +83,13 @@ if(PROJECT_TARGET_NAME STREQUAL "ios")
     project_add_header_files("${H_FILES_FILE_HELPER_PLATFORM}")
     project_add_header_files("${H_FILES_SHARED_DATA_PLATFORM}")
 
-    project_add_header_files("${H_FILES_HTTP_CLIENT_CXX}")
+    if(NOT PROJECT_CONFIG_GROUP MATCHES "tvos|watchos")
+        project_add_header_files("${H_FILES_HTTP_SERVER}")
+    endif()
+
+    if(PROJECT_USE_CXX_HTTP_CLIENT)
+        project_add_header_files("${H_FILES_HTTP_CLIENT_CXX}")
+    endif()
 
     # source files
     project_add_source_files("${S_FILES_SUPPORT}")
@@ -97,7 +104,6 @@ if(PROJECT_TARGET_NAME STREQUAL "ios")
 
     project_add_source_files("${S_FILES_LOGGER}")
     project_add_source_files("${S_FILES_HTTP_CLIENT}")
-    project_add_source_files("${S_FILES_HTTP_SERVER}")
     project_add_source_files("${S_FILES_FILE_HELPER}")
     project_add_source_files("${S_FILES_SHARED_DATA}")
     project_add_source_files("${S_FILES_DATETIME}")
@@ -107,7 +113,13 @@ if(PROJECT_TARGET_NAME STREQUAL "ios")
     project_add_source_files("${S_FILES_FILE_HELPER_PLATFORM}")
     project_add_source_files("${S_FILES_SHARED_DATA_PLATFORM}")
 
-    project_add_source_files("${S_FILES_HTTP_CLIENT_CXX}")
+    if(NOT PROJECT_CONFIG_GROUP MATCHES "tvos|watchos")
+        project_add_source_files("${S_FILES_HTTP_SERVER}")
+    endif()
+
+    if(PROJECT_USE_CXX_HTTP_CLIENT)
+        project_add_source_files("${S_FILES_HTTP_CLIENT_CXX}")
+    endif()
 
     # search paths
     project_add_search_path("${PROJECT_MODULES_PATH}/support-lib")
@@ -121,8 +133,11 @@ if(PROJECT_TARGET_NAME STREQUAL "ios")
 
     project_add_search_path("${PROJECT_MODULES_PATH}/logger/gluecode/generated-src/objc")
     project_add_search_path("${PROJECT_MODULES_PATH}/http-client/gluecode/generated-src/objc")
-    project_add_search_path("${PROJECT_MODULES_PATH}/http-server/gluecode/generated-src/objc")
     project_add_search_path("${PROJECT_MODULES_PATH}/file-helper/gluecode/generated-src/objc")
     project_add_search_path("${PROJECT_MODULES_PATH}/shared-data/gluecode/generated-src/objc")
     project_add_search_path("${PROJECT_MODULES_PATH}/datetime/gluecode/generated-src/objc")
+
+    if(NOT PROJECT_CONFIG_GROUP MATCHES "tvos|watchos")
+        project_add_search_path("${PROJECT_MODULES_PATH}/http-server/gluecode/generated-src/objc")
+    endif()
 endif()

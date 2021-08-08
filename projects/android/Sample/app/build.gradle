@@ -129,3 +129,15 @@ if (gradle.ext.useRemoteLibrary) {
 
     preBuild.dependsOn getEzoredSDK
 }
+
+// copy webapp assets
+task copyWebAppFiles(type: Copy)
+
+copyWebAppFiles {
+    description = 'Copy webapp assets'
+    from '../../../../projects/web/Sample/dist'
+    into 'src/main/assets/webapp'
+    include('**/*')
+}
+
+preBuild.dependsOn copyWebAppFiles

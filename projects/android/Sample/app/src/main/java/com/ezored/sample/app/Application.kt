@@ -142,6 +142,8 @@ class Application : MultiDexApplication() {
         val targetFolder =
             FileHelper.join(ApplicationCore.shared().initializationData.basePath, "/webapp")
 
+        FileHelper.removeDir(targetFolder)
+
         val assetManager: AssetManager = assets
         assetManager.copyAssetFolder(
             "webapp",

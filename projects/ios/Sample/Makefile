@@ -7,15 +7,11 @@ help:
 	@echo "Type: make [rule]. Available options are:"
 	@echo ""
 	@echo "- help"
-	@echo "- git-update-submodules"
 	@echo "- clean-derived-data"	
 	@echo "- pods-update"
 	@echo "- remove-pods"
 	@echo "- format"	
 	@echo ""
-
-git-update-submodules:
-	git submodule update --recursive --remote
 
 clean-derived-data:
 	rm -rf ~/Library/Developer/Xcode/DerivedData
