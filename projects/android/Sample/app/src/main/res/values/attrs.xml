@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="WebViewSuite">
+        <attr name="webViewProgressBarStyle" format="enum">
+            <enum name="linear" value="1" />
+            <enum name="circular" value="2" />
+            <enum name="none" value="0" />
+        </attr>
+        <attr name="inflationDelay" format="integer" />
+        <attr name="enableJavaScript" format="boolean" />
+        <attr name="overrideTelLink" format="boolean" />
+        <attr name="overrideEmailLink" format="boolean" />
+        <attr name="overridePdfLink" format="boolean" />
+        <attr name="showZoomControl" format="boolean" />
+        <attr name="enableVerticalScrollBar" format="boolean" />
+        <attr name="enableHorizontalScrollBar" format="boolean" />
+        <attr name="url" format="string|reference" />
+    </declare-styleable>
+</resources>

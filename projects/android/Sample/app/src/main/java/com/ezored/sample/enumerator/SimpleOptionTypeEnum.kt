@@ -7,5 +7,6 @@ enum class SimpleOptionTypeEnum {
     HTTPS_REQUEST,
     FILE_HELPER,
     APP_VERSION,
-    TODO
+    TODO,
+    WEB_VIEW,
 }
