@@ -20,7 +20,7 @@ SimpleHttpServer::SimpleHttpServer(const std::shared_ptr<HttpServerConfig> confi
 
     Poco::Net::HTTPServerParams *params = new Poco::Net::HTTPServerParams();
     params->setMaxQueued(10);
-    params->setMaxThreads(1);
+    params->setMaxThreads(10);
     params->setTimeout(15000);
 
     Logger::d("[SimpleHttpServer : constructor] Creating request handler...");
