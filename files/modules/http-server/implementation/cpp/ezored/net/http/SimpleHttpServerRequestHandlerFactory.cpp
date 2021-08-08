@@ -14,7 +14,7 @@ namespace http
 using namespace ezored::net::http;
 using namespace ezored::util;
 
-SimpleHttpServerRequestHandlerFactory::SimpleHttpServerRequestHandlerFactory(const std::shared_ptr<HttpServerConfig> config)
+SimpleHttpServerRequestHandlerFactory::SimpleHttpServerRequestHandlerFactory(const std::shared_ptr<HttpServerConfig> &config)
 {
     Logger::d("[SimpleHttpServerRequestHandlerFactory : constructor]");
     serverConfig = config;

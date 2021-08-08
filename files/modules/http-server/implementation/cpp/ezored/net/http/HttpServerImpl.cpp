@@ -19,9 +19,7 @@ using namespace ezored::io;
 
 std::shared_ptr<HttpServerImpl> HttpServerImpl::instance = nullptr;
 
-HttpServerImpl::HttpServerImpl()
-{
-}
+HttpServerImpl::HttpServerImpl() = default;
 
 std::shared_ptr<HttpServer> HttpServer::shared()
 {

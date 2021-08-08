@@ -26,7 +26,7 @@ using namespace ezored::util;
 using namespace ezored::domain;
 using namespace ezored::io;
 
-SimpleHttpServerRequestHandler::SimpleHttpServerRequestHandler(const std::shared_ptr<HttpServerConfig> config)
+SimpleHttpServerRequestHandler::SimpleHttpServerRequestHandler(const std::shared_ptr<HttpServerConfig> &config)
 {
     Logger::d("[SimpleHttpServerRequestHandler : constructor]");
     serverConfig = config;

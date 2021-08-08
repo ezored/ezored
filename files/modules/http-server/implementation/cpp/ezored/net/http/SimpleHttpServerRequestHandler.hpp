@@ -20,7 +20,7 @@ namespace http
 class SimpleHttpServerRequestHandler : public Poco::Net::HTTPRequestHandler
 {
 public:
-    SimpleHttpServerRequestHandler(const std::shared_ptr<HttpServerConfig> config);
+    SimpleHttpServerRequestHandler(const std::shared_ptr<HttpServerConfig> &config);
     virtual ~SimpleHttpServerRequestHandler() {}
     virtual void handleRequest(Poco::Net::HTTPServerRequest &request, Poco::Net::HTTPServerResponse &response) override;
 

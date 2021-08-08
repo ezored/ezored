@@ -17,7 +17,7 @@ namespace http
 class SimpleHttpServerRequestHandlerFactory : public Poco::Net::HTTPRequestHandlerFactory
 {
 public:
-    SimpleHttpServerRequestHandlerFactory(const std::shared_ptr<HttpServerConfig> config);
+    SimpleHttpServerRequestHandlerFactory(const std::shared_ptr<HttpServerConfig> &config);
     virtual ~SimpleHttpServerRequestHandlerFactory() {}
     virtual Poco::Net::HTTPRequestHandler *createRequestHandler(const Poco::Net::HTTPServerRequest &request) override;
 

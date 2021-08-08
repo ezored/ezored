@@ -26,10 +26,10 @@ namespace http
 class SimpleHttpServer : public Poco::Util::ServerApplication
 {
 public:
-    SimpleHttpServer(const std::shared_ptr<HttpServerConfig> config);
+    SimpleHttpServer(const std::shared_ptr<HttpServerConfig> &config);
     virtual ~SimpleHttpServer();
 
-    static std::shared_ptr<SimpleHttpServer> create(const std::shared_ptr<HttpServerConfig> config);
+    static std::shared_ptr<SimpleHttpServer> create(const std::shared_ptr<HttpServerConfig> &config);
     void start();
     void stop();
     void waitForTermination();

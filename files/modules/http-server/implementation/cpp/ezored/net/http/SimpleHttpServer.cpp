@@ -14,13 +14,11 @@ namespace http
 using namespace ezored::net::http;
 using namespace ezored::util;
 
-SimpleHttpServer::SimpleHttpServer(const std::shared_ptr<HttpServerConfig> config)
+SimpleHttpServer::SimpleHttpServer(const std::shared_ptr<HttpServerConfig> &config)
 {
     Logger::d("[SimpleHttpServer : constructor]");
 
-    Poco::Net::HTTPServerParams *params = new Poco::Net::HTTPServerParams();
-    params->setMaxQueued(10);
-    params->setMaxThreads(10);
+    auto *params = new Poco::Net::HTTPServerParams();
     params->setTimeout(15000);
 
     Logger::d("[SimpleHttpServer : constructor] Creating request handler...");
@@ -95,7 +93,7 @@ bool SimpleHttpServer::isSocketSecure()
     return false;
 }
 
-std::shared_ptr<SimpleHttpServer> SimpleHttpServer::create(const std::shared_ptr<HttpServerConfig> config)
+std::shared_ptr<SimpleHttpServer> SimpleHttpServer::create(const std::shared_ptr<HttpServerConfig> &config)
 {
     return std::make_shared<SimpleHttpServer>(config);
 }

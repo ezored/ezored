@@ -89,18 +89,18 @@ void HttpServerTodoController::actionTodoCreate(Poco::Net::HTTPServerRequest &re
 
     try
     {
-        auto json = nlohmann::json::parse(HttpServerHelper::getRequestContent(request));
+        auto rjson = nlohmann::json::parse(HttpServerHelper::getRequestContent(request));
 
-        if (json != nullptr)
+        if (rjson != nullptr)
         {
             auto todo = Todo{
                 0,
-                json["title"].get<std::string>(),
-                json["body"].get<std::string>(),
-                json["data"].get<std::unordered_map<std::string, std::string>>(),
-                json["done"].get<bool>(),
-                json["createdAt"].get<std::chrono::system_clock::time_point>(),
-                json["updatedAt"].get<std::chrono::system_clock::time_point>(),
+                rjson["title"].get<std::string>(),
+                rjson["body"].get<std::string>(),
+                rjson["data"].get<std::unordered_map<std::string, std::string>>(),
+                rjson["done"].get<bool>(),
+                rjson["createdAt"].get<std::chrono::system_clock::time_point>(),
+                rjson["updatedAt"].get<std::chrono::system_clock::time_point>(),
             };
 
             todo.createdAt = DateTime::getCurrentDateTime();
@@ -145,18 +145,18 @@ void HttpServerTodoController::actionTodoUpdate(Poco::Net::HTTPServerRequest &re
 
     try
     {
-        auto json = nlohmann::json::parse(HttpServerHelper::getRequestContent(request));
+        auto rjson = nlohmann::json::parse(HttpServerHelper::getRequestContent(request));
 
-        if (json != nullptr)
+        if (rjson != nullptr)
         {
             auto todo = Todo{
-                json["id"].get<int64_t>(),
-                json["title"].get<std::string>(),
-                json["body"].get<std::string>(),
-                json["data"].get<std::unordered_map<std::string, std::string>>(),
-                json["done"].get<bool>(),
-                json["createdAt"].get<std::chrono::system_clock::time_point>(),
-                json["updatedAt"].get<std::chrono::system_clock::time_point>(),
+                rjson["id"].get<int64_t>(),
+                rjson["title"].get<std::string>(),
+                rjson["body"].get<std::string>(),
+                rjson["data"].get<std::unordered_map<std::string, std::string>>(),
+                rjson["done"].get<bool>(),
+                rjson["createdAt"].get<std::chrono::system_clock::time_point>(),
+                rjson["updatedAt"].get<std::chrono::system_clock::time_point>(),
             };
 
             todo.createdAt = DateTime::getCurrentDateTime();
@@ -201,11 +201,11 @@ void HttpServerTodoController::actionTodoDelete(Poco::Net::HTTPServerRequest &re
 
     try
     {
-        auto json = nlohmann::json::parse(HttpServerHelper::getRequestContent(request));
+        auto rjson = nlohmann::json::parse(HttpServerHelper::getRequestContent(request));
 
-        if (json != nullptr)
+        if (rjson != nullptr)
         {
-            auto paramId = json["id"].get<int64_t>();
+            auto paramId = rjson["id"].get<int64_t>();
 
             auto result = TodoRepository::removeById(paramId);
 
@@ -241,12 +241,12 @@ void HttpServerTodoController::actionTodoDoneById(Poco::Net::HTTPServerRequest &
 
     try
     {
-        auto json = nlohmann::json::parse(HttpServerHelper::getRequestContent(request));
+        auto rjson = nlohmann::json::parse(HttpServerHelper::getRequestContent(request));
 
-        if (json != nullptr)
+        if (rjson != nullptr)
         {
-            auto paramId = json["id"].get<int64_t>();
-            auto paramDone = json["done"].get<bool>();
+            auto paramId = rjson["id"].get<int64_t>();
+            auto paramDone = rjson["done"].get<bool>();
 
             auto result = TodoRepository::setDoneById(paramId, paramDone);
 
