@@ -115,7 +115,7 @@ set(PROJECT_CMAKE_C_FLAGS
 
 # CXX flags
 set(PROJECT_CMAKE_CXX_FLAGS
-    "${PROJECT_CMAKE_CXX_FLAGS} -fobjc-arc -fvisibility-inlines-hidden -fobjc-abi-version=2 -stdlib=libc++"
+    "${PROJECT_CMAKE_CXX_FLAGS} -fobjc-arc -fobjc-abi-version=2 -stdlib=libc++"
     CACHE INTERNAL ""
 )
 

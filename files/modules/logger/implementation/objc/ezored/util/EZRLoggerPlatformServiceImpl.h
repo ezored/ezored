@@ -1,7 +1,8 @@
 #import "ezored/util/EZRLoggerPlatformService.h"
 #import <Foundation/Foundation.h>
 
-@interface EZRLoggerPlatformServiceImpl : NSObject <EZRLoggerPlatformService>
+__attribute__((visibility("default")))
+@interface EZRLoggerPlatformServiceImpl : NSObject<EZRLoggerPlatformService>
 
 //
 // An class method to provide an instance of the EZRLoggerPlatformServiceImpl

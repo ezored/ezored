@@ -1,6 +1,7 @@
 #import "ezored/net/http/EZRHttpClientPlatformService.h"
 
-@interface EZRHttpClientPlatformServiceImpl : NSObject <EZRHttpClientPlatformService>
+__attribute__((visibility("default")))
+@interface EZRHttpClientPlatformServiceImpl : NSObject<EZRHttpClientPlatformService>
 
 //
 // An class method to provide an instance of the EZRHttpClientPlatformServiceImpl
