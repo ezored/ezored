@@ -1,4 +1,4 @@
-from conans import ConanFile, CMake
+from conans import ConanFile, CMake, tools
 
 
 class TargetConan(ConanFile):
@@ -62,6 +62,7 @@ class TargetConan(ConanFile):
         cmake.definitions["PROJECT_CONFIG_GROUP"] = self.options.get_safe(
             "ezored_group"
         )
+        cmake.definitions["PROJECT_CONFIG_PLATFORM_ARCH"] = self.get_platform_arch()
         cmake.configure()
         cmake.build()
 
@@ -79,3 +80,10 @@ class TargetConan(ConanFile):
         self.requires("date/3.0.1")
         self.requires("nlohmann_json/3.9.1")
         self.requires("poco/1.11.0")
+
+    def get_platform_arch(self):
+        platform_arch = tools.to_apple_arch(
+            self.options.get_safe("ezored_arch"),
+        )
+
+        return platform_arch

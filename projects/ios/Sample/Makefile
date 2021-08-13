@@ -1,15 +1,14 @@
 ROOT_DIR=${PWD}
-
 .DEFAULT_GOAL := help
 
-# general
 help:
 	@echo "Type: make [rule]. Available options are:"
 	@echo ""
 	@echo "- help"
 	@echo "- clean-derived-data"	
 	@echo "- pods-update"
-	@echo "- remove-pods"
+	@echo "- pods-remove"
+	@echo "- pods-clear-cache"
 	@echo "- format"	
 	@echo ""
 
@@ -20,10 +19,12 @@ pods-update:
 	rm -rf Pods
 	rm -rf Podfile.lock
 	rm -rf Sample.xcworkspace
-	pod cache clean 'ezored' --all
 	pod install --repo-update
 
-remove-pods:
+pods-clear-cache:
+	pod cache clean 'ezored' --all
+
+pods-remove:
 	rm -rf Pods
 	rm -rf Podfile.lock
 	rm -rf Sample.xcworkspace

@@ -59,11 +59,11 @@ def run(proj_path, target_name, params):
                 "arch": "x86_64",
                 "conan_arch": "x86_64",
                 "conan_profile": "ezored_catalyst_profile",
-                "min_version": "13.0",
+                "min_version": "10.15",
                 "supported_platform": "MacOSX",
                 "enable_bitcode": False,
                 "group": "ios_catalyst",
-                "build_min_version": "10.15",
+                "build_min_version": "13.0",
             },
             {
                 "arch": "arm64",

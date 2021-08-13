@@ -48,7 +48,9 @@ def run(params):
                 )
 
                 file.copy_dir(
-                    android_project_dir, android_library_build_dir, symlinks=True
+                    android_project_dir,
+                    android_library_build_dir,
+                    symlinks=True,
                 )
 
                 # replace data
