@@ -120,7 +120,7 @@ def run(params):
                     "lib",
                     "{0}.framework".format(target_config["project_name"]),
                     "Versions",
-                    "Current",
+                    "A",
                     "Resources",
                     "Info.plist",
                 )
