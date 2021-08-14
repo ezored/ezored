@@ -24,6 +24,8 @@ public abstract class HttpServer {
 
     public abstract boolean isSocketSecure();
 
+    public abstract boolean isRunning();
+
     public static HttpServer shared()
     {
         return CppProxy.shared();
@@ -123,6 +125,14 @@ public abstract class HttpServer {
             return native_isSocketSecure(this.nativeRef);
         }
         private native boolean native_isSocketSecure(long _nativeRef);
+
+        @Override
+        public boolean isRunning()
+        {
+            assert !this.destroyed.get() : "trying to use a destroyed object";
+            return native_isRunning(this.nativeRef);
+        }
+        private native boolean native_isRunning(long _nativeRef);
 
         public static native HttpServer shared();
     }

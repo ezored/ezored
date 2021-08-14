@@ -137,4 +137,16 @@ CJNIEXPORT jboolean JNICALL Java_com_ezored_net_http_HttpServer_00024CppProxy_na
     JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
+CJNIEXPORT jboolean JNICALL Java_com_ezored_net_http_HttpServer_00024CppProxy_native_1isRunning(JNIEnv *jniEnv, jobject /*this*/, jlong nativeRef)
+{
+    try
+    {
+        DJINNI_FUNCTION_PROLOGUE1(jniEnv, nativeRef);
+        const auto &ref = ::djinni::objectFromHandleAddress<::ezored::net::http::HttpServer>(nativeRef);
+        auto r = ref->isRunning();
+        return ::djinni::release(::djinni::Bool::fromCpp(jniEnv, r));
+    }
+    JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
+}
+
 } // namespace djinni_generated

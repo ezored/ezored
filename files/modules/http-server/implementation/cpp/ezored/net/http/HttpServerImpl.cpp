@@ -19,7 +19,10 @@ using namespace ezored::io;
 
 std::shared_ptr<HttpServerImpl> HttpServerImpl::instance = nullptr;
 
-HttpServerImpl::HttpServerImpl() = default;
+HttpServerImpl::HttpServerImpl()
+{
+    running = false;
+}
 
 std::shared_ptr<HttpServer> HttpServer::shared()
 {
@@ -64,11 +67,13 @@ HttpServerConfig HttpServerImpl::getConfig()
 void HttpServerImpl::start()
 {
     server->start();
+    running = true;
 }
 
 void HttpServerImpl::stop()
 {
     server->stop();
+    running = false;
 }
 
 void HttpServerImpl::waitForTermination()
@@ -96,6 +101,11 @@ std::string HttpServerImpl::getSocketAddress()
 bool HttpServerImpl::isSocketSecure()
 {
     return server->isSocketSecure();
+}
+
+bool HttpServerImpl::isRunning()
+{
+    return running;
 }
 
 } // namespace http

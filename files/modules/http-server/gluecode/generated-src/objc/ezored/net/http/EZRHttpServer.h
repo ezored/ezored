@@ -27,4 +27,6 @@
 
 - (BOOL)isSocketSecure;
 
+- (BOOL)isRunning;
+
 @end

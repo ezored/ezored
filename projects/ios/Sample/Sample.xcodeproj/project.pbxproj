@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A10C8B926BFC6190002429C /* dist in Copy WebApp Assets */ = {isa = PBXBuildFile; fileRef = 3A10C8B826BFC6190002429C /* dist */; };
+		3A21082126C73C0E00B322B6 /* BundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A21082026C73C0E00B322B6 /* BundleHelper.swift */; };
 		3A2F22CC2214A4DB00A2FB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F22CB2214A4DB00A2FB4F /* Assets.xcassets */; };
 		3A2F22CF2214A4DB00A2FB4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F22CD2214A4DB00A2FB4F /* LaunchScreen.storyboard */; };
 		3A2F22FD2214A57D00A2FB4F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22D82214A57D00A2FB4F /* HomeViewController.swift */; };
@@ -40,7 +40,7 @@
 		3A2F23182214A57D00A2FB4F /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F42214A57D00A2FB4F /* CollectionExtensions.swift */; };
 		3A2F23192214A57D00A2FB4F /* UIImageTintedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */; };
 		3A2F231A2214A57D00A2FB4F /* ViewConstrainToEdgesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F62214A57D00A2FB4F /* ViewConstrainToEdgesExtension.swift */; };
-		3A2F231B2214A57D00A2FB4F /* UIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F82214A57D00A2FB4F /* UIUtil.swift */; };
+		3A2F231B2214A57D00A2FB4F /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F82214A57D00A2FB4F /* UIHelper.swift */; };
 		3A2F231C2214A57D00A2FB4F /* EnvironmentUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F92214A57D00A2FB4F /* EnvironmentUtil.swift */; };
 		3A2F231D2214A57D00A2FB4F /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FB2214A57D00A2FB4F /* AppData.swift */; };
 		3A2F231E2214A57D00A2FB4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FC2214A57D00A2FB4F /* AppDelegate.swift */; };
@@ -112,17 +112,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3A10C8B526BFC5250002429C /* Copy WebApp Assets */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = webapp;
-			dstSubfolderSpec = 7;
-			files = (
-				3A10C8B926BFC6190002429C /* dist in Copy WebApp Assets */,
-			);
-			name = "Copy WebApp Assets";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		ABCDC1C6261D0A5000BEEF5C /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,8 +138,7 @@
 
 /* Begin PBXFileReference section */
 		1360A2DCC25A7B56020F42F9 /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
-		3A10C8B826BFC6190002429C /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dist; path = ../../web/Sample/dist; sourceTree = "<group>"; };
-		3A25865A25D65D8A00A57377 /* ezored.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ezored.xcframework; path = Pods/ezored/Release/ezored.xcframework; sourceTree = "<group>"; };
+		3A21082026C73C0E00B322B6 /* BundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleHelper.swift; sourceTree = "<group>"; };
 		3A2F22C12214A4DA00A2FB4F /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A2F22CB2214A4DB00A2FB4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A2F22CE2214A4DB00A2FB4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -185,7 +173,7 @@
 		3A2F22F42214A57D00A2FB4F /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
 		3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageTintedExtension.swift; sourceTree = "<group>"; };
 		3A2F22F62214A57D00A2FB4F /* ViewConstrainToEdgesExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConstrainToEdgesExtension.swift; sourceTree = "<group>"; };
-		3A2F22F82214A57D00A2FB4F /* UIUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtil.swift; sourceTree = "<group>"; };
+		3A2F22F82214A57D00A2FB4F /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		3A2F22F92214A57D00A2FB4F /* EnvironmentUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentUtil.swift; sourceTree = "<group>"; };
 		3A2F22FB2214A57D00A2FB4F /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		3A2F22FC2214A57D00A2FB4F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -266,7 +254,6 @@
 		3A00E97C23AF245E0054007D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A25865A25D65D8A00A57377 /* ezored.xcframework */,
 				5FDAA0743304F74D3D1644FD /* Pods_Sample.framework */,
 				C7BE7D7AC39A39820B5BC32E /* Pods_Sample_AppleWatch_Extension.framework */,
 			);
@@ -276,7 +263,6 @@
 		3A2F22B82214A4DA00A2FB4F = {
 			isa = PBXGroup;
 			children = (
-				3A10C8B826BFC6190002429C /* dist */,
 				3A00E97C23AF245E0054007D /* Frameworks */,
 				EC345A102B299D92422AC91C /* Pods */,
 				3A2F22C22214A4DA00A2FB4F /* Products */,
@@ -303,13 +289,13 @@
 				3A2F22FA2214A57D00A2FB4F /* App */,
 				3A2F22CB2214A4DB00A2FB4F /* Assets.xcassets */,
 				3A2F22DA2214A57D00A2FB4F /* Extensions */,
+				3A2F22F72214A57D00A2FB4F /* Helpers */,
 				3A2F22D02214A4DB00A2FB4F /* Info.plist */,
 				3A2F22CD2214A4DB00A2FB4F /* LaunchScreen.storyboard */,
 				3A2F23262214A7A800A2FB4F /* Localizable.strings */,
 				3A2F23302214B05B00A2FB4F /* Sample-Bridging-Header.h */,
 				3AE05FAD23AA934B0036BE36 /* Sample.entitlements */,
 				3A2F22D62214A57D00A2FB4F /* UI */,
-				3A2F22F72214A57D00A2FB4F /* Utils */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -365,12 +351,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3A2F22F72214A57D00A2FB4F /* Utils */ = {
+		3A2F22F72214A57D00A2FB4F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				3A2F22F82214A57D00A2FB4F /* UIUtil.swift */,
+				3A21082026C73C0E00B322B6 /* BundleHelper.swift */,
+				3A2F22F82214A57D00A2FB4F /* UIHelper.swift */,
 			);
-			path = Utils;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		3A2F22FA2214A57D00A2FB4F /* App */ = {
@@ -607,7 +594,7 @@
 				3A2F22BF2214A4DA00A2FB4F /* Resources */,
 				C19BC371029275D9765EE042 /* [CP] Embed Pods Frameworks */,
 				ABCDC1C6261D0A5000BEEF5C /* Embed Watch Content */,
-				3A10C8B526BFC5250002429C /* Copy WebApp Assets */,
+				3A21081D26C733C400B322B6 /* Copy  WebApp */,
 			);
 			buildRules = (
 			);
@@ -756,6 +743,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3A21081D26C733C400B322B6 /* Copy  WebApp */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy  WebApp";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -a -v \"../../../projects/web/Sample/dist/\" \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/webapp/\"\n";
+		};
 		B0DA28AAFAE2E78CF4DC1D40 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -822,6 +827,7 @@
 				3ADA2D8922162760005E6BD0 /* SimpleOption.swift in Sources */,
 				3ADA2D8222162454005E6BD0 /* Enumerators.swift in Sources */,
 				3A2F231A2214A57D00A2FB4F /* ViewConstrainToEdgesExtension.swift in Sources */,
+				3A21082126C73C0E00B322B6 /* BundleHelper.swift in Sources */,
 				3A2F23122214A57D00A2FB4F /* IntToTimeIntervalExtension.swift in Sources */,
 				3A2F23182214A57D00A2FB4F /* CollectionExtensions.swift in Sources */,
 				3A2F231C2214A57D00A2FB4F /* EnvironmentUtil.swift in Sources */,
@@ -862,7 +868,7 @@
 				3AD9F93D22569DA600ED622F /* MainViewController.swift in Sources */,
 				3ADE826B2229D0E000D3FD7A /* TodoListViewController.swift in Sources */,
 				3A2F230A2214A57D00A2FB4F /* UITableViewExtension.swift in Sources */,
-				3A2F231B2214A57D00A2FB4F /* UIUtil.swift in Sources */,
+				3A2F231B2214A57D00A2FB4F /* UIHelper.swift in Sources */,
 				3ADA2D9522163EEE005E6BD0 /* BaseCollectionViewController.swift in Sources */,
 				3A2F231E2214A57D00A2FB4F /* AppDelegate.swift in Sources */,
 				3ADA2D9722163EEE005E6BD0 /* BaseTableViewController.swift in Sources */,

@@ -30,6 +30,7 @@ public:
     virtual std::string getSocketHost() override;
     virtual std::string getSocketAddress() override;
     virtual bool isSocketSecure() override;
+    virtual bool isRunning() override;
 
     std::shared_ptr<SimpleHttpServer> getServer();
 
@@ -38,6 +39,8 @@ private:
 
     std::shared_ptr<SimpleHttpServer> server;
     std::shared_ptr<HttpServerConfig> serverConfig;
+
+    bool running;
 };
 
 } // namespace http

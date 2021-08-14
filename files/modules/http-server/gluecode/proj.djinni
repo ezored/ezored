@@ -14,4 +14,5 @@ http_server = interface +c {
     get_socket_host(): string;
     get_socket_address(): string;
     is_socket_secure(): bool;
+    is_running(): bool;
 }

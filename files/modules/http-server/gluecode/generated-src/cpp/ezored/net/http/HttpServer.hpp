@@ -40,6 +40,8 @@ public:
     virtual std::string getSocketAddress() = 0;
 
     virtual bool isSocketSecure() = 0;
+
+    virtual bool isRunning() = 0;
 };
 
 } // namespace http
