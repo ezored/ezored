@@ -12,6 +12,7 @@ import com.ezored.net.http.HttpHeader
 import com.ezored.net.http.HttpMethod
 import com.ezored.net.http.HttpRequest
 import com.ezored.net.http.HttpRequestParam
+import com.ezored.net.http.HttpServer
 import com.ezored.repository.TodoRepository
 import com.ezored.sample.R
 import com.ezored.sample.adapter.SimpleOptionAdapter
@@ -52,6 +53,7 @@ class HomeFragment :
         list.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
         list.add(SimpleOption(SimpleOptionTypeEnum.FILE_HELPER))
         list.add(SimpleOption(SimpleOptionTypeEnum.TODO))
+        list.add(SimpleOption(SimpleOptionTypeEnum.WEB_SERVER))
         list.add(SimpleOption(SimpleOptionTypeEnum.WEB_VIEW))
 
         listData?.value = list
@@ -66,6 +68,7 @@ class HomeFragment :
             option.type == SimpleOptionTypeEnum.SECRET_KEY -> doActionSecretKey()
             option.type == SimpleOptionTypeEnum.TODO -> doActionTodo()
             option.type == SimpleOptionTypeEnum.FILE_HELPER -> doActionFileHelper()
+            option.type == SimpleOptionTypeEnum.WEB_SERVER -> doActionWebServer()
             option.type == SimpleOptionTypeEnum.WEB_VIEW -> doActionWebView()
         }
     }
@@ -188,6 +191,18 @@ class HomeFragment :
                     startActivity(intent)
                 }
             }
+        }
+    }
+
+    private fun doActionWebServer() {
+        context?.let {
+            if (HttpServer.shared().isRunning) {
+                HttpServer.shared().stop()
+            } else {
+                HttpServer.shared().start()
+            }
+
+            adapter.notifyItemChanged(5)
         }
     }
 

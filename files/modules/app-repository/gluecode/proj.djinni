@@ -10,4 +10,5 @@ todo_repository = interface +c {
     static insert(todo: todo): i64;
     static add(todo: todo): i64;
     static set_done_by_id(id:i64, done: bool): bool;
+    static count(): i64;
 }

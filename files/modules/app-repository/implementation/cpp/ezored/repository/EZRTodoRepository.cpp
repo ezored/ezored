@@ -191,7 +191,7 @@ std::vector<Todo> TodoRepository::findByTitle(const std::string &title)
 
 bool TodoRepository::setDoneById(int64_t id, bool done)
 {
-    auto sql = "UPDATE todo SET done = :done WHERE id = :id";
+    auto sql = "UPDATE todo SET done = :done, updated_at = :updated_at WHERE id = :id";
 
     auto application = std::static_pointer_cast<ApplicationCoreImpl>(ApplicationCore::shared());
     auto db = application->getDB();
@@ -200,11 +200,29 @@ bool TodoRepository::setDoneById(int64_t id, bool done)
 
     query.bind(":id", id);
     query.bind(":done", done);
+    query.bind(":updated_at", DateTime::getStringFromDateTime(DateTime::getCurrentDateTime()));
     query.exec();
 
     auto rows = DatabaseHelper::getChanges(db);
 
     return (rows > 0);
+}
+
+int64_t TodoRepository::count()
+{
+    auto sql = "SELECT COUNT(*) AS qty FROM todo";
+
+    auto application = std::static_pointer_cast<ApplicationCoreImpl>(ApplicationCore::shared());
+    auto db = application->getDB();
+
+    SQLite::Statement query(*db, sql);
+
+    while (query.executeStep())
+    {
+        return query.getColumn("qty").getInt();
+    }
+
+    return 0;
 }
 
 Todo TodoRepository::findById(int64_t id)

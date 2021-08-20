@@ -10,16 +10,16 @@
           <img
             src="../assets/images/logo.png"
             alt="Logo"
-            style="max-width: 50px"
+            style="max-width: 50px; margin-right: 10px"
           />
-          My App
+          Ezored
         </router-link>
       </div>
     </nav>
 
     <section class="section" style="text-align: center; margin-top: 50px">
       <div class="container">
-        <h1 class="title">My App</h1>
+        <h1 class="title">Ezored</h1>
 
         <div class="columns is-mobile is-centered">
           <div class="column is-full">
@@ -31,26 +31,17 @@
           </div>
         </div>
 
+        <br />
+
         <div class="columns">
           <div class="column">
-            <button class="button is-primary" v-on:click="showCurrentTime()">
-              Show current time
-            </button>
-          </div>
-          <div class="column">
-            <button class="button is-info" v-on:click="selectFolder()">
-              Select folder
-            </button>
-          </div>
-          <div class="column">
-            <button class="button is-info" v-on:click="toggleFullscreen()">
-              Toggle fullscreen
-            </button>
-          </div>
-          <div class="column">
-            <button class="button is-info" v-on:click="openURL()">
-              Open URL
-            </button>
+            <router-link
+              :to="{ name: 'ToDo' }"
+              tag="button"
+              class="button is-primary"
+            >
+              ToDo
+            </router-link>
           </div>
           <div class="column">
             <router-link
@@ -82,7 +73,6 @@
 </template>
 
 <script>
-/* globals pywebview */
 export default {
   name: "Home",
   props: {},
@@ -95,57 +85,7 @@ export default {
     // ignore
   },
   methods: {
-    showCurrentTime() {
-      pywebview.api
-        .call("modules.datetime.get_now", { timestamp: new Date().getTime() })
-        .then((result) => {
-          this.message = result;
-        })
-        .catch((e) => {
-          this.message = "Error: " + e;
-        });
-    },
-
-    toggleFullscreen() {
-      pywebview.api
-        .call("modules.system.toggle_fullscreen")
-        .then((result) => {
-          this.message = result;
-        })
-        .catch((e) => {
-          this.message = "Error: " + e;
-        });
-
-      pywebview.api.toggleFullscreen().then((result) => {
-        this.message = result;
-      });
-    },
-
-    selectFolder() {
-      this.message = "Loading...";
-
-      pywebview.api
-        .call("modules.system.select_folder")
-        .then((result) => {
-          this.message = result;
-        })
-        .catch((e) => {
-          this.message = "Error: " + e;
-        });
-    },
-
-    openURL() {
-      this.message = "Loading...";
-
-      pywebview.api
-        .call("modules.net.open_url", { url: "https://httpbin.org/get" })
-        .then((result) => {
-          this.message = result;
-        })
-        .catch((e) => {
-          this.message = "Error: " + e;
-        });
-    },
+    // ignore
   },
 };
 </script>

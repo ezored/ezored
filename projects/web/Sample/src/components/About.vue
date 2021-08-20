@@ -10,9 +10,9 @@
           <img
             src="../assets/images/logo.png"
             alt="Logo"
-            style="max-width: 50px"
+            style="max-width: 50px; margin-right: 10px"
           />
-          My App
+          Ezored
         </router-link>
       </div>
     </nav>
@@ -30,6 +30,8 @@
             />
           </div>
         </div>
+
+        <br />
 
         <div class="columns">
           <div class="column">

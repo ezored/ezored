@@ -122,4 +122,15 @@ CJNIEXPORT jboolean JNICALL Java_com_ezored_repository_TodoRepository_00024CppPr
     JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
+CJNIEXPORT jlong JNICALL Java_com_ezored_repository_TodoRepository_00024CppProxy_count(JNIEnv *jniEnv, jobject /*this*/)
+{
+    try
+    {
+        DJINNI_FUNCTION_PROLOGUE0(jniEnv);
+        auto r = ::ezored::repository::TodoRepository::count();
+        return ::djinni::release(::djinni::I64::fromCpp(jniEnv, r));
+    }
+    JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
+}
+
 } // namespace djinni_generated

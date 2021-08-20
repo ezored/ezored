@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.ezored.helper.SharedDataHelper
+import com.ezored.net.http.HttpServer
 import com.ezored.sample.R
 import com.ezored.sample.enumerator.SimpleOptionTypeEnum
 import com.ezored.sample.model.SimpleOption
@@ -39,6 +40,10 @@ class SimpleOptionAdapter : RecyclerView.Adapter<SimpleOptionAdapter.ViewHolder>
                 val demoFlag = SharedDataHelper.getDemoFlag()
                 holder.tvTitle.text =
                     context.getString(R.string.option_shared_data, if (demoFlag) "ON" else "OFF")
+            } else if (option.type == SimpleOptionTypeEnum.WEB_SERVER) {
+                val serverFlag = HttpServer.shared().isRunning
+                holder.tvTitle.text =
+                    context.getString(R.string.option_web_server, if (serverFlag) "ON" else "OFF")
             } else {
                 holder.tvTitle.text = option.getDescription(context)
             }

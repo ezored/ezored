@@ -120,6 +120,12 @@ int main(int argc, char **argv)
         }
     }
 
+    // count TODO items from database
+    {
+        auto qty = TodoRepository::count();
+        Logger::i("ToDo count: " + std::to_string(qty));
+    }
+
     // login error
     {
         auto data = CustomerSystemService::login("demo-error", "demo-error");
@@ -207,7 +213,7 @@ int main(int argc, char **argv)
         auto envStaticPath = std::getenv("EZORED_HTTP_SERVER_STATIC_PATH");
         auto staticPath = (envStaticPath == nullptr ? "" : envStaticPath);
 
-        auto config = HttpServerConfig{9000, staticPath};
+        auto config = HttpServerConfig{9090, staticPath};
         auto httpServer = HttpServer::shared();
 
         httpServer->initialize(config);

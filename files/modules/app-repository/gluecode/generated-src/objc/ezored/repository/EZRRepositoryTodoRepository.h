@@ -26,4 +26,6 @@
 + (BOOL)setDoneById:(int64_t)id
                done:(BOOL)done;
 
++ (int64_t)count;
+
 @end

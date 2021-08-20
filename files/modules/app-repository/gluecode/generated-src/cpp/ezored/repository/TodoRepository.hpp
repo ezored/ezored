@@ -35,6 +35,8 @@ public:
     static int64_t add(const ::ezored::domain::Todo &todo);
 
     static bool setDoneById(int64_t id, bool done);
+
+    static int64_t count();
 };
 
 } // namespace repository

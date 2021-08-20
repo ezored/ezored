@@ -30,3 +30,4 @@ DerivedData
 /Carthage
 /Pods
 Podfile.lock
+Gemfile.lock

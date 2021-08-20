@@ -9,6 +9,9 @@ import android.util.AttributeSet
 import android.view.ViewStub
 import android.webkit.GeolocationPermissions
 import android.webkit.WebChromeClient
+import android.webkit.WebResourceError
+import android.webkit.WebResourceRequest
+import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ProgressBar
@@ -264,6 +267,28 @@ class WebViewSuite : RelativeLayout {
                 callback?.onPageFinished(view, url)
             }
 
+            override fun onReceivedHttpError(
+                view: WebView?,
+                request: WebResourceRequest?,
+                errorResponse: WebResourceResponse?
+            ) {
+                super.onReceivedHttpError(view, request, errorResponse)
+
+                toggleProgressbar(false)
+                callback?.onReceivedHttpError(view, request, errorResponse)
+            }
+
+            override fun onReceivedError(
+                view: WebView?,
+                request: WebResourceRequest?,
+                error: WebResourceError?
+            ) {
+                super.onReceivedError(view, request, error)
+
+                toggleProgressbar(false)
+                callback?.onReceivedError(view, request, error)
+            }
+
             override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
                 return if (url.startsWith("tel:") && overrideTelLink) {
                     try {
@@ -332,6 +357,12 @@ class WebViewSuite : RelativeLayout {
         fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?)
         fun onPageFinished(view: WebView?, url: String?)
         fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean
+        fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?)
+        fun onReceivedHttpError(
+            view: WebView?,
+            request: WebResourceRequest?,
+            errorResponse: WebResourceResponse?
+        )
     }
 
     interface WebViewSetupInterference {

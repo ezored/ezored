@@ -20,6 +20,7 @@
     <string name="option_shared_data">Shared Data: The value is %s</string>
     <string name="option_file_helper">File helper (file size)</string>
     <string name="option_todo">ToDo list</string>
+    <string name="option_web_server">Web server: %s</string>
     <string name="option_web_view">Navigator</string>
     <string name="search_hint">Search…</string>
     <string name="search_title">Search</string>

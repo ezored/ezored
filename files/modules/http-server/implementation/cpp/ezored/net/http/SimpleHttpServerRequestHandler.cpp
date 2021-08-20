@@ -42,9 +42,28 @@ void SimpleHttpServerRequestHandler::handleRequest(Poco::Net::HTTPServerRequest 
         Logger::d("[SimpleHttpServerRequestHandler : handleRequest] New request for Host: " + request.getHost() + ", Method: " + request.getMethod() + ", URI: " + request.getURI() + ", Version: " + request.getVersion() + ", Content-Type: " + request.getContentType() + ", Transfer-Encoding: " + request.getTransferEncoding());
     }
 
-    Poco::URI uri(request.getURI());
+    // add CORS headers
+    response.add("Access-Control-Allow-Origin", "*");
+    response.add("Access-Control-Allow-Headers", "Accept, Authorization, Cache-Control, Content-Type, DNT, If-Modified-Since, Keep-Alive, Origin, Referer, User-Agent, X-Requested-With");
+    response.add("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
+    response.add("Access-Control-Allow-Credentials", "true");
+
+    // validate CORS
+    if (request.getMethod() == Poco::Net::HTTPRequest::HTTP_OPTIONS)
+    {
+        Logger::d("[SimpleHttpServerRequestHandler : handleRequest] CORS request");
+
+        response.setContentType("text/plain charset=UTF-8");
+        response.add("Access-Control-Max-Age", "3600");
+        response.setContentLength(0);
+        response.send();
+
+        return;
+    }
 
     // validate route
+    Poco::URI uri(request.getURI());
+
     Logger::d("[SimpleHttpServerRequestHandler : handleRequest] Validating know routes...");
 
     if (HttpServerHelper::process(request, response))

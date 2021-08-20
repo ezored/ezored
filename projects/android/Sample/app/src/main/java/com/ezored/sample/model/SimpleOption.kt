@@ -14,6 +14,7 @@ class SimpleOption(val type: SimpleOptionTypeEnum) {
             type === SimpleOptionTypeEnum.APP_VERSION -> context.getString(R.string.option_app_version)
             type === SimpleOptionTypeEnum.TODO -> context.getString(R.string.option_todo)
             type === SimpleOptionTypeEnum.FILE_HELPER -> context.getString(R.string.option_file_helper)
+            type === SimpleOptionTypeEnum.WEB_SERVER -> context.getString(R.string.option_web_server)
             type === SimpleOptionTypeEnum.WEB_VIEW -> context.getString(R.string.option_web_view)
             else -> ""
         }

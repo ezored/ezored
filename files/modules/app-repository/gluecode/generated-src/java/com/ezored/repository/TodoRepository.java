@@ -54,6 +54,11 @@ public abstract class TodoRepository {
                                     done);
     }
 
+    public static long count()
+    {
+        return CppProxy.count();
+    }
+
     private static final class CppProxy extends TodoRepository
     {
         private final long nativeRef;
@@ -94,5 +99,7 @@ public abstract class TodoRepository {
         public static native long add(com.ezored.domain.Todo todo);
 
         public static native boolean setDoneById(long id, boolean done);
+
+        public static native long count();
     }
 }
