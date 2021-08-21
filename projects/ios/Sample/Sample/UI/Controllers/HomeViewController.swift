@@ -22,7 +22,9 @@ class HomeViewController: BaseTableViewController {
         listData?.append(SimpleOption(type: .httpRequest, hasSeparator: true))
         listData?.append(SimpleOption(type: .httpsRequest, hasSeparator: true))
         listData?.append(SimpleOption(type: .fileHelper, hasSeparator: true))
-        listData?.append(SimpleOption(type: .todo, hasSeparator: false))
+        listData?.append(SimpleOption(type: .todo, hasSeparator: true))
+        listData?.append(SimpleOption(type: .webServer, hasSeparator: true))
+        listData?.append(SimpleOption(type: .webView, hasSeparator: false))
     }
 
     override func needLoadNewData() -> Bool {
@@ -45,6 +47,10 @@ class HomeViewController: BaseTableViewController {
                 doActionFileHelper()
             } else if option.type == .todo {
                 doActionTodo()
+            } else if option.type == .webServer {
+                doActionWebServer()
+            } else if option.type == .webView {
+                doActionWebView()
             }
         }
     }
@@ -145,21 +151,25 @@ class HomeViewController: BaseTableViewController {
         showLoadingView(show: true)
 
         DispatchQueue.global(qos: .background).async {
-            // add some rows
-            EZRRepositoryTodoRepository.truncate()
+            let count = EZRRepositoryTodoRepository.count()
 
-            for i in 1 ... 100 {
-                let todo = EZRDomainTodo(
-                    id: 0,
-                    title: String(format: "Title %i", i),
-                    body: String(format: "New TODO item description: %i", i),
-                    data: [:],
-                    done: false,
-                    createdAt: Date(),
-                    updatedAt: Date()
-                )
+            if count == 0 {
+                // add some rows
+                EZRRepositoryTodoRepository.truncate()
 
-                EZRRepositoryTodoRepository.add(todo)
+                for i in 1 ... 100 {
+                    let todo = EZRDomainTodo(
+                        id: 0,
+                        title: String(format: "Title %i", i),
+                        body: String(format: "New TODO item description: %i", i),
+                        data: [:],
+                        done: false,
+                        createdAt: Date(),
+                        updatedAt: Date()
+                    )
+
+                    EZRRepositoryTodoRepository.add(todo)
+                }
             }
 
             // show list view controller
@@ -168,5 +178,27 @@ class HomeViewController: BaseTableViewController {
                 self.navigationController?.pushViewController(TodoListViewController(), animated: true)
             }
         }
+    }
+
+    func doActionWebServer() {
+        guard let server = EZRHttpServer.shared() else { return }
+
+        DispatchQueue.main.async {
+            if server.isRunning() {
+                server.stop()
+            } else {
+                server.start()
+            }
+
+            self.tableView.reloadRows(at: [IndexPath(row: 6, section: 0)], with: UITableView.RowAnimation.automatic)
+        }
+    }
+
+    func doActionWebView() {
+        let controller = WebViewController()
+        let nc = UINavigationController(rootViewController: controller)
+        nc.modalPresentationStyle = .fullScreen
+
+        navigationController?.present(nc, animated: true, completion: nil)
     }
 }

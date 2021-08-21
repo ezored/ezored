@@ -22,6 +22,11 @@ struct SimpleOption: Hashable {
             return "OptionAppVersion".localized
         case .todo:
             return "OptionTodo".localized
+        case .webServer:
+            let demoFlag = EZRHttpServer.shared()?.isRunning() ?? false
+            return String(format: "%@ %@", "OptionWebServer".localized, demoFlag ? "ON" : "OFF")
+        case .webView:
+            return "OptionWebView".localized
         }
     }
 

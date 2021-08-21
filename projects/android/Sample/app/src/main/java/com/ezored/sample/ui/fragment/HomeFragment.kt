@@ -163,24 +163,28 @@ class HomeFragment :
         showLoadingView()
 
         launch(Dispatchers.IO) {
-            TodoRepository.truncate()
+            val count = TodoRepository.count()
 
-            for (i in 1..100) {
-                val todo = Todo(
-                    0,
-                    String.format(Locale.getDefault(), "Title %d", i),
-                    String.format(
-                        Locale.getDefault(),
-                        "New TODO item description: %d",
-                        i
-                    ),
-                    HashMap(),
-                    false,
-                    Date(),
-                    Date()
-                )
+            if (count == 0L) {
+                TodoRepository.truncate()
 
-                TodoRepository.add(todo)
+                for (i in 1..100) {
+                    val todo = Todo(
+                        0,
+                        String.format(Locale.getDefault(), "Title %d", i),
+                        String.format(
+                            Locale.getDefault(),
+                            "New TODO item description: %d",
+                            i
+                        ),
+                        HashMap(),
+                        false,
+                        Date(),
+                        Date()
+                    )
+
+                    TodoRepository.add(todo)
+                }
             }
 
             withContext(Dispatchers.Main) {
@@ -195,14 +199,16 @@ class HomeFragment :
     }
 
     private fun doActionWebServer() {
-        context?.let {
-            if (HttpServer.shared().isRunning) {
-                HttpServer.shared().stop()
-            } else {
-                HttpServer.shared().start()
-            }
+        launch {
+            context?.let {
+                if (HttpServer.shared().isRunning) {
+                    HttpServer.shared().stop()
+                } else {
+                    HttpServer.shared().start()
+                }
 
-            adapter.notifyItemChanged(5)
+                adapter.notifyItemChanged(5)
+            }
         }
     }
 

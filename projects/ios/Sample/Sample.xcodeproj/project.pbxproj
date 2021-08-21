@@ -60,6 +60,7 @@
 		3ADE82652229C56500D3FD7A /* SimpleSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE82642229C56500D3FD7A /* SimpleSearchBar.swift */; };
 		3ADE82692229C9C000D3FD7A /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE82682229C9C000D3FD7A /* TodoTableViewCell.swift */; };
 		3ADE826B2229D0E000D3FD7A /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE826A2229D0E000D3FD7A /* TodoListViewController.swift */; };
+		3AF9F7CE26D05E6800433FD7 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9F7CD26D05E6800433FD7 /* WebViewController.swift */; };
 		AB578450263746A000558651 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB57844F263746A000558651 /* ViewExtensions.swift */; };
 		AB5784AB26376AE600558651 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F23262214A7A800A2FB4F /* Localizable.strings */; };
 		AB5784B0263771F800558651 /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5784AF263771F800558651 /* SharedAssets.xcassets */; };
@@ -196,6 +197,7 @@
 		3ADE82682229C9C000D3FD7A /* TodoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		3ADE826A2229D0E000D3FD7A /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		3AE05FAD23AA934B0036BE36 /* Sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sample.entitlements; sourceTree = "<group>"; };
+		3AF9F7CD26D05E6800433FD7 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		44B5C818ABAE48BF038C2B08 /* Pods-Sample-AppleWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample-AppleWatch Extension.debug.xcconfig"; path = "Target Support Files/Pods-Sample-AppleWatch Extension/Pods-Sample-AppleWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		5FDAA0743304F74D3D1644FD /* Pods_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E91F0FCFB4F5DC6F65D06D /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				3AD9F93C22569DA600ED622F /* MainViewController.swift */,
 				3A2F22D92214A57D00A2FB4F /* SettingsViewController.swift */,
 				3ADE826A2229D0E000D3FD7A /* TodoListViewController.swift */,
+				3AF9F7CD26D05E6800433FD7 /* WebViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -870,6 +873,7 @@
 				3A2F230A2214A57D00A2FB4F /* UITableViewExtension.swift in Sources */,
 				3A2F231B2214A57D00A2FB4F /* UIHelper.swift in Sources */,
 				3ADA2D9522163EEE005E6BD0 /* BaseCollectionViewController.swift in Sources */,
+				3AF9F7CE26D05E6800433FD7 /* WebViewController.swift in Sources */,
 				3A2F231E2214A57D00A2FB4F /* AppDelegate.swift in Sources */,
 				3ADA2D9722163EEE005E6BD0 /* BaseTableViewController.swift in Sources */,
 				3A2F23142214A57D00A2FB4F /* UIImageViewBlurExtension.swift in Sources */,
@@ -1080,7 +1084,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_BITCODE = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -1089,7 +1093,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1112,7 +1116,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_BITCODE = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -1121,7 +1125,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

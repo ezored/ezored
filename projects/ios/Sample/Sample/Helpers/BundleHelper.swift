@@ -4,12 +4,14 @@ class BundleHelper {
     static func extract() {
         EZRLogger.i("[BundleHelper : extract] Starting bundle assets extraction...")
 
-        let filemgr = FileManager.default
-        let dirPaths = filemgr.urls(for: .documentDirectory, in: .userDomainMask)
+        let fm = FileManager.default
+        let dirPaths = fm.urls(for: .documentDirectory, in: .userDomainMask)
         let docsURL = dirPaths[0]
 
         let folderPath = Bundle.main.resourceURL!.appendingPathComponent("webapp").path
         let docsFolder = docsURL.appendingPathComponent("webapp").path
+
+        EZRFileHelper.removeDir(docsFolder)
 
         copyFiles(pathFromBundle: folderPath, pathDestDocs: docsFolder)
 
@@ -17,14 +19,14 @@ class BundleHelper {
     }
 
     static func copyFiles(pathFromBundle: String, pathDestDocs: String) {
-        let fileManagerIs = FileManager.default
+        let fm = FileManager.default
 
         do {
-            let filelist = try fileManagerIs.contentsOfDirectory(atPath: pathFromBundle)
-            try? fileManagerIs.copyItem(atPath: pathFromBundle, toPath: pathDestDocs)
+            let filelist = try fm.contentsOfDirectory(atPath: pathFromBundle)
+            try? fm.copyItem(atPath: pathFromBundle, toPath: pathDestDocs)
 
             for filename in filelist {
-                try? fileManagerIs.copyItem(atPath: "\(pathFromBundle)/\(filename)", toPath: "\(pathDestDocs)/\(filename)")
+                try? fm.copyItem(atPath: "\(pathFromBundle)/\(filename)", toPath: "\(pathDestDocs)/\(filename)")
             }
         } catch {
             EZRLogger.e("[BundleHelper : copyFiles] Error: \(error.localizedDescription)")

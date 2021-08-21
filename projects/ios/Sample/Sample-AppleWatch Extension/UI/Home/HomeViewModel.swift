@@ -14,8 +14,9 @@ class HomeViewModel: NSObject, ObservableObject {
         data.append(SimpleOption(type: .httpRequest, hasSeparator: true))
         data.append(SimpleOption(type: .httpsRequest, hasSeparator: true))
         data.append(SimpleOption(type: .fileHelper, hasSeparator: true))
-        data.append(SimpleOption(type: .todo, hasSeparator: false))
-        data.append(SimpleOption(type: .appVersion, hasSeparator: false))
+        data.append(SimpleOption(type: .todo, hasSeparator: true))
+        data.append(SimpleOption(type: .appVersion, hasSeparator: true))
+        data.append(SimpleOption(type: .webServer, hasSeparator: false))
         
         listData = data
         showTodoList = .inactive
@@ -44,6 +45,10 @@ class HomeViewModel: NSObject, ObservableObject {
             doActionTodo()
         case .appVersion:
             doAppVersion()
+        case .webServer:
+            doActionWebServer()
+        case .webView:
+            doActionWebView()
         }
     }
 
@@ -116,21 +121,25 @@ class HomeViewModel: NSObject, ObservableObject {
         self.showTodoList = .loading
 
         DispatchQueue.global(qos: .background).async {
-            // add some rows
-            EZRRepositoryTodoRepository.truncate()
+            let count = EZRRepositoryTodoRepository.count()
+            
+            if count == 0 {
+                // add some rows
+                EZRRepositoryTodoRepository.truncate()
 
-            for i in 1 ... 100 {
-                let todo = EZRDomainTodo(
-                    id: 0,
-                    title: String(format: "Title %i", i),
-                    body: String(format: "New TODO item description: %i", i),
-                    data: [:],
-                    done: false,
-                    createdAt: Date(),
-                    updatedAt: Date()
-                )
+                for i in 1 ... 100 {
+                    let todo = EZRDomainTodo(
+                        id: 0,
+                        title: String(format: "Title %i", i),
+                        body: String(format: "New TODO item description: %i", i),
+                        data: [:],
+                        done: false,
+                        createdAt: Date(),
+                        updatedAt: Date()
+                    )
 
-                EZRRepositoryTodoRepository.add(todo)
+                    EZRRepositoryTodoRepository.add(todo)
+                }
             }
 
             // show list view controller
@@ -152,4 +161,21 @@ class HomeViewModel: NSObject, ObservableObject {
         
         alertMessage = .loaded(data: message)
     }
+    
+    func doActionWebServer() {
+        guard let server = EZRHttpServer.shared() else { return }
+        
+        DispatchQueue.main.async {
+            if server.isRunning() {
+                server.stop()
+            } else {
+                server.start()
+            }
+        }
+    }
+    
+    func doActionWebView() {
+        // TODO: implement
+    }
+
 }

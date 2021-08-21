@@ -98,7 +98,10 @@ class WebViewFragment : BaseFragment() {
     }
 
     private fun reload() {
-        webView?.startLoading(HttpServer.shared().socketAddress)
+        var url = HttpServer.shared().socketAddress
+        url = url.replace("0.0.0.0", "localhost")
+
+        webView?.startLoading(url)
     }
 
     companion object {
