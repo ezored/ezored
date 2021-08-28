@@ -100,6 +100,27 @@ def run(params):
         target_pod_file_path,
     )
 
+    # xcframework group dir
+    if not no_xcframework:
+        if build_types and len(build_types) > 0:
+            for build_type in build_types:
+                xcframework_dir = os.path.join(
+                    dist_dir,
+                    build_type,
+                    "{0}.xcframework".format(target_config["project_name"]),
+                )
+
+                found_dirs = file.find_dirs_simple(xcframework_dir, "*")
+
+                if found_dirs:
+                    first_group = os.path.basename(found_dirs[0])
+
+                    file.replace_in_file(
+                        target_pod_file_path,
+                        "{XCFRAMEWORK_" + build_type.upper() + "_GROUP_DIR}",
+                        first_group,
+                    )
+
     file.replace_in_file(target_pod_file_path, "{NAME}", target_config["project_name"])
     file.replace_in_file(target_pod_file_path, "{VERSION}", target_config["version"])
 

@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|    
   s.name             = '{NAME}'
   s.version          = '{VERSION}'
-  s.summary          = 'ezored pod'
+  s.summary          = '{NAME} pod'
 
   s.homepage         = 'https://github.com/ezored/ezored'
   s.license          = { :type => 'MIT', :text => 'Free' }
@@ -14,13 +14,13 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '5.0'
   s.tvos.deployment_target = '11.0'
 
-  s.public_header_files = 'Release/{NAME}.xcframework/ios-arm64_arm64e_armv7_armv7s/{NAME}.framework/Headers/**/*.h'
-  s.source_files = 'Release/{NAME}.xcframework/ios-arm64_arm64e_armv7_armv7s/{NAME}.framework/Headers/**/*.h'
+  s.public_header_files = 'Release/{NAME}.xcframework/{XCFRAMEWORK_RELEASE_GROUP_DIR}/{NAME}.framework/Headers/**/*.h'
+  s.source_files = 'Release/{NAME}.xcframework/{XCFRAMEWORK_RELEASE_GROUP_DIR}/{NAME}.framework/Headers/**/*.h'
 
   s.requires_arc = true
 
   s.user_target_xcconfig = { 
-    'USER_HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/{NAME}/Release" "$(PODS_ROOT)/{NAME}/Release/{NAME}.xcframework/ios-arm64_arm64e_armv7_armv7s/{NAME}.framework/Headers"',
+    'USER_HEADER_SEARCH_PATHS' => '"$(PODS_ROOT)/{NAME}/Release" "$(PODS_ROOT)/{NAME}/Release/{NAME}.xcframework/{XCFRAMEWORK_RELEASE_GROUP_DIR}/{NAME}.framework/Headers"',
     'FRAMEWORK_SEARCH_PATHS' => '"$(PODS_ROOT)/{NAME}/Release"'
   }
 end

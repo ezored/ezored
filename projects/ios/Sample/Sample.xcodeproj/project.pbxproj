@@ -762,7 +762,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cp -a -v \"../../../projects/web/Sample/dist/\" \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/webapp/\"\n";
+			shellScript = "if [ \"${IS_MACCATALYST}\" = \"YES\" ]; then\n    cp -a -v \"../../../projects/web/Sample/dist/\" \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Resources/webapp/\"\nelse\n    cp -a -v \"../../../projects/web/Sample/dist/\" \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/webapp/\"\nfi\n";
 		};
 		B0DA28AAFAE2E78CF4DC1D40 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

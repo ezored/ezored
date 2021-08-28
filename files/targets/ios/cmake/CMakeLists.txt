@@ -169,16 +169,14 @@ set_target_properties(
                XCODE_ATTRIBUTE_TARGETED_DEVICE_FAMILY "${DEVICE_FAMILY}"
                XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH YES
                XCODE_ATTRIBUTE_SKIP_INSTALL YES
-               XCODE_ATTRIBUTE_INSTALL_PATH "@loader_path/Frameworks"
                VERSION "${PROJECT_CONFIG_VERSION}"
                SOVERSION "${PROJECT_CONFIG_VERSION}"
 )
 
-# Adapt install directory to allow distributing dylibs/frameworks in user's frameworks/application bundle
-set_target_properties(${PROJECT_CONFIG_NAME} PROPERTIES INSTALL_NAME_DIR "@rpath")
-
-if(NOT CMAKE_SKIP_BUILD_RPATH)
-    set_target_properties(${PROJECT_CONFIG_NAME} PROPERTIES BUILD_WITH_INSTALL_NAME_DIR TRUE)
+if(PROJECT_CONFIG_GROUP STREQUAL "ios_catalyst")
+    set_target_properties(${PROJECT_CONFIG_NAME} PROPERTIES INSTALL_RPATH "@loader_path/../../..")
+else()
+    set_target_properties(${PROJECT_CONFIG_NAME} PROPERTIES XCODE_ATTRIBUTE_INSTALL_PATH "@loader_path/Frameworks")
 endif()
 
 target_compile_options(${PROJECT_CONFIG_NAME} PUBLIC "${PROJECT_COMPILE_OPTIONS}")

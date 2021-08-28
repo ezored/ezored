@@ -7,6 +7,7 @@ from files.core import const
 from files.core import file
 from files.core import log
 from files.core import runner
+from files.core import target
 
 
 # -----------------------------------------------------------------------------
@@ -30,6 +31,7 @@ def run(params):
 # -----------------------------------------------------------------------------
 def code_format(params):
     proj_path = params["proj_path"]
+    targets = target.get_all_targets(proj_path)
 
     # format c++ files
     has_tool = check_cpp_formatter()
@@ -51,7 +53,9 @@ def code_format(params):
                 "patterns": ["*.cpp", "*.hpp", "*.c", "*.h", "*.m", "*.mm"],
             },
             {
-                "path": os.path.join(proj_path, const.DIR_NAME_PROJECTS, "ios"),
+                "path": os.path.join(
+                    proj_path, const.DIR_NAME_PROJECTS, "ios", "Sample", "Sample"
+                ),
                 "patterns": ["*.cpp", "*.hpp", "*.c", "*.h", "*.m", "*.mm"],
             },
         ]
@@ -138,14 +142,116 @@ def code_format(params):
     if has_tool:
         path_list = [
             {
-                "path": os.path.join(proj_path, const.DIR_NAME_FILES),
+                "path": os.path.join(
+                    proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_MODULES
+                ),
                 "patterns": ["*.cmake"],
             },
             {
-                "path": os.path.join(proj_path, const.DIR_NAME_FILES),
+                "path": os.path.join(
+                    proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_MODULES
+                ),
+                "patterns": ["CMakeLists.txt"],
+            },
+            {
+                "path": os.path.join(
+                    proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_COMMON
+                ),
+                "patterns": ["*.cmake"],
+            },
+            {
+                "path": os.path.join(
+                    proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_COMMON
+                ),
                 "patterns": ["CMakeLists.txt"],
             },
         ]
+
+        for target_name in targets:
+            path_list.extend(
+                [
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_CMAKE,
+                        ),
+                        "patterns": ["*.cmake"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_CMAKE,
+                        ),
+                        "patterns": ["CMakeLists.txt"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_CONAN,
+                        ),
+                        "patterns": ["*.cmake"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_CONAN,
+                        ),
+                        "patterns": ["CMakeLists.txt"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_SUPPORT,
+                        ),
+                        "patterns": ["*.cmake"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_SUPPORT,
+                        ),
+                        "patterns": ["CMakeLists.txt"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_VERBS,
+                        ),
+                        "patterns": ["*.cmake"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_VERBS,
+                        ),
+                        "patterns": ["CMakeLists.txt"],
+                    },
+                ]
+            )
 
         if path_list:
             log.info("Formating CMake files...")
