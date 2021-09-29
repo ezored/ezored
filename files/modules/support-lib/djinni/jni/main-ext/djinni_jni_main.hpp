@@ -1,4 +1,5 @@
 //
+// Copyright 2014 Dropbox, Inc.
 // Copyright 2021 cross-language-cpp
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,5 +14,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+// This provides a minimal JNILoader_load and JNILoader_unload implementation.
+#pragma once
 
-#include "djinni_jni_main.hpp"
+#include "djinni/jni/djinni_support.hpp"
+
+CJNIEXPORT void JNICALL Java_com_dropbox_djinni_JNILoader_load(JNIEnv *env, jobject /*this*/, jlong nativeRef)
+{
+    JavaVM *jvm;
+    env->GetJavaVM(&jvm);
+    djinni::jniInit(jvm);
+}
+
+CJNIEXPORT void JNICALL Java_com_dropbox_djinni_JNILoader_unload(JNIEnv *env, jobject /*this*/, jlong nativeRef)
+{
+    djinni::jniShutdown();
+}
