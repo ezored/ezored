@@ -1,5 +1,5 @@
 # Configurations
-cmake_minimum_required(VERSION 3.20.0)
+cmake_minimum_required(VERSION 3.15.0)
 get_filename_component(CMAKE_SOURCE_REALPATH "${CMAKE_SOURCE_DIR}/../../../../" REALPATH)
 
 set(PROJECT_CONFIG_NAME

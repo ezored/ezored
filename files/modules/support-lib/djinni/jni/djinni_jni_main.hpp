@@ -18,7 +18,7 @@
 // Don't include it if your library does require a custom JNI_OnLoad implementation with custom initialization logic.
 #pragma once
 
-#include "djinni/jni/djinni_support.hpp"
+#include "djinni_support.hpp"
 
 // Called when library is loaded by the first class which uses it.
 CJNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void * /*reserved*/)
