@@ -13,9 +13,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-
+// clang-format off
+#include <Foundation/Foundation.h>
 #include "DJIError.h"
 #include <exception>
+// clang-format on
 static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for this file");
 
 namespace djinni
