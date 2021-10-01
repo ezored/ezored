@@ -21,6 +21,7 @@ class TargetConan(ConanFile):
         "sqlite3:threadsafe": 1,
         "sqlite3:build_executable": False,
         "sqlite3:omit_load_extension": True,
+        "sqlitecpp:omit_load_extension": True,
         "poco:enable_apacheconnector": False,
         "poco:enable_cppparser": False,
         "poco:enable_crypto": True,
