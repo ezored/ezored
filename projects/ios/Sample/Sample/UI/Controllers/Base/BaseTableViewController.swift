@@ -75,21 +75,21 @@ class BaseTableViewController: BaseViewController, UITableViewDelegate, UITableV
     // MARK: EVENTS
 
     func onTableViewCreateCell(tableView _: UITableView, indexPath _: IndexPath) -> UITableViewCell {
-        // Will be implemented on child
+        // will be implemented on child
         return UITableViewCell()
     }
 
     func onTableViewGetNumberOfRows(tableView _: UITableView, section _: Int) -> Int {
-        // Will be implemented on child
+        // will be implemented on child
         return 0
     }
 
     func onTableViewSelectedRow(tableView _: UITableView, indexPath _: IndexPath) {
-        // Will be implemented on child
+        // will be implemented on child
     }
 
     func onTableViewReachLastItem(tableView _: UITableView, indexPath _: IndexPath) {
-        // Will be implemented on child
+        // will be implemented on child
     }
 
     // MARK: CACHE

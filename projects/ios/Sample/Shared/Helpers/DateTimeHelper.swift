@@ -1,6 +1,6 @@
 import Foundation
 
-class DateTimeUtil {
+class DateTimeHelper {
     static func getCurrentTimeStamp() -> TimeInterval {
         return Date().timeIntervalSince1970
     }

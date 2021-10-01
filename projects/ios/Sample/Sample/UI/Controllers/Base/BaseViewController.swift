@@ -156,10 +156,15 @@ class BaseViewController: UIViewController, NetworkErrorViewProtocol {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.barTintColor = UIColor(hexString: "#D21601")!
+        navigationController?.view.backgroundColor = UIColor(hexString: "#D21601")!
     }
 
     func setupTabBar() {
+        tabBarController?.tabBar.backgroundColor = UIColor.white
         tabBarController?.tabBar.tintColor = UIColor(hexString: "#D21601")!
+        tabBarController?.tabBar.clipsToBounds = true
+        tabBarController?.tabBar.layer.borderWidth = 0.5
+        tabBarController?.tabBar.layer.borderColor = UIColor(hexString: "#E0E0E0")!.cgColor
     }
 
     func validateLoadData() {
@@ -172,7 +177,7 @@ class BaseViewController: UIViewController, NetworkErrorViewProtocol {
     }
 
     func onLoadNewData() {
-        // Will be implemented on child
+        // will be implemented on child
     }
 
     func loadData() {
@@ -190,7 +195,7 @@ class BaseViewController: UIViewController, NetworkErrorViewProtocol {
     }
 
     func onDeviceOrientationChanged() {
-        // Will be implemented on child
+        // will be implemented on child
     }
 
     // MARK: VIEWS
@@ -252,7 +257,7 @@ class BaseViewController: UIViewController, NetworkErrorViewProtocol {
     }
 
     func networkErrorViewProtocolOnAction(action _: NetworkErrorViewAction) {
-        // Will be implemented on child
+        // will be implemented on child
     }
 
     // MARK: BACK BUTTON
@@ -294,19 +299,19 @@ class BaseViewController: UIViewController, NetworkErrorViewProtocol {
 
     func validateCache() {
         if hasCache() {
-            lastCacheUpdate = lastCacheUpdate ?? DateTimeUtil.getCurrentTimeStamp()
+            lastCacheUpdate = lastCacheUpdate ?? DateTimeHelper.getCurrentTimeStamp()
 
-            let currentTime = DateTimeUtil.getCurrentTimeStamp()
+            let currentTime = DateTimeHelper.getCurrentTimeStamp()
             let expireTime = lastCacheUpdate! + cacheExpireInterval()
 
             if currentTime >= expireTime {
-                lastCacheUpdate = DateTimeUtil.getCurrentTimeStamp()
+                lastCacheUpdate = DateTimeHelper.getCurrentTimeStamp()
                 onCacheExpired()
             }
         }
     }
 
     func onCacheExpired() {
-        // Will be implemented on child
+        // will be implemented on child
     }
 }

@@ -34,7 +34,7 @@ class TodoTableViewCell: UITableViewCell {
         lbId.text = String(format: "ID: %d", todo.id)
         lbTitle.text = String(format: "Title: %@", todo.title)
         lbBody.text = String(format: "Body: %@", todo.body)
-        lbCreatedAt.text = String(format: "Created at: %@", DateTimeUtil.formatAsMysql(date: todo.createdAt))
+        lbCreatedAt.text = String(format: "Created at: %@", DateTimeHelper.formatAsMysql(date: todo.createdAt))
 
         // image
         var imageName = "IcoItemOff"

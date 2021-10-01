@@ -171,6 +171,8 @@ class HomeViewModel: NSObject, ObservableObject {
             } else {
                 server.start()
             }
+            
+            self.loadData()
         }
     }
     

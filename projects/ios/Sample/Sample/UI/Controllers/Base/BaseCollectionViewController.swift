@@ -98,7 +98,7 @@ class BaseCollectionViewController: BaseViewController, UICollectionViewDataSour
     // MARK: EVENTS
 
     func onCellLongPress(indexPath _: IndexPath) {
-        // Will be implemented on child
+        // will be implemented on child
     }
 
     @objc func onCollectionViewTappedChecker(sender: UITapGestureRecognizer) {
@@ -110,7 +110,7 @@ class BaseCollectionViewController: BaseViewController, UICollectionViewDataSour
     }
 
     func onCollectionViewSelectedCell(collectionView _: UICollectionView, indexPath _: IndexPath) {
-        // Will be implemented on child
+        // will be implemented on child
     }
 
     func onCollectionViewTapped() {
@@ -126,7 +126,7 @@ class BaseCollectionViewController: BaseViewController, UICollectionViewDataSour
     }
 
     func onCollectionViewCreateCell(collectionView _: UICollectionView, indexPath _: IndexPath) -> UICollectionViewCell {
-        // Will be implemented on child
+        // will be implemented on child
         return UICollectionViewCell()
     }
 
@@ -135,12 +135,12 @@ class BaseCollectionViewController: BaseViewController, UICollectionViewDataSour
     }
 
     func getTotalOfItems() -> Int {
-        // Will be implemented on child
+        // will be implemented on child
         return 0
     }
 
     func onCollectionViewReachLastItem(collectionView _: UICollectionView, indexPath _: IndexPath) {
-        // Will be implemented on child
+        // will be implemented on child
     }
 
     // MARK: CACHE
