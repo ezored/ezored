@@ -15,7 +15,6 @@
 //
 
 #include "DJIError.h"
-#include <Foundation/Foundation.h>
 #include <exception>
 static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for this file");
 
