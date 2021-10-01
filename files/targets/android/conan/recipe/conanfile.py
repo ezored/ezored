@@ -20,6 +20,7 @@ class TargetConan(ConanFile):
         "ezored_arch": "ANY",
         "sqlite3:threadsafe": 1,
         "sqlite3:build_executable": False,
+        "sqlite3:omit_load_extension": True,
         "poco:enable_apacheconnector": False,
         "poco:enable_cppparser": False,
         "poco:enable_crypto": True,
@@ -64,7 +65,7 @@ class TargetConan(ConanFile):
         self.requires("sqlite3/3.36.0")
         self.requires("rapidjson/1.1.0")
         self.requires("openssl/1.1.1k")
-        self.requires("sqlitecpp/2.5.0")
+        self.requires("sqlitecpp/3.1.1")
         self.requires("date/3.0.1")
         self.requires("nlohmann_json/3.9.1")
         self.requires("poco/1.11.0")

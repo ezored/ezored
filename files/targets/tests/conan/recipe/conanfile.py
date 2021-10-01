@@ -74,7 +74,7 @@ class TargetConan(ConanFile):
         self.requires("rapidjson/1.1.0")
         self.requires("poco/1.11.0")
         self.requires("openssl/1.1.1k")
-        self.requires("sqlitecpp/2.5.0")
+        self.requires("sqlitecpp/3.1.1")
         self.requires("date/3.0.1")
         self.requires("nlohmann_json/3.9.1")
         self.requires("gtest/1.11.0")

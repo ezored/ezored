@@ -16,8 +16,6 @@
 
 #pragma once
 
-#include <Foundation/Foundation.h>
-
 namespace djinni
 {
 
