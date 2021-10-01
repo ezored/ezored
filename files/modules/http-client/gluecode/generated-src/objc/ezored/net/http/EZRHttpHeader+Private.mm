@@ -17,8 +17,8 @@ auto HttpHeader::toCpp(ObjcType obj) -> CppType
 
 auto HttpHeader::fromCpp(const CppType &cpp) -> ObjcType
 {
-    return [[EZRHttpHeader alloc] initWithName:(::djinni::String::fromCpp(cpp.name))
-                                         value:(::djinni::String::fromCpp(cpp.value))];
+    return [[::EZRHttpHeader alloc] initWithName:(::djinni::String::fromCpp(cpp.name))
+                                           value:(::djinni::String::fromCpp(cpp.value))];
 }
 
 } // namespace djinni_generated

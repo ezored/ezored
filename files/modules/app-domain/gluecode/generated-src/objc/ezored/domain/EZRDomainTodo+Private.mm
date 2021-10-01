@@ -22,13 +22,13 @@ auto Todo::toCpp(ObjcType obj) -> CppType
 
 auto Todo::fromCpp(const CppType &cpp) -> ObjcType
 {
-    return [[EZRDomainTodo alloc] initWithId:(::djinni::I64::fromCpp(cpp.id))
-                                       title:(::djinni::String::fromCpp(cpp.title))
-                                       body:(::djinni::String::fromCpp(cpp.body))
-                                       data:(::djinni::Map<::djinni::String, ::djinni::String>::fromCpp(cpp.data))
-                                       done:(::djinni::Bool::fromCpp(cpp.done))
-                                       createdAt:(::djinni::Date::fromCpp(cpp.createdAt))
-                                       updatedAt:(::djinni::Date::fromCpp(cpp.updatedAt))];
+    return [[::EZRDomainTodo alloc] initWithId:(::djinni::I64::fromCpp(cpp.id))
+                                         title:(::djinni::String::fromCpp(cpp.title))
+                                         body:(::djinni::String::fromCpp(cpp.body))
+                                         data:(::djinni::Map<::djinni::String, ::djinni::String>::fromCpp(cpp.data))
+                                         done:(::djinni::Bool::fromCpp(cpp.done))
+                                         createdAt:(::djinni::Date::fromCpp(cpp.createdAt))
+                                         updatedAt:(::djinni::Date::fromCpp(cpp.updatedAt))];
 }
 
 } // namespace djinni_generated

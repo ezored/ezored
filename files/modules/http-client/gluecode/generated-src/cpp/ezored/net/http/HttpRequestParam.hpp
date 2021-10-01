@@ -23,6 +23,11 @@ struct HttpRequestParam final
         : name(std::move(name_)), value(std::move(value_))
     {
     }
+
+    HttpRequestParam()
+        : name(), value()
+    {
+    }
 };
 
 } // namespace http

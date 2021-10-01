@@ -16,7 +16,7 @@ class TodoHelper
 public:
     using CppType = std::shared_ptr<::ezored::helper::TodoHelper>;
     using CppOptType = std::shared_ptr<::ezored::helper::TodoHelper>;
-    using ObjcType = EZRHelperTodoHelper *;
+    using ObjcType = ::EZRHelperTodoHelper *;
 
     using Boxed = TodoHelper;
 

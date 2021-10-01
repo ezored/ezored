@@ -98,7 +98,7 @@ auto SharedDataHelper::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRHelperSharedDataHelper>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRHelperSharedDataHelper>(cpp);
 }
 
 } // namespace djinni_generated

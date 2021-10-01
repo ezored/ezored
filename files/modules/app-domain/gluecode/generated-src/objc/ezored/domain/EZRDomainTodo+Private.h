@@ -14,7 +14,7 @@ namespace djinni_generated
 struct Todo
 {
     using CppType = ::ezored::domain::Todo;
-    using ObjcType = EZRDomainTodo *;
+    using ObjcType = ::EZRDomainTodo *;
 
     using Boxed = Todo;
 

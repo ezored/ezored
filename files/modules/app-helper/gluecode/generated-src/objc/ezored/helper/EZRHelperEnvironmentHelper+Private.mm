@@ -60,7 +60,7 @@ auto EnvironmentHelper::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRHelperEnvironmentHelper>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRHelperEnvironmentHelper>(cpp);
 }
 
 } // namespace djinni_generated

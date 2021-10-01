@@ -16,7 +16,7 @@ class HttpServer
 public:
     using CppType = std::shared_ptr<::ezored::net::http::HttpServer>;
     using CppOptType = std::shared_ptr<::ezored::net::http::HttpServer>;
-    using ObjcType = EZRHttpServer *;
+    using ObjcType = ::EZRHttpServer *;
 
     using Boxed = HttpServer;
 

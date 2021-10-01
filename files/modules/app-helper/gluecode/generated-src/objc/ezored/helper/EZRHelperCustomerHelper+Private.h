@@ -16,7 +16,7 @@ class CustomerHelper
 public:
     using CppType = std::shared_ptr<::ezored::helper::CustomerHelper>;
     using CppOptType = std::shared_ptr<::ezored::helper::CustomerHelper>;
-    using ObjcType = EZRHelperCustomerHelper *;
+    using ObjcType = ::EZRHelperCustomerHelper *;
 
     using Boxed = CustomerHelper;
 

@@ -16,7 +16,7 @@ class TodoRepository
 public:
     using CppType = std::shared_ptr<::ezored::repository::TodoRepository>;
     using CppOptType = std::shared_ptr<::ezored::repository::TodoRepository>;
-    using ObjcType = EZRRepositoryTodoRepository *;
+    using ObjcType = ::EZRRepositoryTodoRepository *;
 
     using Boxed = TodoRepository;
 

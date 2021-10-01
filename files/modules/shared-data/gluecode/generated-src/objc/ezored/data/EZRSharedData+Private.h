@@ -16,7 +16,7 @@ class SharedData
 public:
     using CppType = std::shared_ptr<::ezored::data::SharedData>;
     using CppOptType = std::shared_ptr<::ezored::data::SharedData>;
-    using ObjcType = EZRSharedData *;
+    using ObjcType = ::EZRSharedData *;
 
     using Boxed = SharedData;
 

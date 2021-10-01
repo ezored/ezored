@@ -17,8 +17,8 @@ auto HttpRequestParam::toCpp(ObjcType obj) -> CppType
 
 auto HttpRequestParam::fromCpp(const CppType &cpp) -> ObjcType
 {
-    return [[EZRHttpRequestParam alloc] initWithName:(::djinni::String::fromCpp(cpp.name))
-                                               value:(::djinni::String::fromCpp(cpp.value))];
+    return [[::EZRHttpRequestParam alloc] initWithName:(::djinni::String::fromCpp(cpp.name))
+                                                 value:(::djinni::String::fromCpp(cpp.value))];
 }
 
 } // namespace djinni_generated

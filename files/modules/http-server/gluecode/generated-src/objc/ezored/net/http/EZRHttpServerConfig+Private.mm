@@ -17,8 +17,8 @@ auto HttpServerConfig::toCpp(ObjcType obj) -> CppType
 
 auto HttpServerConfig::fromCpp(const CppType &cpp) -> ObjcType
 {
-    return [[EZRHttpServerConfig alloc] initWithPort:(::djinni::I32::fromCpp(cpp.port))
-                                          staticPath:(::djinni::String::fromCpp(cpp.staticPath))];
+    return [[::EZRHttpServerConfig alloc] initWithPort:(::djinni::I32::fromCpp(cpp.port))
+                                            staticPath:(::djinni::String::fromCpp(cpp.staticPath))];
 }
 
 } // namespace djinni_generated

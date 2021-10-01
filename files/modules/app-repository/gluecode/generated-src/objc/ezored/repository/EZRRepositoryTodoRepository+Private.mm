@@ -154,7 +154,7 @@ auto TodoRepository::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRRepositoryTodoRepository>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRRepositoryTodoRepository>(cpp);
 }
 
 } // namespace djinni_generated

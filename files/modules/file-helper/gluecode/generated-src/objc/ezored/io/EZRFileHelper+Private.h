@@ -16,7 +16,7 @@ class FileHelper
 public:
     using CppType = std::shared_ptr<::ezored::io::FileHelper>;
     using CppOptType = std::shared_ptr<::ezored::io::FileHelper>;
-    using ObjcType = EZRFileHelper *;
+    using ObjcType = ::EZRFileHelper *;
 
     using Boxed = FileHelper;
 

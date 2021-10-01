@@ -14,7 +14,7 @@ namespace djinni_generated
 struct HttpServerConfig
 {
     using CppType = ::ezored::net::http::HttpServerConfig;
-    using ObjcType = EZRHttpServerConfig *;
+    using ObjcType = ::EZRHttpServerConfig *;
 
     using Boxed = HttpServerConfig;
 

@@ -16,7 +16,7 @@ class StringHelper
 public:
     using CppType = std::shared_ptr<::ezored::helper::StringHelper>;
     using CppOptType = std::shared_ptr<::ezored::helper::StringHelper>;
-    using ObjcType = EZRStringHelper *;
+    using ObjcType = ::EZRStringHelper *;
 
     using Boxed = StringHelper;
 

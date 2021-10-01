@@ -14,7 +14,7 @@ namespace djinni_generated
 struct InitializationData
 {
     using CppType = ::ezored::domain::InitializationData;
-    using ObjcType = EZRDomainInitializationData *;
+    using ObjcType = ::EZRDomainInitializationData *;
 
     using Boxed = InitializationData;
 

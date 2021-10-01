@@ -114,7 +114,7 @@ auto StringHelper::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRStringHelper>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRStringHelper>(cpp);
 }
 
 } // namespace djinni_generated

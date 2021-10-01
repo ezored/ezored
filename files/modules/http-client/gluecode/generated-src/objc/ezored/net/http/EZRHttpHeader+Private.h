@@ -14,7 +14,7 @@ namespace djinni_generated
 struct HttpHeader
 {
     using CppType = ::ezored::net::http::HttpHeader;
-    using ObjcType = EZRHttpHeader *;
+    using ObjcType = ::EZRHttpHeader *;
 
     using Boxed = HttpHeader;
 

@@ -16,7 +16,7 @@ class ApplicationCore
 public:
     using CppType = std::shared_ptr<::ezored::core::ApplicationCore>;
     using CppOptType = std::shared_ptr<::ezored::core::ApplicationCore>;
-    using ObjcType = EZRCoreApplicationCore *;
+    using ObjcType = ::EZRCoreApplicationCore *;
 
     using Boxed = ApplicationCore;
 

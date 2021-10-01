@@ -60,7 +60,7 @@ auto TodoHelper::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRHelperTodoHelper>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRHelperTodoHelper>(cpp);
 }
 
 } // namespace djinni_generated

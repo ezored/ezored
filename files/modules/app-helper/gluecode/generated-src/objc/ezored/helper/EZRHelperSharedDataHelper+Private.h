@@ -16,7 +16,7 @@ class SharedDataHelper
 public:
     using CppType = std::shared_ptr<::ezored::helper::SharedDataHelper>;
     using CppOptType = std::shared_ptr<::ezored::helper::SharedDataHelper>;
-    using ObjcType = EZRHelperSharedDataHelper *;
+    using ObjcType = ::EZRHelperSharedDataHelper *;
 
     using Boxed = SharedDataHelper;
 

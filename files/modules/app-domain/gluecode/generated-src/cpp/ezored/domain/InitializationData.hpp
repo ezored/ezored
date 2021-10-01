@@ -28,6 +28,11 @@ struct InitializationData final
         : appId(std::move(appId_)), name(std::move(name_)), basePath(std::move(basePath_)), databaseMigrationMaxVersion(std::move(databaseMigrationMaxVersion_)), debug(std::move(debug_))
     {
     }
+
+    InitializationData()
+        : appId(), name(), basePath(), databaseMigrationMaxVersion(), debug()
+    {
+    }
 };
 
 } // namespace domain

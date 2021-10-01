@@ -17,8 +17,8 @@ auto ResponseError::toCpp(ObjcType obj) -> CppType
 
 auto ResponseError::fromCpp(const CppType &cpp) -> ObjcType
 {
-    return [[EZRDomainResponseError alloc] initWithField:(::djinni::String::fromCpp(cpp.field))
-                                                 message:(::djinni::String::fromCpp(cpp.message))];
+    return [[::EZRDomainResponseError alloc] initWithField:(::djinni::String::fromCpp(cpp.field))
+                                                   message:(::djinni::String::fromCpp(cpp.message))];
 }
 
 } // namespace djinni_generated

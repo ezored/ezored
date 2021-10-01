@@ -16,7 +16,7 @@ class DateTime
 public:
     using CppType = std::shared_ptr<::ezored::time::DateTime>;
     using CppOptType = std::shared_ptr<::ezored::time::DateTime>;
-    using ObjcType = EZRDateTime *;
+    using ObjcType = ::EZRDateTime *;
 
     using Boxed = DateTime;
 

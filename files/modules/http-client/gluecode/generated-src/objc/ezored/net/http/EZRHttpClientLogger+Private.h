@@ -16,7 +16,7 @@ class HttpClientLogger
 public:
     using CppType = std::shared_ptr<::ezored::net::http::HttpClientLogger>;
     using CppOptType = std::shared_ptr<::ezored::net::http::HttpClientLogger>;
-    using ObjcType = EZRHttpClientLogger *;
+    using ObjcType = ::EZRHttpClientLogger *;
 
     using Boxed = HttpClientLogger;
 

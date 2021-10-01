@@ -14,7 +14,7 @@ namespace djinni_generated
 struct Response
 {
     using CppType = ::ezored::domain::Response;
-    using ObjcType = EZRDomainResponse *;
+    using ObjcType = ::EZRDomainResponse *;
 
     using Boxed = Response;
 

@@ -14,7 +14,7 @@ namespace djinni_generated
 struct ResponseError
 {
     using CppType = ::ezored::domain::ResponseError;
-    using ObjcType = EZRDomainResponseError *;
+    using ObjcType = ::EZRDomainResponseError *;
 
     using Boxed = ResponseError;
 

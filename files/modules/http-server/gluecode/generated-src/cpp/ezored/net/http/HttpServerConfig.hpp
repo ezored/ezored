@@ -24,6 +24,11 @@ struct HttpServerConfig final
         : port(std::move(port_)), staticPath(std::move(staticPath_))
     {
     }
+
+    HttpServerConfig()
+        : port(), staticPath()
+    {
+    }
 };
 
 } // namespace http

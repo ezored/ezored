@@ -31,22 +31,22 @@ auto DeviceData::toCpp(ObjcType obj) -> CppType
 
 auto DeviceData::fromCpp(const CppType &cpp) -> ObjcType
 {
-    return [[EZRDomainDeviceData alloc] initWithUniqueIdentifier:(::djinni::String::fromCpp(cpp.uniqueIdentifier))
-                                                            name:(::djinni::String::fromCpp(cpp.name))
-                                                            systemName:(::djinni::String::fromCpp(cpp.systemName))
-                                                            systemVersion:(::djinni::String::fromCpp(cpp.systemVersion))
-                                                            model:(::djinni::String::fromCpp(cpp.model))
-                                                            localizedModel:(::djinni::String::fromCpp(cpp.localizedModel))
-                                                            appVersion:(::djinni::String::fromCpp(cpp.appVersion))
-                                                            appShortVersion:(::djinni::String::fromCpp(cpp.appShortVersion))
-                                                            appName:(::djinni::String::fromCpp(cpp.appName))
-                                                            screenWidth:(::djinni::F32::fromCpp(cpp.screenWidth))
-                                                            screenHeight:(::djinni::F32::fromCpp(cpp.screenHeight))
-                                                            screenScale:(::djinni::F32::fromCpp(cpp.screenScale))
-                                                            systemOsName:(::djinni::String::fromCpp(cpp.systemOsName))
-                                                            language:(::djinni::String::fromCpp(cpp.language))
-                                                            imei:(::djinni::String::fromCpp(cpp.imei))
-                                                            region:(::djinni::String::fromCpp(cpp.region))];
+    return [[::EZRDomainDeviceData alloc] initWithUniqueIdentifier:(::djinni::String::fromCpp(cpp.uniqueIdentifier))
+                                                              name:(::djinni::String::fromCpp(cpp.name))
+                                                              systemName:(::djinni::String::fromCpp(cpp.systemName))
+                                                              systemVersion:(::djinni::String::fromCpp(cpp.systemVersion))
+                                                              model:(::djinni::String::fromCpp(cpp.model))
+                                                              localizedModel:(::djinni::String::fromCpp(cpp.localizedModel))
+                                                              appVersion:(::djinni::String::fromCpp(cpp.appVersion))
+                                                              appShortVersion:(::djinni::String::fromCpp(cpp.appShortVersion))
+                                                              appName:(::djinni::String::fromCpp(cpp.appName))
+                                                              screenWidth:(::djinni::F32::fromCpp(cpp.screenWidth))
+                                                              screenHeight:(::djinni::F32::fromCpp(cpp.screenHeight))
+                                                              screenScale:(::djinni::F32::fromCpp(cpp.screenScale))
+                                                              systemOsName:(::djinni::String::fromCpp(cpp.systemOsName))
+                                                              language:(::djinni::String::fromCpp(cpp.language))
+                                                              imei:(::djinni::String::fromCpp(cpp.imei))
+                                                              region:(::djinni::String::fromCpp(cpp.region))];
 }
 
 } // namespace djinni_generated

@@ -18,8 +18,8 @@ auto CustomerSystemServiceLoginData::toCpp(ObjcType obj) -> CppType
 
 auto CustomerSystemServiceLoginData::fromCpp(const CppType &cpp) -> ObjcType
 {
-    return [[EZRSystemServiceCustomerSystemServiceLoginData alloc] initWithResponse:(::djinni_generated::Response::fromCpp(cpp.response))
-                                                                           customer:(::djinni_generated::Customer::fromCpp(cpp.customer))];
+    return [[::EZRSystemServiceCustomerSystemServiceLoginData alloc] initWithResponse:(::djinni_generated::Response::fromCpp(cpp.response))
+                                                                             customer:(::djinni_generated::Customer::fromCpp(cpp.customer))];
 }
 
 } // namespace djinni_generated

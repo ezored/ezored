@@ -123,7 +123,7 @@ auto ApplicationCore::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRCoreApplicationCore>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRCoreApplicationCore>(cpp);
 }
 
 } // namespace djinni_generated

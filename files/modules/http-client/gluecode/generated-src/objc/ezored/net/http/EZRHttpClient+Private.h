@@ -16,7 +16,7 @@ class HttpClient
 public:
     using CppType = std::shared_ptr<::ezored::net::http::HttpClient>;
     using CppOptType = std::shared_ptr<::ezored::net::http::HttpClient>;
-    using ObjcType = EZRHttpClient *;
+    using ObjcType = ::EZRHttpClient *;
 
     using Boxed = HttpClient;
 

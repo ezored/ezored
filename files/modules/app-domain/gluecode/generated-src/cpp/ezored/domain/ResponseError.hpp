@@ -21,6 +21,11 @@ struct ResponseError final
         : field(std::move(field_)), message(std::move(message_))
     {
     }
+
+    ResponseError()
+        : field(), message()
+    {
+    }
 };
 
 } // namespace domain
