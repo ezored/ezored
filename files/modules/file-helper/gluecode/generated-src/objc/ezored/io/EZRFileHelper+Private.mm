@@ -310,7 +310,7 @@ auto FileHelper::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRFileHelper>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRFileHelper>(cpp);
 }
 
 } // namespace djinni_generated

@@ -14,7 +14,7 @@ namespace djinni_generated
 struct HttpRequest
 {
     using CppType = ::ezored::net::http::HttpRequest;
-    using ObjcType = EZRHttpRequest *;
+    using ObjcType = ::EZRHttpRequest *;
 
     using Boxed = HttpRequest;
 

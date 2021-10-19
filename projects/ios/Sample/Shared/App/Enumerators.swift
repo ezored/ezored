@@ -18,4 +18,6 @@ enum OptionTypeEnum {
     case fileHelper
     case appVersion
     case todo
+    case webServer
+    case webView
 }

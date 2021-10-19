@@ -20,10 +20,10 @@ auto HttpResponse::toCpp(ObjcType obj) -> CppType
 
 auto HttpResponse::fromCpp(const CppType &cpp) -> ObjcType
 {
-    return [[EZRHttpResponse alloc] initWithCode:(::djinni::I32::fromCpp(cpp.code))
-                                            body:(::djinni::String::fromCpp(cpp.body))
-                                            url:(::djinni::String::fromCpp(cpp.url))
-                                            headers:(::djinni::List<::djinni_generated::HttpHeader>::fromCpp(cpp.headers))];
+    return [[::EZRHttpResponse alloc] initWithCode:(::djinni::I32::fromCpp(cpp.code))
+                                              body:(::djinni::String::fromCpp(cpp.body))
+                                              url:(::djinni::String::fromCpp(cpp.url))
+                                              headers:(::djinni::List<::djinni_generated::HttpHeader>::fromCpp(cpp.headers))];
 }
 
 } // namespace djinni_generated

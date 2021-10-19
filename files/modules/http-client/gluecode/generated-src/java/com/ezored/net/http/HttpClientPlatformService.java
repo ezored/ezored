@@ -25,6 +25,7 @@ public abstract class HttpClientPlatformService {
             boolean destroyed = this.destroyed.getAndSet(true);
             if (!destroyed) nativeDestroy(this.nativeRef);
         }
+        @SuppressWarnings("deprecation")
         protected void finalize() throws java.lang.Throwable
         {
             _djinni_private_destroy();

@@ -31,6 +31,7 @@ def download(
     file_url = "{0}/{1}/{2}".format(aws_s3_url, version, dist_file_name)
 
     try:
+        file.create_dir(os.path.dirname(dist_file_path))
         net.download(file_url, dist_file_path)
     except Exception as e:
         log.error("Error when download file {0}: {1}".format(file_url, e))

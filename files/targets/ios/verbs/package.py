@@ -74,6 +74,7 @@ def run(params):
             target_name,
             "scripts",
         ),
+        symlinks=True,
     )
 
     # cocoapods
@@ -98,6 +99,27 @@ def run(params):
         pod_file_path,
         target_pod_file_path,
     )
+
+    # xcframework group dir
+    if not no_xcframework:
+        if build_types and len(build_types) > 0:
+            for build_type in build_types:
+                xcframework_dir = os.path.join(
+                    dist_dir,
+                    build_type,
+                    "{0}.xcframework".format(target_config["project_name"]),
+                )
+
+                found_dirs = file.find_dirs_simple(xcframework_dir, "*")
+
+                if found_dirs:
+                    first_group = os.path.basename(found_dirs[0])
+
+                    file.replace_in_file(
+                        target_pod_file_path,
+                        "{XCFRAMEWORK_" + build_type.upper() + "_GROUP_DIR}",
+                        first_group,
+                    )
 
     file.replace_in_file(target_pod_file_path, "{NAME}", target_config["project_name"])
     file.replace_in_file(target_pod_file_path, "{VERSION}", target_config["version"])
@@ -137,7 +159,11 @@ def generate_framework(proj_path, target_name, target_config, archs, build_types
                 )
 
                 file.remove_dir(dist_dir)
-                file.copy_dir(framework_dir, dist_dir, symlinks=True)
+                file.copy_dir(
+                    framework_dir,
+                    dist_dir,
+                    symlinks=True,
+                )
 
                 # update info plist file
                 plist_path = os.path.join(
@@ -185,11 +211,35 @@ def generate_framework(proj_path, target_name, target_config, archs, build_types
                     "lipo",
                     "-create",
                     "-output",
-                    os.path.join(dist_dir, target_config["project_name"]),
                 ]
 
-                lipo_args.extend(lipo_archs_args)
+                if file.dir_exists(
+                    os.path.join(
+                        dist_dir,
+                        "Versions",
+                    )
+                ):
+                    lipo_args.extend(
+                        [
+                            os.path.join(
+                                dist_dir,
+                                "Versions",
+                                "A",
+                                target_config["project_name"],
+                            ),
+                        ]
+                    )
+                else:
+                    lipo_args.extend(
+                        [
+                            os.path.join(
+                                dist_dir,
+                                target_config["project_name"],
+                            ),
+                        ]
+                    )
 
+                lipo_args.extend(lipo_archs_args)
                 runner.run(lipo_args, proj_path)
 
                 # check file
@@ -278,7 +328,11 @@ def generate_xcframework(proj_path, target_name, target_config, archs, build_typ
                     )
 
                     file.remove_dir(group_xcframework_dir)
-                    file.copy_dir(framework_dir, group_xcframework_dir, symlinks=True)
+                    file.copy_dir(
+                        framework_dir,
+                        group_xcframework_dir,
+                        symlinks=True,
+                    )
 
                     # generate single framework for group
                     lipo_archs_args = []
@@ -306,13 +360,35 @@ def generate_xcframework(proj_path, target_name, target_config, archs, build_typ
                         "lipo",
                         "-create",
                         "-output",
-                        os.path.join(
-                            group_xcframework_dir, target_config["project_name"]
-                        ),
                     ]
 
-                    lipo_args.extend(lipo_archs_args)
+                    if file.dir_exists(
+                        os.path.join(
+                            group_xcframework_dir,
+                            "Versions",
+                        )
+                    ):
+                        lipo_args.extend(
+                            [
+                                os.path.join(
+                                    group_xcframework_dir,
+                                    "Versions",
+                                    "A",
+                                    target_config["project_name"],
+                                ),
+                            ]
+                        )
+                    else:
+                        lipo_args.extend(
+                            [
+                                os.path.join(
+                                    group_xcframework_dir,
+                                    target_config["project_name"],
+                                ),
+                            ]
+                        )
 
+                    lipo_args.extend(lipo_archs_args)
                     runner.run(lipo_args, proj_path)
 
                 # generate xcframework

@@ -3,6 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_settings">Configurações</string>
     <string name="title_todo_list">Lista de ToDo</string>
+    <string name="title_web_view">Navegador</string>
     <string name="dialog_button_cancel">Cancelar</string>
     <string name="dialog_button_no">Não</string>
     <string name="dialog_button_ok">OK</string>
@@ -19,6 +20,8 @@
     <string name="option_shared_data">Shared Data: O valor é %s</string>
     <string name="option_file_helper">File helper (tamanho do arquivo)</string>
     <string name="option_todo">Lista de ToDo</string>
+    <string name="option_web_server">Servidor web: %s</string>
+    <string name="option_web_view">Navegador</string>
     <string name="search_hint">Pesquisar…</string>
     <string name="search_title">Pesquisar</string>
 </resources>

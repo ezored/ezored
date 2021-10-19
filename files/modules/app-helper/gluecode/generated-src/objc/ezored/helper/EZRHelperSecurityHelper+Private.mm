@@ -60,7 +60,7 @@ auto SecurityHelper::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRHelperSecurityHelper>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRHelperSecurityHelper>(cpp);
 }
 
 } // namespace djinni_generated

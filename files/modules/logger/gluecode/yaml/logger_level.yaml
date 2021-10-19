@@ -31,7 +31,7 @@ jni:
   typename: jobject
   typeSignature: 'Lcom/ezored/util/LoggerLevel;'
 cs:
-  translator: '::djinni::Enum<::ezored::util::LoggerLevel, LoggerLevel>'
+  translator: '::djinni::Enum<::ezored::util::LoggerLevel, ::LoggerLevel>'
   header: '"LoggerLevel.hpp"'
   typename: LoggerLevel
   reference: false

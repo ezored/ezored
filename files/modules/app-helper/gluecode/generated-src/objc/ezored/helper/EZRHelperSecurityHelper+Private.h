@@ -16,7 +16,7 @@ class SecurityHelper
 public:
     using CppType = std::shared_ptr<::ezored::helper::SecurityHelper>;
     using CppOptType = std::shared_ptr<::ezored::helper::SecurityHelper>;
-    using ObjcType = EZRHelperSecurityHelper *;
+    using ObjcType = ::EZRHelperSecurityHelper *;
 
     using Boxed = SecurityHelper;
 

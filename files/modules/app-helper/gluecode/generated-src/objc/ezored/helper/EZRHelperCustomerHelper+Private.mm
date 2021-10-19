@@ -90,7 +90,7 @@ auto CustomerHelper::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRHelperCustomerHelper>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRHelperCustomerHelper>(cpp);
 }
 
 } // namespace djinni_generated

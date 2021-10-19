@@ -14,6 +14,7 @@
 "TitleHome" = "Home";
 "TitleSettings" = "Settings";
 "TitleListTodo" = "ToDo List";
+"TitleWebView" = "Navigator";
 
 "OptionSharedData" = "Shared Data: The value is";
 "OptionHttpRequest" = "HTTP Request";
@@ -22,6 +23,8 @@
 "OptionFileHelper" = "File helper (file size)";
 "OptionAppVersion" = "App version";
 "OptionTodo" = "ToDo List";
+"OptionWebServer" = "Web server:";
+"OptionWebView" = "Navigator";
 
 "SimpleSearchBarHintText" = "Search...";
 "SimpleSearchBarBtReset" = "Reset";

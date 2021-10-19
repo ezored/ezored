@@ -15,8 +15,8 @@
 //
 
 #include "djinni_support.hpp"
-#include "../djinni_common.hpp"
-#include "../proxy_cache_impl.hpp"
+#include "djinni/djinni_common.hpp"
+#include "djinni/proxy_cache_impl.hpp"
 #include <cassert>
 #include <cstdlib>
 #include <cstring>
@@ -88,7 +88,12 @@ JNIEnv *jniGetThreadEnv()
 #ifdef EXPERIMENTAL_AUTO_CPP_THREAD_ATTACH
     if (get_res == JNI_EDETACHED)
     {
+#ifdef __ANDROID__
         get_res = g_cachedJVM->AttachCurrentThread(&env, nullptr);
+#else
+        get_res = g_cachedJVM->AttachCurrentThread(reinterpret_cast<void **>(&env), nullptr);
+#endif
+
         thread_local struct DetachOnExit
         {
             ~DetachOnExit()
@@ -734,8 +739,8 @@ void jniDefaultSetPendingFromCurrent(JNIEnv *env, const char * /*ctx*/) noexcept
 {
 
     /* It is necessary to go through a layer of indirection here because this
-    function is marked noexcept, but the implementation may still throw. 
-    Any exceptions which are not caught (i.e. exceptions which aren't 
+    function is marked noexcept, but the implementation may still throw.
+    Any exceptions which are not caught (i.e. exceptions which aren't
     std::exception subclasses) will result in a call to terminate() since this
     function is marked noexcept */
 

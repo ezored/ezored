@@ -164,7 +164,7 @@ auto Logger::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRLogger>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRLogger>(cpp);
 }
 
 } // namespace djinni_generated

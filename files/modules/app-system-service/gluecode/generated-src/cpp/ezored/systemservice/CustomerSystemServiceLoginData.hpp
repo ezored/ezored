@@ -22,6 +22,11 @@ struct CustomerSystemServiceLoginData final
         : response(std::move(response_)), customer(std::move(customer_))
     {
     }
+
+    CustomerSystemServiceLoginData()
+        : response(), customer()
+    {
+    }
 };
 
 } // namespace systemservice

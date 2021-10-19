@@ -34,6 +34,11 @@ struct Todo final
         : id(std::move(id_)), title(std::move(title_)), body(std::move(body_)), data(std::move(data_)), done(std::move(done_)), createdAt(std::move(createdAt_)), updatedAt(std::move(updatedAt_))
     {
     }
+
+    Todo()
+        : id(), title(), body(), data(), done(), createdAt(), updatedAt()
+    {
+    }
 };
 
 } // namespace domain

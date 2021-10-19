@@ -1,6 +1,7 @@
 package com.ezored.sample.app
 
 import android.content.IntentFilter
+import android.content.res.AssetManager
 import android.os.StrictMode
 import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
@@ -14,8 +15,11 @@ import com.ezored.io.FileHelper
 import com.ezored.io.FileHelperPlatformServiceImpl
 import com.ezored.net.http.HttpClient
 import com.ezored.net.http.HttpClientPlatformServiceImpl
+import com.ezored.net.http.HttpServer
+import com.ezored.net.http.HttpServerConfig
 import com.ezored.sample.BuildConfig
 import com.ezored.sample.data.AppData
+import com.ezored.sample.extension.copyAssetFolder
 import com.ezored.sample.observer.AppLifecycleObserver
 import com.ezored.sample.receiver.ConnectivityChangeReceiver
 import com.ezored.sample.util.EnvironmentUtil
@@ -76,6 +80,7 @@ class Application : MultiDexApplication() {
             initializeHttpClient()
             initializeFileHelper()
             initializeCore()
+            initializeHttpServer()
         } catch (e: UnsatisfiedLinkError) {
             Log.e(LOG_GROUP, "Could not load native library: " + e.message)
             e.printStackTrace()
@@ -129,6 +134,40 @@ class Application : MultiDexApplication() {
                     .build()
             )
         }
+    }
+
+    private fun initializeHttpServer() {
+        Logger.i("[Application : initializeHttpServer]")
+
+        val basePath = ApplicationCore.shared().initializationData.basePath
+        val targetFolder = FileHelper.join(basePath, "webapp")
+
+        FileHelper.removeDir(targetFolder)
+
+        val assetManager: AssetManager = assets
+        assetManager.copyAssetFolder(
+            "webapp",
+            targetFolder
+        )
+
+        val config = HttpServerConfig(9090, "")
+        HttpServer.shared().initialize(config)
+        startHttpServer()
+
+        Logger.i("[Application : initializeHttpServer] Server: " + HttpServer.shared().socketAddress)
+    }
+
+    private fun startHttpServer() {
+        Logger.i("[Application : startHttpServer]")
+
+        HttpServer.shared().stop()
+        HttpServer.shared().start()
+    }
+
+    private fun stopHttpServer() {
+        Logger.i("[Application : stopHttpServer]")
+
+        HttpServer.shared().stop()
     }
 
     companion object {

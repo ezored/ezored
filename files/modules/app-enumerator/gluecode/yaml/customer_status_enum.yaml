@@ -31,7 +31,7 @@ jni:
   typename: jobject
   typeSignature: 'Lcom/ezored/enumerator/CustomerStatusEnum;'
 cs:
-  translator: '::djinni::Enum<::ezored::enumerator::CustomerStatusEnum, CustomerStatusEnum>'
+  translator: '::djinni::Enum<::ezored::enumerator::CustomerStatusEnum, ::CustomerStatusEnum>'
   header: '"CustomerStatusEnum.hpp"'
   typename: CustomerStatusEnum
   reference: false

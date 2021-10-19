@@ -20,10 +20,10 @@ auto Response::toCpp(ObjcType obj) -> CppType
 
 auto Response::fromCpp(const CppType &cpp) -> ObjcType
 {
-    return [[EZRDomainResponse alloc] initWithSuccess:(::djinni::Bool::fromCpp(cpp.success))
-                                              message:(::djinni::String::fromCpp(cpp.message))
-                                              error:(::djinni_generated::ResponseError::fromCpp(cpp.error))
-                                              hasError:(::djinni::Bool::fromCpp(cpp.hasError))];
+    return [[::EZRDomainResponse alloc] initWithSuccess:(::djinni::Bool::fromCpp(cpp.success))
+                                                message:(::djinni::String::fromCpp(cpp.message))
+                                                error:(::djinni_generated::ResponseError::fromCpp(cpp.error))
+                                                hasError:(::djinni::Bool::fromCpp(cpp.hasError))];
 }
 
 } // namespace djinni_generated

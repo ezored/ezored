@@ -25,7 +25,7 @@ struct ToDoListView: View {
                                     Text("ID: \(item.id)")
                                     Text("Title: \(item.title)")
                                     Text("Body: \(item.body)")
-                                    Text("Created at: \(DateTimeUtil.formatAsMysql(date: item.createdAt))")
+                                    Text("Created at: \(DateTimeHelper.formatAsMysql(date: item.createdAt))")
                                 }
                                 .foregroundColor(Color(mainColor))
                             }

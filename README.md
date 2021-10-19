@@ -4,9 +4,9 @@
     </a>
     <br>
     <br>
-    C++ multi-platform toolkit template
+    C++ Multiplatform Toolkit Template
     <br>
-    Ezored philosophy: write once and compile anywhere
+    Ezored Philosophy: Write Once And Compile Anywhere
     <br>
 </p>
 
@@ -23,13 +23,19 @@
 
 ## About
 
-Ezored enable you call C++ native code from your project in Swift, ObjectiveC, Java, Kotlin, Cordova, Flutter and others platforms where C++ can be used.
+Single codebase for the business logic with Ezored.
+
+Ezored multiplatform toolkit template allows you to use a single codebase for the business logic of mobile and desktop apps.
+
+You only need to write platform-specific code where it’s necessary, for example to implement a native UI or when working with platform-specific APIs.
+
+## Template
 
 This template aim to let you thinking about your project code instead of it structure and organization.
 
 Download this template and check samples to test and see it working on mobile and desktop.
 
-Every command to generate, publish, prepare, format etc can be executed from command line and you can use any editor to work with Ezored.
+Every command to setup, prepare, publish and generate final binary can be executed from command line and you can use any editor to work with Ezored.
 
 Each piece of code is separated by modules, making easy extend with your custom code or any C++ code and library.
 

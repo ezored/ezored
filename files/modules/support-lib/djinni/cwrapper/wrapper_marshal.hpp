@@ -126,16 +126,16 @@ std::unique_ptr<DjinniType> Primitive<CppType, DjinniType>::newOptional(CppType 
 
 } // namespace optionals
 
-// Throw in cpp exception coming from Python
+// Throw in cpp exception coming from front-end
 void cw_throw_if_pending();
-void cw_throw_exception(Handle<DjinniPythonExceptionHandle> e_handle); // weak
-void cw_default_throw_exception(djinni::Handle<DjinniPythonExceptionHandle> e_handle);
+void cw_throw_exception(Handle<DjinniFrontEndExceptionHandle> e_handle); // weak
+void cw_default_throw_exception(djinni::Handle<DjinniFrontEndExceptionHandle> e_handle);
 
-// Register in the exception state a handle to the current exception that occured in either python or cpp user code
-// to allow Python to retrieve the exception
+// Register in the exception state a handle to the current exception that occured in either
+// front-end or cpp user code to allow the front-end to retrieve the exception
 void cw_set_pending_exception(const std::exception_ptr &e_ptr);
-djinni::Handle<DjinniPythonExceptionHandle> cw_get_py_exception(const std::exception_ptr &e_ptr) noexcept; // weak
-djinni::Handle<DjinniPythonExceptionHandle> cw_default_get_py_exception(const std::exception_ptr &e_ptr) noexcept;
+djinni::Handle<DjinniFrontEndExceptionHandle> cw_get_front_end_exception(const std::exception_ptr &e_ptr) noexcept; // weak
+djinni::Handle<DjinniFrontEndExceptionHandle> cw_default_get_front_end_exception(const std::exception_ptr &e_ptr) noexcept;
 
 #define CW_TRANSLATE_EXCEPTIONS_RETURN(ret)                         \
     catch (const std::exception &)                                  \
@@ -144,19 +144,19 @@ djinni::Handle<DjinniPythonExceptionHandle> cw_default_get_py_exception(const st
         return ret;                                                 \
     }
 
-class py_exception : public std::exception
+class front_end_exception : public std::exception
 {
 public:
-    explicit py_exception(Handle<DjinniPythonExceptionHandle> py_e_handle) : m_python_exception(std::move(py_e_handle)){};
-    Handle<DjinniPythonExceptionHandle> takePyException()
+    explicit front_end_exception(Handle<DjinniFrontEndExceptionHandle> handle) : m_front_end_exception(std::move(handle)){};
+    Handle<DjinniFrontEndExceptionHandle> takeFrontEndException()
     {
-        auto aux = std::move(m_python_exception);
-        m_python_exception = nullptr;
+        auto aux = std::move(m_front_end_exception);
+        m_front_end_exception = nullptr;
         return aux;
     }
 
 private:
-    Handle<DjinniPythonExceptionHandle> m_python_exception;
+    Handle<DjinniFrontEndExceptionHandle> m_front_end_exception;
 };
 
 } // namespace djinni

@@ -14,7 +14,7 @@ namespace djinni_generated
 struct DeviceData
 {
     using CppType = ::ezored::domain::DeviceData;
-    using ObjcType = EZRDomainDeviceData *;
+    using ObjcType = ::EZRDomainDeviceData *;
 
     using Boxed = DeviceData;
 

@@ -23,11 +23,11 @@ auto HttpRequest::toCpp(ObjcType obj) -> CppType
 
 auto HttpRequest::fromCpp(const CppType &cpp) -> ObjcType
 {
-    return [[EZRHttpRequest alloc] initWithUrl:(::djinni::String::fromCpp(cpp.url))
-                                        method:(::djinni::Enum<::ezored::net::http::HttpMethod, EZRHttpMethod>::fromCpp(cpp.method))
-                                        params:(::djinni::List<::djinni_generated::HttpRequestParam>::fromCpp(cpp.params))
-                                        headers:(::djinni::List<::djinni_generated::HttpHeader>::fromCpp(cpp.headers))
-                                        body:(::djinni::String::fromCpp(cpp.body))];
+    return [[::EZRHttpRequest alloc] initWithUrl:(::djinni::String::fromCpp(cpp.url))
+                                          method:(::djinni::Enum<::ezored::net::http::HttpMethod, EZRHttpMethod>::fromCpp(cpp.method))
+                                          params:(::djinni::List<::djinni_generated::HttpRequestParam>::fromCpp(cpp.params))
+                                          headers:(::djinni::List<::djinni_generated::HttpHeader>::fromCpp(cpp.headers))
+                                          body:(::djinni::String::fromCpp(cpp.body))];
 }
 
 } // namespace djinni_generated

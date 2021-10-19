@@ -1,3 +1,9 @@
+import os
+
+from files.core import const
+from files.config import gluecode as config
+
+
 def run(proj_path, target_name, params):
     return {
         "project_name": "ezored",
@@ -14,26 +20,8 @@ def run(proj_path, target_name, params):
                 "group": "ios",
             },
             {
-                "arch": "armv7s",
-                "conan_arch": "armv7s",
-                "conan_profile": "ezored_ios_profile",
-                "min_version": "9.0",
-                "supported_platform": "iPhoneOS",
-                "enable_bitcode": True,
-                "group": "ios",
-            },
-            {
                 "arch": "arm64",
                 "conan_arch": "armv8",
-                "conan_profile": "ezored_ios_profile",
-                "min_version": "9.0",
-                "supported_platform": "iPhoneOS",
-                "enable_bitcode": True,
-                "group": "ios",
-            },
-            {
-                "arch": "arm64e",
-                "conan_arch": "armv8.3",
                 "conan_profile": "ezored_ios_profile",
                 "min_version": "9.0",
                 "supported_platform": "iPhoneOS",
@@ -56,6 +44,16 @@ def run(proj_path, target_name, params):
                 "min_version": "13.0",
                 "supported_platform": "MacOSX",
                 "enable_bitcode": False,
+                "group": "ios_catalyst",
+                "build_min_version": "10.15",
+            },
+            {
+                "arch": "arm64",
+                "conan_arch": "armv8",
+                "conan_profile": "ezored_catalyst_profile",
+                "min_version": "13.0",
+                "supported_platform": "MacOSX",
+                "enable_bitcode": True,
                 "group": "ios_catalyst",
                 "build_min_version": "10.15",
             },
@@ -105,71 +103,67 @@ def run(proj_path, target_name, params):
                 "group": "watchos_simulator",
             },
         ],
-        "install_headers": [
-            {
-                "type": "dir",
-                "path": "files/modules/app-domain/gluecode/generated-src/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/app-enumerator/gluecode/generated-src/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/app-core/gluecode/generated-src/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/app-repository/gluecode/generated-src/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/app-system-service/gluecode/generated-src/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/app-helper/gluecode/generated-src/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/datetime/gluecode/generated-src/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/file-helper/gluecode/generated-src/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/http-client/gluecode/generated-src/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/shared-data/gluecode/generated-src/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/logger/gluecode/generated-src/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/string-helper/gluecode/generated-src/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/file-helper/implementation/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/logger/implementation/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/shared-data/implementation/objc",
-            },
-            {
-                "type": "dir",
-                "path": "files/modules/http-client/implementation/objc",
-            },
-        ],
         "umbrella_header": "Ezored.h",
+        "install_headers": get_header_dir_list(
+            proj_path,
+            target_name,
+            params,
+        ),
     }
+
+
+def get_header_dir_list(proj_path, target_name, params):
+    result = []
+    filter_gen_src = []
+    filter_impl_src = []
+
+    # check modules folder
+    modules_path = os.path.join(
+        proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_MODULES
+    )
+
+    if os.path.isdir(modules_path):
+        gluecode_config = config.run(proj_path, None, params)
+        modules = gluecode_config["modules"]
+
+        if modules:
+            for m in modules:
+                gluecode_dir = os.path.join(
+                    modules_path,
+                    m,
+                    const.DIR_NAME_GLUECODE,
+                )
+
+                module_gen_dir = os.path.join(
+                    gluecode_dir,
+                    "generated-src",
+                    "objc",
+                )
+                module_impl_dir = os.path.join(
+                    modules_path,
+                    m,
+                    "implementation",
+                    "objc",
+                )
+
+                # generated src
+                if m not in filter_gen_src:
+                    if os.path.isdir(module_gen_dir):
+                        result.append(
+                            {
+                                "type": "dir",
+                                "path": module_gen_dir,
+                            }
+                        )
+
+                # implementation
+                if m not in filter_impl_src:
+                    if os.path.isdir(module_impl_dir):
+                        result.append(
+                            {
+                                "type": "dir",
+                                "path": module_impl_dir,
+                            }
+                        )
+
+    return result

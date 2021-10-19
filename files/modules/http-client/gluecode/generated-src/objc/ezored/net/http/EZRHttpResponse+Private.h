@@ -14,7 +14,7 @@ namespace djinni_generated
 struct HttpResponse
 {
     using CppType = ::ezored::net::http::HttpResponse;
-    using ObjcType = EZRHttpResponse *;
+    using ObjcType = ::EZRHttpResponse *;
 
     using Boxed = HttpResponse;
 

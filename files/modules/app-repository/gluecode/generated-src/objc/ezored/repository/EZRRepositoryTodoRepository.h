@@ -14,16 +14,18 @@
 
 + (nonnull NSArray<EZRDomainTodo *> *)findByTitle:(nonnull NSString *)title;
 
-+ (void)removeById:(int64_t)id;
++ (BOOL)removeById:(int64_t)id;
 
-+ (void)update:(int64_t)id
-          todo:(nonnull EZRDomainTodo *)todo;
++ (int64_t)update:(int64_t)id
+             todo:(nonnull EZRDomainTodo *)todo;
 
 + (int64_t)insert:(nonnull EZRDomainTodo *)todo;
 
 + (int64_t)add:(nonnull EZRDomainTodo *)todo;
 
-+ (void)setDoneById:(int64_t)id
++ (BOOL)setDoneById:(int64_t)id
                done:(BOOL)done;
+
++ (int64_t)count;
 
 @end

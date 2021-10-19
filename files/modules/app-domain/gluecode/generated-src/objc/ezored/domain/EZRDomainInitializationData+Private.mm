@@ -20,11 +20,11 @@ auto InitializationData::toCpp(ObjcType obj) -> CppType
 
 auto InitializationData::fromCpp(const CppType &cpp) -> ObjcType
 {
-    return [[EZRDomainInitializationData alloc] initWithAppId:(::djinni::String::fromCpp(cpp.appId))
-                                                         name:(::djinni::String::fromCpp(cpp.name))
-                                                         basePath:(::djinni::String::fromCpp(cpp.basePath))
-                                                         databaseMigrationMaxVersion:(::djinni::I32::fromCpp(cpp.databaseMigrationMaxVersion))
-                                                         debug:(::djinni::Bool::fromCpp(cpp.debug))];
+    return [[::EZRDomainInitializationData alloc] initWithAppId:(::djinni::String::fromCpp(cpp.appId))
+                                                           name:(::djinni::String::fromCpp(cpp.name))
+                                                           basePath:(::djinni::String::fromCpp(cpp.basePath))
+                                                           databaseMigrationMaxVersion:(::djinni::I32::fromCpp(cpp.databaseMigrationMaxVersion))
+                                                           debug:(::djinni::Bool::fromCpp(cpp.debug))];
 }
 
 } // namespace djinni_generated

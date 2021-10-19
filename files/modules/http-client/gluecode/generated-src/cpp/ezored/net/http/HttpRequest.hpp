@@ -33,6 +33,11 @@ struct HttpRequest final
         : url(std::move(url_)), method(std::move(method_)), params(std::move(params_)), headers(std::move(headers_)), body(std::move(body_))
     {
     }
+
+    HttpRequest()
+        : url(), method(), params(), headers(), body()
+    {
+    }
 };
 
 } // namespace http

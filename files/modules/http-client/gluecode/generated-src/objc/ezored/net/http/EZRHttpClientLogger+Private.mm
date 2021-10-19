@@ -71,7 +71,7 @@ auto HttpClientLogger::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRHttpClientLogger>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRHttpClientLogger>(cpp);
 }
 
 } // namespace djinni_generated

@@ -21,7 +21,7 @@ class TodoListFragment : BaseListFragment<Todo>(), TodoAdapter.TodoAdapterListen
     override val fragmentLayout: Int
         get() = R.layout.fragment_todo_list
 
-    override val screenNameForAnalytics: String?
+    override val screenNameForAnalytics: String
         get() = "ToDo List"
 
     override fun createAll(view: View) {

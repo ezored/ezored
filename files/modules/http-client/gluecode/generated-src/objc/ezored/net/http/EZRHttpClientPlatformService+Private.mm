@@ -93,7 +93,7 @@ auto HttpClientPlatformService::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return cppPtr->djinni_private_get_proxied_objc_object();
     }
-    return ::djinni::get_cpp_proxy<EZRHttpClientPlatformServiceCppProxy>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRHttpClientPlatformServiceCppProxy>(cpp);
 }
 
 } // namespace djinni_generated

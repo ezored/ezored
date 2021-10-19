@@ -1,0 +1,18 @@
+http_server_config = record {
+    port: i32;
+    static_path: string;
+} deriving(parcelable)
+
+http_server = interface +c {
+    static shared(): http_server;
+    initialize(config: http_server_config);
+    get_config(): http_server_config;
+    start();
+    stop();
+    wait_for_termination();
+    get_socket_port(): i32;
+    get_socket_host(): string;
+    get_socket_address(): string;
+    is_socket_secure(): bool;
+    is_running(): bool;
+}

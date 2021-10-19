@@ -26,6 +26,11 @@ struct Response final
         : success(std::move(success_)), message(std::move(message_)), error(std::move(error_)), hasError(std::move(hasError_))
     {
     }
+
+    Response()
+        : success(), message(), error(), hasError()
+    {
+    }
 };
 
 } // namespace domain

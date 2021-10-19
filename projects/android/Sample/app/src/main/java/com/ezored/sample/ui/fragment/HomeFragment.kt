@@ -12,6 +12,7 @@ import com.ezored.net.http.HttpHeader
 import com.ezored.net.http.HttpMethod
 import com.ezored.net.http.HttpRequest
 import com.ezored.net.http.HttpRequestParam
+import com.ezored.net.http.HttpServer
 import com.ezored.repository.TodoRepository
 import com.ezored.sample.R
 import com.ezored.sample.adapter.SimpleOptionAdapter
@@ -19,6 +20,7 @@ import com.ezored.sample.enumerator.LoadStateEnum
 import com.ezored.sample.enumerator.SimpleOptionTypeEnum
 import com.ezored.sample.model.SimpleOption
 import com.ezored.sample.ui.activity.TodoListActivity
+import com.ezored.sample.ui.activity.WebViewActivity
 import com.ezored.sample.ui.fragment.base.BaseListFragment
 import com.ezored.sample.util.UIUtil
 import kotlinx.coroutines.Dispatchers
@@ -31,7 +33,7 @@ class HomeFragment :
     BaseListFragment<SimpleOption>(),
     SimpleOptionAdapter.SimpleOptionAdapterListener {
 
-    override val screenNameForAnalytics: String?
+    override val screenNameForAnalytics: String
         get() = "Home"
 
     override fun createAll(view: View) {
@@ -51,6 +53,8 @@ class HomeFragment :
         list.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
         list.add(SimpleOption(SimpleOptionTypeEnum.FILE_HELPER))
         list.add(SimpleOption(SimpleOptionTypeEnum.TODO))
+        list.add(SimpleOption(SimpleOptionTypeEnum.WEB_SERVER))
+        list.add(SimpleOption(SimpleOptionTypeEnum.WEB_VIEW))
 
         listData?.value = list
 
@@ -64,6 +68,8 @@ class HomeFragment :
             option.type == SimpleOptionTypeEnum.SECRET_KEY -> doActionSecretKey()
             option.type == SimpleOptionTypeEnum.TODO -> doActionTodo()
             option.type == SimpleOptionTypeEnum.FILE_HELPER -> doActionFileHelper()
+            option.type == SimpleOptionTypeEnum.WEB_SERVER -> doActionWebServer()
+            option.type == SimpleOptionTypeEnum.WEB_VIEW -> doActionWebView()
         }
     }
 
@@ -157,24 +163,28 @@ class HomeFragment :
         showLoadingView()
 
         launch(Dispatchers.IO) {
-            TodoRepository.truncate()
+            val count = TodoRepository.count()
 
-            for (i in 1..100) {
-                val todo = Todo(
-                    0,
-                    String.format(Locale.getDefault(), "Title %d", i),
-                    String.format(
-                        Locale.getDefault(),
-                        "New TODO item description: %d",
-                        i
-                    ),
-                    HashMap(),
-                    false,
-                    Date(),
-                    Date()
-                )
+            if (count == 0L) {
+                TodoRepository.truncate()
 
-                TodoRepository.add(todo)
+                for (i in 1..100) {
+                    val todo = Todo(
+                        0,
+                        String.format(Locale.getDefault(), "Title %d", i),
+                        String.format(
+                            Locale.getDefault(),
+                            "New TODO item description: %d",
+                            i
+                        ),
+                        HashMap(),
+                        false,
+                        Date(),
+                        Date()
+                    )
+
+                    TodoRepository.add(todo)
+                }
             }
 
             withContext(Dispatchers.Main) {
@@ -185,6 +195,27 @@ class HomeFragment :
                     startActivity(intent)
                 }
             }
+        }
+    }
+
+    private fun doActionWebServer() {
+        launch {
+            context?.let {
+                if (HttpServer.shared().isRunning) {
+                    HttpServer.shared().stop()
+                } else {
+                    HttpServer.shared().start()
+                }
+
+                adapter.notifyItemChanged(5)
+            }
+        }
+    }
+
+    private fun doActionWebView() {
+        context?.let {
+            val intent = WebViewActivity.newIntent(it)
+            startActivity(intent)
         }
     }
 

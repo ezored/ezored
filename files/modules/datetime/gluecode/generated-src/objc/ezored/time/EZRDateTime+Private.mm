@@ -170,7 +170,7 @@ auto DateTime::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRDateTime>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRDateTime>(cpp);
 }
 
 } // namespace djinni_generated

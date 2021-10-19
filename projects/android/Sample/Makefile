@@ -16,4 +16,3 @@ remove-trash:
 
 format:
 	ktlint -F "app/**/*.kt"
-

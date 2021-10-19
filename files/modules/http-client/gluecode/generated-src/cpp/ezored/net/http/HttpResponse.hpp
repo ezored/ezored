@@ -30,6 +30,11 @@ struct HttpResponse final
         : code(std::move(code_)), body(std::move(body_)), url(std::move(url_)), headers(std::move(headers_))
     {
     }
+
+    HttpResponse()
+        : code(), body(), url(), headers()
+    {
+    }
 };
 
 } // namespace http

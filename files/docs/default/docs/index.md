@@ -6,9 +6,9 @@
     </a>
     <br>
     <br>
-    C++ multi-platform toolkit template
+    C++ Multiplatform Toolkit Template
     <br>
-    Ezored philosophy: write once and compile anywhere
+    Ezored Philosophy: Write Once And Compile Anywhere
     <br>
 </p>
 

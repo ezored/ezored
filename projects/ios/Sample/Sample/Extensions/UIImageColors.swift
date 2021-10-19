@@ -171,6 +171,7 @@ public extension UIImage {
     func getColors(quality: UIImageColorsQuality = .high, _ completion: @escaping (UIImageColors) -> Void) {
         DispatchQueue.global().async {
             let result = self.getColors(quality: quality)
+
             DispatchQueue.main.async {
                 completion(result)
             }

@@ -132,7 +132,7 @@ auto HttpClient::fromCppOpt(const CppOptType &cpp) -> ObjcType
     {
         return nil;
     }
-    return ::djinni::get_cpp_proxy<EZRHttpClient>(cpp);
+    return ::djinni::get_cpp_proxy<::EZRHttpClient>(cpp);
 }
 
 } // namespace djinni_generated

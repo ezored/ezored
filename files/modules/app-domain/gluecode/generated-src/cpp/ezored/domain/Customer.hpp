@@ -27,6 +27,11 @@ struct Customer final
         : id(std::move(id_)), name(std::move(name_)), token(std::move(token_)), status(std::move(status_))
     {
     }
+
+    Customer()
+        : id(), name(), token(), status()
+    {
+    }
 };
 
 } // namespace domain

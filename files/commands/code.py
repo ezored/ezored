@@ -7,6 +7,7 @@ from files.core import const
 from files.core import file
 from files.core import log
 from files.core import runner
+from files.core import target
 
 
 # -----------------------------------------------------------------------------
@@ -30,12 +31,13 @@ def run(params):
 # -----------------------------------------------------------------------------
 def code_format(params):
     proj_path = params["proj_path"]
+    targets = target.get_all_targets(proj_path)
 
     # format c++ files
     has_tool = check_cpp_formatter()
 
     if has_tool:
-        dir_list = [
+        path_list = [
             {
                 "path": os.path.join(
                     proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_MODULES
@@ -43,19 +45,29 @@ def code_format(params):
                 "patterns": ["*.cpp", "*.hpp", "*.c", "*.h", "*.m", "*.mm"],
             },
             {
-                "path": os.path.join(proj_path, const.DIR_NAME_PROJECTS),
+                "path": os.path.join(proj_path, const.DIR_NAME_PROJECTS, "others"),
+                "patterns": ["*.cpp", "*.hpp", "*.c", "*.h", "*.m", "*.mm"],
+            },
+            {
+                "path": os.path.join(proj_path, const.DIR_NAME_PROJECTS, "android"),
+                "patterns": ["*.cpp", "*.hpp", "*.c", "*.h", "*.m", "*.mm"],
+            },
+            {
+                "path": os.path.join(
+                    proj_path, const.DIR_NAME_PROJECTS, "ios", "Sample", "Sample"
+                ),
                 "patterns": ["*.cpp", "*.hpp", "*.c", "*.h", "*.m", "*.mm"],
             },
         ]
 
-        if dir_list:
+        if path_list:
             log.info("Formating C++ files...")
 
-            for dir_item in dir_list:
-                patterns = dir_item["patterns"]
+            for path_list_item in path_list:
+                patterns = path_list_item["patterns"]
 
                 for pattern_item in patterns:
-                    files = file.find_files(dir_item["path"], pattern_item)
+                    files = file.find_files(path_list_item["path"], pattern_item)
 
                     for file_item in files:
                         log.info(
@@ -74,10 +86,9 @@ def code_format(params):
     has_tool = check_python_formatter()
 
     if has_tool:
-        dir_list = [
+        path_list = [
             {
-                "path": proj_path,
-                "patterns": ["make.py"],
+                "path": os.path.join(proj_path, "make.py"),
             },
             {
                 "path": os.path.join(proj_path, const.DIR_NAME_FILES),
@@ -85,16 +96,34 @@ def code_format(params):
             },
         ]
 
-        if dir_list:
+        if path_list:
             log.info("Formating Python files...")
 
-            for dir_item in dir_list:
-                patterns = dir_item["patterns"]
+            for path_list_item in path_list:
+                patterns = (
+                    path_list_item["patterns"] if "patterns" in path_list_item else None
+                )
 
-                for pattern_item in patterns:
-                    files = file.find_files(dir_item["path"], pattern_item)
+                if patterns:
+                    for pattern_item in patterns:
+                        files = file.find_files(path_list_item["path"], pattern_item)
 
-                    for file_item in files:
+                        for file_item in files:
+                            log.info(
+                                "Formatting file: {0}...".format(
+                                    os.path.relpath(file_item)
+                                )
+                            )
+
+                            run_args = ["black", "-q", file_item]
+
+                            runner.run(run_args, proj_path)
+                else:
+                    file_item = (
+                        path_list_item["path"] if "path" in path_list_item else None
+                    )
+
+                    if file_item:
                         log.info(
                             "Formatting file: {0}...".format(os.path.relpath(file_item))
                         )
@@ -111,25 +140,127 @@ def code_format(params):
     has_tool = check_cmake_formatter()
 
     if has_tool:
-        dir_list = [
+        path_list = [
             {
-                "path": os.path.join(proj_path, const.DIR_NAME_FILES),
+                "path": os.path.join(
+                    proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_MODULES
+                ),
                 "patterns": ["*.cmake"],
             },
             {
-                "path": os.path.join(proj_path, const.DIR_NAME_FILES),
+                "path": os.path.join(
+                    proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_MODULES
+                ),
+                "patterns": ["CMakeLists.txt"],
+            },
+            {
+                "path": os.path.join(
+                    proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_COMMON
+                ),
+                "patterns": ["*.cmake"],
+            },
+            {
+                "path": os.path.join(
+                    proj_path, const.DIR_NAME_FILES, const.DIR_NAME_FILES_COMMON
+                ),
                 "patterns": ["CMakeLists.txt"],
             },
         ]
 
-        if dir_list:
+        for target_name in targets:
+            path_list.extend(
+                [
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_CMAKE,
+                        ),
+                        "patterns": ["*.cmake"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_CMAKE,
+                        ),
+                        "patterns": ["CMakeLists.txt"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_CONAN,
+                        ),
+                        "patterns": ["*.cmake"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_CONAN,
+                        ),
+                        "patterns": ["CMakeLists.txt"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_SUPPORT,
+                        ),
+                        "patterns": ["*.cmake"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_SUPPORT,
+                        ),
+                        "patterns": ["CMakeLists.txt"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_VERBS,
+                        ),
+                        "patterns": ["*.cmake"],
+                    },
+                    {
+                        "path": os.path.join(
+                            proj_path,
+                            const.DIR_NAME_FILES,
+                            const.DIR_NAME_FILES_TARGETS,
+                            target_name,
+                            const.DIR_NAME_FILES_TARGET_VERBS,
+                        ),
+                        "patterns": ["CMakeLists.txt"],
+                    },
+                ]
+            )
+
+        if path_list:
             log.info("Formating CMake files...")
 
-            for dir_item in dir_list:
-                patterns = dir_item["patterns"]
+            for path_list_item in path_list:
+                patterns = path_list_item["patterns"]
 
                 for pattern_item in patterns:
-                    files = file.find_files(dir_item["path"], pattern_item)
+                    files = file.find_files(path_list_item["path"], pattern_item)
 
                     for file_item in files:
                         log.info(

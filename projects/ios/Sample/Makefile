@@ -1,36 +1,41 @@
 ROOT_DIR=${PWD}
-
 .DEFAULT_GOAL := help
+.PHONY: pods
 
-# general
 help:
 	@echo "Type: make [rule]. Available options are:"
 	@echo ""
 	@echo "- help"
-	@echo "- git-update-submodules"
 	@echo "- clean-derived-data"	
+	@echo "- pods"
 	@echo "- pods-update"
-	@echo "- remove-pods"
+	@echo "- pods-remove"
+	@echo "- pods-clear-cache"
 	@echo "- format"	
 	@echo ""
 
-git-update-submodules:
-	git submodule update --recursive --remote
-
 clean-derived-data:
 	rm -rf ~/Library/Developer/Xcode/DerivedData
+
+pods:
+	rm -rf Pods
+	rm -rf Podfile.lock
+	rm -rf Sample.xcworkspace
+	pod install --no-repo-update
 
 pods-update:
 	rm -rf Pods
 	rm -rf Podfile.lock
 	rm -rf Sample.xcworkspace
-	pod cache clean 'ezored' --all
 	pod install --repo-update
 
-remove-pods:
+pods-remove:
 	rm -rf Pods
 	rm -rf Podfile.lock
 	rm -rf Sample.xcworkspace
+
+pods-clear-cache:
+	pod cache clean 'ezored' --all
 
 format:
 	swiftformat --swiftversion 5.0 Sample/

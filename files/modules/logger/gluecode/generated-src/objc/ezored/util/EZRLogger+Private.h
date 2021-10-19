@@ -16,7 +16,7 @@ class Logger
 public:
     using CppType = std::shared_ptr<::ezored::util::Logger>;
     using CppOptType = std::shared_ptr<::ezored::util::Logger>;
-    using ObjcType = EZRLogger *;
+    using ObjcType = ::EZRLogger *;
 
     using Boxed = Logger;
 

@@ -14,7 +14,7 @@ namespace djinni_generated
 struct CustomerSystemServiceLoginData
 {
     using CppType = ::ezored::systemservice::CustomerSystemServiceLoginData;
-    using ObjcType = EZRSystemServiceCustomerSystemServiceLoginData *;
+    using ObjcType = ::EZRSystemServiceCustomerSystemServiceLoginData *;
 
     using Boxed = CustomerSystemServiceLoginData;
 

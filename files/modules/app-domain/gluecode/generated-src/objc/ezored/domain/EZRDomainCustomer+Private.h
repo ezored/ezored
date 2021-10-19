@@ -14,7 +14,7 @@ namespace djinni_generated
 struct Customer
 {
     using CppType = ::ezored::domain::Customer;
-    using ObjcType = EZRDomainCustomer *;
+    using ObjcType = ::EZRDomainCustomer *;
 
     using Boxed = Customer;
 

@@ -14,7 +14,7 @@ class ExceptionHelper:
     c_data_set = MultiSet()
 
     @staticmethod
-    @ffi.callback("struct DjinniPythonExceptionHandle * (struct DjinniString *)")
+    @ffi.callback("struct DjinniFrontEndExceptionHandle * (struct DjinniString *)")
     def create_py_from_cpp_exception(ds_error_message):
         e = DjinniException(CPyString.toPy(ds_error_message))
         c_ptr = ffi.new_handle(e)
@@ -22,7 +22,7 @@ class ExceptionHelper:
         return c_ptr
 
     @staticmethod
-    @ffi.callback("void(struct DjinniPythonExceptionHandle * )")
+    @ffi.callback("void(struct DjinniFrontEndExceptionHandle * )")
     def exception_delete(c_ptr):
         assert c_ptr in ExceptionHelper.c_data_set
         ExceptionHelper.c_data_set.remove(c_ptr)
@@ -31,7 +31,7 @@ class ExceptionHelper:
 class CPyException:
     @staticmethod
     def toPyCheckAndRaise(ret_val):
-        c_ptr = lib.djinni_from_python_check_and_clear_exception()
+        c_ptr = lib.djinni_check_and_clear_exception()
         if c_ptr == ffi.NULL:  # no exception was thrown
             return
 
@@ -48,10 +48,10 @@ class CPyException:
     def setExceptionFromPy(py_e):
         bare_c_ptr = ffi.new_handle(py_e)
         ExceptionHelper.c_data_set.add(bare_c_ptr)
-        lib.djinni_create_and_set_cpp_from_py_exception(bare_c_ptr)
+        lib.djinni_create_and_set_cpp_exception(bare_c_ptr)
 
 
-lib._djinni_add_callback_create_py_from_cpp_exception(
+lib._djinni_add_callback_create_exception_from_cpp(
     ExceptionHelper.create_py_from_cpp_exception
 )
 lib._djinni_add_callback_exception___delete(ExceptionHelper.exception_delete)

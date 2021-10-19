@@ -16,7 +16,7 @@ class EnvironmentHelper
 public:
     using CppType = std::shared_ptr<::ezored::helper::EnvironmentHelper>;
     using CppOptType = std::shared_ptr<::ezored::helper::EnvironmentHelper>;
-    using ObjcType = EZRHelperEnvironmentHelper *;
+    using ObjcType = ::EZRHelperEnvironmentHelper *;
 
     using Boxed = EnvironmentHelper;
 

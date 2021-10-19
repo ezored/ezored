@@ -31,7 +31,7 @@ jni:
   typename: jobject
   typeSignature: 'Lcom/ezored/net/http/HttpMethod;'
 cs:
-  translator: '::djinni::Enum<::ezored::net::http::HttpMethod, HttpMethod>'
+  translator: '::djinni::Enum<::ezored::net::http::HttpMethod, ::HttpMethod>'
   header: '"HttpMethod.hpp"'
   typename: HttpMethod
   reference: false

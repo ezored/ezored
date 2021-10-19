@@ -16,7 +16,7 @@ class CustomerSystemService
 public:
     using CppType = std::shared_ptr<::ezored::systemservice::CustomerSystemService>;
     using CppOptType = std::shared_ptr<::ezored::systemservice::CustomerSystemService>;
-    using ObjcType = EZRSystemServiceCustomerSystemService *;
+    using ObjcType = ::EZRSystemServiceCustomerSystemService *;
 
     using Boxed = CustomerSystemService;
 

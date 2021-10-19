@@ -29,3 +29,8 @@ The file **generate.py** contain the method with instructions for that module th
 After create your new module folder, add it to the list of modules with glue code generation support. Add in your prefered order, inside file **files/config/gluecode.py**. We need it because when you import other Djinni YAML file for reference, you need generate imported file before, so the current order generate isolated modules before modules that will require it.
 
 If you don't use any glue code tool in your project, ignore this section, because some people prefer create the glue code files manually and is not a requirement in Ezored that modules have these files.
+
+## Djinni forks
+
+- Main: https://github.com/cross-language-cpp
+- Snapchat: https://github.com/Snapchat/djinni

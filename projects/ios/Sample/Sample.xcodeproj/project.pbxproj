@@ -39,15 +39,18 @@
 		3A2F23182214A57D00A2FB4F /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F42214A57D00A2FB4F /* CollectionExtensions.swift */; };
 		3A2F23192214A57D00A2FB4F /* UIImageTintedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */; };
 		3A2F231A2214A57D00A2FB4F /* ViewConstrainToEdgesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F62214A57D00A2FB4F /* ViewConstrainToEdgesExtension.swift */; };
-		3A2F231B2214A57D00A2FB4F /* UIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F82214A57D00A2FB4F /* UIUtil.swift */; };
+		3A2F231B2214A57D00A2FB4F /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F82214A57D00A2FB4F /* UIHelper.swift */; };
 		3A2F231C2214A57D00A2FB4F /* EnvironmentUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F92214A57D00A2FB4F /* EnvironmentUtil.swift */; };
 		3A2F231D2214A57D00A2FB4F /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FB2214A57D00A2FB4F /* AppData.swift */; };
 		3A2F231E2214A57D00A2FB4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22FC2214A57D00A2FB4F /* AppDelegate.swift */; };
 		3A2F23242214A7A800A2FB4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F23262214A7A800A2FB4F /* Localizable.strings */; };
 		3A5B99612662F0890063EFD0 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5B99602662F0890063EFD0 /* ColorExtensions.swift */; };
+		3AB800BA27069231001EA224 /* DateTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB800B827069231001EA224 /* DateTimeHelper.swift */; };
+		3AB800BB27069231001EA224 /* DateTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB800B827069231001EA224 /* DateTimeHelper.swift */; };
+		3AB800BC27069231001EA224 /* BundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB800B927069231001EA224 /* BundleHelper.swift */; };
+		3AB800BD27069231001EA224 /* BundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB800B927069231001EA224 /* BundleHelper.swift */; };
 		3AD9F93D22569DA600ED622F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD9F93C22569DA600ED622F /* MainViewController.swift */; };
 		3ADA2D8222162454005E6BD0 /* Enumerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8122162454005E6BD0 /* Enumerators.swift */; };
-		3ADA2D8422162556005E6BD0 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */; };
 		3ADA2D8922162760005E6BD0 /* SimpleOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8822162760005E6BD0 /* SimpleOption.swift */; };
 		3ADA2D8C22162BF7005E6BD0 /* SimpleOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8B22162BF7005E6BD0 /* SimpleOptionTableViewCell.swift */; };
 		3ADA2D9522163EEE005E6BD0 /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D9222163EEE005E6BD0 /* BaseCollectionViewController.swift */; };
@@ -59,6 +62,7 @@
 		3ADE82652229C56500D3FD7A /* SimpleSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE82642229C56500D3FD7A /* SimpleSearchBar.swift */; };
 		3ADE82692229C9C000D3FD7A /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE82682229C9C000D3FD7A /* TodoTableViewCell.swift */; };
 		3ADE826B2229D0E000D3FD7A /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADE826A2229D0E000D3FD7A /* TodoListViewController.swift */; };
+		3AF9F7CE26D05E6800433FD7 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF9F7CD26D05E6800433FD7 /* WebViewController.swift */; };
 		AB578450263746A000558651 /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB57844F263746A000558651 /* ViewExtensions.swift */; };
 		AB5784AB26376AE600558651 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A2F23262214A7A800A2FB4F /* Localizable.strings */; };
 		AB5784B0263771F800558651 /* SharedAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5784AF263771F800558651 /* SharedAssets.xcassets */; };
@@ -74,7 +78,6 @@
 		AB9E1891263719E400225E57 /* StringBase64Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22DF2214A57D00A2FB4F /* StringBase64Extension.swift */; };
 		AB9E189526371A1600225E57 /* SwiftColorsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22ED2214A57D00A2FB4F /* SwiftColorsExtension.swift */; };
 		AB9E189C26371AB800225E57 /* UIImageTintedExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */; };
-		AB9E18A426371AE800225E57 /* DateTimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */; };
 		AB9E18B226371C7400225E57 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18B126371C7400225E57 /* HomeView.swift */; };
 		AB9E18C62637238400225E57 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB9E18C52637238400225E57 /* HomeViewModel.swift */; };
 		AB9E18CE2637255500225E57 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2F22F42214A57D00A2FB4F /* CollectionExtensions.swift */; };
@@ -137,7 +140,6 @@
 
 /* Begin PBXFileReference section */
 		1360A2DCC25A7B56020F42F9 /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
-		3A25865A25D65D8A00A57377 /* ezored.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ezored.xcframework; path = Pods/ezored/Release/ezored.xcframework; sourceTree = "<group>"; };
 		3A2F22C12214A4DA00A2FB4F /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A2F22CB2214A4DB00A2FB4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A2F22CE2214A4DB00A2FB4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -172,7 +174,7 @@
 		3A2F22F42214A57D00A2FB4F /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
 		3A2F22F52214A57D00A2FB4F /* UIImageTintedExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageTintedExtension.swift; sourceTree = "<group>"; };
 		3A2F22F62214A57D00A2FB4F /* ViewConstrainToEdgesExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConstrainToEdgesExtension.swift; sourceTree = "<group>"; };
-		3A2F22F82214A57D00A2FB4F /* UIUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtil.swift; sourceTree = "<group>"; };
+		3A2F22F82214A57D00A2FB4F /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		3A2F22F92214A57D00A2FB4F /* EnvironmentUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentUtil.swift; sourceTree = "<group>"; };
 		3A2F22FB2214A57D00A2FB4F /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		3A2F22FC2214A57D00A2FB4F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,9 +182,10 @@
 		3A2F23282214A84D00A2FB4F /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		3A2F23302214B05B00A2FB4F /* Sample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sample-Bridging-Header.h"; sourceTree = "<group>"; };
 		3A5B99602662F0890063EFD0 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		3AB800B827069231001EA224 /* DateTimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeHelper.swift; sourceTree = "<group>"; };
+		3AB800B927069231001EA224 /* BundleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleHelper.swift; sourceTree = "<group>"; };
 		3AD9F93C22569DA600ED622F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3ADA2D8122162454005E6BD0 /* Enumerators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerators.swift; sourceTree = "<group>"; };
-		3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeUtil.swift; sourceTree = "<group>"; };
 		3ADA2D8822162760005E6BD0 /* SimpleOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleOption.swift; sourceTree = "<group>"; };
 		3ADA2D8B22162BF7005E6BD0 /* SimpleOptionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleOptionTableViewCell.swift; sourceTree = "<group>"; };
 		3ADA2D9222163EEE005E6BD0 /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +198,7 @@
 		3ADE82682229C9C000D3FD7A /* TodoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		3ADE826A2229D0E000D3FD7A /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
 		3AE05FAD23AA934B0036BE36 /* Sample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sample.entitlements; sourceTree = "<group>"; };
+		3AF9F7CD26D05E6800433FD7 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		44B5C818ABAE48BF038C2B08 /* Pods-Sample-AppleWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample-AppleWatch Extension.debug.xcconfig"; path = "Target Support Files/Pods-Sample-AppleWatch Extension/Pods-Sample-AppleWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
 		5FDAA0743304F74D3D1644FD /* Pods_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E91F0FCFB4F5DC6F65D06D /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.release.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
@@ -253,7 +257,6 @@
 		3A00E97C23AF245E0054007D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A25865A25D65D8A00A57377 /* ezored.xcframework */,
 				5FDAA0743304F74D3D1644FD /* Pods_Sample.framework */,
 				C7BE7D7AC39A39820B5BC32E /* Pods_Sample_AppleWatch_Extension.framework */,
 			);
@@ -289,13 +292,13 @@
 				3A2F22FA2214A57D00A2FB4F /* App */,
 				3A2F22CB2214A4DB00A2FB4F /* Assets.xcassets */,
 				3A2F22DA2214A57D00A2FB4F /* Extensions */,
+				3A2F22F72214A57D00A2FB4F /* Helpers */,
 				3A2F22D02214A4DB00A2FB4F /* Info.plist */,
 				3A2F22CD2214A4DB00A2FB4F /* LaunchScreen.storyboard */,
 				3A2F23262214A7A800A2FB4F /* Localizable.strings */,
 				3A2F23302214B05B00A2FB4F /* Sample-Bridging-Header.h */,
 				3AE05FAD23AA934B0036BE36 /* Sample.entitlements */,
 				3A2F22D62214A57D00A2FB4F /* UI */,
-				3A2F22F72214A57D00A2FB4F /* Utils */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				3AD9F93C22569DA600ED622F /* MainViewController.swift */,
 				3A2F22D92214A57D00A2FB4F /* SettingsViewController.swift */,
 				3ADE826A2229D0E000D3FD7A /* TodoListViewController.swift */,
+				3AF9F7CD26D05E6800433FD7 /* WebViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -351,12 +355,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		3A2F22F72214A57D00A2FB4F /* Utils */ = {
+		3A2F22F72214A57D00A2FB4F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				3A2F22F82214A57D00A2FB4F /* UIUtil.swift */,
+				3A2F22F82214A57D00A2FB4F /* UIHelper.swift */,
 			);
-			path = Utils;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		3A2F22FA2214A57D00A2FB4F /* App */ = {
@@ -367,6 +371,15 @@
 				ABCDC221261D22AC00BEEF5C /* EnvironmentUtil+iOS.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		3AB800B727069231001EA224 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3AB800B927069231001EA224 /* BundleHelper.swift */,
+				3AB800B827069231001EA224 /* DateTimeHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		3ADA2D7422161918005E6BD0 /* Components */ = {
@@ -463,14 +476,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		AB9E18A326371AE200225E57 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				3ADA2D8322162556005E6BD0 /* DateTimeUtil.swift */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		AB9E18C42637236F00225E57 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,8 +527,8 @@
 			isa = PBXGroup;
 			children = (
 				AB5785712639D22300558651 /* Common */,
-				AB5785662639CD0B00558651 /* ToDoList */,
 				AB9E18C42637236F00225E57 /* Home */,
+				AB5785662639CD0B00558651 /* ToDoList */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -553,9 +558,9 @@
 			children = (
 				ABCDC22E261D239200BEEF5C /* App */,
 				AB9E188E263719D700225E57 /* Extensions */,
+				3AB800B727069231001EA224 /* Helpers */,
 				3ADA2D8722162760005E6BD0 /* Models */,
 				AB5784AF263771F800558651 /* SharedAssets.xcassets */,
-				AB9E18A326371AE200225E57 /* Utils */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -593,6 +598,7 @@
 				3A2F22BF2214A4DA00A2FB4F /* Resources */,
 				C19BC371029275D9765EE042 /* [CP] Embed Pods Frameworks */,
 				ABCDC1C6261D0A5000BEEF5C /* Embed Watch Content */,
+				3A21081D26C733C400B322B6 /* Copy  WebApp */,
 			);
 			buildRules = (
 			);
@@ -631,6 +637,7 @@
 				ABCDC1AD261D0A4F00BEEF5C /* Frameworks */,
 				ABCDC1AE261D0A4F00BEEF5C /* Resources */,
 				B11EA867D97B4201D3D2FFA8 /* [CP] Embed Pods Frameworks */,
+				3AB800BE270692DA001EA224 /* Copy WebApp */,
 			);
 			buildRules = (
 			);
@@ -648,7 +655,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "PRSoluções";
 				TargetAttributes = {
 					3A2F22C02214A4DA00A2FB4F = {
@@ -741,6 +748,42 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3A21081D26C733C400B322B6 /* Copy  WebApp */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy  WebApp";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${IS_MACCATALYST}\" = \"YES\" ]; then\n    cp -a -v \"../../../projects/web/Sample/dist/\" \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Resources/webapp/\"\nelse\n    cp -a -v \"../../../projects/web/Sample/dist/\" \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/webapp/\"\nfi\n";
+		};
+		3AB800BE270692DA001EA224 /* Copy WebApp */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Copy WebApp";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${IS_MACCATALYST}\" = \"YES\" ]; then\n    cp -a -v \"../../../projects/web/Sample/dist/\" \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/Resources/webapp/\"\nelse\n    cp -a -v \"../../../projects/web/Sample/dist/\" \"$TARGET_BUILD_DIR/$CONTENTS_FOLDER_PATH/webapp/\"\nfi\n";
+		};
 		B0DA28AAFAE2E78CF4DC1D40 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -804,9 +847,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AB800BA27069231001EA224 /* DateTimeHelper.swift in Sources */,
 				3ADA2D8922162760005E6BD0 /* SimpleOption.swift in Sources */,
 				3ADA2D8222162454005E6BD0 /* Enumerators.swift in Sources */,
 				3A2F231A2214A57D00A2FB4F /* ViewConstrainToEdgesExtension.swift in Sources */,
+				3AB800BC27069231001EA224 /* BundleHelper.swift in Sources */,
 				3A2F23122214A57D00A2FB4F /* IntToTimeIntervalExtension.swift in Sources */,
 				3A2F23182214A57D00A2FB4F /* CollectionExtensions.swift in Sources */,
 				3A2F231C2214A57D00A2FB4F /* EnvironmentUtil.swift in Sources */,
@@ -843,12 +888,12 @@
 				3A2F23072214A57D00A2FB4F /* UIImageFixRotationExtension.swift in Sources */,
 				3A2F23112214A57D00A2FB4F /* SwiftColorsExtension.swift in Sources */,
 				3ADA2D9C22163F0E005E6BD0 /* NetworkErrorView.swift in Sources */,
-				3ADA2D8422162556005E6BD0 /* DateTimeUtil.swift in Sources */,
 				3AD9F93D22569DA600ED622F /* MainViewController.swift in Sources */,
 				3ADE826B2229D0E000D3FD7A /* TodoListViewController.swift in Sources */,
 				3A2F230A2214A57D00A2FB4F /* UITableViewExtension.swift in Sources */,
-				3A2F231B2214A57D00A2FB4F /* UIUtil.swift in Sources */,
+				3A2F231B2214A57D00A2FB4F /* UIHelper.swift in Sources */,
 				3ADA2D9522163EEE005E6BD0 /* BaseCollectionViewController.swift in Sources */,
+				3AF9F7CE26D05E6800433FD7 /* WebViewController.swift in Sources */,
 				3A2F231E2214A57D00A2FB4F /* AppDelegate.swift in Sources */,
 				3ADA2D9722163EEE005E6BD0 /* BaseTableViewController.swift in Sources */,
 				3A2F23142214A57D00A2FB4F /* UIImageViewBlurExtension.swift in Sources */,
@@ -870,8 +915,8 @@
 				AB578450263746A000558651 /* ViewExtensions.swift in Sources */,
 				AB9E1890263719E400225E57 /* StringExtensions.swift in Sources */,
 				AB9E189C26371AB800225E57 /* UIImageTintedExtension.swift in Sources */,
+				3AB800BB27069231001EA224 /* DateTimeHelper.swift in Sources */,
 				AB9E1891263719E400225E57 /* StringBase64Extension.swift in Sources */,
-				AB9E18A426371AE800225E57 /* DateTimeUtil.swift in Sources */,
 				ABCDC1BA261D0A4F00BEEF5C /* ExtensionDelegate.swift in Sources */,
 				AB5785732639D22F00558651 /* LoadingView.swift in Sources */,
 				AB5785682639CD1900558651 /* ToDoListView.swift in Sources */,
@@ -881,6 +926,7 @@
 				AB9E18C62637238400225E57 /* HomeViewModel.swift in Sources */,
 				ABCDC21D261D224C00BEEF5C /* EnvironmentUtil.swift in Sources */,
 				3A5B99612662F0890063EFD0 /* ColorExtensions.swift in Sources */,
+				3AB800BD27069231001EA224 /* BundleHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -956,6 +1002,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1018,6 +1065,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1057,7 +1105,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_BITCODE = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -1066,7 +1114,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1089,7 +1137,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_BITCODE = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -1098,7 +1146,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1121,12 +1169,12 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "i386 arm64";
 				IBSC_MODULE = Sample_AppleWatch_Extension;
 				INFOPLIST_FILE = "Sample-AppleWatch/Info.plist";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1147,13 +1195,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "arm64 i386";
 				IBSC_MODULE = Sample_AppleWatch_Extension;
 				INFOPLIST_FILE = "Sample-AppleWatch/Info.plist";
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1171,7 +1219,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample-AppleWatch Extension/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_PREVIEWS = YES;
@@ -1182,7 +1230,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
@@ -1201,7 +1249,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample-AppleWatch Extension/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_PREVIEWS = YES;
@@ -1212,7 +1260,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;

@@ -20,10 +20,10 @@ auto Customer::toCpp(ObjcType obj) -> CppType
 
 auto Customer::fromCpp(const CppType &cpp) -> ObjcType
 {
-    return [[EZRDomainCustomer alloc] initWithId:(::djinni::I64::fromCpp(cpp.id))
-                                            name:(::djinni::String::fromCpp(cpp.name))
-                                            token:(::djinni::String::fromCpp(cpp.token))
-                                            status:(::djinni::Enum<::ezored::enumerator::CustomerStatusEnum, EZREnumeratorCustomerStatusEnum>::fromCpp(cpp.status))];
+    return [[::EZRDomainCustomer alloc] initWithId:(::djinni::I64::fromCpp(cpp.id))
+                                              name:(::djinni::String::fromCpp(cpp.name))
+                                              token:(::djinni::String::fromCpp(cpp.token))
+                                              status:(::djinni::Enum<::ezored::enumerator::CustomerStatusEnum, EZREnumeratorCustomerStatusEnum>::fromCpp(cpp.status))];
 }
 
 } // namespace djinni_generated

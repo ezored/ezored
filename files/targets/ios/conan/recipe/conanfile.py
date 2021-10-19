@@ -1,4 +1,4 @@
-from conans import ConanFile, CMake
+from conans import ConanFile, CMake, tools
 
 
 class TargetConan(ConanFile):
@@ -22,6 +22,7 @@ class TargetConan(ConanFile):
         "ezored_group": "",
         "sqlite3:threadsafe": 1,
         "sqlite3:build_executable": False,
+        "sqlite3:omit_load_extension": True,
         "poco:enable_apacheconnector": False,
         "poco:enable_cppparser": False,
         "poco:enable_crypto": True,
@@ -45,6 +46,7 @@ class TargetConan(ConanFile):
         "poco:enable_util": True,
         "poco:enable_xml": True,
         "poco:enable_zip": False,
+        "poco:enable_active_record": False,
         "date:header_only": True,
     }
     exports_sources = "*"
@@ -61,15 +63,28 @@ class TargetConan(ConanFile):
         cmake.definitions["PROJECT_CONFIG_GROUP"] = self.options.get_safe(
             "ezored_group"
         )
+        cmake.definitions["PROJECT_CONFIG_PLATFORM_ARCH"] = self.get_platform_arch()
         cmake.configure()
         cmake.build()
 
+    def configure(self):
+        if self.settings.os == "tvOS":
+            self.options["poco"].enable_fork = False
+        elif self.settings.os == "watchOS":
+            self.options["poco"].enable_fork = False
+
     def requirements(self):
-        self.requires("sqlite3/3.35.5")
+        self.requires("sqlite3/3.36.0")
         self.requires("rapidjson/1.1.0")
         self.requires("openssl/1.1.1k")
-        self.requires("sqlitecpp/2.5.0")
+        self.requires("sqlitecpp/3.1.1")
         self.requires("date/3.0.1")
+        self.requires("nlohmann_json/3.9.1")
+        self.requires("poco/1.11.0")
 
-        # uncomment only if you want use C++ http client instead of native android http client
-        # self.requires("poco/1.10.1")
+    def get_platform_arch(self):
+        platform_arch = tools.to_apple_arch(
+            self.options.get_safe("ezored_arch"),
+        )
+
+        return platform_arch

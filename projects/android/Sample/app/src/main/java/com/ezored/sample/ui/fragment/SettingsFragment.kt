@@ -16,7 +16,7 @@ class SettingsFragment :
     BaseListFragment<SimpleOption>(),
     SimpleOptionAdapter.SimpleOptionAdapterListener {
 
-    override val screenNameForAnalytics: String?
+    override val screenNameForAnalytics: String
         get() = "Settings"
 
     override fun createAll(view: View) {

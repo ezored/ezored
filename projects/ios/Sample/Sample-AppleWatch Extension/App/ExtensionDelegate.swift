@@ -101,5 +101,14 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         )
 
         EZRCoreApplicationCore.shared()?.initialize(initializationData, deviceData: deviceData)
+        
+        // http server
+        let config = EZRHttpServerConfig(port: 9090, staticPath: "")
+        EZRHttpServer.shared()?.initialize(config)
+        EZRHttpServer.shared()?.stop()
+        EZRHttpServer.shared()?.start()
+
+        // copy bundle assets
+        BundleHelper.extract()
     }
 }

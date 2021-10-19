@@ -23,6 +23,11 @@ struct HttpHeader final
         : name(std::move(name_)), value(std::move(value_))
     {
     }
+
+    HttpHeader()
+        : name(), value()
+    {
+    }
 };
 
 } // namespace http
