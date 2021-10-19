@@ -140,7 +140,7 @@
 
 /* Begin PBXFileReference section */
 		1360A2DCC25A7B56020F42F9 /* Pods-Sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample.debug.xcconfig"; path = "Target Support Files/Pods-Sample/Pods-Sample.debug.xcconfig"; sourceTree = "<group>"; };
-		3A2F22C12214A4DA00A2FB4F /* Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A2F22C12214A4DA00A2FB4F /* Ezored.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ezored.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A2F22CB2214A4DB00A2FB4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A2F22CE2214A4DB00A2FB4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A2F22D02214A4DB00A2FB4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -279,7 +279,7 @@
 		3A2F22C22214A4DA00A2FB4F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A2F22C12214A4DA00A2FB4F /* Sample.app */,
+				3A2F22C12214A4DA00A2FB4F /* Ezored.app */,
 				ABCDC1A4261D0A4C00BEEF5C /* Sample-AppleWatch.app */,
 				ABCDC1B0261D0A4F00BEEF5C /* Sample-AppleWatch Extension.appex */,
 			);
@@ -607,7 +607,7 @@
 			);
 			name = Sample;
 			productName = Sample;
-			productReference = 3A2F22C12214A4DA00A2FB4F /* Sample.app */;
+			productReference = 3A2F22C12214A4DA00A2FB4F /* Ezored.app */;
 			productType = "com.apple.product-type.application";
 		};
 		ABCDC1A3261D0A4C00BEEF5C /* Sample-AppleWatch */ = {
@@ -1105,7 +1105,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_BITCODE = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -1116,7 +1116,7 @@
 				);
 				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ezored;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
@@ -1137,7 +1137,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_BITCODE = YES;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -1148,7 +1148,7 @@
 				);
 				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ezored.sample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ezored;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_MACCATALYST = YES;
@@ -1169,7 +1169,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "i386 arm64";
 				IBSC_MODULE = Sample_AppleWatch_Extension;
@@ -1195,7 +1195,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=watchsimulator*]" = "arm64 i386";
@@ -1219,7 +1219,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample-AppleWatch Extension/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_PREVIEWS = YES;
@@ -1249,7 +1249,7 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"Sample-AppleWatch Extension/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = 99AHAA343Q;
 				ENABLE_PREVIEWS = YES;
