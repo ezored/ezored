@@ -1,6 +1,6 @@
 # Libraries
 
-Ezored can use any C/C++ library. Today the dependency manager used is [Conan](https://conan.io/). With Conan you can add any library that fit your needs.
+Ezored can use any C++ library. Today the dependency manager used is [Conan](https://conan.io/). With Conan you can add any library that fit your needs.
 
 Conan main recipe list is hosted on Github:
 

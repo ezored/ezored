@@ -1,19 +1,31 @@
 # About
 
-Ezored is a C++ multi-platform toolkit template.
+Ezored is a C++ Multiplatform Toolkit Template.
 
-Ezored philosophy is: write once and compile anywhere.
+Ezored Philosophy: Write Once And Compile Anywhere.
 
-When you need add native code to your mobile or desktop application Ezored is your best option because it is ready for it and ready for production without any efforts.
+Single codebase for the business logic with Ezored.
 
-You can "plug" the native code into a new or existing mobile or desktop application.
+Ezored multiplatform toolkit template allows you to use a single codebase for the business logic of mobile and desktop apps.
 
-And don't need write your entire mobile or desktop application in C++, but "plug" only the part that you want write in C++ code.
+## Why i need use it?
 
-A good example is when you have a sensive code in Swift or Kotlin (or any other language and platform) that you need write in a native code (C/C++) and call only this native function because is more secure and have a better performance than original language.
+Everyone need a single codebase for your various projects.
 
-Since it is a toolkit template for your project, after download Ezored you need upload to your repository because all C++ code will only make sense to your project after it.
+A native code in C++ is very secure and has a better performance than others languages.
 
-You can use it for free, for any purpose, including commercial purposes.
+This project is your best option, because it is ready for this purpose and is ready for production without any efforts.
 
-Feel free to collaborate with Ezored, creating or improving the main project or modules.
+## I need make my project in C++?
+
+No, you can "plug" the native code into a new or existing application (mobile or desktop).
+
+You don't need write your entire mobile or desktop application in C++, but "plug" only the part that you want write in C++ code.
+
+Generally UI is made with platform tools (Swift, Kotlin etc) and the business logic and the heavy processing in C++.
+
+## It is paid?
+
+No, you can use it for free, for any purpose, including commercial purposes.
+
+Feel free to collaborate improving the main project or modules.
