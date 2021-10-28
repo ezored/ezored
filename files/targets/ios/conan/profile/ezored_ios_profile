@@ -6,4 +6,4 @@ os.version=9.0
 arch=armv7
 
 [build_requires]
-darwin-toolchain/1.3.0@ezored/stable
+darwin-toolchain/1.4.0@ezored/stable

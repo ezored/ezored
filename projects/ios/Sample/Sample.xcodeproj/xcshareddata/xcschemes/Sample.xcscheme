@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3A2F22C02214A4DA00A2FB4F"
-               BuildableName = "Sample.app"
+               BuildableName = "Ezored.app"
                BlueprintName = "Sample"
                ReferencedContainer = "container:Sample.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3A2F22C02214A4DA00A2FB4F"
-            BuildableName = "Sample.app"
+            BuildableName = "Ezored.app"
             BlueprintName = "Sample"
             ReferencedContainer = "container:Sample.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3A2F22C02214A4DA00A2FB4F"
-            BuildableName = "Sample.app"
+            BuildableName = "Ezored.app"
             BlueprintName = "Sample"
             ReferencedContainer = "container:Sample.xcodeproj">
          </BuildableReference>
