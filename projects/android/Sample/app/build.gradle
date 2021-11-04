@@ -22,7 +22,7 @@ repositories {
 android {
     compileSdkVersion 31
     flavorDimensions "default"
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId 'com.ezored.sample'

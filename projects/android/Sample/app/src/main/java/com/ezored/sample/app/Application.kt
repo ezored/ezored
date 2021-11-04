@@ -51,8 +51,6 @@ class Application : MultiDexApplication() {
     }
 
     private fun checkInstantApp() {
-        Logger.i("[Application : checkInstantApp]")
-
         if (InstantApps.isInstantApp(this)) {
             appData.isInstantApp = true
         }
@@ -152,7 +150,7 @@ class Application : MultiDexApplication() {
     private fun initializeHttpServer() {
         Logger.i("[Application : initializeHttpServer]")
 
-        if (!appData.isInstantApp) {
+        if (appData.isInstantApp) {
             Logger.i("[Application : initializeHttpServer] Is instant app")
             return
         }
