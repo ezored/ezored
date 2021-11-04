@@ -26,10 +26,11 @@ import com.ezored.sample.util.EnvironmentUtil
 import com.ezored.util.Logger
 import com.ezored.util.LoggerLevel
 import com.ezored.util.LoggerPlatformServiceImpl
+import com.google.android.instantapps.InstantApps
 
 class Application : MultiDexApplication() {
 
-    private var appData: AppData = AppData()
+    var appData: AppData = AppData()
 
     override fun onCreate() {
         super.onCreate()
@@ -40,6 +41,8 @@ class Application : MultiDexApplication() {
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
 
+        checkInstantApp()
+
         loadNativeLibrary()
 
         ProcessLifecycleOwner.get().lifecycle.addObserver(AppLifecycleObserver())
@@ -47,7 +50,17 @@ class Application : MultiDexApplication() {
         registerReceivers()
     }
 
+    private fun checkInstantApp() {
+        Logger.i("[Application : checkInstantApp]")
+
+        if (InstantApps.isInstantApp(this)) {
+            appData.isInstantApp = true
+        }
+    }
+
     private fun registerReceivers() {
+        Logger.i("[Application : registerReceivers]")
+
         val intentFilter = IntentFilter()
         intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE")
 
@@ -138,6 +151,11 @@ class Application : MultiDexApplication() {
 
     private fun initializeHttpServer() {
         Logger.i("[Application : initializeHttpServer]")
+
+        if (!appData.isInstantApp) {
+            Logger.i("[Application : initializeHttpServer] Is instant app")
+            return
+        }
 
         val basePath = ApplicationCore.shared().initializationData.basePath
         val targetFolder = FileHelper.join(basePath, "webapp")
