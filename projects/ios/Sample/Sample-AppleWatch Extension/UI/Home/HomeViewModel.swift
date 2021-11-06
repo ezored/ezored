@@ -16,7 +16,9 @@ class HomeViewModel: NSObject, ObservableObject {
         data.append(SimpleOption(type: .fileHelper, hasSeparator: true))
         data.append(SimpleOption(type: .todo, hasSeparator: true))
         data.append(SimpleOption(type: .appVersion, hasSeparator: true))
-        data.append(SimpleOption(type: .webServer, hasSeparator: false))
+        
+        // i will keep commented because don't work on real devices from apple team on apple watch 8 and i don't have one to dev
+        //data.append(SimpleOption(type: .webServer, hasSeparator: false))
         
         listData = data
         showTodoList = .inactive
