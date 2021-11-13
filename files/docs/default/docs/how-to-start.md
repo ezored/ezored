@@ -49,7 +49,7 @@ python make.py target linux dist generate
 
 **Obs:**
 
-1. You can download the project as a ZIP file too: https://github.com/ezored/ezored/archive/master.zip.
+1. You can download the project as a ZIP file too: https://github.com/ezored/ezored/archive/main.zip.
 2. After run this commands above, a folder called **"dist"** will be created with compiled binaries of applications. The rule is the same for other targets.
 3. The execution order is important. You need prepare files and dependencies, build, package and finally distribute.
 4. Package verbs will copy files to a non versioned folder called **"dist"** in root path.
