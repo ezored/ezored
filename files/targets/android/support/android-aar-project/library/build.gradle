@@ -18,13 +18,13 @@ buildscript {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
     ndkVersion "22.0.7026061"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode {VERSION_CODE}
         versionName '{VERSION}'
     }

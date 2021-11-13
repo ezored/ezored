@@ -284,8 +284,6 @@ def get_file_line_content(filename, line):
 
         return content
 
-    return None
-
 
 # -----------------------------------------------------------------------------
 def file_line_has_content(filename, line, content):

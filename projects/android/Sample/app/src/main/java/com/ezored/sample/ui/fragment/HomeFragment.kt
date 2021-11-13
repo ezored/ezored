@@ -16,6 +16,7 @@ import com.ezored.net.http.HttpServer
 import com.ezored.repository.TodoRepository
 import com.ezored.sample.R
 import com.ezored.sample.adapter.SimpleOptionAdapter
+import com.ezored.sample.app.Application
 import com.ezored.sample.enumerator.LoadStateEnum
 import com.ezored.sample.enumerator.SimpleOptionTypeEnum
 import com.ezored.sample.model.SimpleOption
@@ -53,8 +54,11 @@ class HomeFragment :
         list.add(SimpleOption(SimpleOptionTypeEnum.HTTPS_REQUEST))
         list.add(SimpleOption(SimpleOptionTypeEnum.FILE_HELPER))
         list.add(SimpleOption(SimpleOptionTypeEnum.TODO))
-        list.add(SimpleOption(SimpleOptionTypeEnum.WEB_SERVER))
-        list.add(SimpleOption(SimpleOptionTypeEnum.WEB_VIEW))
+
+        if (!Application.instance.appData.isInstantApp) {
+            list.add(SimpleOption(SimpleOptionTypeEnum.WEB_SERVER))
+            list.add(SimpleOption(SimpleOptionTypeEnum.WEB_VIEW))
+        }
 
         listData?.value = list
 

@@ -102,6 +102,8 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
         EZRCoreApplicationCore.shared()?.initialize(initializationData, deviceData: deviceData)
         
+        // i will keep commented because don't work on real devices from apple team on apple watch 8 and i don't have one to dev
+        /*
         // http server
         let config = EZRHttpServerConfig(port: 9090, staticPath: "")
         EZRHttpServer.shared()?.initialize(config)
@@ -110,5 +112,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
         // copy bundle assets
         BundleHelper.extract()
+        */
     }
 }
