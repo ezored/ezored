@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer">
-        <img width="180" src="extras/images/logo.png" alt="ezored logo">
+        <img width="180" src="extras/images/logo.png" alt="Ezored Logo">
     </a>
     <br>
     <br>
@@ -28,6 +28,12 @@ Single codebase for the business logic with Ezored.
 Ezored multiplatform toolkit template allows you to use a single codebase for the business logic of mobile and desktop apps.
 
 You only need to write platform-specific code where it’s necessary, for example to implement a native UI or when working with platform-specific APIs.
+
+<p align="center">
+    <a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer">
+        <img src="extras/images/guide.png" alt="Ezored Guide" style="width: 85%; max-width: 700px;">
+    </a>
+</p>
 
 ## Template
 
