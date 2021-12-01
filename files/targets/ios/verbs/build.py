@@ -2,12 +2,13 @@
 
 import os
 
-from files.core import const
-from files.core import file
-from files.core import log
-from files.core import runner
-from files.core import util
+from pygemstones.io import file as f
+from pygemstones.system import runner as r
+from pygemstones.type import list as ls
+from pygemstones.util import log as l
+
 from files.config import target_ios as config
+from files.core import const
 
 
 # -----------------------------------------------------------------------------
@@ -19,17 +20,15 @@ def run(params):
     archs = target_config["archs"]
     build_types = target_config["build_types"]
     install_headers = target_config["install_headers"]
-    param_dry_run = util.list_has_key(params["args"], "--dry-run")
+    param_dry_run = ls.list_has_value(params["args"], "--dry-run")
 
     if param_dry_run:
-        log.info("Running in dry mode...")
+        l.i("Running in dry mode...")
 
     if archs and len(archs) > 0:
         for arch in archs:
             for build_type in build_types:
-                log.info(
-                    "Building for: {0}/{1}...".format(arch["conan_arch"], build_type)
-                )
+                l.i("Building for: {0}/{1}...".format(arch["conan_arch"], build_type))
 
                 # conan build
                 build_dir = os.path.join(
@@ -48,8 +47,7 @@ def run(params):
                     clean_build_dir = False
 
                 if clean_build_dir:
-                    file.remove_dir(build_dir)
-                    file.create_dir(build_dir)
+                    f.recreate_dir(build_dir)
 
                 run_args = [
                     "conan",
@@ -93,7 +91,7 @@ def run(params):
                     ),
                 ]
 
-                runner.run(run_args, build_dir)
+                r.run(run_args, build_dir)
 
                 # find correct info plist file
                 plist_path1 = os.path.join(
@@ -134,7 +132,7 @@ def run(params):
                     plist_path = plist_path2
 
                 # add minimum version inside plist
-                runner.run(
+                r.run(
                     [
                         "plutil",
                         "-replace",
@@ -147,7 +145,7 @@ def run(params):
                 )
 
                 # add supported platform inside plist
-                runner.run(
+                r.run(
                     [
                         "plutil",
                         "-replace",
@@ -173,21 +171,21 @@ def run(params):
                     "Headers",
                 )
 
-                file.create_dir(dist_headers_dir)
+                f.create_dir(dist_headers_dir)
 
                 if install_headers:
                     for header in install_headers:
                         source_header_dir = os.path.join(proj_path, header["path"])
 
                         if header["type"] == "dir":
-                            file.copy_dir(
+                            f.copy_dir(
                                 source_header_dir,
                                 dist_headers_dir,
                                 ignore_file=_header_ignore_list,
                                 symlinks=True,
                             )
                         else:
-                            log.error(
+                            l.e(
                                 "Invalid type for install header list for {0}".format(
                                     target_name
                                 )
@@ -216,10 +214,9 @@ def run(params):
                     "Modules",
                 )
 
-                file.remove_dir(modules_dir)
-                file.create_dir(modules_dir)
+                f.recreate_dir(modules_dir)
 
-                file.copy_file(
+                f.copy_file(
                     os.path.join(support_modules_dir, "module.modulemap"),
                     os.path.join(modules_dir, "module.modulemap"),
                 )
@@ -238,9 +235,9 @@ def run(params):
                     "Headers",
                 )
 
-                header_files = file.find_files(build_headers_dir, "*.h")
+                header_files = f.find_files(build_headers_dir, "*.h")
 
-                content = file.read_file(
+                content = f.get_file_contents(
                     os.path.join(support_modules_dir, "umbrella-header.h")
                 )
 
@@ -254,22 +251,22 @@ def run(params):
                         build_headers_dir, target_config["umbrella_header"]
                     )
 
-                    file.copy_file(
+                    f.copy_file(
                         os.path.join(support_modules_dir, "umbrella-header.h"),
                         umbrella_file,
                     )
 
-                    file.write_to_file(umbrella_file, content)
+                    f.set_file_content(umbrella_file, content)
                 else:
-                    log.error(
+                    l.e(
                         "{0}".format(
                             "File not generated because framework headers is empty"
                         )
                     )
 
-        log.ok()
+        l.ok()
     else:
-        log.error('Arch list for "{0}" is invalid or empty'.format(target_name))
+        l.e('Arch list for "{0}" is invalid or empty'.format(target_name))
 
 
 # -----------------------------------------------------------------------------

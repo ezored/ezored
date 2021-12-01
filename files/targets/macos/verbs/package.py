@@ -2,10 +2,11 @@
 
 import os
 
-from files.core import const
-from files.core import file
-from files.core import log
+from pygemstones.io import file as f
+from pygemstones.util import log as l
+
 from files.config import target_macos as config
+from files.core import const
 
 
 # -----------------------------------------------------------------------------
@@ -17,14 +18,12 @@ def run(params):
     archs = target_config["archs"]
     build_types = target_config["build_types"]
 
-    log.info("Packaging...")
+    l.i("Packaging...")
 
     if archs and len(archs) > 0:
         for arch in archs:
             for build_type in build_types:
-                log.info(
-                    "Copying for: {0}/{1}...".format(arch["conan_arch"], build_type)
-                )
+                l.i("Copying for: {0}/{1}...".format(arch["conan_arch"], build_type))
 
                 # create folders
                 dist_dir = os.path.join(
@@ -35,8 +34,7 @@ def run(params):
                     arch["conan_arch"],
                 )
 
-                file.remove_dir(dist_dir)
-                file.create_dir(dist_dir)
+                f.recreate_dir(dist_dir)
 
                 build_dir = os.path.join(
                     proj_path,
@@ -49,8 +47,8 @@ def run(params):
                 )
 
                 # copy files
-                file.copy_all_inside(build_dir, dist_dir)
+                f.copy_all(build_dir, dist_dir)
 
-        log.ok()
+        l.ok()
     else:
-        log.error('Arch list for "{0}" is invalid or empty'.format(target_name))
+        l.e('Arch list for "{0}" is invalid or empty'.format(target_name))

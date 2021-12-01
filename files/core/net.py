@@ -1,64 +1,50 @@
 """Module: Net"""
 
-import sys
+import os
 
-from files.core import log
-from files.core import util
+from pygemstones.io import file as f
+from pygemstones.io import net as n
+from pygemstones.io import pack as pack
+from pygemstones.util import log as l
 
-if sys.version_info >= (3,):
-    import urllib.request as urllib2
-else:
-    import urllib2
-
-
-# -----------------------------------------------------------------------------
-def download(url, dst_file):
-    req = urllib2.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    u = urllib2.urlopen(req)
-
-    with open(dst_file, "wb") as f:
-        meta = u.info()
-        meta_func = meta.getheaders if hasattr(meta, "getheaders") else meta.get_all
-        meta_length = meta_func("Content-Length")
-        file_size = None
-
-        if meta_length:
-            file_size = int(meta_length[0])
-
-        if file_size:
-            log.info(
-                "Download file size: {0}".format(util.readable_file_size(file_size))
-            )
-
-        file_size_dl = 0
-        block_sz = 8192
-        block_count = 0
-
-        while True:
-            dbuffer = u.read(block_sz)
-
-            if not dbuffer:
-                break
-
-            dbuffer_len = len(dbuffer)
-            file_size_dl += dbuffer_len
-            block_count += 1
-
-            f.write(dbuffer)
-
-            download_hook(block_count, block_sz, file_size)
-            sys.stdout.flush()
-
-        log.normal("")
+from files.core import const
 
 
 # -----------------------------------------------------------------------------
-def download_hook(count, block_size, total_size):
-    """a download progress hook for urllib"""
-    percent = int(count * block_size * 100 / total_size)
+def download_dist_file(
+    proj_path, version, dist_file_path, dist_file_name, dist_folder, dist_file_url
+):
+    # version
+    if not version or len(version) == 0:
+        l.e("You need define version name (parameter: --version)")
 
-    msg = "\rDownloading: {0}% - {1}".format(
-        percent, util.readable_file_size(count * block_size)
-    ).ljust(80)
+    l.i("Version defined: {0}".format(version))
 
-    sys.stdout.write(msg)
+    # remove file
+    l.i("Removing old file...")
+    f.remove_file(dist_file_path)
+
+    # download file
+    l.i("Downloading {0} file...".format(dist_file_name))
+
+    file_url = "{0}/{1}/{2}".format(dist_file_url, version, dist_file_name)
+
+    try:
+        f.create_dir(os.path.dirname(dist_file_path))
+        n.download(file_url, dist_file_path)
+    except Exception as e:
+        l.e("Error when download file {0}: {1}".format(file_url, e))
+
+    # remove old files and unpack current file
+    l.i("Removing old folder...")
+
+    f.create_dir(os.path.join(proj_path, const.DIR_NAME_DIST))
+    f.remove_dir(os.path.join(proj_path, const.DIR_NAME_DIST, dist_folder))
+
+    l.i("Unpacking downloaded file...")
+
+    pack.unpack(
+        dist_file_path, os.path.join(proj_path, const.DIR_NAME_DIST, dist_folder)
+    )
+
+    l.ok()

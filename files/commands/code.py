@@ -3,11 +3,11 @@
 import os
 import subprocess
 
-from files.core import const
-from files.core import file
-from files.core import log
-from files.core import runner
-from files.core import target
+from pygemstones.io import file as f
+from pygemstones.system import runner as r
+from pygemstones.util import log as l
+
+from files.core import const, target
 
 
 # -----------------------------------------------------------------------------
@@ -61,26 +61,28 @@ def code_format(params):
         ]
 
         if path_list:
-            log.info("Formating C++ files...")
+            l.i("Formating C++ files...")
 
             for path_list_item in path_list:
                 patterns = path_list_item["patterns"]
 
                 for pattern_item in patterns:
-                    files = file.find_files(path_list_item["path"], pattern_item)
+                    files = f.find_files(
+                        path_list_item["path"], pattern_item, recursive=True
+                    )
 
                     for file_item in files:
-                        log.info(
+                        l.i(
                             "Formatting file: {0}...".format(os.path.relpath(file_item))
                         )
 
                         run_args = ["clang-format", "-style", "file", "-i", file_item]
 
-                        runner.run(run_args, proj_path)
+                        r.run(run_args, proj_path)
 
-            log.ok()
+            l.ok()
         else:
-            log.error("No C++ files found to format")
+            l.e("No C++ files found to format")
 
     # format python files
     has_tool = check_python_formatter()
@@ -97,7 +99,7 @@ def code_format(params):
         ]
 
         if path_list:
-            log.info("Formating Python files...")
+            l.i("Formating Python files...")
 
             for path_list_item in path_list:
                 patterns = (
@@ -106,10 +108,12 @@ def code_format(params):
 
                 if patterns:
                     for pattern_item in patterns:
-                        files = file.find_files(path_list_item["path"], pattern_item)
+                        files = f.find_files(
+                            path_list_item["path"], pattern_item, recursive=True
+                        )
 
                         for file_item in files:
-                            log.info(
+                            l.i(
                                 "Formatting file: {0}...".format(
                                     os.path.relpath(file_item)
                                 )
@@ -117,24 +121,24 @@ def code_format(params):
 
                             run_args = ["black", "-q", file_item]
 
-                            runner.run(run_args, proj_path)
+                            r.run(run_args, proj_path)
                 else:
                     file_item = (
                         path_list_item["path"] if "path" in path_list_item else None
                     )
 
                     if file_item:
-                        log.info(
+                        l.i(
                             "Formatting file: {0}...".format(os.path.relpath(file_item))
                         )
 
                         run_args = ["black", "-q", file_item]
 
-                        runner.run(run_args, proj_path)
+                        r.run(run_args, proj_path)
 
-            log.ok()
+            l.ok()
         else:
-            log.error("No Python files found to format")
+            l.e("No Python files found to format")
 
     # format cmake files
     has_tool = check_cmake_formatter()
@@ -254,16 +258,18 @@ def code_format(params):
             )
 
         if path_list:
-            log.info("Formating CMake files...")
+            l.i("Formating CMake files...")
 
             for path_list_item in path_list:
                 patterns = path_list_item["patterns"]
 
                 for pattern_item in patterns:
-                    files = file.find_files(path_list_item["path"], pattern_item)
+                    files = f.find_files(
+                        path_list_item["path"], pattern_item, recursive=True
+                    )
 
                     for file_item in files:
-                        log.info(
+                        l.i(
                             "Formatting file: {0}...".format(os.path.relpath(file_item))
                         )
 
@@ -275,11 +281,11 @@ def code_format(params):
                             file_item,
                         ]
 
-                        runner.run(run_args, proj_path)
+                        r.run(run_args, proj_path)
 
-            log.ok()
+            l.ok()
         else:
-            log.error("No CMake files found to format")
+            l.e("No CMake files found to format")
 
 
 # -----------------------------------------------------------------------------
@@ -289,7 +295,7 @@ def check_cpp_formatter():
         subprocess.check_output(["clang-format", "--version"])
         return True
     except OSError:
-        log.info(
+        l.i(
             "Clang-format is not installed, check: https://clang.llvm.org/docs/ClangFormat.html"
         )
         return False
@@ -302,7 +308,7 @@ def check_python_formatter():
         subprocess.check_output(["black", "--version"])
         return True
     except OSError:
-        log.info("Black is not installed, check: https://github.com/psf/black")
+        l.i("Black is not installed, check: https://github.com/psf/black")
         return False
 
 
@@ -313,7 +319,7 @@ def check_cmake_formatter():
         subprocess.check_output(["cmake-format", "--version"])
         return True
     except OSError:
-        log.info(
+        l.i(
             "Cmake-format is not installed, check: https://github.com/cheshirekow/cmake_format"
         )
         return False
@@ -321,8 +327,8 @@ def check_cmake_formatter():
 
 # -----------------------------------------------------------------------------
 def show_help(params):
-    log.colored("Available actions:\n", log.PURPLE)
-    log.normal("  - format")
+    l.colored("Available actions:\n", l.MAGENTA)
+    l.m("  - format")
 
 
 # -----------------------------------------------------------------------------

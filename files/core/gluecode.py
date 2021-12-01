@@ -2,18 +2,19 @@
 
 import os
 
+from pygemstones.io import file as f
+from pygemstones.system import platform as p
+from pygemstones.system import runner as r
+from pygemstones.util import log as l
+
 from files.core import const
-from files.core import file
-from files.core import log
-from files.core import runner
-from files.core import util
 
 
 # -----------------------------------------------------------------------------
 def get_tool_path(params):
     proj_path = params["proj_path"]
 
-    if util.is_windows_platform():
+    if p.is_windows():
         tool_file_path = os.path.join(
             proj_path, const.DIR_NAME_BUILD, const.DIR_NAME_GLUECODE, "djinni.bat"
         )
@@ -31,13 +32,13 @@ def generate(params):
     module_data = params["module_data"]
 
     if not module_data:
-        log.error("Module data is invalid")
+        l.e("Module data is invalid")
 
     # check required tool
     gluecode_tool_path = get_tool_path(params)
 
     if not os.path.isfile(gluecode_tool_path):
-        log.error(
+        l.e(
             "Glue code tool was not found: {0}".format(
                 gluecode_tool_path,
             )
@@ -56,15 +57,15 @@ def generate(params):
     )
 
     # clean old generated src
-    file.remove_dir(os.path.join(module_dir, "generated-src"))
-    file.remove_dir(os.path.join(module_dir, "yaml"))
+    f.remove_dir(os.path.join(module_dir, "generated-src"))
+    f.remove_dir(os.path.join(module_dir, "yaml"))
 
     # run
     runner_args = []
     runner_args.extend([gluecode_tool_path])
     runner_args.extend(tool_params)
 
-    runner.run_as_shell(
+    r.run_as_shell(
         args=" ".join(runner_args),
         cwd=module_dir,
     )

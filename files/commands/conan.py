@@ -2,11 +2,11 @@
 
 import os
 
-from files.core import const
-from files.core import file
-from files.core import log
-from files.core import runner
-from files.core import target
+from pygemstones.io import file as f
+from pygemstones.system import runner as r
+from pygemstones.util import log as l
+
+from files.core import const, target
 
 
 # -----------------------------------------------------------------------------
@@ -32,10 +32,10 @@ def setup(params):
     proj_path = params["proj_path"]
     targets = target.get_all_targets(proj_path)
 
-    log.info("Creating default profile...")
+    l.i("Creating default profile...")
 
     # create default profile
-    runner.run(
+    r.run(
         [
             "conan",
             "profile",
@@ -48,11 +48,11 @@ def setup(params):
     )
 
     # copy all targets profile
-    log.info("Copying files...")
+    l.i("Copying files...")
 
     if targets:
         for target_item in targets:
-            files = file.find_files(
+            files = f.find_files(
                 os.path.join(
                     proj_path,
                     const.DIR_NAME_FILES,
@@ -66,21 +66,21 @@ def setup(params):
 
             if files:
                 conan_profile_dir = os.path.join(
-                    file.home_dir(),
+                    f.home_dir(),
                     const.DIR_NAME_HOME_CONAN,
                     const.DIR_NAME_HOME_CONAN_PROFILES,
                 )
 
                 for item in files:
                     filename = os.path.basename(item)
-                    log.info('Copying profile "{0}"...'.format(filename))
+                    l.i('Copying profile "{0}"...'.format(filename))
 
-                    file.copy_file(item, os.path.join(conan_profile_dir, filename))
+                    f.copy_file(item, os.path.join(conan_profile_dir, filename))
 
     # add darwin toolchain
-    log.info("Adding darwin toolchain repository...")
+    l.i("Adding darwin toolchain repository...")
 
-    runner.run(
+    r.run(
         [
             "conan",
             "remote",
@@ -92,13 +92,13 @@ def setup(params):
         cwd=os.getcwd(),
     )
 
-    log.ok()
+    l.ok()
 
 
 # -----------------------------------------------------------------------------
 def show_help(params):
-    log.colored("Available actions:\n", log.PURPLE)
-    log.normal("  - setup")
+    l.colored("Available actions:\n", l.MAGENTA)
+    l.m("  - setup")
 
 
 # -----------------------------------------------------------------------------

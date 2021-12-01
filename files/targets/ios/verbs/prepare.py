@@ -2,12 +2,12 @@
 
 import os
 
-from files.core import const
-from files.core import file
-from files.core import log
-from files.core import runner
-from files.core import target
+from pygemstones.io import file as f
+from pygemstones.system import runner as r
+from pygemstones.util import log as l
+
 from files.config import target_ios as config
+from files.core import const, target
 
 
 # -----------------------------------------------------------------------------
@@ -22,9 +22,7 @@ def run(params):
     if archs and len(archs) > 0:
         for arch in archs:
             for build_type in build_types:
-                log.info(
-                    "Building for: {0}/{1}...".format(arch["conan_arch"], build_type)
-                )
+                l.i("Building for: {0}/{1}...".format(arch["conan_arch"], build_type))
 
                 # conan install
                 build_dir = os.path.join(
@@ -37,8 +35,7 @@ def run(params):
                     const.DIR_NAME_BUILD_CONAN,
                 )
 
-                file.remove_dir(build_dir)
-                file.create_dir(build_dir)
+                f.recreate_dir(build_dir)
 
                 run_args = [
                     "conan",
@@ -98,8 +95,8 @@ def run(params):
                     "--update",
                 ]
 
-                runner.run(run_args, build_dir)
+                r.run(run_args, build_dir)
 
-        log.ok()
+        l.ok()
     else:
-        log.error('Arch list for "{0}" is invalid or empty'.format(target_name))
+        l.e('Arch list for "{0}" is invalid or empty'.format(target_name))
