@@ -1,4 +1,4 @@
-name: Ezored - Android
+name: Android
 
 on: [push]
 
@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - { name: "Ubuntu Latest GCC", os: ubuntu-latest, target: "android" }
+          - { name: "Ubuntu", os: ubuntu-latest, target: "android" }
         python-version: [3.7]
 
     steps:

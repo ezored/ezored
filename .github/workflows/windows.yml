@@ -1,4 +1,4 @@
-name: Ezored - Windows
+name: Windows
 
 on: [push]
 
@@ -10,11 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {
-              name: "Windows Latest MSVC",
-              os: windows-latest,
-              target: "windows",
-            }
+          - { name: "Windows", os: windows-latest, target: "windows" }
         python-version: [3.7]
 
     steps:

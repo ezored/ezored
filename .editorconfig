@@ -20,7 +20,7 @@ end_of_line = crlf
 indent_style = space
 indent_size = 4
 
-[.travis.yml]
+[*.yml]
 indent_style = space
 indent_size = 2
 

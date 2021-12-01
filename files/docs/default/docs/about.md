@@ -4,13 +4,13 @@ Ezored is a C++ Multiplatform Toolkit Template.
 
 Ezored Philosophy: Write Once And Compile Anywhere.
 
-Single codebase for the business logic with Ezored.
+Single code for the business logic with Ezored.
 
-Ezored multiplatform toolkit template allows you to use a single codebase for the business logic of mobile and desktop apps.
+Ezored multiplatform toolkit template allows you to use a single code for the business logic of mobile and desktop apps.
 
 ## Why i need use it?
 
-Everyone need a single codebase for your various projects.
+Everyone need a single code for your various projects.
 
 A native code in C++ is very secure and has a better performance than others languages.
 
