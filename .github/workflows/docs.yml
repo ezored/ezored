@@ -39,7 +39,7 @@ jobs:
       - name: Github Action - Upload
         uses: actions/upload-artifact@v2
         with:
-          name: artifact-${{ matrix.config.target }}
+          name: artifact-docs
           path: build/docs
 
       - name: Ezored - Publish
