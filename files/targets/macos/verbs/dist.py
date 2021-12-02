@@ -1,15 +1,14 @@
 """Distribute target package"""
 
 import os
-import sys
-import threading
 
-from files.core import const
-from files.core import log
-from files.core import pack
-from files.core import util
-from files.core import aws
+from pygemstones.type import list as ls
+from pygemstones.util import log as l
+from pygemstones.vendor import aws as a
+
 from files.config import target_macos as config
+from files.core import const, net, pack, util
+
 
 # -----------------------------------------------------------------------------
 def run(params):
@@ -48,13 +47,13 @@ def download(params):
     dist_folder = target_name
     aws_s3_url = "{0}/{1}".format(const.AWS_S3_URL, target_name)
 
-    aws.download(
+    net.download_dist_file(
         proj_path=proj_path,
         version=version,
         dist_file_path=dist_file_path,
         dist_file_name=dist_file_name,
         dist_folder=dist_folder,
-        aws_s3_url=aws_s3_url,
+        dist_file_url=aws_s3_url,
     )
 
 
@@ -68,26 +67,22 @@ def upload(params):
     )
 
     version = util.get_version(params, config)
-    force = util.list_has_key(params["args"], "--force")
+    force = ls.list_has_value(params["args"], "--force")
     dist_file_path = os.path.join(build_dir, const.FILE_NAME_DIST_PACKED)
-    dist_file_name = const.FILE_NAME_DIST_PACKED
-    dist_folder = target_name
     aws_key_id = os.getenv(const.AWS_KEY_ID_ENV)
     aws_secret_key = os.getenv(const.AWS_SECRET_KEY_ENV)
     aws_bucket_name = const.AWS_S3_BUCKET_NAME
-    aws_bucket_path = "{0}/{1}".format(const.AWS_S3_BUCKET_PATH, target_name)
+    aws_bucket_path = "{0}/{1}/{2}/{3}".format(
+        const.AWS_S3_BUCKET_PATH, target_name, version, const.FILE_NAME_DIST_PACKED
+    )
 
-    aws.upload(
-        proj_path=proj_path,
-        version=version,
+    a.s3_upload(
+        file_path=dist_file_path,
         force=force,
-        dist_file_path=dist_file_path,
-        dist_file_name=dist_file_name,
-        dist_folder=dist_folder,
+        aws_bucket_name=aws_bucket_name,
+        aws_bucket_key=aws_bucket_path,
         aws_key_id=aws_key_id,
         aws_secret_key=aws_secret_key,
-        aws_bucket_name=aws_bucket_name,
-        aws_bucket_path=aws_bucket_path,
     )
 
 
@@ -125,7 +120,7 @@ def generate(params):
 
 # -----------------------------------------------------------------------------
 def show_help(params):
-    log.colored("List of available verb actions:\n", log.PURPLE)
-    log.normal("  - generate")
-    log.normal("  - download")
-    log.normal("  - upload")
+    l.colored("List of available verb actions:\n", l.MAGENTA)
+    l.m("  - generate")
+    l.m("  - download")
+    l.m("  - upload")

@@ -1,4 +1,4 @@
-name: Ezored - Docs
+name: Docs
 
 on: [push]
 
@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - { name: "Ubuntu Latest GCC", os: ubuntu-latest }
+          - { name: "Ubuntu", os: ubuntu-latest }
         python-version: [3.7]
 
     steps:
@@ -33,9 +33,18 @@ jobs:
       - name: Ezored - Install python dependencies
         run: pip install -r requirements.txt
 
-      - name: Ezored - Generate docs
+      - name: Ezored - Generate
+        run: python make.py docs generate
+
+      - name: Github Action - Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact-docs
+          path: build/docs
+
+      - name: Ezored - Publish
+        if: startsWith(github.ref, 'refs/tags/')
         env:
           EZORED_AWS_KEY_ID: ${{ secrets.EZORED_AWS_KEY_ID }}
           EZORED_AWS_SECRET_KEY: ${{ secrets.EZORED_AWS_SECRET_KEY }}
-        run: |
-          python make.py docs publish --force
+        run: python make.py docs publish --force

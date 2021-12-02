@@ -1,4 +1,4 @@
-name: Ezored - Android
+name: Android
 
 on: [push]
 
@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - { name: "Ubuntu Latest GCC", os: ubuntu-latest, target: "android" }
+          - { name: "Ubuntu", os: ubuntu-latest, target: "android" }
         python-version: [3.7]
 
     steps:
@@ -63,7 +63,14 @@ jobs:
       - name: Ezored - Dist generate
         run: python make.py target ${{ matrix.config.target }} dist generate
 
+      - name: Github Action - Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact-${{ matrix.config.target }}
+          path: build/${{ matrix.config.target }}/dist/dist.tar.gz
+
       - name: Ezored - Dist upload
+        if: startsWith(github.ref, 'refs/tags/')
         env:
           EZORED_AWS_KEY_ID: ${{ secrets.EZORED_AWS_KEY_ID }}
           EZORED_AWS_SECRET_KEY: ${{ secrets.EZORED_AWS_SECRET_KEY }}

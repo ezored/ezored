@@ -1,8 +1,10 @@
 """Module: Module"""
 
-from files.core import file
-from files.core import const
 import os
+
+from pygemstones.io import file as f
+
+from files.core import const
 
 
 # -----------------------------------------------------------------------------
@@ -13,7 +15,7 @@ def get_list(proj_path):
         const.DIR_NAME_FILES_MODULES,
     )
 
-    modules_found = file.find_dirs_simple(module_dir, "*")
+    modules_found = f.find_dirs(module_dir, "*")
     modules = []
 
     for m in modules_found:

@@ -2,12 +2,14 @@
 
 import os
 
-from files.core import const
-from files.core import file
-from files.core import log
-from files.core import runner
-from files.core import util
+from pygemstones.io import file as f
+from pygemstones.system import platform as p
+from pygemstones.system import runner as r
+from pygemstones.type import list as ls
+from pygemstones.util import log as l
+
 from files.config import target_ios as config
+from files.core import const
 
 
 # -----------------------------------------------------------------------------
@@ -18,14 +20,12 @@ def run(params):
     archs = target_config["archs"]
     build_types = target_config["build_types"]
 
-    no_framework = util.list_has_key(params["args"], "--no-framework")
-    no_xcframework = util.list_has_key(params["args"], "--no-xcframework")
+    no_framework = ls.list_has_value(params["args"], "--no-framework")
+    no_xcframework = ls.list_has_value(params["args"], "--no-xcframework")
 
     # at least one need be generated
     if no_framework and no_xcframework:
-        log.error(
-            "You need let generate framework or xcframework, but both are disabled"
-        )
+        l.e("You need let generate framework or xcframework, but both are disabled")
 
     # remove dist folder for the target
     dist_dir = os.path.join(
@@ -34,7 +34,7 @@ def run(params):
         target_name,
     )
 
-    file.remove_dir(dist_dir)
+    f.remove_dir(dist_dir)
 
     # generate framework
     if not no_framework:
@@ -57,7 +57,7 @@ def run(params):
         )
 
     # add strip framework script (only required if final project use framework instead of xcframework)
-    log.info("Adding strip framework script...")
+    l.i("Adding strip framework script...")
 
     target_scripts_dir = os.path.join(
         const.DIR_NAME_FILES,
@@ -67,7 +67,7 @@ def run(params):
         "scripts",
     )
 
-    file.copy_dir(
+    f.copy_dir(
         target_scripts_dir,
         os.path.join(
             const.DIR_NAME_DIST,
@@ -78,7 +78,7 @@ def run(params):
     )
 
     # cocoapods
-    log.info("Adding cocoapods script...")
+    l.i("Adding cocoapods script...")
 
     pod_file_path = os.path.join(
         const.DIR_NAME_FILES,
@@ -95,7 +95,7 @@ def run(params):
         "{0}.podspec".format(target_config["project_name"]),
     )
 
-    file.copy_file(
+    f.copy_file(
         pod_file_path,
         target_pod_file_path,
     )
@@ -110,32 +110,32 @@ def run(params):
                     "{0}.xcframework".format(target_config["project_name"]),
                 )
 
-                found_dirs = file.find_dirs_simple(xcframework_dir, "*")
+                found_dirs = f.find_dirs(xcframework_dir, "*")
 
                 if found_dirs:
                     first_group = os.path.basename(found_dirs[0])
 
-                    file.replace_in_file(
+                    f.replace_in_file(
                         target_pod_file_path,
                         "{XCFRAMEWORK_" + build_type.upper() + "_GROUP_DIR}",
                         first_group,
                     )
 
-    file.replace_in_file(target_pod_file_path, "{NAME}", target_config["project_name"])
-    file.replace_in_file(target_pod_file_path, "{VERSION}", target_config["version"])
+    f.replace_in_file(target_pod_file_path, "{NAME}", target_config["project_name"])
+    f.replace_in_file(target_pod_file_path, "{VERSION}", target_config["version"])
 
     # finish
-    log.ok()
+    l.ok()
 
 
 # -----------------------------------------------------------------------------
 def generate_framework(proj_path, target_name, target_config, archs, build_types):
-    log.info("Packaging framework...")
+    l.i("Packaging framework...")
 
     if archs and len(archs) > 0:
         if build_types and len(build_types) > 0:
             for build_type in build_types:
-                log.info("Copying for: {0}...".format(build_type))
+                l.i("Copying for: {0}...".format(build_type))
 
                 # copy first folder for base
                 framework_dir = os.path.join(
@@ -158,8 +158,9 @@ def generate_framework(proj_path, target_name, target_config, archs, build_types
                     "{0}.framework".format(target_config["project_name"]),
                 )
 
-                file.remove_dir(dist_dir)
-                file.copy_dir(
+                f.remove_dir(dist_dir)
+
+                f.copy_dir(
                     framework_dir,
                     dist_dir,
                     symlinks=True,
@@ -177,7 +178,7 @@ def generate_framework(proj_path, target_name, target_config, archs, build_types
 
                 if os.path.exists(plist_path):
                     # remove supported platforms inside plist
-                    runner.run(
+                    r.run(
                         [
                             "plutil",
                             "-remove",
@@ -213,7 +214,7 @@ def generate_framework(proj_path, target_name, target_config, archs, build_types
                     "-output",
                 ]
 
-                if file.dir_exists(
+                if f.dir_exists(
                     os.path.join(
                         dist_dir,
                         "Versions",
@@ -240,31 +241,29 @@ def generate_framework(proj_path, target_name, target_config, archs, build_types
                     )
 
                 lipo_args.extend(lipo_archs_args)
-                runner.run(lipo_args, proj_path)
+                r.run(lipo_args, proj_path)
 
                 # check file
-                log.info("Checking file for: {0}...".format(build_type))
+                l.i("Checking file for: {0}...".format(build_type))
 
-                runner.run(
+                r.run(
                     ["file", os.path.join(dist_dir, target_config["project_name"])],
                     proj_path,
                 )
         else:
-            log.info(
-                'Build type list for "{0}" is invalid or empty'.format(target_name)
-            )
+            l.i('Build type list for "{0}" is invalid or empty'.format(target_name))
     else:
-        log.info('Arch list for "{0}" is invalid or empty'.format(target_name))
+        l.i('Arch list for "{0}" is invalid or empty'.format(target_name))
 
 
 # -----------------------------------------------------------------------------
 def generate_xcframework(proj_path, target_name, target_config, archs, build_types):
-    log.info("Packaging xcframework...")
+    l.i("Packaging xcframework...")
 
     if archs and len(archs) > 0:
         if build_types and len(build_types) > 0:
             for build_type in build_types:
-                log.info("Generating for: {0}...".format(build_type))
+                l.i("Generating for: {0}...".format(build_type))
 
                 # generate group list
                 groups = []
@@ -288,7 +287,7 @@ def generate_xcframework(proj_path, target_name, target_config, archs, build_typ
                         )
 
                 if len(groups) == 0:
-                    log.error(
+                    l.e(
                         "Group list are empty, make sure you have defined group name for each arch in config file for this target"
                     )
 
@@ -302,7 +301,7 @@ def generate_xcframework(proj_path, target_name, target_config, archs, build_typ
                             base_framework_arch = arch
 
                     if not base_framework_arch:
-                        log.error("Group framework was not found: {0}".format(group))
+                        l.e("Group framework was not found: {0}".format(group))
 
                     # copy base framework
                     framework_dir = os.path.join(
@@ -327,8 +326,8 @@ def generate_xcframework(proj_path, target_name, target_config, archs, build_typ
                         "{0}.framework".format(target_config["project_name"]),
                     )
 
-                    file.remove_dir(group_xcframework_dir)
-                    file.copy_dir(
+                    f.remove_dir(group_xcframework_dir)
+                    f.copy_dir(
                         framework_dir,
                         group_xcframework_dir,
                         symlinks=True,
@@ -362,7 +361,7 @@ def generate_xcframework(proj_path, target_name, target_config, archs, build_typ
                         "-output",
                     ]
 
-                    if file.dir_exists(
+                    if f.dir_exists(
                         os.path.join(
                             group_xcframework_dir,
                             "Versions",
@@ -389,7 +388,7 @@ def generate_xcframework(proj_path, target_name, target_config, archs, build_typ
                         )
 
                     lipo_args.extend(lipo_archs_args)
-                    runner.run(lipo_args, proj_path)
+                    r.run(lipo_args, proj_path)
 
                 # generate xcframework
                 xcframework_dir = os.path.join(
@@ -400,26 +399,22 @@ def generate_xcframework(proj_path, target_name, target_config, archs, build_typ
                     "{0}.xcframework".format(target_config["project_name"]),
                 )
 
-                file.remove_dir(xcframework_dir)
+                f.remove_dir(xcframework_dir)
 
                 xcodebuild_command = ["xcodebuild", "-create-xcframework"]
-
                 xcodebuild_command += groups_command
-
                 xcodebuild_command += ["-output", xcframework_dir]
 
-                runner.run(xcodebuild_command, proj_path)
+                r.run(xcodebuild_command, proj_path)
 
                 # check file
-                log.info("Checking file for: {0}...".format(build_type))
+                l.i("Checking file for: {0}...".format(build_type))
 
-                runner.run(["ls", xcframework_dir], proj_path)
+                r.run(["ls", xcframework_dir], proj_path)
         else:
-            log.info(
-                'Build type list for "{0}" is invalid or empty'.format(target_name)
-            )
+            l.i('Build type list for "{0}" is invalid or empty'.format(target_name))
     else:
-        log.info('Arch list for "{0}" is invalid or empty'.format(target_name))
+        l.i('Arch list for "{0}" is invalid or empty'.format(target_name))
 
 
 # -----------------------------------------------------------------------------

@@ -2,11 +2,11 @@
 
 import os
 
-from files.core import const
-from files.core import log
-from files.core import runner
-from files.core import target
-from files.core import util
+from pygemstones.system import runner as r
+from pygemstones.type import list as ls
+from pygemstones.util import log as l
+
+from files.core import const, target
 
 
 # -----------------------------------------------------------------------------
@@ -25,7 +25,7 @@ def run(params):
         if target_item in targets:
             target_verbs = target.get_all_target_verbs(proj_path, target_item)
             target_verbs = list(
-                util.filter_list(target_verbs, const.TARGET_VERBS_INTERNAL)
+                ls.filter_list(target_verbs, const.TARGET_VERBS_INTERNAL)
             )
 
             show_target_verb_list = False
@@ -34,7 +34,7 @@ def run(params):
                 verb_name = args[0]
 
                 if verb_name in target_verbs:
-                    log.info(
+                    l.i(
                         'Running "{0}" on target "{1}"...'.format(
                             verb_name, target_item
                         )
@@ -50,7 +50,7 @@ def run(params):
 
                     params["target_name"] = target_item
 
-                    runner.run_external(
+                    r.run_external(
                         path=target_verb_folder,
                         module_name=verb_name,
                         command_name="run",
@@ -66,12 +66,12 @@ def run(params):
 
             if show_target_verb_list:
                 if target_verbs and len(target_verbs) > 0:
-                    log.colored("List of available target verbs:\n", log.PURPLE)
+                    l.colored("List of available target verbs:\n", l.MAGENTA)
 
                     for target_verb in target_verbs:
-                        log.normal("  - {0}".format(target_verb))
+                        l.m("  - {0}".format(target_verb))
                 else:
-                    log.error("No target verbs available")
+                    l.e("No target verbs available")
         else:
             show_target_list = True
     else:
@@ -87,12 +87,12 @@ def show_help(params):
     targets = target.get_all_targets(proj_path)
 
     if targets and len(targets) > 0:
-        log.colored("List of available targets:\n", log.PURPLE)
+        l.colored("List of available targets:\n", l.MAGENTA)
 
         for target_item in targets:
-            log.normal("  - {0}".format(target_item))
+            l.m("  - {0}".format(target_item))
     else:
-        log.error("No targets available")
+        l.e("No targets available")
 
 
 # -----------------------------------------------------------------------------

@@ -2,11 +2,11 @@
 
 import os
 
+from pygemstones.io import file as f
+from pygemstones.system import platform as p
+from pygemstones.util import log as l
+
 from files.core import const
-from files.core import file
-from files.core import log
-from files.core import runner
-from files.core import util
 
 
 # -----------------------------------------------------------------------------
@@ -18,9 +18,9 @@ def get_all_targets(proj_path):
     )
 
     if not os.path.isdir(targets_path):
-        log.error("Target folder not exists: {0}".format(targets_path))
+        l.e("Target folder not exists: {0}".format(targets_path))
 
-    targets = file.find_dirs_simple(targets_path, "*")
+    targets = f.find_dirs(targets_path, "*")
 
     if targets:
         for target_path in targets:
@@ -38,7 +38,7 @@ def get_all_targets(proj_path):
 def get_all_target_verbs(proj_path, target_name):
     results = []
 
-    target_verbs_list = file.find_files_simple(
+    target_verbs_list = f.find_files(
         os.path.join(
             proj_path,
             const.DIR_NAME_FILES,
@@ -63,11 +63,11 @@ def get_all_target_verbs(proj_path, target_name):
 
 # -----------------------------------------------------------------------------
 def get_build_profile():
-    if util.is_windows_platform():
+    if p.is_windows():
         return const.PROFILE_BUILD_WINDOWS
-    elif util.is_linux_platform():
+    elif p.is_linux():
         return const.PROFILE_BUILD_LINUX
-    elif util.is_macos_platform():
+    elif p.is_macos():
         return const.PROFILE_BUILD_MACOS
     else:
         return const.PROFILE_BUILD_DEFAULT

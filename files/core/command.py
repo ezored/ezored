@@ -3,14 +3,11 @@
 import glob
 import importlib
 import os
-import sys
-import pkgutil
-import inspect
 from collections import OrderedDict
 
 from files.core import const
 
-ezored_commands = OrderedDict()
+ezored_command_list = OrderedDict()
 
 
 # -----------------------------------------------------------------------------
@@ -42,15 +39,15 @@ def get_all_commands(proj_path, args):
             )
             command_module = importlib.import_module(command_package)
 
-            ezored_commands[command_name] = command_module
+            ezored_command_list[command_name] = command_module
 
 
 # -----------------------------------------------------------------------------
 def run_method(command_name, method, params):
     """Run target with verb"""
 
-    if command_name in ezored_commands.keys():
-        method = getattr(ezored_commands[command_name], method)
+    if command_name in ezored_command_list.keys():
+        method = getattr(ezored_command_list[command_name], method)
         return method(params)
 
 
@@ -62,7 +59,7 @@ def show_help(params):
     :param params: parameters
     """
     params["command_name"] = "show_help"
-    ezored_commands["help"].run(params)
+    ezored_command_list["help"].run(params)
 
 
 # -----------------------------------------------------------------------------
@@ -81,9 +78,9 @@ def process_command(proj_path, args):
         command_name = str(args[0])
         args.pop(0)
 
-        if command_name in ezored_commands.keys():
+        if command_name in ezored_command_list.keys():
             params["command_name"] = command_name
-            ezored_commands[command_name].run(params)
+            ezored_command_list[command_name].run(params)
         else:
             show_help(params)
     else:

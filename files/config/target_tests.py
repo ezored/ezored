@@ -1,10 +1,11 @@
-from files.core import util
+from pygemstones.system import platform as p
 
 
+# -----------------------------------------------------------------------------
 def run(proj_path, target_name, params):
     archs = []
 
-    if util.is_windows_platform():
+    if p.is_windows():
         archs.append(
             {
                 "arch": "x86_64",
@@ -12,7 +13,7 @@ def run(proj_path, target_name, params):
                 "conan_profile": "ezored_windows_profile",
             }
         )
-    elif util.is_linux_platform():
+    elif p.is_linux():
         archs.append(
             {
                 "arch": "x86_64",
@@ -20,7 +21,7 @@ def run(proj_path, target_name, params):
                 "conan_profile": "ezored_linux_profile",
             }
         )
-    elif util.is_macos_platform():
+    elif p.is_macos():
         archs.append(
             {
                 "arch": "x86_64",

@@ -2,23 +2,24 @@
 
 import sys
 
+from pygemstones.util import log as l
+
 from files.core import command
-from files.core import log
-from files.core.command import ezored_commands
+from files.core.command import ezored_command_list
 
 
 # -----------------------------------------------------------------------------
 def run(params):
     args = params["args"]
 
-    log.colored(
+    l.colored(
         'Please use "python {0} <command>" where <command> is one of:\n'.format(
             sys.argv[0]
         ),
-        log.PURPLE,
+        l.MAGENTA,
     )
 
-    command_key_list = ezored_commands.keys()
+    command_key_list = ezored_command_list.keys()
     width = max(len(name) for name in command_key_list)
 
     for command_name in command_key_list:

@@ -13,19 +13,19 @@
 <br>
 
 <p align="center">
-    <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20Linux/badge.svg">
-    <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20macOS/badge.svg">
-    <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20Windows/badge.svg">
-    <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20iOS/badge.svg">
-    <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20Android/badge.svg">
-    <img src="https://github.com/ezored/ezored/workflows/Ezored%20-%20Docs/badge.svg">
+    <a href="https://github.com/ezored/ezored/actions/workflows/linux.yml"><img src="https://github.com/ezored/ezored/actions/workflows/linux.yml/badge.svg"></a>
+    <a href="https://github.com/ezored/ezored/actions/workflows/macos.yml"><img src="https://github.com/ezored/ezored/actions/workflows/macos.yml/badge.svg"></a>
+    <a href="https://github.com/ezored/ezored/actions/workflows/windows.yml"><img src="https://github.com/ezored/ezored/actions/workflows/windows.yml/badge.svg"></a>
+    <a href="https://github.com/ezored/ezored/actions/workflows/ios.yml"><img src="https://github.com/ezored/ezored/actions/workflows/ios.yml/badge.svg"></a>
+    <a href="https://github.com/ezored/ezored/actions/workflows/android.yml"><img src="https://github.com/ezored/ezored/actions/workflows/android.yml/badge.svg"></a>
+    <a href="https://github.com/ezored/ezored/actions/workflows/docs.yml"><img src="https://github.com/ezored/ezored/actions/workflows/docs.yml/badge.svg"></a>
 </p>
 
 ## About
 
-Single codebase for the business logic with Ezored.
+Single code for the business logic with Ezored.
 
-Ezored multiplatform toolkit template allows you to use a single codebase for the business logic of mobile and desktop apps.
+Ezored multiplatform toolkit template allows you to use a single code for the business logic of mobile and desktop apps.
 
 You only need to write platform-specific code where it’s necessary, for example to implement a native UI or when working with platform-specific APIs.
 

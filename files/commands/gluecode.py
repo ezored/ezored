@@ -1,18 +1,18 @@
 """Gluecode manager tool"""
 
+import importlib
 import os
 import stat
-import importlib
 
-from files.core import const
-from files.core import file
-from files.core import log
-from files.core import runner
-from files.core import util
-from files.core import net
-from files.core import gluecode
-from files.core import module
+from pygemstones.io import file as f
+from pygemstones.io import net as n
+from pygemstones.system import platform as p
+from pygemstones.system import runner as r
+from pygemstones.type import list as ls
+from pygemstones.util import log as l
+
 from files.config import gluecode as config
+from files.core import const, gluecode
 
 
 # -----------------------------------------------------------------------------
@@ -42,23 +42,22 @@ def setup(params):
     proj_path = params["proj_path"]
 
     # version
-    version = util.get_arg_value("--version", params["args"])
+    version = ls.get_arg_list_value(params["args"], "--version")
 
     if not version or len(version) == 0:
         version = const.GLUECODE_TOOL_VERSION
 
-    log.info("Glue code tool version: {0}".format(version))
+    l.i("Glue code tool version: {0}".format(version))
 
     # check tool folder
     tool_dir = os.path.join(proj_path, const.DIR_NAME_BUILD, const.DIR_NAME_GLUECODE)
 
-    file.remove_dir(tool_dir)
-    file.create_dir(tool_dir)
+    f.recreate_dir(tool_dir)
 
     # prepare tool data
     tool_file_path = gluecode.get_tool_path(params)
 
-    if util.is_windows_platform():
+    if p.is_windows():
         file_url = "https://github.com/cross-language-cpp/djinni-generator/releases/download/v{0}/djinni.bat".format(
             version
         )
@@ -69,15 +68,15 @@ def setup(params):
 
     # prepare tool data
     try:
-        net.download(file_url, tool_file_path)
+        n.download(file_url, tool_file_path)
 
         # add executable permission
         st = os.stat(tool_file_path)
         os.chmod(tool_file_path, st.st_mode | stat.S_IEXEC)
     except Exception as e:
-        log.error("Error when download file {0}: {1}".format(file_url, e))
+        l.e("Error when download file {0}: {1}".format(file_url, e))
 
-    log.ok()
+    l.ok()
 
 
 # -----------------------------------------------------------------------------
@@ -90,23 +89,23 @@ def generate(params):
     )
 
     if not os.path.isdir(modules_path):
-        log.error("Modules folder not exists: {0}".format(modules_path))
+        l.e("Modules folder not exists: {0}".format(modules_path))
 
     # get gluecode modules
     gluecode_config = config.run(proj_path, None, params)
     modules = gluecode_config["modules"]
 
     if modules:
-        log.info("Generating files for all modules...")
+        l.i("Generating files for all modules...")
 
         for m in modules:
             if not os.path.isdir(
                 os.path.join(modules_path, m, const.DIR_NAME_GLUECODE)
             ):
-                log.info('Module "{0}" was skipped'.format(m))
+                l.i('Module "{0}" was skipped'.format(m))
                 continue
 
-            log.info('Generating glue code files for "{0}"...'.format(m))
+            l.i('Generating glue code files for "{0}"...'.format(m))
 
             func_path = "files.modules.{0}.gluecode.generate.run".format(m)
             mod_name, func_name = func_path.rsplit(".", 1)
@@ -114,9 +113,9 @@ def generate(params):
             func = getattr(mod, func_name)
             func(params)
 
-        log.ok()
+        l.ok()
     else:
-        log.error("No modules to generate")
+        l.e("No modules to generate")
 
 
 # -----------------------------------------------------------------------------
@@ -124,17 +123,17 @@ def version(params):
     tool_path = gluecode.get_tool_path(params)
 
     if not os.path.isfile(tool_path):
-        log.error("Glue code tool was not found: {0}".format(tool_path))
+        l.e("Glue code tool was not found: {0}".format(tool_path))
 
-    runner.run_as_shell("{0} --version".format(tool_path), cwd=os.getcwd())
+    r.run_as_shell("{0} --version".format(tool_path), cwd=os.getcwd())
 
 
 # -----------------------------------------------------------------------------
 def show_help(params):
-    log.colored("Available actions:\n", log.PURPLE)
-    log.normal("  - setup")
-    log.normal("  - generate")
-    log.normal("  - version")
+    l.colored("Available actions:\n", l.MAGENTA)
+    l.m("  - setup")
+    l.m("  - generate")
+    l.m("  - version")
 
 
 # -----------------------------------------------------------------------------

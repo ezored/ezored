@@ -2,28 +2,28 @@
 
 import os
 
-from files.core import file
-from files.core import log
+from pygemstones.io import file as f
+from pygemstones.util import log as l
 
 
 # -----------------------------------------------------------------------------
 def run(params):
-    log.info("Cleaning...")
+    l.i("Cleaning...")
 
     proj_path = params["proj_path"]
 
-    file.remove_dir(os.path.join(proj_path, "build"))
+    f.remove_dir(os.path.join(proj_path, "build"))
 
-    file.purge_files(proj_path, "*.pyc")
-    file.purge_files(proj_path, "*.zip")
-    file.purge_files(proj_path, "*.tar")
-    file.purge_files(proj_path, "*.tar.gz")
-    file.purge_files(proj_path, "Thumbs.db")
-    file.purge_files(proj_path, ".DS_Store")
+    f.remove_files(proj_path, "*.pyc", recursive=True)
+    f.remove_files(proj_path, "*.zip", recursive=True)
+    f.remove_files(proj_path, "*.tar", recursive=True)
+    f.remove_files(proj_path, "*.tar.gz", recursive=True)
+    f.remove_files(proj_path, "Thumbs.db", recursive=True)
+    f.remove_files(proj_path, ".DS_Store", recursive=True)
 
-    file.purge_dirs(proj_path, "__pycache__")
+    f.remove_dirs(proj_path, "__pycache__", recursive=True)
 
-    log.ok("")
+    l.ok()
 
 
 # -----------------------------------------------------------------------------

@@ -2,12 +2,13 @@
 
 import os
 
-from files.core import const
-from files.core import file
-from files.core import log
-from files.core import runner
-from files.core import util
+from pygemstones.io import file as f
+from pygemstones.system import runner as r
+from pygemstones.type import list as ls
+from pygemstones.util import log as l
+
 from files.config import target_macos as config
+from files.core import const
 
 
 # -----------------------------------------------------------------------------
@@ -18,17 +19,15 @@ def run(params):
 
     archs = target_config["archs"]
     build_types = target_config["build_types"]
-    param_dry_run = util.list_has_key(params["args"], "--dry-run")
+    param_dry_run = ls.list_has_value(params["args"], "--dry-run")
 
     if param_dry_run:
-        log.info("Running in dry mode...")
+        l.i("Running in dry mode...")
 
     if archs and len(archs) > 0:
         for arch in archs:
             for build_type in build_types:
-                log.info(
-                    "Building for: {0}/{1}...".format(arch["conan_arch"], build_type)
-                )
+                l.i("Building for: {0}/{1}...".format(arch["conan_arch"], build_type))
 
                 # conan build
                 build_dir = os.path.join(
@@ -46,8 +45,7 @@ def run(params):
                     clean_build_dir = False
 
                 if clean_build_dir:
-                    file.remove_dir(build_dir)
-                    file.create_dir(build_dir)
+                    f.recreate_dir(build_dir)
 
                 run_args = [
                     "conan",
@@ -89,7 +87,7 @@ def run(params):
                     ),
                 ]
 
-                runner.run(run_args, build_dir)
+                r.run(run_args, build_dir)
 
                 # copy assets
                 if "assets_dir" in target_config:
@@ -102,9 +100,10 @@ def run(params):
                             build_dir, "bin", os.path.basename(assets_dir)
                         )
 
-                        file.remove_dir(build_assets_dir)
-                        file.copy_dir(assets_dir, build_assets_dir, symlinks=True)
+                        f.remove_dir(build_assets_dir)
 
-        log.ok()
+                        f.copy_dir(assets_dir, build_assets_dir, symlinks=True)
+
+        l.ok()
     else:
-        log.error('Arch list for "{0}" is invalid or empty'.format(target_name))
+        l.e('Arch list for "{0}" is invalid or empty'.format(target_name))
