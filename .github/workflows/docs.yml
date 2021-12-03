@@ -37,7 +37,8 @@ jobs:
         run: python make.py docs generate
 
       - name: Pack
-        run: python -m tarfile -c docs.tar.gz build/docs
+        run: python -m tarfile -c docs.tar.gz docs
+        working-directory: build
 
       - name: Github Action - Upload
         uses: actions/upload-artifact@v2
