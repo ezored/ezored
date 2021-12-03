@@ -36,15 +36,38 @@ jobs:
       - name: Ezored - Generate
         run: python make.py docs generate
 
+      - name: Pack
+        run: python -m tarfile -c docs.tar.gz build/docs
+        working-directory: build
+
       - name: Github Action - Upload
         uses: actions/upload-artifact@v2
         with:
-          name: artifact-docs
-          path: build/docs
+          name: artifact-docs.tar.gz
+          path: docs.tar.gz
 
       - name: Ezored - Publish
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/tags/v')
         env:
           EZORED_AWS_KEY_ID: ${{ secrets.EZORED_AWS_KEY_ID }}
           EZORED_AWS_SECRET_KEY: ${{ secrets.EZORED_AWS_SECRET_KEY }}
         run: python make.py docs publish --force
+
+      - name: Get release
+        id: get_release
+        uses: bruceadams/get-release@v1.2.3
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Release
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.get_release.outputs.upload_url }}
+          asset_path: docs.tar.gz
+          asset_name: docs.tar.gz
+          asset_content_type: application/gzip
