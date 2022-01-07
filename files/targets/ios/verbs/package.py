@@ -3,7 +3,6 @@
 import os
 
 from pygemstones.io import file as f
-from pygemstones.system import platform as p
 from pygemstones.system import runner as r
 from pygemstones.type import list as ls
 from pygemstones.util import log as l
@@ -273,19 +272,6 @@ def generate_xcframework(proj_path, target_name, target_config, archs, build_typ
                     if not arch["group"] in groups:
                         groups.append(arch["group"])
 
-                        groups_command.append("-framework")
-                        groups_command.append(
-                            os.path.join(
-                                proj_path,
-                                const.DIR_NAME_BUILD,
-                                target_name,
-                                build_type,
-                                arch["group"],
-                                "xcframework",
-                                "{0}.framework".format(target_config["project_name"]),
-                            )
-                        )
-
                 if len(groups) == 0:
                     l.e(
                         "Group list are empty, make sure you have defined group name for each arch in config file for this target"
@@ -327,10 +313,9 @@ def generate_xcframework(proj_path, target_name, target_config, archs, build_typ
                     )
 
                     f.remove_dir(group_xcframework_dir)
-                    f.copy_dir(
+                    f.copy_all(
                         framework_dir,
                         group_xcframework_dir,
-                        symlinks=True,
                     )
 
                     # generate single framework for group
@@ -389,6 +374,10 @@ def generate_xcframework(proj_path, target_name, target_config, archs, build_typ
 
                     lipo_args.extend(lipo_archs_args)
                     r.run(lipo_args, proj_path)
+
+                    # add final framework to group
+                    groups_command.append("-framework")
+                    groups_command.append(group_xcframework_dir)
 
                 # generate xcframework
                 xcframework_dir = os.path.join(
