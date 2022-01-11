@@ -70,7 +70,7 @@ class TargetConan(ConanFile):
             self.options["poco"].enable_netssl = True
 
     def requirements(self):
-        self.requires("sqlite3/3.37.1")
+        self.requires("sqlite3/3.37.2")
         self.requires("rapidjson/1.1.0")
         self.requires("poco/1.11.1")
         self.requires("openssl/1.1.1k")
