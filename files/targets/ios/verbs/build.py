@@ -235,7 +235,11 @@ def run(params):
                     "Headers",
                 )
 
-                header_files = f.find_files(build_headers_dir, "*.h")
+                header_files = f.find_files(
+                    build_headers_dir,
+                    "*.h",
+                    recursive=True,
+                )
 
                 content = f.get_file_contents(
                     os.path.join(support_modules_dir, "umbrella-header.h")
