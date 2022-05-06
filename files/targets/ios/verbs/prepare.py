@@ -75,25 +75,40 @@ def run(params):
                     "ezored_version={0}".format(target_config["version"]),
                     "-o",
                     "ezored_group={0}".format(arch["group"]),
-                    "-o",
-                    "darwin-toolchain:enable_bitcode={0}".format(
-                        (arch["enable_bitcode"] if "enable_bitcode" in arch else None)
-                    ),
-                    "-o",
-                    "darwin-toolchain:enable_arc={0}".format(
-                        (arch["enable_arc"] if "enable_arc" in arch else None)
-                    ),
-                    "-o",
-                    "darwin-toolchain:enable_visibility={0}".format(
-                        (
-                            arch["enable_visibility"]
-                            if "enable_visibility" in arch
-                            else None
-                        )
-                    ),
-                    "--build=missing",
-                    "--update",
                 ]
+
+                # extra run args
+                if "enable_bitcode" in arch:
+                    run_args.append("-c:h")
+                    run_args.append(
+                        "tools.apple:enable_bitcode={0}".format(arch["enable_bitcode"])
+                    )
+
+                if "enable_arc" in arch:
+                    run_args.append("-c:h")
+                    run_args.append(
+                        "tools.apple:enable_arc={0}".format(arch["enable_arc"])
+                    )
+
+                if "enable_visibility" in arch:
+                    run_args.append("-c:h")
+                    run_args.append(
+                        "tools.apple:enable_visibility={0}".format(
+                            arch["enable_visibility"]
+                        )
+                    )
+
+                if "subsystem_ios_version" in arch:
+                    run_args.append("-s:h")
+                    run_args.append(
+                        "os.subsystem.ios_version={0}".format(
+                            arch["subsystem_ios_version"]
+                        )
+                    )
+
+                # final run args
+                run_args.append("--build=missing")
+                run_args.append("--update")
 
                 r.run(run_args, build_dir)
 

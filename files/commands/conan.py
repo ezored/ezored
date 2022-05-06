@@ -77,21 +77,6 @@ def setup(params):
 
                     f.copy_file(item, os.path.join(conan_profile_dir, filename))
 
-    # add darwin toolchain
-    l.i("Adding darwin toolchain repository...")
-
-    r.run(
-        [
-            "conan",
-            "remote",
-            "add",
-            "darwin-toolchain",
-            "https://ezoredrepository.jfrog.io/artifactory/api/conan/conan-local",
-            "--force",
-        ],
-        cwd=os.getcwd(),
-    )
-
     l.ok()
 
 
