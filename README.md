@@ -40,7 +40,7 @@ You only need to write platform-specific code where it’s necessary, for exampl
 I made a new project called Nativium (https://nativium.github.io) that follow Ezored idea, but is more flexible and modular.
 
 <p align="center">
-    <a href="https://github.com/ezored/ezored" target="_blank" rel="noopener noreferrer">
+    <a href="https://nativium.github.io" target="_blank" rel="noopener noreferrer">
         <img src="extras/images/nativium.png" alt="Nativium" style="width: 85%; max-width: 300px;">
     </a>
 </p>
