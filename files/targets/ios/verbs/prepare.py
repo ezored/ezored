@@ -59,14 +59,6 @@ def run(params):
                     "build_type={0}".format(build_type),
                     "-s:h",
                     "os.version={0}".format(arch["min_version"]),
-                    "-s:b",
-                    "os.version={0}".format(
-                        (
-                            arch["build_min_version"]
-                            if "build_min_version" in arch
-                            else None
-                        )
-                    ),
                     "-o",
                     "ezored_arch={0}".format(arch["conan_arch"]),
                     "-o",

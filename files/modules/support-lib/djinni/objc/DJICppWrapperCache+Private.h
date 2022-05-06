@@ -46,7 +46,8 @@ ObjcType *get_cpp_proxy_impl(const std::shared_ptr<CppType> &cppRef)
     return CppProxyCache::get(
         typeid(cppRef),
         cppRef,
-        [](const std::shared_ptr<void> &cppRef) -> std::pair<id, void *> {
+        [](const std::shared_ptr<void> &cppRef) -> std::pair<id, void *>
+        {
             return {
                 [[ObjcType alloc] initWithCpp:std::static_pointer_cast<CppType>(cppRef)],
                 cppRef.get()};

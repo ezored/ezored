@@ -344,7 +344,7 @@ static const std::shared_ptr<T> &objectFromHandleAddress(jlong handle)
     // assume this is a pointer pointing to something
     assert(handle != 0);
     // Below line segfaults gcc-4.8. Using a temporary variable hides the bug.
-    //const auto & ret = reinterpret_cast<const CppProxyHandle<T> *>(handle)->get();
+    // const auto & ret = reinterpret_cast<const CppProxyHandle<T> *>(handle)->get();
     const CppProxyHandle<T> *proxy_handle =
         reinterpret_cast<const CppProxyHandle<T> *>(handle);
     const auto &ret = proxy_handle->get();

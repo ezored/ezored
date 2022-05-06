@@ -32,7 +32,7 @@ ref struct AutoPtr
     }
     !AutoPtr()
     {
-        //ASSERT(0 == _ptr);
+        // ASSERT(0 == _ptr);
         delete _ptr;
     }
     T *operator->()

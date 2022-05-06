@@ -122,7 +122,7 @@ djinni::Handle<DjinniFrontEndExceptionHandle> djinni::cw_default_get_front_end_e
         return ExceptionState::newHandle(s_djinni_create_exception(e_mesg.release()));
     }
     assert(false);
-    return {}; //avoid compiler warning not returning anything
+    return {}; // avoid compiler warning not returning anything
 }
 
 // The argument is an exception_ptr for either a std::exception or a subclass of std::exception called front_end_exception

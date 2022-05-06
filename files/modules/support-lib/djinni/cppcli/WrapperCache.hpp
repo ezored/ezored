@@ -48,9 +48,9 @@ private:
 };
 
 /*
-* Native wrapper to C#'s WeakReference type. Instances of this type do not prevent the
-* garbage collector from reclaiming referred-to objects.
-*/
+ * Native wrapper to C#'s WeakReference type. Instances of this type do not prevent the
+ * garbage collector from reclaiming referred-to objects.
+ */
 class WeakCsRef
 {
 public:
@@ -92,7 +92,8 @@ static std::shared_ptr<CppType> get_cs_proxy(CsType cs)
     return std::static_pointer_cast<CppType>(CsProxyCache::get(
         typeid(CppType),
         cs,
-        [](const CsProxyCacheTraits::OwningImplPointer &cs) -> std::pair<std::shared_ptr<void>, CsProxyCacheTraits::UnowningImplPointer> {
+        [](const CsProxyCacheTraits::OwningImplPointer &cs) -> std::pair<std::shared_ptr<void>, CsProxyCacheTraits::UnowningImplPointer>
+        {
             return std::make_pair<std::shared_ptr<void>, CsProxyCacheTraits::UnowningImplPointer>(std::make_shared<CppType>(cs), cs);
         }));
 }
@@ -131,7 +132,8 @@ CsType get_cpp_proxy_impl(const std::shared_ptr<CppType> &cppRef)
     auto proxy = CppProxyCache::get(
         typeid(cppRef),
         cppRef,
-        [](const std::shared_ptr<void> &cppRef) -> std::pair<CppProxyCacheTraits::OwningProxyPointer, void *> {
+        [](const std::shared_ptr<void> &cppRef) -> std::pair<CppProxyCacheTraits::OwningProxyPointer, void *>
+        {
             return {
                 CsRef<System::Object ^>(gcnew typename remove_handle<CsType>::type(std::static_pointer_cast<CppType>(cppRef))),
                 cppRef.get()};

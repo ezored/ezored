@@ -5,7 +5,7 @@ The general requirements that you need is:
 1. Python 3 ([https://www.python.org/](https://www.python.org/))
 2. PIP ([https://pip.pypa.io/](https://pip.pypa.io/))
 3. CMake 3.20.0 ([https://cmake.org/](https://cmake.org/))
-4. Conan 1.35.0 ([https://conan.io/](https://conan.io/))
+4. Conan 1.48.0 ([https://conan.io/](https://conan.io/))
 5. Java 8 (JDK) ([https://www.oracle.com/br/java/technologies/javase/javase-jdk8-downloads.html](https://www.oracle.com/br/java/technologies/javase/javase-jdk8-downloads.html))
 
 These are the tools that Ezored need to work. Check on terminal if you have every tool in your path typing their names (python, pip, cmake, conan and java).
