@@ -88,6 +88,8 @@ def setup(params):
             ["conan", "create", ".", "ezored/stable"],
             cwd=os.path.join(
                 proj_path,
+                "files",
+                "common",
                 "conan",
                 "darwin-toolchain",
             ),
