@@ -73,19 +73,19 @@ def run(params):
                 if "enable_bitcode" in arch:
                     run_args.append("-c:h")
                     run_args.append(
-                        "tools.apple:enable_bitcode={0}".format(arch["enable_bitcode"])
+                        "darwin-toolchain:enable_bitcode={0}".format(arch["enable_bitcode"])
                     )
 
                 if "enable_arc" in arch:
                     run_args.append("-c:h")
                     run_args.append(
-                        "tools.apple:enable_arc={0}".format(arch["enable_arc"])
+                        "darwin-toolchain:enable_arc={0}".format(arch["enable_arc"])
                     )
 
                 if "enable_visibility" in arch:
                     run_args.append("-c:h")
                     run_args.append(
-                        "tools.apple:enable_visibility={0}".format(
+                        "darwin-toolchain:enable_visibility={0}".format(
                             arch["enable_visibility"]
                         )
                     )

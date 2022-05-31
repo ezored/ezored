@@ -3,6 +3,7 @@
 import os
 
 from pygemstones.io import file as f
+from pygemstones.system import platform as p
 from pygemstones.system import runner as r
 from pygemstones.util import log as l
 
@@ -76,6 +77,21 @@ def setup(params):
                     l.i('Copying profile "{0}"...'.format(filename))
 
                     f.copy_file(item, os.path.join(conan_profile_dir, filename))
+
+    l.ok()
+
+    # install darwin toolchain
+    if p.is_macos():
+        l.i("Installing darwin toolchain...")
+
+        r.run(
+            ["conan", "create", ".", "ezored/stable"],
+            cwd=os.path.join(
+                proj_path,
+                "conan",
+                "darwin-toolchain",
+            ),
+        )
 
     l.ok()
 
