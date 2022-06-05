@@ -4,3 +4,6 @@ include(default)
 os=watchOS
 os.version=5.0
 arch=armv8_32
+
+[build_requires]
+darwin-toolchain/1.0.0@ezored/stable

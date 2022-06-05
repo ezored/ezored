@@ -4,3 +4,6 @@ include(default)
 os=tvOS
 os.version=11.0
 arch=armv8
+
+[build_requires]
+darwin-toolchain/1.0.0@ezored/stable

@@ -1,0 +1,7 @@
+build
+*.pyc
+tmp
+.vscode
+.DS_Store
+Thumbs.db
+__pycache__
