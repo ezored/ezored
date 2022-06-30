@@ -22,6 +22,7 @@ class TargetConan(ConanFile):
         "sqlite3:build_executable": False,
         "sqlite3:omit_load_extension": True,
         "poco:enable_apacheconnector": False,
+        "poco:enable_activerecord": False,
         "poco:enable_cppparser": False,
         "poco:enable_crypto": True,
         "poco:enable_data": False,
