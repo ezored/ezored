@@ -125,7 +125,7 @@ def version(params):
     if not os.path.isfile(tool_path):
         l.e("Glue code tool was not found: {0}".format(tool_path))
 
-    r.run_as_shell("{0} --version".format(tool_path), cwd=os.getcwd())
+    r.run("{0} --version".format(tool_path), cwd=os.getcwd(), shell=True)
 
 
 # -----------------------------------------------------------------------------

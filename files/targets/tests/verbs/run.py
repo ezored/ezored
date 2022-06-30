@@ -87,7 +87,7 @@ def run(params):
                     ),
                 ]
 
-                r.run(run_args, build_dir)
+                r.run(run_args, cwd=build_dir)
 
                 # copy assets
                 if "assets_dir" in target_config:
@@ -113,7 +113,7 @@ def run(params):
                     ),
                 ]
 
-                r.run(run_args, build_dir)
+                r.run(run_args, cwd=build_dir)
 
         l.ok()
     else:

@@ -62,10 +62,10 @@ class TargetConan(ConanFile):
         cmake.build()
 
     def requirements(self):
-        self.requires("sqlite3/3.37.2")
+        self.requires("sqlite3/3.38.5")
         self.requires("rapidjson/1.1.0")
-        self.requires("openssl/1.1.1k")
+        self.requires("openssl/1.1.1o")
         self.requires("sqlitecpp/3.1.1")
         self.requires("date/3.0.1")
         self.requires("nlohmann_json/3.9.1")
-        self.requires("poco/1.11.1")
+        self.requires("poco/1.11.3")

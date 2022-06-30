@@ -68,7 +68,7 @@ def run(params):
                     "--update",
                 ]
 
-                r.run(run_args, build_dir)
+                r.run(run_args, cwd=build_dir)
 
         l.ok()
     else:
