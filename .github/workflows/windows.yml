@@ -22,13 +22,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Upgrade PIP
-        run: python -m pip install --upgrade pip setuptools wheel
+        run: python3 -m pip install --upgrade pip setuptools wheel
 
       - name: Display Python version
-        run: python --version
+        run: python3 --version
 
       - name: Display PIP version
-        run: pip --version
+        run: python3 -m pip --version
 
       - name: Install CMake
         uses: jwlawson/actions-setup-cmake@v1.8
@@ -41,7 +41,7 @@ jobs:
           version: "1.10.0"
 
       - name: Ezored - Install python dependencies
-        run: pip install -r requirements.txt
+        run: python3 -m pip install -r requirements.txt
 
       - name: Ezored - Install glue code tool
         run: |
@@ -49,25 +49,25 @@ jobs:
           python make.py gluecode version
 
       - name: Ezored - Setup conan
-        run: python make.py conan setup
+        run: python3 make.py conan setup
 
       - name: Ezored - Test Prepare
-        run: python make.py target tests prepare
+        run: python3 make.py target tests prepare
 
       - name: Ezored - Test Run
-        run: python make.py target tests run
+        run: python3 make.py target tests run
 
       - name: Ezored - Prepare
-        run: python make.py target ${{ matrix.config.target }} prepare
+        run: python3 make.py target ${{ matrix.config.target }} prepare
 
       - name: Ezored - Build
-        run: python make.py target ${{ matrix.config.target }} build
+        run: python3 make.py target ${{ matrix.config.target }} build
 
       - name: Ezored - Package
-        run: python make.py target ${{ matrix.config.target }} package
+        run: python3 make.py target ${{ matrix.config.target }} package
 
       - name: Ezored - Dist generate
-        run: python make.py target ${{ matrix.config.target }} dist generate
+        run: python3 make.py target ${{ matrix.config.target }} dist generate
 
       - name: Github Action - Upload
         uses: actions/upload-artifact@v2
@@ -80,7 +80,7 @@ jobs:
         env:
           EZORED_AWS_KEY_ID: ${{ secrets.EZORED_AWS_KEY_ID }}
           EZORED_AWS_SECRET_KEY: ${{ secrets.EZORED_AWS_SECRET_KEY }}
-        run: python make.py target ${{ matrix.config.target }} dist upload --force
+        run: python3 make.py target ${{ matrix.config.target }} dist upload --force
 
       - name: Get release
         id: get_release
