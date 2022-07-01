@@ -87,7 +87,7 @@ def run(params):
                     ),
                 ]
 
-                r.run(run_args, build_dir)
+                r.run(run_args, cwd=build_dir)
 
         l.ok()
     else:

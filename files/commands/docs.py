@@ -71,7 +71,7 @@ def docs_generate(params):
             "-d",
             output_path,
         ]
-        r.run(run_args, docs_path)
+        r.run(run_args, cwd=docs_path)
 
 
 # -----------------------------------------------------------------------------
@@ -106,7 +106,7 @@ def docs_serve(params):
             "--config-file",
             "mkdocs.yml",
         ]
-        r.run(run_args, docs_path)
+        r.run(run_args, cwd=docs_path)
 
 
 # -----------------------------------------------------------------------------
@@ -168,7 +168,7 @@ def docs_publish(params):
             output_path,
         ]
 
-        r.run(run_args, docs_path)
+        r.run(run_args, cwd=docs_path)
 
         # version
         if append_version:

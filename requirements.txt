@@ -1,8 +1,8 @@
-conan>=1.48
+conan>=1.50
 boto3>=1.9.232
 botocore>=1.12.232
 mkdocs
 mkdocs-material
 mkdocs-macros-plugin
 pygments
-pygemstones>=0.0.10
+pygemstones>=0.0.13

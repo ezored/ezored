@@ -181,7 +181,7 @@ def run(params):
                         "bundle{0}Aar".format(build_type),
                     ]
 
-                r.run(run_args, android_module_dir)
+                r.run(run_args, cwd=android_module_dir)
 
                 # copy files
                 arr_dir = os.path.join(

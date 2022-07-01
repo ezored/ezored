@@ -81,7 +81,25 @@ class DarwinToolchainConan(ConanFile):
 
     # -----------------------------------------------------------------------------
     def package_info(self):
-        common_flags = []
+        # Settings
+        settings_target = None
+
+        if hasattr(self, "settings_target"):
+            settings_target = self.settings_target
+            self.output.info("Settings: Target")
+        else:
+            settings_target = self.settings
+            self.output.info("Settings: Default")
+
+        # Sysroot
+        xcrun = tools.XCRun(settings_target)
+        sysroot = xcrun.sdk_path
+
+        self.cpp_info.sysroot = sysroot
+        common_flags = ["-isysroot%s" % sysroot]
+
+        self.env_info.CONAN_CMAKE_OSX_SYSROOT = sysroot
+        self.env_info.SDKROOT = sysroot
 
         # Bitcode
         if self.options.enable_bitcode is None:
@@ -93,7 +111,9 @@ class DarwinToolchainConan(ConanFile):
                 self.env_info.CMAKE_XCODE_ATTRIBUTE_ENABLE_BITCODE = "YES"
                 self.env_info.CMAKE_XCODE_ATTRIBUTE_BITCODE_GENERATION_MODE = "bitcode"
 
-                if self.settings.build_type == "Debug":
+                build_type = settings_target.get_safe("build_type")
+
+                if build_type.lower() == "debug":
                     common_flags.append("-fembed-bitcode-marker")
                 else:
                     common_flags.append("-fembed-bitcode")
@@ -142,4 +162,4 @@ class DarwinToolchainConan(ConanFile):
 
     # -----------------------------------------------------------------------------
     def package_id(self):
-        self.info.header_only()
+        self.info.clear()

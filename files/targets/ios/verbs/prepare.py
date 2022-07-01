@@ -104,7 +104,7 @@ def run(params):
                 run_args.append("--build=missing")
                 run_args.append("--update")
 
-                r.run(run_args, build_dir)
+                r.run(run_args, cwd=build_dir)
 
         l.ok()
     else:

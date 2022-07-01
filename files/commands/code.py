@@ -78,7 +78,7 @@ def code_format(params):
 
                         run_args = ["clang-format", "-style", "file", "-i", file_item]
 
-                        r.run(run_args, proj_path)
+                        r.run(run_args, cwd=proj_path)
 
             l.ok()
         else:
@@ -121,7 +121,7 @@ def code_format(params):
 
                             run_args = ["black", "-q", file_item]
 
-                            r.run(run_args, proj_path)
+                            r.run(run_args, cwd=proj_path)
                 else:
                     file_item = (
                         path_list_item["path"] if "path" in path_list_item else None
@@ -134,7 +134,7 @@ def code_format(params):
 
                         run_args = ["black", "-q", file_item]
 
-                        r.run(run_args, proj_path)
+                        r.run(run_args, cwd=proj_path)
 
             l.ok()
         else:
@@ -281,7 +281,7 @@ def code_format(params):
                             file_item,
                         ]
 
-                        r.run(run_args, proj_path)
+                        r.run(run_args, cwd=proj_path)
 
             l.ok()
         else:
